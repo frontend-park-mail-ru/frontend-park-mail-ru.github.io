@@ -2,12 +2,12 @@
 
 ## 1.1 Знакомство, инструменты, настройка окружения
 
-* [Git](http://git-scm.com) и GitHub.
-* [NodeJS](http://nodejs.org) и [NPM](https://npmjs.org).
-* Репозиторий проекта.
-* Создаем `package.json`.
-* [Grunt](http://gruntjs.com).
-* Шаблонизатор [Fest](https://github.com/mailru/fest).
+- [Git](http://git-scm.com) и GitHub.
+- [NodeJS](http://nodejs.org) и [NPM](https://npmjs.org).
+- Репозиторий проекта.
+- Создаем `package.json`.
+- [Grunt](http://gruntjs.com).
+- Шаблонизатор [Fest](https://github.com/mailru/fest).
 
 Ссылки:
 
@@ -22,7 +22,28 @@
 
 ## 1.2 Архитектура веб-приложений
 
-Модули, БЭМ, Backbone. Роутинг
+- Глобальная область видимости.
+- Модули.
+- БЭМ.
+- [PubSub](http://en.wikipedia.org/wiki/Publish–subscribe_pattern).
+- [MVC](http://ru.wikipedia.org/wiki/Model-View-Controller).
+- [Backbone](http://backbonejs.org).
+
+Уровень библиотек. 
+Уровень ядра приложения.
+Уровень модулей.
+
+> Модуль — функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах [[Википедия](http://ru.wikipedia.org/wiki/Модуль_(программирование\))].
+
+Модуль веб-приложения состоит из HTML, CSS и JavaScript – блок в терминологии БЭМ. Модули характеризуются [связанностью](http://ru.wikipedia.org/wiki/Связанность_(программирование\)). Слабая связанность позволяет вносить изменения в один модуль не оказывая при этом влияния на остальные. 
+
+Веб-приложение представляем собой результат работы модулей из которых оно состоит.
+
+Когда модули слабо связаны между собой, то удаление одного, не приведет к некорректной работе остальные модули.
+
+Ядро веб-приложения отвечает за управление модулями (загрузка, инициализация и освобождение ресурсов), предоставляет средства коммуникации между модулями и занимается обработкой ошибок в приложении.
+
+На уровне библиотек находятся инструменты для работы с DOM, AJAX, парсеры и т.п.
 
 Литература:
 
@@ -39,16 +60,21 @@
 
 ## 2.1 Работа с DOM, Events
 
-DOM, Events, Host Objects, PubSub
+- [DOM](https://developer.mozilla.org/en/docs/DOM).
+- [Events](http://www.w3.org/TR/DOM-Level-2-Events/events.html).
+- [Событийно-ориентированное_программирование](http://ru.wikipedia.org/wiki/Событийно-ориентированное_программирование).
+- [Host Objects](http://es5.github.io/#x4.3.8).
 
 ДЗ:
 
-1. Реализовать взаимодействие между модулями приложения через pubSub.
-2. Реализация игровой механики (на протяжении последующих домашних заданий в этом модуле).
+1. Реализация игровой механики (на протяжении последующих домашних заданий в этом модуле).
 
 ## 2.2 Сетевое взаимодествие
 
-HTTP, AJAX, Websockets
+- HTTP.
+- AJAX.
+- CORS.
+- WebSockets.
 
 Литература:
 
@@ -61,7 +87,8 @@ HTTP, AJAX, Websockets
 
 ## 2.3 Хранение данных на клиенте
 
-Cookie, local storage, indexDB
+- Cookies.
+- [Storage](http://www.html5rocks.com/en/features/storage).
 
 ДЗ:
 
@@ -72,7 +99,8 @@ Cookie, local storage, indexDB
 
 ## 3.1 Web Inspector и препроцессоры CSS
 
-Sass, SourceMap
+- [Sass](http://sass-lang.com).
+- [Source Maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors).
 
 ДЗ:
 
@@ -80,7 +108,13 @@ Sass, SourceMap
 
 ## 3.2 Производительность
 
-HTTP (waterfall, cache), reflow, repaint, Web workers, App Cache, prefecth
+- HTTP Cache.
+- HTTP Waterfall.
+- Reflow/Repaint.
+- Web workers.
+- [App Cache](http://www.html5rocks.com/en/tutorials/appcache/beginner/).
+- Prefetching.
+- CSS специфичность.
 
 ДЗ:
 
@@ -89,7 +123,9 @@ HTTP (waterfall, cache), reflow, repaint, Web workers, App Cache, prefecth
 
 ## 3.3 Возможности смартфонов
 
-Акселерометр, гироскоп, тач-события
+- Акселерометр.
+- Гироскоп.
+- Тач-события.
 
 Литература:
 
