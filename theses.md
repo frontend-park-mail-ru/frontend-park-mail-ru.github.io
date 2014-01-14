@@ -1,8 +1,18 @@
-# Архитектура
+# 1 Архитектура
 
-## Знакомство, инструменты, настройка окружения
+## 1.1 Знакомство, инструменты, настройка окружения
 
-Организация кода, NPM, GruntJS, Фест, Sass.
+* [Git](http://git-scm.com) и GitHub.
+* [NodeJS](http://nodejs.org) и [NPM](https://npmjs.org).
+* Репозиторий проекта.
+* Создаем `package.json`.
+* [Grunt](http://gruntjs.com).
+* Шаблонизатор [Fest](https://github.com/mailru/fest).
+
+Ссылки:
+
+1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
+2. [Grunt: Getting started](http://gruntjs.com/getting-started) // 2013.
 
 ДЗ:
 
@@ -10,7 +20,7 @@
 2. Создать прототип приложения.
 3. Организовать сборку ресурсов CSS, JS, XML.
 
-## Архитектура веб-приложений
+## 1.2 Архитектура веб-приложений
 
 Модули, БЭМ, Backbone. Роутинг
 
@@ -25,9 +35,9 @@
 2. Организовать подключение ресурсов через AMD.
 3. Организовать сборку ресурсов для production и development окружения.
 
-# DOM & AJAX
+# 2 DOM & AJAX
 
-## Работа с DOM, Events
+## 2.1 Работа с DOM, Events
 
 DOM, Events, Host Objects, PubSub
 
@@ -36,7 +46,7 @@ DOM, Events, Host Objects, PubSub
 1. Реализовать взаимодействие между модулями приложения через pubSub.
 2. Реализация игровой механики (на протяжении последующих домашних заданий в этом модуле).
 
-## Сетевое взаимодествие
+## 2.2 Сетевое взаимодествие
 
 HTTP, AJAX, Websockets
 
@@ -49,7 +59,7 @@ HTTP, AJAX, Websockets
 
 1. Наладить взаимодествие с сервером с помощью AJAX.
 
-## Хранение данных на клиенте
+## 2.3 Хранение данных на клиенте
 
 Cookie, local storage, indexDB
 
@@ -58,9 +68,9 @@ Cookie, local storage, indexDB
 1. Организовать хранение пользовательских настроек на клиенте.
 2. Сохранять результаты игры на клиенте, при остуствии связи с сервером.
 
-# Отладка и мобильный веб
+# 3 Отладка и мобильный веб
 
-## Web Inspector и препроцессоры CSS
+## 3.1 Web Inspector и препроцессоры CSS
 
 Sass, SourceMap
 
@@ -68,7 +78,7 @@ Sass, SourceMap
 
 1. Перевести CSS на Sass.
 
-## Производительность
+## 3.2 Производительность
 
 HTTP (waterfall, cache), reflow, repaint, Web workers, App Cache, prefecth
 
@@ -77,7 +87,7 @@ HTTP (waterfall, cache), reflow, repaint, Web workers, App Cache, prefecth
 1. Сделать прогресс-бар загрузки ресурсов.
 2. Настроить HTTP заголовки, отвечающие за кеширование ресурсов.
 
-## Возможности смартфонов
+## 3.3 Возможности смартфонов
 
 Акселерометр, гироскоп, тач-события
 
