@@ -35,6 +35,8 @@
 
 Проектная работа ведется в группах по 2–3 человека (роли каждого должны быть представлены при формировании группы).
 
+[NPM](https://npmjs.org) (Node Packaged Modules) это менеджер пакетов для Node.js. У Java есть Maven, CPAN у Perl, а у Python есть pip, так и у разработчиков на Node.js есть NPM.
+
 Ссылки:
 
 1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
