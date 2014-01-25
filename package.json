@@ -1,0 +1,14 @@
+{
+    "private": true,
+    "name": "frontend",
+    "version": "0.1.0",
+    "description": "Frontend course at Techo@Mail.ru",
+    "author": "Anton Eprev <a.eprev@gmail.com>",
+    "license": "BSD",
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-connect": "~0.6.0",
+        "grunt-contrib-watch": "~0.5.3",
+        "grunt-markdown": "~0.5.0"
+    }
+}
