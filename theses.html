@@ -246,12 +246,11 @@
 <ol>
 <li>Scott Chacon. <a href="http://git-scm.com/book">Pro Git</a> // 2009.</li>
 <li><a href="http://gruntjs.com/getting-started">Grunt: Getting started</a> // 2013.</li>
+<li>Документация по <a href="https://npmjs.org/doc/files/package.json.html"><code>package.json</code></a>.</li>
 </ol>
 <h3 id="-">Практика</h3>
 <p>Создайте директорию для проекта.</p>
 <pre><code>$ mkdir ИМЯ-ПРОЕКТА</code></pre>
-<p>Инициализируйте пустой Git репозиторий.</p>
-<pre><code>$ git init</code></pre>
 <p>Создайте <a href="https://npmjs.org/doc/files/package.json.html"><code>package.json</code></a>.</p>
 <pre><code>$ npm init</code></pre>
 <p>Установите Grunt и <code>grunt-contrib-connect</code>.</p>
@@ -275,6 +274,14 @@ Started connect web server on http://localhost:8080</code></pre>
 <li><a href="http://ru.wikipedia.org/wiki/Model-View-Controller">MVC</a>.</li>
 <li><a href="http://backbonejs.org">Backbone</a>.</li>
 </ul>
+<p>Глобальные переменные в JavaScript доступны везде, локальные — только в области видимости, в которой они определены. Глобальные переменные являются свойствамии объекта <code>window</code>. Поэтому, объявляя глобальные переменные, вы рискуете изменить свойства <code>window</code>. Каждый раз при присвоении значения неопределенной локальной переменной, вы создаете или изменяете глобальную. Использование глобальных переменных является плохой практикой. В текущей спецификации JavaScript отсутствуют модули, которые бы разграничивали области видимости переменных, объявленых внутри. Но существуют несколько приемов, позволяющих реализовать модульность.</p>
+<pre><code class="lang-JavaScript">var foo = 1;
+(function (window, undefined) {
+    var foo = 2;
+    alert(foo); // 2
+})(window);
+alert(foo); // 1</code></pre>
+<p>Как устроено сложное веб-приложение?</p>
 <p>Уровень библиотек. 
 Уровень ядра приложения.
 Уровень модулей.</p>

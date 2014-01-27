@@ -60,6 +60,7 @@
 
 1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
 2. [Grunt: Getting started](http://gruntjs.com/getting-started) // 2013.
+3. Документация по [`package.json`](https://npmjs.org/doc/files/package.json.html).
 
 ### Практика
 
@@ -67,12 +68,6 @@
 
 ```
 $ mkdir ИМЯ-ПРОЕКТА
-```
-
-Инициализируйте пустой Git репозиторий.
-
-```
-$ git init
 ```
 
 Создайте [`package.json`](https://npmjs.org/doc/files/package.json.html).
@@ -115,6 +110,19 @@ $ npm install grunt-fest --save-dev
 - [PubSub](http://en.wikipedia.org/wiki/Publish–subscribe_pattern).
 - [MVC](http://ru.wikipedia.org/wiki/Model-View-Controller).
 - [Backbone](http://backbonejs.org).
+
+Глобальные переменные в JavaScript доступны везде, локальные — только в области видимости, в которой они определены. Глобальные переменные являются свойствамии объекта `window`. Поэтому, объявляя глобальные переменные, вы рискуете изменить свойства `window`. Каждый раз при присвоении значения неопределенной локальной переменной, вы создаете или изменяете глобальную. Использование глобальных переменных является плохой практикой. В текущей спецификации JavaScript отсутствуют модули, которые бы разграничивали области видимости переменных, объявленых внутри. Но существуют несколько приемов, позволяющих реализовать модульность.
+
+```JavaScript
+var foo = 1;
+(function (window, undefined) {
+    var foo = 2;
+    alert(foo); // 2
+})(window);
+alert(foo); // 1
+```
+
+Как устроено сложное веб-приложение?
 
 Уровень библиотек. 
 Уровень ядра приложения.

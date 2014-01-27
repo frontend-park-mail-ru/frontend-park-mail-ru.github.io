@@ -22,9 +22,9 @@
     <section class="slide"><div>
         <h2>Модули</h2>
         <pre>
-            <code>Архитектура <mark class="comment">// 2 СЗ + КР</mark></code>
+            <code>АРХИТЕКТУРА <mark class="comment">// 2 СЗ + КР</mark></code>
             <code>DOM &amp; AJAX <mark class="comment">// 3 СЗ + КР</mark></code>
-            <code>Отдладка и мобильный веб <mark class="comment">// 3 СЗ + КР</mark></code>
+            <code>ОТДЛАДКА И МОБИЛЬНЫЙ ВЕБ <mark class="comment">// 3 СЗ + КР</mark></code>
         </pre>
      </div></section>
 
@@ -67,6 +67,84 @@
 
     <section class="slide shout"><div>
         <h2><a href="https://github.com/mailru/fest">Fest</a></h2>
+     </div></section>
+
+    <section class="slide shout"><div>
+        <h2>Проект</h2>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Приступаем!</h2>
+        <pre>
+            <code>$ mkdir epicgame &amp; cd epicgame</code>
+            <code class="next">$ npm init</code>
+            <code class="next">$ cat package.json</code>
+            <code class="next">$ npm install grunt-cli -g</code>
+            <code class="next">$ npm grunt grunt-contrib-connect --save-dev</code>
+            <code class="next">$ vim Gruntfile.js</code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Gruntfile.js</h2>
+        <pre>
+            <code>module.exports = function (grunt) {</code>
+            <code>    grunt.initConfig({</code>
+            <code>        connect: { … } <mark class="comment">/* Задача */</mark></code>
+            <code>    });</code>
+            <code>    grunt.loadNpmTasks('grunt-contrib-connect');</code>
+            <code>};</code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Задача <code>connect</code></h2>
+        <pre>
+            <code>server: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>    options: {</code>
+            <code>        keepalive: true, <mark class="comment">/* работать постоянно */</mark></code>
+            <code>        port: 8080, <mark class="comment">/* номер порта */</mark></code>
+            <code>        base: 'www' <mark class="comment">/* публичная директория */</mark></code>
+            <code>    }</code>
+            <code>}</code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Gruntfile.js</h2>
+        <pre>
+            <code>$ grunt connect:server</code>
+            <code>Running "connect:server" (connect) task</code>
+            <code>Waiting forever...</code>
+            <code>Started connect web server on http://localhost:8080</code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>www</h2>
+        <pre>
+            <code>$ cat www/index.html</code>
+            <code>Hello!</code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Fest</h2>
+        <pre>
+            <code>$ npm install grunt-fest --save-dev</code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Fest</h2>
+        <pre>
+            <code><mark>&lt;fest:template xmlns:fest="http://fest.mail.ru"</mark></code>
+            <code>    <mark>context_name="json"&gt;</mark></code>
+            <code>    &lt;div&gt;</code>
+            <code>        &lt;a href="…"&gt;…&lt;/a&gt;</code>
+            <code>    &lt;/div&gt;</code>
+            <code><mark>&lt;/fest:template&gt;</mark></code>
+        </pre>
      </div></section>
 
     <section class="slide"><div>
