@@ -30,9 +30,9 @@
 
 В результате изучения курса вы освоите современную разработку клиент-сайда веб-приложений; узнаете тонкости технологий HTTP, HTML 5, CSS 3, JavaScript, DOM, Events, Host Objects, AJAX; получите необходимую базу знаний о работе браузера (десктоп, смартфоны, планшеты), клиент-серверной архитектуре, архитектуре веб-приложений (события, модули, организации кода) и приобретёте  навыки работы с DOM, асинхронного и событийно-ориентированного программирования, сетевого взаимодествия (AJAX, WebSockets), организации многопоточности в браузере, использования CSS препроцессоров, отладки веб-приложений и сборки проекта с помощью Grunt для раскладки на сервер.
 
-Для успешной сдачи курса необходимо самостоятельно реализовать клиен-сайд для многопользовательской игры с использованием смартфона в качестве игрового контроллера.
+Для успешной сдачи курса необходимо самостоятельно реализовать клиен-сайд для однопользовательской игры с использованием смартфона в качестве игрового контроллера.
 
-На протяжении всего курса у нас будет три контрольных рубежа. Каждый рубежный контроль вместе с выполнением части проектной работы сопроваждается устным контроллем знаний. Прохождение первого контрольного рубежа дает возможность пройти второй рубеж, второго – третий. Программа предполагает своевременную сдачу каждого контрольного рубежа. По итогам трех рубежей каждый из вас наберет определенное количество баллов.
+На протяжении всего семестра у вас будет три контрольных рубежа. Каждый рубежный контроль вместе с выполнением части проектной работы сопроваждается устным контроллем знаний. Прохождение первого контрольного рубежа дает возможность пройти второй рубеж, второго – третий. Программа предполагает своевременную сдачу каждого контрольного рубежа. Итоговый рейтинг по дисциплине представляет собой сумму баллов, полученных за прохождение рубежных контролей и домашних заданий. Для успешной аттестации по данному курсу студентам необходимо набрать пороговый рейтинг — 60 баллов. При пересчете баллов студенты могут получить итоговую оценку: 0–59 неудовлетворительно, 60–74 удовлетворительно, 75–89 хорошо, 90–100 отлично.
 
 Каковы критерии оценки при прохождении рубежного контроля?
 
@@ -85,12 +85,34 @@ $ npm install grunt grunt-contrib-connect --save-dev
 
 Создайте `Gruntfile.js` и настройте таск `connect`.
 
+```javascript
+module.exports = function (grunt) {
+
+    grunt.initConfig({
+        connect: {
+            server: {
+                options: {
+                    keepalive: true,
+                    port: 8000,
+                    base: 'public'
+                }
+            }
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
+};
+```
+
 ```
 $ grunt connect
 Running "connect:server" (connect) task
 Waiting forever...
-Started connect web server on http://localhost:8080
+Started connect web server on http://localhost:8000
 ```
+
+Создайте `public/index.html`.
 
 Установите `grunt-fest` и настройте таск `fest`.
 
@@ -98,9 +120,181 @@ Started connect web server on http://localhost:8080
 $ npm install grunt-fest --save-dev
 ```
 
+```javascript
+module.exports = function (grunt) {
+
+    grunt.initConfig({
+        connect: {
+            server: {
+                options: {
+                    keepalive: true,
+                    port: 8000,
+                    base: 'public'
+                }
+            }
+        },
+        fest: {
+            templates: {
+                files: [{
+                    expand: true,
+                    cwd: 'templates',
+                    src: '*.xml',
+                    dest: 'public/js/tmpl'
+                }],
+                options: {
+                    template: function (data) {
+                        return grunt.template.process(
+                            'var tmpl<%= name %> = <%= contents %> ;',
+                            {data: data}
+                        );
+                    }
+                }
+            }
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-fest');
+
+};
+```
+
+Установите `grunt-contrib-watch` и настройте таск `watch`.
+
+```javascript
+module.exports = function (grunt) {
+
+    grunt.initConfig({
+        watch: {
+            fest: {
+                files: ['templates/*.xml'],
+                tasks: ['fest'],
+                options: {
+                    atBegin: true
+                }
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    base: 'public'
+                }
+            }
+        },
+        fest: {
+            templates: {
+                files: [{
+                    expand: true,
+                    cwd: 'templates',
+                    src: '*.xml',
+                    dest: 'public/js/tmpl'
+                }],
+                options: {
+                    template: function (data) {
+                        return grunt.template.process(
+                            'var tmpl<%= name %> = <%= contents %> ;',
+                            {data: data}
+                        );
+                    }
+                }
+            }
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-fest');
+
+    grunt.registerTask('default', ['connect', 'watch']);
+
+};
+```
+
+Добавьте `livereload`.
+
+```javascript
+module.exports = function (grunt) {
+
+    grunt.initConfig({
+        watch: {
+            fest: {
+                files: ['templates/*.xml'],
+                tasks: ['fest'],
+                options: {
+                    atBegin: true
+                }
+            },
+            server: {
+                files: [
+                    'public/js/**/*.js',
+                    'public/css/**/*.css'
+                ],
+                options: {
+                    interrupt: true,
+                    livereload: true
+                }
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    livereload: true,
+                    port: 8000,
+                    base: 'public'
+                }
+            }
+        },
+        fest: {
+            templates: {
+                files: [{
+                    expand: true,
+                    cwd: 'templates',
+                    src: '*.xml',
+                    dest: 'public/js/tmpl'
+                }],
+                options: {
+                    template: function (data) {
+                        return grunt.template.process(
+                            'var tmpl<%= name %> = <%= contents %> ;',
+                            {data: data}
+                        );
+                    }
+                }
+            }
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-fest');
+
+    grunt.registerTask('default', ['connect', 'watch']);
+
+};
+```
+
 ### Домашнее задание
 
-Создатать прототип веб-приложения.
+1. Сформировать идею игры.
+2. Определиться с группой и ролями в ней.
+3. Создатать прототип веб-приложения.
+
+### Техническое задание
+
+1. Прототип состоит из трех экранов:
+    1. Главный экран (Main Screen). Содержит название игры и пункты главного меню:
+        - Пункт «Лучшие игроки» ведет на экран «Лучшие игроки».
+        - Пункт «Начать игру» ведет на основной экран игры.
+    2. Лучшие игроки (Scoreboard Screen). Содержит название игры и кнопку «Назад», ведущую на главный экран.
+    3. Основной экран игры (Game Screen). Содержит кнопку «Назад», ведущую на главный экран.
+2. За отрисовку и последующую инициализацию каждого экрана должна отвечать отдельная функция в JavaScript.
+3. При первой загрузке страницы с игрой появляется главный экран. Переход между экранами должен осуществлятся без перезагрузки страницы.
+4. Для шаблонизации на строне клиента должен использоваться Fest (см. [`grunt-fest`](https://npmjs.org/package/grunt-fest) и [Fest](https://github.com/mailru/fest)).
+5. На странице с игрой допускается загрузка одного JavaScript файла и одного CSS файла. Сборку этих файлов необходимо осуществить с помощью Grunt (см. [`grunt-contrib-concat`](http://npmjs.org/package/grunt-contrib-connect)).
+6. С помощиью Grunt возможно запустить веб-сервер с игрой (см. [`grunt-contrib-connect`](https://npmjs.org/package/grunt-contrib-connect)). Страницу с игрой необходимо автоматически перезагружать при изменении исходных JavaScript, XML (Fest) или CSS файлов (см. параметр `livereload` в задачах `grunt-contrib-connect` и [`grunt-contrib-watch`](https://npmjs.org/package/grunt-contrib-watch)).
+
+![Схема прототипа](/pics/prototype-scheme.png)
 
 ## 1.2 Архитектура веб-приложений
 

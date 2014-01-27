@@ -103,7 +103,7 @@
             <code>server: { <mark class="comment">/* Подзадача */</mark></code>
             <code>    options: {</code>
             <code>        keepalive: true, <mark class="comment">/* работать постоянно */</mark></code>
-            <code>        port: 8080, <mark class="comment">/* номер порта */</mark></code>
+            <code>        port: 8000, <mark class="comment">/* номер порта */</mark></code>
             <code>        base: 'www' <mark class="comment">/* публичная директория */</mark></code>
             <code>    }</code>
             <code>}</code>
@@ -116,14 +116,14 @@
             <code>$ grunt connect:server</code>
             <code>Running "connect:server" (connect) task</code>
             <code>Waiting forever...</code>
-            <code>Started connect web server on http://localhost:8080</code>
+            <code>Started connect web server on http://localhost:8000</code>
         </pre>
      </div></section>
 
     <section class="slide"><div>
-        <h2>www</h2>
+        <h2>public</h2>
         <pre>
-            <code>$ cat www/index.html</code>
+            <code>$ cat public/index.html</code>
             <code>Hello!</code>
         </pre>
      </div></section>
