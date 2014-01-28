@@ -74,19 +74,19 @@
 
 Создайте директорию для проекта.
 
-```
+```bash
 $ mkdir ИМЯ-ПРОЕКТА
 ```
 
 Создайте [`package.json`](https://npmjs.org/doc/files/package.json.html).
 
-```
+```bash
 $ npm init
 ```
 
 Установите Grunt и `grunt-contrib-connect`.
 
-```
+```bash
 $ npm install grunt-cli -g
 $ npm install grunt grunt-contrib-connect --save-dev
 ```
@@ -113,7 +113,7 @@ module.exports = function (grunt) {
 };
 ```
 
-```
+```bash
 $ grunt connect
 Running "connect:server" (connect) task
 Waiting forever...
@@ -124,7 +124,7 @@ Started connect web server on http://localhost:8000
 
 Установите `grunt-fest` и настройте таск `fest`.
 
-```
+```bash
 $ npm install grunt-fest --save-dev
 ```
 
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) { /* задаем формат функции-шаблона */
                         return grunt.template.process(
-                            'var <%= name %>Tmpl = <%= contents %> ;', /* присваеваем функцию-шаблон переменной */
+                            'var <%= name %>Tmpl = <%= contents %> ;', /* присваиваем функцию-шаблон переменной */
                             {data: data}
                         );
                     }
@@ -219,7 +219,7 @@ module.exports = function (grunt) {
 };
 ```
 
-Добавьте `livereload`.
+Добавьте [`livereload`](https://github.com/gruntjs/grunt-contrib-watch#optionslivereload).
 
 ```javascript
 module.exports = function (grunt) {
@@ -282,7 +282,7 @@ module.exports = function (grunt) {
 };
 ```
 
-Создаем функцию по отрисовки экранов.
+Подключите [jQuery](http://jquery.com). Создайте функции для отрисовки каждого из экранов игры.
 
 ```javascript
 var $page = $('.page');
@@ -386,7 +386,7 @@ showMainScreen();
 
 1. Сформировать идею игры.
 2. Определиться с группой и ролями в ней.
-3. Создатать прототип веб-приложения.
+3. Создать прототип веб-приложения.
 
 ### Техническое задание
 

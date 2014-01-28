@@ -262,12 +262,12 @@
 <p>Мы продолжаем двигаться от простых веб-приложений к сложным. Следующим этапом в веб-разработке становится Single Page Application — это веб-приложение, которое живет в браузере продолжительное время без березагрузки страницы. В таком приложении все дополнительные ресурсы загружаются по мере необходимости, а для отрисовки интерфейса используется клиентская шаблонизация. Существует огромное множество JavaScript шаблонизаторов, мы в компании разработали свой. <a href="https://github.com/mailru/fest">Fest</a> обеспечивает высокую производительность и возможность использования шаблонов на стороне сервера. Например, главная страница Mail.ru формируется на стороне сервера с помощью скомпилированного в JavaScript код фестового шаблона.</p>
 <h3 id="-">Практика</h3>
 <p>Создайте директорию для проекта.</p>
-<pre><code><span class="variable">$ </span>mkdir ИМЯ-ПРОЕКТА</code></pre>
+<pre><code class="lang-bash">$ mkdir ИМЯ-ПРОЕКТА</code></pre>
 <p>Создайте <a href="https://npmjs.org/doc/files/package.json.html"><code>package.json</code></a>.</p>
-<pre><code><span class="variable">$ </span>npm init</code></pre>
+<pre><code class="lang-bash">$ npm init</code></pre>
 <p>Установите Grunt и <code>grunt-contrib-connect</code>.</p>
-<pre><code><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="comment">grunt</span>-<span class="comment">cli</span> <span class="literal">-</span><span class="comment">g</span>
-<span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="comment">grunt</span> <span class="comment">grunt</span>-<span class="comment">contrib</span>-<span class="comment">connect</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save</span>-<span class="comment">dev</code></pre>
+<pre><code class="lang-bash">$ npm install grunt-cli -g
+$ npm install grunt grunt-contrib-connect --save-dev</code></pre>
 <p>Создайте <code>Gruntfile.js</code> и настройте таск <code>connect</code>.</p>
 <pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
 
@@ -286,13 +286,13 @@
     grunt.loadNpmTasks(<span class="string">'grunt-contrib-connect'</span>);
 
 };</code></pre>
-<pre><code><span class="char">$ </span>grunt connect
-<span class="class">Running</span> <span class="comment">"connect:server"</span> (connect) task
-<span class="class">Waiting</span> forever...
-<span class="class">Started</span> connect web server on <span class="method">http:</span>//<span class="method">localhost:</span><span class="number">8000</span></code></pre>
+<pre><code class="lang-bash">$ grunt connect
+Running <span class="string">"connect:server"</span> (connect) task
+Waiting forever...
+Started connect web server on http://localhost:8000</code></pre>
 <p>Создайте <code>public/index.html</code>.</p>
 <p>Установите <code>grunt-fest</code> и настройте таск <code>fest</code>.</p>
-<pre><code><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="comment">grunt</span>-<span class="comment">fest</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save</span>-<span class="comment">dev</code></pre>
+<pre><code class="lang-bash">$ npm install grunt-fest --save-dev</code></pre>
 <pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
 
     grunt.initConfig({
@@ -316,7 +316,7 @@
                 options: {
                     template: <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span> <span class="comment">/* задаем формат функции-шаблона */</span>
                         <span class="keyword">return</span> grunt.template.process(
-                            <span class="string">'var &lt;%= name %&gt;Tmpl = &lt;%= contents %&gt; ;'</span>, <span class="comment">/* присваеваем функцию-шаблон переменной */</span>
+                            <span class="string">'var &lt;%= name %&gt;Tmpl = &lt;%= contents %&gt; ;'</span>, <span class="comment">/* присваиваем функцию-шаблон переменной */</span>
                             {data: data}
                         );
                     }
@@ -377,7 +377,7 @@
     grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'connect'</span>, <span class="string">'watch'</span>]); <span class="comment">/* задача по умолчанию */</span>
 
 };</code></pre>
-<p>Добавьте <code>livereload</code>.</p>
+<p>Добавьте <a href="https://github.com/gruntjs/grunt-contrib-watch#optionslivereload"><code>livereload</code></a>.</p>
 <pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
 
     grunt.initConfig({
@@ -436,7 +436,7 @@
     grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'connect'</span>, <span class="string">'watch'</span>]);
 
 };</code></pre>
-<p>Создаем функцию по отрисовки экранов.</p>
+<p>Подключите <a href="http://jquery.com">jQuery</a>. Создайте функции для отрисовки каждого из экранов игры.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> $page = $(<span class="string">'.page'</span>);
 
 <span class="comment">/* Конструктор экрана "Лучшие игроки" */</span>
@@ -532,7 +532,7 @@ showMainScreen();</code></pre>
 <ol>
 <li>Сформировать идею игры.</li>
 <li>Определиться с группой и ролями в ней.</li>
-<li>Создатать прототип веб-приложения.</li>
+<li>Создать прототип веб-приложения.</li>
 </ol>
 <h3 id="-">Техническое задание</h3>
 <ol>
