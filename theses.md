@@ -2,15 +2,29 @@
 
 Предполагается, что студент имеет базовые знания веб-технологий (HTML, CSS, JavaScript) и практические навыки решения задач с помощью базовых алгоритмов и структур данных.
 
+Проектная работа выполняется в группах по 2–3 человека (роли каждого должны быть представлены при формировании группы). Первое практическое занятие – индивидуальное.
+
 Ресурсы для самостоятельного изучения:
 
 1. Влад Мержевич. [Самоучитель HTML4](http://htmlbook.ru/samhtml) // 2010.
 2. Влад Мержевич. [Самоучитель CSS](http://htmlbook.ru/samcss) // 2010.
 3. Илья Кантор. [Современный учебник JavaScript](http://learn.javascript.ru) // 2013.
+4. Антон Шевчук. [jQuery для начинающих](http://anton.shevchuk.name/jquery-book/) // 2013.
+5. [Mozilla Developer Network](https://developer.mozilla.org/).
+6. [HTML5 Rocks](http://www.html5rocks.com/).
+7. Mark Piligrim. [Dive into HTML5](http://diveintohtml5.info) // 2013.
 
 # 1 Архитектура
 
 ## 1.1 Знакомство, инструменты, настройка окружения
+
+#### Полезные ресурсы
+
+1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
+2. [Grunt: Getting started](http://gruntjs.com/getting-started) // 2013.
+3. Документация по [NPM](https://npmjs.org/doc/cli/npm.html) и [`package.json`](https://npmjs.org/doc/files/package.json.html).
+4. Документация по шаблонизатору [Fest](https://github.com/mailru/fest).
+5. Антон Шевчук. [jQuery для начинающих](http://anton.shevchuk.name/jquery-book/) // 2013.
 
 ### Лекция
 
@@ -56,12 +70,6 @@
 
 Мы продолжаем двигаться от простых веб-приложений к сложным. Следующим этапом в веб-разработке становится Single Page Application — это веб-приложение, которое живет в браузере продолжительное время без березагрузки страницы. В таком приложении все дополнительные ресурсы загружаются по мере необходимости, а для отрисовки интерфейса используется клиентская шаблонизация. Существует огромное множество JavaScript шаблонизаторов, мы в компании разработали свой. [Fest](https://github.com/mailru/fest) обеспечивает высокую производительность и возможность использования шаблонов на стороне сервера. Например, главная страница Mail.ru формируется на стороне сервера с помощью скомпилированного в JavaScript код фестового шаблона.
 
-Полезные ресурсы:
-
-1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
-2. [Grunt: Getting started](http://gruntjs.com/getting-started) // 2013.
-3. Документация по [`package.json`](https://npmjs.org/doc/files/package.json.html).
-
 ### Практика
 
 Создайте директорию для проекта.
@@ -92,9 +100,9 @@ module.exports = function (grunt) {
         connect: {
             server: {
                 options: {
-                    keepalive: true,
-                    port: 8000,
-                    base: 'public'
+                    keepalive: true, /* работать постоянно */
+                    port: 8000, /* номер порта */
+                    base: 'public' /* публичная директория */
                 }
             }
         }
@@ -137,14 +145,14 @@ module.exports = function (grunt) {
             templates: {
                 files: [{
                     expand: true,
-                    cwd: 'templates',
-                    src: '*.xml',
-                    dest: 'public/js/tmpl'
+                    cwd: 'templates', /* исходная директория */
+                    src: '*.xml', /* имена шаблонов */
+                    dest: 'public/js/tmpl' /* результирующая директория */
                 }],
                 options: {
-                    template: function (data) {
+                    template: function (data) { /* задаем формат функции-шаблона */
                         return grunt.template.process(
-                            'var tmpl<%= name %> = <%= contents %> ;',
+                            'var <%= name %>Tmpl = <%= contents %> ;', /* присваеваем функцию-шаблон переменной */
                             {data: data}
                         );
                     }
@@ -167,10 +175,10 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             fest: {
-                files: ['templates/*.xml'],
-                tasks: ['fest'],
+                files: ['templates/*.xml'], /* следим за шаблонами */
+                tasks: ['fest'], /* перекомпилировать */
                 options: {
-                    atBegin: true
+                    atBegin: true /* запустить задачу при старте */
                 }
             }
         },
@@ -193,7 +201,7 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'var tmpl<%= name %> = <%= contents %> ;',
+                            'var <%= name %>Tmpl = <%= contents %> ;',
                             {data: data}
                         );
                     }
@@ -206,7 +214,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-fest');
 
-    grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('default', ['connect', 'watch']); /* задача по умолчанию */
 
 };
 ```
@@ -227,19 +235,19 @@ module.exports = function (grunt) {
             },
             server: {
                 files: [
-                    'public/js/**/*.js',
+                    'public/js/**/*.js', /* следим за статикой */
                     'public/css/**/*.css'
                 ],
                 options: {
                     interrupt: true,
-                    livereload: true
+                    livereload: true /* перезагрузить страницу */
                 }
             }
         },
         connect: {
             server: {
                 options: {
-                    livereload: true,
+                    livereload: true, /* поддержка перезагрузки страницы */
                     port: 8000,
                     base: 'public'
                 }
@@ -256,7 +264,7 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'var tmpl<%= name %> = <%= contents %> ;',
+                            'var <%= name %>Tmpl = <%= contents %> ;',
                             {data: data}
                         );
                     }
@@ -272,6 +280,106 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['connect', 'watch']);
 
 };
+```
+
+Создаем функцию по отрисовки экранов.
+
+```javascript
+var $page = $('.page');
+
+/* Конструктор экрана "Лучшие игроки" */
+function showScoreboardScreen() {
+    hideMainScreen();
+}
+
+/* Деструктор экрана "Лучшие игроки" */
+function hideScoreboardScreen() {}
+
+/* Конструктор экрана "Игра" */
+function showGameScreen() {
+    hideMainScreen();
+}
+
+/* Деструктор экрана "Игра" */
+function hideGameScreen() {}
+
+/* Конструктор экрана "Главный" */
+function showMainScreen() {
+    $page.html(mainTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-scoreboard').on('click', showScoreboardScreen);
+    $page.find('.js-start-game').on('click', showGameScreen);
+}
+
+/* Деструктор экрана "Главный" */
+function hideMainScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-scoreboard').off('click', showScoreboardScreen);
+    $page.find('.js-start-game').off('click', showGameScreen);
+}
+
+showMainScreen();
+```
+
+Заключительный вариант.
+
+```javascript
+var $page = $('.page'),
+    currentScreen = 'main';
+
+/* Конструктор экрана "Лучшие игроки" */
+function showScoreboardScreen() {
+    hideMainScreen(); // Убиваем экран "Главный"
+    currentScreen = 'scoreboard';
+    $page.html(scoreboardTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-back').on('click', showMainScreen);
+}
+
+/* Деструктор экрана "Лучшие игроки" */
+function hideScoreboardScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-back').off('click', showMainScreen);
+}
+
+/* Конструктор экрана "Игра" */
+function showGameScreen() {
+    hideMainScreen(); // Убиваем экран "Главный"
+    currentScreen = 'game';
+    $page.html(gameTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-back').on('click', showMainScreen);
+}
+
+/* Деструктор экрана "Игра" */
+function hideGameScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-back').off('click', showMainScreen);
+}
+
+/* Конструктор экрана "Главный" */
+function showMainScreen() {
+     // Убиваем текущий экран
+    if (currentScreen === 'scoreboard') {
+        hideScoreboardScreen();
+    } else if (currentScreen === 'game') {
+        hideGameScreen();
+    }
+    currentScreen = 'main';
+    $page.html(mainTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-scoreboard').on('click', showScoreboardScreen);
+    $page.find('.js-start-game').on('click', showGameScreen);
+}
+
+/* Деструктор экрана "Главный" */
+function hideMainScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-scoreboard').off('click', showScoreboardScreen);
+    $page.find('.js-start-game').off('click', showGameScreen);
+}
+
+showMainScreen();
 ```
 
 ### Домашнее задание

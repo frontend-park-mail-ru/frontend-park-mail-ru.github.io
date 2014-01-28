@@ -29,7 +29,10 @@ module.exports = function(grunt) {
         },
         markdown: {
             options: {
-                template: 'template.html'
+                template: 'template.html',
+                markdownOptions: {
+                    highlight: 'manual'
+                }
             },
             theses: {
                 files: [{
