@@ -489,6 +489,87 @@ alert(foo); // 1
 2. Организовать подключение ресурсов через AMD.
 3. Организовать сборку ресурсов для production и development окружения.
 
+### Техническое задание
+
+1. Прототип визуально не изменяется.
+2. Подключить [`RequireJS`](http://requirejs.org/) к проекту.
+    1. Описать [`require.config`](http://requirejs.org/docs/api.html#config) в файле `main.js`, указать зависимость [`Backbone.js`](http://backbonejs.org/) от [`jQuery`](http://jquery.com/) и [`Underscore.js`](http://underscorejs.org/)
+    2. Точкой входа приложения является `main.js` который подключает [Backbone.Router](http://backbonejs.org/#Router) - `router.js`
+5. Для каждого экрана нужно создать свою [Backbone.View](http://backbonejs.org/#View)
+    1. Главный экран (Main Screen) - `views/index.js`
+    2. Лучшие игроки (Scoreboard Screen) - `views/scoreboard.js`
+    3. Основной экран игры (Game Screen) - `views/game.js`
+6. Для Scoreboard Screen необходимо реализовать [Backbone.Collection](http://backbonejs.org/#Collection) и [Backbone.Model](http://backbonejs.org/#Model) - `collections/scores.js` и `models/score.js`
+7. Структура связей:
+```
+main.js
+    router.js
+        views/toolbar.js
+            fest/toolbar.js
+        views/index.js
+            fest/index.js
+        views/game.js
+            fest/game.js
+        views/scoreboard.js
+            fest/scoreboard.js
+            collections/scores.js
+            models/score.js
+```
+8. Структура файлов (dev):
+```
+public/
+    js/
+        main.js
+        router.js
+        fest/
+            index.js
+            game.js
+            scoreboard.js
+            toolbar.js
+        views/
+            index.js
+            game.js
+            scoreborad.js
+            toolbar.js
+        collections/
+            scores.js
+        models/
+            score.js
+        libs/
+            jquery.js
+            backbone.js
+            underscore.js
+            almond.js
+            require.js
+```
+9. Структура файлов (production):
+```
+production/
+    js/
+        libs.js
+        main.js
+    css/
+        main.css
+```
+10. Сборка проекта
+    1. В `Gruntfile.js` таск `default` собирает продакшен версию, таск `fest` собирает шаблоны, `scss` собирает css, `watch` следит за `public/css/\*\*/\*.scss` и `public/js/fest/\*\*/\*.xml`
+    2. JavaScript проекта собирается в 2 файла `production/js/libs.js` (`jquery.js`, `backbone.js`, `underscore.js` и `almond.js`) и `production/js/main.js`
+    3. CSS проекта собирается с флагом  `style: 'compressed'` в файл `production/js/main.css`
+    4. Сборка main.js осуществляется с помощью [`grunt-contrib-requirejs`](https://npmjs.org/package/grunt-contrib-requirejs)).
+    5. Минификация файла осуществялется с помощью [`grunt-contrib-uglify`](https://npmjs.org/package/grunt-contrib-uglify).
+    6. В продакшене для реализации AMD используется [`almond`](https://github.com/jrburke/almond).
+11. Запуск проекта
+    1. Запуск в режиме dev `$ node app.js`
+    2. Запуск production `$ NODE_ENV=production node app.js`
+    3. Определение в `node.js` текущей версии `process.env.NODE_ENV == 'production'`
+```JavaScript
+if( process.env.NODE_ENV == 'production' ){
+    app.use(express.static(path.join(__dirname, 'production')));
+}else{
+    app.use(express.static(path.join(__dirname, 'public')));
+}
+```
+
 # 2 DOM & AJAX
 
 ## 2.1 Работа с DOM, Events
@@ -508,6 +589,43 @@ alert(foo); // 1
 - AJAX.
 - CORS.
 - WebSockets.
+
+- [HTTP Status Codes](http://www.restapitutorial.com/httpstatuscodes.html).
+
+### Серверное RESTful API для паботы со Score
+
+1. GET /scores
+	1. Код 200 - возвращает всю коллкцию scores или первые x элементов (заданные через ?limit=x) отсортированную по убыванию счета игрока
+2. GET /scores/:id
+	1. Код 200 - возвращает модель с переданным id
+	2. Код 400 - не верные входные данные
+	3. Код 404 - модель с указанным id не найдена
+3. POST /scores
+	1. Код 200 - возвращает id созданной модели
+	2. Код 400 - не верные входные данные
+4. DEL /scores/:id
+	1. Код 200 - удаляет модель с переданным id
+	2. Код 400 - не верные входные данные
+	3. Код 404 - модель с указанным id не найдена
+5. PUT /scores/:id
+	1. Код 200 - обновляет и возвращает модель с переданным id
+	2. Код 400 - не верные входные данные
+	3. Код 404 - модель с указанным id не найдена
+
+### Техническое задание
+
+1. Создать новый view GameOver на экране Game
+	1. View должна содержать поле ввода имени игрока, кнопку сохранения и отображать переданный при инициализации счет игрока.
+	2. При сабмите формы создается модель score с указанными в форме данными и добавляется в коллекцию scores
+	3. Модель сохраняется на сервер.
+	4. На время сохранения форма блокируется
+	5. При ошибке сохранения пользователю выводится ошибка и форма разблокируется
+	6. После успешного сохранения форма разблокируется, сбрасывается и происходит переход на экран Scoreboard
+2. Модифицировать экран Scoreboard для получения данных с сервера (топ 10)
+	1. При отображении экрана происходит fetch коллекции scores
+	2. Во время загрузки пользователю отображается сообщение о загрузке
+	3. В случае ошибки загрузки пользователю отображается соответствующее сообщение с возможностью обновить экран
+	4. В случае успешной загрузки отображается список
 
 Литература:
 
