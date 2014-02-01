@@ -416,8 +416,8 @@ production/
     5. Минификация файла осуществялется с помощью [`grunt-contrib-uglify`](https://npmjs.org/package/grunt-contrib-uglify).
     6. В продакшене для реализации AMD используется [`almond`](https://github.com/jrburke/almond).
 11. Запуск проекта
-    1. Запуск в режиме dev `node app.js`
-    2. Запуск production `NODE_ENV=production node app.js`
+    1. Запуск в режиме dev `$ node app.js`
+    2. Запуск production `$ NODE_ENV=production node app.js`
     3. Определение в `node.js` текущей версии `process.env.NODE_ENV == 'production'`
 ```JavaScript
 if( process.env.NODE_ENV == 'production' ){
