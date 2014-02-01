@@ -2,15 +2,31 @@
 
 Предполагается, что студент имеет базовые знания веб-технологий (HTML, CSS, JavaScript) и практические навыки решения задач с помощью базовых алгоритмов и структур данных.
 
+Проектная работа выполняется в группах по 2–3 человека (роли каждого должны быть представлены при формировании группы). Первое практическое занятие – индивидуальное.
+
+Для выполнения проектной работы на занятиях потребуется ноутбук/виртуальная машина с установленной ОС Linux/OS X.
+
 Ресурсы для самостоятельного изучения:
 
 1. Влад Мержевич. [Самоучитель HTML4](http://htmlbook.ru/samhtml) // 2010.
 2. Влад Мержевич. [Самоучитель CSS](http://htmlbook.ru/samcss) // 2010.
 3. Илья Кантор. [Современный учебник JavaScript](http://learn.javascript.ru) // 2013.
+4. Антон Шевчук. [jQuery для начинающих](http://anton.shevchuk.name/jquery-book/) // 2013.
+5. [Mozilla Developer Network](https://developer.mozilla.org/).
+6. [HTML5 Rocks](http://www.html5rocks.com/).
+7. Mark Piligrim. [Dive into HTML5](http://diveintohtml5.info) // 2013.
 
 # 1 Архитектура
 
 ## 1.1 Знакомство, инструменты, настройка окружения
+
+#### Полезные ресурсы
+
+1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
+2. [Grunt: Getting started](http://gruntjs.com/getting-started) // 2013.
+3. Документация по [NPM](https://npmjs.org/doc/cli/npm.html) и [`package.json`](https://npmjs.org/doc/files/package.json.html).
+4. Документация по шаблонизатору [Fest](https://github.com/mailru/fest).
+5. Антон Шевчук. [jQuery для начинающих](http://anton.shevchuk.name/jquery-book/) // 2013.
 
 ### Лекция
 
@@ -56,29 +72,23 @@
 
 Мы продолжаем двигаться от простых веб-приложений к сложным. Следующим этапом в веб-разработке становится Single Page Application — это веб-приложение, которое живет в браузере продолжительное время без березагрузки страницы. В таком приложении все дополнительные ресурсы загружаются по мере необходимости, а для отрисовки интерфейса используется клиентская шаблонизация. Существует огромное множество JavaScript шаблонизаторов, мы в компании разработали свой. [Fest](https://github.com/mailru/fest) обеспечивает высокую производительность и возможность использования шаблонов на стороне сервера. Например, главная страница Mail.ru формируется на стороне сервера с помощью скомпилированного в JavaScript код фестового шаблона.
 
-Полезные ресурсы:
-
-1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
-2. [Grunt: Getting started](http://gruntjs.com/getting-started) // 2013.
-3. Документация по [`package.json`](https://npmjs.org/doc/files/package.json.html).
-
 ### Практика
 
 Создайте директорию для проекта.
 
-```
+```bash
 $ mkdir ИМЯ-ПРОЕКТА
 ```
 
 Создайте [`package.json`](https://npmjs.org/doc/files/package.json.html).
 
-```
+```bash
 $ npm init
 ```
 
 Установите Grunt и `grunt-contrib-connect`.
 
-```
+```bash
 $ npm install grunt-cli -g
 $ npm install grunt grunt-contrib-connect --save-dev
 ```
@@ -92,9 +102,9 @@ module.exports = function (grunt) {
         connect: {
             server: {
                 options: {
-                    keepalive: true,
-                    port: 8000,
-                    base: 'public'
+                    keepalive: true, /* работать постоянно */
+                    port: 8000, /* номер порта */
+                    base: 'public' /* публичная директория */
                 }
             }
         }
@@ -105,7 +115,7 @@ module.exports = function (grunt) {
 };
 ```
 
-```
+```bash
 $ grunt connect
 Running "connect:server" (connect) task
 Waiting forever...
@@ -116,7 +126,7 @@ Started connect web server on http://localhost:8000
 
 Установите `grunt-fest` и настройте таск `fest`.
 
-```
+```bash
 $ npm install grunt-fest --save-dev
 ```
 
@@ -137,14 +147,14 @@ module.exports = function (grunt) {
             templates: {
                 files: [{
                     expand: true,
-                    cwd: 'templates',
-                    src: '*.xml',
-                    dest: 'public/js/tmpl'
+                    cwd: 'templates', /* исходная директория */
+                    src: '*.xml', /* имена шаблонов */
+                    dest: 'public/js/tmpl' /* результирующая директория */
                 }],
                 options: {
-                    template: function (data) {
+                    template: function (data) { /* задаем формат функции-шаблона */
                         return grunt.template.process(
-                            'var tmpl<%= name %> = <%= contents %> ;',
+                            'var <%= name %>Tmpl = <%= contents %> ;', /* присваиваем функцию-шаблон переменной */
                             {data: data}
                         );
                     }
@@ -167,10 +177,10 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             fest: {
-                files: ['templates/*.xml'],
-                tasks: ['fest'],
+                files: ['templates/*.xml'], /* следим за шаблонами */
+                tasks: ['fest'], /* перекомпилировать */
                 options: {
-                    atBegin: true
+                    atBegin: true /* запустить задачу при старте */
                 }
             }
         },
@@ -193,7 +203,7 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'var tmpl<%= name %> = <%= contents %> ;',
+                            'var <%= name %>Tmpl = <%= contents %> ;',
                             {data: data}
                         );
                     }
@@ -206,12 +216,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-fest');
 
-    grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('default', ['connect', 'watch']); /* задача по умолчанию */
 
 };
 ```
 
-Добавьте `livereload`.
+Добавьте [`livereload`](https://github.com/gruntjs/grunt-contrib-watch#optionslivereload).
 
 ```javascript
 module.exports = function (grunt) {
@@ -227,19 +237,19 @@ module.exports = function (grunt) {
             },
             server: {
                 files: [
-                    'public/js/**/*.js',
+                    'public/js/**/*.js', /* следим за статикой */
                     'public/css/**/*.css'
                 ],
                 options: {
                     interrupt: true,
-                    livereload: true
+                    livereload: true /* перезагрузить страницу */
                 }
             }
         },
         connect: {
             server: {
                 options: {
-                    livereload: true,
+                    livereload: true, /* поддержка перезагрузки страницы */
                     port: 8000,
                     base: 'public'
                 }
@@ -256,7 +266,7 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'var tmpl<%= name %> = <%= contents %> ;',
+                            'var <%= name %>Tmpl = <%= contents %> ;',
                             {data: data}
                         );
                     }
@@ -274,11 +284,111 @@ module.exports = function (grunt) {
 };
 ```
 
+Подключите [jQuery](http://jquery.com). Создайте функции для отрисовки каждого из экранов игры.
+
+```javascript
+var $page = $('.page');
+
+/* Конструктор экрана "Лучшие игроки" */
+function showScoreboardScreen() {
+    hideMainScreen();
+}
+
+/* Деструктор экрана "Лучшие игроки" */
+function hideScoreboardScreen() {}
+
+/* Конструктор экрана "Игра" */
+function showGameScreen() {
+    hideMainScreen();
+}
+
+/* Деструктор экрана "Игра" */
+function hideGameScreen() {}
+
+/* Конструктор экрана "Главный" */
+function showMainScreen() {
+    $page.html(mainTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-scoreboard').on('click', showScoreboardScreen);
+    $page.find('.js-start-game').on('click', showGameScreen);
+}
+
+/* Деструктор экрана "Главный" */
+function hideMainScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-scoreboard').off('click', showScoreboardScreen);
+    $page.find('.js-start-game').off('click', showGameScreen);
+}
+
+showMainScreen();
+```
+
+Заключительный вариант.
+
+```javascript
+var $page = $('.page'),
+    currentScreen = 'main';
+
+/* Конструктор экрана "Лучшие игроки" */
+function showScoreboardScreen() {
+    hideMainScreen(); // Убиваем экран "Главный"
+    currentScreen = 'scoreboard';
+    $page.html(scoreboardTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-back').on('click', showMainScreen);
+}
+
+/* Деструктор экрана "Лучшие игроки" */
+function hideScoreboardScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-back').off('click', showMainScreen);
+}
+
+/* Конструктор экрана "Игра" */
+function showGameScreen() {
+    hideMainScreen(); // Убиваем экран "Главный"
+    currentScreen = 'game';
+    $page.html(gameTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-back').on('click', showMainScreen);
+}
+
+/* Деструктор экрана "Игра" */
+function hideGameScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-back').off('click', showMainScreen);
+}
+
+/* Конструктор экрана "Главный" */
+function showMainScreen() {
+     // Убиваем текущий экран
+    if (currentScreen === 'scoreboard') {
+        hideScoreboardScreen();
+    } else if (currentScreen === 'game') {
+        hideGameScreen();
+    }
+    currentScreen = 'main';
+    $page.html(mainTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-scoreboard').on('click', showScoreboardScreen);
+    $page.find('.js-start-game').on('click', showGameScreen);
+}
+
+/* Деструктор экрана "Главный" */
+function hideMainScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-scoreboard').off('click', showScoreboardScreen);
+    $page.find('.js-start-game').off('click', showGameScreen);
+}
+
+showMainScreen();
+```
+
 ### Домашнее задание
 
 1. Сформировать идею игры.
 2. Определиться с группой и ролями в ней.
-3. Создатать прототип веб-приложения.
+3. Создать прототип веб-приложения.
 
 ### Техническое задание
 
@@ -316,6 +426,35 @@ var foo = 1;
 alert(foo); // 1
 ```
 
+Конструкция в примере выше называется *немедленно-вызываемая функция* (Immediately-Invoked Function Expression, IIFE). Мы создаем анонимную функцию и незамедлительно вызываем ее, с параметрами или без.
+
+Пока что наша функция ничего не возвращает, и модулем назвать ее сложно. Рассмотрим пример по сложнее.
+
+```JavaScript
+var foo = 1;
+var module = (function (window, undefined) {
+        var foo = 2; // приватная переменная
+        return {
+            say: function () { // публичный метод
+                alert(foo); // 2
+            }
+        };
+    })(window);
+alert(foo); // 1
+```
+
+На этот раз немедленно-вызываемая функция возвращает объект, определяющий интерфейс модуля, с которым уже можно работать в других частях веб-приложения. Такой подход предотвращает попадание приватных переменных и функций в глобальный контекст, где они могут конфликтовать с другими интерфейсами.
+
+В отличии от некоторых других языков программирования, JavaScript не поддерживает модификаторы доступа. Область видимости ограничивает доступность объявленных в ней переменных. Таким образом, объявленные внутри модуля переменные и функции доступны только изнутри этого модуля, а свойства объекта, возвращаемого модулем, будут доступны всем.
+
+При разработке сервер-сайда веб-приложения популярен подход MVC (Model-View-Controller). Обработкой запроса к серверу занимается контроллер (Controller). Контроллер обращается за данными к модели (Model), которая общается с базой данных. Полученые от модели данные контроллер отправлят в представление (View) для формирования ответа на поступивший запрос.
+
+![MVC сервер-сайда](/pics/mvc-ss.png)
+
+Так вот, при разработке клиент-сайда больших веб-приложения тоже применяется подход MVC, но в действительности он работает по-другому. Во главе теперь стоит модель. При изменении своего состояния модель оповещает об этом всех слушателей. Представление это интерфейс, то что видит пользователь и с чем работает. Представлет следит за изменения модели и реагирует на них. Но когда пользователь взаимодействует с представлением (например, выполнилняет click по кнопке), представление передает управление контроллеру. Последний в свою очередь вносит изменения в модель и все начинается сначала.
+
+![MVC клиент-сайда](/pics/mvc-cs.png)
+
 Как устроено сложное веб-приложение?
 
 Уровень библиотек. 
@@ -334,11 +473,15 @@ alert(foo); // 1
 
 На уровне библиотек находятся инструменты для работы с DOM, AJAX, парсеры и т.п.
 
+В Backbone состоит из моделей (models), коллекций (collections) и представлений (views). Как вы заметили, контроллеры отсутсвуют в Backbone. Представления в Backbone, в отличие от MVC, знают что делать при взаимодействии пользователя с ними.
+
 Литература:
 
 1. Addy Osmani. [Patterns For Large-Scale JavaScript Application Architecture](http://addyosmani.com/largescalejavascript/) // 2011.
 2. Эдди Османи. [Паттерны для масштабируемых JavaScript-приложений](http://largescalejs.ru) // 2011.
 3. Addy Osmani. [Developing Backbone.js Applications](http://addyosmani.github.io/backbone-fundamentals/) // 2013.
+4. Документация [Backbone.js](http://backbonejs.org).
+5. Документация [Backbone.js](http://backbonejs.ru) // Перевод.
 
 ДЗ:
 
@@ -447,6 +590,43 @@ if( process.env.NODE_ENV == 'production' ){
 - CORS.
 - WebSockets.
 
+- [HTTP Status Codes](http://www.restapitutorial.com/httpstatuscodes.html).
+
+### Серверное RESTful API для паботы со Score
+
+1. GET /scores
+	1. Код 200 - возвращает всю коллкцию scores или первые x элементов (заданные через ?limit=x) отсортированную по убыванию счета игрока
+2. GET /scores/:id
+	1. Код 200 - возвращает модель с переданным id
+	2. Код 400 - не верные входные данные
+	3. Код 404 - модель с указанным id не найдена
+3. POST /scores
+	1. Код 200 - возвращает id созданной модели
+	2. Код 400 - не верные входные данные
+4. DEL /scores/:id
+	1. Код 200 - удаляет модель с переданным id
+	2. Код 400 - не верные входные данные
+	3. Код 404 - модель с указанным id не найдена
+5. PUT /scores/:id
+	1. Код 200 - обновляет и возвращает модель с переданным id
+	2. Код 400 - не верные входные данные
+	3. Код 404 - модель с указанным id не найдена
+
+### Техническое задание
+
+1. Создать новый view GameOver на экране Game
+	1. View должна содержать поле ввода имени игрока, кнопку сохранения и отображать переданный при инициализации счет игрока.
+	2. При сабмите формы создается модель score с указанными в форме данными и добавляется в коллекцию scores
+	3. Модель сохраняется на сервер.
+	4. На время сохранения форма блокируется
+	5. При ошибке сохранения пользователю выводится ошибка и форма разблокируется
+	6. После успешного сохранения форма разблокируется, сбрасывается и происходит переход на экран Scoreboard
+2. Модифицировать экран Scoreboard для получения данных с сервера (топ 10)
+	1. При отображении экрана происходит fetch коллекции scores
+	2. Во время загрузки пользователю отображается сообщение о загрузке
+	3. В случае ошибки загрузки пользователю отображается соответствующее сообщение с возможностью обновить экран
+	4. В случае успешной загрузки отображается список
+
 Литература:
 
 1. Tiffany Brown. [Introduction to XMLHttpRequest Level 2](http://dev.opera.com/articles/view/xhr2/) // 2012.
@@ -479,6 +659,12 @@ if( process.env.NODE_ENV == 'production' ){
 
 ## 3.2 Производительность
 
+### Полезные ресурсы
+
+1. Yahoo Developer Network. [Best Practices for Speeding Up Your Web Site](http://developer.yahoo.com/performance/rules.html).
+
+### Лекция
+
 - HTTP Cache.
 - HTTP Waterfall.
 - Reflow/Repaint.
@@ -486,6 +672,8 @@ if( process.env.NODE_ENV == 'production' ){
 - [App Cache](http://www.html5rocks.com/en/tutorials/appcache/beginner/).
 - Prefetching.
 - CSS специфичность.
+
+
 
 ДЗ:
 

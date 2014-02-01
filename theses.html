@@ -106,7 +106,8 @@
             pre code {
                 display: block; padding: 26px;
                 color: #333;
-                background: #f8f8ff
+                background: #f8f8ff;
+                overflow: auto;
             }
             pre .comment,
             pre .template_comment,
@@ -212,14 +213,28 @@
         <section>
             <h1 id="-">Преамбула</h1>
 <p>Предполагается, что студент имеет базовые знания веб-технологий (HTML, CSS, JavaScript) и практические навыки решения задач с помощью базовых алгоритмов и структур данных.</p>
+<p>Проектная работа выполняется в группах по 2–3 человека (роли каждого должны быть представлены при формировании группы). Первое практическое занятие – индивидуальное.</p>
+<p>Для выполнения проектной работы на занятиях потребуется ноутбук/виртуальная машина с установленной ОС Linux/OS X.</p>
 <p>Ресурсы для самостоятельного изучения:</p>
 <ol>
 <li>Влад Мержевич. <a href="http://htmlbook.ru/samhtml">Самоучитель HTML4</a> // 2010.</li>
 <li>Влад Мержевич. <a href="http://htmlbook.ru/samcss">Самоучитель CSS</a> // 2010.</li>
 <li>Илья Кантор. <a href="http://learn.javascript.ru">Современный учебник JavaScript</a> // 2013.</li>
+<li>Антон Шевчук. <a href="http://anton.shevchuk.name/jquery-book/">jQuery для начинающих</a> // 2013.</li>
+<li><a href="https://developer.mozilla.org/">Mozilla Developer Network</a>.</li>
+<li><a href="http://www.html5rocks.com/">HTML5 Rocks</a>.</li>
+<li>Mark Piligrim. <a href="http://diveintohtml5.info">Dive into HTML5</a> // 2013.</li>
 </ol>
 <h1 id="1-">1 Архитектура</h1>
 <h2 id="1-1-">1.1 Знакомство, инструменты, настройка окружения</h2>
+<h4 id="-">Полезные ресурсы</h4>
+<ol>
+<li>Scott Chacon. <a href="http://git-scm.com/book">Pro Git</a> // 2009.</li>
+<li><a href="http://gruntjs.com/getting-started">Grunt: Getting started</a> // 2013.</li>
+<li>Документация по <a href="https://npmjs.org/doc/cli/npm.html">NPM</a> и <a href="https://npmjs.org/doc/files/package.json.html"><code>package.json</code></a>.</li>
+<li>Документация по шаблонизатору <a href="https://github.com/mailru/fest">Fest</a>.</li>
+<li>Антон Шевчук. <a href="http://anton.shevchuk.name/jquery-book/">jQuery для начинающих</a> // 2013.</li>
+</ol>
 <h3 id="-">Лекция</h3>
 <p>Меня зовут Антон Епрев, в компании Mail.ru я руковожу группой фронтенд разработчиков проекта «Почта». Вести курс мне будут помогать мои коллеги: Егор Дыдыкин и Иван Чашкин. Егор руководит разработкой главной страницы Mail.ru и портальной навигацией, умеет делать такие веб-страницы, которые браузер быстро загружает и отрисовывает. Иван занимается разработкой веб-версии почты для смартфонов, знает если не абсолютно все, то безусловно очень много про особенности мобильных браузеров.</p>
 <p>Курс фронтенд разработки состоит из трех модулей, восьми совмещенных занятий (на которых лекционная часть и практическая будут идти вместе), трех контрольных рубежей и презентации проекта. В общей сложности курс состоит из двенадцати занятий.</p>
@@ -246,69 +261,63 @@
 <p>В качестве системы контроля верский кода мы будем использовать Git. Эту и следующие презентации вы сможете найти на <a href="https://github.com/eprev/frontend">GitHub</a>.</p>
 <p>У каждого из вас уже имеется опыт разработки клиент-сайда, возможно, у кого-то этот опыт не ограничивается проектом, выполненным в прошлом семестре в рамках курса веб-технологий. И скорее всего, проект этот несложный. Такие проекты, обычно, состоят из одного-двух JavaScript файлов и CSS файла со стилями, которые браузер загружает по отдельности вместе с HTML кодом страницы. Такой подход перестает работать, когда проект начинает насчитывать тысячи строк кода JavaScript и стилей CSS. Работать с такими большими файлами неудобно, поэтому, как и в ситуации с программами, написанными на других языках программирования, прибегают к разбиению кода на модули, каждый из которых хранится в отдельном файле. Теперь для функционирования веб-приложения в браузере было бы необходимо загрузить десятки, а то и сотни, файлов JavaScript и CSS. Как вы должно быть уже знаете — это крайне неэффективно. Поэтому перед развертыванием проекта на сервере необходимо произвести его сборку: объединить множество JavaScript файлов в одну или несколько сборок, так же поступить и с CSS файлами, после чего эти сборки минифицировать. Минификация — это процесс сжатия исходного когда с сохранением его функциональности. Как правило, уменьшение размеры файлов достигается за счет удаления ненужных символов (таких как пробелы, переводы строк и комментарии) и замены имен переменных и функций на короткие варианты. На сегодняшний день самым популярным инструментом для сборки проектов является <a href="http://gruntjs.com/">Grunt</a>. Его без труда может установить каждый, воспользовавшись NPM.</p>
 <p>Мы продолжаем двигаться от простых веб-приложений к сложным. Следующим этапом в веб-разработке становится Single Page Application — это веб-приложение, которое живет в браузере продолжительное время без березагрузки страницы. В таком приложении все дополнительные ресурсы загружаются по мере необходимости, а для отрисовки интерфейса используется клиентская шаблонизация. Существует огромное множество JavaScript шаблонизаторов, мы в компании разработали свой. <a href="https://github.com/mailru/fest">Fest</a> обеспечивает высокую производительность и возможность использования шаблонов на стороне сервера. Например, главная страница Mail.ru формируется на стороне сервера с помощью скомпилированного в JavaScript код фестового шаблона.</p>
-<p>Полезные ресурсы:</p>
-<ol>
-<li>Scott Chacon. <a href="http://git-scm.com/book">Pro Git</a> // 2009.</li>
-<li><a href="http://gruntjs.com/getting-started">Grunt: Getting started</a> // 2013.</li>
-<li>Документация по <a href="https://npmjs.org/doc/files/package.json.html"><code>package.json</code></a>.</li>
-</ol>
 <h3 id="-">Практика</h3>
 <p>Создайте директорию для проекта.</p>
-<pre><code>$ mkdir ИМЯ-ПРОЕКТА</code></pre>
+<pre><code class="lang-bash">$ mkdir ИМЯ-ПРОЕКТА</code></pre>
 <p>Создайте <a href="https://npmjs.org/doc/files/package.json.html"><code>package.json</code></a>.</p>
-<pre><code>$ npm init</code></pre>
+<pre><code class="lang-bash">$ npm init</code></pre>
 <p>Установите Grunt и <code>grunt-contrib-connect</code>.</p>
-<pre><code>$ npm install grunt-cli -g
+<pre><code class="lang-bash">$ npm install grunt-cli -g
 $ npm install grunt grunt-contrib-connect --save-dev</code></pre>
 <p>Создайте <code>Gruntfile.js</code> и настройте таск <code>connect</code>.</p>
-<pre><code class="lang-javascript">module.exports = function (grunt) {
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
 
     grunt.initConfig({
         connect: {
             server: {
                 options: {
-                    keepalive: true,
-                    port: 8000,
-                    base: &#39;public&#39;
+                    keepalive: <span class="literal">true</span>, <span class="comment">/* работать постоянно */</span>
+                    port: <span class="number">8000</span>, <span class="comment">/* номер порта */</span>
+                    base: <span class="string">'public'</span> <span class="comment">/* публичная директория */</span>
                 }
             }
         }
     });
 
-    grunt.loadNpmTasks(&#39;grunt-contrib-connect&#39;);
+    grunt.loadNpmTasks(<span class="string">'grunt-contrib-connect'</span>);
 
 };</code></pre>
-<pre><code>$ grunt connect
-Running &quot;connect:server&quot; (connect) task
+<pre><code class="lang-bash">$ grunt connect
+Running <span class="string">"connect:server"</span> (connect) task
 Waiting forever...
 Started connect web server on http://localhost:8000</code></pre>
 <p>Создайте <code>public/index.html</code>.</p>
 <p>Установите <code>grunt-fest</code> и настройте таск <code>fest</code>.</p>
-<pre><code>$ npm install grunt-fest --save-dev</code></pre>
-<pre><code class="lang-javascript">module.exports = function (grunt) {
+<pre><code class="lang-bash">$ npm install grunt-fest --save-dev</code></pre>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
 
     grunt.initConfig({
         connect: {
             server: {
                 options: {
-                    keepalive: true,
-                    port: 8000,
-                    base: &#39;public&#39;
+                    keepalive: <span class="literal">true</span>,
+                    port: <span class="number">8000</span>,
+                    base: <span class="string">'public'</span>
                 }
             }
         },
         fest: {
             templates: {
                 files: [{
-                    expand: true,
-                    cwd: &#39;templates&#39;,
-                    src: &#39;*.xml&#39;,
-                    dest: &#39;public/js/tmpl&#39;
+                    expand: <span class="literal">true</span>,
+                    cwd: <span class="string">'templates'</span>, <span class="comment">/* исходная директория */</span>
+                    src: <span class="string">'*.xml'</span>, <span class="comment">/* имена шаблонов */</span>
+                    dest: <span class="string">'public/js/tmpl'</span> <span class="comment">/* результирующая директория */</span>
                 }],
                 options: {
-                    template: function (data) {
-                        return grunt.template.process(
-                            &#39;var tmpl&lt;%= name %&gt; = &lt;%= contents %&gt; ;&#39;,
+                    template: <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span> <span class="comment">/* задаем формат функции-шаблона */</span>
+                        <span class="keyword">return</span> grunt.template.process(
+                            <span class="string">'var &lt;%= name %&gt;Tmpl = &lt;%= contents %&gt; ;'</span>, <span class="comment">/* присваиваем функцию-шаблон переменной */</span>
                             {data: data}
                         );
                     }
@@ -317,43 +326,43 @@ Started connect web server on http://localhost:8000</code></pre>
         }
     });
 
-    grunt.loadNpmTasks(&#39;grunt-contrib-connect&#39;);
-    grunt.loadNpmTasks(&#39;grunt-fest&#39;);
+    grunt.loadNpmTasks(<span class="string">'grunt-contrib-connect'</span>);
+    grunt.loadNpmTasks(<span class="string">'grunt-fest'</span>);
 
 };</code></pre>
 <p>Установите <code>grunt-contrib-watch</code> и настройте таск <code>watch</code>.</p>
-<pre><code class="lang-javascript">module.exports = function (grunt) {
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
 
     grunt.initConfig({
         watch: {
             fest: {
-                files: [&#39;templates/*.xml&#39;],
-                tasks: [&#39;fest&#39;],
+                files: [<span class="string">'templates/*.xml'</span>], <span class="comment">/* следим за шаблонами */</span>
+                tasks: [<span class="string">'fest'</span>], <span class="comment">/* перекомпилировать */</span>
                 options: {
-                    atBegin: true
+                    atBegin: <span class="literal">true</span> <span class="comment">/* запустить задачу при старте */</span>
                 }
             }
         },
         connect: {
             server: {
                 options: {
-                    port: 8000,
-                    base: &#39;public&#39;
+                    port: <span class="number">8000</span>,
+                    base: <span class="string">'public'</span>
                 }
             }
         },
         fest: {
             templates: {
                 files: [{
-                    expand: true,
-                    cwd: &#39;templates&#39;,
-                    src: &#39;*.xml&#39;,
-                    dest: &#39;public/js/tmpl&#39;
+                    expand: <span class="literal">true</span>,
+                    cwd: <span class="string">'templates'</span>,
+                    src: <span class="string">'*.xml'</span>,
+                    dest: <span class="string">'public/js/tmpl'</span>
                 }],
                 options: {
-                    template: function (data) {
-                        return grunt.template.process(
-                            &#39;var tmpl&lt;%= name %&gt; = &lt;%= contents %&gt; ;&#39;,
+                    template: <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
+                        <span class="keyword">return</span> grunt.template.process(
+                            <span class="string">'var &lt;%= name %&gt;Tmpl = &lt;%= contents %&gt; ;'</span>,
                             {data: data}
                         );
                     }
@@ -362,57 +371,57 @@ Started connect web server on http://localhost:8000</code></pre>
         }
     });
 
-    grunt.loadNpmTasks(&#39;grunt-contrib-watch&#39;);
-    grunt.loadNpmTasks(&#39;grunt-contrib-connect&#39;);
-    grunt.loadNpmTasks(&#39;grunt-fest&#39;);
+    grunt.loadNpmTasks(<span class="string">'grunt-contrib-watch'</span>);
+    grunt.loadNpmTasks(<span class="string">'grunt-contrib-connect'</span>);
+    grunt.loadNpmTasks(<span class="string">'grunt-fest'</span>);
 
-    grunt.registerTask(&#39;default&#39;, [&#39;connect&#39;, &#39;watch&#39;]);
+    grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'connect'</span>, <span class="string">'watch'</span>]); <span class="comment">/* задача по умолчанию */</span>
 
 };</code></pre>
-<p>Добавьте <code>livereload</code>.</p>
-<pre><code class="lang-javascript">module.exports = function (grunt) {
+<p>Добавьте <a href="https://github.com/gruntjs/grunt-contrib-watch#optionslivereload"><code>livereload</code></a>.</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
 
     grunt.initConfig({
         watch: {
             fest: {
-                files: [&#39;templates/*.xml&#39;],
-                tasks: [&#39;fest&#39;],
+                files: [<span class="string">'templates/*.xml'</span>],
+                tasks: [<span class="string">'fest'</span>],
                 options: {
-                    atBegin: true
+                    atBegin: <span class="literal">true</span>
                 }
             },
             server: {
                 files: [
-                    &#39;public/js/**/*.js&#39;,
-                    &#39;public/css/**/*.css&#39;
+                    <span class="string">'public/js/**/*.js'</span>, <span class="comment">/* следим за статикой */</span>
+                    <span class="string">'public/css/**/*.css'</span>
                 ],
                 options: {
-                    interrupt: true,
-                    livereload: true
+                    interrupt: <span class="literal">true</span>,
+                    livereload: <span class="literal">true</span> <span class="comment">/* перезагрузить страницу */</span>
                 }
             }
         },
         connect: {
             server: {
                 options: {
-                    livereload: true,
-                    port: 8000,
-                    base: &#39;public&#39;
+                    livereload: <span class="literal">true</span>, <span class="comment">/* поддержка перезагрузки страницы */</span>
+                    port: <span class="number">8000</span>,
+                    base: <span class="string">'public'</span>
                 }
             }
         },
         fest: {
             templates: {
                 files: [{
-                    expand: true,
-                    cwd: &#39;templates&#39;,
-                    src: &#39;*.xml&#39;,
-                    dest: &#39;public/js/tmpl&#39;
+                    expand: <span class="literal">true</span>,
+                    cwd: <span class="string">'templates'</span>,
+                    src: <span class="string">'*.xml'</span>,
+                    dest: <span class="string">'public/js/tmpl'</span>
                 }],
                 options: {
-                    template: function (data) {
-                        return grunt.template.process(
-                            &#39;var tmpl&lt;%= name %&gt; = &lt;%= contents %&gt; ;&#39;,
+                    template: <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
+                        <span class="keyword">return</span> grunt.template.process(
+                            <span class="string">'var &lt;%= name %&gt;Tmpl = &lt;%= contents %&gt; ;'</span>,
                             {data: data}
                         );
                     }
@@ -421,18 +430,110 @@ Started connect web server on http://localhost:8000</code></pre>
         }
     });
 
-    grunt.loadNpmTasks(&#39;grunt-contrib-watch&#39;);
-    grunt.loadNpmTasks(&#39;grunt-contrib-connect&#39;);
-    grunt.loadNpmTasks(&#39;grunt-fest&#39;);
+    grunt.loadNpmTasks(<span class="string">'grunt-contrib-watch'</span>);
+    grunt.loadNpmTasks(<span class="string">'grunt-contrib-connect'</span>);
+    grunt.loadNpmTasks(<span class="string">'grunt-fest'</span>);
 
-    grunt.registerTask(&#39;default&#39;, [&#39;connect&#39;, &#39;watch&#39;]);
+    grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'connect'</span>, <span class="string">'watch'</span>]);
 
 };</code></pre>
+<p>Подключите <a href="http://jquery.com">jQuery</a>. Создайте функции для отрисовки каждого из экранов игры.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> $page = $(<span class="string">'.page'</span>);
+
+<span class="comment">/* Конструктор экрана "Лучшие игроки" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">showScoreboardScreen</span><span class="params">()</span> {</span>
+    hideMainScreen();
+}
+
+<span class="comment">/* Деструктор экрана "Лучшие игроки" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">hideScoreboardScreen</span><span class="params">()</span> {</span>}
+
+<span class="comment">/* Конструктор экрана "Игра" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">showGameScreen</span><span class="params">()</span> {</span>
+    hideMainScreen();
+}
+
+<span class="comment">/* Деструктор экрана "Игра" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">hideGameScreen</span><span class="params">()</span> {</span>}
+
+<span class="comment">/* Конструктор экрана "Главный" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">showMainScreen</span><span class="params">()</span> {</span>
+    $page.html(mainTmpl()); <span class="comment">// Рендерим шаблон</span>
+    <span class="comment">// Инициализируем обработчики событий</span>
+    $page.find(<span class="string">'.js-scoreboard'</span>).on(<span class="string">'click'</span>, showScoreboardScreen);
+    $page.find(<span class="string">'.js-start-game'</span>).on(<span class="string">'click'</span>, showGameScreen);
+}
+
+<span class="comment">/* Деструктор экрана "Главный" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">hideMainScreen</span><span class="params">()</span> {</span>
+    <span class="comment">// Удаляем установленные обработчики событий</span>
+    $page.find(<span class="string">'.js-scoreboard'</span>).off(<span class="string">'click'</span>, showScoreboardScreen);
+    $page.find(<span class="string">'.js-start-game'</span>).off(<span class="string">'click'</span>, showGameScreen);
+}
+
+showMainScreen();</code></pre>
+<p>Заключительный вариант.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> $page = $(<span class="string">'.page'</span>),
+    currentScreen = <span class="string">'main'</span>;
+
+<span class="comment">/* Конструктор экрана "Лучшие игроки" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">showScoreboardScreen</span><span class="params">()</span> {</span>
+    hideMainScreen(); <span class="comment">// Убиваем экран "Главный"</span>
+    currentScreen = <span class="string">'scoreboard'</span>;
+    $page.html(scoreboardTmpl()); <span class="comment">// Рендерим шаблон</span>
+    <span class="comment">// Инициализируем обработчики событий</span>
+    $page.find(<span class="string">'.js-back'</span>).on(<span class="string">'click'</span>, showMainScreen);
+}
+
+<span class="comment">/* Деструктор экрана "Лучшие игроки" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">hideScoreboardScreen</span><span class="params">()</span> {</span>
+    <span class="comment">// Удаляем установленные обработчики событий</span>
+    $page.find(<span class="string">'.js-back'</span>).off(<span class="string">'click'</span>, showMainScreen);
+}
+
+<span class="comment">/* Конструктор экрана "Игра" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">showGameScreen</span><span class="params">()</span> {</span>
+    hideMainScreen(); <span class="comment">// Убиваем экран "Главный"</span>
+    currentScreen = <span class="string">'game'</span>;
+    $page.html(gameTmpl()); <span class="comment">// Рендерим шаблон</span>
+    <span class="comment">// Инициализируем обработчики событий</span>
+    $page.find(<span class="string">'.js-back'</span>).on(<span class="string">'click'</span>, showMainScreen);
+}
+
+<span class="comment">/* Деструктор экрана "Игра" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">hideGameScreen</span><span class="params">()</span> {</span>
+    <span class="comment">// Удаляем установленные обработчики событий</span>
+    $page.find(<span class="string">'.js-back'</span>).off(<span class="string">'click'</span>, showMainScreen);
+}
+
+<span class="comment">/* Конструктор экрана "Главный" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">showMainScreen</span><span class="params">()</span> {</span>
+     <span class="comment">// Убиваем текущий экран</span>
+    <span class="keyword">if</span> (currentScreen === <span class="string">'scoreboard'</span>) {
+        hideScoreboardScreen();
+    } <span class="keyword">else</span> <span class="keyword">if</span> (currentScreen === <span class="string">'game'</span>) {
+        hideGameScreen();
+    }
+    currentScreen = <span class="string">'main'</span>;
+    $page.html(mainTmpl()); <span class="comment">// Рендерим шаблон</span>
+    <span class="comment">// Инициализируем обработчики событий</span>
+    $page.find(<span class="string">'.js-scoreboard'</span>).on(<span class="string">'click'</span>, showScoreboardScreen);
+    $page.find(<span class="string">'.js-start-game'</span>).on(<span class="string">'click'</span>, showGameScreen);
+}
+
+<span class="comment">/* Деструктор экрана "Главный" */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">hideMainScreen</span><span class="params">()</span> {</span>
+    <span class="comment">// Удаляем установленные обработчики событий</span>
+    $page.find(<span class="string">'.js-scoreboard'</span>).off(<span class="string">'click'</span>, showScoreboardScreen);
+    $page.find(<span class="string">'.js-start-game'</span>).off(<span class="string">'click'</span>, showGameScreen);
+}
+
+showMainScreen();</code></pre>
 <h3 id="-">Домашнее задание</h3>
 <ol>
 <li>Сформировать идею игры.</li>
 <li>Определиться с группой и ролями в ней.</li>
-<li>Создатать прототип веб-приложения.</li>
+<li>Создать прототип веб-приложения.</li>
 </ol>
 <h3 id="-">Техническое задание</h3>
 <ol>
@@ -463,12 +564,30 @@ Started connect web server on http://localhost:8000</code></pre>
 <li><a href="http://backbonejs.org">Backbone</a>.</li>
 </ul>
 <p>Глобальные переменные в JavaScript доступны везде, локальные — только в области видимости, в которой они определены. Глобальные переменные являются свойствамии объекта <code>window</code>. Поэтому, объявляя глобальные переменные, вы рискуете изменить свойства <code>window</code>. Каждый раз при присвоении значения неопределенной локальной переменной, вы создаете или изменяете глобальную. Использование глобальных переменных является плохой практикой. В текущей спецификации JavaScript отсутствуют модули, которые бы разграничивали области видимости переменных, объявленых внутри. Но существуют несколько приемов, позволяющих реализовать модульность.</p>
-<pre><code class="lang-JavaScript">var foo = 1;
-(function (window, undefined) {
-    var foo = 2;
-    alert(foo); // 2
+<pre><code class="lang-JavaScript"><span class="keyword">var</span> foo = <span class="number">1</span>;
+(<span class="function"><span class="keyword">function</span> <span class="params">(window, undefined)</span> {</span>
+    <span class="keyword">var</span> foo = <span class="number">2</span>;
+    alert(foo); <span class="comment">// 2</span>
 })(window);
-alert(foo); // 1</code></pre>
+alert(foo); <span class="comment">// 1</span></code></pre>
+<p>Конструкция в примере выше называется <em>немедленно-вызываемая функция</em> (Immediately-Invoked Function Expression, IIFE). Мы создаем анонимную функцию и незамедлительно вызываем ее, с параметрами или без.</p>
+<p>Пока что наша функция ничего не возвращает, и модулем назвать ее сложно. Рассмотрим пример по сложнее.</p>
+<pre><code class="lang-JavaScript"><span class="keyword">var</span> foo = <span class="number">1</span>;
+<span class="keyword">var</span> module = (<span class="function"><span class="keyword">function</span> <span class="params">(window, undefined)</span> {</span>
+        <span class="keyword">var</span> foo = <span class="number">2</span>; <span class="comment">// приватная переменная</span>
+        <span class="keyword">return</span> {
+            say: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="comment">// публичный метод</span>
+                alert(foo); <span class="comment">// 2</span>
+            }
+        };
+    })(window);
+alert(foo); <span class="comment">// 1</span></code></pre>
+<p>На этот раз немедленно-вызываемая функция возвращает объект, определяющий интерфейс модуля, с которым уже можно работать в других частях веб-приложения. Такой подход предотвращает попадание приватных переменных и функций в глобальный контекст, где они могут конфликтовать с другими интерфейсами.</p>
+<p>В отличии от некоторых других языков программирования, JavaScript не поддерживает модификаторы доступа. Область видимости ограничивает доступность объявленных в ней переменных. Таким образом, объявленные внутри модуля переменные и функции доступны только изнутри этого модуля, а свойства объекта, возвращаемого модулем, будут доступны всем.</p>
+<p>При разработке сервер-сайда веб-приложения популярен подход MVC (Model-View-Controller). Обработкой запроса к серверу занимается контроллер (Controller). Контроллер обращается за данными к модели (Model), которая общается с базой данных. Полученые от модели данные контроллер отправлят в представление (View) для формирования ответа на поступивший запрос.</p>
+<p><img src="/pics/mvc-ss.png" alt="MVC сервер-сайда"></p>
+<p>Так вот, при разработке клиент-сайда больших веб-приложения тоже применяется подход MVC, но в действительности он работает по-другому. Во главе теперь стоит модель. При изменении своего состояния модель оповещает об этом всех слушателей. Представление это интерфейс, то что видит пользователь и с чем работает. Представлет следит за изменения модели и реагирует на них. Но когда пользователь взаимодействует с представлением (например, выполнилняет click по кнопке), представление передает управление контроллеру. Последний в свою очередь вносит изменения в модель и все начинается сначала.</p>
+<p><img src="/pics/mvc-cs.png" alt="MVC клиент-сайда"></p>
 <p>Как устроено сложное веб-приложение?</p>
 <p>Уровень библиотек. 
 Уровень ядра приложения.
@@ -481,11 +600,14 @@ alert(foo); // 1</code></pre>
 <p>Когда модули слабо связаны между собой, то удаление одного, не приведет к некорректной работе остальные модули.</p>
 <p>Ядро веб-приложения отвечает за управление модулями (загрузка, инициализация и освобождение ресурсов), предоставляет средства коммуникации между модулями и занимается обработкой ошибок в приложении.</p>
 <p>На уровне библиотек находятся инструменты для работы с DOM, AJAX, парсеры и т.п.</p>
+<p>В Backbone состоит из моделей (models), коллекций (collections) и представлений (views). Как вы заметили, контроллеры отсутсвуют в Backbone. Представления в Backbone, в отличие от MVC, знают что делать при взаимодействии пользователя с ними.</p>
 <p>Литература:</p>
 <ol>
 <li>Addy Osmani. <a href="http://addyosmani.com/largescalejavascript/">Patterns For Large-Scale JavaScript Application Architecture</a> // 2011.</li>
 <li>Эдди Османи. <a href="http://largescalejs.ru">Паттерны для масштабируемых JavaScript-приложений</a> // 2011.</li>
 <li>Addy Osmani. <a href="http://addyosmani.github.io/backbone-fundamentals/">Developing Backbone.js Applications</a> // 2013.</li>
+<li>Документация <a href="http://backbonejs.org">Backbone.js</a>.</li>
+<li>Документация <a href="http://backbonejs.ru">Backbone.js</a> // Перевод.</li>
 </ol>
 <p>ДЗ:</p>
 <ol>
@@ -542,6 +664,11 @@ alert(foo); // 1</code></pre>
 <li>Перевести CSS на Sass.</li>
 </ol>
 <h2 id="3-2-">3.2 Производительность</h2>
+<h3 id="-">Полезные ресурсы</h3>
+<ol>
+<li>Yahoo Developer Network. <a href="http://developer.yahoo.com/performance/rules.html">Best Practices for Speeding Up Your Web Site</a>.</li>
+</ol>
+<h3 id="-">Лекция</h3>
 <ul>
 <li>HTTP Cache.</li>
 <li>HTTP Waterfall.</li>

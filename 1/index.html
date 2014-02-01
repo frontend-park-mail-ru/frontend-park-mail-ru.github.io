@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="../shower/themes/bright/styles/screen.css">
+    <style>
+        .slide.cover.white {
+            background: #fff;
+        }
+    </style>
 </head>
 <body class="list">
     <header class="caption">
@@ -53,25 +58,39 @@
         </ol>
     </div></section>
 
-    <section class="slide shout"><div>
-        <h2><a href="http://nodejs.org">Node.js</a> &amp; <a href="https://npmjs.org">NPM</a></h2>
-     </div></section>
+    <section class="slide cover h"><div>
+        <img src="../pics/nodejs-dark.png" alt="" />
+    </div></section>
 
-    <section class="slide shout"><div>
-        <h2><a href="http://gruntjs.com">Grunt</a></h2>
-     </div></section>
+    <section class="slide cover h white"><div>
+        <img src="../pics/npm.png" alt="" />
+    </div></section>
+
+    <section class="slide cover h white"><div>
+        <img src="../pics/grunt-logo.png" alt="" />
+    </div></section>
 
     <section class="slide shout"><div>
         <h2>Single Page Application</h2>
-     </div></section>
+    </div></section>
 
     <section class="slide shout"><div>
-        <h2><a href="https://github.com/mailru/fest">Fest</a></h2>
-     </div></section>
+        <h2>Fest</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Ресурсы</h2>
+        <ol>
+            <li><a href="http://nodejs.org/">http://nodejs.org</a></li>
+            <li><a href="https://npmjs.org/">https://npmjs.org</a></li>
+            <li><a href="http://gruntjs.com/">http://gruntjs.com</a></li>
+            <li><a href="https://github.com/mailru/fest">https://github.com/mailru/fest</a></li>
+        </ol>
+    </div></section>
 
     <section class="slide shout"><div>
-        <h2>Проект</h2>
-     </div></section>
+        <h2>Проектная работа</h2>
+    </div></section>
 
     <section class="slide"><div>
         <h2>Приступаем!</h2>
@@ -83,32 +102,32 @@
             <code class="next">$ npm grunt grunt-contrib-connect --save-dev</code>
             <code class="next">$ vim Gruntfile.js</code>
         </pre>
-     </div></section>
+    </div></section>
 
     <section class="slide"><div>
         <h2>Gruntfile.js</h2>
         <pre>
             <code>module.exports = function (grunt) {</code>
             <code>    grunt.initConfig({</code>
-            <code>        connect: { … } <mark class="comment">/* Задача */</mark></code>
+            <code>        connect: { … } <mark class="comment">/* grunt-contrib-connect */</mark></code>
             <code>    });</code>
             <code>    grunt.loadNpmTasks('grunt-contrib-connect');</code>
             <code>};</code>
         </pre>
-     </div></section>
+    </div></section>
 
     <section class="slide"><div>
-        <h2>Задача <code>connect</code></h2>
+        <h2><code>grunt-contrib-connect</code></h2>
         <pre>
             <code>server: { <mark class="comment">/* Подзадача */</mark></code>
             <code>    options: {</code>
             <code>        keepalive: true, <mark class="comment">/* работать постоянно */</mark></code>
             <code>        port: 8000, <mark class="comment">/* номер порта */</mark></code>
-            <code>        base: 'www' <mark class="comment">/* публичная директория */</mark></code>
+            <code>        base: 'public' <mark class="comment">/* публичная директория */</mark></code>
             <code>    }</code>
             <code>}</code>
         </pre>
-     </div></section>
+    </div></section>
 
     <section class="slide"><div>
         <h2>Gruntfile.js</h2>
@@ -118,7 +137,7 @@
             <code>Waiting forever...</code>
             <code>Started connect web server on http://localhost:8000</code>
         </pre>
-     </div></section>
+    </div></section>
 
     <section class="slide"><div>
         <h2>public</h2>
@@ -126,14 +145,31 @@
             <code>$ cat public/index.html</code>
             <code>Hello!</code>
         </pre>
-     </div></section>
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/prototype-scheme.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>HTML</h2>
+        <pre>
+            <code>&lt;!DOCTYPE html&gt;</code>
+            <code>&lt;html&gt;&lt;head&gt;</code>
+            <code>    &lt;meta charset="utf-8"&gt;</code>
+            <code>    &lt;link rel="stylesheet" href="/css/main.css"/&gt;</code>
+            <code>&lt;/head&gt;&lt;body&gt;</code>
+            <code>    &lt;div class="page"&gt;&lt;/div&gt;</code>
+            <code>&lt;/body&gt;&lt;/html&gt;</code>
+        </pre>
+    </div></section>
 
     <section class="slide"><div>
         <h2>Fest</h2>
         <pre>
             <code>$ npm install grunt-fest --save-dev</code>
         </pre>
-     </div></section>
+    </div></section>
 
     <section class="slide"><div>
         <h2>Fest</h2>
@@ -145,7 +181,144 @@
             <code>    &lt;/div&gt;</code>
             <code><mark>&lt;/fest:template&gt;</mark></code>
         </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Gruntfile.js</h2>
+        <pre>
+            <code>grunt.initConfig({</code>
+            <code>    connect: { … } <mark class="comment">/* grunt-contrib-connect */</mark></code>
+            <code>    fest: { … } <mark class="comment">/* grunt-fest */</mark></code>
+            <code>});</code>
+            <code>grunt.loadNpmTasks('grunt-contrib-connect');</code>
+            <code>grunt.loadNpmTasks('grunt-fest');</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>grunt-fest</code></h2>
+        <pre>
+            <code>templates: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>    files: [{</code>
+            <code>        expand: true,</code>
+            <code>        cwd: 'templates', <mark class="comment">/* исходная директория */</mark></code>
+            <code>        src: '*.xml', <mark class="comment">/* имена шаблонов */</mark></code>
+            <code>        dest: 'public/js/tmpl' <mark class="comment">/* результирующая директория */</mark></code>
+            <code>    }], … }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>grunt-fest</code>’s options</h2>
+        <pre>
+            <code>template: function (data) { <mark class="comment">/* формат функции-шаблона */</mark></code>
+            <code>    return grunt.template.process(</code>
+            <code>        <mark class="comment">/* присваиваем функцию-шаблон переменной */</mark></code>
+            <code>        'var <%= name %>Tmpl = <%= contents %> ;',</code>
+            <code>        {data: data}</code>
+            <code>    );</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Sweetness!</h2>
+        <pre>
+            <code>$ npm install grunt-contrib-watch --save-dev</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Gruntfile.js</h2>
+        <pre>
+            <code>grunt.initConfig({</code>
+            <code>    watch: { … } <mark class="comment">/* grunt-contrib-watch */</mark></code>
+            <code>     …</code>
+            <code>});</code>
+            <code>grunt.loadNpmTasks('grunt-contrib-watch');</code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>grunt-contrib-watch</code></h2>
+        <pre>
+            <code>fest: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>    files: ['templates/*.xml'], <mark class="comment">/* следим за шаблонами */</mark></code>
+            <code>    tasks: ['fest'], <mark class="comment">/* перекомпилировать */</mark></code>
+            <code>    options: {</code>
+            <code>        atBegin: true <mark class="comment">/* запустить задачу при старте */</mark></code>
+            <code>    }</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Gruntfile.js</h2>
+        <pre>
+            <code>grunt.initConfig({</code>
+            <code>    watch: { … } <mark class="comment">/* grunt-contrib-watch */</mark></code>
+            <code>    connect: { … } <mark class="comment">/* grunt-contrib-connect */</mark></code>
+            <code>     …</code>
+            <code>});</code>
+            <code>…</code>
+            <code>grunt.registerTask('default', ['connect', 'watch']);</code>
+        </pre>
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/jquery.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>JavaScript</h2>
+        <pre>
+            <code>function showMainScreen() { <mark class="comment">// Конструктор экрана "Главный" </mark></code>
+            <code>    $page.html(mainTmpl()); <mark class="comment">// Рендерим шаблон</mark></code>
+            <code>    <mark class="comment">// Инициализируем обработчики событий</mark></code>
+            <code>    $page.find('.js-scoreboard')</code>
+            <code>        .on('click', showScoreboardScreen);</code>
+            <code>    $page.find('.js-start-game').on('click', showGameScreen);</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>JavaScript</h2>
+        <pre>
+            <code>function hideMainScreen() { <mark class="comment">// Деструктор экрана "Главный"</mark></code>
+            <code>    <mark class="comment">// Удаляем установленные обработчики событий</mark></code>
+            <code>    $page.find('.js-scoreboard')</code>
+            <code>        .off('click', showScoreboardScreen);</code>
+            <code>    $page.find('.js-start-game').off('click', showGameScreen);</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>JavaScript</h2>
+        <pre>
+            <code><mark class="comment">/* Конструктор экрана "Лучшие игроки" */</mark></code>
+            <code>function showScoreboardScreen() {</code>
+            <code>    hideMainScreen();</code>
+            <code>}</code>
+            <code><mark class="comment">/* Деструктор экрана "Лучшие игроки" */</mark></code>
+            <code>function hideScoreboardScreen() {}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Домашнее задание</h2>
+        <pre>
+            <code>СФОРМИРОВАТЬ ИДЕЮ ИГРЫ</code>
+            <code>ОПРЕДЕЛИТЬСЯ С ГРУППОЙ И РОЛЯМИ В НЕЙ</code>
+            <code>СОЗДАТЬ ПРОТОТИП ВЕБ-ПРИЛОЖЕНИЯ</code>
+        </pre>
      </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/bem.png" alt="" />
+    </div></section>
 
     <section class="slide"><div>
         <h2>БЭМ</h2>
@@ -158,7 +331,19 @@
         <p class="note">
             <a href="http://ru.bem.info/method/definitions/">БЭМ</a>.<br/>
         </p>
-     </div></section>
+    </div></section>
+
+    <section class="slide cover h white"><div>
+        <img src="../pics/mvc-ss.png" alt="" />
+    </div></section>
+
+    <section class="slide cover h white"><div>
+        <img src="../pics/mvc-cs.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/backbone.png" alt="" />
+    </div></section>
 
     <div class="progress"><div></div></div>
     <script src="../shower/shower.min.js"></script>
