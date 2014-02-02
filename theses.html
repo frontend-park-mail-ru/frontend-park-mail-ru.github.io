@@ -555,16 +555,21 @@ showMainScreen();</code></pre>
 </ol>
 <p><img src="/pics/prototype-scheme.png" alt="Схема прототипа"></p>
 <h2 id="1-2-">1.2 Архитектура веб-приложений</h2>
-<ul>
-<li>Глобальная область видимости.</li>
-<li>Модули.</li>
-<li>БЭМ.</li>
-<li><a href="http://en.wikipedia.org/wiki/Publish–subscribe_pattern">PubSub</a>.</li>
-<li><a href="http://ru.wikipedia.org/wiki/Model-View-Controller">MVC</a>.</li>
-<li><a href="http://backbonejs.org">Backbone</a>.</li>
-</ul>
+<h3 id="-">Полезные ресурсы</h3>
+<ol>
+<li>Addy Osmani. <a href="http://addyosmani.com/largescalejavascript/">Patterns For Large-Scale JavaScript Application Architecture</a> // 2011.</li>
+<li>Эдди Османи. <a href="http://largescalejs.ru">Паттерны для масштабируемых JavaScript-приложений</a> // 2011.</li>
+<li>Addy Osmani. <a href="http://addyosmani.github.io/backbone-fundamentals/">Developing Backbone.js Applications</a> // 2013.</li>
+<li>Документация <a href="http://backbonejs.org">Backbone.js</a>.</li>
+<li>Неофициальный перевод документации <a href="http://backbonejs.ru">Backbone.js</a>.</li>
+<li>Документация <a href="http://requirejs.org/">RequireJS</a>.</li>
+<li>Неофициальный перевод документации <a href="http://requirejs.ru">RequireJS</a>.</li>
+<li>Документация <a href="http://underscorejs.org/">Underscore</a>.</li>
+<li>Неофициальный перевод документации <a href="http://underscorejs.ru/">Underscore</a>.</li>
+</ol>
+<h3 id="-">Лекция</h3>
 <p>Глобальные переменные в JavaScript доступны везде, локальные — только в области видимости, в которой они определены. Глобальные переменные являются свойствамии объекта <code>window</code>. Поэтому, объявляя глобальные переменные, вы рискуете изменить свойства <code>window</code>. Каждый раз при присвоении значения неопределенной локальной переменной, вы создаете или изменяете глобальную. Использование глобальных переменных является плохой практикой. В текущей спецификации JavaScript отсутствуют модули, которые бы разграничивали области видимости переменных, объявленых внутри. Но существуют несколько приемов, позволяющих реализовать модульность.</p>
-<pre><code class="lang-JavaScript"><span class="keyword">var</span> foo = <span class="number">1</span>;
+<pre><code class="lang-javascript"><span class="keyword">var</span> foo = <span class="number">1</span>;
 (<span class="function"><span class="keyword">function</span> <span class="params">(window, undefined)</span> {</span>
     <span class="keyword">var</span> foo = <span class="number">2</span>;
     alert(foo); <span class="comment">// 2</span>
@@ -572,7 +577,7 @@ showMainScreen();</code></pre>
 alert(foo); <span class="comment">// 1</span></code></pre>
 <p>Конструкция в примере выше называется <em>немедленно-вызываемая функция</em> (Immediately-Invoked Function Expression, IIFE). Мы создаем анонимную функцию и незамедлительно вызываем ее, с параметрами или без.</p>
 <p>Пока что наша функция ничего не возвращает, и модулем назвать ее сложно. Рассмотрим пример по сложнее.</p>
-<pre><code class="lang-JavaScript"><span class="keyword">var</span> foo = <span class="number">1</span>;
+<pre><code class="lang-javascript"><span class="keyword">var</span> foo = <span class="number">1</span>;
 <span class="keyword">var</span> module = (<span class="function"><span class="keyword">function</span> <span class="params">(window, undefined)</span> {</span>
         <span class="keyword">var</span> foo = <span class="number">2</span>; <span class="comment">// приватная переменная</span>
         <span class="keyword">return</span> {
@@ -584,36 +589,183 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 alert(foo); <span class="comment">// 1</span></code></pre>
 <p>На этот раз немедленно-вызываемая функция возвращает объект, определяющий интерфейс модуля, с которым уже можно работать в других частях веб-приложения. Такой подход предотвращает попадание приватных переменных и функций в глобальный контекст, где они могут конфликтовать с другими интерфейсами.</p>
 <p>В отличии от некоторых других языков программирования, JavaScript не поддерживает модификаторы доступа. Область видимости ограничивает доступность объявленных в ней переменных. Таким образом, объявленные внутри модуля переменные и функции доступны только изнутри этого модуля, а свойства объекта, возвращаемого модулем, будут доступны всем.</p>
-<p>При разработке сервер-сайда веб-приложения популярен подход MVC (Model-View-Controller). Обработкой запроса к серверу занимается контроллер (Controller). Контроллер обращается за данными к модели (Model), которая общается с базой данных. Полученые от модели данные контроллер отправлят в представление (View) для формирования ответа на поступивший запрос.</p>
+<p>При разработке сервер-сайда веб-приложения популярен подход <a href="http://ru.wikipedia.org/wiki/Model-View-Controller">MVC</a> (Model-View-Controller). Обработкой запроса к серверу занимается контроллер (Controller). Контроллер обращается за данными к модели (Model), которая общается с базой данных. Полученые от модели данные контроллер отправлят в представление (View) для формирования ответа на поступивший запрос.</p>
 <p><img src="/pics/mvc-ss.png" alt="MVC сервер-сайда"></p>
 <p>Так вот, при разработке клиент-сайда больших веб-приложения тоже применяется подход MVC, но в действительности он работает по-другому. Во главе теперь стоит модель. При изменении своего состояния модель оповещает об этом всех слушателей. Представление это интерфейс, то что видит пользователь и с чем работает. Представлет следит за изменения модели и реагирует на них. Но когда пользователь взаимодействует с представлением (например, выполнилняет click по кнопке), представление передает управление контроллеру. Последний в свою очередь вносит изменения в модель и все начинается сначала.</p>
 <p><img src="/pics/mvc-cs.png" alt="MVC клиент-сайда"></p>
-<p>Как устроено сложное веб-приложение?</p>
-<p>Уровень библиотек. 
+<p>Как устроен клиент-сайд сложного веб-приложения?</p>
+<p>Уровень библиотек.
 Уровень ядра приложения.
 Уровень модулей.</p>
 <blockquote>
 <p>Модуль — функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах [<a href="http://ru.wikipedia.org/wiki/Модуль_(программирование\">Википедия</a>)].</p>
 </blockquote>
-<p>Модуль веб-приложения состоит из HTML, CSS и JavaScript – блок в терминологии БЭМ. Модули характеризуются <a href="http://ru.wikipedia.org/wiki/Связанность_(программирование\">связанностью</a>). Слабая связанность позволяет вносить изменения в один модуль не оказывая при этом влияния на остальные. </p>
+<p>Модуль веб-приложения состоит из HTML, CSS и JavaScript. Модули характеризуются <a href="http://ru.wikipedia.org/wiki/Связанность_(программирование\">связанностью</a>). Слабая связанность позволяет вносить изменения в один модуль не оказывая при этом влияния на остальные.</p>
+<p>Давайте посмотрим на одно из популярный веб-приложений — «Почту».</p>
+<p><img src="/pics/email.png" alt="Почта"></p>
+<p>Веб-приложение состоит из многих модулей, вот некоторые из них.</p>
+<p>Портальное меню (<code>portal-menu</code>).
+<img src="/pics/email-portal-menu.png" alt="Модуль Портальное меню"></p>
+<p>Тулбар (<code>toolbar</code>).
+<img src="/pics/email-toolbar.png" alt="Модуль Тулбар">
+<img src="/pics/email-toolbar-2.png" alt="Модуль Тулбар"></p>
+<p>Навигация (<code>nav</code>).
+<img src="/pics/email-nav.png" alt="Модуль Навигация"></p>
+<p>Список писем (<code>letters</code>).
+<img src="/pics/email-datalist.png" alt="Модуль Список писем"></p>
+<p>Чтобы модули обладали слабой связанностью не только на уровне логическом (JavaScript), но и на уровне представления (CSS), мы в разработке придерживаемся методологии <a href="http://ru.bem.info/">БЭМ</a>.</p>
+<p>Что такое БЭМ?</p>
+<p>БЭМ расшифровывается как «Блок, Элемент, Модификатор». Это методология разработки веб-проектов, способ удобно делить интерфейс на отдельные блоки и элементы.</p>
+<p>Модуль – это блок в терминологии БЭМ. Блок состоит из элементов или других блоков. Например блок <code>toolbar</code>, который показан на рисунках выше, состоит из элементов – кнопок <code>toolbar__button</code>.</p>
+<p>Кнопка тулбара (<code>toolbar__button</code>).
+<img src="/pics/email-toolbar__button.png" alt="Элемент toolbar__button"></p>
+<p>Согласно БЭМ, в имени элемента обязательно должно присутствовать имя блока, которому он принадлежит, и для их разрграничения обычно используется два нижних подчеркивания. Сделано это для того, чтобы минимизировать количество контекстных селекторов при описании стилей блоков и элементов. Зачем это необходимо?</p>
+<p>В качестве примера рассмотрим простейший пример реализации кнопки в тулбаре.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"toolbar"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"button"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<pre><code class="lang-css"><span class="class">.toolbar</span> <span class="class">.button</span> <span class="rules">{
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> white;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>А теперь поместим этот тулбар в окошко, в котором тоже есть кнопки, но другие.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"window"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"toolbar"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"button"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"button"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<pre><code class="lang-css"><span class="class">.toolbar</span> <span class="class">.button</span> <span class="rules">{
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> white;</span></span>
+<span class="rule">}</span></span>
+<span class="class">.window</span> <span class="class">.button</span> <span class="rules">{
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> black;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>Обе кнопки в примере выше будут черного цвета. Цвет кнопки внутри <code>toolbar</code> оказался перебит значением, заданным по умолчанию для кнопок внутри блока <code>window</code>. Мы оказались в ситуации, когда визуальное оформление элемента <code>button</code> блока <code>toolbar</code>, зависит от окружения, в которое помещен блок. БЭМ позволяет свести такие ситуации к нулю. За счет отказа от использования контекстных селекторов, мы достигаем практически нулевой связности между блоками, блоки становятся независимыми от того окружения, в котором они окажутся.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"window"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"toolbar"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"toolbar__button"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"window__button"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<pre><code class="lang-css"><span class="class">.toolbar__button</span> <span class="rules">{
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> white;</span></span>
+<span class="rule">}</span></span>
+<span class="class">.window__button</span> <span class="rules">{
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> black;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>Теперь элементы <code>toolbar__button</code> и <code>window__button</code> являются абсолютно независимыми. У таког подхода ко всему прочему есть еще один приятный момент — скорость отрисовки страниц. Чем сложнее селектор в каскадной таблице стилей, тем браузеру дольше находить стили для элементов страницы.</p>
+<p>Одни и теже блоки и элементы не всегда выгледят одинаково в итерфейсе. Например, они могут отличаться геометрическими размерами или отличаться графическим содержанием (как это бывает с иконками у тех же самых кнопок). Для этих целей в БЭМ предусмотрены модификаторы. Модификатор это класс, который применяется дополнительно к блоку или элементы с целью изменения его представления. В имени модификатора обязательно присутствует имя блока или элемента, который он изменяет, а для разграничения используется один символ нижнего подчеркивания. Например, <code>toolbar_fixed</code> (модификатор <code>fixed</code> блока <code>toolbar</code>) или <code>toolbar__button_size_xl</code> (модификатор <code>size</code> в значении <code>xl</code> элемента <code>button</code> блока <code>toolbar</code>).</p>
 <p>Веб-приложение представляем собой результат работы модулей из которых оно состоит.</p>
-<p>Когда модули слабо связаны между собой, то удаление одного, не приведет к некорректной работе остальные модули.</p>
+<p>Когда модули слабо связаны между собой, то удаление одного, не приведет к некорректной работе остальные модули. Поэтому, модули не должны напрямую обращаться к методам других модулей, вместо этого модули отправляют и принимают собщения. Это частный случай событийно-ориентированного программрования, который применяется при разработки пользовательских интерфейсов.</p>
 <p>Ядро веб-приложения отвечает за управление модулями (загрузка, инициализация и освобождение ресурсов), предоставляет средства коммуникации между модулями и занимается обработкой ошибок в приложении.</p>
 <p>На уровне библиотек находятся инструменты для работы с DOM, AJAX, парсеры и т.п.</p>
-<p>В Backbone состоит из моделей (models), коллекций (collections) и представлений (views). Как вы заметили, контроллеры отсутсвуют в Backbone. Представления в Backbone, в отличие от MVC, знают что делать при взаимодействии пользователя с ними.</p>
-<p>Литература:</p>
+<p>При разработке проектной работы мы будем использовать довольно популярный стек технологий:</p>
 <ol>
-<li>Addy Osmani. <a href="http://addyosmani.com/largescalejavascript/">Patterns For Large-Scale JavaScript Application Architecture</a> // 2011.</li>
-<li>Эдди Османи. <a href="http://largescalejs.ru">Паттерны для масштабируемых JavaScript-приложений</a> // 2011.</li>
-<li>Addy Osmani. <a href="http://addyosmani.github.io/backbone-fundamentals/">Developing Backbone.js Applications</a> // 2013.</li>
-<li>Документация <a href="http://backbonejs.org">Backbone.js</a>.</li>
-<li>Документация <a href="http://backbonejs.ru">Backbone.js</a> // Перевод.</li>
+<li>Уровень библиотек: jQuery и <a href="http://underscorejs.org/">Underscore</a>.</li>
+<li>Уровень приложения: <a href="http://backbonejs.org/">Backbone</a>.</li>
+<li>Уровень моделуй: <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a> и <a href="http://requirejs.org/">RequireJS</a>.</li>
 </ol>
-<p>ДЗ:</p>
+<p>Underscore это библиотека для манипулирования данными в функциональном стиле. Без этой библиотеки не обойтись при использовании Backbone. Существует более быстрая реализация Underscore – <a href="http://lodash.com/">Lo-Dash</a>. При желании, можете использовать ее в своей проектной работе.</p>
+<p>Мы уже видели как можно создавать модули в JavaScript с помощью анонимных функций. Теперь когда мы умеем разбивать сложное веб-приложение на модули, то становится актуальной проблема управления зависимостями между модулями. Например, для работы контроллера «Списка писем» необходимы модули с реализацией моделей письма и коллекции писем, а так же модуль работы с представлением списка писем.</p>
+<p>Мы рассмотрим, пожалуй, самый популярный механиз определения модулей и их зависимостей в JavaScript. Речь идет о AMD (Asynchronous Module Definition). </p>
+<p>Вернемся к примеру с простейшей реализацией модуля в JavaScript.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> A = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">var</span> name = <span class="string">'A'</span>; <span class="comment">// приватная переменная</span>
+        <span class="keyword">return</span> {
+            say: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="comment">// публичный метод</span>
+                alert(name);
+            }
+        };
+    })();</code></pre>
+<p>В AMD этот модуль следует определить следующим образом:</p>
+<pre><code class="lang-javascript">define(<span class="string">'A'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    <span class="keyword">var</span> name = <span class="string">'A'</span>; <span class="comment">// приватная переменная</span>
+    <span class="keyword">return</span> {
+        say: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="comment">// публичный метод</span>
+            alert(name);
+        }
+    };
+});</code></pre>
+<p>А следующая запись определяет модуль <code>B</code>, который зависит от модуля <code>A</code>.</p>
+<pre><code class="lang-javascript">define(<span class="string">'B'</span>, [<span class="string">'A'</span>], <span class="function"><span class="keyword">function</span> <span class="params">(A)</span> {</span>
+    <span class="keyword">var</span> name = <span class="string">'B'</span>; <span class="comment">// приватная переменная</span>
+    <span class="keyword">return</span> {
+        say: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="comment">// публичный метод</span>
+            A.say(); <span class="comment">// обращение к публичному методу модуля A</span>
+            alert(name);
+        }
+    };
+});</code></pre>
+<p>Интерфейсы зависимых модулей передаются в качестве параметров в функцию-конструктор определяемого модуля. AMD это не библиотека, это спецификация, и функция <code>define</code> не определена в JavaScript. Для загрузки модулей, определенных с помощью механизма AMD, используется RequireJS.</p>
+<p>Теперь разберемся с ядром веб-приложения. Оно построено будет с использованием Backbone.</p>
+<p>Backbone состоит из моделей (models), коллекций (collections) и представлений (views). Как вы заметили, контроллеры отсутсвуют в Backbone. Представления в Backbone, в отличие от MVC, знают что делать при взаимодействии пользователя с ними.</p>
+<h3 id="-">Домашнее задание</h3>
 <ol>
-<li>Реализовать проект на Backbone (определить models/collections и views).</li>
-<li>Организовать подключение ресурсов через AMD.</li>
-<li>Организовать сборку ресурсов для production и development окружения.</li>
+<li>Доработка прототипа по техническому заданию.</li>
+</ol>
+<h3 id="-">Техническое задание</h3>
+<ol>
+<li>Прототип визуально не изменяется.</li>
+<li>Подключить <a href="http://requirejs.org/"><code>RequireJS</code></a> к проекту.<ol>
+<li>Описать <a href="http://requirejs.org/docs/api.html#config"><code>require.config</code></a> в файле <code>main.js</code>, указать зависимость <a href="http://backbonejs.org/"><code>Backbone.js</code></a> от <a href="http://jquery.com/"><code>jQuery</code></a> и <a href="http://underscorejs.org/"><code>Underscore.js</code></a></li>
+<li>Точкой входа приложения является <code>main.js</code> который подключает <a href="http://backbonejs.org/#Router">Backbone.Router</a> - <code>router.js</code></li>
+</ol>
+</li>
+<li>Для каждого экрана нужно создать свою <a href="http://backbonejs.org/#View">Backbone.View</a><ol>
+<li>Главный экран (Main Screen) - <code>views/index.js</code></li>
+<li>Лучшие игроки (Scoreboard Screen) - <code>views/scoreboard.js</code></li>
+<li>Основной экран игры (Game Screen) - <code>views/game.js</code></li>
+</ol>
+</li>
+<li>Для Scoreboard Screen необходимо реализовать <a href="http://backbonejs.org/#Collection">Backbone.Collection</a> и <a href="http://backbonejs.org/#Model">Backbone.Model</a> - <code>collections/scores.js</code> и <code>models/score.js</code></li>
+<li>Структура связей:<pre><code>main<span class="variable">.js</span>
+ router<span class="variable">.js</span>
+     views/toolbar<span class="variable">.js</span>
+         fest/toolbar<span class="variable">.js</span>
+     views/index<span class="variable">.js</span>
+         fest/index<span class="variable">.js</span>
+     views/game<span class="variable">.js</span>
+         fest/game<span class="variable">.js</span>
+     views/scoreboard<span class="variable">.js</span>
+         fest/scoreboard<span class="variable">.js</span>
+         collections/scores<span class="variable">.js</span>
+         models/score<span class="variable">.js</span></code></pre>
+</li>
+<li>Структура файлов (dev):<pre><code><span class="keyword">public</span>/
+ js/
+     main<span class="variable">.js</span>
+     router<span class="variable">.js</span>
+     fest/
+         index<span class="variable">.js</span>
+         game<span class="variable">.js</span>
+         scoreboard<span class="variable">.js</span>
+         toolbar<span class="variable">.js</span>
+     views/
+         index<span class="variable">.js</span>
+         game<span class="variable">.js</span>
+         scoreborad<span class="variable">.js</span>
+         toolbar<span class="variable">.js</span>
+     collections/
+         scores<span class="variable">.js</span>
+     models/
+         score<span class="variable">.js</span>
+     libs/
+         jquery<span class="variable">.js</span>
+         backbone<span class="variable">.js</span>
+         underscore<span class="variable">.js</span>
+         almond<span class="variable">.js</span>
+         require<span class="variable">.js</span></code></pre>
+</li>
+<li>Сборка проекта<ol>
+<li>В <code>Gruntfile.js</code> таск <code>default</code> собирает продакшен версию, таск <code>fest</code> собирает шаблоны, <code>scss</code> собирает css, <code>watch</code> следит за <code>public/css/\*\*/\*.scss</code> и <code>public/js/fest/\*\*/\*.xml</code></li>
+<li>JavaScript проекта собирается в 2 файла <code>production/js/libs.js</code> (<code>jquery.js</code>, <code>backbone.js</code>, <code>underscore.js</code> и <code>almond.js</code>) и <code>production/js/main.js</code></li>
+<li>CSS проекта собирается в файл <code>public/css/main.css</code></li>
+</ol>
+</li>
+<li>Запуск проекта<ol>
+<li>Запуск в режиме dev <code>$ node app.js</code></li>
+</ol>
+</li>
 </ol>
 <h1 id="2-dom-ajax">2 DOM &amp; AJAX</h1>
 <h2 id="2-1-dom-events">2.1 Работа с DOM, Events</h2>
@@ -632,8 +784,60 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <li>HTTP.</li>
 <li>AJAX.</li>
 <li>CORS.</li>
-<li>WebSockets.</li>
+<li><p>WebSockets.</p>
+</li>
+<li><p><a href="http://www.restapitutorial.com/httpstatuscodes.html">HTTP Status Codes</a>.</p>
+</li>
 </ul>
+<h3 id="-restful-api-score">Серверное RESTful API для паботы со Score</h3>
+<ol>
+<li>GET /scores<ol>
+<li>Код 200 - возвращает всю коллкцию scores или первые x элементов (заданные через ?limit=x) отсортированную по убыванию счета игрока</li>
+</ol>
+</li>
+<li>GET /scores/:id<ol>
+<li>Код 200 - возвращает модель с переданным id</li>
+<li>Код 400 - не верные входные данные</li>
+<li>Код 404 - модель с указанным id не найдена</li>
+</ol>
+</li>
+<li>POST /scores<ol>
+<li>Код 200 - возвращает id созданной модели</li>
+<li>Код 400 - не верные входные данные</li>
+</ol>
+</li>
+<li>DEL /scores/:id<ol>
+<li>Код 200 - удаляет модель с переданным id</li>
+<li>Код 400 - не верные входные данные</li>
+<li>Код 404 - модель с указанным id не найдена</li>
+</ol>
+</li>
+<li>PUT /scores/:id<ol>
+<li>Код 200 - обновляет и возвращает модель с переданным id</li>
+<li>Код 400 - не верные входные данные</li>
+<li>Код 404 - модель с указанным id не найдена</li>
+</ol>
+</li>
+</ol>
+<h3 id="-">Техническое задание</h3>
+<ol>
+<li>Создать новый view GameOver на экране Game<ol>
+<li>View должна содержать поле ввода имени игрока, кнопку сохранения и отображать переданный при инициализации счет игрока.</li>
+<li>При сабмите формы создается модель score с указанными в форме данными и добавляется в коллекцию scores</li>
+<li>Модель сохраняется на сервер.</li>
+<li>На время сохранения форма блокируется</li>
+<li>При ошибке сохранения пользователю выводится ошибка и форма разблокируется</li>
+<li>После успешного сохранения форма разблокируется, сбрасывается и происходит переход на экран Scoreboard</li>
+</ol>
+</li>
+<li>Модифицировать экран Scoreboard для получения данных с сервера (топ 10)<ol>
+<li>При отображении экрана происходит fetch коллекции scores</li>
+<li>Во время загрузки пользователю отображается сообщение о загрузке</li>
+<li>В случае ошибки загрузки пользователю отображается соответствующее сообщение с возможностью обновить экран</li>
+<li>В случае успешной загрузки отображается список</li>
+</ol>
+</li>
+</ol>
 <p>Литература:</p>
 <ol>
 <li>Tiffany Brown. <a href="http://dev.opera.com/articles/view/xhr2/">Introduction to XMLHttpRequest Level 2</a> // 2012.</li>
@@ -678,6 +882,31 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <li>Prefetching.</li>
 <li>CSS специфичность.</li>
 </ul>
+<h3 id="-">Домашнее задание</h3>
+<ol>
+<li>Организовать сборку ресурсов для production и development окружения.</li>
+</ol>
+<h3 id="-">Техническое задание</h3>
+<ol>
+<li>Структура файлов (production):<pre><code>production/
+ js/
+     libs<span class="variable">.js</span>
+     main<span class="variable">.js</span>
+ css/
+     main<span class="variable">.css</span></code></pre>
+</li>
+<li>CSS проекта собирается с флагом  <code>style: &#39;compressed&#39;</code> в файл <code>production/css/main.css</code></li>
+<li>Сборка main.js осуществляется с помощью <a href="https://npmjs.org/package/grunt-contrib-requirejs"><code>grunt-contrib-requirejs</code></a>).</li>
+<li>Минификация файла осуществялется с помощью <a href="https://npmjs.org/package/grunt-contrib-uglify"><code>grunt-contrib-uglify</code></a>.</li>
+<li>В продакшене для реализации AMD используется <a href="https://github.com/jrburke/almond"><code>almond</code></a>.</li>
+<li>Запуск production <code>$ NODE_ENV=production node app.js</code></li>
+<li>Определение в <code>node.js</code> текущей версии <code>process.env.NODE_ENV == &#39;production&#39;</code><pre><code class="lang-JavaScript"><span class="function"><span class="title">if</span><span class="params">( process.env.<span class="variable">NODE_ENV</span> == 'production' )</span>{
+ <span class="title">app</span>.<span class="title">use</span><span class="params">(express.<span class="function_name">static</span>(path.<span class="function_name">join</span>(<span class="variable">_</span>_dirname, 'production')))</span>;
+}<span class="title">else</span>{
+ <span class="title">app</span>.<span class="title">use</span><span class="params">(express.<span class="function_name">static</span>(path.<span class="function_name">join</span>(<span class="variable">_</span>_dirname, 'public')))</span>;
+}</code></pre>
+</li>
+</ol>
 <p>ДЗ:</p>
 <ol>
 <li>Сделать прогресс-бар загрузки ресурсов.</li>
