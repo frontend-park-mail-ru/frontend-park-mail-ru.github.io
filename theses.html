@@ -778,18 +778,21 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <p>ДЗ:</p>
 <ol>
 <li>Реализация игровой механики (на протяжении последующих домашних заданий в этом модуле).</li>
+<li>Сделать форму ввода имени игрока после окончания игры.</li>
+<li>Релазиовать PubSub:<ol>
+<li>RulleyView подписывается на showScreen и скрывает остальные экраны.</li>
+<li>Бросить gaveOver, на который показывать ввод имени игрока. А после ввода, должна показывать скрин списка игроков.</li>
+</ol>
+</li>
 </ol>
 <h2 id="2-2-">2.2 Сетевое взаимодествие</h2>
 <ul>
 <li>HTTP.</li>
 <li>AJAX.</li>
 <li>CORS.</li>
-<li><p>WebSockets.</p>
-</li>
-<li><p><a href="http://www.restapitutorial.com/httpstatuscodes.html">HTTP Status Codes</a>.</p>
-</li>
+<li>WebSockets.</li>
 </ul>
-<h3 id="-restful-api-score">Серверное RESTful API для паботы со Score</h3>
+<h3 id="-restful-api-score">Серверное RESTful API для работы со Score</h3>
 <ol>
 <li>GET /scores<ol>
 <li>Код 200 - возвращает всю коллкцию scores или первые x элементов (заданные через ?limit=x) отсортированную по убыванию счета игрока</li>
@@ -802,6 +805,7 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 </ol>
 </li>
 <li>POST /scores<ol>
+<li>Request Body: {&quot;name&quot;: &quot;<name>&quot;, &quot;score&quot;: <score>}</li>
 <li>Код 200 - возвращает id созданной модели</li>
 <li>Код 400 - не верные входные данные</li>
 </ol>
@@ -813,6 +817,7 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 </ol>
 </li>
 <li>PUT /scores/:id<ol>
+<li>Request Body: {&quot;id&quot;: <id>, &quot;name&quot;: &quot;<name>&quot;, &quot;score&quot;: <score>}</li>
 <li>Код 200 - обновляет и возвращает модель с переданным id</li>
 <li>Код 400 - не верные входные данные</li>
 <li>Код 404 - модель с указанным id не найдена</li>
@@ -842,6 +847,7 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <ol>
 <li>Tiffany Brown. <a href="http://dev.opera.com/articles/view/xhr2/">Introduction to XMLHttpRequest Level 2</a> // 2012.</li>
 <li>Armin Ronacher. <a href="http://lucumr.pocoo.org/2012/9/24/websockets-101/">Websockets 101</a> // 2012.</li>
+<li><a href="http://www.restapitutorial.com/httpstatuscodes.html">HTTP Status Codes</a>.</li>
 </ol>
 <p>ДЗ:</p>
 <ol>
@@ -918,6 +924,56 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <li>Гироскоп.</li>
 <li>Тач-события.</li>
 </ul>
+<h3 id="rpc-api">RPC API</h3>
+<p>Создаем экземпляр Connector с указанием remote: &#39;/&lt;тип клиента: console|player&gt;&#39;.</p>
+<pre><code class="lang-JavaScript">var <span class="built_in">server</span> = <span class="keyword">new</span> Connector({
+        remote: <span class="comment">'/console'</span>
+    }
+);</code></pre>
+<p>Через socket.io устанавливается соединение с сервером по пути, указанному в remote, и происходит запрос на получение набора функций, поддерживаемых сервером. Запрос асинхронный, потому Connector предоставляет метод onReady, позволяющий начать работу с сервером, когда все будет готово.</p>
+<pre><code class="lang-JavaScript">server<span class="preprocessor">.onReady</span>(function(){
+    server<span class="preprocessor">.someServerSideFunction</span>()<span class="comment">;</span>
+})<span class="comment">;</span></code></pre>
+<p>При желании можно часть или все функции объявить при инициализации и вызывать их сразу. Запросы на вызов серверной функции складываются в очередь и будут запущены после полчения списка серверных функций.</p>
+<pre><code class="lang-JavaScript">var <span class="built_in">server</span> = <span class="keyword">new</span> Connector({
+        <span class="built_in">server</span>: [<span class="comment">'getToken', 'bind'],</span>
+        remote: <span class="comment">'/console'</span>
+    }
+);
+
+<span class="built_in">server</span>.getToken(<span class="keyword">function</span>(token){});</code></pre>
+<p>На сервере реализованы следующие функции:</p>
+<pre><code class="lang-JavaScript"><span class="title">server</span>.getToken(function(token){
+    token // токен для иниализации связи
+});
+
+// для первичной инициализации связки по токену
+<span class="title">server</span>.bind({token:<span class="string"> '&lt;token&gt;'</span>}, function(<span class="typedef"><span class="keyword">data</span>)<span class="container">{
+    <span class="title">data</span>.<span class="title">status</span> // '<span class="title">success'</span> в случае успеха, '<span class="title">undefined</span> <span class="title">token'</span> в случае ошибки, '<span class="title">busy</span> <span class="title">token'</span> в случае, если токен занят
+    <span class="title">data</span>.<span class="title">guid</span> // <span class="title">guid</span> связки в случае успеха
+}</span>);</span>
+
+// для восстановления связки, когда guid уже получен
+<span class="title">server</span>.bind({guid:<span class="string"> '&lt;guid&gt;'</span>}, function(<span class="typedef"><span class="keyword">data</span>)<span class="container">{
+    <span class="title">data</span>.<span class="title">status</span> // '<span class="title">success'</span> в случае успеха, '<span class="title">undefined</span> <span class="title">guid'</span> в случае ошибки
+}</span>);</span></code></pre>
+<p>Так же Connector поддерживает следующие события</p>
+<pre><code class="lang-JavaScript">server.<span class="literal">on</span>(<span class="string">'connect'</span>, <span class="reserved">function</span>(){}); <span class="regexp">//</span> установка соединения
+server.<span class="literal">on</span>(<span class="string">'disconnect'</span>, <span class="reserved">function</span>(){}); <span class="regexp">//</span> потеря соединения
+server.<span class="literal">on</span>(<span class="string">'reconnect'</span>, <span class="reserved">function</span>(){}); <span class="regexp">//</span> восстановление соединения</code></pre>
+<p>Специальное событие для консоли, происходящее когда игрок подключил джойстик</p>
+<pre><code class="lang-JavaScript"><span class="title">server</span>.on('player-joined', function(<span class="typedef"><span class="keyword">data</span>)<span class="container">{
+    <span class="title">data</span>.<span class="title">guid</span> // <span class="title">guid</span> инициализированной связки
+}</span>);</span></code></pre>
+<p>Для общения между консолью и джойстиком используется метод send для отправки сообщения от одного клиента и событие message на другом для получения сообщения.</p>
+<pre><code class="lang-JavaScript"><span class="title">server</span>.send(<span class="typedef"><span class="keyword">data</span>, function<span class="container">(<span class="title">answer</span>)</span><span class="container">{
+    <span class="title">answer</span> // ответ другой стороны
+}</span>);</span>
+
+<span class="title">server</span>.on('message', function(<span class="typedef"><span class="keyword">data</span>, answer)<span class="container">{
+    <span class="title">data</span> // данные сообщения
+    <span class="title">answer</span>('&lt;<span class="title">answer</span>&gt;') // отправка ответа обратно
+}</span>);</span></code></pre>
 <p>Литература:</p>
 <ol>
 <li>Chris Wilson, Paul Kinlan. <a href="http://www.html5rocks.com/en/mobile/touchandmouse/">Touch And Mouse. Together Again For The First Time</a> // 2013.</li>
