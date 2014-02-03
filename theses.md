@@ -712,7 +712,7 @@ public/
 - CORS.
 - WebSockets.
 
-### Серверное RESTful API для паботы со Score
+### Серверное RESTful API для работы со Score
 
 1. GET /scores
 	1. Код 200 - возвращает всю коллкцию scores или первые x элементов (заданные через ?limit=x) отсортированную по убыванию счета игрока
@@ -834,6 +834,76 @@ if( process.env.NODE_ENV == 'production' ){
 - Акселерометр.
 - Гироскоп.
 - Тач-события.
+
+### RPC API
+
+Создаем экземпляр Connector с указанием remote: '/<тип клиента: console|player>'.
+```JavaScript
+var server = new Connector({
+		remote: '/console'
+	}
+);
+```
+Через socket.io устанавливается соединение с сервером по пути, указанному в remote, и происходит запрос на получение набора функций, поддерживаемых сервером. Запрос асинхронный, потому Connector предоставляет метод onReady, позволяющий начать работу с сервером, когда все будет готово.
+```JavaScript
+server.onReady(function(){
+	server.someServerSideFunction();
+});
+```
+При желании можно часть или все функции объявить при инициализации и вызывать их сразу. Запросы на вызов серверной функции складываются в очередь и будут запущены после полчения списка серверных функций.
+```JavaScript
+var server = new Connector({
+		server: ['getToken', 'bind'],
+		remote: '/console'
+	}
+);
+
+server.getToken(function(token){});
+```
+
+На сервере реализованы следующие функции:
+```JavaScript
+server.getToken(function(token){
+	token // токен для иниализации связи
+});
+
+// для первичной инициализации связки по токену
+server.bind({token: '<token>'}, function(data){
+	data.status // 'success' в случае успеха, 'undefined token' в случае ошибки, 'busy token' в случае, если токен занят
+	data.guid // guid связки в случае успеха
+});
+
+// для восстановления связки, когда guid уже получен
+server.bind({guid: '<guid>'}, function(data){
+	data.status // 'success' в случае успеха, 'undefined guid' в случае ошибки
+});
+```
+
+Так же Connector поддерживает следующие события
+```JavaScript
+server.on('connect', function(){}); // установка соединения
+server.on('disconnect', function(){}); // потеря соединения
+server.on('reconnect', function(){}); // восстановление соединения
+```
+
+Специальное событие для консоли, происходящее когда игрок подключил джойстик
+```JavaScript
+server.on('player-joined', function(data){
+	data.guid // guid инициализированной связки
+});
+```
+
+Для общения между консолью и джойстиком используется метод send для отправки сообщения от одного клиента и событие message на другом для получения сообщения.
+```JavaScript
+server.send(data, function(answer){
+	answer // ответ другой стороны
+});
+
+server.on('message', function(data, answer){
+	data // данные сообщения
+	answer('<answer>') // отправка ответа обратно
+});
+```
 
 Литература:
 
