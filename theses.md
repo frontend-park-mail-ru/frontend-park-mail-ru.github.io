@@ -509,8 +509,6 @@ alert(foo); // 1
 - CORS.
 - WebSockets.
 
-- [HTTP Status Codes](http://www.restapitutorial.com/httpstatuscodes.html).
-
 ### Серверное RESTful API для паботы со Score
 
 1. GET /scores
@@ -550,6 +548,7 @@ alert(foo); // 1
 
 1. Tiffany Brown. [Introduction to XMLHttpRequest Level 2](http://dev.opera.com/articles/view/xhr2/) // 2012.
 2. Armin Ronacher. [Websockets 101](http://lucumr.pocoo.org/2012/9/24/websockets-101/) // 2012.
+3. [HTTP Status Codes](http://www.restapitutorial.com/httpstatuscodes.html).
 
 ДЗ:
 
