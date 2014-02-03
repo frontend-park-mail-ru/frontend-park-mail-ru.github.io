@@ -716,8 +716,6 @@ public/
 - CORS.
 - WebSockets.
 
-- [HTTP Status Codes](http://www.restapitutorial.com/httpstatuscodes.html).
-
 ### Серверное RESTful API для паботы со Score
 
 1. GET /scores
@@ -727,16 +725,18 @@ public/
 	2. Код 400 - не верные входные данные
 	3. Код 404 - модель с указанным id не найдена
 3. POST /scores
-	1. Код 200 - возвращает id созданной модели
-	2. Код 400 - не верные входные данные
+	1. Request Body: {"name": "<name>", "score": <score>}
+	2. Код 200 - возвращает id созданной модели
+	3. Код 400 - не верные входные данные
 4. DEL /scores/:id
 	1. Код 200 - удаляет модель с переданным id
 	2. Код 400 - не верные входные данные
 	3. Код 404 - модель с указанным id не найдена
 5. PUT /scores/:id
-	1. Код 200 - обновляет и возвращает модель с переданным id
-	2. Код 400 - не верные входные данные
-	3. Код 404 - модель с указанным id не найдена
+	1. Request Body: {"id": <id>, "name": "<name>", "score": <score>}
+	2. Код 200 - обновляет и возвращает модель с переданным id
+	3. Код 400 - не верные входные данные
+	4. Код 404 - модель с указанным id не найдена
 
 ### Техническое задание
 
@@ -757,6 +757,7 @@ public/
 
 1. Tiffany Brown. [Introduction to XMLHttpRequest Level 2](http://dev.opera.com/articles/view/xhr2/) // 2012.
 2. Armin Ronacher. [Websockets 101](http://lucumr.pocoo.org/2012/9/24/websockets-101/) // 2012.
+3. [HTTP Status Codes](http://www.restapitutorial.com/httpstatuscodes.html).
 
 ДЗ:
 
