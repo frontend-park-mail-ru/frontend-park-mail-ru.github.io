@@ -844,9 +844,8 @@ if( process.env.NODE_ENV == 'production' ){
 Создаем экземпляр Connector с указанием remote: '/<тип клиента: console|player>'.
 ```JavaScript
 var server = new Connector({
-		remote: '/console'
-	}
-);
+	remote: '/console'
+});
 ```
 Через socket.io устанавливается соединение с сервером по пути, указанному в remote, и происходит запрос на получение набора функций, поддерживаемых сервером. Запрос асинхронный, потому Connector предоставляет метод onReady, позволяющий начать работу с сервером, когда все будет готово.
 ```JavaScript
@@ -857,10 +856,9 @@ server.onReady(function(){
 При желании можно часть или все функции объявить при инициализации и вызывать их сразу. Запросы на вызов серверной функции складываются в очередь и будут запущены после полчения списка серверных функций.
 ```JavaScript
 var server = new Connector({
-		server: ['getToken', 'bind'],
-		remote: '/console'
-	}
-);
+	server: ['getToken', 'bind'],
+	remote: '/console'
+});
 
 server.getToken(function(token){});
 ```
