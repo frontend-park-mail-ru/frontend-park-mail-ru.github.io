@@ -533,6 +533,7 @@ showMainScreen();</code></pre>
 <ol>
 <li>Сформировать идею игры.</li>
 <li>Определиться с группой и ролями в ней.</li>
+<li>Самостоятельно изучить документацию Grunt и сопутствующие расширения, Fest и jQuery.</li>
 <li>Создать прототип веб-приложения.</li>
 </ol>
 <h3 id="-">Техническое задание</h3>
@@ -699,9 +700,68 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <p>Интерфейсы зависимых модулей передаются в качестве параметров в функцию-конструктор определяемого модуля. AMD это не библиотека, это спецификация, и функция <code>define</code> не определена в JavaScript. Для загрузки модулей, определенных с помощью механизма AMD, используется RequireJS.</p>
 <p>Теперь разберемся с ядром веб-приложения. Оно построено будет с использованием Backbone.</p>
 <p>Backbone состоит из моделей (models), коллекций (collections) и представлений (views). Как вы заметили, контроллеры отсутсвуют в Backbone. Представления в Backbone, в отличие от MVC, знают что делать при взаимодействии пользователя с ними.</p>
+<p>Данные, с которыми оперирует ваше веб-приложение, в Backbone представлены моделями, которые можно создавать, изменять, валидировать, уничтожать или сохранять на сервере. При каждом изменении данных в моделе, модель бросает событие <code>change</code>, что позволяет среагировать на эти измения, например, перерисовать часть интерфейса. Модель используется для представления сущности, а для представления множества сущностей используются коллекции. Например, на экране «Лучшие игроки» в нашей проектной работе будет выводиться список игроков, отсортированный по количеству заработанных очков. Модель — игрок, коллекция – список игроков. Backbone предоставляет методы для манипулирования коллекциями. В нашем случае потребуется упорядочить коллекцию по значению атрибута «счет» модели.</p>
+<p>Базовым объектом в Backbone является <code>Events</code>. Любой другой объект, к которому примиксовать <code>Events</code>, унаследует возможность бросать и подписывать произвольные события. Например:</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> object = {};
+
+_.extend(object, Backbone.Events);
+
+object.on(<span class="string">"alert"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(msg)</span> {</span>
+  alert(<span class="string">"Triggered "</span> + msg);
+});
+
+object.trigger(<span class="string">"alert"</span>, <span class="string">"an event"</span>);</code></pre>
+<p>В этом примере мы создаем объект <code>object</code>, и с помощью метода <code>extend</code> библиотеки <code>Underscore</code> переносим в него методы из объекта <code>Backbone.Events</code>, это и есть миксование. Теперь нам доступны в объекте <code>object</code> методы <code>on</code> и <code>trigger</code>, которые используюся для подписки на событие и инициирования события соотвественно.</p>
+<p>Объект <code>Events</code> уже примиксован к остальным объектам Backbone, например, таким как <code>Model</code> или <code>Collection</code>.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> PlayerModel = Backbone.Model.extend({
+    });
+
+<span class="keyword">var</span> player = <span class="keyword">new</span> PlayerModel();
+
+player.on(<span class="string">'change:name'</span>, <span class="keyword">function</span>(model, name) {
+    alert(<span class="string">'Player name is '</span> + name);
+});
+
+player.set({name: <span class="string">'Mark'</span>});</code></pre>
+<p>Здесь мы создаем модель <code>PlayerModel</code>, а затем создаем экземпляр <code>player</code> созданной модели. Создаем обработчик события <code>change:name</code> для объекта <code>player</code> и устанавливаем значение атрибута <code>name</code>, используя метод <code>set</code>. Последний приведет к инициализации события <code>change:name</code>, для которого мы создали обработчик.</p>
+<p>Обратимся к представлениям – объекты <code>View</code> в Backbone. <code>View</code> не привязаны к какому-либо шаблонизатору, например, будет достаточно того, что есть в библиотеке <code>Underscore</code>, от которой зависит Backbone. Напомню, мы будем использовать шаблонизатор Fest.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> PlayerView = Backbone.View.extend({
+
+    tagName: <span class="string">"li"</span>,
+    className: <span class="string">"score__item"</span>,
+    template: fest[<span class="string">'player'</span>],
+
+    events: {
+        <span class="string">"click .button_delete"</span>: <span class="string">"destroy"</span>
+    },
+
+    initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">this</span>.listenTo(<span class="keyword">this</span>.model, <span class="string">"change"</span>, <span class="keyword">this</span>.render);
+    },
+
+    render: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">this</span>.$el.html(<span class="keyword">this</span>.template(<span class="keyword">this</span>.model.attributes));
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    },
+
+    destroy: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+
+    }
+});
+
+<span class="keyword">var</span> playerView = <span class="keyword">new</span> PlayerView({
+        model: player,
+        id: <span class="string">"player-"</span> + player.id
+    });</code></pre>
+<p>Здесь мы создаем представление <code>PlayerView</code> и переопределяем значения по умолчанию для следующих свойств представлений. Свойство <code>tagName</code> указывает на тип HTML элемента, который будет создан, если при создании экземпляра представления не будет передан уже существующий элемент в свойстве <code>el</code>. Таким образом, у представления всегда есть элемент. Находится он в DOM или нет – неважно. Свойство <code>className</code> определяет значение аттрибута <code>class</code> для создаваемого элемента <code>tagName</code>. В свойство <code>template</code> необходимо передать функцию-шаблонизатор. Свойство <code>events</code> позволяет в удобном виде определить обработчики событий на элементах этого представления. В примере выше метод представления <code>destroy</code> будет назначен обработчиком события <code>click</code> на элементах с классом <code>button_delete</code>. Свойство <code>initialize</code> определяет функцию, которая будет вызвана при создании экземпляра представления. Здесь мы подписываемся на событие <code>change</code> модели, ассоциированной с созданным экземпляром нашего представления, а в качестве обработчика события указываем метод <code>render</code>. То есть при любых изменения в моделе, будем перерисовывать представление. Метод <code>listenTo</code>, унаследованный от объекта <code>Events</code>, позволяет создавать обработчик события и связать его с текущим контекстом. Свойство <code>render</code> определяет функцию, которая будет отвечать за перерисовку представления. В нашем случае в элемент, который связан с экземпляром представления, мы вставляем результат вызова функции-шаблонизатора.</p>
+<p>Подробное изучение возможностей Backbone не является целью нашего занятия, это будет вашим домашним заданием. Поэтому мы двигаемся дальше.</p>
+<p>Наше веб-приложение необходимо разбить на мелкие модули и определить зависимости между ними. Мы будем использовать механизм AMD и придерживаться соглашения «один модуль — один файл». Для загрузки модулей, определенных с помощью механизма AMD, используется RequireJS.</p>
+<p>TODO: RequireJS</p>
+<p>TODO: Скелет проекта</p>
 <h3 id="-">Домашнее задание</h3>
 <ol>
-<li>Доработка прототипа по техническому заданию.</li>
+<li>Самостоятельно изучить документацию Underscore, Backbone и RequireJS.</li>
+<li>Доработать прототип в соотвествии техническому заданию.</li>
 </ol>
 <h3 id="-">Техническое задание</h3>
 <ol>
@@ -927,19 +987,17 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <h3 id="rpc-api">RPC API</h3>
 <p>Создаем экземпляр Connector с указанием remote: &#39;/&lt;тип клиента: console|player&gt;&#39;.</p>
 <pre><code class="lang-JavaScript">var <span class="built_in">server</span> = <span class="keyword">new</span> Connector({
-        remote: <span class="comment">'/console'</span>
-    }
-);</code></pre>
+    remote: <span class="comment">'/console'</span>
+});</code></pre>
 <p>Через socket.io устанавливается соединение с сервером по пути, указанному в remote, и происходит запрос на получение набора функций, поддерживаемых сервером. Запрос асинхронный, потому Connector предоставляет метод onReady, позволяющий начать работу с сервером, когда все будет готово.</p>
 <pre><code class="lang-JavaScript">server<span class="preprocessor">.onReady</span>(function(){
     server<span class="preprocessor">.someServerSideFunction</span>()<span class="comment">;</span>
 })<span class="comment">;</span></code></pre>
 <p>При желании можно часть или все функции объявить при инициализации и вызывать их сразу. Запросы на вызов серверной функции складываются в очередь и будут запущены после полчения списка серверных функций.</p>
 <pre><code class="lang-JavaScript">var <span class="built_in">server</span> = <span class="keyword">new</span> Connector({
-        <span class="built_in">server</span>: [<span class="comment">'getToken', 'bind'],</span>
-        remote: <span class="comment">'/console'</span>
-    }
-);
+    <span class="built_in">server</span>: [<span class="comment">'getToken', 'bind'],</span>
+    remote: <span class="comment">'/console'</span>
+});
 
 <span class="built_in">server</span>.getToken(<span class="keyword">function</span>(token){});</code></pre>
 <p>На сервере реализованы следующие функции:</p>
