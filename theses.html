@@ -438,7 +438,7 @@ Started connect web server on http://localhost:8000</code></pre>
 
 };</code></pre>
 <p>Подключите <a href="http://jquery.com">jQuery</a>. Создайте функции для отрисовки каждого из экранов игры.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> $page = $(<span class="string">'.page'</span>);
+<pre><code class="lang-javascript"><span class="keyword">var</span> $page = $(<span class="string">'#page'</span>);
 
 <span class="comment">/* Конструктор экрана "Лучшие игроки" */</span>
 <span class="function"><span class="keyword">function</span> <span class="title">showScoreboardScreen</span><span class="params">()</span> {</span>
@@ -473,7 +473,7 @@ Started connect web server on http://localhost:8000</code></pre>
 
 showMainScreen();</code></pre>
 <p>Заключительный вариант.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> $page = $(<span class="string">'.page'</span>),
+<pre><code class="lang-javascript"><span class="keyword">var</span> $page = $(<span class="string">'#page'</span>),
     currentScreen = <span class="string">'main'</span>;
 
 <span class="comment">/* Конструктор экрана "Лучшие игроки" */</span>
@@ -754,77 +754,77 @@ player.set({name: <span class="string">'Mark'</span>});</code></pre>
         id: <span class="string">"player-"</span> + player.id
     });</code></pre>
 <p>Здесь мы создаем представление <code>PlayerView</code> и переопределяем значения по умолчанию для следующих свойств представлений. Свойство <code>tagName</code> указывает на тип HTML элемента, который будет создан, если при создании экземпляра представления не будет передан уже существующий элемент в свойстве <code>el</code>. Таким образом, у представления всегда есть элемент. Находится он в DOM или нет – неважно. Свойство <code>className</code> определяет значение аттрибута <code>class</code> для создаваемого элемента <code>tagName</code>. В свойство <code>template</code> необходимо передать функцию-шаблонизатор. Свойство <code>events</code> позволяет в удобном виде определить обработчики событий на элементах этого представления. В примере выше метод представления <code>destroy</code> будет назначен обработчиком события <code>click</code> на элементах с классом <code>button_delete</code>. Свойство <code>initialize</code> определяет функцию, которая будет вызвана при создании экземпляра представления. Здесь мы подписываемся на событие <code>change</code> модели, ассоциированной с созданным экземпляром нашего представления, а в качестве обработчика события указываем метод <code>render</code>. То есть при любых изменения в моделе, будем перерисовывать представление. Метод <code>listenTo</code>, унаследованный от объекта <code>Events</code>, позволяет создавать обработчик события и связать его с текущим контекстом. Свойство <code>render</code> определяет функцию, которая будет отвечать за перерисовку представления. В нашем случае в элемент, который связан с экземпляром представления, мы вставляем результат вызова функции-шаблонизатора.</p>
+<p>Вашим предыдущим домашним заданием было сделать прототип веб-приложения, в котором переключение между экранами не приводило к перезагрузке страницы. Вы просто изменяли содержимое элемента страницы, при этом адрес у страницы оставался неизменным. Это неудобно по следующим причинам:</p>
+<ol>
+<li>Чтобы попасть на определенный экран, каждый раз необходимо совершать последовательность действий, приводящих к его появлению.</li>
+<li>Переходы между экранами не отображатся в истории навигации веб-браузера. При переходе на новый экран, нет возможности перейти к предыдущему по нажатию на кнопку Back веб-браузера.</li>
+</ol>
+<p>Для решения этих проблем используется механизм с подменой якоря страницы. Якорь — это часть URL страницы. Начинается с символа <code>#</code> и всегда находится в конце URL. Если каждому экрану в нашем веб-приложении назначить уникальный якорь и начать отслеживать изменение этого якоря в адресе страницы, то пропадает необходимость в обработчиках события <code>click</code> для ссылок, которые осуществляют переход между экранами. Достаточно указать нужное значение якоря в артрибуте <code>href</code> и воспользоваться функционалом, который предоставляет Backbone.</p>
+<p>Для того, что бы Backbone начал отслеживать изменения якоря в адресе страницы, необходимо вызвать <code>Backbone.history.start()</code> когда документ будет уже загружен. Как это работает? Все очень просто, веб-браузер при изменении якоря бросает событие  <code>hashchange</code> от имени <code>window</code>, а Backbone начинает его слушать.</p>
+<p>Важной частью современного веб-приложения является роутинг. Это механизм, который позволяет устанавливать связь между адресом страницы и действиями, которые необходимо выполнять каждый раз при измении адреса страницы на указанное значение. В Backbone за роутинг отвечает объект <code>Router</code>.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> Router = Backbone.Router.extend({
+    routes: {
+        <span class="string">'scoreboard'</span>: <span class="string">'scoreboardAction'</span>,
+        <span class="string">'game'</span>: <span class="string">'gameAction'</span>,
+        <span class="string">'*default'</span>: <span class="string">'defaultActions'</span>
+    },
+    defaultActions: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>},
+    scoreboardAction: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>},
+    gameAction: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>}
+});
+
+<span class="keyword">new</span> Router();</code></pre>
+<p>В этом примере мы указываем, что при изменении якоря на значение <code>#scoreboard</code> следует выполнить метод экземпляра объекта <code>scoreboardAction</code>, при значении якоря равным <code>#game</code> – выполнить метод <code>gameAction</code>, а для всех остальных значений якоря – метод <code>defaulActions</code>. И неважно каким образом был изменен якорь страницы (программно или пользователь ввел его в адресной строке), роутер выполнит указанные обработчики.</p>
 <p>Подробное изучение возможностей Backbone не является целью нашего занятия, это будет вашим домашним заданием. Поэтому мы двигаемся дальше.</p>
-<p>Наше веб-приложение необходимо разбить на мелкие модули и определить зависимости между ними. Мы будем использовать механизм AMD и придерживаться соглашения «один модуль — один файл». Для загрузки модулей, определенных с помощью механизма AMD, используется RequireJS.</p>
-<p>TODO: RequireJS</p>
-<p>TODO: Скелет проекта</p>
+<p>Наше веб-приложение необходимо разбить на мелкие модули и определить зависимости между ними. Мы будем использовать механизм AMD и придерживаться соглашения «один модуль — один файл».</p>
+<p>Напомню, что шаблоны Fest мы компилируем в JavaScript файлы с помощью Grunt. Поэтому необходимо изменить процедуру формирования этих файлов. Для этого в <code>Gruntfile.js</code> необходимо заменить значение параметра <code>template</code> задачи <code>fest</code> на следующее:</p>
+<pre><code class="lang-javascript">template: <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
+    <span class="keyword">return</span> grunt.template.process(
+        <span class="comment">// 'var &lt;%= name %&gt;Tmpl = &lt;%= contents %&gt; ;',</span>
+        <span class="string">'define(function () { return &lt;%= contents %&gt; ; });'</span>,
+        {data: data}
+    );
+}</code></pre>
+<p>Для загрузки модулей, определенных с помощью механизма AMD, используется RequireJS. С помощью RequireJS достаточно указать на странице всего один JavaScript файл, и все зависимые модули будут автоматически им загружены. Это очень сильно упращает разработку. Сравните, как у нас подключались JavaScript файлы до этого:</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/js/lib/jquery.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/js/tmpl/main.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/js/tmpl/scoreboard.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/js/tmpl/game.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></pre>
+<p>И как станут подключаться теперь:</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">data-main</span>=<span class="value">"js/main"</span> <span class="attribute">src</span>=<span class="value">"js/lib/require.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></pre>
+<p>Здесь мы подключаем на страницу только саму библиотеку RequireJS и указываем в атрибуте <code>data-main</code> имя файла, который следуем загрузить после того как библиотека проинициализируется. Файл <code>js/main.js</code> содержит настройки для RequireJS и определяет загрузочный модуль. В нашем случае загрузочный модуль содержит всего одну инструкцию (инициализирование <code>Backbone.history</code>) и зависит от модуля с роутером:</p>
+<pre><code class="lang-javascript">define([
+    <span class="string">'router'</span>
+], <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    Backbone.history.start();
+});</code></pre>
+<p>Благодаря AMD и RequireJS вам больше не нужно следить, чтобы все необходимые файлы были подключены к странице в определенном порядке. Они сделают это все за вас.</p>
+<p>Дело за малым — настроить роутинг, реализовать представления, коллекции и модели. Это будет вашим домашним заданием. Мы подготовили структуру проекта, определили все модули-пустышки, необходимые для запуска веб-приложения. Для этого вам потребуется к репозиторию вашего проекта добавить репозиторий <a href="https://github.com/eprev/frontend-stub/">github.com/eprev/frontend-stub/</a> и влить содержимое ветки v2:</p>
+<pre><code class="lang-bash">$ git remote add tp https://github.com/eprev/frontend-stub.git
+$ git fetch tp
+$ git merge tp/v1</code></pre>
 <h3 id="-">Домашнее задание</h3>
 <ol>
 <li>Самостоятельно изучить документацию Underscore, Backbone и RequireJS.</li>
+<li>Подключить к репозиторию проектной работы <a href="https://github.com/eprev/frontend-stub">github.com/eprev/frontend-stub</a> и объединить содержимое своего проекта с содержимым ветки <a href="https://github.com/eprev/frontend-stub/tree/v2">v2</a>.</li>
 <li>Доработать прототип в соотвествии техническому заданию.</li>
 </ol>
 <h3 id="-">Техническое задание</h3>
 <ol>
-<li>Прототип визуально не изменяется.</li>
-<li>Подключить <a href="http://requirejs.org/"><code>RequireJS</code></a> к проекту.<ol>
-<li>Описать <a href="http://requirejs.org/docs/api.html#config"><code>require.config</code></a> в файле <code>main.js</code>, указать зависимость <a href="http://backbonejs.org/"><code>Backbone.js</code></a> от <a href="http://jquery.com/"><code>jQuery</code></a> и <a href="http://underscorejs.org/"><code>Underscore.js</code></a></li>
-<li>Точкой входа приложения является <code>main.js</code> который подключает <a href="http://backbonejs.org/#Router">Backbone.Router</a> - <code>router.js</code></li>
-</ol>
+<li><p>Модель игрока должна состояить из следующих атрибутов:</p>
+<ul>
+<li><code>name</code> – имя игрока (значение по умолчанию: <code>&#39;&#39;</code>)</li>
+<li><code>score</code> – количество очков (значение по умолчанию: <code>0</code>)</li>
+</ul>
 </li>
-<li>Для каждого экрана нужно создать свою <a href="http://backbonejs.org/#View">Backbone.View</a><ol>
-<li>Главный экран (Main Screen) - <code>views/index.js</code></li>
-<li>Лучшие игроки (Scoreboard Screen) - <code>views/scoreboard.js</code></li>
-<li>Основной экран игры (Game Screen) - <code>views/game.js</code></li>
-</ol>
+<li><p>Список игроков должено состоять из 10 разных записей и программно упорядочен по убыванию атрибута <code>score</code>.</p>
 </li>
-<li>Для Scoreboard Screen необходимо реализовать <a href="http://backbonejs.org/#Collection">Backbone.Collection</a> и <a href="http://backbonejs.org/#Model">Backbone.Model</a> - <code>collections/scores.js</code> и <code>models/score.js</code></li>
-<li>Структура связей:<pre><code>main<span class="variable">.js</span>
- router<span class="variable">.js</span>
-     views/toolbar<span class="variable">.js</span>
-         fest/toolbar<span class="variable">.js</span>
-     views/index<span class="variable">.js</span>
-         fest/index<span class="variable">.js</span>
-     views/game<span class="variable">.js</span>
-         fest/game<span class="variable">.js</span>
-     views/scoreboard<span class="variable">.js</span>
-         fest/scoreboard<span class="variable">.js</span>
-         collections/scores<span class="variable">.js</span>
-         models/score<span class="variable">.js</span></code></pre>
-</li>
-<li>Структура файлов (dev):<pre><code><span class="keyword">public</span>/
- js/
-     main<span class="variable">.js</span>
-     router<span class="variable">.js</span>
-     fest/
-         index<span class="variable">.js</span>
-         game<span class="variable">.js</span>
-         scoreboard<span class="variable">.js</span>
-         toolbar<span class="variable">.js</span>
-     views/
-         index<span class="variable">.js</span>
-         game<span class="variable">.js</span>
-         scoreborad<span class="variable">.js</span>
-         toolbar<span class="variable">.js</span>
-     collections/
-         scores<span class="variable">.js</span>
-     models/
-         score<span class="variable">.js</span>
-     libs/
-         jquery<span class="variable">.js</span>
-         backbone<span class="variable">.js</span>
-         underscore<span class="variable">.js</span>
-         almond<span class="variable">.js</span>
-         require<span class="variable">.js</span></code></pre>
-</li>
-<li>Сборка проекта<ol>
-<li>В <code>Gruntfile.js</code> таск <code>default</code> собирает продакшен версию, таск <code>fest</code> собирает шаблоны, <code>scss</code> собирает css, <code>watch</code> следит за <code>public/css/\*\*/\*.scss</code> и <code>public/js/fest/\*\*/\*.xml</code></li>
-<li>JavaScript проекта собирается в 2 файла <code>production/js/libs.js</code> (<code>jquery.js</code>, <code>backbone.js</code>, <code>underscore.js</code> и <code>almond.js</code>) и <code>production/js/main.js</code></li>
-<li>CSS проекта собирается в файл <code>public/css/main.css</code></li>
-</ol>
-</li>
-<li>Запуск проекта<ol>
-<li>Запуск в режиме dev <code>$ node app.js</code></li>
-</ol>
+<li><p>Переходы между экранами веб-приложения должны отражаться в истории веб-браузера, таким образом, чтобы корректно работали кнопки Back и Forward. Для этой цели к адресу веб-страницы добавляется якорь (<code>#</code>):</p>
+<ul>
+<li><code>#scoreboard</code> для экрана «Лучшие игроки»;</li>
+<li><code>#game</code> для основного экрана игры;</li>
+<li><code>#</code> для экрана «Главное меню».</li>
+</ul>
 </li>
 </ol>
 <h1 id="2-dom-ajax">2 DOM &amp; AJAX</h1>
