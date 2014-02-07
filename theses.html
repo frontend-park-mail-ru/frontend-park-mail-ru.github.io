@@ -214,7 +214,7 @@
             <h1 id="-">Преамбула</h1>
 <p>Предполагается, что студент имеет базовые знания веб-технологий (HTML, CSS, JavaScript) и практические навыки решения задач с помощью базовых алгоритмов и структур данных.</p>
 <p>Проектная работа выполняется в группах по 2–3 человека (роли каждого должны быть представлены при формировании группы). Первое практическое занятие – индивидуальное.</p>
-<p>Для выполнения проектной работы на занятиях потребуется ноутбук/виртуальная машина с установленной ОС Linux/OS X.</p>
+<p>Для выполнения проектной работы на занятиях потребуется ноутбук/виртуальная машина с установленной ОС Linux/OS X. Из программного обеспечения — <a href="http://git-scm.com">Git</a> и <a href="http://nodejs.org">Node.js</a>.</p>
 <p>Ресурсы для самостоятельного изучения:</p>
 <ol>
 <li>Влад Мержевич. <a href="http://htmlbook.ru/samhtml">Самоучитель HTML4</a> // 2010.</li>
@@ -224,6 +224,7 @@
 <li><a href="https://developer.mozilla.org/">Mozilla Developer Network</a>.</li>
 <li><a href="http://www.html5rocks.com/">HTML5 Rocks</a>.</li>
 <li>Mark Piligrim. <a href="http://diveintohtml5.info">Dive into HTML5</a> // 2013.</li>
+<li><a href="http://devdocs.io">DevDocs</a>.</li>
 </ol>
 <h1 id="1-">1 Архитектура</h1>
 <h2 id="1-1-">1.1 Знакомство, инструменты, настройка окружения</h2>
@@ -571,23 +572,21 @@ showMainScreen();</code></pre>
 <h3 id="-">Лекция</h3>
 <p>Глобальные переменные в JavaScript доступны везде, локальные — только в области видимости, в которой они определены. Глобальные переменные являются свойствамии объекта <code>window</code>. Поэтому, объявляя глобальные переменные, вы рискуете изменить свойства <code>window</code>. Каждый раз при присвоении значения неопределенной локальной переменной, вы создаете или изменяете глобальную. Использование глобальных переменных является плохой практикой. В текущей спецификации JavaScript отсутствуют модули, которые бы разграничивали области видимости переменных, объявленых внутри. Но существуют несколько приемов, позволяющих реализовать модульность.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> foo = <span class="number">1</span>;
-(<span class="function"><span class="keyword">function</span> <span class="params">(window, undefined)</span> {</span>
+(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
     <span class="keyword">var</span> foo = <span class="number">2</span>;
     alert(foo); <span class="comment">// 2</span>
-})(window);
+})();
 alert(foo); <span class="comment">// 1</span></code></pre>
 <p>Конструкция в примере выше называется <em>немедленно-вызываемая функция</em> (Immediately-Invoked Function Expression, IIFE). Мы создаем анонимную функцию и незамедлительно вызываем ее, с параметрами или без.</p>
 <p>Пока что наша функция ничего не возвращает, и модулем назвать ее сложно. Рассмотрим пример по сложнее.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> foo = <span class="number">1</span>;
-<span class="keyword">var</span> module = (<span class="function"><span class="keyword">function</span> <span class="params">(window, undefined)</span> {</span>
-        <span class="keyword">var</span> foo = <span class="number">2</span>; <span class="comment">// приватная переменная</span>
+<pre><code class="lang-javascript"><span class="keyword">var</span> module = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">var</span> name = <span class="string">'A'</span>; <span class="comment">// приватная переменная</span>
         <span class="keyword">return</span> {
             say: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="comment">// публичный метод</span>
-                alert(foo); <span class="comment">// 2</span>
+                alert(name); <span class="comment">// 2</span>
             }
         };
-    })(window);
-alert(foo); <span class="comment">// 1</span></code></pre>
+    })();</code></pre>
 <p>На этот раз немедленно-вызываемая функция возвращает объект, определяющий интерфейс модуля, с которым уже можно работать в других частях веб-приложения. Такой подход предотвращает попадание приватных переменных и функций в глобальный контекст, где они могут конфликтовать с другими интерфейсами.</p>
 <p>В отличии от некоторых других языков программирования, JavaScript не поддерживает модификаторы доступа. Область видимости ограничивает доступность объявленных в ней переменных. Таким образом, объявленные внутри модуля переменные и функции доступны только изнутри этого модуля, а свойства объекта, возвращаемого модулем, будут доступны всем.</p>
 <p>При разработке сервер-сайда веб-приложения популярен подход <a href="http://ru.wikipedia.org/wiki/Model-View-Controller">MVC</a> (Model-View-Controller). Обработкой запроса к серверу занимается контроллер (Controller). Контроллер обращается за данными к модели (Model), которая общается с базой данных. Полученые от модели данные контроллер отправлят в представление (View) для формирования ответа на поступивший запрос.</p>
@@ -663,7 +662,7 @@ alert(foo); <span class="comment">// 1</span></code></pre>
 <p>При разработке проектной работы мы будем использовать довольно популярный стек технологий:</p>
 <ol>
 <li>Уровень библиотек: jQuery и <a href="http://underscorejs.org/">Underscore</a>.</li>
-<li>Уровень приложения: <a href="http://backbonejs.org/">Backbone</a>.</li>
+<li>Уровень ядра приложения: <a href="http://backbonejs.org/">Backbone</a>.</li>
 <li>Уровень моделуй: <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a> и <a href="http://requirejs.org/">RequireJS</a>.</li>
 </ol>
 <p>Underscore это библиотека для манипулирования данными в функциональном стиле. Без этой библиотеки не обойтись при использовании Backbone. Существует более быстрая реализация Underscore – <a href="http://lodash.com/">Lo-Dash</a>. При желании, можете использовать ее в своей проектной работе.</p>

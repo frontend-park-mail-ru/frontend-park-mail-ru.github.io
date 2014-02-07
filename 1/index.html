@@ -24,6 +24,21 @@
         </h2>
      </div></section>
 
+    <section class="slide shout"><div>
+        <h2>
+            I. Инструменты
+        </h2>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Фронтенд</h2>
+        <pre>
+            <code>АНТОН ЕПРЕВ <mark class="comment"> // a.eprev     \</mark></code>
+            <code>ЕГОР ДЫДЫКИН <mark class="comment">// e.dydykin   - @corp.mail.ru</mark></code>
+            <code>ИВАН ЧАШКИН <mark class="comment"> // i.chashkin  /</mark></code>
+        </pre>
+     </div></section>
+
     <section class="slide"><div>
         <h2>Модули</h2>
         <pre>
@@ -159,7 +174,7 @@
             <code>    &lt;meta charset="utf-8"&gt;</code>
             <code>    &lt;link rel="stylesheet" href="/css/main.css"/&gt;</code>
             <code>&lt;/head&gt;&lt;body&gt;</code>
-            <code>    &lt;div class="page"&gt;&lt;/div&gt;</code>
+            <code>    &lt;div id="page"&gt;&lt;/div&gt;</code>
             <code>&lt;/body&gt;&lt;/html&gt;</code>
         </pre>
     </div></section>
@@ -316,21 +331,36 @@
         </pre>
      </div></section>
 
-    <section class="slide cover w white"><div>
-        <img src="../pics/bem.png" alt="" />
+    <section class="slide shout"><div>
+        <h2>
+            II. Архитектура
+        </h2>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Immediately-Invoked Function Expression, IIFE</h2>
+        <pre>
+            <code>var foo = 1;</code>
+            <code>(function () {</code>
+            <code>    var foo = 2;</code>
+            <code>    alert(foo);</code>
+            <code>})();</code>
+            <code>alert(foo);</code>
+        </pre>
     </div></section>
 
     <section class="slide"><div>
-        <h2>БЭМ</h2>
+        <h2>Модуль в JavaScript</h2>
         <pre>
-            <code>блок</code>
-            <code>блок__элемент</code>
-            <code>блок_модификатор</code>
-            <code>блок__элемент_модификатор</code>
+            <code>var module = (function () {</code>
+            <code>        var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
+            <code>        return {</code>
+            <code>            say: function () { <mark class="comment">// публичный метод</mark></code>
+            <code>                alert(name);</code>
+            <code>            }</code>
+            <code>        };</code>
+            <code>    })();</code>
         </pre>
-        <p class="note">
-            <a href="http://ru.bem.info/method/definitions/">БЭМ</a>.<br/>
-        </p>
     </div></section>
 
     <section class="slide cover h white"><div>
@@ -341,8 +371,298 @@
         <img src="../pics/mvc-cs.png" alt="" />
     </div></section>
 
+    <section class="slide"><div>
+        <h2>Устройство веб-приложения</h2>
+        <pre>
+            <code>УРОВЕНЬ БИБЛИОТЕК.</code>
+            <code>УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ.</code>
+            <code>УРОВЕНЬ МОДЕЛЕЙ.</code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Определение</h2>
+        <figure>
+            <blockquote>
+                <p><strong>Модуль</strong> — функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах.</p>
+            </blockquote>
+            <figcaption><a href="http://ru.wikipedia.org/wiki/Модуль_(программирование)">Википедия</a></figcaption>
+        </figure>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Модуль веб-приложения</h2>
+        <pre>
+            <code>Состоит из HTML, CSS и JavaScript.</code>
+            <code>Характеризуется слабой связностью.</code>
+        </pre>
+     </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/email.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/email-portal-menu.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/email-toolbar.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/email-toolbar-2.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/email-nav.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/email-datalist.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/bem.png" alt="" />
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/email-toolbar__button.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Кнопка тулбара</h2>
+        <pre>
+            <code>&lt;div class="toolbar"&gt;</code>
+            <code>    &lt;div class="button"&gt;Click Me&lt;/div&gt;</code>
+            <code>&lt;/div&gt;</code>
+            <code>.toolbar .button {</code>
+            <code>    background: white;</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Кнопка тулбара</h2>
+        <pre>
+            <code>&lt;div class="window"&gt;</code>
+            <code>    &lt;div class="toolbar"&gt;</code>
+            <code>        &lt;div class="button"&gt;Click Me&lt;/div&gt;</code>
+            <code>    &lt;/div&gt;</code>
+            <code>    &lt;div class="button"&gt;Submit&lt;/div&gt;</code>
+            <code>&lt;/div&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Кнопка тулбара</h2>
+        <pre>
+            <code>.toolbar .button {</code>
+            <code>    background: white;</code>
+            <code>}</code>
+            <code>.window .button {</code>
+            <code>    background: black;</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Кнопка тулбара (БЭМ)</h2>
+        <pre>
+            <code>&lt;div class="window"&gt;</code>
+            <code>    &lt;div class="toolbar"&gt;</code>
+            <code>        &lt;div class="toolbar__button"&gt;Click Me&lt;/div&gt;</code>
+            <code>    &lt;/div&gt;</code>
+            <code>    &lt;div class="window__button"&gt;Submit&lt;/div&gt;</code>
+            <code>&lt;/div&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Кнопка тулбара (БЭМ)</h2>
+        <pre>
+            <code>.toolbar__button {</code>
+            <code>    background: white;</code>
+            <code>}</code>
+            <code>.window__button {</code>
+            <code>    background: black;</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>БЭМ</h2>
+        <pre>
+            <code>toolbar <mark class="comment">// блок</mark></code>
+            <code>toolbar__button <mark class="comment">// блок__элемент</mark></code>
+            <code>toolbar_fixed <mark class="comment">// блок_модификатор</mark></code>
+            <code>toolbar__button_size_xl <mark class="comment">// блок__элемент_модификатор_значение</mark></code>
+        </pre>
+        <p class="note">
+            <a href="http://ru.bem.info/">http://ru.bem.info</a><br/>
+        </p>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Устройство веб-приложения</h2>
+        <pre>
+            <code>УРОВЕНЬ МОДУЛЕЙ. <mark class="comment">// AMD &amp; RequireJS</mark></code>
+            <code class="next">УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ. <mark class="comment">// Backbone</mark></code>
+            <code class="next">УРОВЕНЬ БИБЛИОТЕК. <mark class="comment">// jQuery &amp; Underscore</mark></code>
+        </pre>
+     </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/underscore.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Модуль в JavaScript</h2>
+        <pre>
+            <code>var module = (function () {</code>
+            <code>        var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
+            <code>        return {</code>
+            <code>            say: function () { <mark class="comment">// публичный метод</mark></code>
+            <code>                alert(name);</code>
+            <code>            }</code>
+            <code>        };</code>
+            <code>    })();</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Asynchronous Module Definition</h2>
+        <pre>
+            <code>define('A', function () {</code>
+            <code>    var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
+            <code>    return {</code>
+            <code>        say: function () { <mark class="comment">// публичный метод</mark></code>
+            <code>            alert(name);</code>
+            <code>        }</code>
+            <code>    };</code>
+            <code>});</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Asynchronous Module Definition</h2>
+        <pre>
+            <code>define('B', ['A'], function (A) {</code>
+            <code>    var name = 'B'; <mark class="comment">// приватная переменная</mark></code>
+            <code>    return {</code>
+            <code>        say: function () { <mark class="comment">// публичный метод</mark></code>
+            <code>            A.say(); <mark class="comment">// вызов публичного метода модуля A</mark></code>
+            <code>            alert(name);</code>
+            <code>        }</code>
+            <code>    …</code>
+        </pre>
+    </div></section>
+
     <section class="slide cover w white"><div>
         <img src="../pics/backbone.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Backbone</h2>
+        <pre>
+            <code>МОДЕЛИ <mark class="comment"> // models</mark></code>
+            <code>КОЛЛЕКЦИИ <mark class="comment">// collections</mark></code>
+            <code>ПРЕДСТАВЛЕНИЯ <mark class="comment"> // view</mark></code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Backbone.Events</code></h2>
+        <pre>
+            <code>var object = {};</code>
+            <code>_.extend(object, Backbone.Events);</code>
+            <code>object.on("alert", function (msg) {</code>
+            <code>    alert("Triggered " + msg);</code>
+            <code>});</code>
+            <code>object.trigger("alert", "an event");</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Backbone.Model</code></h2>
+        <pre>
+            <code>var PlayerModel = Backbone.Model.extend({});</code>
+            <code>var player = new PlayerModel();</code>
+            <code>player.on('change:name', function(model, name) {</code>
+            <code>    alert('Player name is ' + name);</code>
+            <code>});</code>
+            <code>player.set({name: 'Mark'});</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Backbone.View</code></h2>
+        <pre>
+            <code>var PlayerView = Backbone.View.extend({</code>
+            <code>    tagName: "li",</code>
+            <code>    className: "score__item",</code>
+            <code>    template: fest['player'],</code>
+            <code>    …</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Backbone.View</code></h2>
+        <pre>
+            <code>    …</code>
+            <code>    events: {</code>
+            <code>        "click .button_delete": "destroy"</code>
+            <code>    },</code>
+            <code>    destroy: function () {},</code>
+            <code>    …</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Backbone.View</code></h2>
+        <pre>
+            <code>    …</code>
+            <code>    initialize: function () {</code>
+            <code>        this.listenTo(this.model, "change", this.render);</code>
+            <code>    },</code>
+
+            <code>    render: function () {</code>
+            <code>        this.$el.html(this.template(this.model.attributes));</code>
+            <code>    }</code>
+            <code>});</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Backbone.View</code></h2>
+        <pre>
+            <code>var playerView = new PlayerView({</code>
+            <code>        model: player,</code>
+            <code>        id: "player-" + player.id</code>
+            <code>    });</code>
+        </pre>
+    </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/prototype-scheme.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Uniform resource locator</h2>
+        <pre>
+            <code>scheme://domain:port/path?query_string<mark>#fragment_id</mark></code>
+        </pre>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Событие <code>hashchange</code></h2>
+        <pre>
+            <code>Backbone.history.start();</code>
+        </pre>
+     </div></section>
+
+    <section class="slide cover w white"><div>
+        <img src="../pics/requirejs.png" alt="" />
     </div></section>
 
     <div class="progress"><div></div></div>
