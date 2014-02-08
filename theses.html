@@ -767,9 +767,9 @@ player.set({name: <span class="string">'Mark'</span>});</code></pre>
         <span class="string">'game'</span>: <span class="string">'gameAction'</span>,
         <span class="string">'*default'</span>: <span class="string">'defaultActions'</span>
     },
-    defaultActions: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>},
     scoreboardAction: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>},
-    gameAction: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>}
+    gameAction: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>},
+    defaultActions: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>}
 });
 
 <span class="keyword">new</span> Router();</code></pre>
@@ -801,16 +801,16 @@ player.set({name: <span class="string">'Mark'</span>});</code></pre>
 <p>Дело за малым — настроить роутинг, реализовать представления, коллекции и модели. Это будет вашим домашним заданием. Мы подготовили структуру проекта, определили все модули-пустышки, необходимые для запуска веб-приложения. Для этого вам потребуется к репозиторию вашего проекта добавить репозиторий <a href="https://github.com/eprev/frontend-stub/">github.com/eprev/frontend-stub/</a> и влить содержимое ветки v2:</p>
 <pre><code class="lang-bash">$ git remote add tp https://github.com/eprev/frontend-stub.git
 $ git fetch tp
-$ git merge tp/v1</code></pre>
+$ git merge tp/v2</code></pre>
 <h3 id="-">Домашнее задание</h3>
 <ol>
 <li>Самостоятельно изучить документацию Underscore, Backbone и RequireJS.</li>
-<li>Подключить к репозиторию проектной работы <a href="https://github.com/eprev/frontend-stub">github.com/eprev/frontend-stub</a> и объединить содержимое своего проекта с содержимым ветки <a href="https://github.com/eprev/frontend-stub/tree/v2">v2</a>.</li>
 <li>Доработать прототип в соотвествии техническому заданию.</li>
 </ol>
 <h3 id="-">Техническое задание</h3>
 <ol>
-<li><p>Модель игрока должна состояить из следующих атрибутов:</p>
+<li>Необходимо доработать прототип первого домашнего задания в соотвествии с организацеий <a href="https://github.com/eprev/frontend-stub/tree/v2">frontend-stub/v2</a> (Grunt, Backbone, RequireJS, Fest). Достаточно подключить к репозиторию проектной работы <a href="https://github.com/eprev/frontend-stub">github.com/eprev/frontend-stub</a> и объединить содержимое своего проекта с содержимым ветки v2.</li>
+<li><p>Модель игрока должна состоять из следующих атрибутов:</p>
 <ul>
 <li><code>name</code> – имя игрока (значение по умолчанию: <code>&#39;&#39;</code>)</li>
 <li><code>score</code> – количество очков (значение по умолчанию: <code>0</code>)</li>

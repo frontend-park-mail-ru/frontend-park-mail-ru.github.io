@@ -327,7 +327,8 @@
         <pre>
             <code>СФОРМИРОВАТЬ ИДЕЮ ИГРЫ</code>
             <code>ОПРЕДЕЛИТЬСЯ С ГРУППОЙ И РОЛЯМИ В НЕЙ</code>
-            <code>СОЗДАТЬ ПРОТОТИП ВЕБ-ПРИЛОЖЕНИЯ</code>
+            <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ GRUNT, FEST И JQUERY</code>
+            <code>СОЗДАТЬ ПРОТОТИП ВЕБ-ПРИЛОЖЕНИЯ ПО ТЗ</code>
         </pre>
      </div></section>
 
@@ -661,9 +662,95 @@
         </pre>
      </div></section>
 
+    <section class="slide"><div>
+        <h2><code>Backbone.Router</code></h2>
+        <pre>
+            <code>var Router = Backbone.Router.extend({</code>
+            <code>    routes: {</code>
+            <code>        'scoreboard': 'scoreboardAction',</code>
+            <code>        'game'      : 'gameAction',</code>
+            <code>        '*default'  : 'defaultActions'</code>
+            <code>    },</code>
+            <code>    scoreboardAction: function () {},</code>
+            <code>    …</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Backbone.Router</code></h2>
+        <pre>
+            <code>    …</code>
+            <code>    gameAction: function () {},</code>
+            <code>    defaultActions: function () {}</code>
+            <code>});</code>
+            <code>new Router();</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>grunt-fest</code>’s options</h2>
+        <pre>
+            <code>template: function (data) {</code>
+            <code>    return grunt.template.process(</code>
+            <code>        <mark class="comment">/* 'var <%= name %>Tmpl = <%= contents %> ;' */</mark></code>
+            <code>        'define(function () { return <%= contents %> ; });',</code>
+            <code>        {data: data}</code>
+            <code>    );</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
     <section class="slide cover w white"><div>
         <img src="../pics/requirejs.png" alt="" />
     </div></section>
+
+    <section class="slide"><div>
+        <h2>Подлючение JavaScript файлов</h2>
+        <pre>
+            <code>&lt;script src="/js/lib/jquery.js"&gt;&lt;/script&gt;</code>
+            <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
+            <code>&lt;script src="/js/tmpl/scoreboard.js"&gt;&lt;/script&gt;</code>
+            <code>&lt;script src="/js/tmpl/game.js"&gt;&lt;/script&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Подлючение JavaScript файлов (RequireJS)</h2>
+        <pre>
+            <code>&lt;script data-main="js/main"</code>
+            <code>     src="js/lib/require.js"&gt;&lt;/script&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>js/main.js</code></h2>
+        <pre>
+            <code>…</code>
+            <code>define([</code>
+            <code>    'router'</code>
+            <code>], function () {</code>
+            <code>    Backbone.history.start();</code>
+            <code>});</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Подготовка</h2>
+        <pre>
+            <code>$ git remote add tp \</code>
+            <code>→ https://github.com/eprev/frontend-stub.git</code>
+            <code class="next">$ git fetch tp</code>
+            <code class="next">$ git merge tp/v2</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Домашнее задание</h2>
+        <pre>
+            <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ UNDERSCORE, BACKBONE И REQUIREJS</code>
+            <code>ДОРАБОТАТЬ ПРОТОТИП ПО ТЗ</code>
+        </pre>
+     </div></section>
 
     <div class="progress"><div></div></div>
     <script src="../shower/shower.min.js"></script>
