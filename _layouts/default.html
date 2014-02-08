@@ -1,0 +1,24 @@
+<!DOCTYPE  html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% if page.title %}
+            <title>{{ page.title }} — {{ site.title }}</title>
+        {% else %}
+            <title>{{ site.title }}</title>
+        {% endif %}
+        {% if page.description %}
+            <meta name="description" content="{{ page.description }}"/>
+        {% else %}
+            <meta name="description" content="{{ site.description }}"/>
+        {% endif %}
+        <link href='/main.css' rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <div id="page">
+            {{ content }}
+        </div>
+        <script src="/highlight.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>

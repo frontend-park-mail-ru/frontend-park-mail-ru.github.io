@@ -1,0 +1,292 @@
+/* Exo-2 */
+@font-face {
+    font-family: 'Exo-2';
+    src: url('/fonts/Exo-2.woff') format('woff');
+}
+@font-face {
+    font-family: 'Exo-2';
+    src: url('/fonts/Exo-2.Italic.woff') format('woff');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Exo-2';
+    src: url('/fonts/Exo-2.Bold.woff') format('woff');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Exo-2';
+    src: url('/fonts/Exo-2.Bold.Italic.woff') format('woff');
+    font-weight: bold;
+    font-style:italic;
+}
+
+/* Open Sans */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans.woff') format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans.Italic.woff') format('woff');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans.Bold.woff') format('woff');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans.Bold.Italic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Anka Coder */
+@font-face {
+    font-family: 'Anka Coder';
+    src: url('/fonts/Anka.Coder.woff') format('woff');
+}
+@font-face {
+    font-family: 'Anka Coder';
+    src: url('/fonts/Anka.Coder.Italic.woff') format('woff');
+    font-style:italic;
+}
+@font-face {
+    font-family: 'Anka Coder';
+    src: url('/fonts/Anka.Coder.Bold.woff') format('woff');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Anka Coder';
+    src: url('/fonts/Anka.Coder.Bold.Italic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Layout */
+
+html {
+    background: #fff;
+}
+
+#page {
+    max-width: 768px;
+    margin: auto;
+}
+
+/* Typography */
+
+body {
+    margin: 0;
+    padding: 26px;
+    font-family: Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 26px
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 26px;
+    text-rendering: optimizeLegibility;
+    page-break-inside: avoid;
+    font-weight: 400
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 52px;
+    text-transform: uppercase
+}
+
+h2 {
+    font-size: 32px
+}
+
+h2, h3 {
+    line-height: 52px
+}
+
+h3 {
+    font-size: 27px
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 26px
+}
+
+h5 {
+    font-size: 21px
+}
+
+h5, h6 {
+    line-height: 26px
+}
+
+h6 {
+    font-size: 18px
+}
+
+ul, ol, pre, blockquote {
+    margin: 26px 0
+}
+
+blockquote {
+    font-style: italic;
+    border-left: 4px solid #d6d6d6;
+    padding-left: 1em
+}
+
+ul {
+    list-style-position: outside
+}
+
+p {
+    margin: 26px 0;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto
+}
+
+code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 18px;
+    line-height: 1
+}
+
+abbr {
+    letter-spacing: .1em
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid #555
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Hightlight.js */
+
+pre code {
+    display: block;
+    background: #fafafa;
+    padding: 18px;
+    line-height: 26px;
+    /*word-wrap: break-word;*/
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+pre code,
+pre .subst,
+pre .tag .title,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .nginx .title {
+    color: inherit;
+}
+
+pre .string,
+pre .title,
+pre .constant,
+pre .parent,
+pre .tag .value,
+pre .rules .value,
+pre .rules .value .number,
+pre .preprocessor,
+pre .ruby .symbol,
+pre .ruby .symbol .string,
+pre .aggregate,
+pre .template_tag,
+pre .django .variable,
+pre .smalltalk .class,
+pre .addition,
+pre .flow,
+pre .stream,
+pre .bash .variable,
+pre .apache .tag,
+pre .apache .cbracket,
+pre .tex .command,
+pre .tex .special,
+pre .erlang_repl .function_or_atom,
+pre .markdown .header {
+    color: #54a650;
+}
+
+pre .comment,
+pre .annotation,
+pre .template_comment,
+pre .diff .header,
+pre .chunk,
+pre .markdown .blockquote {
+    color: #999;
+}
+
+pre .number,
+pre .date,
+pre .regexp,
+pre .literal,
+pre .smalltalk .symbol,
+pre .smalltalk .char,
+pre .go .constant,
+pre .change,
+pre .markdown .bullet,
+pre .markdown .link_url {
+    color: #009ad8;
+}
+
+pre .label,
+pre .javadoc,
+pre .ruby .string,
+pre .decorator,
+pre .filter .argument,
+pre .localvars,
+pre .array,
+pre .attr_selector,
+pre .important,
+pre .pseudo,
+pre .pi,
+pre .doctype,
+pre .deletion,
+pre .envvar,
+pre .shebang,
+pre .apache .sqbracket,
+pre .nginx .built_in,
+pre .tex .formula,
+pre .erlang_repl .reserved,
+pre .prompt,
+pre .markdown .link_label,
+pre .vhdl .attribute,
+pre .clojure .attribute,
+pre .coffeescript .property {
+    color: #88F
+}
+
+pre .keyword,
+pre .id,
+pre .phpdoc,
+pre .title,
+pre .built_in,
+pre .aggregate,
+pre .css .tag,
+pre .javadoctag,
+pre .phpdoc,
+pre .yardoctag,
+pre .smalltalk .class,
+pre .winutils,
+pre .bash .variable,
+pre .apache .tag,
+pre .go .typename,
+pre .tex .command,
+pre .markdown .strong,
+pre .request,
+pre .status {
+    color: #666;
+}
+
+pre .function .title {
+    color: #c83411;
+}
