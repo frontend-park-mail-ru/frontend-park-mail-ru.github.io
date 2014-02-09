@@ -3,8 +3,6 @@ layout: default
 title: Архитектура
 ---
 
-{::options auto_ids="false" /}
-
 [ГЛАВНАЯ](/)
 
 # 1 Архитектура
