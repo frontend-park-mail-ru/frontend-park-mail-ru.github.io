@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 0;
+            padding: 48px;
+            background: #f9f9f9;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        .a, .b, .c, .d, .e, .f {
+            display: block;
+            padding: 48px;
+        }
+        .f {
+            background: purple;
+        }
+        .e {
+            background: blue;
+        }
+        .d {
+            background: green;
+        }
+        .c {
+            background: yellow;
+        }
+        .b {
+            background: orange;
+        }
+        .a {
+            background: red;
+        }
+
+    </style>
+</head><body class="body">
+    <div class="a">
+        <div class="b">
+            <div class="c">
+                <div class="d">
+                    <div class="e">
+                        <div class="f"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        document.querySelector('body').addEventListener('click', function (e) {
+            console.clear();
+        }, true);
+
+        function capture(e) {
+            console.log('%c↓' + e.currentTarget.className, 'color: red; font-weight: bold; font-size: 24px; font-family: courier');
+        }
+
+        function bubble(e) {
+            console.log('%c↑' + e.currentTarget.className, 'color: green; font-weight: bold; font-size: 24px; font-family: courier');
+        }
+
+        var selectors = ['body', '.a', '.b', '.c', '.d', '.e', '.f'];
+        for (var i in selectors) {
+            document.querySelector(selectors[i]).addEventListener('click', capture, true);
+            document.querySelector(selectors[i]).addEventListener('click', bubble);
+        }
+
+        // document.querySelector('.c').addEventListener('click', function (e) {
+        //     e.stopImmediatePropagation();
+        // }, true);
+
+    </script>
+</body></html>
