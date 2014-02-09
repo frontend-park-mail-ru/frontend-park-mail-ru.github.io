@@ -33,11 +33,11 @@ html {
 }
 
 body {
-    padding: 26px 8px;
+    padding: 0 8px 26px;
 }
 
 #page {
-    max-width: 742px;
+    max-width: 724px;
     margin: auto;
 }
 
