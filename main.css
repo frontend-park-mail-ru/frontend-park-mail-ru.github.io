@@ -1,88 +1,69 @@
-/* Exo-2 */
-@font-face {
-    font-family: 'Exo-2';
-    src: url('/fonts/Exo-2.woff') format('woff');
-}
-@font-face {
-    font-family: 'Exo-2';
-    src: url('/fonts/Exo-2.Italic.woff') format('woff');
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Exo-2';
-    src: url('/fonts/Exo-2.Bold.woff') format('woff');
-    font-weight: bold;
-}
-@font-face {
-    font-family: 'Exo-2';
-    src: url('/fonts/Exo-2.Bold.Italic.woff') format('woff');
-    font-weight: bold;
-    font-style:italic;
-}
+/* PT Serif */
 
-/* Open Sans */
 @font-face {
-    font-family: 'Open Sans';
-    src: url('/fonts/OpenSans.woff') format('woff');
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 400;
+    src: local('PT Serif'), local('PTSerif-Regular'), url(/fonts/pt-serif_regular.woff) format('woff');
 }
 @font-face {
-    font-family: 'Open Sans';
-    src: url('/fonts/OpenSans.Italic.woff') format('woff');
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 700;
+    src: local('PT Serif Bold'), local('PTSerif-Bold'), url(/fonts/pt-serif_bold.woff) format('woff');
+}
+@font-face {
+    font-family: 'PT Serif';
     font-style: italic;
+    font-weight: 400;
+    src: local('PT Serif Italic'), local('PTSerif-Italic'), url(/fonts/pt-serif_italic.woff) format('woff');
 }
 @font-face {
-    font-family: 'Open Sans';
-    src: url('/fonts/OpenSans.Bold.woff') format('woff');
-    font-weight: bold;
-}
-@font-face {
-    font-family: 'Open Sans';
-    src: url('/fonts/OpenSans.Bold.Italic.woff') format('woff');
-    font-weight: bold;
+    font-family: 'PT Serif';
     font-style: italic;
-}
-
-/* Anka Coder */
-@font-face {
-    font-family: 'Anka Coder';
-    src: url('/fonts/Anka.Coder.woff') format('woff');
-}
-@font-face {
-    font-family: 'Anka Coder';
-    src: url('/fonts/Anka.Coder.Italic.woff') format('woff');
-    font-style:italic;
-}
-@font-face {
-    font-family: 'Anka Coder';
-    src: url('/fonts/Anka.Coder.Bold.woff') format('woff');
-    font-weight: bold;
-}
-@font-face {
-    font-family: 'Anka Coder';
-    src: url('/fonts/Anka.Coder.Bold.Italic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
+    font-weight: 700;
+    src: local('PT Serif Bold Italic'), local('PTSerif-BoldItalic'), url(/fonts/pt-serif_bold-italic.woff) format('woff');
 }
 
 /* Layout */
 
 html {
     background: #fff;
+    color: #000;
+}
+
+body {
+    padding: 26px 8px;
 }
 
 #page {
-    max-width: 768px;
+    max-width: 742px;
     margin: auto;
+}
+
+#tp {
+    display: block;
+    margin: 52px auto;
+}
+
+#footer {
+    text-align: center;
+}
+
+.toc {
+    padding-left: 26px;
 }
 
 /* Typography */
 
 body {
     margin: 0;
-    padding: 26px;
-    font-family: Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+    font-family: 'PT Serif', serif;
     font-size: 18px;
-    line-height: 26px
+    line-height: 26px;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 26px;
@@ -136,8 +117,8 @@ blockquote {
     padding-left: 1em
 }
 
-ul {
-    list-style-position: outside
+ul, ol {
+    list-style-position: outside;
 }
 
 p {
@@ -161,7 +142,11 @@ abbr {
 
 a {
     text-decoration: none;
-    border-bottom: 1px solid #555
+    border-bottom: 1px solid #999
+}
+
+:link, :visited {
+    color: #666;
 }
 
 img {

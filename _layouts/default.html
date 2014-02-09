@@ -1,5 +1,5 @@
 <!DOCTYPE  html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="utf-8" />
         {% if page.title %}
@@ -12,11 +12,13 @@
         {% else %}
             <meta name="description" content="{{ site.description }}"/>
         {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href='/main.css' rel='stylesheet' type='text/css' />
     </head>
     <body>
         <div id="page">
             {{ content }}
+            <div id="footer">✢ ✢ ✢</div>
         </div>
         <script src="/highlight.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
