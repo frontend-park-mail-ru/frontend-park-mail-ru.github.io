@@ -64,14 +64,30 @@
 
     <section class="slide"><div>
         <h2>Критерии оценки</h2>
-        <ol>
-            <li>Соответствие результата предъявляемым требованиям.</li>
-            <li>Оптимальность предлагаемого решения.</li>
-            <li>Практичность решения.</li>
-            <li>Качество оформления результатов работы.</li>
-            <li>Доказательность аргументации при защите работы.</li>
-        </ol>
+        <pre>
+            <code>СООТВЕТСТВИЕ РЕЗУЛЬТАТА ПРЕДЪЯВЛЯЕМЫМ ТРЕБОВАНИЯМ</code>
+            <code>ОПТИМАЛЬНОСТЬ ПРЕДЛАГАЕМОГО РЕШЕНИЯ</code>
+            <code>ПРАКТИЧНОСТЬ РЕШЕНИЯ</code>
+            <code>КАЧЕСТВО ОФОРМЛЕНИЯ РЕЗУЛЬТАТОВ РАБОТЫ</code>
+            <code>ДОКАЗАТЕЛЬНОСТЬ АРГУМЕНТАЦИИ ПРИ ЗАЩИТЕ РАБОТЫ</code>
+        </pre>
     </div></section>
+
+    <section class="slide"><div>
+        <h2>Итоговая оценка</h2>
+        <pre>
+            <code> 0 &lt;= "НЕУДОВЛЕТВОРИТЕЛЬНО" &lt;= 59</code>
+            <code>60 &lt;= "УДОВЛЕТВОРИТЕЛЬНО" &lt;= 74</code>
+            <code>75 &lt;= "ХОРОШО" &lt;= 89</code>
+            <code>90 &lt;= "ОТЛИЧНО" &lt;= 100</code>
+        </pre>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            tp.eprev.org/p/1
+        </h2>
+     </div></section>
 
     <section class="slide cover h"><div>
         <img src="/pics/nodejs-dark.png" alt="" />
@@ -114,7 +130,7 @@
             <code class="next">$ npm init</code>
             <code class="next">$ cat package.json</code>
             <code class="next">$ npm install grunt-cli -g</code>
-            <code class="next">$ npm grunt grunt-contrib-connect --save-dev</code>
+            <code class="next">$ npm install grunt grunt-contrib-connect --save-dev</code>
             <code class="next">$ vim Gruntfile.js</code>
         </pre>
     </div></section>
@@ -192,9 +208,18 @@
             <code><mark>&lt;fest:template xmlns:fest="http://fest.mail.ru"</mark></code>
             <code>    <mark>context_name="json"&gt;</mark></code>
             <code>    &lt;div&gt;</code>
-            <code>        &lt;a href="…"&gt;…&lt;/a&gt;</code>
+            <code>        &lt;h1&gt;Epic Game&lt;/h1&gt;</code>
             <code>    &lt;/div&gt;</code>
             <code><mark>&lt;/fest:template&gt;</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Fest</h2>
+        <pre>
+            <code>$ vim templates/main.xml</code>
+            <code>$ vim templates/scoreboard.xml</code>
+            <code>$ vim templates/game.xml</code>
         </pre>
     </div></section>
 
@@ -233,6 +258,16 @@
             <code>        {data: data}</code>
             <code>    );</code>
             <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Grunt</h2>
+        <pre>
+            <code>$ grunt fest</code>
+            <code>$ cat public/js/tmpl/main.js</code>
+            <code>$ cat public/js/tmpl/scoreboard.js</code>
+            <code>$ cat public/js/tmpl/game.js</code>
         </pre>
     </div></section>
 
@@ -283,6 +318,18 @@
 
     <section class="slide cover w white"><div>
         <img src="/pics/jquery.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>JavaScript</h2>
+        <pre>
+            <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
+            <code>…</code>
+            <code>&lt;script&gt;</code>
+            <code>    var $page = $('#page');</code>
+            <code>    $page.html(mainTmpl()); <mark class="comment">// Рендерим шаблон</mark></code>
+            <code>&lt;/script&gt;</code>
+        </pre>
     </div></section>
 
     <section class="slide"><div>

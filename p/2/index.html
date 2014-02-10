@@ -26,6 +26,10 @@
      </div></section>
 
     <section class="slide"><div>
+        <h2>Host objects</h2>
+    </div></section>
+
+    <section class="slide"><div>
         <h2>Document Object Model (DOM)</h2>
         <ol>
             <li>DOM Core: Node, Element, Document, Event…</li>
@@ -35,6 +39,168 @@
             <a href="https://developer.mozilla.org/en-US/docs/DOM/DOM_Reference">DOM Reference</a>
         </p>
     </div></section>
+
+    <section class="slide"><div>
+        <h2><code>Node</code></h2>
+        <pre>
+            <code>element.nodeType</code>
+            <code>element.tagName</code>
+            <code>element.nodeValue</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Обход дерева</h2>
+        <pre>
+            <code>element.previousSibling || element.nextSibling</code>
+            <code class="next">element.firstChild || element.lastChild</code>
+            <code class="next">element.parentNode</code>
+            <code class="next">element.childNodes</code>
+            <code class="next">element.children</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Поиск элемента</h2>
+        <pre>
+            <code>document.getElementById <mark class="comment">/* element */</mark></code>
+            <code class="next">element.getElementsByTagName <mark class="comment">/* HTMLCollection */</mark></code>
+            <code class="next">element.getElementsByClassName <mark class="comment">/* HTMLCollection */</mark></code>
+            <code class="next">element.querySelector <mark class="comment">/* element */</mark></code>
+            <code class="next">element.querySelectorAll <mark class="comment">/* elementList */</mark></code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>HTMLCollection</code> (live-<code>NodeList</code>)</h2>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Модификация узла</h2>
+        <pre>
+            <code>element.className = "" <mark class="comment">/* id, style */</mark></code>
+            <code class="next">element.getAttribute("class")</code>
+            <code class="next">element.setAttribute("class", className)</code>
+            <code class="next">element.hasAttribute("class")</code>
+            <code class="next">element.removeAttribute("class")</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Модификация дерева</h2>
+        <pre>
+            <code>document.createElement("div")</code>
+            <code class="next">parent.appendChild(child)</code>
+            <code class="next">parent.insertBefore(child)</code>
+            <code class="next">parent.removeChild(child)</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Events</h2>
+        <pre>
+            <code><mark class="comment">/* CAPTURING &AMP; BUBLING */</mark></code>
+            <code class="next">element.addEventListener</code>
+            <code class="next">element.removeEventListener</code>
+        </pre>
+        <!-- Демо -->
+        <!-- https://developer.mozilla.org/en-US/docs/Web/API/Event -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Свойства события</h2>
+        <pre>
+            <code>event.type</code>
+            <code>event.target</code>
+            <code>event.curentTarget</code>
+            <code>event.preventDefault()</code>
+            <code>event.stopPropogation()</code>
+            <code>event.stopImmediatePropagation()</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Event delegation</h2>
+    </div></section>
+
+
+    <section class="slide"><div>
+        <h2>Кто бросает события?</h2>
+        <pre>
+            <code>element</code>
+            <code class="next">document</code>
+            <code class="next">window</code>
+            <code class="next">XMLHttpRequest</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Input device events</h2>
+        <pre>
+            <code>click || dblclick</code>
+            <code>contextmenu</code>
+            <code>keydown || keyup || keypress</code>
+            <code>mousein || mouseout || mousemove</code>
+            <code>mouseenter || mouseleave</code>
+            <code>mousedown || mouseup</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Form events</h2>
+        <pre>
+            <code>reset</code>
+            <code>submit</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Focus events</h2>
+        <pre>
+            <code>focus</code>
+            <code>blur</code>
+            <code>change</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Document events</h2>
+        <pre>
+            <code>load || unload</code>
+            <code>DOMContentLoaded</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Window events</h2>
+        <pre>
+            <code>hashchange</code>
+            <code>resize</code>
+        </pre>
+        <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Домашнее задание</h2>
+        <pre>
+            <code>РЕАЛИЗАЦИЯ ИГРОВОЙ МЕХАНИКИ</code>
+            <code>ДОРАБОТАТЬ ПРОТОТИП ПО ТЗ</code>
+        </pre>
+     </div></section>
 
     <div class="progress"><div></div></div>
     <script src="/shower/shower.min.js"></script>
