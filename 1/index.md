@@ -28,13 +28,11 @@ title: Архитектура
 1.2.4 [Техническое задание](#1.2.4)
 {:.toc}
 
-<a name="1.1"></a>
-
 ## 1.1 Знакомство, инструменты, настройка окружения
-
-<a name="1.1.1"></a>
+{: id="1.1"}
 
 ### 1.1.1 Полезные ресурсы
+{: id="1.1.1"}
 
 1. Scott Chacon. [Pro Git](http://git-scm.com/book) // 2009.
 2. [Grunt: Getting started](http://gruntjs.com/getting-started) // 2013.
