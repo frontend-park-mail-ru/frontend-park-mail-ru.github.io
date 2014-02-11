@@ -337,6 +337,19 @@
         </pre>
     </div></section>
 
+    <section class="slide"><div>
+        <h2><code>grunt-contrib-connect</code></h2>
+        <pre>
+            <code>server: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>    options: {</code>
+            <code>        <del>keepalive: true, <mark class="comment">/* работать постоянно */</mark></del></code>
+            <code>        port: 8000, <mark class="comment">/* номер порта */</mark></code>
+            <code>        base: 'public' <mark class="comment">/* публичная директория */</mark></code>
+            <code>    }</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
     <section class="slide cover w white"><div>
         <img src="/pics/jquery.png" alt="" />
     </div></section>
@@ -344,6 +357,7 @@
     <section class="slide"><div>
         <h2>JavaScript</h2>
         <pre>
+            <code>&lt;script src="/js/lib/jquery.js"&gt;&lt;/script&gt;</code>
             <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
             <code>…</code>
             <code>&lt;script&gt;</code>
