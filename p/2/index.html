@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="/shower/themes/bright/styles/screen.css">
+    <style>
+        .slide.cover.white {
+            background: #fff;
+        }
+    </style>
 </head>
 <body class="list">
     <header class="caption">
@@ -26,11 +31,58 @@
      </div></section>
 
     <section class="slide"><div>
-        <h2>Host objects</h2>
+        <h2>Native objects</h2>
+        <figure>
+            <blockquote>
+                <p><strong>Native object</strong> — object in an ECMAScript implementation whose semantics are fully defined by this specification rather than by the host environment.</p>
+            </blockquote>
+            <figcaption><a href="http://es5.github.io/#x4.3.6">Section 4.3.6, ECMAScript 5.1 </a></figcaption>
+        </figure>
     </div></section>
 
     <section class="slide"><div>
-        <h2>Document Object Model (DOM)</h2>
+        <h2>Native objects</h2>
+        <pre>
+            <code>Object</code>
+            <code>Array</code>
+            <code>Date</code>
+            <code>…</code>
+            <code>Array.prototype.indexOf</code>
+            <code>String.prototype.replace</code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Host objects</h2>
+        <figure>
+            <blockquote>
+                <p><strong>Host object</strong> — object supplied by the host environment to complete the execution environment of ECMAScript.</p>
+            </blockquote>
+            <figcaption><a href="http://es5.github.io/#x4.3.8">Section 4.3.8, ECMAScript 5.1 </a></figcaption>
+        </figure>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Host objects</h2>
+        <pre>
+            <code>window</code>
+            <code>document</code>
+            <code>history</code>
+            <code>…</code>
+            <code>document.getElementById</code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            DOM
+        </h2>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Document Object Model</h2>
         <ol>
             <li>DOM Core: Node, Element, Document, Event…</li>
             <li>DOM Events</li>
@@ -43,8 +95,8 @@
     <section class="slide"><div>
         <h2><code>Node</code></h2>
         <pre>
-            <code>element.nodeType</code>
-            <code>element.tagName</code>
+            <code>element.nodeType <mark class="comment">/* 1, 3… */</mark></code>
+            <code>element.tagName <mark class="comment">/* "DIV", "A"… */</mark></code>
             <code>element.nodeValue</code>
         </pre>
         <!-- Демо -->
@@ -78,6 +130,11 @@
 
     <section class="slide"><div>
         <h2><code>HTMLCollection</code> (live-<code>NodeList</code>)</h2>
+        <pre>
+            <code>HTMLCollection.length</code>
+            <code>HTMLCollection.item(index)</code>
+            <code>HTMLCollection[index]</code>
+        </pre>
         <!-- Демо -->
     </div></section>
 
@@ -104,14 +161,25 @@
         <!-- Демо -->
     </div></section>
 
+    <section class="slide shout"><div>
+        <h2>
+            Events
+        </h2>
+     </div></section>
+
+    <section class="slide cover h white"><div>
+        <img src="/pics/event-flow.svg" alt="" />
+    </div></section>
+
     <section class="slide"><div>
         <h2>Events</h2>
         <pre>
-            <code><mark class="comment">/* CAPTURING &AMP; BUBLING */</mark></code>
-            <code class="next">element.addEventListener</code>
-            <code class="next">element.removeEventListener</code>
+            <code>element.addEventListener(type, listener[, useCapture])</code>
+            <code>element.removeEventListener(type, listener[, useCapture])</code>
         </pre>
-        <!-- Демо -->
+        <p clas="note">
+            <a href="/d/events.html">Демонстрация</a>
+        </p>
         <!-- https://developer.mozilla.org/en-US/docs/Web/API/Event -->
     </div></section>
 
@@ -119,6 +187,7 @@
         <h2>Свойства события</h2>
         <pre>
             <code>event.type</code>
+            <code>evnet.eventPhase</code>
             <code>event.target</code>
             <code>event.curentTarget</code>
             <code>event.preventDefault()</code>
@@ -127,11 +196,6 @@
         </pre>
         <!-- Демо -->
     </div></section>
-
-    <section class="slide"><div>
-        <h2>Event delegation</h2>
-    </div></section>
-
 
     <section class="slide"><div>
         <h2>Кто бросает события?</h2>
@@ -192,6 +256,18 @@
             <code>resize</code>
         </pre>
         <!-- Демо -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Event delegation</h2>
+        <pre>
+            <code>$('table').on('click', 'td', function (e) {</code>
+            <code>    alert(e.target);</code>
+            <code>});</code>
+        </pre>
+        <p clas="note">
+            <a href="/d/events.html">Демонстрация</a>
+        </p>
     </div></section>
 
     <section class="slide"><div>
