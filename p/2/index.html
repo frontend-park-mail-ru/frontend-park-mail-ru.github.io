@@ -415,7 +415,136 @@
      </div></section>
 
     <section class="slide"><div>
+        <h2>Uniform resource locator</h2>
+        <pre>
+            <code>scheme://domain:port/path?query_string#fragment_id</code>
+            <div class="next">
+                <code>location.protocol <mark class="comment">/* "scheme:" */</mark></code>
+                <code>location.hostname <mark class="comment">/* "domain" */</mark></code>
+                <code>location.port <mark class="comment">/* "port" */</mark></code>
+                <code>location.pathname <mark class="comment">/* "/path" */</mark></code>
+                <code>location.search <mark class="comment">/* "?query_string" */</mark></code>
+                <code>location.hash <mark class="comment">/* "#fragment_id" */</mark></code>
+            </div>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>HyperText Transfer Protocol</h2>
+        <pre>
+            <code>ПРОТОКОЛ ПРИКЛАДНОГО УРОВНЯ (7-ОЙ УРОВЕНЬ OSI)</code>
+            <code>КЛИЕНТ (ЗАПРОС) — СЕРВЕР (ОТВЕТ)</code>
+            <code>НЕ ХРАНИТ СОСТОЯНИЕ МЕЖДУ ЗАПРОСАМИ</code>
+            <code>ПРОСТ В РЕАЛИЗАЦИИ</code>
+            <code>РАСШИРЯЕМЫЙ</code>
+            <code>РАСПРОСТРАНЕННЫЙ</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>OSI</h2>
+        <pre>
+            <code>ФИЗИЧЕСКИЙ (СРЕДА, СИГНАЛЫ, КОДЫ)</code>
+            <code>КАНАЛЬНЫЙ (ФИЗИЧЕСКАЯ АДРЕСАЦИЯ)</code>
+            <code>СЕТЕВОЙ (ЛОГИЧЕСКАЯ АДРЕСАЦИЯ, МАРШРУТИЗАЦИЯ)</code>
+            <code>ТРАНСПОРТНЫЙ (НАДЕЖНОСТЬ)</code>
+            <code>СЕАНСОВЫЙ (СЕССИИ)</code>
+            <code>ПРЕДСТАВИТЕЛЬСКИЙ (СЖАТИЕ, ШИФРОВАНИЕ)</code>
+            <code>ПРИКЛАДНОЙ (ДОСТУП К ДАННЫМ)</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
         <h2>HTTP</h2>
+        <pre>
+            <code>1991 HTTP/0.9</code>
+            <code>1996 HTTP/1.0</code>
+            <code>1999 HTTP/1.1</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Структура протокола</h2>
+        <pre>
+            <code>СТАРТОВАЯ СТРОКА <mark class="comment">// &gt;= HTTP/0.9</mark></code>
+            <code>ЗАГОЛОВКИ <mark class="comment">// &gt;= HTTP/1.0</mark></code>
+            <code>ТЕЛО СООБЩЕНИЯ <mark class="comment">// &gt;= HTTP/1.0</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>http://mail.ru/</h2>
+        <pre>
+            <code>GET / HTTP/1.1</code>
+            <code>Host: mail.ru</code>
+            <code>Accept: text/html,application/xhtml+xml,…</code>
+            <code>Connection: keep-alive</code>
+            <code>Accept-Encoding: gzip,deflate,sdch</code>
+            <code>Accept-Language: en-US,en;q=0.8,ru;q=0.6</code>
+            <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <pre>
+            <code>HTTP/1.1 200 OK</code>
+            <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+            <code>Server: Apache/1.3.27 (Unix) …</code>
+            <code>Content-Encoding: gzip</code>
+            <code>Connection: close</code>
+            <code>Cache-Control: no-cache,no-store,must-revalidate</code>
+            <code>Content-Length: 50316</code>
+            <code>Content-Type: text/html; charset=utf-8</code>
+            <code> </code>
+            <code>&lt;!DOCTYPE html&gt;…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Методы</h2>
+        <pre>
+            <code>GET <mark class="comment">// ЗАПРОС ДАННЫХ</mark></code>
+            <code>POST <mark class="comment">// ПЕРЕДАЧА ДАННЫХ</mark></code>
+            <code>PUT <mark class="comment">// ЗАГРУЗКА СОДЕРЖИМОГО ЗАПРОСА</mark></code>
+            <code>DELETE <mark class="comment">// УДАЛЕНИЕ РЕСУРСА</mark></code>
+            <code>HEAD <mark class="comment">// ПОЛУЧЕНИЕ ТОЛЬКО ЗАГОЛОВКОВ</mark></code>
+            <code>OPTIONS <mark class="comment">// ОПРЕДЕЛЕНИЕ ВОЗМОЖНОСТЕЙ СЕРВЕРА</mark></code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Коды ответов</h2>
+        <pre>
+            <code>ИНФОРМАЦИОННЫЕ <mark class="comment">// 1xx</mark></code>
+            <code>УСПЕШНЫЕ <mark class="comment">// 2xx</mark></code>
+            <code>ПЕРЕНАПРАВЛЕНИЕ <mark class="comment">// 3xx</mark></code>
+            <code>ОШИБКА КЛИЕНТА <mark class="comment">// 4xx</mark></code>
+            <code>ОШИБКА СЕРВЕРА <mark class="comment">// 5xx</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <pre>
+            <code>200 <mark class="comment">// OK</mark></code>
+            <code>301 <mark class="comment">// Moved Permanently</mark></code>
+            <code>302 <mark class="comment">// Moved Temporarily</mark></code>
+            <code>304 <mark class="comment">// Not Modified</mark></code>
+            <code>400 <mark class="comment">// Bad Request</mark></code>
+            <code>401 <mark class="comment">// Unauthorized</mark></code>
+            <code>404 <mark class="comment">// Not Found</mark></code>
+            <code>405 <mark class="comment">// Method Not Allowed</mark></code>
+            <code>414 <mark class="comment">// Request-URI Too Large</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <pre>
+            <code>500 <mark class="comment">// Internal Server Error</mark></code>
+            <code>502 <mark class="comment">// Bad Gateway</mark></code>
+            <code>503 <mark class="comment">// Service Unavailable</mark></code>
+            <code>504 <mark class="comment">// Gateway Timeout</mark></code>
+        </pre>
     </div></section>
 
     <section class="slide"><div>
