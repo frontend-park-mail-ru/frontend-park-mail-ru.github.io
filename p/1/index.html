@@ -421,6 +421,18 @@
      </div></section>
 
     <section class="slide"><div>
+        <h2><code>window</code></h2>
+        <pre>
+            <code>function quz() {</code>
+            <code>    foo = {}; <mark class="comment">/* глобальная переменная */</mark></code>
+            <code>    window.foo === foo; <mark class="comment">/* true */</mark></code>
+            <code>    var bar = {}; <mark class="comment">/* локальная переменная */</mark></code>
+            <code>    window.bar === bar; <mark class="comment">/* false */</mark></code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
         <h2>Immediately-Invoked Function Expression, IIFE</h2>
         <pre>
             <code>var foo = 1;</code>
@@ -459,7 +471,7 @@
         <pre>
             <code>УРОВЕНЬ БИБЛИОТЕК.</code>
             <code>УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ.</code>
-            <code>УРОВЕНЬ МОДЕЛЕЙ.</code>
+            <code>УРОВЕНЬ МОДУЛЕЙ.</code>
         </pre>
      </div></section>
 
@@ -511,6 +523,17 @@
 
     <section class="slide cover w white"><div>
         <img src="/pics/email-toolbar__button.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Блоки и элементы</h2>
+        <pre>
+            <code>porta-menu <mark class="comment">/* блок portal-menu */</mark></code>
+            <code>nav <mark class="comment">/* блок nav */</mark></code>
+            <code>letters <mark class="comment">/* блок letters */</mark></code>
+            <code>toolbar <mark class="comment">/* блок toolbar */</mark></code>
+            <code>toolbar__button <mark class="comment">/* элемент button блока toolbar */</code>
+        </pre>
     </div></section>
 
     <section class="slide"><div>
@@ -586,6 +609,10 @@
         </p>
     </div></section>
 
+    <section class="slide shout"><div>
+        <h2>Веб-приложение — результат работы модулей.</h2>
+    </div></section>
+
     <section class="slide"><div>
         <h2>Устройство веб-приложения</h2>
         <pre>
@@ -593,7 +620,7 @@
             <code class="next">УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ. <mark class="comment">// Backbone</mark></code>
             <code class="next">УРОВЕНЬ БИБЛИОТЕК. <mark class="comment">// jQuery &amp; Underscore</mark></code>
         </pre>
-     </div></section>
+    </div></section>
 
     <section class="slide cover w white"><div>
         <img src="/pics/underscore.png" alt="" />
@@ -602,7 +629,7 @@
     <section class="slide"><div>
         <h2>Модуль в JavaScript</h2>
         <pre>
-            <code>var module = (function () {</code>
+            <code>var A = (function () {</code>
             <code>        var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
             <code>        return {</code>
             <code>            say: function () { <mark class="comment">// публичный метод</mark></code>
@@ -745,6 +772,21 @@
      </div></section>
 
     <section class="slide"><div>
+        <pre>
+            <code>&lt;a href="#" class="js-scoreboard"&gt;Scoreboard&lt;/a&gt;</code>
+            <code>&lt;a href="#" class="js-game"&gt;Game&lt;/a&gt;</code>
+            <code>&lt;script&gt;</code>
+            <code>    $('.js-scoreborad').on("click", function () { … });</code>
+            <code>    $('.js-game').on("click", function () { … });</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+        <pre class="next">
+            <code>&lt;a href="#scoreboard"&gt;Scoreboard&lt;/a&gt;</code>
+            <code>&lt;a href="#game"&gt;Game&lt;/a&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
         <h2><code>Backbone.Router</code></h2>
         <pre>
             <code>var Router = Backbone.Router.extend({</code>
@@ -767,6 +809,10 @@
             <code>});</code>
             <code>new Router();</code>
         </pre>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>Один модуль — один файл.</h2>
     </div></section>
 
     <section class="slide"><div>
@@ -819,8 +865,11 @@
     <section class="slide"><div>
         <h2>Подготовка</h2>
         <pre>
-            <code>$ git remote add tp \</code>
-            <code>→ https://github.com/eprev/frontend-stub.git</code>
+            <code>$ git init</code>
+            <div class="next">
+                <code>$ git remote add tp \</code>
+                <code>→ https://github.com/eprev/frontend-stub.git</code>
+            </code>
             <code class="next">$ git fetch tp</code>
             <code class="next">$ git merge tp/v2</code>
         </pre>
@@ -829,7 +878,7 @@
     <section class="slide"><div>
         <h2>Домашнее задание</h2>
         <pre>
-            <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ UNDERSCORE, BACKBONE И REQUIREJS</code>
+            <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ UNDERSCORE, BACKBONE, REQUIREJS и БЭМ.</code>
             <code>ДОРАБОТАТЬ ПРОТОТИП ПО ТЗ</code>
         </pre>
      </div></section>
