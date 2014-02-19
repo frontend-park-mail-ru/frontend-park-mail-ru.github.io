@@ -29,3 +29,18 @@ title: Преамбула
 2. [HTML5 Rocks](http://www.html5rocks.com/).
 3. [Build New Games. Open Web techniques for cutting-edge game development](http://buildnewgames.com).
 4. [DevDocs](http://devdocs.io).
+
+Примеры игры на HTML5 & JavaScript для вдохновения:
+
+1. [Atari Arcade](http://atari.com/arcade/).
+2. [30th Anniversary of PAC-MAN](https://www.google.com/doodles/30th-anniversary-of-pac-man).
+3. [Flatty Bird](http://flattybirdgame.com).
+4. [Sand Trap](http://gopherwoodstudios.com/sandtrap/sand-trap.htm).
+5. [Roll It!](http://chrome.com/campaigns/rollit) из [Chrome Experiments](http://www.chromeexperiments.com/detail/roll-it/).
+6. [Cube](http://www.playmapscube.com).
+7. [Contre Jour](http://www.contrejour.ie).
+8. [Doodle Jump](http://cssdeck.com/labs/html5-doodle-jump).
+9. [Classic Snake](http://cssdeck.com/labs/classic-snake-game-with-html5-canvas).
+10. [Ping-Pong](http://cssdeck.com/labs/ping-pong-game-tutorial-with-html5-canvas-and-sounds).
+11. [Circle Game](http://sysach.com/circle-game/).
+12. [Missile Game](http://missile-game.bwhmather.com).
