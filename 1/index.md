@@ -861,7 +861,9 @@ $ git merge tp/v2
 ### 1.2.4 Техническое задание
 {: id="1.2.4"}
 
-1. Необходимо доработать прототип первого домашнего задания в соотвествии с организацеий [frontend-stub/v2](https://github.com/eprev/frontend-stub/tree/v2) (Grunt, Backbone, RequireJS, Fest). Достаточно подключить к репозиторию проектной работы [github.com/eprev/frontend-stub](https://github.com/eprev/frontend-stub) и объединить содержимое своего проекта с содержимым ветки v2.
+Необходимо доработать прототип первого домашнего задания в соотвествии с организацеий [frontend-stub/v2](https://github.com/eprev/frontend-stub/tree/v2) (Grunt, Backbone, RequireJS, Fest). Достаточно подключить к репозиторию проектной работы [github.com/eprev/frontend-stub](https://github.com/eprev/frontend-stub) и объединить содержимое своего проекта с содержимым ветки v2.
+
+1. Должны отсутствовать JavaScript ошибки при работе веб-приложения.
 
 2. Обязательно использование БЭМ методологии в HTML и CSS.
 
