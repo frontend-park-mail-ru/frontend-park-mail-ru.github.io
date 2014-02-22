@@ -46,8 +46,6 @@ title: DOM & AJAX
 
 1. [DOM](https://developer.mozilla.org/en/docs/DOM).
 2. [Events](http://www.w3.org/TR/DOM-Level-2-Events/events.html).
-3. [Host Objects](http://es5.github.io/#x4.3.8).
-4. [Событийно-ориентированное_программирование](http://ru.wikipedia.org/wiki/Событийно-ориентированное_программирование).
 
 ### 2.1.2 Смешенное занятие
 {: id="2.1.2"}
@@ -70,9 +68,10 @@ title: DOM & AJAX
 ### 2.2.1 Полезные ресурсы
 {: id="2.2.1"}
 
-1. Tiffany Brown. [Introduction to XMLHttpRequest Level 2](http://dev.opera.com/articles/view/xhr2/) // 2012.
-2. Armin Ronacher. [Websockets 101](http://lucumr.pocoo.org/2012/9/24/websockets-101/) // 2012.
-3. [HTTP Status Codes](http://www.restapitutorial.com/httpstatuscodes.html).
+1. [List of HTTP status codes](http://en.wikipedia.org/wiki/HTTP_status_code).
+2. Mozilla Developer Network. [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
+3. Tiffany Brown. [Introduction to XMLHttpRequest Level 2](http://dev.opera.com/articles/view/xhr2/) // 2012.
+4. Armin Ronacher. [Websockets 101](http://lucumr.pocoo.org/2012/9/24/websockets-101/) // 2012.
 
 ### 2.2.2 Смешенное занятие
 {: id="2.2.2"}

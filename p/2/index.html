@@ -547,8 +547,92 @@
         </pre>
     </div></section>
 
+    <section class="slide shout"><div>
+        <h2>AJAX = Asynchronous JavaScript + XML</h2>
+    </div></section>
+
     <section class="slide"><div>
         <h2>AJAX</h2>
+        <figure>
+            <blockquote>
+                <p><strong>AJAX</strong> — подход к построению интерактивных пользовательских интерфейсов веб-приложений, заключающийся в «фоновом» обмене данными браузера с веб-сервером.</p>
+            </blockquote>
+            <figcaption><a href="http://ru.wikipedia.org/wiki/AJAX">Википедия</a></figcaption>
+        </figure>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>PROs</h2>
+        <pre>
+            <code>ЭКОНОМИЯ ТРАФИКА</code>
+            <code>СНИЖЕНИЕ НАГРУЗКИ НА СЕРВЕР-САЙД</code>
+            <code>УСКОРЕНИЕ РЕАКЦИИ ИНТЕРФЕЙСА</code>
+            <code>ИНТЕРАКТИВНЫЙ ВОЗМОЖНОСТИ</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CONs</h2>
+        <pre>
+            <code>ТРУДНОСТИ ИНДЕКСИРОВАНИЯ</code>
+            <code>УСЛОЖНЕНИЕ РАЗРАБОТКИ</code>
+            <code>ТРЕБУЕТСЯ JAVASCRIPT</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Способы</h2>
+        <pre>
+            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></code>
+            <code>JSONP</code>
+            <code>IFRAME</code>
+            <code>CORS</code>
+            <code>WebSockets</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>XMLHttpRequest</code></h2>
+        <pre>
+            <code>var xhr = new XMLHttpRequest();</code>
+            <code class="next">xhr.open("GET", "http://mail.ru/", true);</code>
+            <code class="next">xhr.send(null);</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>XMLHttpRequest</code></h2>
+        <pre>
+            <code>xhr.onreadystatechange = function (e) {</code>
+            <code>    <mark class="comment">/* e.target === xhr; */</mark></code>
+            <code>    if (xhr.readyState === 4) {</code>
+            <code>        if (xhr.status === 200) {</code>
+            <code>            alert(xhr.responseText);</code>
+            <code>        }</code>
+            <code>    }</code>
+            <code>};</code>
+        </pre>
+        <!-- DEMO -->
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>readyState</code></h2>
+        <pre>
+            <code>0 <mark class="comment">/* UNSENT — до open() */</mark></code>
+            <code>1 <mark class="comment">/* OPENED — до send() */</mark></code>
+            <code>2 <mark class="comment">/* HEADERS_RECEIVED — данные еще не получены */</mark></code>
+            <code>3 <mark class="comment">/* LOADING — данные начали поступать */</mark></code>
+            <code>4 <mark class="comment">/* DONE — данные получены */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>xhr.readyState === 4</code></h2>
+        <pre>
+            <code>xhr.status <mark class="comment">/* Number */</mark></code>
+            <code>xhr.responseText <mark class="comment">/* String */</mark></code>
+            <code>xhr.responseXML <mark class="comment">/* XMLDocument */</mark></code>
+        </pre>
     </div></section>
 
     <section class="slide"><div>
