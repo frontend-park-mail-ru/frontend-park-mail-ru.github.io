@@ -636,15 +636,176 @@
     </div></section>
 
     <section class="slide"><div>
-        <h2>IFRAME</h2>
+        <h2><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Same_origin_policy_for_JavaScript">Same-origin policy</a></h2>
+        <pre>
+            <code>https://e.mail.ru/messages/inbox/ <mark class="comment">(ORIGIN)</mark></code>
+            <code class="next">https://e.mail.ru/compose/ <mark class="comment">(SAME-ORIGIN)</mark></code>
+            <code class="next"><mark class="important">http</mark>://e.mail.ru/compose/ <mark class="comment">(CROSS-ORIGIN)</mark></code>
+            <code class="next">https://e.mail.ru:<mark class="important">8080</mark>/compose/ <mark class="comment">(CROSS-ORIGIN)</mark></code>
+            <code class="next">https://<mark class="important">news</mark>.mail.ru/ <mark class="comment">(CROSS-ORIGIN)</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><a href="http://www.json-p.org">JSONP</a></h2>
+        <pre>
+            <code>&lt;script&gt;</code>
+            <code>    function resultHnd(json) {</code>
+            <code>        <mark class="comment">/* json */</mark></code>
+            <code>    }</code>
+            <code>&lt;/script&gt;</code>
+            <div class="next">
+                <code>&lt;script src="http://example.com/users/?cb=resultHnd"&gt;</code>
+                <code>&lt;/script&gt;</code>
+            </div>
+        </pre>
     </div></section>
 
     <section class="slide"><div>
         <h2>JSONP</h2>
+        <pre>
+            <code><mark class="comment">&gt;</mark> GET /users/?cb=resultHnd HTTP/1.0</code>
+            <code><mark class="comment">&lt;</mark> resultHnd({ … });</code>
+        <div class="next">
+            <code> </code>
+            <code><mark class="comment">&gt;</mark> GET /users/?cb=resultHndN HTTP/1.0</code>
+            <code><mark class="comment">&lt;</mark> resultHndN({ … });</code>
+        </div>
+        </pre>
     </div></section>
 
     <section class="slide"><div>
-        <h2>CORS</h2>
+        <h2>IFRAME (SAME-ORIGIN)</h2>
+        <pre>
+            <code>&lt;iframe name="req" src="javascript:false"</code>
+            <code>    style="display:none"&gt;&lt;/iframe&gt;</code>
+            <div class="next">
+                <code>&lt;script&gt;</code>
+                <code>    function resultHnd(json) {</code>
+                <code>        <mark class="comment">/* json */</mark></code>
+                <code>    }</code>
+                <code>&lt;/script&gt;</code>
+            </div>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>IFRAME (SAME-ORIGIN)</h2>
+        <pre>
+            <code>&lt;form action="/ifecho" method="post" target="req"&gt;</code>
+            <code>    &lt;input type="hidden" name="cb" value="resultHnd" /&gt;</code>
+            <code>    &lt;input type="text" name="msg" value="Hello" /&gt;</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>IFRAME (SAME-ORIGIN)</h2>
+        <pre>
+            <code><mark class="comment">&gt;</mark> POST /upload HTTP/1.0</code>
+            <code><mark class="comment">&gt;</mark> …</code>
+            <code> </code>
+            <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
+            <code><mark class="comment">&lt;</mark>     window.parent.resultHnd({ … });</code>
+            <code><mark class="comment">&lt;</mark> &lt;/script&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>IFRAME (CROSS-ORIGIN)</h2>
+        <pre>
+            <code><mark class="comment">&gt;</mark> POST /upload HTTP/1.0</code>
+            <code><mark class="comment">&gt;</mark> …</code>
+            <code> </code>
+            <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
+            <code><mark class="comment">&lt;</mark>     <s>window.parent.resultHnd({ … });</s></code>
+            <code><mark class="comment">&lt;</mark> &lt;/script&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>IFRAME (CROSS-ORIGIN)</h2>
+        <pre>
+            <code><mark class="comment">&gt;</mark> POST /upload HTTP/1.0</code>
+            <code><mark class="comment">&gt;</mark> …</code>
+            <code> </code>
+            <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
+            <code><mark class="comment">&lt;</mark>     window.parent.postMessage("resultHnd:{ … }", "*");</code>
+            <code><mark class="comment">&lt;</mark> &lt;/script&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>IFRAME (CROSS-ORIGIN)</h2>
+        <pre>
+            <code>IFRAME <mark class="comment">(ДЛЯ ЗАГРУЗКИ)</mark> + </code>
+            <code>    JSONP <mark class="comment">(ДЛЯ ОТСЛЕЖИВАНИЯ СТАТУСА)</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Cross-Origin Resource Sharing</h2>
+        <pre>
+            <code><mark class="comment">/* Origin: tech-mail.ru */</mark></code>
+            <code>var xhr = new XMLHttpRequest();</code>
+            <code>xhr.onreadystatechange = function (e) { };</code>
+            <code>xhr.open("GET", "http://mail.ru/", true);</code>
+            <code>xhr.send(null);</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Cross-Origin Resource Sharing</h2>
+        <pre>
+            <code><mark class="comment">&gt;</mark> GET / HTTP/1.1</code>
+            <code><mark class="comment">&gt;</mark> Host: mail.ru</code>
+            <code><mark class="comment">&gt;</mark> Referer: http://tech-mail.ru/</code>
+            <code><mark class="comment">&gt;</mark> Origin: http://tech-mail.ru/</code>
+            <code><mark class="comment">&gt;</mark> User-Agent: Mozilla/5.0 …</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Cross-Origin Resource Sharing</h2>
+        <pre>
+            <code><mark class="comment">&lt;</mark> HTTP/1.1 200 OK</code>
+            <code><mark class="comment">&lt;</mark> Content-Type: text/html; charset=utf-8</code>
+            <code><mark class="comment">&lt;</mark> Content-Length: 201474</code>
+            <code><mark class="comment">&lt;</mark> …</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Cross-Origin Resource Sharing</h2>
+        <pre>
+            <code>XMLHttpRequest cannot load http://mail.ru/.</code>
+            <code>No 'Access-Control-Allow-Origin' header is present</code>
+            <code>on the requested resource. Origin 'http://tech-mail.ru'</code>
+            <code>is therefore not allowed access.</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Cross-Origin Resource Sharing</h2>
+        <pre>
+            <code><mark class="comment">&lt;</mark> HTTP/1.1 200 OK</code>
+            <code><mark class="comment">&lt;</mark> Access-Control-Allow-Origin: *</code>
+            <code><mark class="comment">&lt;</mark> Content-Type: text/html; charset=utf-8</code>
+            <code><mark class="comment">&lt;</mark> Content-Length: 201474</code>
+            <code><mark class="comment">&lt;</mark> …</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CORS With Credentials</h2>
+        <pre>
+            <code><mark class="comment">/* Origin: tech-mail.ru */</mark></code>
+            <code>var xhr = new XMLHttpRequest();</code>
+            <code>xhr.withCredentials = true;</code>
+            <code> </code>
+            <code><mark class="comment">&lt;</mark> Access-Control-Allow-Origin: http://tech-mail.ru</code>
+            <code><mark class="comment">&lt;</mark> Access-Control-Allow-Credentials: true</code>
+        </pre>
     </div></section>
 
     <section class="slide"><div>
