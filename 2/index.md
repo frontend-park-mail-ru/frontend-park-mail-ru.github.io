@@ -44,8 +44,12 @@ title: DOM & AJAX
 ### 2.1.1 Полезные ресурсы
 {: id="2.1.1"}
 
-1. [DOM](https://developer.mozilla.org/en/docs/DOM).
-2. [Events](http://www.w3.org/TR/DOM-Level-2-Events/events.html).
+1. Mozilla Developer Network. [Document Object Model (DOM)](https://developer.mozilla.org/en/docs/DOM).
+2. W3C. [Document Object Model Events](http://www.w3.org/TR/DOM-Level-2-Events/events.html).
+3. Mozilla Developer Network. [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
+4. Илья Кантор. [Современный учебник JavaScript](http://learn.javascript.ru) // 2013.
+5. [JSONP](http://www.json-p.org).
+
 
 ### 2.1.2 Смешенное занятие
 {: id="2.1.2"}
@@ -68,21 +72,15 @@ title: DOM & AJAX
 ### 2.2.1 Полезные ресурсы
 {: id="2.2.1"}
 
-1. [List of HTTP status codes](http://en.wikipedia.org/wiki/HTTP_status_code).
+1. Википедия. [List of HTTP status codes](http://en.wikipedia.org/wiki/HTTP_status_code).
 2. Mozilla Developer Network. [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
 3. Tiffany Brown. [Introduction to XMLHttpRequest Level 2](http://dev.opera.com/articles/view/xhr2/) // 2012.
-4. Armin Ronacher. [Websockets 101](http://lucumr.pocoo.org/2012/9/24/websockets-101/) // 2012.
+3. Armin Ronacher. [Websockets 101](http://lucumr.pocoo.org/2012/9/24/websockets-101/) // 2012.
+4. Malte Ubl, Eiji Kitamura. [Introducing WebSockets: Bringing Sockets to the Web](http://www.html5rocks.com/en/tutorials/websockets/basics/) // 2010.
+5. Илья Кантор. [WebSocket](http://learn.javascript.ru/websockets).
 
 ### 2.2.2 Смешенное занятие
 {: id="2.2.2"}
-
-<!--
-- HTTP.
-- AJAX.
-- CORS.
-- IFRAME, JSON.
-- WebSockets.
--->
 
 ### 2.2.3 Домашнее задание
 {: id="2.2.3"}

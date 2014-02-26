@@ -809,8 +809,60 @@
     </div></section>
 
     <section class="slide"><div>
-        <h2>WebSockets</h2>
+        <h2>Comet</h2>
+        <figure>
+            <blockquote>
+                <p><strong>Comet</strong> — любая модель работы веб-приложения, при которой постоянное HTTP-соединение позволяет веб-серверу отправлять (push) данные браузеру без дополнительного запроса со стороны браузера.</p>
+            </blockquote>
+            <figcaption><a href="http://ru.wikipedia.org/wiki/Comet_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)">Википедия</a></figcaption>
+        </figure>
     </div></section>
+
+    <section class="slide"><div>
+        <h2>Comet</h2>
+        <pre>
+            <code>IFRAME <mark class="comment">/* …&lt;script&gt;…&lt;/script&gt;…&lt;script&gt;…&lt;/script&gt;… */</mark></code>
+            <code><a href="http://www.w3.org/TR/websockets/">WebSockets</a></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Поддержка WebSockets</h2>
+        <pre>
+            <code>Chrome 16 &amp; Chrome for Android 16</code>
+            <code>Firefox 11</code>
+            <code>Internet Explorer 10</code>
+            <code>Opera 12.10</code>
+            <code>Safari 6.0 &amp; Safari Mobile 6.0</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Особенности WebSockets</h2>
+        <pre>
+            <code>Upgrades from HTTP 1.1</code>
+            <code>Cross-Origin Resource Sharing (CORS)</code>
+            <code>Message-based</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Использование WebSockets</h2>
+        <pre>
+            <code>var connection = new WebSocket('ws://example.com/echo');</code>
+            <code>connection.onopen = function () { … };</code>
+            <code>connection.onerror = function (error) { … };</code>
+            <code>connection.onmessage = function (e) { <mark class="comment">/* e.data */</mark> };</code>
+            <code>connection.send(msg);</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Домашнее задание</h2>
+        <pre>
+            <code>ВЗАИМОДЕЙСТВИЕ С СЕРВЕРОМ С ПОМОЩЬЮ AJAX</code>
+        </pre>
+     </div></section>
 
     <div class="progress"><div></div></div>
     <script src="/shower/shower.min.js"></script>
