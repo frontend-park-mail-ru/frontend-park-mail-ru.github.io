@@ -1,5 +1,7 @@
-var express = require('express');
-var app = express();
+var http = require('http'),
+    WebSocketServer = require('ws').Server,
+    express = require('express'),
+    app = express();
 
 app.use(express.static(__dirname + '/public'));
 app.use(require('body-parser')());
@@ -52,4 +54,14 @@ app.post('/upload', function(req, res) {
     res.end(body);
 });
 
-app.listen(3000);
+var server = http.createServer(app),
+    ws = new WebSocketServer({server: server});
+
+ws.on('connection', function (ws) {
+    ws.on('message', function (message) {
+        ws.send(message);
+    });
+});
+
+
+server.listen(3000);

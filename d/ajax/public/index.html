@@ -18,6 +18,7 @@
         }
         .button {
             display: inline-block;
+            margin: 8px 0;
             padding: 8px;
             border-radius: 8px;
             font-size: 18px;
@@ -124,4 +125,43 @@
         <a href="http://mail.ru/" data-method="GET" class="button xhr" data-async="true">//mail.ru (A)</a>
         <a href="http://air.local:3000/ping" data-method="GET" class="button xhr" data-async="true">//air.local/ping (A)</a>
     </div>
+
+    <div class="section">
+        <h1>WebSocket</h1>
+        <a id="ws-open" href="#"class="button">Open</a>
+        <a id="ws-send" href="#"class="button">Send</a>
+        <a id="ws-close" href="#"class="button">Close</a>
+    </div>
+    <script>
+        var conn;
+        document.getElementById('ws-open').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!conn ||  conn.readyState !== 1) {
+                conn = new WebSocket('ws://localhost:3000/echo');
+                conn.onopen = function () {
+                    console.log('===WS open ===');
+                }
+                conn.onerror = function (error) {
+                    console.log('===WS error ===');
+                    console.log(error);
+                }
+                conn.onmessage = function (e) {
+                    console.log('===WS message ===');
+                    console.log(e.data);
+                }
+            }
+        });
+        document.getElementById('ws-close').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (conn && conn.readyState === 1) {
+                conn.close();
+            }
+        });
+        document.getElementById('ws-send').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (conn && conn.readyState === 1) {
+                conn.send('Hello!');
+            }
+        });
+    </script>
 </body></html>
