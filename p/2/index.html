@@ -866,7 +866,7 @@
 
     <section class="slide shout"><div>
         <h2>
-            III. Storage
+            III. Хранение данных
         </h2>
      </div></section>
 
@@ -1031,9 +1031,58 @@
 
     <section class="slide shout"><div>
         <h2>
-            Storage
+            localStorage
         </h2>
     </div></section>
+
+    <section class="slide"><div>
+        <h2><code>window.localStorage</code></h2>
+        <pre>
+            <code>localStorage[key]; <mark class="comment">/* String */</mark></code>
+            <code>localStorage[key] = value; <mark class="comment">/* String */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>window.localStorage</code></h2>
+        <pre>
+            <code>localStorage.length</code>
+            <code>localStorage.key(i)<mark class="comment">/* String */</mark></code>
+            <code>localStorage.getItem(key) <mark class="comment">/* String */</mark></code>
+            <code>localStorage.setItem(key, value)</code>
+            <code>localStorage.removeItem(key)</code>
+            <code>localStorage.clear()</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Событие <code>storage</code></h2>
+        <pre>
+            <code>window.addEventListener("storage", function (e) {</code>
+            <code>    <mark class="comment">/* e.key, e.newValue */</mark></code>
+            <code>})</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>JSON</h2>
+        <pre>
+            <code>function setJSON(key, value) {</code>
+            <code>    localStorage[key] = JSON.stringify(value);</code>
+            <code>}</code>
+            <code>function getJSON(key) {</code>
+            <code>    var value = localStorage[key];</code>
+            <code>    return value ? JSON.parse(value) : null;</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            sessionStorage
+        </h2>
+    </div></section>
+
     <!-- http://www.html5rocks.com/en/features/storage -->
 
     <div class="progress"><div></div></div>
