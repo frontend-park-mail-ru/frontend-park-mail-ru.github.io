@@ -46,9 +46,8 @@ title: DOM & AJAX
 
 1. Mozilla Developer Network. [Document Object Model (DOM)](https://developer.mozilla.org/en/docs/DOM).
 2. W3C. [Document Object Model Events](http://www.w3.org/TR/DOM-Level-2-Events/events.html).
-3. Mozilla Developer Network. [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
-4. Илья Кантор. [Современный учебник JavaScript](http://learn.javascript.ru) // 2013.
-5. [JSONP](http://www.json-p.org).
+3. Илья Кантор. [Современный учебник JavaScript](http://learn.javascript.ru) // 2013.
+4. [JSONP](http://www.json-p.org).
 
 
 ### 2.1.2 Смешенное занятие
