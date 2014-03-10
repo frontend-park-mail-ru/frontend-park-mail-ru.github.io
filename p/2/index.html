@@ -702,7 +702,7 @@
     <section class="slide"><div>
         <h2>IFRAME (SAME-ORIGIN)</h2>
         <pre>
-            <code><mark class="comment">&gt;</mark> POST /upload HTTP/1.0</code>
+            <code><mark class="comment">&gt;</mark> POST /ifecho HTTP/1.0</code>
             <code><mark class="comment">&gt;</mark> …</code>
             <code> </code>
             <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
@@ -714,7 +714,7 @@
     <section class="slide"><div>
         <h2>IFRAME (CROSS-ORIGIN)</h2>
         <pre>
-            <code><mark class="comment">&gt;</mark> POST /upload HTTP/1.0</code>
+            <code><mark class="comment">&gt;</mark> POST /ifecho HTTP/1.0</code>
             <code><mark class="comment">&gt;</mark> …</code>
             <code> </code>
             <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
@@ -726,7 +726,7 @@
     <section class="slide"><div>
         <h2>IFRAME (CROSS-ORIGIN)</h2>
         <pre>
-            <code><mark class="comment">&gt;</mark> POST /upload HTTP/1.0</code>
+            <code><mark class="comment">&gt;</mark> POST /ifecho HTTP/1.0</code>
             <code><mark class="comment">&gt;</mark> …</code>
             <code> </code>
             <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
@@ -863,6 +863,26 @@
             <code>ВЗАИМОДЕЙСТВИЕ С СЕРВЕРОМ С ПОМОЩЬЮ AJAX</code>
         </pre>
      </div></section>
+
+    <section class="slide"><div>
+        <h2>Подготовка</h2>
+        <pre>
+            <code>$ git remote add tp \</code>
+            <code>→ https://github.com/eprev/frontend-stub.git</code>
+            <code>$ git fetch tp</code>
+            <code>$ git merge tp/v4</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Разрешаем конфикты</h2>
+        <pre>
+            <code>$ git status</code>
+            <code>$ git add …</code>
+            <code>$ git commit -m "Fix merge conflicts"</code>
+            <code>$ grunt</code>
+        </pre>
+    </div></section>
 
     <section class="slide shout"><div>
         <h2>
