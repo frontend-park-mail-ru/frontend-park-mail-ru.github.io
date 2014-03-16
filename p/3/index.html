@@ -6,12 +6,274 @@
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="/shower/themes/bright/styles/screen.css">
+    <style>
+        .slide.cover.white {
+            background: #fff;
+        }
+    </style>
 </head>
 <body class="list">
     <header class="caption">
         <h1>III. Отладка и мобильный веб</h1>
         <p>Web Inspector, Sass, производительность и Touch-события.</p>
     </header>
+
+    <section class="slide shout"><div>
+        <h2>
+            1 Web Inspector, Sass
+        </h2>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            Web Inspector
+        </h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Инструменты</h2>
+        <pre>
+            <code>Chrome DevTools <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
+            <code>Safari Web Inspector <mark class="comment">/* ⌘ + ⌥ + I */</mark></code>
+            <code>Firefox Web Developer <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
+            <code>Firebug <mark class="comment">/* Firefox Extension */</mark></code>
+            <code>Opera Dragonfly <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⌥ + I */</mark></code>
+            <code>IE Developer Tools <mark class="comment">/* F12 */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Возможности</h2>
+        <pre>
+            <code>ИНСПЕКТОР DOM</code>
+            <code>КОНСОЛЬ</code>
+            <code>ОТЛАДЧИК JavaScript</code>
+            <code>СЕТЕВАЯ АКТИВНОСТЬ</code>
+            <code>ПРОФАЙЛЕРЫ</code>
+            <code>ЭМУЛЯТОР</code>
+        </pre>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>
+            Препроцессоры CSS
+        </h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Зачем?</h2>
+        <pre>
+            <code>ПЕРЕМЕННЫЕ</code>
+            <code>DRY (DON’T REPEAT YOURSELF)</code>
+            <code>ВЕНДОРНЫЕ ПРЕФИКСЫ</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Препроцессоры</h2>
+        <pre>
+            <code><a href="http://sass-lang.com/">Sass</a></code>
+            <code><a href="http://lesscss.org">LESS</a></code>
+            <code><a href="http://learnboost.github.io/stylus/">Stylus</a></code>
+        </pre>
+    </div></section>
+
+    <section class="slide cover h white"><div>
+        <img src="/pics/sass-logo.png" alt="" />
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Установка</h2>
+        <pre>
+            <code>Ruby (<a href="http://rubyinstaller.org">Windows</a>)</code>
+            <code>$ sudo gem install sass</code>
+            <code>$ sass --version</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Использование</h2>
+        <pre>
+            <code>$ sass in.scss out.css</code>
+            <code>$ sass --watch in.scss:out.css</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>grunt-contrib-sass</code></h2>
+        <pre>
+            <code>$ npm install grunt-contrib-sass --save-dev</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Gruntfile.js</h2>
+        <pre>
+            <code>grunt.initConfig({</code>
+            <code>    sass: { … } <mark class="comment">/* grunt-contrib-sass */</mark></code>
+            <code>});</code>
+            <code></code>
+            <code>grunt.loadNpmTasks('grunt-contrib-sass');</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2><code>grunt-contrib-sass</code></h2>
+        <pre>
+            <code>css: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>    files: [{</code>
+            <code>        expand: true,</code>
+            <code>        cwd: 'public/css', <mark class="comment">/* исходная директория */</mark></code>
+            <code>        src: '*.scss', <mark class="comment">/* имена шаблонов */</mark></code>
+            <code>        dest: 'public/css' <mark class="comment">/* результирующая директория */</mark></code>
+            <code>    }]}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>SCSS: Variables</h2>
+        <pre>
+            <code>$font-family: 'PT Serif', serif;</code>
+            <code>$font-size: 18px;</code>
+            <code>$line-height: $font-size * 1.5;</code>
+            <code>$color: #333;</code>
+            <code>body {</code>
+            <code>    font: normal #{$font-size}/#{$line-height} $font-family;</code>
+            <code>    color: $color; }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CSS</h2>
+        <pre>
+            <code>body {</code>
+            <code>    font: normal 18px/27px 'PT Serif', serif;</code>
+            <code>    color: #333; }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>SCSS: Nesting</h2>
+        <pre>
+            <code>ul {</code>
+            <code>    padding: 0;</code>
+            <code>    li {</code>
+            <code>        display: block;</code>
+            <code>        &amp;:hover {</code>
+            <code>            color: #eee; }</code>
+            <code>    }</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CSS</h2>
+        <pre>
+            <code>ul {</code>
+            <code>    padding: 0; }</code>
+            <code>ul li {</code>
+            <code>    display: block; }</code>
+            <code>ul li:hover {</code>
+            <code>    color: #eee; }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>SCSS: Nesting</h2>
+        <pre>
+            <code>.toolbar {</code>
+            <code>    …</code>
+            <code>    &amp;__button {</code>
+            <code>        …</code>
+            <code>    }</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CSS</h2>
+        <pre>
+            <code>.toolbar {</code>
+            <code>    … }</code>
+            <code>.toolbar__button {</code>
+            <code>    … }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>SCSS: Import &amp; Partials</h2>
+        <pre>
+            <code><mark class="comment">/* _reset.scss */</mark></code>
+            <code>html, body, ul, ol {</code>
+            <code>    margin: 0; padding: 0; }</code>
+        </pre>
+        <pre>
+            <code><mark class="comment">// main.scss</mark></code>
+            <code>@import "reset";</code>
+            <code>body { color: #333; }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CSS</h2>
+        <pre>
+            <code>html, body, ul, ol {</code>
+            <code>    margin: 0; padding: 0; }</code>
+            <code>body {</code>
+            <code>    color: #333; }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>SCSS: Mixins</h2>
+        <pre>
+            <code>@mixin box-sizing($value) {</code>
+            <code>    -webkit-box-sizing: $value;</code>
+            <code>    -moz-box-sizing: $value;</code>
+            <code>    box-sizing: $value; }</code>
+            <code>.button {</code>
+            <code>    color: #333;</code>
+            <code>    @include box-sizing(border-box); }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CSS</h2>
+        <pre>
+            <code>.button {</code>
+            <code>    color: #333;</code>
+            <code>    -webkit-box-sizing: border-box;</code>
+            <code>    -moz-box-sizing: border-box;</code>
+            <code>    box-sizing: border-box; }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>SCSS: Inheritance</h2>
+        <pre>
+            <code>.message {</code>
+            <code>    color: #333;</code>
+            <code>    background: #eee;</code>
+            <code>    padding: 8px; }</code>
+            <code>.message_error {</code>
+            <code>    @extend .message;</code>
+            <code>    background: #e33; }</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>CSS</h2>
+        <pre>
+            <code>.message {</code>
+            <code>    color: #333;</code>
+            <code>    background: #eee;</code>
+            <code>    padding: 8px; }</code>
+            <code>.message_error {</code>
+            <code>    color: #333;</code>
+            <code>    background: #e33;</code>
+            <code>    padding: 8px; }</code>
+        </pre>
+    </div></section>
 
     <div class="progress"><div></div></div>
     <script src="/shower/shower.min.js"></script>

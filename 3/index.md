@@ -44,7 +44,8 @@ title: Отладка и мобильный веб
 ### 3.1.1 Полезные ресурсы
 {: id="3.1.1"}
 
-1. [Sass](http://sass-lang.com).
+1. [Chrome DevTools](https://developers.google.com/chrome-developer-tools/).
+2. [Sass](http://sass-lang.com).
 2. [Source Maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors).
 
 ### 3.1.2 Смешенное занятие
