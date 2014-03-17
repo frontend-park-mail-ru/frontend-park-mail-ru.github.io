@@ -143,14 +143,12 @@ title: DOM & AJAX
 ### 2.3.1 Полезные ресурсы
 {: id="2.3.1"}
 
+1. Википедия. [HTTP cookie](http://ru.wikipedia.org/wiki/HTTP_cookie).
+2. Илья Кантор. [Куки, document.cookie](http://learn.javascript.ru/cookie) // 2013.
+3. Michael Mahemoff. [Client-Side Storage](http://www.html5rocks.com/en/tutorials/offline/storage) // 2010.
+
 ### 2.3.2 Смешенное занятие
 {: id="2.3.2"}
-
-<!--
-- Cookies.
-- [Storage](http://www.html5rocks.com/en/features/storage).
-- IndexDB -> localStorage
--->
 
 ### 2.3.3 Домашнее задание
 {: id="2.3.3"}
