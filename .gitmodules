@@ -1,0 +1,3 @@
+[submodule "shower/themes/tech-mail"]
+	path = shower/themes/tech-mail
+	url = git@github.com:eprev/shower-tech-mail.git
