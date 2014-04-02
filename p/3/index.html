@@ -433,7 +433,7 @@
                 <code>link.rel = 'stylesheet';</code>
                 <code>document.head.appendChild(link);</code>
                 <br/>
-                <mark class="comment">Не работает!</mark>
+                <mark class="comment">Блокирует!</mark>
             </pre>
         </div>
     </section>
@@ -687,7 +687,7 @@
     </section>
 
     <section class="slide">
-        <h2>Уменьшение веса ответа</h2>
+        <h2>Уменьшение количества запросов</h2>
         <div>
             <pre>
                 <code>&lt;script src="http://domain.com/script.js"&gt;&lt;/script&gt;</code>
@@ -706,6 +706,15 @@
             </pre>
         </div>
     </section>
+
+    <section class="slide">
+            <h2>Уменьшение веса ответа</h2>
+            <div>
+                <pre>
+                    <code>GZip + минимизация</code>
+                </pre>
+            </div>
+        </section>
 
     <section class="slide">
         <h2>Разделение функциональности</h2>
