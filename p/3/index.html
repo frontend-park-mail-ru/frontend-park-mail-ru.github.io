@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="/shower/themes/tech-mail/styles/screen.css">
+    <link rel="stylesheet" href="../../shower/themes/tech-mail/styles/screen.css">
 </head>
 <body class="list">
     <header class="caption">
@@ -312,7 +312,455 @@
         </div>
     </section>
 
+    <section class="slide title">
+        <h2>
+            <span>3 Производительность</span>
+        </h2>
+    </section>
+
+    <section class="slide shout">
+        <h2>
+            Загрузка страницы
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Водопад</h2>
+        <div>
+            <pre>
+                <code>DNS Resolve</code>
+                <code>HTTP запрос</code>
+                <code>Получение ответа</code>
+                <code>Парсинг ответа</code>
+                <code>Построение DOM дерева</code>
+                <code>Загрузка встречающихся на пути ресурсов</code>
+                <code>Load</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Внешние ресурсы</h2>
+        <div>
+            <pre>
+                <code>Стили</code>
+                <code>Скрипты</code>
+                <code>Картинки</code>
+                <code>Шрифты</code>
+                <code>Встраиваемые объекты (Flash)</code>
+                <code>etc</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Блокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>Стили и скрипты</code>
+                <code>Стили блокируют рендеринг</code>
+                <code>Скрипты блокируют парсинг</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Блокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;link href="styles.css" rel="stylesheet"/&gt;</code>
+                <code>&lt;p&gt;Не будет отрисовано до загрузки стилей&lt;/p&gt;</code>
+                <code>&lt;script src="script.js">&lt;/script&gt;</code>
+                <code>&lt;p&gt;Не будет обработано до загрузки скрипта&lt;/p&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Не блокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>Остальные внешние ресурсы</code>
+                <code>Картинки, шрифты, flash, etc</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Не блокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="image.png" width="100" height="200" /&gt;</code>
+                <code>Резервируется место на странице</code>
+                <code>Отрисовка по мере загрузки</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Не блокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>При использовании встраиваемого шрифта</code>
+                <code>До его загрузки</code>
+                <code>Все тексты не будут отрисованы</code>
+                <code>Но будут "занимать" место на странице столько</code>
+                <code>Сколько занимали бы в стандартном шрифте</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Загрузка скриптов</h2>
+        <div>
+            <pre>
+                <code>var s = document.createElement('script');</code>
+                <code>s.src = 'script.js';</code>
+                <code>document.head.appendChild(s);</code>
+                <br/>
+                <code>&lt;script src="script.js" async="async">&lt;/script&gt;</code>
+                <code>&lt;script src="script.js" defer="defer">&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Загрузка стилей</h2>
+        <div>
+            <pre>
+                <code>var link = document.createElement('link');</code>
+                <code>link.href = 'styles.css';</code>
+                <code>link.rel = 'stylesheet';</code>
+                <code>document.head.appendChild(link);</code>
+                <br/>
+                <mark class="comment">Не работает!</mark>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Водопад</h2>
+        <div>
+            <pre>
+                <code>HTTP запрос</code>
+                <code>Получение ответа</code>
+                <code>Парсинг ответа</code>
+                <code>Построение DOM дерева</code>
+                <code>Загрузка встречающихся на пути блокирующих ресурсов</code>
+                <code>DOMContentLoaded</code>
+                <code>Доагрузка встреченных на пути НЕ блокирующих ресурсов</code>
+                <code>Load</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>Оптимизация загрузки</h2>
+    </section>
+
+    <section class="slide">
+        <h2>HTTP запрос</h2>
+        <div>
+            <pre>
+                <code>DNS Resolve</code>
+                <code>TCP соединение</code>
+                <code>SSL</code>
+                <code>Запрос</code>
+                <code>Ожидание</code>
+                <code>Загрузка</code>
+                <code>Обработка</code>
+                <mark class="comment">х количество запросов</mark>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>GZip</h2>
+        <div>
+            <pre>
+                <code>DNS Resolve</code>
+                <code>TCP соединение</code>
+                <code>SSL</code>
+                <code>Запрос</code>
+                <code>Ожидание</code>
+                <code>Загрузка (/x)</code>
+                <code>Обработка</code>
+                <mark class="comment">х количество запросов</mark>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>GZip</h2>
+        <div>
+            <pre>
+                <b>Content-Encoding:</b> gzip
+                <br/>
+                Сжатый контент
+                <br/>
+                <mark class="comment">Не имеет смысла для картинок</mark>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кеш DNS</h2>
+        <div>
+            <pre>
+                <code>DNS Resolve (x1)</code>
+                <code>TCP соединение</code>
+                <code>SSL</code>
+                <code>Запрос</code>
+                <code>Ожидание</code>
+                <code>Загрузка (/x)</code>
+                <code>Обработка</code>
+                <mark class="comment">х количество запросов</mark>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>keep-alive</h2>
+        <div>
+            <pre>
+                <code>DNS Resolve (x1)</code>
+                <code>TCP соединение (x1)</code>
+                <code>SSL (x1)</code>
+                <code>Запрос</code>
+                <code>Ожидание</code>
+                <code>Загрузка (/x)</code>
+                <code>Обработка</code>
+                <mark class="comment">х количество запросов</mark>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>keep-alive</h2>
+        <div>
+            <pre>
+                <b>Connection:</b> keep-alive
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кеш ресурсов</h2>
+        <div>
+            <pre>
+                <code> </code>
+                <code> </code>
+                <code> </code>
+                <code> </code>
+                <code> </code>
+                <code>Загрузка (с диска)</code>
+                <code>Обработка</code>
+                <mark class="comment">х количество запросов</mark>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кеш ресурсов</h2>
+        <div>
+            <pre>
+                <b>Cache-Control:</b> max-age=315360000
+                <br/>
+                <b>Expires:</b> Sun Apr 06 2014 14:20:00 GMT
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кеш ресурсов с валидацией</h2>
+        <div>
+            <pre>
+                <b>Cache-Control:</b> max-age=315360000
+                <br/>
+                <b>Expires:</b> Sun Apr 06 2014 14:20:00 GMT
+                <br/>
+                <b>Last-Modified:</b> Fri, 14 Mar 2014 13:08:29 GMT
+                <br/>
+                <b>ETag</b>: "533c10bd-25f0c"
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кеш ресурсов (валидация)</h2>
+        <div>
+            <pre>
+                <b>If-Modified-Since:</b> Fri, 14 Mar 2014 13:08:29 GMT
+                <br/>
+                <b>If-None-Match:</b> "533c10bd-25f0c"
+                <br/>
+                200 с контентом<br/>или<br/>304 и контент с диска
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кеш ресурсов (валидация)</h2>
+        <div>
+            <pre>
+                <code>DNS Resolve (x1)</code>
+                <code>TCP соединение (x1)</code>
+                <code>SSL (x1)</code>
+                <code>Запрос</code>
+                <code>Ожидание</code>
+                <code>Загрузка (в ответе или с диска)</code>
+                <code>Обработка</code>
+                <mark class="comment">х количество запросов</mark>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Запрет кеширования</h2>
+        <div>
+            <pre>
+                <b>Cache-Control:</b> no-cache,no-store,must-revalidate
+                <br/>
+                <b>Expires:</b> Tue, 02 Apr 2013 18:54:29 GMT
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Консистентность</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p><strong>Согласованность данных</strong> (иногда <strong>консистентность данных</strong>, англ. data consistency) в информатике — это согласованность данных друг с другом, целостность данных, а также внутренняя непротиворечивость.</p>
+                </blockquote>
+                <figcaption><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Википедия</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Консистентность</h2>
+        <div>
+            <pre>
+                Соответствие версии ресурсов (статики) версии документа
+                <code>&lt;link href="/v1/styles.css" rel="stylesheet"/&gt;</code>
+                <code>&lt;script src="/v1/script.js">&lt;/script&gt;</code>
+                <br/>
+                <code>&lt;link href="/v2/styles.css" rel="stylesheet"/&gt;</code>
+                <code>&lt;script src="/v2/script.js">&lt;/script&gt;</code>
+                Запрет кеширования документа
+             </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Последовательные запросы</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
+                Пауза
+                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Паралельные запросы</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>domain.com/image.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>domain.com/image.png" /&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Уменьшение веса ответа</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="http://domain.com/script.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;script src="http://domain.com/script2.js"&gt;&lt;/script&gt;</code>
+                <br/>
+                <code>&lt;script src="http://domain.com/script.full.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Нет печенькам!!!</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="http://<mark class="important">staticdomain.</mark>.com/script.full.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Разделение функциональности</h2>
+        <div>
+            <pre>
+                <code>Базовая</code>
+                    Первый экран, табы
+                <code>Расширенная</code>
+                    Осьтальные экраны, всплывающие подсказки,
+                    картинки (например, следующая в галлерее)
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Двухэтапная загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
+                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;div id="tabs"&gt;</code>
+                <code>    ...</code>
+                <code>&lt;/div&gt;</code>
+                <code>&lt;script&gt;startTabs();&lt;/script&gt;</code>
+                <code>&lt;link rel="stylesheet" href="additional.css"/&gt;</code>
+                <code>&lt;script src="additional.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Прелоадер</h2>
+        <div>
+            <pre>
+                <code>&lt;style&gt;</code>
+                <code>/* layout and preloader styles */</code>
+                <code>&lt;/style&gt;</code>
+                <code>&lt;div id="preloader" /&gt;</code>
+                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
+                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Предзагрузка картинок</h2>
+        <div>
+            <pre>
+                <code>new Image().src = 'http://domain.com/image.png';</code>
+                <code>new Image().src = 'http://domain.com/image2.png';</code>
+            </pre>
+        </div>
+    </section>
+
     <div class="progress"><div></div></div>
-    <script src="/shower/shower.min.js"></script>
+    <script src="../../shower/shower.min.js"></script>
 </body>
 </html>
