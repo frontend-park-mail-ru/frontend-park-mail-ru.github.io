@@ -332,23 +332,16 @@
         </h2>
     </section>
 
-    <section class="slide shout">
-        <h2>
-            Загрузка страницы
-        </h2>
-    </section>
-
     <section class="slide">
-        <h2>Водопад</h2>
+        <h2>Загрузка страницы</h2>
         <div>
             <pre>
-                <code>DNS Resolve</code>
-                <code>HTTP запрос</code>
-                <code>Получение ответа</code>
-                <code>Парсинг ответа</code>
-                <code>Построение DOM дерева</code>
-                <code>Загрузка встречающихся на пути ресурсов</code>
-                <code>Load</code>
+                <code>DNS LOOKUP</code>
+                <code>СОЕДИНЕНИЕ И ОТПРАВКА ЗАПРОСА</code>
+                <code>ОЖИДАНИЕ И ПОЛУЧЕНИЕ ОТВЕТА</code>
+                <code>ПАРСИНГ HTML И ПОСТРОЕНИЕ DOM</code>
+                <code>ЗАГРУЗКА ВНЕШНИХ РЕСУРСОВ</code>
+                <code>СОБЫТИЕ <mark class="important">load</mark></code>
             </pre>
         </div>
     </section>
@@ -357,12 +350,22 @@
         <h2>Внешние ресурсы</h2>
         <div>
             <pre>
-                <code>Стили</code>
-                <code>Скрипты</code>
-                <code>Картинки</code>
-                <code>Шрифты</code>
-                <code>Встраиваемые объекты (Flash)</code>
-                <code>etc</code>
+                <code>ТАБЛИЦЫ СТИЛЕЙ</code>
+                <code>СКРИПТЫ</code>
+                <code>ИЗОБРАЖЕНИЯ</code>
+                <code>ШРИФТЫ</code>
+                <code>ВСТРАИВАЕМЫЕ ОБЪЕКТЫ (FLASH, SVG)</code>
+                <code>…</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Внешние ресурсы</h2>
+        <div>
+            <pre>
+                <code>ЗАГРУЗКА ТАБЛИЦ СТИЛЕЙ БЛОКИРУЕТ РЕНДЕРИНГ</code>
+                <code>ЗАГРУЗКА СКРИПТОВ БЛОКИРУЕТ ПАРСИНГ HTML</code>
             </pre>
         </div>
     </section>
@@ -371,9 +374,13 @@
         <h2>Блокирующая загрузка</h2>
         <div>
             <pre>
-                <code>Стили и скрипты</code>
-                <code>Стили блокируют рендеринг</code>
-                <code>Скрипты блокируют парсинг</code>
+                <code>&lt;html&gt;&lt;head&gt;</code>
+                <code>    &lt;link href="styles.css" rel="stylesheet"/&gt;</code>
+                <code>&lt;/head&gt;&lt;body&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">НЕ БУДЕТ ОТРИСОВАНО ДО ЗАГРУЗКИ СТИЛЕЙ.</mark>&lt;/p&gt;</code>
+                <code>    &lt;script src="script.js">&lt;/script&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">НЕ БУДЕТ ОБРАБОТАНО ДО ЗАГРУЗКИ СКРИПТА.</mark>&lt;/p&gt;</code>
+                <code>&lt;/body&gt;&lt;/html&gt;</code>
             </pre>
         </div>
     </section>
@@ -382,50 +389,49 @@
         <h2>Блокирующая загрузка</h2>
         <div>
             <pre>
-                <code>&lt;link href="styles.css" rel="stylesheet"/&gt;</code>
-                <code>&lt;p&gt;Не будет отрисовано до загрузки стилей&lt;/p&gt;</code>
-                <code>&lt;script src="script.js">&lt;/script&gt;</code>
-                <code>&lt;p&gt;Не будет обработано до загрузки скрипта&lt;/p&gt;</code>
+                <code>ССЫЛКИ НА ТАБЛИЦЫ СТИЛЕЙ ОБЪЯВЛЯЙТЕ В <mark class="important">HEAD</mark></code>
+                <code>СКРИПТЫ — В КОНЦЕ <mark class="important">BODY</mark></code>
             </pre>
         </div>
+        <!-- ДЕМО: водопад -->
     </section>
 
     <section class="slide">
-        <h2>Не блокирующая загрузка</h2>
+        <h2>Неблокирующая загрузка</h2>
         <div>
             <pre>
-                <code>Остальные внешние ресурсы</code>
-                <code>Картинки, шрифты, flash, etc</code>
+                <code>ИЗОБРАЖЕНИЯ</code>
+                <code>ШРИФТЫ</code>
+                <code>ВСТРАИВАЕМЫЕ ОБЪЕКТЫ (FLASH, SVG)</code>
+                <code>…</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Не блокирующая загрузка</h2>
+        <h2>Неблокирующая загрузка</h2>
         <div>
             <pre>
-                <code>&lt;img src="image.png" width="100" height="200" /&gt;</code>
-                <code>Резервируется место на странице</code>
-                <code>Отрисовка по мере загрузки</code>
+                <code>&lt;body&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">НИЖЕ ЗАРЕЗЕРВИРУЕТСЯ МЕСТО НА СТРАНИЦЕ.</mark>&lt;/p&gt;</code>
+                <code>    &lt;img src="image.gif" width="400" height="200"/&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">ИЗОБРАЖЕНИЕ ОТОБРАЗИТСЯ ПОСЛЕ ЗАГРУЗКИ.</mark>&lt;/p&gt;</code>
+                <code>&lt;/body&gt;</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Не блокирующая загрузка</h2>
+        <h2>Неблокирующая загрузка</h2>
         <div>
-            <pre>
-                <code>При использовании встраиваемого шрифта</code>
-                <code>До его загрузки</code>
-                <code>Все тексты не будут отрисованы</code>
-                <code>Но будут "занимать" место на странице столько</code>
-                <code>Сколько занимали бы в стандартном шрифте</code>
-            </pre>
+            <p>
+                ПРИ ИСПОЛЬЗОВАНИИ ВСТРАИВАЕМОГО ШРИФТА ТЕКСТ ДО ЕГО ЗАГРУЗКИ НЕ&nbsp;БУДЕТ&nbsp;ОТРИСОВАН. НО МЕСТО НА СТРАНИЦЕ «ЗАЙМЕТ» В ОБЪЕМЕ, НЕОБХОДИМОМ ДЛЯ ЕГО ОТОБРАЖЕНИЯ СТАНДАРТНЫМ ШРИФТОМ.
+            </p>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Загрузка скриптов</h2>
+        <h2>Неблокирующая загрузка</h2>
         <div>
             <pre>
                 <code>var s = document.createElement('script');</code>
@@ -439,31 +445,16 @@
     </section>
 
     <section class="slide">
-        <h2>Загрузка стилей</h2>
+        <h2>Загрузка страницы</h2>
         <div>
             <pre>
-                <code>var link = document.createElement('link');</code>
-                <code>link.href = 'styles.css';</code>
-                <code>link.rel = 'stylesheet';</code>
-                <code>document.head.appendChild(link);</code>
-                <br/>
-                <mark class="comment">Блокирует!</mark>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Водопад</h2>
-        <div>
-            <pre>
-                <code>HTTP запрос</code>
-                <code>Получение ответа</code>
-                <code>Парсинг ответа</code>
-                <code>Построение DOM дерева</code>
-                <code>Загрузка встречающихся на пути блокирующих ресурсов</code>
-                <code>DOMContentLoaded</code>
-                <code>Доагрузка встреченных на пути НЕ блокирующих ресурсов</code>
-                <code>Load</code>
+                <code>DNS LOOKUP</code>
+                <code>СОЕДИНЕНИЕ, ОТПРАВКА ЗАПРОСА, ОЖИДАНИЕ И ПОЛУЧЕНИЕ ОТВЕТА</code>
+                <code>ПАРСИНГ HTML И ПОСТРОЕНИЕ DOM</code>
+                <code>ЗАГРУЗКА БЛОКИРУЮЩИХ РЕСУРСОВ</code>
+                <code>СОБЫТИЕ <mark class="important">DOMContentLoaded</mark></code>
+                <code>ДОЗАГРУЗКА ОСТАВШИХСЯ РЕСУРСОВ</code>
+                <code>СОБЫТИЕ <mark class="important">load</mark></code>
             </pre>
         </div>
     </section>
@@ -473,174 +464,243 @@
     </section>
 
     <section class="slide">
-        <h2>HTTP запрос</h2>
+        <h2>Запрос HTTP(S)</h2>
         <div>
             <pre>
-                <code>DNS Resolve</code>
-                <code>TCP соединение</code>
-                <code>SSL</code>
-                <code>Запрос</code>
-                <code>Ожидание</code>
-                <code>Загрузка</code>
-                <code>Обработка</code>
-                <mark class="comment">х количество запросов</mark>
+                <code>DNS LOOKUP</code>
+                <code>ROUND-TRIP TIME</code>
+                <code>SSL HANDSHAKE</code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code>ЗАГРУЗКА ДАННЫХ</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>GZip</h2>
+        <h2>DNS Time-to-live (TTL)</h2>
         <div>
             <pre>
-                <code>DNS Resolve</code>
-                <code>TCP соединение</code>
-                <code>SSL</code>
-                <code>Запрос</code>
-                <code>Ожидание</code>
-                <code>Загрузка (/x)</code>
-                <code>Обработка</code>
-                <mark class="comment">х количество запросов</mark>
+                <code><s>DNS LOOKUP</s></code>
+                <code>ROUND-TRIP TIME</code>
+                <code>SSL HANDSHAKE</code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code>ЗАГРУЗКА ДАННЫХ</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>GZip</h2>
+        <h2>Connection: Keep-Alive</h2>
         <div>
             <pre>
-                <b>Content-Encoding:</b> gzip
-                <br/>
-                Сжатый контент
-                <br/>
-                <mark class="comment">Не имеет смысла для картинок</mark>
+                <code><s>DNS LOOKUP</s></code>
+                <code><s>ROUND-TRIP TIME</s></code>
+                <code><s>SSL HANDSHAKE</s></code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code>ЗАГРУЗКА ДАННЫХ</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Кеш DNS</h2>
+        <h2>Connection: Keep-Alive</h2>
         <div>
             <pre>
-                <code>DNS Resolve (x1)</code>
-                <code>TCP соединение</code>
-                <code>SSL</code>
-                <code>Запрос</code>
-                <code>Ожидание</code>
-                <code>Загрузка (/x)</code>
-                <code>Обработка</code>
-                <mark class="comment">х количество запросов</mark>
-            </pre>
-        </div>
-    </section>
-
-
-    <section class="slide">
-        <h2>keep-alive</h2>
-        <div>
-            <pre>
-                <code>DNS Resolve (x1)</code>
-                <code>TCP соединение (x1)</code>
-                <code>SSL (x1)</code>
-                <code>Запрос</code>
-                <code>Ожидание</code>
-                <code>Загрузка (/x)</code>
-                <code>Обработка</code>
-                <mark class="comment">х количество запросов</mark>
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>Accept: text/html,application/xhtml+xml,…</code>
+                <code><mark class="important">Connection: keep-alive</mark></code>
+                <code>Accept-Encoding: gzip,deflate,sdch</code>
+                <code>Accept-Language: en-US,en;q=0.8,ru;q=0.6</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>keep-alive</h2>
+        <h2>Connection: close</h2>
         <div>
             <pre>
-                <b>Connection:</b> keep-alive
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Connection: close</mark></code>
+                <code>Cache-Control: no-cache,no-store,must-revalidate</code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Сжатие данных</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">DNS LOOKUP</mark></code>
+                <code><mark class="comment">ROUND-TRIP TIME</mark></code>
+                <code><mark class="comment">SSL HANDSHAKE</mark></code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code><s>ЗАГРУЗКА ДАННЫХ</s></code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Кеш ресурсов</h2>
+        <h2>Сжатие данных</h2>
         <div>
             <pre>
-                <code> </code>
-                <code> </code>
-                <code> </code>
-                <code> </code>
-                <code> </code>
-                <code>Загрузка (с диска)</code>
-                <code>Обработка</code>
-                <mark class="comment">х количество запросов</mark>
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>Accept: text/html,application/xhtml+xml,…</code>
+                <code>Connection: keep-alive</code>
+                <code><mark class="important">Accept-Encoding: gzip,deflate,sdch</mark></code>
+                <code>Accept-Language: en-US,en;q=0.8,ru;q=0.6</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Кеш ресурсов</h2>
+        <h2>Сжатие данных</h2>
         <div>
             <pre>
-                <b>Cache-Control:</b> max-age=315360000
-                <br/>
-                <b>Expires:</b> Sun Apr 06 2014 14:20:00 GMT
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code><mark class="important">Content-Encoding: gzip</mark></code>
+                <code>Connection: close</code>
+                <code>Cache-Control: no-cache,no-store,must-revalidate</code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Кэширование (Expires)</h2>
+        <div>
+            <pre>
+                <code><s>DNS LOOKUP</s></code>
+                <code><s>ROUND-TRIP TIME</s></code>
+                <code><s>SSL HANDSHAKE</s></code>
+                <code><s>ОТПРАВКА ДАННЫХ</s></code>
+                <code><s>ОЖИДАНИЕ ДАННЫХ</s></code>
+                <code><s>ЗАГРУЗКА ДАННЫХ</s> (СЧИТЫВАНИЕ ИЗ КЕША)</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Кеш ресурсов с валидацией</h2>
+        <h2>Кэширование (Expires)</h2>
         <div>
             <pre>
-                <b>Cache-Control:</b> max-age=315360000
-                <br/>
-                <b>Expires:</b> Sun Apr 06 2014 14:20:00 GMT
-                <br/>
-                <b>Last-Modified:</b> Fri, 14 Mar 2014 13:08:29 GMT
-                <br/>
-                <b>ETag</b>: "533c10bd-25f0c"
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Cache-Control: max-age=315360000</mark></code>
+                <code><mark class="important">Expires: Sun Apr 06 2014 14:20:00 GMT</mark></code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Кэширование (IMS/INM)</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">DNS LOOKUP</mark></code>
+                <code><mark class="comment">ROUND-TRIP TIME</mark></code>
+                <code><mark class="comment">SSL HANDSHAKE</mark></code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code><s>ЗАГРУЗКА ДАННЫХ</s> (СЧИТЫВАНИЕ ИЗ КЕША)</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Кеш ресурсов (валидация)</h2>
+        <h2>Кэширование (Last-Modified)</h2>
         <div>
             <pre>
-                <b>If-Modified-Since:</b> Fri, 14 Mar 2014 13:08:29 GMT
-                <br/>
-                <b>If-None-Match:</b> "533c10bd-25f0c"
-                <br/>
-                200 с контентом<br/>или<br/>304 и контент с диска
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Last-Modified: Fri, 14 Mar 2014 13:08:29 GMT</mark></code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Кэширование (Last-Modified)</h2>
+        <div>
+            <pre>
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
+                <code><mark class="important">If-Modified-Since: Fri, 14 Mar 2014 13:08:29 GMT</mark></code>
+                <code>…</code>
+            </pre>
+            <pre>
+                <code>200 OK ИЛИ 304 NOT MODIFIED</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Кеш ресурсов (валидация)</h2>
+        <h2>Кэширование (ETag)</h2>
         <div>
             <pre>
-                <code>DNS Resolve (x1)</code>
-                <code>TCP соединение (x1)</code>
-                <code>SSL (x1)</code>
-                <code>Запрос</code>
-                <code>Ожидание</code>
-                <code>Загрузка (в ответе или с диска)</code>
-                <code>Обработка</code>
-                <mark class="comment">х количество запросов</mark>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">ETag: "533c10bd-25f0c"</mark></code>
+                <code>…</code>
             </pre>
         </div>
-    </section>
-
+    </div></section>
 
     <section class="slide">
-        <h2>Запрет кеширования</h2>
+        <h2>Кэширование (ETag)</h2>
         <div>
             <pre>
-                <b>Cache-Control:</b> no-cache,no-store,must-revalidate
-                <br/>
-                <b>Expires:</b> Tue, 02 Apr 2013 18:54:29 GMT
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
+                <code><mark class="important">If-None-Match: "533c10bd-25f0c"</mark></code>
+                <code>…</code>
+            </pre>
+            <pre>
+                <code>200 OK ИЛИ 304 NOT MODIFIED</code>
             </pre>
         </div>
     </section>
+
+    <section class="slide">
+        <h2>Кэширование (No-Cache)</h2>
+        <div>
+            <pre>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Cache-Control: no-cache,no-store,must-revalidate</mark></code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
 
     <section class="slide">
         <h2>Консистентность</h2>
@@ -653,6 +713,19 @@
             </figure>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <section class="slide">
         <h2>Консистентность</h2>
@@ -741,6 +814,7 @@
                     картинки (например, следующая в галлерее)
             </pre>
         </div>
+        <!-- ДЕТАЛИ НА СЛЕД СЛАЙДЕ -->
     </section>
 
     <section class="slide">
@@ -770,6 +844,7 @@
                 <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
                 <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
             </pre>
+            <!-- ДЕМО -->
         </div>
     </section>
 
