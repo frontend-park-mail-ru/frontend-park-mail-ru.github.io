@@ -73,21 +73,11 @@ title: Отладка и мобильный веб
 ### 3.2.1 Полезные ресурсы
 {: id="3.2.1"}
 
-1. Yahoo Developer Network. [Best Practices for Speeding Up Your Web Site](http://developer.yahoo.com/performance/rules.html).
+1. Tali Garsiel, Paul Irish. [Принципы работы современных веб-браузеров](http://www.html5rocks.com/ru/tutorials/internals/howbrowserswork/).
+2. Yahoo Developer Network. [Best Practices for Speeding Up Your Web Site](http://developer.yahoo.com/performance/rules.html).
 
 ### 3.2.2 Смешенное занятие
 {: id="3.2.2"}
-
-<!--
-- HTTP Cache.
-- HTTP Waterfall.
-- Reflow/Repaint.
-- Web workers.
-- [App Cache](http://www.html5rocks.com/en/tutorials/appcache/beginner/).
-- Prefetching.
-- CSS специфичность.
-- Сборка через r.js.
--->
 
 ### 3.2.3 Домашнее задание
 {: id="3.2.3"}
