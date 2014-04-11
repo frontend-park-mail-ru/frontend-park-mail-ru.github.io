@@ -328,7 +328,7 @@
 
     <section class="slide title">
         <h2>
-            <span>3 Производительность</span>
+            <span>2 Производительность</span>
         </h2>
     </section>
 
@@ -459,6 +459,20 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Индикатор загрузки</h2>
+        <div>
+            <pre>
+                <code>&lt;style&gt;</code>
+                <code>    <mark class="comment">/* Loader styles */</mark></code>
+                <code>&lt;/style&gt;</code>
+                <code>&lt;div id="loader"/&gt;</code>
+                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
+                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
     <section class="slide shout">
         <h2>Оптимизация загрузки</h2>
     </section>
@@ -468,7 +482,7 @@
         <div>
             <pre>
                 <code>DNS LOOKUP</code>
-                <code>ROUND-TRIP TIME</code>
+                <code>TCP SLOW-START</code>
                 <code>SSL HANDSHAKE</code>
                 <code>ОТПРАВКА ДАННЫХ</code>
                 <code>ОЖИДАНИЕ ДАННЫХ</code>
@@ -483,7 +497,7 @@
         <div>
             <pre>
                 <code><s>DNS LOOKUP</s></code>
-                <code>ROUND-TRIP TIME</code>
+                <code>TCP SLOW-START</code>
                 <code>SSL HANDSHAKE</code>
                 <code>ОТПРАВКА ДАННЫХ</code>
                 <code>ОЖИДАНИЕ ДАННЫХ</code>
@@ -498,7 +512,7 @@
         <div>
             <pre>
                 <code><s>DNS LOOKUP</s></code>
-                <code><s>ROUND-TRIP TIME</s></code>
+                <code><s>TCP SLOW-START</s></code>
                 <code><s>SSL HANDSHAKE</s></code>
                 <code>ОТПРАВКА ДАННЫХ</code>
                 <code>ОЖИДАНИЕ ДАННЫХ</code>
@@ -543,7 +557,7 @@
         <div>
             <pre>
                 <code><mark class="comment">DNS LOOKUP</mark></code>
-                <code><mark class="comment">ROUND-TRIP TIME</mark></code>
+                <code><mark class="comment">TCP SLOW-START</mark></code>
                 <code><mark class="comment">SSL HANDSHAKE</mark></code>
                 <code>ОТПРАВКА ДАННЫХ</code>
                 <code>ОЖИДАНИЕ ДАННЫХ</code>
@@ -588,7 +602,7 @@
         <div>
             <pre>
                 <code><s>DNS LOOKUP</s></code>
-                <code><s>ROUND-TRIP TIME</s></code>
+                <code><s>TCP SLOW-START</s></code>
                 <code><s>SSL HANDSHAKE</s></code>
                 <code><s>ОТПРАВКА ДАННЫХ</s></code>
                 <code><s>ОЖИДАНИЕ ДАННЫХ</s></code>
@@ -618,7 +632,7 @@
         <div>
             <pre>
                 <code><mark class="comment">DNS LOOKUP</mark></code>
-                <code><mark class="comment">ROUND-TRIP TIME</mark></code>
+                <code><mark class="comment">TCP SLOW-START</mark></code>
                 <code><mark class="comment">SSL HANDSHAKE</mark></code>
                 <code>ОТПРАВКА ДАННЫХ</code>
                 <code>ОЖИДАНИЕ ДАННЫХ</code>
@@ -703,6 +717,168 @@
     </div></section>
 
     <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://example.com/image1.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image2.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code><mark class="comment">&lt;img src="http://example.com/image5.png" /&gt;</mark></code>
+                <code><mark class="comment">&lt;img src="http://example.com/image6.png" /&gt;</mark></code>
+                <code><mark class="comment">&lt;img src="http://example.com/image7.png" /&gt;</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://example.com/image1.png" /&gt;</code>
+                <code><s>&lt;img src="http://example.com/image2.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image5.png" /&gt;</code>
+                <code><mark class="comment">&lt;img src="http://example.com/image6.png" /&gt;</mark></code>
+                <code><mark class="comment">&lt;img src="http://example.com/image7.png" /&gt;</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code><s>&lt;img src="http://example.com/image1.png" /&gt;</s></code>
+                <code><s>&lt;img src="http://example.com/image2.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image5.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image6.png" /&gt;</code>
+                <code><mark class="comment">&lt;img src="http://example.com/image7.png" /&gt;</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code><s>&lt;img src="http://example.com/image1.png" /&gt;</s></code>
+                <code><s>&lt;img src="http://example.com/image2.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code><s>&lt;img src="http://example.com/image5.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image6.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image7.png" /&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Паралельная загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image1.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image2.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image4.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>example.com/image5.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>example.com/image6.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>example.com/image7.png" /&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Cookies-less</h2>
+        <div>
+            <pre>
+                <code>Set-Cookie: name=value; domain=.example.com; path=/</code>
+            </pre>
+            <pre>
+                <code>&lt;link href="http://<mark class="important">static-example</mark>.com/styles.css"</code>
+                <code>    rel="stylesheet" /&gt;</code>
+                <code>&lt;script src="http://<mark class="important">static-example</mark>.com/script.js"&gt;</code>
+                <code>&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Объединение ресурсов</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="http://example.com/script1.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;script src="http://example.com/script2.js"&gt;&lt;/script&gt;</code>
+            </pre>
+            <p>VS.</p>
+            <pre>
+                <code>&lt;script src="http://example.com/scripts.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Уменьшение размера ресурсов</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="http://example.com/jquery.js"&gt;&lt;/script&gt;</code>
+                <code><mark class="comment">&lt;!-- 239 KB / Source --&gt;</mark></code>
+                <div class="next">
+                    <code>&lt;script src="http://example.com/jquery.min.js"&gt;&lt;/script&gt;</code>
+                    <code><mark class="comment">&lt;!-- 81.7 KB / Minified --&gt;</mark></code>
+                </div>
+                <div class="next">
+                    <code>&lt;script src="http://example.com/jquery.js.gz"&gt;&lt;/script&gt;</code>
+                    <code><mark class="comment">&lt;!-- 86.7 KB / Source + GZip--&gt;</mark></code>
+                </div>
+                <div class="next">
+                    <code>&lt;script src="http://example.com/jquery.min.js.gz"&gt;&lt;/script&gt;</code>
+                    <code><mark class="comment">&lt;!-- 33.7 KB / Minified + GZip --&gt;</mark></code>
+                </div>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide cover h bright">
+        <div>
+            <img src="/pics/main-tabs.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Lazy Loading</h2>
+        <div>
+            <pre>
+                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
+                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;div id="tabs"&gt;…&lt;/div&gt;</code>
+                <code>&lt;script&gt;initTabs();&lt;/script&gt;</code>
+                <code>&lt;link rel="stylesheet" href="extra.css"/&gt;</code>
+                <code>&lt;script src="extra.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Предзагрузка картинок</h2>
+        <div>
+            <pre>
+                <code>new Image().src = 'http://domain.com/image1.png';</code>
+                <code>new Image().src = 'http://domain.com/image2.png';</code>
+            </pre>
+            <pre class="next">
+                <code>var img = new Image();</code>
+                <code>img.src = 'http://domain.com/image3.png';</code>
+                <code>img.onload = function () {};</code>
+                <code>img.onerror = function () {};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
         <h2>Консистентность</h2>
         <div>
             <figure>
@@ -714,160 +890,31 @@
         </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <section class="slide">
         <h2>Консистентность</h2>
         <div>
+            <p>СООТВЕТСТВИЕ ВЕРСИИ РЕСУРСОВ ВЕРСИИ ДОКУМЕНТА.</p>
             <pre>
-                Соответствие версии ресурсов (статики) версии документа
                 <code>&lt;link href="/v1/styles.css" rel="stylesheet"/&gt;</code>
                 <code>&lt;script src="/v1/script.js">&lt;/script&gt;</code>
-                <br/>
+             </pre>
+            <pre>
                 <code>&lt;link href="/v2/styles.css" rel="stylesheet"/&gt;</code>
                 <code>&lt;script src="/v2/script.js">&lt;/script&gt;</code>
-                Запрет кеширования документа
              </pre>
         </div>
     </section>
 
-    <section class="slide">
-        <h2>Последовательные запросы</h2>
-        <div>
-            <pre>
-                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
-                Пауза
-                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://domain.com/image.png" /&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Паралельные запросы</h2>
-        <div>
-            <pre>
-                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://<mark class="important">i.</mark>domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://<mark class="important">i2.</mark>domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://<mark class="important">i2.</mark>domain.com/image.png" /&gt;</code>
-                <code>&lt;img src="http://<mark class="important">i2.</mark>domain.com/image.png" /&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Уменьшение количества запросов</h2>
-        <div>
-            <pre>
-                <code>&lt;script src="http://domain.com/script.js"&gt;&lt;/script&gt;</code>
-                <code>&lt;script src="http://domain.com/script2.js"&gt;&lt;/script&gt;</code>
-                <br/>
-                <code>&lt;script src="http://domain.com/script.full.js"&gt;&lt;/script&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Нет печенькам!!!</h2>
-        <div>
-            <pre>
-                <code>&lt;script src="http://<mark class="important">staticdomain.</mark>.com/script.full.js"&gt;&lt;/script&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-            <h2>Уменьшение веса ответа</h2>
-            <div>
-                <pre>
-                    <code>GZip + минимизация</code>
-                </pre>
-            </div>
-        </section>
-
-    <section class="slide">
-        <h2>Разделение функциональности</h2>
-        <div>
-            <pre>
-                <code>Базовая</code>
-                    Первый экран, табы
-                <code>Расширенная</code>
-                    Осьтальные экраны, всплывающие подсказки,
-                    картинки (например, следующая в галлерее)
-            </pre>
-        </div>
-        <!-- ДЕТАЛИ НА СЛЕД СЛАЙДЕ -->
-    </section>
-
-    <section class="slide">
-        <h2>Двухэтапная загрузка</h2>
-        <div>
-            <pre>
-                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
-                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
-                <code>&lt;div id="tabs"&gt;</code>
-                <code>    ...</code>
-                <code>&lt;/div&gt;</code>
-                <code>&lt;script&gt;startTabs();&lt;/script&gt;</code>
-                <code>&lt;link rel="stylesheet" href="additional.css"/&gt;</code>
-                <code>&lt;script src="additional.js"&gt;&lt;/script&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Прелоадер</h2>
-        <div>
-            <pre>
-                <code>&lt;style&gt;</code>
-                <code>/* layout and preloader styles */</code>
-                <code>&lt;/style&gt;</code>
-                <code>&lt;div id="preloader" /&gt;</code>
-                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
-                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
-            </pre>
-            <!-- ДЕМО -->
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Предзагрузка картинок</h2>
-        <div>
-            <pre>
-                <code>new Image().src = 'http://domain.com/image.png';</code>
-                <code>new Image().src = 'http://domain.com/image2.png';</code>
-            </pre>
-        </div>
-    </section>
-
     <section class="slide shout">
-        <h2>Оптимизация JS</h2>
+        <h2>Оптимизации в JavaScript</h2>
     </section>
 
     <section class="slide">
-        <h2>Выборки DOM</h2>
+        <h2><a href="http://jsperf.com/dom-for">Работа с DOM</a></h2>
         <div>
             <pre>
                 <code>for (var i = 0;</code>
-                <code>     i < document.getElementsByTagName('div').length;</code>
+                <code>     i &lt; document.getElementsByTagName('div').length;</code>
                 <code>     i++) {</code>
                 <code>  document.getElementsByTagName('div')[i].innerHTML = i;</code>
                 <code>}</code>
@@ -876,12 +923,12 @@
     </section>
 
     <section class="slide">
-        <h2>Выборки DOM</h2>
+        <h2><a href="http://jsperf.com/dom-for">Работа с DOM</a></h2>
         <div>
             <pre>
                 <code>for (var i = 0,</code>
                 <code>         l = document.getElementsByTagName('div').length;</code>
-                <code>     i < l;</code>
+                <code>     i &lt; l;</code>
                 <code>     i++) {</code>
                 <code>  document.getElementsByTagName('div')[i].innerHTML = i;</code>
                 <code>}</code>
@@ -890,14 +937,13 @@
     </section>
 
     <section class="slide">
-        <h2>Выборки DOM</h2>
+        <h2><a href="http://jsperf.com/dom-for">Работа с DOM</a></h2>
         <div>
             <pre>
                 <code>var nodes = document.getElementsByTagName('div');</code>
-                <code> </code>
                 <code>for (var i = 0,</code>
                 <code>         l = nodes.length;</code>
-                <code>     i < l;</code>
+                <code>     i &lt; l;</code>
                 <code>     i++) {</code>
                 <code>  nodes[i].innerHTML = i;</code>
                 <code>}</code>
@@ -905,49 +951,33 @@
         </div>
     </section>
 
-    <section class="slide cover h bright">
-        <img src="../../pics/dom-for-results.png" alt="" />
-        <div>
-            <mark class="note"><a href="http://jsperf.com/dom-for">http://jsperf.com/dom-for</a></mark>
-        </div>
-    </section>
-
     <section class="slide">
-        <h2>hash vs constructor</h2>
+        <h2><a href="http://jsperf.com/hash-vs-constructor">Hash vs. Constructor</a></h2>
         <div>
             <pre>
-                <code>var o = {</code>
+                <code>var foo = {</code>
                 <code>  a: 'a',</code>
                 <code>  b: 'b'</code>
-                <code>}</code>
+                <code>};</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>hash vs constructor</h2>
+        <h2><a href="http://jsperf.com/hash-vs-constructor">Hash vs. Constructor</a></h2>
         <div>
             <pre>
-                <code>function c() {</code>
+                <code>function Foo() {</code>
                 <code>  this.a = 'a';</code>
                 <code>  this.b = 'b';</code>
                 <code>}</code>
-                <code> </code>
-                <code>var o = new c();</code>
+                <code>var foo = new Foo();</code>
             </pre>
         </div>
     </section>
 
-    <section class="slide cover h bright">
-        <img src="../../pics/hash-vs-constructor.png" alt="" />
-        <div>
-            <mark class="note"><a href="http://jsperf.com/hash-vs-constructor">http://jsperf.com/hash-vs-constructor</a></mark>
-        </div>
-    </section>
-
-
     <section class="slide">
-        <h2>plain vs function</h2>
+        <h2><a href="http://jsperf.com/each-vs-plain">Scope vs. Closure</a></h2>
         <div>
             <pre>
                 <code>var a = 'b';</code>
@@ -957,7 +987,7 @@
     </section>
 
     <section class="slide">
-        <h2>plain vs function</h2>
+        <h2><a href="http://jsperf.com/each-vs-plain">Scope vs. Closure</a></h2>
         <div>
             <pre>
                 <code>var a = 'b';</code>
@@ -969,47 +999,38 @@
         </div>
     </section>
 
-    <section class="slide cover h bright">
-        <img src="../../pics/plain-vs-function.png" alt="" />
-        <div>
-            <mark class="note"><a href="http://jsperf.com/each-vs-plain">http://jsperf.com/each-vs-plain</a></mark>
-        </div>
-    </section>
-
     <section class="slide">
-        <h2>reflow</h2>
+        <h2><a href="http://jsperf.com/tp-reflow">Reflow</a></h2>
         <div>
             <pre>
                 <code>var one = document.getElementById('one'),</code>
                 <code>    two = document.getElementById('two'),</code>
-                <code>    width = 0;</code>
+                <code>    width = 0, text;</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>reflow</h2>
+        <h2><a href="http://jsperf.com/tp-reflow">Reflow</a></h2>
         <div>
             <pre>
-                <code>one.style.backgroundColor = 'red';</code>
-                <code>one.innerHTML = 'text';</code>
+                <code>text = Math.random();</code>
+                <code>one.innerHTML = text;</code>
                 <code>width += one.clientWidth;</code>
                 <code> </code>
-                <code>two.style.backgroundColor = 'red';</code>
-                <code>two.innerHTML = 'text';</code>
+                <code>two.innerHTML = text;</code>
                 <code>width += two.clientWidth;</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>reflow</h2>
+        <h2><a href="http://jsperf.com/tp-reflow">Reflow</a></h2>
         <div>
             <pre>
-                <code>one.style.backgroundColor = 'red';</code>
-                <code>one.innerHTML = 'text';</code>
-                <code>two.style.backgroundColor = 'red';</code>
-                <code>two.innerHTML = 'text';</code>
+                <code>text = Math.random();</code>
+                <code>one.innerHTML = text;</code>
+                <code>two.innerHTML = text;</code>
                 <code> </code>
                 <code>width += one.clientWidth;</code>
                 <code>width += two.clientWidth;</code>
@@ -1017,17 +1038,14 @@
         </div>
     </section>
 
-    <section class="slide cover h bright">
-        <img src="../../pics/reflow.png" alt="" />
+    <section class="slide">
+        <h2>Position vs. Transform</h2>
         <div>
-            <mark class="note"><a href="http://jsperf.com/reflow-in-circle">http://jsperf.com/reflow-in-circle</a></mark>
+            <a href="/d/animate.html">ДЕМОНСТРАЦИЯ</a>.
         </div>
     </section>
 
-    <section class="slide">
-        <h2>left vs transition</h2>
-        <div><a href="/d/animate.html">Демонстрация</a></div>
-    </section>
+    <!-- TODO -->
 
     <section class="slide">
         <h2><code>grunt-contrib-requirejs</code></h2>

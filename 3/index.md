@@ -75,6 +75,7 @@ title: Отладка и мобильный веб
 
 1. Tali Garsiel, Paul Irish. [Принципы работы современных веб-браузеров](http://www.html5rocks.com/ru/tutorials/internals/howbrowserswork/).
 2. Yahoo Developer Network. [Best Practices for Speeding Up Your Web Site](http://developer.yahoo.com/performance/rules.html).
+3. Егор Дыдыкин. [Новая Главная портала Mail.Ru](http://habrahabr.ru/company/mailru/blog/142193/).
 
 ### 3.2.2 Смешанное занятие
 {: id="3.2.2"}
