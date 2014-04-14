@@ -83,38 +83,17 @@ title: Отладка и мобильный веб
 ### 3.2.3 Домашнее задание
 {: id="3.2.3"}
 
-1. Сделать прогресс-бар загрузки ресурсов.
-2. Настроить HTTP заголовки, отвечающие за кеширование ресурсов.
-3. Организовать сборку ресурсов для production и development окружений.
+1. Реализовать индикатор загрузки приложения.
+2. Организовать сборку ресурсов для `production` и `development` окружений.
 
 ### 3.2.4 Техническое задание
 {: id="3.2.4"}
 
-1. Структура файлов (production):
-
-~~~
-production/
-    js/
-        libs.js
-        main.js
-    css/
-        main.css
-~~~
-
-2. CSS проекта собирается с флагом  `style: 'compressed'` в файл `production/css/main.css`
-3. Сборка main.js осуществляется с помощью [`grunt-contrib-requirejs`](https://npmjs.org/package/grunt-contrib-requirejs)).
-4. Минификация файла осуществялется с помощью [`grunt-contrib-uglify`](https://npmjs.org/package/grunt-contrib-uglify).
-5. В продакшене для реализации AMD используется [`almond`](https://github.com/jrburke/almond).
-6. Запуск production `$ NODE_ENV=production node app.js`
-7. Определение в `node.js` текущей версии `process.env.NODE_ENV == 'production'`
-
-~~~
-if( process.env.NODE_ENV == 'production' ){
-    app.use(express.static(path.join(__dirname, 'production')));
-}else{
-    app.use(express.static(path.join(__dirname, 'public')));
-}
-~~~
+1. В Gruntfile необходимо реализовать задачу `build`. Эта задача должна выполнять:
+    1. Собирать CSS в режиме `compressed`.
+    2. Собирать JavaScript с помощью  [`grunt-contrib-requirejs`](https://npmjs.org/package/grunt-contrib-requirejs).
+    3. Минифицировать сборку JavaScript файла вместе с библиотекой [`almond`](https://github.com/jrburke/almond) с помощью [`grunt-contrib-concat`](https://npmjs.org/package/grunt-contrib-concat) и [`grunt-contrib-uglify`](https://npmjs.org/package/grunt-contrib-uglify).
+2. Собранные задачей `build` файлы должны подключаться на странице игры при условии запуска сервера в `production` окружении.
 
 ## 3.3 Возможности смартфонов
 {: id="3.3"}
