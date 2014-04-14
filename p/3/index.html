@@ -1065,13 +1065,25 @@
     <section class="slide">
         <h2><code>Сборка проекта</code></h2>
         <div>
-            <p>Require.js</p>
             <pre>
                 <code>$ npm install grunt-contrib-requirejs --save-dev</code>
-            </pre>
-            <p>Конкатенация файлов</p>
-            <pre>
+                <code><mark class="comment">/* Сборка require.js */</mark></code>
                 <code>$ npm install grunt-contrib-concat --save-dev</code>
+                <code><mark class="comment">/* Конкатенация файлов */</mark></code>
+                <code>$ npm install grunt-contrib-uglify --save-dev</code>
+                <code><mark class="comment">/* Минификация файлов */</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>Gruntfile.js</code></h2>
+        <div>
+            <pre>
+                <code>grunt.initConfig({</code>
+                <code>    requirejs: { … } <mark class="comment">/* grunt-contrib-requirejs */</mark></code>
+                <code>});</code>
+                <code></code>
             </pre>
         </div>
     </section>
@@ -1091,48 +1103,12 @@
     </section>
 
     <section class="slide">
-        <h2><code>grunt-contrib-uglify</code></h2>
-        <div>
-            <pre>
-                <code>$ npm install grunt-contrib-uglify --save-dev</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
         <h2>Gruntfile.js</h2>
         <div>
             <pre>
                 <code>grunt.initConfig({</code>
                 <code>    uglify: { … } <mark class="comment">/* grunt-contrib-uglify */</mark></code>
                 <code>});</code>
-                <code></code>
-                <code>grunt.loadNpmTasks('grunt-contrib-uglify');</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-            <pre>
-                <code>grunt.loadNpmTasks('grunt-contrib-requirejs');</code>
-                <code>grunt.loadNpmTasks('grunt-contrib-uglify');</code>
-                <code>grunt.loadNpmTasks('grunt-contrib-concat');</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-            <pre>
-                <code>grunt.registerTask(</code>
-                <code>    'build',</code>
-                <code>    [</code>
-                <code>        'fest', 'requirejs', 'concat', 'uglify'</code>
-                <code>    ]</code>
-                <code>);</code>
             </pre>
         </div>
     </section>
@@ -1160,6 +1136,31 @@
                 <code>    <mark class="comment">/* имена скриптов */</mark></code>
                 <code>    dest: 'public/js/build.min.js' <mark class="comment">/* результирующий файл */</mark></code>
                 <code>    }</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>grunt.loadNpmTasks('grunt-contrib-requirejs');</code>
+                <code>grunt.loadNpmTasks('grunt-contrib-uglify');</code>
+                <code>grunt.loadNpmTasks('grunt-contrib-concat');</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>grunt.registerTask(</code>
+                <code>    'build',</code>
+                <code>    [</code>
+                <code>        'fest', 'requirejs', 'concat', 'uglify'</code>
+                <code>    ]</code>
+                <code>);</code>
             </pre>
         </div>
     </section>
