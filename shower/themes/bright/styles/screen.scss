@@ -209,6 +209,9 @@ a {
 			&.comment {
 				color:#AAA;
 				}
+			&.delete {
+				text-decoration:line-through;
+				}
 			}
 		}
 	// Table

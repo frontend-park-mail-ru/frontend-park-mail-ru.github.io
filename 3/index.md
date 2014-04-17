@@ -102,6 +102,13 @@ title: Отладка и мобильный веб
 {: id="3.3.1"}
 
 1. Chris Wilson, Paul Kinlan. [Touch And Mouse. Together Again For The First Time](http://www.html5rocks.com/en/mobile/touchandmouse/) // 2013.
+2. Earle Castledine, Myles Eftos, Max Wheeler. [Build Mobile Websites and Apps for Smart Devices](http://www.sitepoint.com/store/build-mobile-websites-and-apps-for-smart-devices/) // 2011.
+3. Mark Pilgrim. [Dive into HTML5](http://diveintohtml5.info/).
+4. [Apple Developer](https://developer.apple.com/)
+5. [Mozilla Developer Network](https://developer.mozilla.org/ru/)
+6. [HTML5 Rocks](http://www.html5rocks.com/en/)
+7. [HTML5 Please](http://html5please.com/)
+8. [Can I use...](http://caniuse.com/)
 
 ### 3.3.2 Смешанное занятие
 {: id="3.3.2"}

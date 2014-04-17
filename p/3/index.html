@@ -844,7 +844,7 @@
 
     <section class="slide cover h bright">
         <div>
-            <img src="/pics/main-tabs.png" alt="" />
+            <img src="../../pics/main-tabs.png" alt="" />
         </div>
     </section>
 
@@ -1197,7 +1197,6 @@
         </div>
     </section>
 
-
     <section class="slide">
         <h2>Проверка</h2>
         <div>
@@ -1205,6 +1204,107 @@
                 <code>$ grunt build</code>
                 <code>$ NODE_ENV=production node app.js</code>
             </pre>
+        </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>3 Возможности смартфонов</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Экран</h2>
+        <div>
+            <pre>
+                <code>PPI <mark class="comment">Pixels Per Inch</mark></code>
+                <code>DPI <mark class="comment">Dots Per Inch</mark></code>
+                <code>Device pixel ratio <mark class="comment">Отношение: Физические / Виртуальные пиксели</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide cover h bright">
+        <div>
+            <img src="../../pics/screens.jpg" alt="" style="width: 100%; height: auto;" />
+        </div>
+    </section>
+
+    <section class="slide cover h bright">
+        <div>
+            <img src="../../pics/viewport.jpg" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Viewport</h2>
+        <div>
+            <pre>
+                <code>&lt;meta name=&quot;<mark>viewport</mark>&quot; content=&quot;</code>
+                <code>    initial-scale=1.0,</code>
+                <code>    user-scalable=no,</code>
+                <code>    maximum-scale=1,</code>
+                <code>    minimum-scale=1</code>
+                <code>&quot;&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Viewport</h2>
+        <div>
+            <pre>
+                <code>... <mark class="delete">width=device-width, height=device-width</mark> ...</code>
+            </pre>
+            <figure>
+                <blockquote>
+                    <p>Включает &laquo;режим совместимости&raquo; в iPhone 5+ и iPod Touch 5+</p>
+                </blockquote>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <img src="../../pics/medias.jpg" alt="" style="width:100%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <pre>
+                <code><mark class="important">@media screen and (max-width: 600px)</mark> {</code>
+                <code>    .class {</code>
+                <code>        background: #ccc;</code>
+                <code>    }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <pre>
+                <code>&lt;link</code>
+                <code>    rel="stylesheet"</code>
+                <code>    <mark class="important">media="screen and (max-width: 600px)"</mark></code>
+                <code>    href="small.css"</code>
+                <code>/&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <p><strong>media:</strong> <strong>all</strong>, screen, <strong>handheld</strong>, aural, braille, embossed, projection, tty, tv, print, 3d-glasses.<br>
+            <strong>orientation:</strong> landscape, portrait.<br>
+            <strong>device:</strong> device-width, device-height, min-width...<br>
+            <strong>pixel-ratio:</strong> device-aspect-ratio, -webkit-device-pixel-ratio, <span style="white-space:nowrap;">-o-device-pixel-ratio</span>...</p>
+            <p><a href="http://cssmediaqueries.com/">http://cssmediaqueries.com/</a></p>
         </div>
     </section>
 
