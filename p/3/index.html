@@ -1258,7 +1258,7 @@
             </pre>
             <figure>
                 <blockquote>
-                    <p>Включает &laquo;режим совместимости&raquo; в iPhone 5+ и iPod Touch 5+</p>
+                    <p>width=320 включает &laquo;режим совместимости&raquo; в iPhone 5+ и iPod Touch 5+</p>
                 </blockquote>
             </figure>
         </div>
@@ -1305,6 +1305,278 @@
             <strong>device:</strong> device-width, device-height, min-width...<br>
             <strong>pixel-ratio:</strong> device-aspect-ratio, -webkit-device-pixel-ratio, <span style="white-space:nowrap;">-o-device-pixel-ratio</span>...</p>
             <p><a href="http://cssmediaqueries.com/">http://cssmediaqueries.com/</a></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Orientation</h2>
+        <div>
+            <img src="../../pics/orientation.jpg" alt="" style="width:100%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Orientation</h2>
+        <div>
+            <pre>
+                <code>window.addEventListener('<mark class="important">orientationchange</mark>',function () {</code>
+                <code>    if (<mark class="important">window.orientation%90</mark>) {</code>
+                <code>        <mark class="comment">// landscape</mark></code>
+                <code>    } else {</code>
+                <code>        <mark class="comment">// portrait</mark></code>
+                <code>    }</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide" style="text-align:center;">
+        <img src="../../pics/gyroscope.jpg" alt="" style="height:100%;" />
+    </section>
+
+    <section class="slide">
+        <h2>Gyroscope</h2>
+        <div>
+            <pre>
+                <code>window.addE.L...('<mark class="important">deviceorientation</mark>', function(event) {</code>
+                <code>    <mark class="important">event.alpha</mark>;</code>
+                <code>    <mark class="important">event.beta</mark>;</code>
+                <code>    <mark class="important">event.gamma</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <img src="../../pics/acceleration.jpg" alt="" style="width:100%;" />
+    </section>
+
+    <section class="slide">
+        <h2>Acceleration</h2>
+        <div>
+            <pre>
+                <code>window.addE.L...('<mark class="important">devicemotion</mark>', function(event) {</code>
+                <code>    <mark class="important">event.acceleration.x</mark>;</code>
+                <code>    <mark class="important">event.acceleration.y</mark>;</code>
+                <code>    <mark class="important">event.acceleration.z</mark>;</code>
+                <code>    <mark class="important">event.accelerationIncludingGravity</mark>;</code>
+                <code>    <mark class="important">event.rotationRate</mark>;</code>
+                <code>    <mark class="important">event.interval</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Совместимость</h2>
+        <div>
+            <pre>
+                <code><a href="https://github.com/ajfisher/deviceapi-normaliser">https://github.com/ajfisher/<mark class="important">deviceapi-normaliser</mark></a></code>
+            </pre>
+
+            <pre>
+                <code>window.addE.L...('<mark class="important">deviceorientation</mark>', function(event) {</code>
+                <code>    var orientation = deviceOrientation(e);</code>
+                <code>    <mark class="important">orientation.alpha</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events</h2>
+        <div>
+            <table>
+            <tr>
+                <th>WebKit</th>
+                <th>MS IE</th>
+            </tr>
+            <tr>
+                <td>TouchStart</td>
+                <td>MSPointerDown</td>
+            </tr>
+            <tr>
+                <td>TouchMove</td>
+                <td>MSPointerMove</td>
+            </tr>
+            <tr>
+                <td>TouchEnd</td>
+                <td>MSPointerUp</td>
+            </tr>
+            <tr>
+                <td>TouchCancel</td>
+                <td>MSPointerCancel</td>
+            </tr>
+            <tr>
+                <td>Click</td>
+                <td>Click</td>
+            </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events</h2>
+        <div>
+            <blockquote><strong>PointerEvents:</strong><br /><a href="http://www.w3.org/TR/pointerevents/">http://www.w3.org/TR/pointerevents/</a><br /><a href="http://msdn.microsoft.com/">http://msdn.microsoft.com/</a></blockquote>
+            <blockquote style="margin-top:30px;"><strong>TouchEvents:</strong><br /><a href="http://www.w3.org/TR/touch-events/">http://www.w3.org/TR/touch-events/</a><br /><a href="https://developer.apple.com/">https://developer.apple.com/</a></blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / TouchEvent</h2>
+        <div>
+            <pre>
+                <code>elem.addEventListener('touchstart', function(event){</code>
+                <code>    <mark class="important">event.touches[]</mark>;</code>
+                <code>    <mark class="important">event.changedTouches[]</mark>;</code>
+                <code>    <mark class="important">event.targetTouches[]</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / TouchEvent</h2>
+        <div>
+            <pre>
+                <code>identifier</code>
+                <code>target</code>
+                <code>screenX</code>
+                <code>screenY</code>
+                <code>clientX</code>
+                <code>clientY</code>
+                <code>pageX</code>
+                <code>pageY</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / Pointer</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/pointer.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / Pointer</h2>
+        <div>
+            <pre>
+                <code>elem.addEventListener('MSPointerDown', function(event){</code>
+                <code>    <mark class="important">event.pointerType</mark>;</code>
+                <code>    <mark class="important">event.MSPOINTER_TYPE_TOUCH</mark>;</code>
+                <code>    <mark class="important">event.MSPOINTER_TYPE_PEN</mark>;</code>
+                <code>    <mark class="important">event.MSPOINTER_TYPE_MOUSE</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / Pointer</h2>
+        <div>
+            <pre>
+                <code>readonly</code>
+                <code>width</code>
+                <code>height</code>
+                <code>pressure</code>
+                <code>tiltX</code>
+                <code>tiltY</code>
+                <code>pointerType</code>
+                <code>isPrimary</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Application Cache</h2>
+        <div>
+            <pre>
+                <code><mark class="important">CACHE MANIFEST</mark></code>
+                <code><mark class="important"># v1.0.0</mark></code>
+                <code>index.html</code>
+                <code>main.css</code>
+                <code><mark class="important">NETWORK:</mark></code>
+                <code>/api/*</code>
+                <code><mark class="important">FALLBACK:</mark></code>
+                <code>index.html /offline.html</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Storage</h2>
+        <div>
+            <blockquote>
+                <strong>localStorage</strong> - Синхронное key / value<br /><br />
+                <strong>IndexedDB</strong> - Асинхронное<sup>*</sup> key / value<br />
+                <strong>Web SQL</strong> - Асинхронное<sup>*</sup> SQLite<br />
+                <strong><a href="http://nparashuram.com/IndexedDBShim/">IndexedDB Polyfill</a></strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <img src="../../pics/devices.jpeg" alt="" style="width:100%;" />
+    </section>
+
+    <section class="slide">
+        <h2>Разработка</h2>
+        <div>
+            <blockquote><strong>iOS SDK - Xcode</strong><br /><a href="https://developer.apple.com/xcode/">https://developer.apple.com/xcode/</a></blockquote>
+            <blockquote><strong>Android SDK - AVD Manager</strong><br /><a href="http://developer.android.com/sdk/">http://developer.android.com/sdk/</a></blockquote>
+            <blockquote>
+                <strong>Nokia<sub>*</sub>(MS?) SDK</strong> - <a href="http://developer.nokia.com/">http://developer.nokia.com/</a><br />
+                <strong>BlackBerry SDK</strong> - <a href="http://developer.blackberry.com/">http://developer.blackberry.com/</a>
+            </blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Xcode</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/xcode1.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>iOS Simulator</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/5f14cc542507d9ed0955571455a6.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Android</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/d47effa5fdc0de69480709ff1f0d.png" alt="" style="width:80%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Android</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/android1.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Android</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/b3a8082e75d5a7ccfb97fa8d9cf0.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Инструменты</h2>
+        <div>
+            <blockquote>
+            <strong>Modernizr</strong> - <a href="http://modernizr.com/">http://modernizr.com/</a><br />
+            <strong>Mobile Boilerplate</strong> - <a href="http://html5boilerplate.com/mobile/">http://html5boilerplate.com/mobile/</a><br />
+            <strong>Hammer.js</strong> - <a href="http://eightmedia.github.io/hammer.js/">http://eightmedia.github.io/hammer.js/</a><br />
+            <strong>Sencha Touch</strong> - <a href="http://www.sencha.com/products/touch/">http://www.sencha.com/products/touch/</a>
+        </blockquote>
         </div>
     </section>
 
