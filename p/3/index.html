@@ -135,9 +135,9 @@
                 <code>css: { <mark class="comment">/* Подзадача */</mark></code>
                 <code>    files: [{</code>
                 <code>        expand: true,</code>
-                <code>        cwd: 'public/css', <mark class="comment">/* исходная директория */</mark></code>
+                <code>        cwd: 'public_html/css', <mark class="comment">/* исходная директория */</mark></code>
                 <code>        src: '*.scss', <mark class="comment">/* имена шаблонов */</mark></code>
-                <code>        dest: 'public/css', <mark class="comment">/* результирующая директория */</mark></code>
+                <code>        dest: 'public_html/css', <mark class="comment">/* результирующая директория */</mark></code>
                 <code>        ext:  '.css'</code>
                 <code>    }]}</code>
             </pre>
@@ -1123,11 +1123,11 @@
             <pre>
                 <code>build: { <mark class="comment">/* Подзадача */</mark></code>
                 <code>  almond: true,</code>
-                <code>  baseUrl: "public/js",</code>
-                <code>  mainConfigFile: "public/js/main.js",</code>
+                <code>  baseUrl: "public_html/js",</code>
+                <code>  mainConfigFile: "public_html/js/main.js",</code>
                 <code>  name: "main",</code>
                 <code>  optimize: "none",</code>
-                <code>  out: "public/js/build/main.js"</code>
+                <code>  out: "public_html/js/build/main.js"</code>
                 <code>}</code>
             </pre>
         </div>
@@ -1150,8 +1150,8 @@
             <pre>
                 <code>build: { <mark class="comment">/* Подзадача */</mark></code>
                 <code>    separator: ';\n',</code>
-                <code>    src: ['public/js/lib/almond.js','public/js/build/main.js'],</code>
-                <code>    dest: 'public/js/build.min.js'</code>
+                <code>    src: ['public_html/js/lib/almond.js','public_html/js/build/main.js'],</code>
+                <code>    dest: 'public_html/js/build.min.js'</code>
                 <code>}</code>
             </pre>
         </div>
@@ -1163,8 +1163,8 @@
             <pre>
                 <code>build: { <mark class="comment">/* Подзадача */</mark></code>
                 <code>    files: {</code>
-                <code>        src: ['public/js/build.js'],</code>
-                <code>        dest: 'public/js/build.min.js'</code>
+                <code>        src: ['public_html/js/build.js'],</code>
+                <code>        dest: 'public_html/js/build.min.js'</code>
                 <code>    }</code>
                 <code>}</code>
             </pre>
@@ -1216,7 +1216,7 @@
     <section class="slide">
         <h2>Демонстрации</h2>
         <div>
-            <p style="font-size:2.5em;"><a href="http://tp.eprev.org/d/mobile/">http://tp.eprev.org/d/mobile/</a></p>
+            <p style="font-size:2.5em;"><a href="http://frontend.tech-mail.ru/d/mobile/">http://frontend.tech-mail.ru/d/mobile/</a></p>
         </div>
     </section>
 

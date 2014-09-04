@@ -115,7 +115,7 @@ module.exports = function (grunt) {
                 options: {
                     keepalive: true, /* работать постоянно */
                     port: 8000, /* номер порта */
-                    base: 'public' /* публичная директория */
+                    base: 'public_html' /* публичная директория */
                 }
             }
         }
@@ -134,7 +134,7 @@ Waiting forever...
 Started connect web server on http://localhost:8000
 ~~~
 
-Создайте `public/index.html`.
+Создайте `public_html/index.html`.
 
 Установите `grunt-fest` и настройте таск `fest`.
 
@@ -151,7 +151,7 @@ module.exports = function (grunt) {
                 options: {
                     keepalive: true,
                     port: 8000,
-                    base: 'public'
+                    base: 'public_html'
                 }
             }
         },
@@ -161,7 +161,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'templates', /* исходная директория */
                     src: '*.xml', /* имена шаблонов */
-                    dest: 'public/js/tmpl' /* результирующая директория */
+                    dest: 'public_html/js/tmpl' /* результирующая директория */
                 }],
                 options: {
                     template: function (data) { /* задаем формат функции-шаблона */
@@ -201,7 +201,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 8000,
-                    base: 'public'
+                    base: 'public_html'
                 }
             }
         },
@@ -211,7 +211,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'templates',
                     src: '*.xml',
-                    dest: 'public/js/tmpl'
+                    dest: 'public_html/js/tmpl'
                 }],
                 options: {
                     template: function (data) {
@@ -251,8 +251,8 @@ module.exports = function (grunt) {
             },
             server: {
                 files: [
-                    'public/js/**/*.js', /* следим за статикой */
-                    'public/css/**/*.css'
+                    'public_html/js/**/*.js', /* следим за статикой */
+                    'public_html/css/**/*.css'
                 ],
                 options: {
                     interrupt: true,
@@ -265,7 +265,7 @@ module.exports = function (grunt) {
                 options: {
                     livereload: true, /* поддержка перезагрузки страницы */
                     port: 8000,
-                    base: 'public'
+                    base: 'public_html'
                 }
             }
         },
@@ -275,7 +275,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'templates',
                     src: '*.xml',
-                    dest: 'public/js/tmpl'
+                    dest: 'public_html/js/tmpl'
                 }],
                 options: {
                     template: function (data) {
@@ -417,13 +417,14 @@ showMainScreen();
         - Пункт «Авторизация» ведет на экран авторизации.
         - Пункт «Начать игру» ведет на основной экран игры.
     2. Лучшие игроки (Scoreboard Screen). Содержит название игры и кнопку «Назад», ведущую на главный экран.
-    3. Экран авторизации содержит поля email и пароль.
+    3. Экран авторизации содержит поля email, пароль и кнопку submit.
     4. Основной экран игры (Game Screen). Содержит кнопку «Назад», ведущую на главный экран.
 2. За отрисовку и последующую инициализацию каждого экрана должна отвечать отдельная функция в JavaScript.
-3. При первой загрузке страницы с игрой появляется главный экран. Переход между экранами должен осуществлятся без перезагрузки страницы.
-4. Для шаблонизации на строне клиента должен использоваться Fest (см. [`grunt-fest`](https://npmjs.org/package/grunt-fest) и [Fest](https://github.com/mailru/fest)).
-5. На странице с игрой допускается загрузка одного JavaScript файла и одного CSS файла. Сборку этих файлов необходимо осуществить с помощью Grunt (см. [`grunt-contrib-concat`](https://npmjs.org/package/grunt-contrib-concat)).
-6. С помощиью Grunt возможно запустить веб-сервер с игрой (см. [`grunt-contrib-connect`](https://npmjs.org/package/grunt-contrib-connect)). Страницу с игрой необходимо автоматически перезагружать при изменении исходных JavaScript, XML (Fest) или CSS файлов (см. параметр `livereload` в задачах `grunt-contrib-connect` и [`grunt-contrib-watch`](https://npmjs.org/package/grunt-contrib-watch)).
+3. Со страницы авторизации форма должна отправлять post запрос по адресу "/api/v1/auth/signin".
+4. При первой загрузке страницы с игрой появляется главный экран. Переход между экранами должен осуществлятся без перезагрузки страницы.
+5. Для шаблонизации на строне клиента должен использоваться Fest (см. [`grunt-fest`](https://npmjs.org/package/grunt-fest) и [Fest](https://github.com/mailru/fest)).
+6. На странице с игрой допускается загрузка одного JavaScript файла и одного CSS файла. Сборку этих файлов необходимо осуществить с помощью Grunt (см. [`grunt-contrib-concat`](https://npmjs.org/package/grunt-contrib-concat)).
+7. С помощиью Grunt возможно запустить веб-сервер с игрой (см. [`grunt-contrib-connect`](https://npmjs.org/package/grunt-contrib-connect)). Страницу с игрой необходимо автоматически перезагружать при изменении исходных JavaScript, XML (Fest) или CSS файлов (см. параметр `livereload` в задачах `grunt-contrib-connect` и [`grunt-contrib-watch`](https://npmjs.org/package/grunt-contrib-watch)).
 
 ![Схема прототипа](/pics/prototype-scheme.png)
 
@@ -850,7 +851,7 @@ $ git fetch tp
 $ git merge tp/v2
 ~~~
 
-При разрешении конфликтов Git, файлы `templates/*.xml` и `public/css/main.css` следует разрешить в пользу ваших версий, в то время как для `index.html` и `public/js/main.js` использовать версии из `tp/v2`. Для разрешения конфликтов в `public/js/tmpl/*.js` достаточно их пересобрать с помощью Grunt (`grunt fest`).
+При разрешении конфликтов Git, файлы `templates/*.xml` и `public_html/css/main.css` следует разрешить в пользу ваших версий, в то время как для `index.html` и `public_html/js/main.js` использовать версии из `tp/v2`. Для разрешения конфликтов в `public_html/js/tmpl/*.js` достаточно их пересобрать с помощью Grunt (`grunt fest`).
 
 ### 1.2.3 Домашнее задание
 {: id="1.2.3"}
@@ -868,12 +869,12 @@ $ git merge tp/v2
 
 2. Обязательно использование БЭМ методологии в HTML и CSS.
 
-3. Модель игрока (`public/js/models/score.js`) должна состоять из следующих атрибутов:
+3. Модель игрока (`public_html/js/models/score.js`) должна состоять из следующих атрибутов:
 
     - `name` – имя игрока (значение по умолчанию: `''`)
     - `score` – количество очков (значение по умолчанию: `0`)
 
-4. Список игроков (`public/js/views/scoreboard.js`) должен состоять из 10 разных записей и программно упорядочен по убыванию атрибута `score`.
+4. Список игроков (`public_html/js/views/scoreboard.js`) должен состоять из 10 разных записей и программно упорядочен по убыванию атрибута `score`.
 
 5. Переходы между экранами веб-приложения должны отражаться в истории веб-браузера, таким образом, чтобы корректно работали кнопки Back и Forward. Для этой цели к адресу веб-страницы добавляется якорь (`#`):
 
@@ -881,6 +882,6 @@ $ git merge tp/v2
     - `#game` для основного экрана игры;
     - `#` для экрана «Главное меню».
 
-6. Роутер (`public/js/router.js`) должен работать только с представлениями (`public/js/views/*.js`); представления с шаблонами (`public/js/tmpl/*.js`), моделями (`public/js/models/*.js`) и коллекциями (`public/js/collections/*.js`); коллекции только с моделями.
+6. Роутер (`public_html/js/router.js`) должен работать только с представлениями (`public_html/js/views/*.js`); представления с шаблонами (`public_html/js/tmpl/*.js`), моделями (`public_html/js/models/*.js`) и коллекциями (`public_html/js/collections/*.js`); коллекции только с моделями.
 
 7. Экран с игрой (`#game`) и/или главный экран (`#`) должен содержать наброски (в любом виде) будущей игры.

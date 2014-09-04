@@ -2,7 +2,7 @@ var http = require('http'),
     express = require('express'),
     app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public_html'));
 
 app.get('/styles.css', function(req, res) {
     setTimeout(function () {

@@ -12,9 +12,11 @@
 	<array>
 		<string>LithosPro-Black</string>
 		<string>HiraMinProN-W3</string>
+		<string>LucidaGrande-Bold</string>
+		<string>AppleColorEmoji</string>
 	</array>
 	<key>length</key>
-	<integer>155399</integer>
+	<integer>173068</integer>
 	<key>version</key>
 	<integer>37</integer>
 </dict>

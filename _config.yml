@@ -8,4 +8,4 @@ exclude: [package.json, .gitignore, .editorconfig, node_modules, README.md]
 
 title: "Фронтенд разработка"
 description: "Материалы курса «Фронтенд разработка», читаемого во втором семестре Технопарка Mail.ru."
-public_host: tp.eprev.org
+public_host: frontend.tech-mail.ru

@@ -23,9 +23,9 @@
         <h2>Фронтенд</h2>
         <div>
         <pre>
-            <code>АНТОН ЕПРЕВ <mark class="comment"> // a.eprev     \</mark></code>
+            <code>ИВАН ЧАШКИН <mark class="comment"> // i.chashkin     \</mark></code>
             <code>ЕГОР ДЫДЫКИН <mark class="comment">// e.dydykin   - @corp.mail.ru</mark></code>
-            <code>ИВАН ЧАШКИН <mark class="comment"> // i.chashkin  /</mark></code>
+            <code>АРТЕМ МЕЗИН <mark class="comment"> // a.mezin  /</mark></code>
         </pre>
         </div>
     </section>
@@ -80,10 +80,10 @@
         <h2>Итоговая оценка</h2>
         <div>
         <pre>
-            <code> 0 &lt;= "НЕУДОВЛЕТВОРИТЕЛЬНО" &lt;= 59</code>
-            <code>60 &lt;= "УДОВЛЕТВОРИТЕЛЬНО" &lt;= 74</code>
-            <code>75 &lt;= "ХОРОШО" &lt;= 89</code>
-            <code>90 &lt;= "ОТЛИЧНО" &lt;= 100</code>
+            <code> 0 &lt;= "НЕУДОВЛЕТВОРИТЕЛЬНО" &lt;= 69</code>
+            <code>70 &lt;= "УДОВЛЕТВОРИТЕЛЬНО" &lt;= 84</code>
+            <code>85 &lt;= "ХОРОШО" &lt;= 99</code>
+            <code>"ОТЛИЧНО" == 100</code>
         </pre>
        </div>
     </section>
@@ -101,9 +101,15 @@
        </div>
     </section>
 
+    <section class="slide cover w bright">
+        <div>
+            <img src="/pics/complexity.png" alt="" />
+        </div>
+    </section>
+
     <section class="slide shout">
         <h2>
-            tp.eprev.org/p/1
+            frontend.tech-mail.ru/p/1
         </h2>
         <div>
         </div>
@@ -197,7 +203,7 @@
             <code>    options: {</code>
             <code>        keepalive: true, <mark class="comment">/* работать постоянно */</mark></code>
             <code>        port: 8000, <mark class="comment">/* номер порта */</mark></code>
-            <code>        base: 'public' <mark class="comment">/* публичная директория */</mark></code>
+            <code>        base: 'public_html' <mark class="comment">/* публичная директория */</mark></code>
             <code>    }</code>
             <code>}</code>
         </pre>
@@ -217,10 +223,10 @@
     </section>
 
     <section class="slide">
-        <h2>public</h2>
+        <h2>public_html</h2>
         <div>
         <pre>
-            <code>$ cat public/index.html</code>
+            <code>$ cat public_html/index.html</code>
             <code>Hello!</code>
         </pre>
        </div>
@@ -304,7 +310,7 @@
             <code>        expand: true,</code>
             <code>        cwd: 'templates', <mark class="comment">/* исходная директория */</mark></code>
             <code>        src: '*.xml', <mark class="comment">/* имена шаблонов */</mark></code>
-            <code>        dest: 'public/js/tmpl' <mark class="comment">/* результирующая директория */</mark></code>
+            <code>        dest: 'public_html/js/tmpl' <mark class="comment">/* результирующая директория */</mark></code>
             <code>    }], … }</code>
         </pre>
        </div>
@@ -330,9 +336,9 @@
         <div>
         <pre>
             <code>$ grunt fest</code>
-            <code>$ cat public/js/tmpl/main.js</code>
-            <code>$ cat public/js/tmpl/scoreboard.js</code>
-            <code>$ cat public/js/tmpl/game.js</code>
+            <code>$ cat public_html/js/tmpl/main.js</code>
+            <code>$ cat public_html/js/tmpl/scoreboard.js</code>
+            <code>$ cat public_html/js/tmpl/game.js</code>
         </pre>
        </div>
     </section>
@@ -398,7 +404,7 @@
             <code>    options: {</code>
             <code>        <del>keepalive: true, <mark class="comment">/* работать постоянно */</mark></del></code>
             <code>        port: 8000, <mark class="comment">/* номер порта */</mark></code>
-            <code>        base: 'public' <mark class="comment">/* публичная директория */</mark></code>
+            <code>        base: 'public_html' <mark class="comment">/* публичная директория */</mark></code>
             <code>    }</code>
             <code>}</code>
         </pre>
