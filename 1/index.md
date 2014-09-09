@@ -28,6 +28,14 @@ title: Архитектура
 1.2.4 [Техническое задание](#1.2.4)
 {:.toc}
 
+1.3 [Авторизация. Регистрация. Редактировани данных пользователя, AJAX, HTML form 4](#1.3)
+
+1.3.1 [Полезные ресурсы](#1.3.1)\\
+1.3.2 [Лекция](#1.3.2)\\
+1.3.3 [Домашнее задание](#1.3.3)\\
+1.3.4 [Техническое задание](#1.3.4)
+{:.toc}
+
 ## 1.1 Знакомство, инструменты, настройка окружения
 {: id="1.1"}
 
@@ -320,12 +328,21 @@ function showGameScreen() {
 /* Деструктор экрана "Игра" */
 function hideGameScreen() {}
 
+/* Конструктор экрана "Авторизация" */
+function showLoginScreen() {
+    hideMainScreen();
+}
+
+/* Деструктор экрана "Авторизация" */
+function hideLoginScreen() {}
+
 /* Конструктор экрана "Главный" */
 function showMainScreen() {
     $page.html(mainTmpl()); // Рендерим шаблон
     // Инициализируем обработчики событий
     $page.find('.js-scoreboard').on('click', showScoreboardScreen);
     $page.find('.js-start-game').on('click', showGameScreen);
+    $page.find('.js-login').on('click', showLoginScreen);
 }
 
 /* Деструктор экрана "Главный" */
@@ -333,6 +350,7 @@ function hideMainScreen() {
     // Удаляем установленные обработчики событий
     $page.find('.js-scoreboard').off('click', showScoreboardScreen);
     $page.find('.js-start-game').off('click', showGameScreen);
+    $page.find('.js-login').off('click', showLoginScreen);
 }
 
 showMainScreen();
@@ -375,6 +393,21 @@ function hideGameScreen() {
     $page.find('.js-back').off('click', showMainScreen);
 }
 
+/* Конструктор экрана "Авторизация" */
+function showLoginScreen() {
+    hideMainScreen(); // Убиваем экран "Главный"
+    currentScreen = 'login';
+    $page.html(loginTmpl()); // Рендерим шаблон
+    // Инициализируем обработчики событий
+    $page.find('.js-back').on('click', showMainScreen);
+}
+
+/* Деструктор экрана "Авторизация" */
+function hideLoginScreen() {
+    // Удаляем установленные обработчики событий
+    $page.find('.js-back').off('click', showMainScreen);
+}
+
 /* Конструктор экрана "Главный" */
 function showMainScreen() {
      // Убиваем текущий экран
@@ -382,12 +415,15 @@ function showMainScreen() {
         hideScoreboardScreen();
     } else if (currentScreen === 'game') {
         hideGameScreen();
+    } else if (currentScreen === 'login') {
+        hideLoginScreen();
     }
     currentScreen = 'main';
     $page.html(mainTmpl()); // Рендерим шаблон
     // Инициализируем обработчики событий
     $page.find('.js-scoreboard').on('click', showScoreboardScreen);
     $page.find('.js-start-game').on('click', showGameScreen);
+    $page.find('.js-login').on('click', showGameScreen);
 }
 
 /* Деструктор экрана "Главный" */
@@ -395,6 +431,7 @@ function hideMainScreen() {
     // Удаляем установленные обработчики событий
     $page.find('.js-scoreboard').off('click', showScoreboardScreen);
     $page.find('.js-start-game').off('click', showGameScreen);
+    $page.find('.js-login').off('click', showLoginScreen);
 }
 
 showMainScreen();
@@ -411,7 +448,7 @@ showMainScreen();
 ### 1.1.4 Техническое задание
 {: id="1.1.4"}
 
-1. Прототип состоит из трех экранов:
+1. Прототип состоит из четырех экранов:
     1. Главный экран (Main Screen). Содержит название игры и пункты главного меню:
         - Пункт «Лучшие игроки» ведет на экран «Лучшие игроки».
         - Пункт «Авторизация» ведет на экран авторизации.
@@ -885,3 +922,18 @@ $ git merge tp/v2
 6. Роутер (`public_html/js/router.js`) должен работать только с представлениями (`public_html/js/views/*.js`); представления с шаблонами (`public_html/js/tmpl/*.js`), моделями (`public_html/js/models/*.js`) и коллекциями (`public_html/js/collections/*.js`); коллекции только с моделями.
 
 7. Экран с игрой (`#game`) и/или главный экран (`#`) должен содержать наброски (в любом виде) будущей игры.
+
+## 1.3 Авторизация. Регистрация. Редактировани данных пользователя, AJAX, HTML form 4
+{: id="1.3"}
+
+### 1.3.1 Полезные ресурсы
+{: id="1.3.1"}
+
+### 1.3.2 Лекция
+{: id="1.3.2"}
+
+### 1.3.3 Домашнее задание
+{: id="1.3.3"}
+
+### 1.3.4 Техническое задание
+{: id="1.3.4"}
