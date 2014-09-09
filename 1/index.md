@@ -460,8 +460,7 @@ showMainScreen();
 3. Со страницы авторизации форма должна отправлять post запрос по адресу "/api/v1/auth/signin".
 4. При первой загрузке страницы с игрой появляется главный экран. Переход между экранами должен осуществлятся без перезагрузки страницы.
 5. Для шаблонизации на строне клиента должен использоваться Fest (см. [`grunt-fest`](https://npmjs.org/package/grunt-fest) и [Fest](https://github.com/mailru/fest)).
-6. На странице с игрой допускается загрузка одного JavaScript файла и одного CSS файла. Сборку этих файлов необходимо осуществить с помощью Grunt (см. [`grunt-contrib-concat`](https://npmjs.org/package/grunt-contrib-concat)).
-7. С помощиью Grunt возможно запустить веб-сервер с игрой (см. [`grunt-contrib-connect`](https://npmjs.org/package/grunt-contrib-connect)). Страницу с игрой необходимо автоматически перезагружать при изменении исходных JavaScript, XML (Fest) или CSS файлов (см. параметр `livereload` в задачах `grunt-contrib-connect` и [`grunt-contrib-watch`](https://npmjs.org/package/grunt-contrib-watch)).
+6. С помощиью Grunt возможно запустить веб-сервер с игрой (см. [`grunt-contrib-connect`](https://npmjs.org/package/grunt-contrib-connect)). Страницу с игрой необходимо автоматически перезагружать при изменении исходных JavaScript, XML (Fest) или CSS файлов (см. параметр `livereload` в задачах `grunt-contrib-connect` и [`grunt-contrib-watch`](https://npmjs.org/package/grunt-contrib-watch)).
 
 ![Схема прототипа](/pics/prototype-scheme.png)
 
