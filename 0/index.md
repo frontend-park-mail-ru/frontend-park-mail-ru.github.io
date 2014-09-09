@@ -44,3 +44,10 @@ title: Преамбула
 10. [Ping-Pong](http://cssdeck.com/labs/ping-pong-game-tutorial-with-html5-canvas-and-sounds).
 11. [Circle Game](http://sysach.com/circle-game/).
 12. [Missile Game](http://missile-game.bwhmather.com).
+
+Над проектом работали:
+
+* [Антон Епрев](https://github.com/eprev)
+* [Артем Мезин](https://github.com/iketari)
+* [Егор Дыдыкин](https://github.com/madimp)
+* [Иван Чашкин](https://github.com/ivan-chashkin)
