@@ -381,6 +381,20 @@
     </section>
 
     <section class="slide">
+        <h2><code>grunt-contrib-watch</code></h2>
+        <div>
+        <pre>
+            <code>server: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>    files: ['public_html/js/**/*.js'], <mark class="comment">/* следим за JS */</mark></code>
+            <code>    options: {</code>
+            <code>        livereload: true <mark class="comment">/* автоматическая перезагрузка */</mark></code>
+            <code>    }</code>
+            <code>}</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
         <h2>Gruntfile.js</h2>
         <div>
         <pre>
@@ -408,17 +422,17 @@
     </section>
 
     <section class="slide">
-        <h2>HTML</h2>
+        <h2>Livereload</h2>
         <div>
             <pre>
-                <code>&lt;!DOCTYPE html&gt;</code>
-                <code>&lt;html&gt;&lt;head&gt;</code>
-                <code>    &lt;meta charset="utf-8"&gt;</code>
-                <code>    &lt;link rel="stylesheet" href="/css/main.css"/&gt;</code>
-                <code>&lt;/head&gt;&lt;body&gt;</code>
-                <code>    &lt;div id="page"&gt;&lt;/div&gt;</code>
+                <code><mark class="comment">&lt;!DOCTYPE html&gt;</mark></code>
+                <code><mark class="comment">&lt;html&gt;&lt;head&gt;</mark></code>
+                <code>    <mark class="comment">&lt;meta charset="utf-8"&gt;</mark></code>
+                <code>    <mark class="comment">&lt;link rel="stylesheet" href="/css/main.css"/&gt;</mark></code>
+                <code><mark class="comment">&lt;/head&gt;&lt;body&gt;</mark></code>
+                <code>    <mark class="comment">&lt;div id="page"&gt;&lt;/div&gt;</mark></code>
                 <code>    &lt;script src="//localhost:35729/livereload.js"&gt;&lt;/script&gt;</code>
-                <code>&lt;/body&gt;&lt;/html&gt;</code>
+                <code><mark class="comment">&lt;/body&gt;&lt;/html&gt;</mark></code>
             </pre>
        </div>
     </section>

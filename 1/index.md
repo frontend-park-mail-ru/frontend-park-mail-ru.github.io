@@ -105,31 +105,31 @@ $ mkdir epicgame
 $ npm init
 ~~~
 
-Установите Grunt и `grunt-contrib-connect`.
+Установите Grunt и `grunt-shell`.
 
 ~~~
 $ npm install grunt-cli -g
-$ npm install grunt grunt-contrib-connect --save-dev
+$ npm install grunt grunt-shell --save-dev
 ~~~
 
-Создайте `Gruntfile.js` и настройте таск `connect`.
+Создайте `Gruntfile.js` и настройте таск `shell`.
 
 ~~~
 module.exports = function (grunt) {
 
     grunt.initConfig({
-        connect: {
+        shell: {
+            options: {
+                stdout: true,
+                stderr: true
+            },
             server: {
-                options: {
-                    keepalive: true, /* работать постоянно */
-                    port: 8000, /* номер порта */
-                    base: 'public_html' /* публичная директория */
-                }
+                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080' /* запуск сервера */
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-shell');
 
 };
 ~~~
@@ -137,9 +137,9 @@ module.exports = function (grunt) {
 
 ~~~
 $ grunt connect
-Running "connect:server" (connect) task
-Waiting forever...
-Started connect web server on http://localhost:8000
+Running "shell:server" (shell) task
+Starting at port: 8000
+...
 ~~~
 
 Создайте `public_html/index.html`.
@@ -154,13 +154,13 @@ $ npm install grunt-fest --save-dev
 module.exports = function (grunt) {
 
     grunt.initConfig({
-        connect: {
+        shell: {
+            options: {
+                stdout: true,
+                stderr: true
+            },
             server: {
-                options: {
-                    keepalive: true,
-                    port: 8000,
-                    base: 'public_html'
-                }
+                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
             }
         },
         fest: {
@@ -183,14 +183,14 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
 
 };
 ~~~
 {:.javascript}
 
-Установите `grunt-contrib-watch` и настройте таск `watch`. Удалите опцию `keepalive` у задачи `connect`, чтобы было возможным запустить одновременно задачи `connect` и `watch`.
+Установите `grunt-contrib-watch` и настройте таск `watch`.
 
 ~~~
 module.exports = function (grunt) {
@@ -198,19 +198,21 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             fest: {
-                files: ['templates/*.xml'], /* следим за шаблонами */
-                tasks: ['fest'], /* перекомпилировать */
+                files: ['templates/*.xml'],
+                tasks: ['fest'],
                 options: {
-                    atBegin: true /* запустить задачу при старте */
+                    interrupt: true,
+                    atBegin: true
                 }
             }
         },
-        connect: {
+        shell: {
+            options: {
+                stdout: true,
+                stderr: true
+            },
             server: {
-                options: {
-                    port: 8000,
-                    base: 'public_html'
-                }
+                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
             }
         },
         fest: {
@@ -234,12 +236,32 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
 
-    grunt.registerTask('default', ['connect', 'watch']); /* задача по умолчанию */
+    grunt.registerTask('default', ['shell', 'watch']); /* задача по умолчанию */
 
 };
+~~~
+{:.javascript}
+
+Установите `grunt-concurrent` и настройте таск `concurrent`.
+
+~~~
+    concurrent: {
+            target: ['watch', 'shell'],
+            options: {
+                logConcurrentOutput: true /* Вывод логов */
+            }
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-fest');
+
+    grunt.registerTask('default', ['concurrent']);
 ~~~
 {:.javascript}
 
@@ -267,45 +289,39 @@ module.exports = function (grunt) {
                     livereload: true /* перезагрузить страницу */
                 }
             }
-        },
-        connect: {
-            server: {
-                options: {
-                    livereload: true, /* поддержка перезагрузки страницы */
-                    port: 8000,
-                    base: 'public_html'
-                }
-            }
-        },
-        fest: {
-            templates: {
-                files: [{
-                    expand: true,
-                    cwd: 'templates',
-                    src: '*.xml',
-                    dest: 'public_html/js/tmpl'
-                }],
-                options: {
-                    template: function (data) {
-                        return grunt.template.process(
-                            'var <%= name %>Tmpl = <%= contents %> ;',
-                            {data: data}
-                        );
-                    }
-                }
-            }
         }
+        ...
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
 
-    grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('default', ['concurrent']);
 
 };
 ~~~
 {:.javascript}
+
+Включите Livereload.
+
+~~~
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+    <div id="page"></div>
+    
+    <!-- Livereload -->
+    <script src="//localhost:35729/livereload.js"></script>
+</body>
+</html>
+~~~
+{:.html}
 
 Подключите [jQuery](http://jquery.com). Создайте функции для отрисовки каждого из экранов игры.
 
