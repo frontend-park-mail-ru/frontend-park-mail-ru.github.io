@@ -990,6 +990,7 @@ $ git commit -am "- Conflict;"
 
     - `#scoreboard` для экрана «Лучшие игроки»;
     - `#game` для основного экрана игры;
+    - `#login` для экрана авторизации игры;
     - `#` для экрана «Главное меню».
 
 6. Роутер (`public_html/js/router.js`) должен работать только с представлениями (`public_html/js/views/*.js`); представления с шаблонами (`public_html/js/tmpl/*.js`), моделями (`public_html/js/models/*.js`) и коллекциями (`public_html/js/collections/*.js`); коллекции только с моделями.
