@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Формы</title>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<form id="form">
+		<input id="input" type="text" class="form__field">
+		<input id="reset" type="reset" class="btn btn_stylish btn_main">
+		<input id="submit" type="submit" class="btn btn_stylish btn_main">
+	</form>
+
+	<div id="info"></div>
+	<div id="events"></div>
+
+	<script>
+		var events = [
+			'focus',
+			'blur',
+			'change',
+			'keyup',
+			'keydown',
+			'keypress',
+			'click',
+			'input',
+			'cut',
+			'copy',
+			'paste',
+			'submit',
+			'reset'
+		];
+
+		var $info = $('#info'),
+			$form = $('#form'),
+			$events = $('#events'),
+			$input = $('#input');
+
+		function getRandomColor() {
+			return '#'+Math.random().toString(16).substr(-6);;
+		}
+
+		function log ($target, txt) {
+			$target.append($('<div />')
+					.html(txt)
+					.css({
+						'color': getRandomColor(),
+						'marginTop': '3px'
+					})
+					// .app('<br/>')
+				);
+		}
+
+		function logEvent (txt) {
+			log($info, txt);
+		}
+
+		function removeEvent (name) {
+			$events.children().each(function () {
+				var $el = $(this);
+
+				if ($el.text() === name) {
+					$el.css('text-decoration', 'line-through');
+				}
+			})
+		}
+
+		for (var i=0, l=events.length; i < l; i++) {
+			$form.on(events[i], function (event) {
+				logEvent('Ха! А ведь это: '
+					+ event.type
+					+ ' На элементе: '
+					+ event.target.id
+					+ ' Пойманное на: '
+					+ event.currentTarget.id);
+				removeEvent(event.type);
+			});
+
+			log($events, events[i]);
+		}
+
+		$form.on('submit', function (event) {
+			event.preventDefault();
+		});
+
+		$form.on('reset', function () {
+			$info.html('');
+		})
+	</script>
+</body>
+
+</html>
