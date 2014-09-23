@@ -2,3 +2,6 @@ node_modules
 .idea
 .sass-cache
 _site
+Gemfile
+Gemfile.lock
+._*
