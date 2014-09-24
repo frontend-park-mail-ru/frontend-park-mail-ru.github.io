@@ -1,7 +1,21 @@
-#events {
+.left {
 	position: absolute;
 	top: 15px;
 	right: 25px;
+}
+
+.left_max {
+    right: 120px;
+}
+
+.black {
+    color: #ccc !important;
+}
+
+.form-center {
+    margin: 40px auto;
+    position: relative;
+    width: 650px;
 }
 
 .btn {

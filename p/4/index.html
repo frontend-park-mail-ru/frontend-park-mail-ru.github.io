@@ -231,1071 +231,153 @@
         </div>
     </section>
 
-
     <section class="slide title">
         <h2>
             <span>JavaScript<br/>События<br/>Валидация</span>
         </h2>
     </section>
 
-
-<!--
     <section class="slide">
-        <h2>Контрольные рубежи</h2>
+        <h2>Чтение и запись значений</h2>
         <div>
         <pre>
-            <code>РК №1 &lt;= 20</code>
-            <code>РК №2 &lt;= 60</code>
-            <code>РК №3 &lt;= 100</code>
+             <code>var input = document.getElementById(‘input’),</code>
+            <code>    textarea = document.getElementById(‘textarea’);</code>
+            <code><mark class="comment">/*Устанавливаем новые значения для полей*/</mark></code>
+            <code>input.value = "значение";</code>
+            <code>console.log(input.value) <mark class="comment">// 'значение'</mark></code>
+            <code><mark class="comment">/*А теперь на jQuery*/</mark></code>
+            <code>$('#textarea').val(‘значение jQuery’);</code>
+            <code>console.log($('#textarea').val()) <mark class="comment">// 'значение jQuery'</mark></code>
         </pre>
        </div>
     </section>
 
     <section class="slide">
-        <h2>Итоговая оценка</h2>
+        <h2>input type="checkbox"</h2>
         <div>
         <pre>
-            <code> 0 &lt;= "НЕУДОВЛЕТВОРИТЕЛЬНО" &lt;= 69</code>
-            <code>70 &lt;= "УДОВЛЕТВОРИТЕЛЬНО" &lt;= 84</code>
-            <code>85 &lt;= "ХОРОШО" &lt;= 99</code>
-            <code>"ОТЛИЧНО" == 100</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Критерии оценки</h2>
-        <div>
-        <pre>
-            <code>СООТВЕТСТВИЕ РЕЗУЛЬТАТА ПРЕДЪЯВЛЯЕМЫМ ТРЕБОВАНИЯМ</code>
-            <code>ОПТИМАЛЬНОСТЬ ПРЕДЛАГАЕМОГО РЕШЕНИЯ</code>
-            <code>ПРАКТИЧНОСТЬ РЕШЕНИЯ</code>
-            <code>КАЧЕСТВО ОФОРМЛЕНИЯ РЕЗУЛЬТАТОВ РАБОТЫ</code>
-            <code>ДОКАЗАТЕЛЬНОСТЬ АРГУМЕНТАЦИИ ПРИ ЗАЩИТЕ РАБОТЫ</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/complexity.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>
-            frontend.tech-mail.ru/p/1
-        </h2>
-        <div>
-        </div>
-    </section>
-
-    <section class="slide cover h">
-        <div>
-            <img src="/pics/nodejs-dark.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/npm.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/grunt-logo.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide shout"><div>
-        <h2>Single Page Application</h2>
-    </section>
-
-    <section class="slide shout">
-        <h2>Fest</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Ресурсы</h2>
-        <div>
-        <ol>
-            <li><a href="http://nodejs.org/">http://nodejs.org</a></li>
-            <li><a href="https://npmjs.org/">https://npmjs.org</a></li>
-            <li><a href="http://gruntjs.com/">http://gruntjs.com</a></li>
-            <li><a href="https://github.com/mailru/fest">https://github.com/mailru/fest</a></li>
-        </ol>
-       </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>Проектная работа</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Подготовка</h2>
-        <div>
-        <pre>
-            <code>$ node -v</code>
-            <code>v0.10.12</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Приступаем!</h2>
-        <div>
-        <pre>
-            <code>$ mkdir epicgame &amp; cd epicgame</code>
-            <code class="next">$ npm init</code>
-            <code class="next">$ cat package.json</code>
-            <code class="next">$ npm install grunt-cli -g</code>
-            <code class="next">$ npm install grunt grunt-shell --save-dev</code>
-            <code class="next">$ vim Gruntfile.js</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-        <pre>
-            <code>module.exports = function (grunt) {</code>
-            <code>    grunt.initConfig({</code>
-            <code>        shell: { … } <mark class="comment">/* grunt-shell */</mark></code>
-            <code>    });</code>
-            <code>    grunt.loadNpmTasks('grunt-shell');</code>
-            <code>};</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-shell</code></h2>
-        <div>
-        <pre>
-            <code>server: { <mark class="comment">/* Подзадача */</mark></code>
-            <code>    command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'</code>
-            <code>    <mark class="comment">/* запуск сервера */</mark></code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-        <pre>
-            <code>$ grunt shell:server</code>
-            <code>Running "shell:server" (shell) task</code>
-            <code>Starting at port: 8000</code>
+            <code>&lt;input type="checkbox" id="input" checked&gt;</code>
             <code>...</code>
+            <code>if (input.checked) {</code>
+            <code>   alert("Чекбокс выбран");</code>
+            <code>}</code>
+            <code><mark class="comment">/*На jQuery*/</mark></code>
+            <code>...</code>
+            <code>$('#input').prop('checked'); // true</code>
         </pre>
        </div>
     </section>
 
     <section class="slide">
-        <h2>public_html</h2>
-        <div>
-        <pre>
-            <code>$ cat public_html/index.html</code>
-            <code>Hello!</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/prototype-scheme.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>HTML</h2>
-        <div>
+        <h2>select, option</h2>
+            <div>
+            <a href="/demos/select.html">Селекты</a>
             <pre>
-                <code>&lt;!DOCTYPE html&gt;</code>
-                <code>&lt;html&gt;&lt;head&gt;</code>
-                <code>    &lt;meta charset="utf-8"&gt;</code>
-                <code>    &lt;link rel="stylesheet" href="/css/main.css"/&gt;</code>
-                <code>&lt;/head&gt;&lt;body&gt;</code>
-                <code>    &lt;div id="page"&gt;&lt;/div&gt;</code>
-                <code>&lt;/body&gt;&lt;/html&gt;</code>
+                <code>var selectedOptionValue = select.value;</code>
+                <code><mark class="comment">/*Установить значение можно двумя способами*/</mark></code>
+                <code>select.selectedIndex = 0; <mark class="comment">// первый элемент</mark></code>
+                <code>select.selectedIndex = -1; <mark class="comment">// сбросим значение</mark></code>
+                <code><mark class="comment">/*... или ...*/</mark></code>
+                <code>select.value = 'Customer';</code>
             </pre>
        </div>
     </section>
 
     <section class="slide">
-        <h2>Fest</h2>
+        <h2>События формы и валидация</h2>
         <div>
-        <pre>
-            <code>$ npm install grunt-fest --save-dev</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Fest</h2>
-        <div>
-        <pre>
-            <code><mark>&lt;fest:template xmlns:fest="http://fest.mail.ru"</mark></code>
-            <code>    <mark>context_name="json"&gt;</mark></code>
-            <code>    &lt;div&gt;</code>
-            <code>        &lt;h1&gt;Epic Game&lt;/h1&gt;</code>
-            <code>    &lt;/div&gt;</code>
-            <code><mark>&lt;/fest:template&gt;</mark></code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Fest</h2>
-        <div>
-        <pre>
-            <code>$ vim templates/main.xml</code>
-            <code>$ vim templates/scoreboard.xml</code>
-            <code>$ vim templates/game.xml</code>
-            <code>$ vim templates/login.xml</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-        <pre>
-            <code>grunt.initConfig({</code>
-            <code>    shell: { … } <mark class="comment">/* grunt-shell */</mark></code>
-            <code>    fest: { … } <mark class="comment">/* grunt-fest */</mark></code>
-            <code>});</code>
-            <code>grunt.loadNpmTasks('grunt-shell');</code>
-            <code>grunt.loadNpmTasks('grunt-fest');</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-fest</code></h2>
-        <div>
-        <pre>
-            <code>templates: { <mark class="comment">/* Подзадача */</mark></code>
-            <code>    files: [{</code>
-            <code>        expand: true,</code>
-            <code>        cwd: 'templates', <mark class="comment">/* исходная директория */</mark></code>
-            <code>        src: '*.xml', <mark class="comment">/* имена шаблонов */</mark></code>
-            <code>        dest: 'public_html/js/tmpl' <mark class="comment">/* результирующая директория */</mark></code>
-            <code>    }], … }</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-fest</code>’s options</h2>
-        <div>
-        <pre>
-            <code>template: function (data) { <mark class="comment">/* формат функции-шаблона */</mark></code>
-            <code>    return grunt.template.process(</code>
-            <code>        <mark class="comment">/* присваиваем функцию-шаблон переменной */</mark></code>
-            <code>        'var <%= name %>Tmpl = <%= contents %> ;',</code>
-            <code>        {data: data}</code>
-            <code>    );</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Grunt</h2>
-        <div>
-        <pre>
-            <code>$ grunt fest</code>
-            <code>$ cat public_html/js/tmpl/main.js</code>
-            <code>$ cat public_html/js/tmpl/scoreboard.js</code>
-            <code>$ cat public_html/js/tmpl/game.js</code>
-            <code>$ cat public_html/js/tmpl/login.js</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Sweetness!</h2>
-        <div>
-        <pre>
-            <code>$ npm install grunt-contrib-watch --save-dev</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-        <pre>
-            <code>grunt.initConfig({</code>
-            <code>    watch: { … } <mark class="comment">/* grunt-contrib-watch */</mark></code>
-            <code>     …</code>
-            <code>});</code>
-            <code>grunt.loadNpmTasks('grunt-contrib-watch');</code>
-            <code>…</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-contrib-watch</code></h2>
-        <div>
-        <pre>
-            <code>fest: { <mark class="comment">/* Подзадача */</mark></code>
-            <code>    files: ['templates/*.xml'], <mark class="comment">/* следим за шаблонами */</mark></code>
-            <code>    tasks: ['fest'], <mark class="comment">/* перекомпилировать */</mark></code>
-            <code>    options: {</code>
-            <code>        atBegin: true <mark class="comment">/* запустить задачу при старте */</mark></code>
-            <code>    }</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-contrib-watch</code></h2>
-        <div>
-        <pre>
-            <code>server: { <mark class="comment">/* Подзадача */</mark></code>
-            <code>    files: ['public_html/js/**/*.js'], <mark class="comment">/* следим за JS */</mark></code>
-            <code>    options: {</code>
-            <code>        livereload: true <mark class="comment">/* автоматическая перезагрузка */</mark></code>
-            <code>    }</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-        <pre>
-            <code>grunt.initConfig({</code>
-            <code>    shell: { … } <mark class="comment">/* grunt-shell */</mark></code>
-            <code>    watch: { … } <mark class="comment">/* grunt-contrib-watch */</mark></code>
-            <code>     …</code>
-            <code>});</code>
-            <code>…</code>
-            <code>grunt.registerTask('default', ['shell', 'watch']);</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-concurrent</code></h2>
-        <div>
-        <pre>
-            <code>target: ['watch', 'shell'], <mark class="comment">/* Подзадача */</mark></code>
-            <code>options: {</code>
-            <code>        logConcurrentOutput: true, <mark class="comment">/* Вывод процесса */</mark></code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Livereload</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&lt;!DOCTYPE html&gt;</mark></code>
-                <code><mark class="comment">&lt;html&gt;&lt;head&gt;</mark></code>
-                <code>    <mark class="comment">&lt;meta charset="utf-8"&gt;</mark></code>
-                <code>    <mark class="comment">&lt;link rel="stylesheet" href="/css/main.css"/&gt;</mark></code>
-                <code><mark class="comment">&lt;/head&gt;&lt;body&gt;</mark></code>
-                <code>    <mark class="comment">&lt;div id="page"&gt;&lt;/div&gt;</mark></code>
-                <code>    &lt;script src="//localhost:35729/livereload.js"&gt;&lt;/script&gt;</code>
-                <code><mark class="comment">&lt;/body&gt;&lt;/html&gt;</mark></code>
-            </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/jquery.png" alt="" />
+            <a style="font-size: 3em" href="/demos/events.html">События</a><br/><br/>
+            <a style="font-size: 3em" target="_blank" href="https://e.mail.ru/signup">Пример валидации</a>
         </div>
     </section>
 
-    <section class="slide">
-        <h2>JavaScript</h2>
+   <section class="slide">
+        <h2>Проверка выполняется:</h2>
         <div>
-        <pre>
-            <code>&lt;script src="/js/lib/jquery.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
-            <code>…</code>
-            <code>&lt;script&gt;</code>
-            <code>    var $page = $('#page');</code>
-            <code>    $page.html(mainTmpl()); <mark class="comment">// Рендерим шаблон</mark></code>
-            <code>&lt;/script&gt;</code>
-        </pre>
+            <ul>
+                <li>Во время ввода (oninput)</li>
+                <li>Перед вводом (onfocus)</li>
+                <li>По окончании ввода (onblur)</li>
+                <li>Перед отправкой формы (onsubmit)</li>
+            </ul>
        </div>
     </section>
 
     <section class="slide">
-        <h2>JavaScript</h2>
+        <h2>Сообщение об ошибке</h2>
         <div>
-        <pre>
-            <code>function showMainScreen() { <mark class="comment">// Конструктор экрана "Главный" </mark></code>
-            <code>    $page.html(mainTmpl()); <mark class="comment">// Рендерим шаблон</mark></code>
-            <code>    <mark class="comment">// Инициализируем обработчики событий</mark></code>
-            <code>    $page.find('.js-scoreboard')</code>
-            <code>        .on('click', showScoreboardScreen);</code>
-            <code>    $page.find('.js-start-game').on('click', showGameScreen);</code>
-            <code>}</code>
-        </pre>
+            <ul>
+                <li>Выделение поля с ошибкой</li>
+                <li>Поясняющее текстовое сообщение об ошибке</li>
+                <li>Фокус на поле ввода с ошибкой</li>
+                <li>Блокировка кнопки для отправки формы</li>
+            </ul>
        </div>
     </section>
 
-    <section class="slide">
-        <h2>JavaScript</h2>
-        <div>
-        <pre>
-            <code>function hideMainScreen() { <mark class="comment">// Деструктор экрана "Главный"</mark></code>
-            <code>    <mark class="comment">// Удаляем установленные обработчики событий</mark></code>
-            <code>    $page.find('.js-scoreboard')</code>
-            <code>        .off('click', showScoreboardScreen);</code>
-            <code>    $page.find('.js-start-game').off('click', showGameScreen);</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
 
     <section class="slide">
-        <h2>JavaScript</h2>
+        <h2>Сабмит данных на сервер</h2>
         <div>
-        <pre>
-            <code><mark class="comment">/* Конструктор экрана "Лучшие игроки" */</mark></code>
-            <code>function showScoreboardScreen() {</code>
-            <code>    hideMainScreen();</code>
-            <code>}</code>
-            <code><mark class="comment">/* Деструктор экрана "Лучшие игроки" */</mark></code>
-            <code>function hideScoreboardScreen() {}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Домашнее задание</h2>
-        <div>
-        <pre>
-            <code>СФОРМИРОВАТЬ ИДЕЮ ИГРЫ</code>
-            <code>ОПРЕДЕЛИТЬСЯ С ГРУППОЙ И РОЛЯМИ В НЕЙ</code>
-            <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ GRUNT, FEST И JQUERY</code>
-            <code>СОЗДАТЬ ПРОТОТИП ВЕБ-ПРИЛОЖЕНИЯ ПО ТЗ</code>
-        </pre>
+            <ol>
+                <li>Сабмит формы с ренедером новой страницы в новом или текущем окне <a href="/demos/submit-simple.html">Демо</a></li>
+                <li class="next">Сабмит формы в iframe <a href="/demos/submit-iframe.html">Демо</a></li>
+                <li class="next">Сериализация данных формы и AJAX</li>
+            </ol>
         </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>AJAX</h2>
+        <div>
+        <pre>
+            <code>$("#idForm").on("submit", function(event) {</code>
+            <code>  event.preventDefautlt();</code>
+            <code>  $.ajax({</code>
+            <code>    type: "POST",</code>
+            <code>    url: "path/to/your/endpoint",</code>
+            <code>    data: $(this).serialize(),</code>
+            <code>    success: postDispatcher</code>
+            <code>  });</code>
+            <code>});</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Обработка результратов</h2>
+        <div>
+            <ul>
+                <li>Обабатывайте ошибки</li>
+                <li class="next">Информируйте пользователя об ошибках</li>
+                <li class="next">Защищайте форму от многократной отправки</li>
+                <li class="next">Предусматривайте прелоудеры</li>
+                <li class="next">Не забывайте останавливать стандартное поведение</li>
+            </ul>
+       </div>
     </section>
 
     <section class="slide title">
         <h2>
-            <span>2 Архитектура</span>
+            <span>Возможности HTML5</span>
         </h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>Демо</h2>
         <div>
+            <ol>
+                <li><a href="/demos/simple-form.html">Простая форма</a></li>
+                <li><a href="/demos/select.html">Селекты</a></li>
+                <li><a href="/demos/simple-form-attrs.html">Простая форма с атрибутами</a></li>
+                <li><a href="/demos/html5-form.html">HTML5</a></li>
+            </ol>
         </div>
     </section>
 
-    <section class="slide">
-        <h2><code>window</code></h2>
-        <div>
-        <pre>
-            <code>function quz() {</code>
-            <code>    foo = {}; <mark class="comment">/* глобальная переменная */</mark></code>
-            <code>    window.foo === foo; <mark class="comment">/* true */</mark></code>
-            <code>    var bar = {}; <mark class="comment">/* локальная переменная */</mark></code>
-            <code>    window.bar === bar; <mark class="comment">/* false */</mark></code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>IIFE</h2>
-        <div>
-        <pre>
-            <code><mark class="comment">/* IIFE — Immediately-Invoked Function Expression */</mark></code>
-            <code>var foo = 1;</code>
-            <code>(function () {</code>
-            <code>    var foo = 2;</code>
-            <code>    alert(foo);</code>
-            <code>})();</code>
-            <code>alert(foo);</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Модуль в JavaScript</h2>
-        <div>
-        <pre>
-            <code>var module = (function () {</code>
-            <code>        var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
-            <code>        return {</code>
-            <code>            say: function () { <mark class="comment">// публичный метод</mark></code>
-            <code>                alert(name);</code>
-            <code>            }</code>
-            <code>        };</code>
-            <code>    })();</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/mvc-ss.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/mvc-cs.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Устройство веб-приложения</h2>
-        <div>
-        <pre>
-            <code>УРОВЕНЬ БИБЛИОТЕК.</code>
-            <code>УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ.</code>
-            <code>УРОВЕНЬ МОДУЛЕЙ.</code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Определение</h2>
-        <div>
-        <figure>
-            <blockquote>
-                <p><strong>Модуль</strong> — функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах.</p>
-            </blockquote>
-            <figcaption><a href="http://ru.wikipedia.org/wiki/Модуль_(программирование)">Википедия</a></figcaption>
-        </figure>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Модуль веб-приложения</h2>
-        <div>
-        <pre>
-            <code>Состоит из HTML, CSS и JavaScript.</code>
-            <code>Характеризуется слабой связностью.</code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/email.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/email-portal-menu.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/email-toolbar.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/email-toolbar-2.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/email-nav.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/email-datalist.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/bem.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/email-toolbar__button.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Блоки и элементы</h2>
-        <div>
-        <pre>
-            <code>porta-menu <mark class="comment">/* блок portal-menu */</mark></code>
-            <code>nav <mark class="comment">/* блок nav */</mark></code>
-            <code>letters <mark class="comment">/* блок letters */</mark></code>
-            <code>toolbar <mark class="comment">/* блок toolbar */</mark></code>
-            <code>toolbar__button <mark class="comment">/* элемент button блока toolbar */</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Кнопка тулбара</h2>
-        <div>
-        <pre>
-            <code>&lt;div class="toolbar"&gt;</code>
-            <code>    &lt;div class="button"&gt;Click Me&lt;/div&gt;</code>
-            <code>&lt;/div&gt;</code>
-            <code>.toolbar .button {</code>
-            <code>    background: white;</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Кнопка тулбара</h2>
-        <div>
-        <pre>
-            <code>&lt;div class="window"&gt;</code>
-            <code>    &lt;div class="toolbar"&gt;</code>
-            <code>        &lt;div class="button"&gt;Click Me&lt;/div&gt;</code>
-            <code>    &lt;/div&gt;</code>
-            <code>    &lt;div class="button"&gt;Submit&lt;/div&gt;</code>
-            <code>&lt;/div&gt;</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Кнопка тулбара</h2>
-        <div>
-        <pre>
-            <code>.toolbar .button {</code>
-            <code>    background: white;</code>
-            <code>}</code>
-            <code>.window .button {</code>
-            <code>    background: black;</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Кнопка тулбара (БЭМ)</h2>
-        <div>
-        <pre>
-            <code>&lt;div class="window"&gt;</code>
-            <code>    &lt;div class="toolbar"&gt;</code>
-            <code>        &lt;div class="toolbar__button"&gt;Click Me&lt;/div&gt;</code>
-            <code>    &lt;/div&gt;</code>
-            <code>    &lt;div class="window__button"&gt;Submit&lt;/div&gt;</code>
-            <code>&lt;/div&gt;</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Кнопка тулбара (БЭМ)</h2>
-        <div>
-        <pre>
-            <code>.toolbar__button {</code>
-            <code>    background: white;</code>
-            <code>}</code>
-            <code>.window__button {</code>
-            <code>    background: black;</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>БЭМ</h2>
-        <div>
-        <pre>
-            <code>toolbar <mark class="comment">// блок</mark></code>
-            <code>toolbar__button <mark class="comment">// блок__элемент</mark></code>
-            <code>toolbar_fixed <mark class="comment">// блок_модификатор</mark></code>
-            <code>toolbar__button_size_xl <mark class="comment">// блок__элемент_модификатор_значение</mark></code>
-        </pre>
-        <p class="note">
-            <a href="http://ru.bem.info/">http://ru.bem.info</a><br/>
-        </p>
-       </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>Веб-приложение — результат работы модулей.</h2>
-        <div>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Устройство веб-приложения</h2>
-        <div>
-        <pre>
-            <code>УРОВЕНЬ МОДУЛЕЙ. <mark class="comment">// AMD &amp; RequireJS</mark></code>
-            <code class="next">УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ. <mark class="comment">// Backbone</mark></code>
-            <code class="next">УРОВЕНЬ БИБЛИОТЕК. <mark class="comment">// jQuery &amp; Underscore</mark></code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/underscore.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Модуль в JavaScript</h2>
-        <div>
-        <pre>
-            <code>var A = (function () {</code>
-            <code>        var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
-            <code>        return {</code>
-            <code>            say: function () { <mark class="comment">// публичный метод</mark></code>
-            <code>                alert(name);</code>
-            <code>            }</code>
-            <code>        };</code>
-            <code>    })();</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Asynchronous Module Definition</h2>
-        <div>
-        <pre>
-            <code>define('A', function () {</code>
-            <code>    var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
-            <code>    return {</code>
-            <code>        say: function () { <mark class="comment">// публичный метод</mark></code>
-            <code>            alert(name);</code>
-            <code>        }</code>
-            <code>    };</code>
-            <code>});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Asynchronous Module Definition</h2>
-        <div>
-        <pre>
-            <code>define('B', ['A'], function (A) {</code>
-            <code>    var name = 'B'; <mark class="comment">// приватная переменная</mark></code>
-            <code>    return {</code>
-            <code>        say: function () { <mark class="comment">// публичный метод</mark></code>
-            <code>            A.say(); <mark class="comment">// вызов публичного метода модуля A</mark></code>
-            <code>            alert(name);</code>
-            <code>        }</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/backbone.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Backbone</h2>
-        <div>
-        <pre>
-            <code>МОДЕЛИ <mark class="comment"> // models</mark></code>
-            <code>КОЛЛЕКЦИИ <mark class="comment">// collections</mark></code>
-            <code>ПРЕДСТАВЛЕНИЯ <mark class="comment"> // view</mark></code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.Events</code></h2>
-        <div>
-        <pre>
-            <code>var object = {};</code>
-            <code>_.extend(object, Backbone.Events);</code>
-            <code>object.on("alert", function (msg) {</code>
-            <code>    alert("Triggered " + msg);</code>
-            <code>});</code>
-            <code>object.trigger("alert", "an event");</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.Model</code></h2>
-        <div>
-        <pre>
-            <code>var PlayerModel = Backbone.Model.extend({});</code>
-            <code>var player = new PlayerModel();</code>
-            <code>player.on('change:name', function(model, name) {</code>
-            <code>    alert('Player name is ' + name);</code>
-            <code>});</code>
-            <code>player.set({name: 'Mark'});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>var PlayerView = Backbone.View.extend({</code>
-            <code>    tagName: "li",</code>
-            <code>    className: "score__item",</code>
-            <code>    template: fest['player'],</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>    …</code>
-            <code>    events: {</code>
-            <code>        "click .button_delete": "destroy"</code>
-            <code>    },</code>
-            <code>    destroy: function () {},</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>    …</code>
-            <code>    initialize: function () {</code>
-            <code>        this.listenTo(this.model, "change", this.render);</code>
-            <code>    },</code>
-
-            <code>    render: function () {</code>
-            <code>        this.$el.html(this.template(this.model.attributes));</code>
-            <code>    }</code>
-            <code>});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>var playerView = new PlayerView({</code>
-            <code>        model: player,</code>
-            <code>        id: "player-" + player.id</code>
-            <code>    });</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/prototype-scheme.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Uniform resource locator</h2>
-        <div>
-        <pre>
-            <code>scheme://domain:port/path?query_string<mark>#fragment_id</mark></code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Событие <code>hashchange</code></h2>
-        <div>
-            <pre>
-                <code>Backbone.history.start();</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что имели?</h2>
-        <div>
-            <pre>
-                <code>&lt;a href="#" class="js-scoreboard"&gt;Scoreboard&lt;/a&gt;</code>
-                <code>&lt;a href="#" class="js-game"&gt;Game&lt;/a&gt;</code>
-                <code>&lt;a href="#" class="js-login"&gt;Game&lt;/a&gt;</code>
-                <code>&lt;script&gt;</code>
-                <code>    $('.js-scoreborad').on("click", function () { … });</code>
-                <code>    $('.js-game').on("click", function () { … });</code>
-                <code>    $('.js-login').on("click", function () { … });</code>
-                <code>&lt;/script&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что получили?</h2>
-        <div>
-            <pre>
-                <code>&lt;a href="#scoreboard"&gt;Scoreboard&lt;/a&gt;</code>
-                <code>&lt;a href="#game"&gt;Game&lt;/a&gt;</code>
-                <code>&lt;a href="#login"&gt;Login&lt;/a&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.Router</code></h2>
-        <div>
-        <pre>
-            <code>var Router = Backbone.Router.extend({</code>
-            <code>    routes: {</code>
-            <code>        'scoreboard': 'scoreboardAction',</code>
-            <code>        'game'      : 'gameAction',</code>
-            <code>        '*default'  : 'defaultActions'</code>
-            <code>    },</code>
-            <code>    scoreboardAction: function () {},</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.Router</code></h2>
-        <div>
-        <pre>
-            <code>    …</code>
-            <code>    gameAction: function () {},</code>
-            <code>    defaultActions: function () {}</code>
-            <code>});</code>
-            <code>new Router();</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>Один модуль — один файл.</h2>
-        <div>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-fest</code>’s options</h2>
-        <div>
-        <pre>
-            <code>template: function (data) {</code>
-            <code>    return grunt.template.process(</code>
-            <code>        <mark class="comment">/* 'var <%= name %>Tmpl = <%= contents %> ;' */</mark></code>
-            <code>        'define(function () { return <%= contents %> ; });',</code>
-            <code>        {data: data}</code>
-            <code>    );</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/requirejs.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что имели?</h2>
-        <div>
-        <pre>
-            <code>&lt;script src="/js/lib/jquery.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/scoreboard.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/game.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/login.js"&gt;&lt;/script&gt;</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что получили?</h2>
-        <div>
-        <pre>
-            <code>&lt;script data-main="js/main"</code>
-            <code>     src="js/lib/require.js"&gt;&lt;/script&gt;</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>js/main.js</code></h2>
-        <div>
-        <pre>
-            <code>…</code>
-            <code>define([</code>
-            <code>    'router'</code>
-            <code>], function () {</code>
-            <code>    Backbone.history.start();</code>
-            <code>});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Подготовка</h2>
-        <div>
-        <pre>
-            <code>$ git init</code>
-            <code class="next">$ echo "node_modules" > .gitignore</code>
-            <code class="next">$ git add .</code>
-            <code class="next">$ git commit -m "Initial"</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Подготовка</h2>
-        <div>
-        <pre>
-            <code>$ git remote add tp \</code>
-            <code>→ https://github.com/eprev/frontend-stub.git</code>
-            <code class="next">$ git fetch tp</code>
-            <code class="next">$ git merge tp/v2</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Разрешаем конфикты</h2>
-        <div>
-        <pre>
-            <code>$ git status</code>
-            <code class="next">$ git add …</code>
-            <code class="next">$ git commit -m "Fix merge conflicts"</code>
-            <code class="next">$ grunt</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Домашнее задание</h2>
-        <div>
-        <pre>
-            <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ UNDERSCORE, BACKBONE, REQUIREJS и БЭМ.</code>
-            <code>ДОРАБОТАТЬ ПРОТОТИП ПО ТЗ.</code>
-            <code>ПРИСТУПИТЬ К РЕАЛИЗАЦИЯ ИГРОВОЙ МЕХАНИКИ.</code>
-        </pre>
-        </div>
-    </section>
-
--->
 
     <div class="progress"><div></div></div>
     <script src="../../shower/shower.min.js"></script>

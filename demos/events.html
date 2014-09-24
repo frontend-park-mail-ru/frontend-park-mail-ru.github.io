@@ -15,7 +15,15 @@
 	</form>
 
 	<div id="info"></div>
-	<div id="events"></div>
+	<div class="left">
+		<strong>на form:</strong>
+		<div id="form_events"></div>
+	</div>
+	<div class="left left_max">
+		<strong>на input:</strong>
+		<div id="input_events"></div>
+	</div>
+
 
 	<script>
 		var events = [
@@ -40,7 +48,11 @@
 			$input = $('#input');
 
 		function getRandomColor() {
-			return '#'+Math.random().toString(16).substr(-6);;
+			var color = '#';
+			for (var i = 0; i < 3; i++) {
+				color += ((Math.random() * 180 + 40)|0).toString(16);
+			}
+			return color;
 		}
 
 		function log ($target, txt) {
@@ -58,8 +70,9 @@
 			log($info, txt);
 		}
 
-		function removeEvent (name) {
-			$events.children().each(function () {
+		function removeEvent (target, name) {
+
+			$('#' + target + '_events').children().each(function () {
 				var $el = $(this);
 
 				if ($el.text() === name) {
@@ -68,18 +81,28 @@
 			})
 		}
 
-		for (var i=0, l=events.length; i < l; i++) {
-			$form.on(events[i], function (event) {
-				logEvent('Ха! А ведь это: '
+		function getText (event) {
+			return '<span class="black">А ведь это событие: </span>'
 					+ event.type
-					+ ' На элементе: '
+					+ '<span class="black"> на элементе: </span>'
 					+ event.target.id
-					+ ' Пойманное на: '
-					+ event.currentTarget.id);
-				removeEvent(event.type);
+					+ '<span class="black">, пойманное на: </span>'
+					+ event.currentTarget.id;
+		}
+
+		for (var i=0, l=events.length; i < l; i++) {
+			$input.on(events[i], function (event) {
+				logEvent(getText(event));
+				removeEvent('input', event.type);
 			});
 
-			log($events, events[i]);
+			$form.on(events[i], function (event) {
+				logEvent(getText(event));
+				removeEvent('form', event.type);
+			});
+
+			log($('#form_events'), events[i]);
+			log($('#input_events'), events[i]);
 		}
 
 		$form.on('submit', function (event) {
