@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Формы</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<link rel="stylesheet" href="style.css">
+		<link href="http://img.imgsmail.ru/ts/1411388167/css/septima/pages/main-flat.c97caee1e6d99323400a7890c1c62377.css?v=1411388167" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<form method="post"
+			enctype="application/x-www-form-urlencoded"
+			action="https://pizza.example.com/order.cgi" class="password-recovery__remind__new">
+			<p><label>Customer name: <input name="custname" class="form__field"></label></p>
+			<p><label>Telephone: <input name="custetel" class="form__field"></label></p>
+			<p><label>E-mail address: <input name="custemail" class="form__field"></label></p>
+			<p><label>Order type: <select class="form__select__box" name="custtype">
+				<option value="Business">Business</option>
+				<option value="Customer">Customer</option>
+			</select>
+		</label>
+		</p>
+		<fieldset>
+			<legend> Pizza Size </legend>
+			<p><label> <input type="radio" name="size" value="small"> Small </label></p>
+			<p><label> <input type="radio" name="size" value="medium"> Medium </label></p>
+			<p><label> <input type="radio" name="size" value="large"> Large </label></p>
+		</fieldset>
+		<br/>
+		<fieldset>
+			<legend> Pizza Toppings </legend>
+			<p><label> <input type="checkbox" value="bacon"> Bacon </label></p>
+			<p><label> <input type="checkbox" value="cheese"> Extra Cheese </label></p>
+			<p><label> <input type="checkbox" value="onion"> Onion </label></p>
+			<p><label> <input type="checkbox" value="mushroom"> Mushroom </label></p>
+		</fieldset>
+		<p><label>Preferred delivery time: <input class="form__field" type="time" min="11:00" max="21:00" step="900" name="delivery"></label></p>
+		<p><label>Delivery instructions: <textarea class="form__field"></textarea></label></p>
+		<p><button class="btn btn_stylish btn_main">Submit order</button></p>
+	</form>
+</body>
+</html>

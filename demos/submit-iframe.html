@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Формы</title>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="style.css" />
+	<script>
+		window.dispatcher = function (data) {
+			$('#info').text(data);
+		};
+	</script>
+</head>
+<body>
+	<form id="form" target="transport" action="/demos/iframe/pm.html">
+		<input id="input" name="user" type="text" class="form__field" required />
+		<input id="submit" type="submit" class="btn btn_stylish btn_main" />
+	</form>
+
+	<table cellspacing="10">
+		<tr valign="top">
+			<td>
+				<h2>"Скрытый" фрейм</h2>
+				<iframe id="transport" name="transport"></iframe>
+			</td>
+			<td>
+				<h2>Результат обработки данных:</h2>
+				<span id="info"></span>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

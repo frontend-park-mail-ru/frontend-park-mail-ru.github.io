@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Формы</title>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<form id="form">
+		<input id="input" type="text" class="form__field">
+		<input id="reset" type="reset" class="btn btn_stylish btn_main">
+		<input id="submit" type="submit" class="btn btn_stylish btn_main">
+	</form>
+
+	<div id="info"></div>
+	<div class="left">
+		<strong>на form:</strong>
+		<div id="form_events"></div>
+	</div>
+	<div class="left left_max">
+		<strong>на input:</strong>
+		<div id="input_events"></div>
+	</div>
+
+
+	<script>
+		var events = [
+			'focus',
+			'blur',
+			'change',
+			'keyup',
+			'keydown',
+			'keypress',
+			'click',
+			'input',
+			'cut',
+			'copy',
+			'paste',
+			'submit',
+			'reset'
+		];
+
+		var $info = $('#info'),
+			$form = $('#form'),
+			$events = $('#events'),
+			$input = $('#input');
+
+		function getRandomColor() {
+			var color = '#';
+			for (var i = 0; i < 3; i++) {
+				color += ((Math.random() * 180 + 40)|0).toString(16);
+			}
+			return color;
+		}
+
+		function log ($target, txt) {
+			$target.append($('<div />')
+					.html(txt)
+					.css({
+						'color': getRandomColor(),
+						'marginTop': '3px'
+					})
+					// .app('<br/>')
+				);
+		}
+
+		function logEvent (txt) {
+			log($info, txt);
+		}
+
+		function removeEvent (target, name) {
+
+			$('#' + target + '_events').children().each(function () {
+				var $el = $(this);
+
+				if ($el.text() === name) {
+					$el.css('text-decoration', 'line-through');
+				}
+			})
+		}
+
+		function getText (event) {
+			return '<span class="black">А ведь это событие: </span>'
+					+ event.type
+					+ '<span class="black"> на элементе: </span>'
+					+ event.target.id
+					+ '<span class="black">, пойманное на: </span>'
+					+ event.currentTarget.id;
+		}
+
+		for (var i=0, l=events.length; i < l; i++) {
+			$input.on(events[i], function (event) {
+				logEvent(getText(event));
+				removeEvent('input', event.type);
+			});
+
+			$form.on(events[i], function (event) {
+				logEvent(getText(event));
+				removeEvent('form', event.type);
+			});
+
+			log($('#form_events'), events[i]);
+			log($('#input_events'), events[i]);
+		}
+
+		$form.on('submit', function (event) {
+			event.preventDefault();
+		});
+
+		$form.on('reset', function () {
+			$info.html('');
+		})
+	</script>
+</body>
+
+</html>
