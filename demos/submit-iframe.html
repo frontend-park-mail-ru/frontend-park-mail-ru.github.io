@@ -4,8 +4,8 @@
 	<meta charset="utf-8" />
 	<title>Формы</title>
 
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<link rel="stylesheet" href="style.css" />
+	<script src="js/libs/jquery-1.11.0.min.js"></script>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<script>
 		window.dispatcher = function (data) {
 			$('#info').text(data);
@@ -13,7 +13,7 @@
 	</script>
 </head>
 <body>
-	<form id="form" target="transport" action="/demos/iframe/pm.html">
+	<form id="form" target="transport" action="iframe/pm.html">
 		<input id="input" name="user" type="text" class="form__field" required />
 		<input id="submit" type="submit" class="btn btn_stylish btn_main" />
 	</form>
