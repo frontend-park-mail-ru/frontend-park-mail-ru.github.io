@@ -32,6 +32,29 @@
             font-size: 36px;
             margin: 1em 0px 0px 0px;
         }
+
+        #tree{
+            margin: 50px 0px 0px 0px;
+        }
+        .tree__item{
+            padding: 10px;
+            border: 1px solid gray;
+            margin: 5px 0px 0px 0px;
+        }
+        .tree__item__value{
+            font-size: 0.8em;
+            margin: 10px 0px 0px 25px;
+        }
+        .tree__item__child{
+            padding-left: 25px;
+        }
+        .tree__item__value__hasOwnProperty{
+            color:red;
+            font-weight: bold;
+        }
+        .tree__item__value__notHasOwnProperty{
+            color:gray;
+        }
     </style>
 </head><body>
     <form id="codeform" >
@@ -41,36 +64,143 @@
         <div>/* Экземпляр */</div>
         <div>foursquare = new Polygon(4);</div>
     </form>
+    <div id="tree"></div>
     <script type="text/javascript">
-        Polygon = function(points){ /* Конструктор полигона */ this.points = points; };
-        Polygon.prototype.fillStyle = '#ffffff';
+        var Polygon = function(points){ /* Конструктор полигона */ this.points = points; };
         Polygon.prototype.strokeStyle = '#000000';
         Polygon.prototype.lineWidth = '1px';
 
-        Point = function(){ /* Конструктор точки */ this.iAmPoint = true; };
+        var Point = function(){ /* Конструктор точки */ this.iAmPoint = true; };
         Point.prototype = new Polygon(1);
         Point.prototype.getPosition = function(){ /* Позиция точки */ };
 
-        Line = function(){ /* Конструктор линии */ this.iAmLine = true; };
+        var Line = function(){ /* Конструктор линии */ this.iAmLine = true; };
         Line.prototype = new Polygon(2);
         Line.prototype.getLength = function(){ /* Длина линии */ };
 
-        Triangle = function(){ /* Конструктор треугольника */ this.iAmTriangle = true; };
+        var Triangle = function(){ /* Конструктор треугольника */ this.iAmTriangle = true; };
         Triangle.prototype = new Polygon(3);
         Triangle.prototype.getArea = function(){ /* Площадь треугольника */ };
 
-        Quadrangle = function(){ /* Конструктор четырехугольника */ this.iAmQuadrangle = true; };
+        var Quadrangle = function(){ /* Конструктор четырехугольника */ this.iAmQuadrangle = true; };
         Quadrangle.prototype = new Polygon(4);
         Quadrangle.prototype.getArea = function(){ /* Площадь квадрата */ };
 
-        Trapeze = function(){ /* Конструктор трапеций */ this.iAmTrapeze = true; };
+        var Trapeze = function(){ /* Конструктор трапеций */ this.iAmTrapeze = true; };
         Trapeze.prototype = new Quadrangle();
         Trapeze.prototype.getArea = function(){ /* Площадь трапеции */ };
 
-        point = new Point(20, 20);
-        line = new Line(0, 0, 20, 20);
-        triangle = new Triangle(10, 10, 5, 8, -10, 0);
-        foursquare = new Quadrangle(0, 0, 20, 20);
-        trapeze = new Trapeze(0, 0, 20, 20);
+        var point = new Point(20, 20);
+        var line = new Line(0, 0, 20, 20);
+        var triangle = new Triangle(10, 10, 5, 8, -10, 0);
+        var foursquare = new Quadrangle(0, 0, 20, 20);
+        var trapeze = new Trapeze(0, 0, 20, 20);
+    </script>
+
+    <script type="text/javascript">
+        /* Визуализация */
+        var tree__item_tpl = '<div class="tree__item"><div class="tree__item__name">{name}</div><div class="tree__item__value">{value}</div><div class="tree__item__child"></div></div>';
+        var tree = document.getElementById('tree');
+        var createObject = function(options){
+            var obj = document.createElement('div');
+            var tpl = tree__item_tpl;
+            var values = [];
+            for (var i in options.object) {
+                var key = i;
+                var value = options.object[i];
+                if ( typeof value == 'function' ) {
+                    value = 'function';
+                }
+                if ( options.object.hasOwnProperty( i ) ) {
+                    key = '<span class="tree__item__value__hasOwnProperty">' + key + '</span>';
+                } else {
+                    key = '<span class="tree__item__value__notHasOwnProperty">' + key + '</span>';
+                }
+                values.push(key + ': ' + value);
+            }
+
+            tpl = tpl.replace(/{name}/g, options.name);
+            tpl = tpl.replace(/{value}/g, values.join('<br />'));
+
+            var node = document.createElement('div');
+            node.innerHTML = tpl;
+            var child = node.querySelector('.tree__item__child');
+            node._tree_child = child;
+            return node;
+        };
+
+        var _RedrawBuffer = '';
+        var _Redraw = function() {
+            var buffer = document.createElement('div');
+            var _Polygon = createObject({
+                name: 'Polygon.prototype',
+                object: Polygon.prototype
+            });
+            buffer.appendChild(_Polygon);
+
+            var _Point = createObject({
+                name: 'Point.prototype',
+                object: Point.prototype
+            });
+            _Polygon._tree_child.appendChild(_Point);
+            var _point = createObject({
+                name: 'point',
+                object: point
+            });
+            _Point._tree_child.appendChild(_point);
+
+            var _Line = createObject({
+                name: 'Line.prototype',
+                object: Line.prototype
+            });
+            _Polygon._tree_child.appendChild(_Line);
+            var _line = createObject({
+                name: 'line',
+                object: line
+            });
+            _Line._tree_child.appendChild(_line);
+
+            var _Triangle = createObject({
+                name: 'Triangle.prototype',
+                object: Triangle.prototype
+            });
+            _Polygon._tree_child.appendChild(_Triangle);
+            var _triangle = createObject({
+                name: 'triangle',
+                object: triangle
+            });
+            _Triangle._tree_child.appendChild(_triangle);
+
+            var _Quadrangle = createObject({
+                name: 'Quadrangle.prototype',
+                object: Quadrangle.prototype
+            });
+            _Polygon._tree_child.appendChild(_Quadrangle);
+            var _foursquare = createObject({
+                name: 'foursquare',
+                object: foursquare
+            });
+            _Quadrangle._tree_child.appendChild(_foursquare);
+
+            var _Trapeze = createObject({
+                name: 'Trapeze.prototype',
+                object: Trapeze.prototype
+            });
+            _Quadrangle._tree_child.appendChild(_Trapeze);
+            var _trapeze = createObject({
+                name: 'trapeze',
+                object: trapeze
+            });
+            _Trapeze._tree_child.appendChild(_trapeze);
+
+            var html = buffer.innerHTML;
+            if (_RedrawBuffer != html) {
+                _RedrawBuffer != html;
+                _RedrawBuffer = html;
+                tree.innerHTML = html;
+            }
+        };
+        setInterval(_Redraw, 500);
+        _Redraw();
     </script>
 </body></html>
