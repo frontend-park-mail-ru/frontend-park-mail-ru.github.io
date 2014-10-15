@@ -40,6 +40,13 @@
             padding: 10px;
             border: 1px solid gray;
             margin: 5px 0px 0px 0px;
+            background: #f9f9f9;
+        }
+        .tree__item:focus{
+            padding: 10px;
+            border: 1px solid gray;
+            margin: 5px 0px 0px 0px;
+            background: #ffffff;
         }
         .tree__item__clear{
             clear: both;
@@ -111,7 +118,7 @@
 
     <script type="text/javascript">
         /* Визуализация */
-        var tree__item_tpl = '<div class="tree__item"><div class="tree__item__name">{name}</div><div class="tree__item__value">{value}</div><div class="tree__item__child"></div></div>';
+        var tree__item_tpl = '<div class="tree__item" tabindex="1"><div class="tree__item__name">{name}</div><div class="tree__item__value">{value}</div><div class="tree__item__child"></div></div>';
         var tree = document.getElementById('tree');
         var createObject = function(options){
             var obj = document.createElement('div');
