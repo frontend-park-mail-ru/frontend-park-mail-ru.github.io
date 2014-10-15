@@ -41,6 +41,18 @@
             border: 1px solid gray;
             margin: 5px 0px 0px 0px;
         }
+        .tree__item__clear{
+            clear: both;
+        }
+        .tree__item__left{
+            float: left;
+            width: 50%;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+        .tree__item__left_first{
+            clear: both;
+        }
         .tree__item__value{
             font-size: 0.8em;
             margin: 10px 0px 0px 25px;
@@ -142,6 +154,7 @@
                 name: 'Point.prototype',
                 object: Point.prototype
             });
+            _Point.className = 'tree__item__left';
             _Polygon._tree_child.appendChild(_Point);
             var _point = createObject({
                 name: 'point',
@@ -153,6 +166,7 @@
                 name: 'Line.prototype',
                 object: Line.prototype
             });
+            _Line.className = 'tree__item__left';
             _Polygon._tree_child.appendChild(_Line);
             var _line = createObject({
                 name: 'line',
@@ -160,10 +174,15 @@
             });
             _Line._tree_child.appendChild(_line);
 
+            var clear = document.createElement('div');
+            clear.className = 'tree__item__clear';
+            _Polygon._tree_child.appendChild(clear);
+
             var _Triangle = createObject({
                 name: 'Triangle.prototype',
                 object: Triangle.prototype
             });
+            _Triangle.className = 'tree__item__left';
             _Polygon._tree_child.appendChild(_Triangle);
             var _triangle = createObject({
                 name: 'triangle',
@@ -171,10 +190,15 @@
             });
             _Triangle._tree_child.appendChild(_triangle);
 
+            var clear = document.createElement('div');
+            clear.className = 'tree__item__clear';
+            _Polygon._tree_child.appendChild(clear);
+
             var _Quadrangle = createObject({
                 name: 'Quadrangle.prototype',
                 object: Quadrangle.prototype
             });
+            _Quadrangle.className = 'tree__item__left';
             _Polygon._tree_child.appendChild(_Quadrangle);
             var _foursquare = createObject({
                 name: 'foursquare',
@@ -186,12 +210,17 @@
                 name: 'Trapeze.prototype',
                 object: Trapeze.prototype
             });
+            _Quadrangle.className = 'tree__item__left';
             _Quadrangle._tree_child.appendChild(_Trapeze);
             var _trapeze = createObject({
                 name: 'trapeze',
                 object: trapeze
             });
             _Trapeze._tree_child.appendChild(_trapeze);
+
+            var clear = document.createElement('div');
+            clear.className = 'tree__item__clear';
+            _Polygon._tree_child.appendChild(clear);
 
             var html = buffer.innerHTML;
             if (_RedrawBuffer != html) {
