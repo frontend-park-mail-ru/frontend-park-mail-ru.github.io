@@ -9,13 +9,13 @@
 </head>
 <body class="list">
     <header class="caption">
-        <h1>I. Архитектура</h1>
+        <h1>I. Инструменты</h1>
         <p>Инструменты, организация и фреймворки.</p>
     </header>
 
     <section class="slide title">
         <h2>
-            <span>1 Инструменты</span>
+            <span>Инструменты</span>
         </h2>
     </section>
 
@@ -513,9 +513,14 @@
         </div>
     </section>
 
+    <header class="caption">
+        <h1>II. Архитектура.</h1>
+        <p>Модули, БЭМ, Backbone, Роутинг</p>
+    </header>
+
     <section class="slide title">
         <h2>
-            <span>2 Архитектура</span>
+            <span>Архитектура</span>
         </h2>
         <div>
         </div>
@@ -1117,6 +1122,376 @@
             <code>ДОРАБОТАТЬ ПРОТОТИП ПО ТЗ.</code>
             <code>ПРИСТУПИТЬ К РЕАЛИЗАЦИЯ ИГРОВОЙ МЕХАНИКИ.</code>
         </pre>
+        </div>
+    </section>
+
+    <header class="caption">
+        <h1>III. Веб формы.</h1>
+        <p>HTML формы, авторизация, регистрация, AJAX</p>
+    </header>
+
+    <section class="slide title">
+        <h2>
+            <span>Веб формы</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Модули лекции</h2>
+        <div>
+        <ol>
+            <li>Веб формы. Назначение и основные определения</li>
+            <li class="next">HTML верстка. Элементы форм. Атрибуты формы и ее элементов</li>
+            <li class="next">Работа с формами на JavaScript. Событиия формы и ее элементов. Валидация</li>
+            <li class="next">Передача данных на сервер</li>
+            <li class="next">UX решения в формах. Возможности HTML5</li>
+        </ol>
+        </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Веб формы. Назначение и основные определения</span>
+        </h2>
+    </section>
+
+    <section class="slide cover w">
+        <div>
+            <img src="/pics/forms/login_emailru.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide cover h">
+        <div>
+            <img src="/pics/forms/checkout_lamoda.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Определения</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p>A form is a component of a Web page that has form controls, such as text fields, buttons, checkboxes, range controls, or color pickers. A user can interact with such a form, providing data that can then be sent to the server for further processing (e.g. returning the results of a search or calculation).</p>
+                </blockquote>
+                <figcaption><a href="www.w3.org/TR/html5/forms.html">HTML5 - World Wide Web Consortium</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Определения</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p><strong>Форма (англ. form) в HTML</strong> — раздел документа, позволяющий пользователю вводить информацию для последующей обработки системой. Синтаксически форма в HTML задаётся с помощью элемента form и в дополнение к разметке обычных элементов содержит разметку для элементов управления(англ. controls), надписей (англ. label) и других.</p>
+                </blockquote>
+                <figcaption><a href="ru.wikipedia.org/wiki/Форма_(HTML)">Википедия</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide cover w">
+        <div>
+            <img src="/pics/forms/mailru.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide cover w">
+        <div>
+            <img src="/pics/forms/google.jpg" alt="" />
+        </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>HTML верстка<br/>Элементы форм<br/>Атрибуты</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Простая форма</h2>
+        <div>
+        <pre>
+            <code>&lt;form&gt;</code>
+                <code>  &lt;p&gt;&lt;label&gt;Имя пользователя: &lt;input&gt;&lt;/label&gt;&lt;/p&gt;</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Простая форма</h2>
+        <div>
+        <pre>
+            <code>&lt;form&gt;</code>
+                <code>  &lt;p&gt;</code>
+                    <code>    &lt;label <b>for=”name”</b>&gt;</code>
+                    <code>      Имя пользователя: &lt;input <b>id=”name”</b>&gt;</code>
+                    <code>    &lt;/label&gt;</code>
+                <code>  &lt;/p&gt;</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Демо</h2>
+        <div>
+            <ol>
+                <li><a href="/demos/simple-form.html">Простая форма</a></li>
+                <li><a href="/demos/select.html">Селекты</a></li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Основные элементы формы</h2>
+        <div>
+            <ol>
+                <li>Текстовые поля - <b>input[type=text]</b>, <b>textarea</b></li>
+                <li>Радиокнопки - <b>input[type=radio]</b></li>
+                <li>Флажки или чекбоксы - <b>input[type=checkbox]</b></li>
+                <li>Выпадающие списки - <b>select</b> и <b>options</b></li>
+                <li>Кнопки - <b>input[type=submit][type=reset], <b>button[type=submit][type=reset]</b></li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Демо</h2>
+        <div>
+            <ol>
+                <li><a href="/demos/simple-form.html">Простая форма</a></li>
+                <li><a href="/demos/select.html">Селекты</a></li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Добавим атрибуты к форме</h2>
+        <div>
+        <pre>
+            <code>&lt;form method=&quot;post&quot;</code>
+            <code>      enctype=&quot;application/x-www-form-urlencoded&quot;</code>
+            <code>      action=&quot;https://pizza.example.com/order.cgi&quot;&gt;</code>
+            <code>...</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>... и к ее элементам (селекты)</h2>
+        <div>
+        <pre>
+            <code>&lt;input name=&quot;custname&quot;&gt;</code>
+
+            <code>...</code>
+            <code>&lt;select name=&quot;custtype&quot;&gt;</code>
+            <code>  &lt;option value=&quot;Business&quot;&gt;Business&lt;/option&gt;</code>
+            <code>  &lt;option value=&quot;Customer&quot;&gt;Customer&lt;/option&gt;</code>
+            <code>&lt;/select&gt;</code>
+            <code>...</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>... и к ее элементам (радиокнопки)</h2>
+        <div>
+        <pre>
+            <code>...</code>
+            <code>&lt;input type=radio name=&quot;size&quot; value=&quot;small&quot;&gt;</code>
+            <code>&lt;input type=radio name=&quot;size&quot; value=&quot;medium&quot;&gt;</code>
+            <code>&lt;input type=radio name=&quot;size&quot; value=&quot;large&quot;&gt;</code>
+            <code>...</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>... и к ее элементам (чекбоксы)</h2>
+        <div>
+        <pre>
+            <code>...</code>
+            <code>&lt;input type=checkbox name=&quot;topping&quot; value=&quot;bacon&quot;&gt;</code>
+            <code>&lt;input type=checkbox name=&quot;topping&quot; value=&quot;cheese&quot;&gt;</code>
+            <code>...</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>... и к ее элементам (time???)</h2>
+        <div>
+        <pre>
+            <code>...</code>
+            <code>&lt;input </code>
+            <code>  type=&quot;time&quot;</code>
+            <code>  min=&quot;11:00&quot;</code>
+            <code>  max=&quot;21:00&quot;</code>
+            <code>  step=&quot;900&quot;</code>
+            <code>  name=&quot;delivery&quot;&gt;</code>
+            <code>...</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Демо</h2>
+        <div>
+            <ol>
+                <li><a href="/demos/simple-form.html">Простая форма</a></li>
+                <li><a href="/demos/select.html">Селекты</a></li>
+                <li><a href="/demos/simple-form-attrs.html">Простая форма с атрибутами</a></li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>JavaScript<br/>События<br/>Валидация</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Чтение и запись значений</h2>
+        <div>
+        <pre>
+             <code>var input = document.getElementById(‘input’),</code>
+            <code>    textarea = document.getElementById(‘textarea’);</code>
+            <code><mark class="comment">/*Устанавливаем новые значения для полей*/</mark></code>
+            <code>input.value = "значение";</code>
+            <code>console.log(input.value) <mark class="comment">// 'значение'</mark></code>
+            <code><mark class="comment">/*А теперь на jQuery*/</mark></code>
+            <code>$('#textarea').val(‘значение jQuery’);</code>
+            <code>console.log($('#textarea').val()) <mark class="comment">// 'значение jQuery'</mark></code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>input type="checkbox"</h2>
+        <div>
+        <pre>
+            <code>&lt;input type="checkbox" id="input" checked&gt;</code>
+            <code>...</code>
+            <code>if (input.checked) {</code>
+            <code>   alert("Чекбокс выбран");</code>
+            <code>}</code>
+            <code><mark class="comment">/*На jQuery*/</mark></code>
+            <code>...</code>
+            <code>$('#input').prop('checked'); // true</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>select, option</h2>
+            <div>
+            <a href="/demos/select.html">Селекты</a>
+            <pre>
+                <code>var selectedOptionValue = select.value;</code>
+                <code><mark class="comment">/*Установить значение можно двумя способами*/</mark></code>
+                <code>select.selectedIndex = 0; <mark class="comment">// первый элемент</mark></code>
+                <code>select.selectedIndex = -1; <mark class="comment">// сбросим значение</mark></code>
+                <code><mark class="comment">/*... или ...*/</mark></code>
+                <code>select.value = 'Customer';</code>
+            </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>События формы и валидация</h2>
+        <div>
+            <a style="font-size: 3em" href="/demos/events.html">События</a><br/><br/>
+            <a style="font-size: 3em" target="_blank" href="https://e.mail.ru/signup">Пример валидации</a>
+        </div>
+    </section>
+
+   <section class="slide">
+        <h2>Проверка выполняется:</h2>
+        <div>
+            <ul>
+                <li>Во время ввода (oninput)</li>
+                <li>Перед вводом (onfocus)</li>
+                <li>По окончании ввода (onblur)</li>
+                <li>Перед отправкой формы (onsubmit)</li>
+            </ul>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Сообщение об ошибке</h2>
+        <div>
+            <ul>
+                <li>Выделение поля с ошибкой</li>
+                <li>Поясняющее текстовое сообщение об ошибке</li>
+                <li>Фокус на поле ввода с ошибкой</li>
+                <li>Блокировка кнопки для отправки формы</li>
+            </ul>
+       </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Сабмит данных на сервер</h2>
+        <div>
+            <ol>
+                <li>Сабмит формы с ренедером новой страницы в новом или текущем окне <a href="/demos/submit-simple.html">Демо</a></li>
+                <li class="next">Сабмит формы в iframe <a href="/demos/submit-iframe.html">Демо</a></li>
+                <li class="next">Сериализация данных формы и AJAX</li>
+            </ol>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>AJAX</h2>
+        <div>
+        <pre>
+            <code>$("#idForm").on("submit", function(event) {</code>
+            <code>  event.preventDefautlt();</code>
+            <code>  $.ajax({</code>
+            <code>    type: "POST",</code>
+            <code>    url: "path/to/your/endpoint",</code>
+            <code>    data: $(this).serialize(),</code>
+            <code>    success: postDispatcher</code>
+            <code>  });</code>
+            <code>});</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Обработка результратов</h2>
+        <div>
+            <ul>
+                <li>Обрабатывайте ошибки</li>
+                <li class="next">Информируйте пользователя об ошибках</li>
+                <li class="next">Защищайте форму от многократной отправки</li>
+                <li class="next">Предусматривайте прелоудеры</li>
+                <li class="next">Не забывайте останавливать стандартное поведение</li>
+            </ul>
+       </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Возможности HTML5</span>
+        </h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>Демо</h2>
+        <div>
+            <ol>
+                <li><a href="/demos/simple-form.html">Простая форма</a></li>
+                <li><a href="/demos/select.html">Селекты</a></li>
+                <li><a href="/demos/simple-form-attrs.html">Простая форма с атрибутами</a></li>
+                <li><a href="/demos/html5-form.html">HTML5</a></li>
+            </ol>
         </div>
     </section>
 

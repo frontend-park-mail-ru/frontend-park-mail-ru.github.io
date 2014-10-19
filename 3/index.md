@@ -7,14 +7,14 @@ title: Отладка и мобильный веб
 
 [ГЛАВНАЯ](/)
 
-# 3 Отладка и мобильный веб
+# 3 AJAX, хранение данных
 {: id="3"}
 
 **ВНИМАНИЕ! РАЗДЕЛ НАХОДИТСЯ В СТАДИИ РАЗРАБОТКИ.**
 
 Содержание:
 
-3.1. [Web Inspector и препроцессоры CSS](#3.1)
+3.1 [Сетевое взаимодествие](#3.1)
 
 3.1.1 [Полезные ресурсы](#3.1.1)\\
 3.1.2 [Смешанное занятие](#3.1.2)\\
@@ -22,7 +22,7 @@ title: Отладка и мобильный веб
 3.1.4 [Техническое задание](#3.1.4)
 {:.toc}
 
-3.2. [Производительность](#3.2)
+3.2 [Хранение данных на клиенте](#3.2)
 
 3.2.1 [Полезные ресурсы](#3.2.1)\\
 3.2.2 [Смешанное занятие](#3.2.2)\\
@@ -30,7 +30,7 @@ title: Отладка и мобильный веб
 3.2.4 [Техническое задание](#3.2.4)
 {:.toc}
 
-3.3 [Возможности смартфонов](#3.3)
+3.3. [Web Inspector и препроцессоры CSS](#3.3)
 
 3.3.1 [Полезные ресурсы](#3.3.1)\\
 3.3.2 [Смешанное занятие](#3.3.2)\\
@@ -38,18 +38,107 @@ title: Отладка и мобильный веб
 3.3.4 [Техническое задание](#3.3.4)
 {:.toc}
 
-## 3.1 Web Inspector и препроцессоры CSS
+## 3.1 Сетевое взаимодествие
 {: id="3.1"}
 
 ### 3.1.1 Полезные ресурсы
 {: id="3.1.1"}
 
+1. Википедия. [List of HTTP status codes](http://en.wikipedia.org/wiki/HTTP_status_code).
+2. Mozilla Developer Network. [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
+3. Tiffany Brown. [Introduction to XMLHttpRequest Level 2](http://dev.opera.com/articles/view/xhr2/) // 2012.
+3. Armin Ronacher. [Websockets 101](http://lucumr.pocoo.org/2012/9/24/websockets-101/) // 2012.
+4. Malte Ubl, Eiji Kitamura. [Introducing WebSockets: Bringing Sockets to the Web](http://www.html5rocks.com/en/tutorials/websockets/basics/) // 2010.
+5. Илья Кантор. [WebSocket](http://learn.javascript.ru/websockets).
+
+### 3.1.2 Смешанное занятие
+{: id="3.1.2"}
+
+### 3.1.3 Домашнее задание
+{: id="3.1.3"}
+
+1. Наладить взаимодествие с сервером с помощью `AJAX`.
+    1. Организовать хранение и обработку `Scores` на сервере (взять готовый сервер)
+    2. Добавить форму ввода имени игрока с сохранением результатов на сервер
+
+### 3.1.4 Техническое задание
+{: id="3.1.4"}
+
+1. Создать новый `view GameOver` на экране `Game`
+    1. `View` должна содержать поле ввода имени игрока, кнопку сохранения и отображать переданный при инициализации счет игрока.
+    2. `View GameOver` не имеет отдульного маршрута и отображатеся только через экран `Game`
+    2. При [`сабмите формы`](http://learn.javascript.ru/forms-methods) создается [`модель score`](http://backbonejs.org/#Collection-create) с указанными в форме данными и добавляется в коллекцию scores и сохраняется на сервер
+    3. На время сохранения форма блокируется
+    4. При ошибке сохранения пользователю выводится ошибка и форма разблокируется
+    5. После успешного сохранения форма разблокируется, сбрасывается и происходит переход на экран `Scoreboard`
+2. Модифицировать экран `Scoreboard` для получения данных с сервера (топ 10, заданные через `?limit=N`)
+    1. При отображении экрана происходит [`fetch`](http://backbonejs.org/#Collection-fetch) коллекции `scores`
+    2. Во время загрузки пользователю отображается индикатор загрузки
+    3. В случае ошибки загрузки пользователю отображается соответствующее сообщение с возможностью обновить экран
+    4. В случае успешной загрузки отображается список
+
+### 3.1.5 RESTful API
+{: id="3.1.5"}
+
+Серверное RESTful API для работы со Score.
+
+1. `GET /scores`
+    + Код `200` — возвращает всю коллкцию scores или первые x элементов (заданные через `?limit=N`) отсортированную по убыванию счета игрока
+2. `GET /scores/:id`
+    + Код `200` — возвращает модель с переданным id
+    + Код `400` — не верные входные данные
+    + Код `404` — модель с указанным id не найдена
+3. `POST /scores`
+    + Тело запроса: `{"name": "<name>", "score": <score>}`
+    + Код `200` — возвращает id созданной модели
+    + Код `400` — не верные входные данные
+4. `DELETE /scores/:id`
+    + Код `200` — удаляет модель с переданным id
+    + Код `400` — не верные входные данные
+    + Код `404` — модель с указанным id не найдена
+5. `PUT /scores/:id`
+    + Тело запроса: `{"id": <id>, "name": "<name>", "score": <score>}`
+    + Код `200` — обновляет и возвращает модель с переданным id
+    + Код `400` — не верные входные данные
+    + Код `404` — модель с указанным id не найдена
+
+## 3.2 Хранение данных на клиенте
+{: id="3.2"}
+
+### 3.2.1 Полезные ресурсы
+{: id="3.2.1"}
+
+1. Википедия. [HTTP cookie](http://ru.wikipedia.org/wiki/HTTP_cookie).
+2. Илья Кантор. [Куки, document.cookie](http://learn.javascript.ru/cookie) // 2013.
+3. Michael Mahemoff. [Client-Side Storage](http://www.html5rocks.com/en/tutorials/offline/storage) // 2010.
+
+### 3.2.2 Смешанное занятие
+{: id="3.2.2"}
+
+### 3.2.3 Домашнее задание
+{: id="3.2.3"}
+
+1. Организовать хранение пользовательских настроек на клиенте. Сохранять результаты игры на клиенте, при остуствии связи с сервером.
+
+### 3.2.4 Техническое задание
+{: id="3.2.4"}
+
+1. При возникновении серверных ошибок (5хх) в момент сохранения результатов игры или отсутствии сети, несохраненные на сервере данные должны помещаться в localStorage.
+2. Необходимо предусмотреть одновременное хранение нескольких резульататов игры в localStorage.
+3. При загрузке экрана ScoreBoard необходимо проверить наличие несохраненных на сервере результатов игры. Если такие данные в localStorage есть, тогда необходимо их отправить на сервер. Когда все данные из localStorage будут сохранены на сервере, следует обновить список игроков на экране с сервера.
+
+## 3.3 Web Inspector и препроцессоры CSS
+{: id="3.3"}
+
+### 3.3.1 Полезные ресурсы
+{: id="3.3.1"}
+
 1. [Chrome DevTools](https://developers.google.com/chrome-developer-tools/).
 2. [Sass](http://sass-lang.com).
 2. [Source Maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors).
 
-### 3.1.2 Смешанное занятие
-{: id="3.1.2"}
+### 3.3.2 Смешанное занятие
+{: id="3.3.2"}
 
 <!--
 - WebInspector (demo).
@@ -60,148 +149,11 @@ title: Отладка и мобильный веб
     + mixins
 -->
 
-### 3.1.3 Домашнее задание
-{: id="3.1.3"}
+### 3.3.3 Домашнее задание
+{: id="3.3.3"}
 
 1. Перевести CSS на Sass. Используйте `grunt-contrib-sass` для сборки проекта.
 2. Настроить `grunt-contrib-watch` для SCSS файлов.
 3. Рефакторинг SCSS файлов (переменные, mixin, nesting).
 
-## 3.2 Производительность
-{: id="3.2"}
-
-### 3.2.1 Полезные ресурсы
-{: id="3.2.1"}
-
-1. Tali Garsiel, Paul Irish. [Принципы работы современных веб-браузеров](http://www.html5rocks.com/ru/tutorials/internals/howbrowserswork/).
-2. Yahoo Developer Network. [Best Practices for Speeding Up Your Web Site](http://developer.yahoo.com/performance/rules.html).
-3. Егор Дыдыкин. [Новая Главная портала Mail.Ru](http://habrahabr.ru/company/mailru/blog/142193/).
-
-### 3.2.2 Смешанное занятие
-{: id="3.2.2"}
-
-### 3.2.3 Домашнее задание
-{: id="3.2.3"}
-
-1. Реализовать индикатор загрузки приложения.
-2. Организовать сборку ресурсов для `production` и `development` окружений.
-
-### 3.2.4 Техническое задание
-{: id="3.2.4"}
-
-1. В Gruntfile необходимо реализовать задачу `build`. Эта задача должна выполнять:
-    1. Собирать CSS в режиме `compressed`.
-    2. Собирать JavaScript с помощью  [`grunt-contrib-requirejs`](https://npmjs.org/package/grunt-contrib-requirejs).
-    3. Минифицировать сборку JavaScript файла вместе с библиотекой [`almond`](https://github.com/jrburke/almond) с помощью [`grunt-contrib-concat`](https://npmjs.org/package/grunt-contrib-concat) и [`grunt-contrib-uglify`](https://npmjs.org/package/grunt-contrib-uglify).
-2. Собранные задачей `build` файлы должны подключаться на странице игры при условии запуска сервера в `production` окружении.
-
-## 3.3 Возможности смартфонов
-{: id="3.3"}
-
-### 3.3.1 Полезные ресурсы
-{: id="3.3.1"}
-
-1. Chris Wilson, Paul Kinlan. [Touch And Mouse. Together Again For The First Time](http://www.html5rocks.com/en/mobile/touchandmouse/) // 2013.
-2. Earle Castledine, Myles Eftos, Max Wheeler. [Build Mobile Websites and Apps for Smart Devices](http://www.sitepoint.com/store/build-mobile-websites-and-apps-for-smart-devices/) // 2011.
-3. Mark Pilgrim. [Dive into HTML5](http://diveintohtml5.info/).
-4. [Apple Developer](https://developer.apple.com/)
-5. [Mozilla Developer Network](https://developer.mozilla.org/ru/)
-6. [HTML5 Rocks](http://www.html5rocks.com/en/)
-7. [HTML5 Please](http://html5please.com/)
-8. [Can I use...](http://caniuse.com/)
-
-### 3.3.2 Смешанное занятие
-{: id="3.3.2"}
-
-<!--
-- Акселерометр.
-- Гироскоп.
-- Тач-события.
--->
-
-### 3.3.3 Домашнее задание
-{: id="3.3.3"}
-
-1. Сделать джойстик для смартфонов и организовать взаимодействие на websockets между экранами приложения.
-
-### 3.3.4 Техническое задание
-{: id="3.3.4"}
-
-### 3.3.5 RPC API
-{: id="3.3.5"}
-
-Создаем экземпляр Connector с указанием remote: '/<тип клиента: console|player>'.
-
-~~~
-var server = new Connector({
-    remote: '/console'
-});
-~~~
-
-Через socket.io устанавливается соединение с сервером по пути, указанному в remote, и происходит запрос на получение набора функций, поддерживаемых сервером. Запрос асинхронный, потому Connector предоставляет метод onReady, позволяющий начать работу с сервером, когда все будет готово.
-
-~~~
-server.onReady(function(){
-    server.someServerSideFunction();
-});
-~~~
-
-При желании можно часть или все функции объявить при инициализации и вызывать их сразу. Запросы на вызов серверной функции складываются в очередь и будут запущены после полчения списка серверных функций.
-
-~~~
-var server = new Connector({
-    server: ['getToken', 'bind'],
-    remote: '/console'
-});
-
-server.getToken(function(token){});
-~~~
-
-На сервере реализованы следующие функции:
-
-~~~
-server.getToken(function(token){
-    token // токен для иниализации связи
-});
-
-// для первичной инициализации связки по токену
-server.bind({token: '<token>'}, function(data){
-    data.status // 'success' в случае успеха, 'undefined token' в случае ошибки, 'busy token' в случае, если токен занят
-    data.guid // guid связки в случае успеха
-});
-
-// для восстановления связки, когда guid уже получен
-server.bind({guid: '<guid>'}, function(data){
-    data.status // 'success' в случае успеха, 'undefined guid' в случае ошибки
-});
-~~~
-
-Так же Connector поддерживает следующие события
-
-~~~
-server.on('connect', function(){}); // установка соединения
-server.on('disconnect', function(){}); // потеря соединения
-server.on('reconnect', function(){}); // восстановление соединения
-~~~
-
-Специальное событие для консоли, происходящее когда игрок подключил джойстик
-
-~~~
-server.on('player-joined', function(data){
-    data.guid // guid инициализированной связки
-});
-~~~
-
-Для общения между консолью и джойстиком используется метод send для отправки сообщения от одного клиента и событие message на другом для получения сообщения.
-
-~~~
-server.send(data, function(answer){
-    answer // ответ другой стороны
-});
-
-server.on('message', function(data, answer){
-    data // данные сообщения
-    answer('<answer>') // отправка ответа обратно
-});
-~~~
 
