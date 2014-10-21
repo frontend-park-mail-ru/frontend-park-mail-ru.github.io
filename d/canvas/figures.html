@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Canvas - Figures</title>
+<style type="text/css">
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+<canvas></canvas>
+<script type="text/javascript">
+var canvas = document.querySelector('canvas');
+var context = canvas.getContext('2d');
+
+var demonstration = function(){
+	/* Трансформации */
+	context.scale( 1, 1 );
+	context.rotate( Math.PI*0 );
+	context.translate( 0, 0 );
+	context.transform( 1, 0, 0, 1, 0, 0 );
+
+	context.beginPath();
+
+	/* context.rect( x, y, width, height ); */
+	context.rect( 30, 30, 150, 100 ); // Прямоугольник
+
+	/* context.arc( x, y, radius, startAngle, endAngle [, anticlockwise] ); */
+	// context.arc( 200, 200, 130, 0, 0.25*Math.PI, false ); // Окружность
+
+	/* Закругление */
+	/* context.arcTo( x1, y1, x2, y2, radiusX [, radiusY, rotation] ); */
+	// context.moveTo( 50, 50 );
+	// context.arcTo( 150, 50, 150, 150, 50 );
+
+	/* Квадратичная кривая */
+	// context.moveTo(50,50);
+	// context.quadraticCurveTo(150,150,250,50);
+
+	/* Кубическая кривая */
+	// context.moveTo(50,50);
+	// context.bezierCurveTo(50,150,250,150,250,50);
+
+	context.stroke();
+
+};
+
+/* Хелперы */
+var resize = function(){
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+	var bigStep = 100;
+	var smallStep = 10;
+	context.beginPath();
+	context.strokeStyle = '#eeeeee';
+	for (var x = 0; x < canvas.width; x += smallStep) {
+		context.moveTo( x, 0 );
+		context.lineTo( x, canvas.height );
+	}
+	for (var y = 0; y < canvas.height; y += smallStep) {
+		context.moveTo( 0, y );
+		context.lineTo( canvas.width, y );
+	}
+	context.stroke();
+
+	context.beginPath();
+	context.strokeStyle = '#aaaaaa';
+	for (var x = 0; x < canvas.width; x += bigStep) {
+		context.moveTo( x, 0 );
+		context.lineTo( x, canvas.height );
+	}
+	for (var y = 0; y < canvas.height; y += bigStep) {
+		context.moveTo( 0, y );
+		context.lineTo( canvas.width, y );
+	}
+	context.stroke();
+
+	context.strokeStyle = '#ff0000';
+	demonstration();
+};
+window.addEventListener('resize', resize);
+resize();
+</script>
+</body>
+</html>

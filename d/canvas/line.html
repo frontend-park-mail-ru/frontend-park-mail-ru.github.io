@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Canvas - Line</title>
+<style type="text/css">
+canvas {
+	border: 1px solid gold;
+}
+</style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script type="text/javascript">
+var canvas = document.querySelector('canvas');
+var context = canvas.getContext('2d');
+
+/* Демонстрация */
+context.beginPath();
+context.moveTo( 100, 100 );
+context.lineTo( 400, 300 );
+context.stroke();
+</script>
+</body>
+</html>
