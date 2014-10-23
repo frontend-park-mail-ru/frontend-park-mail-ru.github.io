@@ -61,7 +61,7 @@ var animate = function(){
   context.fill();
 
   if (multiply < 1) {
-    requestAnimationFrame(animate);
+    setTimeout(animate, 10);
   } else {
     end();
   }
