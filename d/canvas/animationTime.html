@@ -36,7 +36,7 @@ var startTime, animationTime, length;
 
 var animate = function(){
 
-  resize();
+  //resize();
   
   /* Трансформации */
   context.beginPath();
@@ -61,7 +61,7 @@ var animate = function(){
   context.fill();
 
   if (multiply < 1) {
-    setTimeout(animate, 10);
+    requestAnimationFrame(animate);
   } else {
     end();
   }

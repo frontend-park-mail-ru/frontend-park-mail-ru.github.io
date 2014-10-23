@@ -51,7 +51,7 @@ var animate = function(){
 
   if (animateStep < 100) {
     animateStep++;
-    setTimeout(animate, 10);
+    animate();
   } else {
     end();
   }
