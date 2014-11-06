@@ -565,6 +565,74 @@
     </section>
 
     <section class="slide">
+        <h2>RESTful</h2>
+        <div>
+            <ul>
+                <li>Клиент-серверная архитектура</li>
+                <li>Независимость от состояния</li>
+                <li>Кэшируемая архитектура</li>
+                <li>Многоуровневая архитектура</li>
+                <li>Единый интерфейс сервера</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Backbone</h2>
+        <div>
+            <pre>
+                <code>model.fetch(); <mark class="comment">// GET</mark></code>
+                <code>model.save(); <mark class="comment">// POST, PUT, PATCH</code></li>
+                <code>model.destroy(); <mark class="comment">// DELETE</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Backbone.sync</h2>
+        <div>
+            <pre>
+                <code>var methodMap = {</code>
+                <code>    'create': 'POST',</code>
+                <code>    'update': 'PUT',</code>
+                <code>    'patch':  'PATCH',</code>
+                <code>    'delete': 'DELETE',</code>
+                <code>    'read':   'GET'</code>
+                <code>};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Model</h2>
+        <div>
+            <pre>
+                <code>var Model = Backbone.Model.extend({</code>
+                <code>    url: 'auth',</code>
+                <div class="next">
+                    <code>    sync: apiSync</code>
+                </div>
+                <code>});</code>
+                <code>var model = new Model();</code>
+                <code>model.fetch();</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>api/sync.js</h2>
+        <div>
+            <pre>
+                <code>define(function(){</code>
+                <code>    return function(method, model, options){</code>
+                <code>        <mark class="comment">// TODO</mark></code>
+                <code>    }</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
         <h2>Домашнее задание</h2>
         <div>
             <pre>
