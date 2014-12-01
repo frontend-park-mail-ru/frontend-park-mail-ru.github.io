@@ -749,30 +749,6 @@
     </section>
 
     <section class="slide">
-        <h2>Подготовка</h2>
-        <div>
-            <pre>
-                <code>$ git remote add tp \</code>
-                <code>→ https://github.com/eprev/frontend-stub.git</code>
-                <code>$ git remote update</code>
-                <code>$ git merge tp/v7</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Разрешаем конфикты</h2>
-        <div>
-            <pre>
-                <code>$ git status</code>
-                <code>$ git add …</code>
-                <code>$ git commit -m "Fix merge conflicts"</code>
-                <code>$ grunt</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
         <h2><code>Обновляем NPM</code></h2>
         <div>
             <pre>
@@ -855,6 +831,21 @@
                 <code>        dest: 'public_html/js/build.min.js'</code>
                 <code>    }</code>
                 <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>grunt-contrib-sass</code></h2>
+        <div>
+            <pre>
+                <code>grunt.initConfig({</code>
+                <code>  sass: {</code>
+                <code>      style: "compressed",</code>
+                <code>      ...</code>
+                <code>  }</code>
+                <code>});</code>
+                <code></code>
             </pre>
         </div>
     </section>
