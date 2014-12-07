@@ -786,13 +786,14 @@
         <div>
             <pre>
                 <code>build: { <mark class="comment">/* Подзадача */</mark></code>
-                <code>  almond: true,</code>
-                <code>  baseUrl: "public_html/js",</code>
-                <code>  mainConfigFile: "public_html/js/main.js",</code>
-                <code>  name: "main",</code>
-                <code>  optimize: "none",</code>
-                <code>  out: "public_html/js/build/main.js"</code>
-                <code>}</code>
+                <code>  options: {</code>
+                <code>    almond: true,</code>
+                <code>    baseUrl: "public_html/js",</code>
+                <code>    mainConfigFile: "public_html/js/main.js",</code>
+                <code>    name: "main",</code>
+                <code>    optimize: "none",</code>
+                <code>    out: "public_html/js/build/main.js"</code>
+                <code>  } }</code>
             </pre>
         </div>
     </section>
@@ -802,6 +803,7 @@
         <div>
             <pre>
                 <code>grunt.initConfig({</code>
+                <code>    concat: { … }, <mark class="comment">/* grunt-contrib-concat */</mark></code>
                 <code>    uglify: { … } <mark class="comment">/* grunt-contrib-uglify */</mark></code>
                 <code>});</code>
             </pre>
@@ -814,8 +816,11 @@
             <pre>
                 <code>build: { <mark class="comment">/* Подзадача */</mark></code>
                 <code>    separator: ';\n',</code>
-                <code>    src: ['public_html/js/lib/almond.js','public_html/js/build/main.js'],</code>
-                <code>    dest: 'public_html/js/build.min.js'</code>
+                <code>    src: [</code>
+                <code>          'public_html/js/lib/almond.js',</code>
+                <code>          'public_html/js/build/main.js'</code>
+                <code>    ],</code>
+                <code>    dest: 'public_html/js/build.js'</code>
                 <code>}</code>
             </pre>
         </div>
@@ -827,8 +832,8 @@
             <pre>
                 <code>build: { <mark class="comment">/* Подзадача */</mark></code>
                 <code>    files: {</code>
-                <code>        src: ['public_html/js/build.js'],</code>
-                <code>        dest: 'public_html/js/build.min.js'</code>
+                <code>        'public_html/js/build.min.js': </code>
+                <code>              ['public_html/js/build.js']</code>
                 <code>    }</code>
                 <code>}</code>
             </pre>
@@ -877,11 +882,25 @@
     </section>
 
     <section class="slide">
+        <h2>Новый index.html</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="js/build.min.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;script&gt;</code>
+                <code>    require(['main'], function(){</code>
+                <code>            console.log('hello');</code>
+                <code>    });</code>
+                <code>&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
         <h2>Проверка</h2>
         <div>
             <pre>
                 <code>$ grunt build</code>
-                <code>$ NODE_ENV=production node app.js</code>
+                <!-- code>$ NODE_ENV=production node app.js</code -->
             </pre>
         </div>
     </section>
