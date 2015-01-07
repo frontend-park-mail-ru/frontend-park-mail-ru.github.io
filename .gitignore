@@ -6,3 +6,4 @@ Gemfile
 Gemfile.lock
 ._*
 .DS_Store
+.jekyll
