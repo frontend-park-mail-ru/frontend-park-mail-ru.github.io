@@ -65,10 +65,10 @@ html, body{
 	<script>
 		var js__orientation = document.querySelector('.js__orientation');
 		var orientationchange = function () {
-			if (window.orientation%90===0) {
-				js__orientation.className = 'js__orientation js__orientation_landscape';
-			} else {
+			if (window.orientation%180===0) {
 				js__orientation.className = 'js__orientation js__orientation_portrait';
+			} else {
+				js__orientation.className = 'js__orientation js__orientation_landscape';
 			}
 		}
 		window.addEventListener('orientationchange', orientationchange);
