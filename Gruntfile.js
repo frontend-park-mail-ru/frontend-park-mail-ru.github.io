@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 			},
 			serve: {
 				options: {
-					dest: '.jekyll',
+					dest: '_site',
 					drafts: true
 				}
 			}
