@@ -1280,7 +1280,7 @@ if (input.checked) {
 
 select, option
 Элементы типа select, как и input, поддерживают свойство value.
-Он обычно возвращает значение (value) выбранной опции, ну а в случае <select multiple> — значение первой из них.
+Он обычно возвращает значение (value) выбранной опции, ну а в случае &lt;select multiple /&gt; — значение первой из них.
 
 ~~~
 var selectedOptionValue = select.value;
