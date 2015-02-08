@@ -170,6 +170,63 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Grunt &mdash; Начало</h2>
+        <div>
+            <pre>
+                <code>$ sudo npm install -g grunt-cli <mark class="comment">// Интерфейс командной строки</mark></code>
+                <code>$ grunt --help <mark class="comment">// Увидите сообщение что все OK</mark></code>
+                <code>$ npm install grunt --save-dev</code>
+                <code><mark class="comment">// Устанавливаете все нужные модули</mark></code>
+                <code>$ npm install &lt;module&gt; --save-dev</code>
+                <code><mark class="comment">// http://gruntjs.com/plugins</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>module.exports = function(grunt) {</code>
+                <code>  <mark class="comment">/* Функция обертка, все внутри нее */</mark></code>
+                <code>};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>  grunt.initConfig({</code>
+                <code>    concat: { <mark class="comment">/* Настройки тасков */</mark> }</code>
+                <code>  });</code>
+                <code>  <mark class="comment">// Загрузка плагинов, на примере "concat".</mark></code>
+                <code>  grunt.loadNpmTasks('grunt-contrib-concat');</code>
+                <code>  <mark class="comment">// Определение тасков, default должен быть всегда.</mark></code>
+                <code>  grunt.registerTask('default', ['concat']);</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>    concat: {</code>
+                <code>      options: {</code>
+                <code>        separator: ';'</code>
+                <code>      },</code>
+                <code>      dist: {</code>
+                <code>        src: ['js/first.js', 'js/second.js'],</code>
+                <code>        dest: 'js/build.js'</code>
+                <code>      }</code>
+                <code>    }</code>
+            </pre>
+        </div>
+    </section>
+
     <section class="slide shout"><div>
         <h2>Single Page Application</h2>
     </section>
