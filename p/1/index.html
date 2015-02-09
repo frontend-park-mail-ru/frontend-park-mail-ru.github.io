@@ -199,13 +199,14 @@
         <h2>Gruntfile.js</h2>
         <div>
             <pre>
-                <code>  grunt.initConfig({</code>
-                <code>    concat: { <mark class="comment">/* Настройки тасков */</mark> }</code>
-                <code>  });</code>
-                <code>  <mark class="comment">// Загрузка плагинов, на примере "concat".</mark></code>
-                <code>  grunt.loadNpmTasks('grunt-contrib-concat');</code>
-                <code>  <mark class="comment">// Определение тасков, default должен быть всегда.</mark></code>
-                <code>  grunt.registerTask('default', ['concat']);</code>
+                <code>grunt.initConfig({</code>
+                <code>  concat: { <mark class="comment">/* Настройки задачи */</mark> },</code>
+                <code>  any_other_name: 'hello' <mark class="comment">/* Любое произвольное свойство */</mark></code>
+                <code>});</code>
+                <code><mark class="comment">// Загрузка плагинов, на примере "concat".</mark></code>
+                <code>grunt.loadNpmTasks('grunt-contrib-concat');</code>
+                <code><mark class="comment">// Определение задач, default должен быть всегда.</mark></code>
+                <code>grunt.registerTask('default', ['concat']);</code>
             </pre>
         </div>
     </section>
@@ -214,16 +215,108 @@
         <h2>Gruntfile.js</h2>
         <div>
             <pre>
-                <code>    concat: {</code>
-                <code>      options: {</code>
-                <code>        separator: ';'</code>
-                <code>      },</code>
-                <code>      dist: {</code>
-                <code>        src: ['js/first.js', 'js/second.js'],</code>
-                <code>        dest: 'js/build.js'</code>
-                <code>      }</code>
-                <code>    }</code>
+                <code>concat: {</code>
+                <code>  options: { <mark class="comment">/* Настройки задачи */</mark> },</code>
+                <code>  foo: { <mark class="comment">/* Цель foo */</mark> },</code>
+                <code>  bar: { <mark class="comment">/* Цель bar */</mark> }</code>
+                <code>}</code>
             </pre>
+            <pre>
+                <code>$ grunt</code>
+                <code>$ grunt concat:foo concat:bar</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Настройки</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">/* Общие настройки задачи */</mark></code>
+                <code>options: {</code>
+                <code>  separator: ';'</code>
+                <code>},</code>
+                <code>foo: {</code>
+                <code>  <mark class="comment">/* Настройки цели foo */</mark></code>
+                <code>  options: { separator: '' },</code>
+                <code>  <mark class="comment">/* ... */</mark></code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Цели</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">/* Общие настройки задачи */</mark></code>
+                <code>foo: {</code>
+                <code>  <mark class="comment">/* Настройки цели foo */</mark></code>
+                <code>  options: { <mark class="comment">/* ... */</mark> },</code>
+                <code>  src: ['js/first.js', 'js/second.js'],</code>
+                <code>  dest: 'js/foo.js'</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Файлы</h2>
+        <div>
+            <p><strong>src</strong> (Source) &mdash; Источники<br />
+            <strong>dest</strong> (Destination) &mdash; Место назначения</p>
+            <pre>
+                <code>src: ['js/first.js', 'js/second.js'],</code>
+                <code>dest: <em>'js/foo.js'</em></code>
+            </pre>
+            <pre class="next">
+                <code>files: {</code>
+                <code>  <em>'js/foo.js'</em>: ['js/first.js', 'js/second.js'], <mark class="comment">/* ... */</mark></code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Файлы<sup>*</sup></h2>
+        <div>
+            <pre>
+                <code>foo: {</code>
+                <code>  <mark class="comment">/* Настройки цели foo */</mark></code>
+                <code>  src: ['js/**/*'],</code>
+                <code>  filter: function(filepath) {</code>
+                <code>    <mark class="comment">/* Ваша сложная логика проверки */</mark></code>
+                <code>    return result; <mark class="comment">// true или false</mark></code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Файлы<sup>*<sup>*</sup></sup></h2>
+        <div>
+            <ul>
+                <li><code><mark class="comment">*</mark></code> любые символы кроме <strong>/</strong> <code><mark class="comment">js/folder/*</mark></code></li>
+                <li><code><mark class="comment">?</mark></code> любой 1 символ кроме <strong>/</strong> <code><mark class="comment">js/folder/file-?.js</mark></code></li>
+                <li><code><mark class="comment">**</mark></code> любые символы, включая <strong>/</strong>, кроме имени файла <code><mark class="comment">js/**/*</mark></code></li>
+                <li><code><mark class="comment">{}</mark></code> разделенный через запятую список допустимых выражений <code><mark class="comment">js/folder{1,4,8}/*</mark></code></li>
+                <li><code><mark class="comment">!</mark></code> в начале выражения, исключения из поиска <code><mark class="comment">[ 'js/**/*', '!js/old.js' ]</mark></code></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Файлы<sup>*<sup>*<sup>*</sup></sup></sup></h2>
+        <div>
+            
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Шаблоны</h2>
+        <div>
+            
         </div>
     </section>
 
