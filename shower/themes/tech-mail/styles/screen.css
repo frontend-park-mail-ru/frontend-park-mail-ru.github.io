@@ -199,7 +199,7 @@ a {
 	-webkit-background-size: 225px 100px;
 	background-size:         225px 100px;
 	color:                   #000;
-	padding:                 52px 48px 0 96px
+	padding:                 52px 270px 0 48px
 }
 
 	.slide h2:after {
@@ -375,7 +375,9 @@ a {
 	height:     288px;
 	background: #fff;
 	margin:     0;
-	padding:    24px 48px 24px 96px
+	/*padding:    24px 48px 24px 96px*/
+	padding:    24px 48px 24px;
+	text-align: center;
 }
 
 .slide.title h2:after {
@@ -472,10 +474,11 @@ a {
 	height:            auto;
 	padding:           0;
 	top:               50%;
-	left:              96px;
+	left:              48px;
 	right:             48px;
 	color:             #000;
 	font-size:         80px;
+	text-align: center;
 	-webkit-transform: translateY(-50%);
 	-ms-transform:     translateY(-50%);
 	transform:         translateY(-50%)
