@@ -934,7 +934,7 @@
                 <code>}</code>
             </pre>
             <pre>
-                <code>$ grunt</code>
+                <code>$ grunt concat</code>
                 <code>$ grunt concat:foo concat:bar</code>
             </pre>
         </div>
@@ -945,12 +945,12 @@
         <div>
             <pre>
                 <code><mark class="comment">/* Общие настройки задачи */</mark></code>
-                <code>options: {</code>
+                <code><mark class="important">options</mark>: {</code>
                 <code>  separator: ';'</code>
                 <code>},</code>
                 <code>foo: {</code>
                 <code>  <mark class="comment">/* Настройки цели foo */</mark></code>
-                <code>  options: { separator: '' },</code>
+                <code>  <mark class="important">options</mark>: { separator: '' },</code>
                 <code>  <mark class="comment">/* ... */</mark></code>
                 <code>}</code>
             </pre>
@@ -961,7 +961,6 @@
         <h2>Gruntfile.js &mdash; Цели</h2>
         <div>
             <pre>
-                <code><mark class="comment">/* Общие настройки задачи */</mark></code>
                 <code>foo: {</code>
                 <code>  <mark class="comment">/* Настройки цели foo */</mark></code>
                 <code>  options: { <mark class="comment">/* ... */</mark> },</code>
@@ -983,14 +982,42 @@
             </pre>
             <pre class="next">
                 <code>files: {</code>
-                <code>  <em>'js/foo.js'</em>: ['js/first.js', 'js/second.js'], <mark class="comment">/* ... */</mark></code>
+                <code>  <em>'js/foo.js'</em>: ['js/first.js', 'js/second.js']</code>
                 <code>}</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Gruntfile.js &mdash; Файлы<sup>*</sup></h2>
+        <h2>Gruntfile.js &mdash; Файлы, expand</h2>
+        <div>
+            <pre>
+                <code>files: [</code>
+                <code>  {</code>
+                <code>    expand: <strong>true</strong>, <mark class="comment">// Флаг динамического развертывания</mark></code>
+                <code>    cwd: 'lib/',      <mark class="comment">// Базовый путь источника</mark></code>
+                <code>    src: ['**/*.js'], <mark class="comment">// Паттерн поиска файлов</mark></code>
+                <code>    dest: 'build/',   <mark class="comment">// Место назначения</mark></code>
+                <code>    ext: '.min.js',   <mark class="comment">// Постфикс фалов для сохранения</mark></code>
+                <code>  }</code>
+                <code>]</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Файлы, expand</h2>
+        <div>
+            <pre>
+                <code>extDot [first|last] <mark class="comment">// Какую точку считать расширением.</mark></code>
+                <code>flatten <mark class="comment">// Флаг, использовать ли путь к файлу в dest.</mark></code>
+                <code>rename <mark class="comment">// Функция для самостоятельной генерации имен.</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Файлы<sup>*<sup>*</sup></sup></h2>
         <div>
             <pre>
                 <code>foo: {</code>
@@ -1006,7 +1033,7 @@
     </section>
 
     <section class="slide">
-        <h2>Gruntfile.js &mdash; Файлы<sup>*<sup>*</sup></sup></h2>
+        <h2>Gruntfile.js &mdash; Файлы<sup>*<sup>*<sup>*</sup></sup></sup></h2>
         <div>
             <ul>
                 <li><code><mark class="comment">*</mark></code> любые символы кроме <strong>/</strong> <code><mark class="comment">js/folder/*</mark></code></li>
@@ -1019,16 +1046,44 @@
     </section>
 
     <section class="slide">
-        <h2>Gruntfile.js &mdash; Файлы<sup>*<sup>*<sup>*</sup></sup></sup></h2>
+        <h2>Gruntfile.js &mdash; Шаблоны</h2>
         <div>
-            
+            <p><code>&lt;%= foo %&gt;</code> Теги шаблонов, все что между ними будет заменено на значение.</p>
+            <p><code>&lt;%= grunt.template.date(date, format) %&gt;</code><br /><code>&lt;%= grunt.template.today(format) %&gt;</code></p>
         </div>
     </section>
 
     <section class="slide">
         <h2>Gruntfile.js &mdash; Шаблоны</h2>
         <div>
-            
+            <pre>
+                <code>grunt.initConfig({</code>
+                <code>  concat: {</code>
+                <code>    options: {</code>
+                <code>      banner: '/* <mark class="important"><%= foo %></mark> */\n', <mark class="comment">// '/* abcde */'</mark></code>
+                <code>    },</code>
+                <code>    sample: { <mark class="comment">/* ... */</mark> }</code>
+                <code>  },</code>
+                <code>  <mark class="important">foo: 'abcde'</mark> <mark class="comment">// Произвольное свойство.</mark></code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js &mdash; Шаблоны</h2>
+        <div>
+            <pre>
+                <code>grunt.initConfig({</code>
+                <code>  pkg: <mark class="important">grunt.file.readJSON('package.json')</mark>,</code>
+                <code>  uglify: {</code>
+                <code>    options: {</code>
+                <code>      banner: '/*! <mark class="important"><%= pkg.name %></mark> <%= grunt.template.today("yyyy-mm-dd") %> */\n'</code>
+                <code>    },</code>
+                <code>    dist: {</code>
+                <code>      src: 'src/<mark class="important"><%= pkg.name %></mark>.js',</code>
+                <code>      dest: 'dist/<mark class="important"><%= pkg.name %></mark>.min.js'</code>
+            </pre>
         </div>
     </section>
 
