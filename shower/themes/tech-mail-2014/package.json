@@ -1,0 +1,38 @@
+{
+  "name": "shower-bright",
+  "description": "Tech-Mail.ru theme for Shower HTML presentation engine",
+  "version": "1.0.0",
+  "author": {
+    "name": "Anton Eprev",
+    "url": "http://eprev.org/"
+  },
+  "homepage": "https://github.com/eprev/shower-tech-mail",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eprev/shower-tech-mail"
+  },
+  "bugs": {
+    "url": "https://github.com/eprev/shower-tech-mail/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/eprev/shower-tech-mail/blob/master/License.md"
+    }
+  ],
+  "keywords": [
+    "shower",
+    "presentation",
+    "tech-mail",
+    "theme"
+  ],
+  "devDependencies": {
+    "grunt": "^0.4.3",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-autoprefixer": "^0.7.2",
+    "grunt-csso": "^0.6.0",
+    "grunt-contrib-watch": "^0.5.3",
+    "load-grunt-tasks": "^0.4.0",
+    "grunt-bump": "0.0.13"
+  }
+}
