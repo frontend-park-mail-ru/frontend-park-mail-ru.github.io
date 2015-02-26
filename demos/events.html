@@ -6,6 +6,7 @@
 
 	<script src="js/libs/jquery-1.11.0.min.js"></script>
 	<link rel="stylesheet" href="css/style.css">
+	<style>html, body { height: 90%; } #info {height: 100%;  overflow: auto; }</style>
 </head>
 <body>
 	<form id="form">
@@ -109,8 +110,8 @@
 			event.preventDefault();
 		});
 
-		$form.on('reset', function () {
-			$info.html('');
+		$form.on('reset', function (event) {
+			event.preventDefault();
 		})
 	</script>
 </body>

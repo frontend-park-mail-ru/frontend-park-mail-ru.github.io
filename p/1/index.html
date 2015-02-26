@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="../../shower/themes/tech-mail/styles/screen.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 </head>
 <body class="list">
     <header class="caption">
@@ -2281,16 +2284,6 @@
     </section>
 
     <section class="slide">
-        <h2>Демо</h2>
-        <div>
-            <ol>
-                <li><a href="/demos/simple-form.html">Простая форма</a></li>
-                <li><a href="/demos/select.html">Селекты</a></li>
-            </ol>
-        </div>
-    </section>
-
-    <section class="slide">
         <h2>Добавим атрибуты к форме</h2>
         <div>
         <pre>
@@ -2319,7 +2312,7 @@
     </section>
 
     <section class="slide">
-        <h2>... и к ее элементам (радиокнопки)</h2>
+        <h2>... и к ее элементам (радио)</h2>
         <div>
         <pre>
             <code>...</code>
@@ -2426,12 +2419,222 @@
     <section class="slide">
         <h2>События формы и валидация</h2>
         <div>
-            <a style="font-size: 3em" href="/demos/events.html">События</a><br/><br/>
-            <a style="font-size: 3em" target="_blank" href="https://e.mail.ru/signup">Пример валидации</a>
+            <a target="_blank" href="/demos/events.html">События</a><br/><br/>
+            <a target="_blank" href="http://alistapart.com/d/forward-thinking-form-validation/enhanced_2.html">Пример валидации</a>
         </div>
     </section>
 
-   <section class="slide">
+    <section class="slide">
+        <h2>HTML5 валидация</h2>
+        <div>
+        <pre>
+            <code>&lt;form&gt;</code>
+            <code>    &lt;input type="text" required value="" /&gt;</code>
+            <code>    &lt;input type="submit" value="Submit" /&gt;</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>HTML5 ZOO!</h2>
+        <div>
+            <img width="270px" src="/pics/forms/html5/Chrome.png" title="Chrome">
+            <img width="270px" src="/pics/forms/html5/ChromeForAndroid.png" title="ChromeForAndroid">
+            <img width="270px" src="/pics/forms/html5/Firefox.png" title="Firefox">
+            <img width="270px" src="/pics/forms/html5/FirefoxForAndroid.png" title="FirefoxForAndroid">
+            <img width="270px" src="/pics/forms/html5/IE10.png" title="IE10">
+            <img width="270px" src="/pics/forms/html5/Opera.png" title="Opera">
+            <img width="270px" src="/pics/forms/html5/OperaMobile.png" title="OperaMobile">
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>DOM API (willValidate)</h2>
+        <div>
+        <pre>
+            <code>&lt;div id="one"&gt;&lt;/div&gt;</code>
+            <code>&lt;input type="text" id="two" /&gt;</code>
+            <code>&lt;input type="text" id="three" disabled /&gt;</code>
+            <code>&lt;script&gt;</code>
+            <code>  document.getElementById('one').willValidate; //undefined</code>
+            <code>  document.getElementById('two').willValidate; //true</code>
+            <code>  document.getElementById('three').willValidate; //false</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>DOM API (validity)</h2>
+        <div>
+        <pre>
+            <code>&lt;input id="foo" /&gt;</code>
+            <code>&lt;input id="bar" /&gt;</code>
+            <code>&lt;script&gt;</code>
+            <code>document.getElementById('foo').validity.customError; //false</code>
+            <code>document.getElementById('bar').setCustomValidity('Invalid');</code>
+            <code>document.getElementById('bar').validity.customError; //true</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>DOM API (validity)</h2>
+        <div>
+            <ul>
+                <li class="next">customError: true  (setCustomValidity())</li>
+                <li class="next">patternMismatch: true (pattern)</li>
+                <li class="next">rangeOverflow: true (max)</li>
+                <li class="next">rangeUnderflow: true (min)</li>
+                <li class="next">stepMismatch: true (step)</li>
+                <li class="next">tooLong: true (maxLength)</li>
+                <li class="next">typeMismatch: true (type)</li>
+                <li class="next">valueMissing: true (valueMissing)</li>
+                <li class="next">valid: true (all of the validity)</li>
+            </ul>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>DOM API (validationMessage)</h2>
+        <div>
+        <pre>
+            <code>&lt;input type="text" id="foo" required /&gt;</code>
+            <code>&lt;script&gt;</code>
+            <code>  document.getElementById('foo').validationMessage;</code>
+            <code>  //Chrome  --> 'Please fill out this field.'</code>
+            <code>  //Firefox --> 'Please fill out this field.'</code>
+            <code>  //Safari  --> 'value missing'</code>
+            <code>  //IE10    --> 'This is a required field.'</code>
+            <code>  //Opera   --> ''</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>DOM API (validationMessage)</h2>
+        <div>
+        <pre>
+            <code>&lt;script&gt;</code>
+            <code>document.getElementById('foo').addEventListener('change',</code>
+            <code>  function(event) {</code>
+            <code>  if (event.target.validity.valid) {</code>
+            <code>   // Поле валидно</code>
+            <code>  } else {</code>
+            <code>   // Поле невалидно</code>
+            <code>}}, false);</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>DOM API (setCustomValidity())</h2>
+        <div>
+        <pre>
+            <code>&lt;script&gt;</code>
+            <code>if (document.getElementById('password1').value !=</code>
+            <code>document.getElementById('password2').value) {</code>
+            <code>  document.getElementById('password1')</code>
+            <code>     .setCustomValidity('Пароли должны совпадать');</code>
+            <code>   } else {</code>
+            <code>  document.getElementById('password1').setCustomValidity('');</code>
+            <code>   }</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>HTML Attributes (novalidate)</h2>
+        <div>
+            <pre>
+                <code>&lt;form novalidate&gt;</code>
+                <code>   &lt;input type="text" required /&gt;</code>
+                <code>   &lt;input type="submit" value="Submit" /&gt;</code>
+                <code>&lt;/form&gt;</code>
+            </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>HTML Attrs (formnovalidate)</h2>
+        <div>
+            <pre>
+                <code>&lt;form&gt;</code>
+                <code>   &lt;input type="text" required /&gt;</code>
+                <code>   &lt;input type="submit" value="Validate" /&gt;</code>
+                <code>   &lt;input type="submit" value="NO" formnovalidate /&gt;</code>
+                <code>&lt;/form&gt;</code>
+            </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS Hooks</h2>
+        <div>
+            <pre>
+                <code>&lt;style&gt;</code>
+                <code>   input[type="text"]:invalid { color: red;}</code>
+                <code>   input[type="text"]:valid { color: green;}</code>
+                <code>&lt;/style&gt;</code>
+            </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS Hooks (Сообщения)</h2>
+        <div>
+            <pre>
+                <code>&lt;style&gt;</code>
+                <code>   ::-webkit-validation-bubble {}</code>
+                <code>   ::-webkit-validation-bubble-message {}</code>
+                <code>   ::-webkit-validation-bubble-arrow {}</code>
+                <code>   ::-webkit-validation-bubble-arrow-clipper {}</code>
+                <code>&lt;/style&gt;</code>
+            </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Сообщения</h2>
+        <div>
+            <pre>
+                <code>&lt;input type="text" required x-moz-errormessage="Заполните, пожалуйста" /&gt;</code>
+                <code>&lt;input type="text" required title="Заполните, пожалуйста" /&gt;</code>
+            </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Сущестувющие трудности:</h2>
+        <div>
+            <ul>
+                <li class="next">Несколько ошибок на одном поле</li>
+                <li class="next">Когда проверять?</li>
+                <li class="next">Когда юзер решил отправить форму?</li>
+                <li class="next">Apple</li>
+            </ul>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что делать?</h2>
+        <div>
+            <ul>
+                <li class="next">Использовать, где это возможно</li>
+                <li class="next">Дублировать на сервере</li>
+                <li class="next">Искать полифилы</li>
+                <li class="next">Писать полифилы</li>
+                <li class="next">JavaScript</li>
+            </ul>
+       </div>
+    </section>
+
+    <section class="slide">
         <h2>Проверка выполняется:</h2>
         <div>
             <ul>
@@ -2498,13 +2701,6 @@
        </div>
     </section>
 
-    <section class="slide title">
-        <h2>
-            <span>Возможности HTML5</span>
-        </h2>
-    </section>
-
-
     <section class="slide">
         <h2>Демо</h2>
         <div>
@@ -2544,6 +2740,7 @@
 
 
     <div class="progress"><div></div></div>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script src="../../shower/shower.js"></script>
 </body>
 </html>
