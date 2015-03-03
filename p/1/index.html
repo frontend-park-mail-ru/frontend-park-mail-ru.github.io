@@ -1041,7 +1041,7 @@
 
     <section class="slide">
         <h2>Gruntfile.js &mdash; Шаблоны</h2>
-        <div>
+        <div class="nohighlight">
             <p><code>&lt;%= foo %&gt;</code> Теги шаблонов, все что между ними будет заменено на значение.</p>
             <p><code>&lt;%= grunt.template.date(date, format) %&gt;</code><br /><code>&lt;%= grunt.template.today(format) %&gt;</code></p>
         </div>
@@ -1050,7 +1050,7 @@
     <section class="slide">
         <h2>Gruntfile.js &mdash; Шаблоны</h2>
         <div>
-            <pre>
+            <pre class="nohighlight">
                 <code>grunt.initConfig({</code>
                 <code>  concat: {</code>
                 <code>    options: {</code>
@@ -1067,7 +1067,7 @@
     <section class="slide">
         <h2>Gruntfile.js &mdash; Шаблоны</h2>
         <div>
-            <pre>
+            <pre class="nohighlight">
                 <code>grunt.initConfig({</code>
                 <code>  pkg: <mark class="important">grunt.file.readJSON('package.json')</mark>,</code>
                 <code>  uglify: {</code>
