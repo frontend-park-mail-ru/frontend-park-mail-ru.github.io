@@ -1086,10 +1086,11 @@
         <h2>2d context</h2>
         <div>
             <pre>
-                <code>var canvas = document.getElementById('game');</code>
+                <code>var canvas = document.createElement('canvas');</code>
+                <code>document.body.appendChild(cavas);</code>
                 <code>canvas.width = 300;</code>
                 <code>canvas.height = 150;</code>
-                <code>    <mark class="comment">/* HTML element */</mark></code>
+                <code>    <mark class="comment">/* HTMLCanvasElement */</mark></code>
                 <code>var <strong>context</strong> = canvas.getContext( '2d' );</code>
                 <code>    <mark class="comment">/* объект двумерного контекста */</mark></code>
             </pre>
@@ -1112,7 +1113,7 @@
     </section>
 
     <section class="slide">
-        <h2>Лини<span style="color:red;">и</span></h2>
+        <h2>Линия</h2>
         <div>
             <pre>
                 <code>context.beginPath();</code>
@@ -1122,7 +1123,7 @@
                 <code>context.stroke();</code>
             </pre>
             <p class="note">
-                <a href="../../d/canvas/lines.html">Демонстрация</a>.
+                <a href="../../d/canvas/line.html">Демонстрация</a>.
             </p>
         </div>
     </section>
@@ -1279,8 +1280,25 @@
     </section>
 
     <section class="slide">
-        <h2>Изображения</h2>
+        <h2>Градиенты</h2>
         <div>
+            <pre>
+                <code><mark class="comment">// Радиальный градиент</mark></code>
+                <code>context.createRadialGradient(x1, y1, r1, x2, y2, r2)</code>
+                <code><mark class="comment">// Линейный градиент</mark></code>
+                <code>context.createLinearGradient(x1, y1, x2, y2)</code>
+            </pre>
+            <p class="note">
+                <a href="../../d/canvas/gradients.html">Демонстрация</a>.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Изображения и шаблоны</h2>
+        <div>
+            <p>Шаблоны можно сделать элемента canvas, изображения или видео</p>
             <pre>
                 <code>context.createPattern(image, repetition);</code>
                 <code><mark class="comment">// image &mdash; image, canvas, video element</mark></code>
@@ -1346,10 +1364,10 @@
         <h2>Shadow</h2>
         <div>
             <pre>
-                <code>context.shadowColor</code>
-                <code>context.shadowOffsetX</code>
-                <code>context.shadowOffsetY</code>
-                <code>context.shadowBlur</code>
+                <code>context.shadowColor = "#000000"</code>
+                <code>context.shadowOffsetX = 0</code>
+                <code>context.shadowOffsetY = 0</code>
+                <code>context.shadowBlur = 0</code>
             </pre>
         </div>
     </section>
@@ -1456,14 +1474,15 @@
     <section class="slide">
         <h2>Домашнее задание</h2>
         <div>
-            <ul>
+            <a href="http://artsiom.mezin.eu/">Пример</a>
+<!--             <ul>
                 <li>Объект (круг, квадрат, картинка)</li>
                 <li>Объект двигается вверх-вниз по синусоиде</li>
                 <li>Кнопки вверх/вниз изменяют амплитуду</li>
                 <li>Кнопки вправо/влево изменяют частоту</li>
                 <li>За объектом остается след из кривых</li>
                 <li>Кнопка нарисована на canvas</li>
-            </ul>
+            </ul> -->
         </div>
     </section>
 

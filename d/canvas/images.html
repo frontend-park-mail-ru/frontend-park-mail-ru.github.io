@@ -17,101 +17,119 @@ canvas {
 </style>
 </head>
 <body>
-<canvas></canvas>
-<script type="text/javascript">
-var canvas = document.querySelector('canvas');
-var context = canvas.getContext('2d');
+	<canvas></canvas>
+	<script type="text/javascript">
+		var canvas = document.querySelector('canvas');
+		var context = canvas.getContext('2d');
 
-var bigStep = 100;
-var smallStep = 10;
-var patternCanvas = document.createElement('canvas');
-patternCanvas.width = bigStep;
-patternCanvas.height = bigStep;
+		var bigStep = 100;
+		var smallStep = 10;
+		var patternCanvas = document.createElement('canvas');
+		patternCanvas.width = bigStep;
+		patternCanvas.height = bigStep;
 
-var patternDraw = function(){
-	var context = patternCanvas.getContext('2d')
+		var patternDraw = function () {
+			var context = patternCanvas.getContext('2d')
 
-	context.beginPath();
-	context.strokeStyle = '#eeeeee';
-	for (var x = 0; x < bigStep; x += smallStep) {
-		context.moveTo( x, 0 );
-		context.lineTo( x, bigStep );
-	}
-	for (var y = 0; y < bigStep; y += smallStep) {
-		context.moveTo( 0, y );
-		context.lineTo( bigStep, y );
-	}
-	context.stroke();
+			context.beginPath();
+			context.strokeStyle = '#eeeeee';
+			for (var x = 0; x < bigStep; x += smallStep) {
+				context.moveTo( x, 0 );
+				context.lineTo( x, bigStep );
+			}
+			for (var y = 0; y < bigStep; y += smallStep) {
+				context.moveTo( 0, y );
+				context.lineTo( bigStep, y );
+			}
+			context.stroke();
 
-	context.beginPath();
-	context.strokeStyle = '#aaaaaa';
-	context.moveTo( 0, 0 );
-	context.lineTo( 0, bigStep );
-	
-	context.moveTo( 0, 0 );
-	context.lineTo( bigStep, 0 );
+			context.beginPath();
+			context.strokeStyle = '#aaaaaa';
+			context.moveTo( 0, 0 );
+			context.lineTo( 0, bigStep );
 
-	context.stroke();
-};
-patternDraw();
+			context.moveTo( 0, 0 );
+			context.lineTo( bigStep, 0 );
 
-var demonstration = function(){
-	/* Трансформации */
-	context.scale( 1, 1 );
-	context.rotate( Math.PI*0 );
-	context.translate( 0, 0 );
-	context.transform( 1, 0, 0, 1, 0, 0 );
+			context.stroke();
+		};
+		patternDraw();
 
-	context.beginPath();
+		var demonstration = function () {
+			/* Трансформации */
+			// context.scale( 1, 1 );
+			// context.rotate( Math.PI*0 );
+			// context.translate( 0, 0 );
+			// context.transform( 1, 0, 0, 1, 0, 0 );
 
-	/* context.rect( x, y, width, height ); */
-	context.rect( 30, 30, 150, 100 ); // Прямоугольник
+			// context.beginPath();
 
-	/* context.arc( x, y, radius, startAngle, endAngle [, anticlockwise] ); */
-	// context.arc( 200, 200, 130, 0, 0.25*Math.PI, false ); // Окружность
+			/* context.rect( x, y, width, height ); */
+			// context.rect( 30, 30, 150, 100 ); // Прямоугольник
 
-	/* Закругление */
-	/* context.arcTo( x1, y1, x2, y2, radiusX [, radiusY, rotation] ); */
-	// context.moveTo( 50, 50 );
-	// context.arcTo( 150, 50, 150, 150, 50 );
+			/* context.arc( x, y, radius, startAngle, endAngle [, anticlockwise] ); */
+			// context.arc( 200, 200, 130, 0, 0.25*Math.PI, false ); // Окружность
 
-	/* Квадратичная кривая */
-	// context.moveTo(50,50);
-	// context.quadraticCurveTo(150,150,250,50);
+			/* Закругление */
+			/* context.arcTo( x1, y1, x2, y2, radiusX [, radiusY, rotation] ); */
+			// context.moveTo( 50, 50 );
+			// context.arcTo( 150, 50, 150, 150, 50 );
 
-	/* Кубическая кривая */
-	// context.moveTo(50,50);
-	// context.bezierCurveTo(50,150,250,150,250,50);
+			/* Квадратичная кривая */
+			// context.moveTo(50,50);
+			// context.quadraticCurveTo(150,150,250,50);
 
-	context.stroke();
+			/* Кубическая кривая */
+			// context.moveTo(50,50);
+			// context.bezierCurveTo(50,150,250,150,250,50);
 
-};
+			// context.stroke();
 
-/* Хелперы */
-var resize = function(){
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+		};
 
-	// var pattern = context.createPattern(patternCanvas, "repeat");
-	// context.fillStyle = pattern;
-	// context.rect(0,0,canvas.width,canvas.height);
-	// context.fill();
+		/* Хелперы */
+		var resize = function(){
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
 
-	// context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-	// context.drawImage(patternCanvas, 0, 0, 100, 100, 100, 100, 300, 300);
+			// context.globalCompositeOperation = 'source-in'
 
-	/* putImageData */
-	/* putImageData(ImageData, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight); */
-	// var patternContext = patternCanvas.getContext('2d');
-	// var patternImageData = patternContext.getImageData(0, 0, 100, 100);
-	// context.putImageData(patternImageData, 200, 200);
+			var pattern = context.createPattern(patternCanvas, "repeat");
+			context.fillStyle = pattern;
+			context.rect(0,0,canvas.width,canvas.height);
+			context.fill();
 
-	context.strokeStyle = '#ff0000';
-	context.fillStyle = '#000000';
-	demonstration();
-};
-window.addEventListener('resize', resize);
-resize();
-</script>
+			/* Напишем текст */
+			// context.fillStyle = '#000';
+			// context.font = "bold italic 30px sans-serif";
+			// context.fillText("Технопарк на Canvas",100,100);
+
+			/* Нарисуем изображение */
+			// /* context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh) */
+			// var img = new Image();
+
+			// img.src = '../../pics/logo.png';
+			// context.drawImage(img, 50, 50);
+
+
+
+
+			// context.drawImage(patternCanvas, 0, 0, 100, 100, 100, 100, 300, 300);
+
+			// /* putImageData */
+			//  putImageData(ImageData, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight); 
+			// var patternContext = patternCanvas.getContext('2d');
+			// var patternImageData = patternContext.getImageData(0, 0, 100, 100);
+
+
+			// context.putImageData(patternImageData, 200, 200);
+
+			// context.strokeStyle = '#ff0000';
+			// context.fillStyle = '#000000';
+			demonstration();
+		};
+		window.addEventListener('resize', resize);
+		resize();
+	</script>
 </body>
 </html>

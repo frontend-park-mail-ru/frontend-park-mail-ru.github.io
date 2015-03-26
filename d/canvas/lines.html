@@ -11,47 +11,53 @@ canvas {
 </head>
 <body>
 <canvas width="500" height="400"></canvas>
-<script type="text/javascript">
-var canvas = document.querySelector('canvas');
-var context = canvas.getContext('2d');
+	<script type="text/javascript">
+	var canvas = document.querySelector('canvas');
+	var context = canvas.getContext('2d');
 
-/* Настройки демонстрации */
-var CLOSE = 'stroke'; // context.stroke() context.fill()
-context.lineWidth = 5;
-context.lineCap = 'butt'; // butt round square
-context.lineJoin = 'miter'; // miter round bevel
-//context.miterLimit = 2.1; // for lineJoin miter
-//context.setLineDash([10, 20, 5]);
+	/* Настройки демонстрации */
+	var CLOSE = 'stroke'; // context.stroke() context.fill()
 
-/* Демонстрация */
-context.beginPath();
-context.moveTo( 100, 100 );
-context.lineTo( 400, 100 );
-context.lineTo( 100, 300 );
-context.closePath();
-context[CLOSE]();
-/* Демонстрация */
+	context.lineWidth = 45;
+	// context.lineCap = 'butt'; // butt round square
+	// context.lineJoin = 'miter'; // miter round bevel
+	context.miterLimit = 2.1; // for lineJoin miter
 
-/* help */
-context.lineCap = 'butt';
-context.lineWidth = 1;
-context.strokeStyle = '#ff0000';
-context.fillStyle = '#00ff00';
-context.beginPath();
-context.moveTo( 50, 50 );
-context.lineTo( 150, 150 );
-context.moveTo( 150, 50 );
-context.lineTo( 50, 150 );
-context.moveTo( 50, 250 );
-context.lineTo( 150, 350 );
-context.moveTo( 150, 250 );
-context.lineTo( 50, 350 );
-context.moveTo( 350, 50 );
-context.lineTo( 450, 150 );
-context.moveTo( 450, 50 );
-context.lineTo( 350, 150 );
-context.stroke();
-/* help */
+	// context.setLineDash([10, 20, 5]);
+
+	/* Демонстрация */
+	context.beginPath();
+	context.moveTo( 100, 100 );
+	context.lineTo( 400, 100 );
+	context.lineTo( 100, 300 );
+
+	// context.strokeStyle = '#ff0000';
+	// context.fillStyle = '#00ff00';
+	// context.closePath();
+
+	context[CLOSE]();
+	/* Демонстрация */
+
+	/* help */
+	context.setLineDash([]);
+	context.lineCap = 'butt';
+	context.lineWidth = 1;
+	context.strokeStyle = '#ff0000';
+	context.beginPath();
+	context.moveTo( 50, 50 );
+	context.lineTo( 150, 150 );
+	context.moveTo( 150, 50 );
+	context.lineTo( 50, 150 );
+	context.moveTo( 50, 250 );
+	context.lineTo( 150, 350 );
+	context.moveTo( 150, 250 );
+	context.lineTo( 50, 350 );
+	context.moveTo( 350, 50 );
+	context.lineTo( 450, 150 );
+	context.moveTo( 450, 50 );
+	context.lineTo( 350, 150 );
+	context.stroke();
+	/* help */
 </script>
 </body>
 </html>

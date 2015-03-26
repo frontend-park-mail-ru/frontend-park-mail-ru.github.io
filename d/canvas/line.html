@@ -3,23 +3,35 @@
 <head>
 <meta charset="utf-8" />
 <title>Canvas - Line</title>
-<style type="text/css">
-canvas {
-	border: 1px solid gold;
-}
-</style>
+	<style type="text/css">
+		canvas {
+			border: 1px solid gold;
+		}
+	</style>
 </head>
 <body>
-<canvas width="500" height="400"></canvas>
-<script type="text/javascript">
-var canvas = document.querySelector('canvas');
-var context = canvas.getContext('2d');
+	<script type="text/javascript">
+		var canvas = document.createElement('canvas');
+		document.body.appendChild(canvas);
+		var context = canvas.getContext('2d');
 
-/* Демонстрация */
-context.beginPath();
-context.moveTo( 100, 100 );
-context.lineTo( 400, 300 );
-context.stroke();
-</script>
+		canvas.width = 500;
+		canvas.height = 400;
+
+		/* Демонстрация */
+		context.beginPath();
+		context.lineWidth = 15;
+		context.strokeStyle="green";
+
+		context.moveTo(20,75);
+		context.lineTo(350,275);
+		context.stroke(); // Рисуем
+// debugger;
+// 		context.beginPath();
+// 		context.strokeStyle="purple"; // Purple path
+// 		context.moveTo(400,50);
+// 		context.lineTo(20,330);
+// 		context.stroke(); // Draw it
+	</script>
 </body>
 </html>
