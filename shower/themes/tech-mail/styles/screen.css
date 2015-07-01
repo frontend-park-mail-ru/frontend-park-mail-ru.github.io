@@ -174,7 +174,7 @@ a {
 	line-height:             48px;
 	font-family:             "PF Isotext Pro Light", sans-serif;
 	padding-right:           56px;
-	background:              url(../images/block_white.svg) no-repeat 912px 0;
+	background:              url(../images/block_white.svg) no-repeat 1025px 0;
 	-webkit-background-size: 64px 48px;
 	background-size:         64px 48px
 }
@@ -185,7 +185,7 @@ a {
 	left:     0;
 	overflow: hidden;
 	padding:  64px 48px 0 96px;
-	width:    880px;
+	width:    993px;
 	height:   432px
 }
 
@@ -195,7 +195,7 @@ a {
 	left:                    0;
 	right:                   0;
 	font:                    700 48px "PF Isotext Pro", sans-serif;
-	background:              #fff url(../images/logo_white.svg) no-repeat 751px 22px;
+	background:              #fff url(../images/logo_white.svg) no-repeat 864px 22px;
 	-webkit-background-size: 225px 100px;
 	background-size:         225px 100px;
 	color:                   #000;
@@ -371,7 +371,7 @@ a {
 .slide.title h2 {
 	top:        144px;
 	display:    table;
-	width:      880px;
+	width:      993px;
 	height:     288px;
 	background: #fff;
 	margin:     0;
