@@ -603,7 +603,7 @@ a {
 		top:                      0;
 		left:                     0;
 		z-index:                  -1;
-		width:                    512px;
+		width:                    568px;
 		height:                   320px;
 		-webkit-box-shadow:       0 0 0 1px #231f20;
 		box-shadow:               0 0 0 1px #231f20;
@@ -652,7 +652,7 @@ a {
 		top:        50%;
 		left:       50%;
 		overflow:   hidden;
-		margin:     -320px 0 0 -512px;
+		margin:     -320px 0 0 -568px;
 		width:      1137px;
 		height:     640px;
 		background: #000
@@ -755,7 +755,7 @@ a {
 
 @media screen and (max-width: 1180px) {
 	.list .slide:after, .list .slide.bright:after {
-		width:                    512px;
+		width:                    568px;
 		-webkit-transform-origin: 0 0;
 		-ms-transform-origin:     0 0;
 		transform-origin:         0 0;
