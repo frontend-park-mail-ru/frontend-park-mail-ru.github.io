@@ -149,7 +149,7 @@ a {
 
 .slide {
 	position:                   relative;
-	width:                      1024px;
+	width:                      1137px;
 	height:                     640px;
 	background:                 #fff;
 	color:                      #000;
@@ -424,7 +424,7 @@ a {
 
 .slide.cover > div, .slide.shout > div {
 	top:     0;
-	width:   1024px;
+	width:   1137px;
 	height:  640px;
 	padding: 0
 }
@@ -653,7 +653,7 @@ a {
 		left:       50%;
 		overflow:   hidden;
 		margin:     -320px 0 0 -512px;
-		width:      1024px;
+		width:      1137px;
 		height:     640px;
 		background: #000
 	}
@@ -767,5 +767,5 @@ a {
 
 @page {
 	margin: 0;
-	size:   1024px 640px
+	size:   1137px 640px
 }
