@@ -12,18 +12,18 @@
 </head>
 <body class="list">
     <header class="caption">
-        <h1>I. Инструменты</h1>
-        <p>Инструменты, организация и фреймворки.</p>
+        <h1>Архитектура</h1>
+        <p>Фронтед. Начало.</p>
     </header>
 
     <section class="slide title">
         <h2>
-            <span>Знакомство</span>
+            <span>Полезные знакомства</span>
         </h2>
     </section>
 
     <section class="slide">
-        <h2>Фронтенд</h2>
+        <h2>Это мы</h2>
         <div>
         <pre>
             <code>ИВАН ЧАШКИН <mark class="comment"> // i.chashkin     \</mark></code>
@@ -33,9 +33,21 @@
         </div>
     </section>
 
+    <section class="slide title">
+        <h2>
+            <span>Пожалуйста, зачекиньтесь на лекции</span>
+        </h2>
+    </section>
+
     <section class="slide shout">
         <h2>
             <a target="_blank" href="http://frontend.tech-mail.ru/p/1">frontend.tech-mail.ru/p/1</a>
+        </h2>
+    </section>
+
+    <section class="slide shout">
+        <h2>
+            <a target="_blank" href="https://github.com/iketari/frontend">Frontend. Github</a>
         </h2>
     </section>
 
@@ -47,6 +59,18 @@
             <a target="_blank" style="position: absolute;" href="https://docs.google.com/forms/d/1cEpZGiiXMJHy-U83HP0nTeAJMmLetZjj7hYWl2_x3tQ/viewform">
                 Начать тестирование!
             </a>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Без чего нам не обойтись</h2>
+        <div>
+            <ul>
+                <li>Браузер. Chrome.</li>
+                <li>Node.JS</li>
+                <li>NPM</li>
+                <li>GIT</li>
+            </ul>
         </div>
     </section>
 
@@ -102,6 +126,157 @@
             </pre>
         </div>
     </section>
+
+
+  <!-- Делаем по плану! -->
+  <!-- https://docs.google.com/document/d/1ayAylj3_VLUdKYidqqET1WERqSTgcMp0eD9oO35dIvA/edit -->
+
+
+    <section class="slide">
+        <h2>Различия JS и Java</h2>
+        <div>
+            <h3>
+                <b>Here are some differences between the two languages:</b>
+            </h3>
+
+            <ul style="font-size: 19px; line-height: 2;">
+                <li>Java is a statically typed language; JavaScript is dynamic.</li>
+                <li>Java is class-based; JavaScript is prototype-based.</li>
+                <li>Java constructors are special functions that can only be called at object creation; JavaScript "constructors" are just standard functions.</li>
+                <li>Java requires all non-block statements to end with a semicolon; JavaScript inserts semicolons at the ends of certain lines.</li>
+                <li>Java uses block-based scoping; JavaScript uses function-based scoping.</li>
+                <li>Java has an implicit this scope for non-static methods, and implicit class scope; JavaScript has implicit global scope.</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Среда исполнения</h2>
+        <div>
+             Java - это системные приложения и немножко браузер
+            <br/>
+            <strong>JavaScript</strong> - это браузер и немножко системные приложения
+        </div>
+    </section>
+
+
+    <section class="slide" style="
+        background-image: url('/pics/lectures/yahoo.jpg');
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;">
+    </section>
+
+
+    <section class="slide">
+        <h2>Документ на сервере</h2>
+        <div>
+
+            <img style="
+                float:left;
+                padding-bottom: 10em;
+                padding-right: 2em;" src="/pics/lectures/Frontend_Architecture__01_1.png" alt="">
+
+            <p>
+                <b>Схема</b>: Браузер(Клик) -- (Запрос) --  Сервер(Выбор документ на сервере)  -- (Ответ) -- Браузер(Рендер документа)<br>
+                <b>Проблема</b>: много однотипных документов, копипаста
+                <br>
+                <b>Фронтенд</b>: все, только верстка в ClientSide
+                <br>
+                <b>Бекенд</b>: ничего.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Динамическая генерация документов</h2>
+        <div style="position: relative">
+
+            <img style="
+                position: absolute;
+                left: 50%;
+                margin-left: -325px;
+                zoom: 1.1;" src="/pics/lectures/Frontend_Architecture__02.png" alt="">
+
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Динамическая генерация документов</h2>
+        <div style="position: relative">
+
+            <p>
+                <b>Схема</b>: Браузер (Клик) -- (Запрос) --  Сервер(<i>Генерация</i> документ на сервере)  -- (Ответ) -- Браузер(Рендер документа) -- (Запрос дополнительных ресурсов) -- Браузер (Рендер документа)<br><br>
+                <b>Проблема</b>: генерация нового документа ради минимальных изменений, нагрузка на сервер
+                <br>
+                <b>Фронтенд</b>: обработка данных, серверная шаблонизация
+                <br>
+                <b>Бекенд</b>: работа с БД, работа с файловой системой, сетевое взаимодействие с другими серверами, роутинг.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Динамическое обновление документов</h2>
+        <div style="position: relative">
+
+            <img style="
+                position: absolute;
+                left: 50%;
+                margin-left: -392px;
+                zoom: 1.1;" src="/pics/lectures/Frontend_Architecture__03.png" alt="">
+
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Динамическое обновление документов</h2>
+        <div>
+            <p>
+                <b>Схема:</b> (как на прошлом слайде) + без перезагрузки документа<br>
+                (Клик) --> (AJAX запрос) --  Генерация фрагмента документа  -> (Ответ) --> (Изменение исходного документа)
+            </p>
+            <p>
+                <b>Фронтенд</b>: так же, но сложнее
+                <br>
+                <b>Бекенд</b>: так же, но сложнее
+                <br>
+                <b>Проблема</b>: много бизнес-логики на сервере, большие накладные издержки, нет структуры и снова копипаста
+            </p>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Транспорт данных</h2>
+        <div style="position: relative">
+
+            <img style="
+                position: absolute;
+                left: 50%;
+                margin-left: -392px;
+                zoom: 1.1;" src="/pics/lectures/Frontend_Architecture__04.png" alt="">
+
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Транспорт данных</h2>
+        <div>
+            <p>
+                <b>Схема:</b>(Клик) --> (AJAX запрос) --  Генерация данных  -> (Ответ) --> (Рендер результата в браузере)
+            </p>
+            <p>
+                Проблема: "толстый клиент"
+            </p>
+        </div>
+    </section>
+
 
     <section class="slide">
         <h2>Определение</h2>
@@ -175,12 +350,12 @@
         </div>
     </section>
 
-    <section class="slide shout">
+    <section class="slide">
         <h2>Демо</h2>
         <div style="">
-            <pre style="margin: 377px 0 0 424px">
-                <code><a target="_blank" href="http://unogame.ru">unogame.ru</a></code>
-                <code><a target="_blank" href="https://github.com/DmitryDorofeev/uno/">на github</a></code>
+            <pre>
+                <code><a target="_blank" href="http://kurve.ml">kurve.ml</a></code>
+                <code><a target="_blank" href="https://github.com/nbsp-team/kurve">на github</a></code>
             </pre>
         </div>
     </section>
@@ -189,10 +364,11 @@
         <h2>Контрольные рубежи</h2>
         <div>
         <pre>
-            <code>РК №1 &lt;= 35</code>
-            <code>РК №2 &lt;= 70</code>
-            <code>РК №3 &lt;= 90</code>
-            <code>РК №4 &lt;= 100</code>
+            <code>РК №1  &lt;= 35</code>
+            <code>РК №2  &lt;= 60</code>
+            <code>РК №3  &lt;= 80</code>
+            <code>РК №4  &lt;= 90</code>
+            <code>Защита &lt;= 100</code>
         </pre>
        </div>
     </section>
@@ -202,6 +378,7 @@
         <div>
         <pre>
             <code>Индивидуальный тест по теории – допуск к РК</code>
+            <code>Кросс-проектный Code review. Github. Issues.</code>
             <code>git checkout RK-01 && grunt</code>
             <code>Проверка ДЗ</code>
         </pre>
@@ -244,24 +421,6 @@
             <span>Инструменты</span>
         </h2>
     </section>
-
-    <!--section class="slide cover h">
-        <div>
-            <img src="/pics/nodejs-dark.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/npm.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/grunt-logo.png" alt="" />
-        </div>
-    </section-->
 
     <section class="slide title">
         <h2>
@@ -812,9 +971,33 @@
                 <a href="https://www.codeschool.com/paths/git">Git path on codeschool.com</a></li>
         </ol>
         </div>
-    </section>   
+    </section>
 
     <section class="slide" style="background-image: url('/pics/git/banner.jpg'); background-size: contain;"></section>
+
+    <section class="slide title">
+        <h2>
+            <span>Пожалуйста, оставьте мне фидбек!</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Домашнее задание</h2>
+        <div>
+        <pre>
+            <code>СФОРМИРОВАТЬ ИДЕЮ ИГРЫ</code>
+            <code>ОПРЕДЕЛИТЬСЯ С ГРУППОЙ И РОЛЯМИ В НЕЙ</code>
+        </pre>
+        </div>
+    </section>
+
+    <!-- Лекция 2. Инструменты, настройка окружения -->
+    <header class="caption">
+        <h1>Архитектура</h1>
+        <p>Инструменты, настройка окружения.</p>
+    </header>
+
+
 
     <section class="slide">
         <h2>Приступаем!</h2>
@@ -1453,8 +1636,6 @@
         <h2>Домашнее задание</h2>
         <div>
         <pre>
-            <code>СФОРМИРОВАТЬ ИДЕЮ ИГРЫ</code>
-            <code>ОПРЕДЕЛИТЬСЯ С ГРУППОЙ И РОЛЯМИ В НЕЙ</code>
             <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ GRUNT, FEST И JQUERY</code>
             <code>СОЗДАТЬ ПРОТОТИП ВЕБ-ПРИЛОЖЕНИЯ ПО ТЗ</code>
         </pre>
