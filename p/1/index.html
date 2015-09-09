@@ -1409,13 +1409,13 @@
         <h2><code>grunt-fest</code></h2>
         <div>
         <pre>
-            <code>templates: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>templates: { <mark class="comment">/* Цель */</mark></code>
             <code>    files: [{</code>
             <code>        expand: true,</code>
             <code>        cwd: 'templates', <mark class="comment">/* исходная директория */</mark></code>
             <code>        src: '*.xml', <mark class="comment">/* имена шаблонов */</mark></code>
             <code>        dest: 'public_html/js/tmpl' <mark class="comment">/* результирующая директория */</mark></code>
-            <code>    }], … }</code>
+            <code>    }], options: { /* см. далее */ } }</code>
         </pre>
        </div>
     </section>
@@ -1475,7 +1475,7 @@
         <h2><code>grunt-contrib-watch</code></h2>
         <div>
         <pre>
-            <code>fest: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>fest: { <mark class="comment">/* Цель */</mark></code>
             <code>    files: ['templates/*.xml'], <mark class="comment">/* следим за шаблонами */</mark></code>
             <code>    tasks: ['fest'], <mark class="comment">/* перекомпилировать */</mark></code>
             <code>    options: {</code>
@@ -1490,7 +1490,7 @@
         <h2><code>grunt-contrib-watch</code></h2>
         <div>
         <pre>
-            <code>server: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>server: { <mark class="comment">/* Цель */</mark></code>
             <code>    files: ['public_html/js/**/*.js'], <mark class="comment">/* следим за JS */</mark></code>
             <code>    options: {</code>
             <code>        livereload: true <mark class="comment">/* автоматическая перезагрузка */</mark></code>
@@ -1663,6 +1663,12 @@
             <li>Эдди Османи. Разработка Backbone.js приложений (книжка с рыбкой)</li>
             <li><a href="https://github.com/mailru/fest">Документация по Fest</a></li>
             <li><a href="http://habrahabr.ru/post/244721/">Пересмотренное руководство по Grunt для начинающих</a></li>
+        </ol>
+        <h3>Cheatsheet:</h3>
+        <ol>
+            <li>
+                <a href="https://github.com/eprev/frontend-stub/">frontend-stub</a>
+            </li>
         </ol>
         </div>
     </section>
