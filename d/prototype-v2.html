@@ -103,7 +103,6 @@
                 value: 'line'
             }
         });
-        Line.prototype.constructor = Line;
         Line.prototype.getLength = function(){ /* Длина линии */ };
 
         var Triangle = function () { 
@@ -116,7 +115,6 @@
                 value: 'triangle' 
             }
         });
-        Triangle.prototype.constructor = Triangle;
         Triangle.prototype.getArea = function(){ /* Площадь треугольника */ };
 
         var Quadrangle = function () { 
@@ -130,7 +128,6 @@
                 writable: 'true' /* Чтобы показать */
             }
         });
-        Quadrangle.prototype.constructor = Quadrangle;
         Quadrangle.prototype.getArea = function(){ /* Площадь квадрата */ };
 
         var Trapeze = function () { 
@@ -139,7 +136,6 @@
             this.iAmTrapeze = true; 
         };
         Trapeze.prototype = Object.create(Quadrangle.prototype);
-        Trapeze.prototype.constructor = Trapeze;
         Trapeze.prototype.getArea = function(){ /* Площадь трапеции */ };
 
         var line = new Line(0, 0, 20, 20);
