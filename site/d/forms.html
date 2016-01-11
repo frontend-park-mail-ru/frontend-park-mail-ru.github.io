@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Формы</title>
+    </head>
+    <body>
+        <form>
+            Имя: <input type="text" name="login" value=""><br>
+            Пароль: <input type="password" name="password"><br>
+            Не запоминать меня <input type="checkbox" name="do_not_remember" value="1"><br>
+            <button type="submit">Войти</button>
+            <input type="hidden" name="action" value="login">
+        </form>
+        <hr>
+        <form>
+            Имя: <input type="text" name="first_name" value=""><br>
+            Фамилия: <input type="text" name="last_name" value=""><br>
+            Пол:
+            <label>
+                <input type="radio" name="sex" value="male">
+                Мужской
+            </label>
+            <label>
+                <input type="radio" name="sex" value="female">
+                Женский
+            </label>
+            <br>
+            Интересы:
+            <label>
+                <input type="checkbox" name="interests" value="bike">
+                Велосипеды
+            </label>
+            <label>
+                <input type="checkbox" name="interests" value="cars">
+                Автомобили
+            </label>
+            <label>
+                <input type="checkbox" name="interests" value="girls">
+                Девушки
+            </label>
+            <br>
+            <label>
+                Любимый цвет:
+                <select name="color">
+                    <option value="red">Красный</option>
+                    <option value="green">Зеленый</option>
+                    <option value="blue">Синий</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                О себе:
+                <textarea name="comment"></textarea>
+            </label>
+            <br>
+            <button type="submit">Войти</button>
+            <input type="hidden" name="action" value="register">
+        </form>
+    </body>
+</html>
+

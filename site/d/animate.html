@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Selectors Specificity</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 24px;
+            background: #f9f9f9;
+            font-size: 36px;
+        }
+        .animate{
+            position: relative;
+            z-index: 1000;
+            font-size: 40px;
+        }
+        .animate__button{
+            font-size: 40px;
+        }
+        .grid{
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            left: 5%;
+            top: 5%;
+        }
+        .grid_transform{
+            -webkit-transition:-webkit-transform 3s linear;
+        }
+        .grid_transform_true{
+            -webkit-transform:scaleX(0.1) scaleY(0.1);
+        }
+        .grid_transform_false{
+            -webkit-transform:scaleX(1) scaleY(1);
+        }
+        .grid_properties{
+            -webkit-transition:left 3s linear, top 3s linear, width 3s linear, height 3s linear;
+        }
+        .grid_properties_true{
+            left:45%;
+            top:45%;
+            width:10%;
+            height:10%;
+        }
+        .grid_properties_false{
+            left:5%;
+            top:5%;
+            width:90%;
+            height:90%;
+        }
+        .grid__item{
+            border:1px solid gray;
+            position: absolute;
+            margin:-1px 0px 0px -1px;
+        }
+        label{
+            margin: 0px 20px 0px 20px;
+        }
+        label span{
+            background: #ffffff;
+            padding: 0px 10px 0px 10px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        input[type="radio"]:checked+span{
+            box-shadow: 0px 0px 20px red;
+        }
+    </style>
+</head><body>
+    <div class="animate">
+        <button class="animate__button" onclick="animateZoom()">Animate</button>
+        <label><input style="visibility:hidden;position:absolute;" type="radio" name="animate-type" onchange="animateSetType('properties')"><span>Properties</span></label>
+        <label><input style="visibility:hidden;position:absolute;" type="radio" name="animate-type" onchange="animateSetType('transform')" checked="checked"><span>Transform</span></label>
+    </div>
+    <div id="grid" class="grid grid_transform grid_transform_false"></div>
+    <script type="text/javascript">
+    var grid = document.getElementById('grid');
+    
+    (function(){
+        var gridTpl = '';
+        var gridWidth = 100;
+        var gridHeight = 100;
+        var xCount = 50;
+        var yCount = 50;
+        for (var x = 0; x < xCount; x++) {
+            for (var y = 0; y < yCount; y++) {
+                var width = Math.floor(gridWidth / xCount);
+                var height = Math.floor(gridHeight / yCount);
+                var left = width * x;
+                var top = height * y;
+                gridTpl += '<div class="grid__item" style="width:'+width+'%;height:'+height+'%;left:'+left+'%;top:'+top+'%;"></div>';
+            }
+        }
+        grid.innerHTML = gridTpl;
+    })();
+    var animateState = true;
+    var animateType = 'transform';
+    window.animateSetType = function(type){
+        animateType = type;
+        animateState = false;
+        animateZoom();
+    };
+    window.animateZoom = function(){
+        if (animateState) {
+            grid.className = 'grid grid_'+animateType+' grid_'+animateType+'_true';
+        } else {
+            grid.className = 'grid grid_'+animateType+' grid_'+animateType+'_false';
+        }
+        animateState = !animateState;
+    };
+    </script>
+</body></html>

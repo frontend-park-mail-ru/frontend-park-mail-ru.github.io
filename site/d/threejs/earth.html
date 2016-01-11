@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Мы</title>
+<style type="text/css">
+html, body{
+	margin: 0px;
+	padding: 0px;
+}
+canvas{
+	display: block;
+}
+.testCanvas{
+	position: absolute;
+	left: 100px;
+	top: 100px;
+	border:5px solid;
+}
+#toggleButton{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	font-size: 30px;
+	z-index: 1000;
+}
+#texture{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+#texture canvas{
+	width: 100%;
+	height: 100%;
+}
+</style>
+<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/three.min.js"></script>
+</head>
+<body>
+<input id="toggleButton" type="button" onclick="toggleView()" value="Текстура" />
+<div id="container"></div>
+<div id="texture" style="display:none;"></div>
+<script>
+toggleView = function(){
+	var container = document.getElementById('container');
+	var texture = document.getElementById('texture');
+
+	container.style.display = toggleView.state?'block':'none';
+	texture.style.display = toggleView.state?'none':'block';
+	toggleView.state = !toggleView.state;
+}
+toggleView.state = false;
+</script>
+<script>
+
+	var container;
+	var camera, scene, renderer;
+	var group;
+	var mouseX = 0, mouseY = 0;
+
+	var windowHalfX = window.innerWidth / 2;
+	var windowHalfY = window.innerHeight / 2;
+
+	var we = ['2890.medium.png','2925.medium.png','3041.medium.png','3061.medium.png','3732.medium.png','6595.medium.png','6812.medium.png','6957.medium.png'];
+	var weImages = [];
+	var xMax = 4;
+	var yMax = 2;
+
+	function generateTexture(canvas) {
+		var context = canvas.getContext('2d');
+
+		var textureWidth = canvas.width = 2048;
+		var textureHeight = canvas.height = 1024;
+
+		var rectWidth = textureWidth / xMax;
+		var rectHeight = textureHeight / yMax / 1.5;
+		var yOffset = textureHeight / 6;
+		var weCount = 0;
+
+		var canvas2 = document.createElement('canvas');
+		var imgTransWidth = canvas2.width = 400;
+		var imgTransHeight = canvas2.height = 400;
+		var context2 = canvas2.getContext('2d');
+
+		for( var y = 0; y < yMax; y++ ){
+			for( var x = 0; x < xMax; x++ ){
+
+				for( var i = 0; i < canvas2.height; i++ ){
+					
+					if( y == 0 ){
+						var dx = Math.sin( Math.PI * ( i / imgTransHeight * 0.4 ) + 0.7 );
+						//var dx = 1;
+						var sourceX = 0;
+						var sourceY = i;
+						var sourceWidth = imgTransWidth;
+						var sourceHeight = 1;
+						var destX = ( imgTransWidth - imgTransWidth / dx ) / 2;
+						var destY = i;
+						var destWidth = imgTransWidth / dx;
+						var destHeight = 1;
+					}else{
+						var dx = Math.sin( Math.PI * ( i / imgTransHeight * 0.4 ) + 1.6 );
+						//var dx = 1;
+						var sourceX = 0;
+						var sourceY = i;
+						var sourceWidth = imgTransWidth;
+						var sourceHeight = 1;
+						var destX = ( imgTransWidth - imgTransWidth / dx ) / 2;
+						var destY = i;
+						var destWidth = imgTransWidth / dx;
+						var destHeight = 1;
+					}
+
+					var destHeight = 1;
+					context2.drawImage(
+						weImages[ y * xMax + x ], 
+						sourceX, 
+						sourceY, 
+						sourceWidth, 
+						sourceHeight, 
+						destX, 
+						destY, 
+						destWidth, 
+						destHeight
+					);
+				}
+
+				context.drawImage(canvas2, x * rectWidth, y * rectHeight + yOffset, rectWidth, rectHeight );
+
+				weCount++;
+			}
+		}
+
+		document.getElementById('texture').appendChild( canvas );
+
+		return canvas;
+	};
+
+	function init() {
+
+		container = document.getElementById( 'container' );
+
+		camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 2000 );
+		camera.position.z = 500;
+
+		scene = new THREE.Scene();
+
+		group = new THREE.Object3D();
+		scene.add( group );
+
+		// earth
+
+		var loader = new THREE.TextureLoader();
+		
+		var canvas = document.createElement('canvas');
+
+		generateTexture(canvas);
+		
+		var texture = new THREE.Texture( canvas );
+		texture.needsUpdate = true;
+		var geometry = new THREE.SphereGeometry( 250, 20, 20 );
+
+		var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: true } );
+		var mesh = new THREE.Mesh( geometry, material );
+		group.add( mesh );
+
+		renderer = new THREE.CanvasRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+
+		container.appendChild( renderer.domElement );
+
+		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+		window.addEventListener( 'resize', onWindowResize, false );
+
+	}
+
+	function onWindowResize() {
+
+		windowHalfX = window.innerWidth / 2;
+		windowHalfY = window.innerHeight / 2;
+
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+
+		renderer.setSize( window.innerWidth, window.innerHeight );
+
+	}
+
+	function onDocumentMouseMove( event ) {
+
+		mouseX = ( event.clientX - windowHalfX );
+		mouseY = ( event.clientY - windowHalfY );
+
+	}
+
+	//
+
+	function animate() {
+
+		requestAnimationFrame( animate );
+
+		render();
+
+	}
+
+	function render() {
+
+		camera.position.x += ( mouseX - camera.position.x ) * 0.05;
+		camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+		camera.lookAt( scene.position );
+
+		group.rotation.y -= 0.005;
+
+		renderer.render( scene, camera );
+
+	}
+
+	var weLoaded = 0;
+	var weOnLoad = function(){
+		weLoaded++;
+		if( weLoaded == we.length ){
+			init();
+			animate();
+		}
+	}
+	for( var i = 0; i < we.length; i++ ){
+		var image = new Image();
+		image.src = 'we/'+we[i];
+		image.addEventListener('load', weOnLoad);
+		weImages.push( image );
+	}
+
+
+</script>
+</body>
+</html>
