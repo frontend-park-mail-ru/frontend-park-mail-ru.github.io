@@ -1036,9 +1036,9 @@
                 <code>Chrome DevTools <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
                 <code>Safari Web Inspector <mark class="comment">/* ⌘ + ⌥ + I */</mark></code>
                 <code>Firefox Web Developer <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
+                <code>IE Developer Tools <mark class="comment">/* F12 */</mark></code>
                 <code>Firebug <mark class="comment">/* Firefox Extension */</mark></code>
                 <code>Opera Dragonfly <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⌥ + I */</mark></code>
-                <code>IE Developer Tools <mark class="comment">/* F12 */</mark></code>
             </pre>
         </div>
     </section>
@@ -1059,7 +1059,7 @@
 
     <section class="slide shout">
         <h2>
-            Препроцессоры CSS
+            Пре(Пост)процессоры CSS
         </h2>
     </section>
 
@@ -1075,12 +1075,13 @@
     </section>
 
     <section class="slide">
-        <h2>Препроцессоры</h2>
+        <h2>Пре(Пост)процессоры</h2>
         <div>
             <pre>
                 <code><a href="http://sass-lang.com/">Sass</a></code>
                 <code><a href="http://lesscss.org">LESS</a></code>
                 <code><a href="http://learnboost.github.io/stylus/">Stylus</a></code>
+                <code><a href="https://github.com/postcss/postcss">PostCSS</a></code>
             </pre>
         </div>
     </section>
@@ -1111,11 +1112,18 @@
     </section>
 
     <section class="slide">
-        <h2><code>grunt-contrib-sass</code></h2>
+        <h2><code>grunt-sass</code></h2>
         <div>
             <pre>
-                <code>$ npm install grunt-contrib-sass --save-dev</code>
+                <code>$ npm install --save-dev grunt-sass</code>
             </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>npmjs.com</code></h2>
+        <div>
+            <p><a href="https://www.npmjs.com/package/grunt-sass">grunt-sass</a></p>
         </div>
     </section>
 
@@ -1124,19 +1132,19 @@
         <div>
             <pre>
                 <code>grunt.initConfig({</code>
-                <code>    sass: { … } <mark class="comment">/* grunt-contrib-sass */</mark></code>
+                <code>    sass: { … } <mark class="comment">/* grunt-sass */</mark></code>
                 <code>});</code>
                 <code></code>
-                <code>grunt.loadNpmTasks('grunt-contrib-sass');</code>
+                <code>grunt.loadNpmTasks('grunt-sass');</code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2><code>grunt-contrib-sass</code></h2>
+        <h2><code>grunt-sass</code></h2>
         <div>
             <pre>
-                <code>css: { <mark class="comment">/* Подзадача */</mark></code>
+                <code>css: { <mark class="comment">/* Цель */</mark></code>
                 <code>    files: [{</code>
                 <code>        expand: true,</code>
                 <code>        cwd: 'public_html/css', <mark class="comment">/* исходная директория */</mark></code>
@@ -1261,7 +1269,7 @@
     </section>
 
     <section class="slide">
-        <h2>SCSS: Mixins</h2>
+        <h2>SCSS: Mixins<sub>*</sub></h2>
         <div>
             <pre>
                 <code>@mixin box-sizing($value) {</code>
