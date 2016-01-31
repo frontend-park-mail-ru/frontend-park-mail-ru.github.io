@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Orientation</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css" media="all,handheld">
+html, body{
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+.media{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 50%;
+	padding: 20px;
+}
+.js{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	bottom: 0;
+	padding: 20px;
+}
+.media__orientation:before{
+	font-weight: bold;
+}
+
+@media screen and (orientation:portrait) {
+	.media__orientation:before{
+		content: "Portrait";
+	}
+}
+@media screen and (orientation:landscape) {
+	.media__orientation:before{
+		content: "Landscape";
+	}
+}
+
+.js__orientation{
+	font-weight: bold;
+}
+.js__orientation_portrait:before{
+	content: "Portrait";
+}
+.js__orientation_landscape:before{
+	content: "Landscape";
+}
+
+</style>
+</head>
+<body>
+	<div class="media">
+		<div class="media__header">Media Queries</div>
+		<div class="media__orientation"></div>
+	</div>
+	<div class="js">
+		<div class="js__header">OrientationChange</div>
+		<div class="js__orientation"></div>
+	</div>
+	<script>
+		var js__orientation = document.querySelector('.js__orientation');
+		var orientationchange = function () {
+			if (window.orientation%180===0) {
+				js__orientation.className = 'js__orientation js__orientation_portrait';
+			} else {
+				js__orientation.className = 'js__orientation js__orientation_landscape';
+			}
+		}
+		window.addEventListener('orientationchange', orientationchange);
+		orientationchange();
+	</script>
+</body>
+</html>

@@ -1,0 +1,1440 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <title>IV. Производительность, Мобильный веб</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=792, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../shower/themes/tech-mail/styles/screen.css">
+</head>
+<body class="list">
+
+    <header class="caption">
+        <h1>X. Производительность</h1>
+        <p>Загрузка страниц, оптимизация</p>
+    </header>
+
+    <section class="slide title">
+        <h2>
+            <span>Производительность</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Загрузка страницы</h2>
+        <div>
+            <pre>
+                <code>DNS LOOKUP</code>
+                <code>СОЕДИНЕНИЕ И ОТПРАВКА ЗАПРОСА</code>
+                <code>ОЖИДАНИЕ И ПОЛУЧЕНИЕ ОТВЕТА</code>
+                <code>ПАРСИНГ HTML И ПОСТРОЕНИЕ DOM</code>
+                <code>ЗАГРУЗКА ВНЕШНИХ РЕСУРСОВ</code>
+                <code>СОБЫТИЕ <mark class="important">load</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Внешние ресурсы</h2>
+        <div>
+            <pre>
+                <code>ТАБЛИЦЫ СТИЛЕЙ</code>
+                <code>СКРИПТЫ</code>
+                <code>ИЗОБРАЖЕНИЯ</code>
+                <code>ШРИФТЫ</code>
+                <code>ВСТРАИВАЕМЫЕ ОБЪЕКТЫ (FLASH, SVG)</code>
+                <code>…</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Внешние ресурсы</h2>
+        <div>
+            <pre>
+                <code>ЗАГРУЗКА ТАБЛИЦ СТИЛЕЙ БЛОКИРУЕТ РЕНДЕРИНГ</code>
+                <code>ЗАГРУЗКА СКРИПТОВ БЛОКИРУЕТ ПАРСИНГ HTML</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Блокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;html&gt;&lt;head&gt;</code>
+                <code>    &lt;link href="styles.css" rel="stylesheet"/&gt;</code>
+                <code>&lt;/head&gt;&lt;body&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">НЕ БУДЕТ ОТРИСОВАНО ДО ЗАГРУЗКИ СТИЛЕЙ.</mark>&lt;/p&gt;</code>
+                <code>    &lt;script src="script.js">&lt;/script&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">НЕ БУДЕТ ОБРАБОТАНО ДО ЗАГРУЗКИ СКРИПТА.</mark>&lt;/p&gt;</code>
+                <code>&lt;/body&gt;&lt;/html&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Блокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>ССЫЛКИ НА ТАБЛИЦЫ СТИЛЕЙ ОБЪЯВЛЯЙТЕ В <mark class="important">HEAD</mark></code>
+                <code>СКРИПТЫ — В КОНЦЕ <mark class="important">BODY</mark></code>
+            </pre>
+        </div>
+        <!-- ДЕМО: водопад -->
+    </section>
+
+    <section class="slide">
+        <h2>Неблокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>ИЗОБРАЖЕНИЯ</code>
+                <code>ШРИФТЫ</code>
+                <code>ВСТРАИВАЕМЫЕ ОБЪЕКТЫ (FLASH, SVG)</code>
+                <code>…</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Неблокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;body&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">НИЖЕ ЗАРЕЗЕРВИРУЕТСЯ МЕСТО НА СТРАНИЦЕ.</mark>&lt;/p&gt;</code>
+                <code>    &lt;img src="image.gif" width="400" height="200"/&gt;</code>
+                <code>    &lt;p&gt;<mark class="important">ИЗОБРАЖЕНИЕ ОТОБРАЗИТСЯ ПОСЛЕ ЗАГРУЗКИ.</mark>&lt;/p&gt;</code>
+                <code>&lt;/body&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Неблокирующая загрузка</h2>
+        <div>
+            <p>
+                ПРИ ИСПОЛЬЗОВАНИИ ВСТРАИВАЕМОГО ШРИФТА ТЕКСТ ДО ЕГО ЗАГРУЗКИ НЕ&nbsp;БУДЕТ&nbsp;ОТРИСОВАН. НО МЕСТО НА СТРАНИЦЕ «ЗАЙМЕТ» В ОБЪЕМЕ, НЕОБХОДИМОМ ДЛЯ ЕГО ОТОБРАЖЕНИЯ СТАНДАРТНЫМ ШРИФТОМ.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Неблокирующая загрузка</h2>
+        <div>
+            <pre>
+                <code>var s = document.createElement('script');</code>
+                <code>s.src = 'script.js';</code>
+                <code>document.head.appendChild(s);</code>
+                <br/>
+                <code>&lt;script src="script.js" async="async">&lt;/script&gt;</code>
+                <code>&lt;script src="script.js" defer="defer">&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Загрузка страницы</h2>
+        <div>
+            <pre>
+                <code>DNS LOOKUP</code>
+                <code>СОЕДИНЕНИЕ, ОТПРАВКА ЗАПРОСА, ОЖИДАНИЕ И ПОЛУЧЕНИЕ ОТВЕТА</code>
+                <code>ПАРСИНГ HTML И ПОСТРОЕНИЕ DOM</code>
+                <code>ЗАГРУЗКА БЛОКИРУЮЩИХ РЕСУРСОВ</code>
+                <code>СОБЫТИЕ <mark class="important">DOMContentLoaded</mark></code>
+                <code>ДОЗАГРУЗКА ОСТАВШИХСЯ РЕСУРСОВ</code>
+                <code>СОБЫТИЕ <mark class="important">load</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Индикатор загрузки</h2>
+        <div>
+            <pre>
+                <code>&lt;style&gt;</code>
+                <code>    <mark class="comment">/* Loader styles */</mark></code>
+                <code>&lt;/style&gt;</code>
+                <code>&lt;div id="loader"/&gt;</code>
+                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
+                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>Оптимизация загрузки</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Запрос HTTP(S)</h2>
+        <div>
+            <pre>
+                <code>DNS LOOKUP</code>
+                <code>TCP SLOW-START</code>
+                <code>SSL HANDSHAKE</code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code>ЗАГРУЗКА ДАННЫХ</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>DNS Time-to-live (TTL)</h2>
+        <div>
+            <pre>
+                <code><s>DNS LOOKUP</s></code>
+                <code>TCP SLOW-START</code>
+                <code>SSL HANDSHAKE</code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code>ЗАГРУЗКА ДАННЫХ</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Connection: Keep-Alive</h2>
+        <div>
+            <pre>
+                <code><s>DNS LOOKUP</s></code>
+                <code><s>TCP SLOW-START</s></code>
+                <code><s>SSL HANDSHAKE</s></code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code>ЗАГРУЗКА ДАННЫХ</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Connection: Keep-Alive</h2>
+        <div>
+            <pre>
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>Accept: text/html,application/xhtml+xml,…</code>
+                <code><mark class="important">Connection: keep-alive</mark></code>
+                <code>Accept-Encoding: gzip,deflate,sdch</code>
+                <code>Accept-Language: en-US,en;q=0.8,ru;q=0.6</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Connection: close</h2>
+        <div>
+            <pre>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Connection: close</mark></code>
+                <code>Cache-Control: no-cache,no-store,must-revalidate</code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Сжатие данных</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">DNS LOOKUP</mark></code>
+                <code><mark class="comment">TCP SLOW-START</mark></code>
+                <code><mark class="comment">SSL HANDSHAKE</mark></code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code><s>ЗАГРУЗКА ДАННЫХ</s></code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Сжатие данных</h2>
+        <div>
+            <pre>
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>Accept: text/html,application/xhtml+xml,…</code>
+                <code>Connection: keep-alive</code>
+                <code><mark class="important">Accept-Encoding: gzip,deflate,sdch</mark></code>
+                <code>Accept-Language: en-US,en;q=0.8,ru;q=0.6</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Сжатие данных</h2>
+        <div>
+            <pre>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code><mark class="important">Content-Encoding: gzip</mark></code>
+                <code>Connection: close</code>
+                <code>Cache-Control: no-cache,no-store,must-revalidate</code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Кэширование (Expires)</h2>
+        <div>
+            <pre>
+                <code><s>DNS LOOKUP</s></code>
+                <code><s>TCP SLOW-START</s></code>
+                <code><s>SSL HANDSHAKE</s></code>
+                <code><s>ОТПРАВКА ДАННЫХ</s></code>
+                <code><s>ОЖИДАНИЕ ДАННЫХ</s></code>
+                <code><s>ЗАГРУЗКА ДАННЫХ</s> (СЧИТЫВАНИЕ ИЗ КЕША)</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кэширование (Expires)</h2>
+        <div>
+            <pre>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Cache-Control: max-age=315360000</mark></code>
+                <code><mark class="important">Expires: Sun Apr 06 2014 14:20:00 GMT</mark></code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Кэширование (IMS/INM)</h2>
+        <div>
+            <pre>
+                <code><mark class="comment">DNS LOOKUP</mark></code>
+                <code><mark class="comment">TCP SLOW-START</mark></code>
+                <code><mark class="comment">SSL HANDSHAKE</mark></code>
+                <code>ОТПРАВКА ДАННЫХ</code>
+                <code>ОЖИДАНИЕ ДАННЫХ</code>
+                <code><s>ЗАГРУЗКА ДАННЫХ</s> (СЧИТЫВАНИЕ ИЗ КЕША)</code>
+                <code>ОБРАБОТКА ДАННЫХ</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кэширование (Last-Modified)</h2>
+        <div>
+            <pre>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Last-Modified: Fri, 14 Mar 2014 13:08:29 GMT</mark></code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Кэширование (Last-Modified)</h2>
+        <div>
+            <pre>
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
+                <code><mark class="important">If-Modified-Since: Fri, 14 Mar 2014 13:08:29 GMT</mark></code>
+                <code>…</code>
+            </pre>
+            <pre>
+                <code>200 OK ИЛИ 304 NOT MODIFIED</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кэширование (ETag)</h2>
+        <div>
+            <pre>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">ETag: "533c10bd-25f0c"</mark></code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Кэширование (ETag)</h2>
+        <div>
+            <pre>
+                <code>GET / HTTP/1.1</code>
+                <code>Host: mail.ru</code>
+                <code>User-Agent: Mozilla/5.0 … Safari/537.36</code>
+                <code><mark class="important">If-None-Match: "533c10bd-25f0c"</mark></code>
+                <code>…</code>
+            </pre>
+            <pre>
+                <code>200 OK ИЛИ 304 NOT MODIFIED</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Кэширование (No-Cache)</h2>
+        <div>
+            <pre>
+                <code>HTTP/1.1 200 OK</code>
+                <code>Date: Sun, 16 Feb 2014 22:09:34 GMT</code>
+                <code>Server: Apache/1.3.27 (Unix) …</code>
+                <code>Content-Encoding: gzip</code>
+                <code><mark class="important">Cache-Control: no-cache,no-store,must-revalidate</mark></code>
+                <code>…</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://example.com/image1.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image2.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code><mark class="comment">&lt;img src="http://example.com/image5.png" /&gt;</mark></code>
+                <code><mark class="comment">&lt;img src="http://example.com/image6.png" /&gt;</mark></code>
+                <code><mark class="comment">&lt;img src="http://example.com/image7.png" /&gt;</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://example.com/image1.png" /&gt;</code>
+                <code><s>&lt;img src="http://example.com/image2.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image5.png" /&gt;</code>
+                <code><mark class="comment">&lt;img src="http://example.com/image6.png" /&gt;</mark></code>
+                <code><mark class="comment">&lt;img src="http://example.com/image7.png" /&gt;</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code><s>&lt;img src="http://example.com/image1.png" /&gt;</s></code>
+                <code><s>&lt;img src="http://example.com/image2.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image5.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image6.png" /&gt;</code>
+                <code><mark class="comment">&lt;img src="http://example.com/image7.png" /&gt;</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Последовательная загрузка</h2>
+        <div>
+            <pre>
+                <code><s>&lt;img src="http://example.com/image1.png" /&gt;</s></code>
+                <code><s>&lt;img src="http://example.com/image2.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image4.png" /&gt;</code>
+                <code><s>&lt;img src="http://example.com/image5.png" /&gt;</s></code>
+                <code>&lt;img src="http://example.com/image6.png" /&gt;</code>
+                <code>&lt;img src="http://example.com/image7.png" /&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Паралельная загрузка</h2>
+        <div>
+            <pre>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image1.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image2.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image3.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i1.</mark>example.com/image4.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>example.com/image5.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>example.com/image6.png" /&gt;</code>
+                <code>&lt;img src="http://<mark class="important">i2.</mark>example.com/image7.png" /&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Cookies-less</h2>
+        <div>
+            <pre>
+                <code>Set-Cookie: name=value; domain=.example.com; path=/</code>
+            </pre>
+            <pre>
+                <code>&lt;link href="http://<mark class="important">static-example</mark>.com/styles.css"</code>
+                <code>    rel="stylesheet" /&gt;</code>
+                <code>&lt;script src="http://<mark class="important">static-example</mark>.com/script.js"&gt;</code>
+                <code>&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Объединение ресурсов</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="http://example.com/script1.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;script src="http://example.com/script2.js"&gt;&lt;/script&gt;</code>
+            </pre>
+            <p>VS.</p>
+            <pre>
+                <code>&lt;script src="http://example.com/scripts.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Уменьшение размера ресурсов</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="http://example.com/jquery.js"&gt;&lt;/script&gt;</code>
+                <code><mark class="comment">&lt;!-- 239 KB / Source --&gt;</mark></code>
+                <div class="next">
+                    <code>&lt;script src="http://example.com/jquery.min.js"&gt;&lt;/script&gt;</code>
+                    <code><mark class="comment">&lt;!-- 81.7 KB / Minified --&gt;</mark></code>
+                </div>
+                <div class="next">
+                    <code>&lt;script src="http://example.com/jquery.js.gz"&gt;&lt;/script&gt;</code>
+                    <code><mark class="comment">&lt;!-- 86.7 KB / Source + GZip--&gt;</mark></code>
+                </div>
+                <div class="next">
+                    <code>&lt;script src="http://example.com/jquery.min.js.gz"&gt;&lt;/script&gt;</code>
+                    <code><mark class="comment">&lt;!-- 33.7 KB / Minified + GZip --&gt;</mark></code>
+                </div>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide cover h bright">
+        <div>
+            <img src="../../pics/main-tabs.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Lazy Loading</h2>
+        <div>
+            <pre>
+                <code>&lt;link rel="stylesheet" href="main.css"/&gt;</code>
+                <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;div id="tabs"&gt;…&lt;/div&gt;</code>
+                <code>&lt;script&gt;initTabs();&lt;/script&gt;</code>
+                <code>&lt;link rel="stylesheet" href="extra.css"/&gt;</code>
+                <code>&lt;script src="extra.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Предзагрузка картинок</h2>
+        <div>
+            <pre>
+                <code>new Image().src = 'http://domain.com/image1.png';</code>
+                <code>new Image().src = 'http://domain.com/image2.png';</code>
+            </pre>
+            <pre class="next">
+                <code>var img = new Image();</code>
+                <code>img.src = 'http://domain.com/image3.png';</code>
+                <code>img.onload = function () {};</code>
+                <code>img.onerror = function () {};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Консистентность</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p><strong>Согласованность данных</strong> (иногда <strong>консистентность данных</strong>, англ. data consistency) в информатике — это согласованность данных друг с другом, целостность данных, а также внутренняя непротиворечивость.</p>
+                </blockquote>
+                <figcaption><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Википедия</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Консистентность</h2>
+        <div>
+            <p>СООТВЕТСТВИЕ ВЕРСИИ РЕСУРСОВ ВЕРСИИ ДОКУМЕНТА.</p>
+            <pre>
+                <code>&lt;link href="/v1/styles.css" rel="stylesheet"/&gt;</code>
+                <code>&lt;script src="/v1/script.js">&lt;/script&gt;</code>
+             </pre>
+            <pre>
+                <code>&lt;link href="/v2/styles.css" rel="stylesheet"/&gt;</code>
+                <code>&lt;script src="/v2/script.js">&lt;/script&gt;</code>
+             </pre>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>Оптимизации в JavaScript</h2>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/dom-for">Работа с DOM</a></h2>
+        <div>
+            <pre>
+                <code>for (var i = 0;</code>
+                <code>     i &lt; document.getElementsByTagName('div').length;</code>
+                <code>     i++) {</code>
+                <code>  document.getElementsByTagName('div')[i].innerHTML = i;</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/dom-for">Работа с DOM</a></h2>
+        <div>
+            <pre>
+                <code>for (var i = 0,</code>
+                <code>         l = document.getElementsByTagName('div').length;</code>
+                <code>     i &lt; l;</code>
+                <code>     i++) {</code>
+                <code>  document.getElementsByTagName('div')[i].innerHTML = i;</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/dom-for">Работа с DOM</a></h2>
+        <div>
+            <pre>
+                <code>var nodes = document.getElementsByTagName('div');</code>
+                <code>for (var i = 0,</code>
+                <code>         l = nodes.length;</code>
+                <code>     i &lt; l;</code>
+                <code>     i++) {</code>
+                <code>  nodes[i].innerHTML = i;</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/hash-vs-constructor">Hash vs. Constructor</a></h2>
+        <div>
+            <pre>
+                <code>var foo = {</code>
+                <code>  a: 'a',</code>
+                <code>  b: 'b'</code>
+                <code>};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/hash-vs-constructor">Hash vs. Constructor</a></h2>
+        <div>
+            <pre>
+                <code>function Foo() {</code>
+                <code>  this.a = 'a';</code>
+                <code>  this.b = 'b';</code>
+                <code>}</code>
+                <code>var foo = new Foo();</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/each-vs-plain">Scope vs. Closure</a></h2>
+        <div>
+            <pre>
+                <code>var a = 'b';</code>
+                <code>a = 'c';</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/each-vs-plain">Scope vs. Closure</a></h2>
+        <div>
+            <pre>
+                <code>var a = 'b';</code>
+                <code>function c() {</code>
+                <code>  a = 'c';</code>
+                <code>}</code>
+                <code>c();</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/tp-reflow">Reflow</a></h2>
+        <div>
+            <pre>
+                <code>var one = document.getElementById('one'),</code>
+                <code>    two = document.getElementById('two'),</code>
+                <code>    width = 0, text;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/tp-reflow">Reflow</a></h2>
+        <div>
+            <pre>
+                <code>text = Math.random();</code>
+                <code>one.innerHTML = text;</code>
+                <code>width += one.clientWidth;</code>
+                <code> </code>
+                <code>two.innerHTML = text;</code>
+                <code>width += two.clientWidth;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><a href="http://jsperf.com/tp-reflow">Reflow</a></h2>
+        <div>
+            <pre>
+                <code>text = Math.random();</code>
+                <code>one.innerHTML = text;</code>
+                <code>two.innerHTML = text;</code>
+                <code> </code>
+                <code>width += one.clientWidth;</code>
+                <code>width += two.clientWidth;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Position vs. Transform</h2>
+        <div>
+            <pre>
+                <code>-webkit-transform: *;</code>
+                <code>-webkit-transition: </code>
+                <code>    -webkit-transform 3s linear;</code>
+            </pre>
+            <p><a href="/d/animate.html">ДЕМОНСТРАЦИЯ</a>.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Домашнее задание</h2>
+        <div>
+            <pre>
+                <code>РЕАЛИЗОВАТЬ ИНДИКАТОР ЗАГРУЗКИ ПРИЛОЖЕНИЯ.</code>
+                <code>ОРГАНИЗОВАТЬ СБОРКУ РЕСУРСОВ ДЛЯ PRODUCTION ОКРУЖЕНИЯ.</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>Обновляем NPM</code></h2>
+        <div>
+            <pre>
+                <code>$ sudo npm cache clean -f</code>
+                <code>$ sudo npm install -g n</code>
+                <code>$ sudo n stable</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>Сборка ресурсов</code></h2>
+        <div>
+            <pre>
+                <code>$ npm install grunt-contrib-requirejs --save-dev</code>
+                <code>$ npm install grunt-contrib-concat --save-dev</code>
+                <code>$ npm install grunt-contrib-uglify --save-dev</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>Gruntfile.js</code></h2>
+        <div>
+            <pre>
+                <code>grunt.initConfig({</code>
+                <code>    requirejs: { … } <mark class="comment">/* grunt-contrib-requirejs */</mark></code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>grunt-contrib-requirejs</code></h2>
+        <div>
+            <pre>
+                <code>build: { <mark class="comment">/* Подзадача */</mark></code>
+                <code>  options: {</code>
+                <code>    almond: true,</code>
+                <code>    baseUrl: "public_html/js",</code>
+                <code>    mainConfigFile: "public_html/js/main.js",</code>
+                <code>    name: "main",</code>
+                <code>    optimize: "none",</code>
+                <code>    out: "public_html/js/build/main.js"</code>
+                <code>  } }</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>grunt.initConfig({</code>
+                <code>    concat: { … }, <mark class="comment">/* grunt-contrib-concat */</mark></code>
+                <code>    uglify: { … } <mark class="comment">/* grunt-contrib-uglify */</mark></code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>grunt-contrib-concat</code></h2>
+        <div>
+            <pre>
+                <code>build: { <mark class="comment">/* Подзадача */</mark></code>
+                <code>    separator: ';\n',</code>
+                <code>    src: [</code>
+                <code>          'public_html/js/lib/almond.js',</code>
+                <code>          'public_html/js/build/main.js'</code>
+                <code>    ],</code>
+                <code>    dest: 'public_html/js/build.js'</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>grunt-contrib-uglify</code></h2>
+        <div>
+            <pre>
+                <code>build: { <mark class="comment">/* Подзадача */</mark></code>
+                <code>    files: {</code>
+                <code>        'public_html/js/build.min.js': </code>
+                <code>              ['public_html/js/build.js']</code>
+                <code>    }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>grunt-contrib-sass</code></h2>
+        <div>
+            <pre>
+                <code>grunt.initConfig({</code>
+                <code>  sass: {</code>
+                <code>      style: "compressed",</code>
+                <code>      ...</code>
+                <code>  }</code>
+                <code>});</code>
+                <code></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>grunt.loadNpmTasks('grunt-contrib-requirejs');</code>
+                <code>grunt.loadNpmTasks('grunt-contrib-uglify');</code>
+                <code>grunt.loadNpmTasks('grunt-contrib-concat');</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gruntfile.js</h2>
+        <div>
+            <pre>
+                <code>grunt.registerTask(</code>
+                <code>    'build',</code>
+                <code>    [</code>
+                <code>        'fest', 'requirejs:build',</code>
+                <code>        'concat:build', 'uglify:build'</code>
+                <code>    ]</code>
+                <code>);</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Новый index.html</h2>
+        <div>
+            <pre>
+                <code>&lt;script src="js/build.min.js"&gt;&lt;/script&gt;</code>
+                <code>&lt;script&gt;</code>
+                <code>    require(['main'], function(){</code>
+                <code>            console.log('hello');</code>
+                <code>    });</code>
+                <code>&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Проверка</h2>
+        <div>
+            <pre>
+                <code>$ grunt build</code>
+                <!-- code>$ NODE_ENV=production node app.js</code -->
+            </pre>
+        </div>
+    </section>
+
+    <!-- Рекомендованная леитература к лекции 10 "Производительность" -->
+    <section class="slide">
+        <h2>Что почитать, посмотреть?</h2>
+        <div>
+        <h3>Почитать:</h3>
+        <ol>
+            <li>
+                <img alt="habr" src="../../pics/habr.png">
+                <a href="http://habrahabr.ru/company/mailru/blog/236021/">Анализ рендеринга через Skia Debugger: как можно найти самые дорогие для отрисовки элементы</a>
+            </li>
+            <li>
+                <a href="http://www.artlebedev.ru/tools/technogrette/html/browser-performance/">Сергей Чикуенок. Производительность браузеров в зависимости от верстки</a>
+            </li>
+            <li>
+                <a href="http://chikuyonok.ru/2011/08/optimize-with-canvas/">Сергей Чикуенок. Canvas как способ оптимизации графики
+                </a>
+            </li>
+        </ol>
+        <h3>Посмотреть:</h3>
+        <ol>
+            <li>
+                <img alt="en" src="../../pics/en.gif">
+                <a href="https://www.udacity.com/course/ud884">Website Performance Optimization</a>
+            </li>
+        </ol>
+        </div>
+    </section>
+
+    <header class="caption">
+        <h1>X. Мобильный веб</h1>
+        <p>Возможности смартфонов, touch-events</p>
+    </header>
+
+    <section class="slide title">
+        <h2>
+            <span>Возможности смартфонов</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Демонстрации</h2>
+        <div>
+            <p style="font-size:2.0em;"><a href="http://frontend.tech-mail.ru/d/mobile/">http://frontend.tech-mail.ru/d/mobile/</a></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Экран</h2>
+        <div>
+            <pre>
+                <code>PPI <mark class="comment">Pixels Per Inch</mark></code>
+                <code>DPI <mark class="comment">Dots Per Inch</mark></code>
+                <code>Device pixel ratio <mark class="comment">Отношение: Физические / Виртуальные пиксели</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide cover h bright">
+        <div>
+            <img src="../../pics/screens.jpg" alt="" style="width: 100%; height: auto;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Screen</h2>
+        <div>
+            <p><a href="../../d/mobile/screen.html">ДЕМОНСТРАЦИЯ</a></p>
+            <p><strong>screen.html</strong></p>
+        </div>
+    </section>
+
+    <section class="slide cover h bright">
+        <div>
+            <img src="../../pics/viewport.jpg" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Viewport</h2>
+        <div>
+            <pre>
+                <code>&lt;meta name=&quot;<mark>viewport</mark>&quot; content=&quot;</code>
+                <code>    initial-scale=1.0,</code>
+                <code>    user-scalable=no,</code>
+                <code>    maximum-scale=1,</code>
+                <code>    minimum-scale=1</code>
+                <code>&quot;&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Viewport</h2>
+        <div>
+            <pre>
+                <code>... <mark class="delete">width=device-width, height=device-width</mark> ...</code>
+            </pre>
+            <figure>
+                <blockquote>
+                    <p>width=320 включает &laquo;режим совместимости&raquo; в iPhone 5+ и iPod Touch 5+</p>
+                </blockquote>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Viewport</h2>
+        <div>
+            <p><a href="../../d/mobile/viewport.html">ДЕМОНСТРАЦИЯ</a></p>
+            <p><strong>viewport.html</strong></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <img src="../../pics/medias.jpg" alt="" style="width:100%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <pre>
+                <code><mark class="important">@media screen and (max-width: 600px)</mark> {</code>
+                <code>    .class {</code>
+                <code>        background: #ccc;</code>
+                <code>    }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <pre>
+                <code>&lt;link</code>
+                <code>    rel="stylesheet"</code>
+                <code>    <mark class="important">media="screen and (max-width: 600px)"</mark></code>
+                <code>    href="small.css"</code>
+                <code>/&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Media Queries</h2>
+        <div>
+            <p><strong>media:</strong> <strong>all</strong>, screen, <strong>handheld</strong>, aural, braille, embossed, projection, tty, tv, print, 3d-glasses.<br>
+            <strong>orientation:</strong> landscape, portrait.<br>
+            <strong>device:</strong> device-width, device-height, min-width...<br>
+            <strong>pixel-ratio:</strong> device-aspect-ratio, -webkit-device-pixel-ratio, <span style="white-space:nowrap;">-o-device-pixel-ratio</span>...</p>
+            <p><a href="http://cssmediaqueries.com/">http://cssmediaqueries.com/</a></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Orientation</h2>
+        <div>
+            <img src="../../pics/orientation.jpg" alt="" style="width:100%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Orientation</h2>
+        <div>
+            <pre>
+                <code>window.addEventListener('<mark class="important">orientationchange</mark>',function () {</code>
+                <code>    if (<mark class="important">window.orientation%180===0</mark>) {</code>
+                <code>        <mark class="comment">// portrait</mark></code>
+                <code>    } else {</code>
+                <code>        <mark class="comment">// landscape</mark></code>
+                <code>    }</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Orientation</h2>
+        <div>
+            <p><a href="../../d/mobile/orientation.html">ДЕМОНСТРАЦИЯ</a>.</p>
+            <p><strong>orientation.html</strong></p>
+        </div>
+    </section>
+
+    <section class="slide" style="text-align:center;">
+        <img src="../../pics/gyroscope.jpg" alt="" style="height:100%;" />
+    </section>
+
+    <section class="slide">
+        <h2>Gyroscope</h2>
+        <div>
+            <pre>
+                <code>window.addE.L...('<mark class="important">deviceorientation</mark>', function(event) {</code>
+                <code>    <mark class="important">event.alpha</mark>;</code>
+                <code>    <mark class="important">event.beta</mark>;</code>
+                <code>    <mark class="important">event.gamma</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Gyroscope</h2>
+        <div>
+            <p><a href="../../d/mobile/deviceorientation.html">ДЕМОНСТРАЦИЯ</a></p>
+            <p><strong>deviceorientation.html</strong></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <img src="../../pics/acceleration.jpg" alt="" style="width:100%;" />
+    </section>
+
+    <section class="slide">
+        <h2>Acceleration</h2>
+        <div>
+            <pre>
+                <code>window.addE.L...('<mark class="important">devicemotion</mark>', function(event) {</code>
+                <code>    <mark class="important">event.acceleration.x</mark>;</code>
+                <code>    <mark class="important">event.acceleration.y</mark>;</code>
+                <code>    <mark class="important">event.acceleration.z</mark>;</code>
+                <code>    <mark class="important">event.accelerationIncludingGravity</mark>;</code>
+                <code>    <mark class="important">event.rotationRate</mark>;</code>
+                <code>    <mark class="important">event.interval</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Acceleration</h2>
+        <div>
+            <p><a href="../../d/mobile/devicemotion.html">ДЕМОНСТРАЦИЯ</a>.</p>
+            <p><strong>devicemotion.html</strong></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Совместимость</h2>
+        <div>
+            <pre>
+                <code><a href="https://github.com/ajfisher/deviceapi-normaliser">https://github.com/ajfisher/<mark class="important">deviceapi-normaliser</mark></a></code>
+            </pre>
+
+            <pre>
+                <code>window.addE.L...('<mark class="important">deviceorientation</mark>', function(event) {</code>
+                <code>    var orientation = deviceOrientation(e);</code>
+                <code>    <mark class="important">orientation.alpha</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events</h2>
+        <div>
+            <table>
+            <tr>
+                <th>WebKit</th>
+                <th>MS IE</th>
+            </tr>
+            <tr>
+                <td>TouchStart</td>
+                <td>MSPointerDown</td>
+            </tr>
+            <tr>
+                <td>TouchMove</td>
+                <td>MSPointerMove</td>
+            </tr>
+            <tr>
+                <td>TouchEnd</td>
+                <td>MSPointerUp</td>
+            </tr>
+            <tr>
+                <td>TouchCancel</td>
+                <td>MSPointerCancel</td>
+            </tr>
+            <tr>
+                <td>Click</td>
+                <td>Click</td>
+            </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events</h2>
+        <div>
+            <blockquote><strong>PointerEvents:</strong><br /><a href="http://www.w3.org/TR/pointerevents/">http://www.w3.org/TR/pointerevents/</a><br /><a href="http://msdn.microsoft.com/">http://msdn.microsoft.com/</a></blockquote>
+            <blockquote style="margin-top:30px;"><strong>TouchEvents:</strong><br /><a href="http://www.w3.org/TR/touch-events/">http://www.w3.org/TR/touch-events/</a><br /><a href="https://developer.apple.com/">https://developer.apple.com/</a></blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events</h2>
+        <div>
+            <p><a href="../../d/mobile/events.html">ДЕМОНСТРАЦИЯ</a>.</p>
+            <p><strong>events.html</strong></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / TouchEvent</h2>
+        <div>
+            <pre>
+                <code>elem.addEventListener('touchstart', function(event){</code>
+                <code>    <mark class="important">event.touches[]</mark>;</code>
+                <code>    <mark class="important">event.changedTouches[]</mark>;</code>
+                <code>    <mark class="important">event.targetTouches[]</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / TouchEvent</h2>
+        <div>
+            <pre>
+                <code>identifier</code>
+                <code>target</code>
+                <code>screenX</code>
+                <code>screenY</code>
+                <code>clientX</code>
+                <code>clientY</code>
+                <code>pageX</code>
+                <code>pageY</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / Pointer</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/pointer.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / Pointer</h2>
+        <div>
+            <pre>
+                <code>elem.addEventListener('MSPointerDown', function(event){</code>
+                <code>    <mark class="important">event.pointerType</mark>;</code>
+                <code>    <mark class="important">event.MSPOINTER_TYPE_TOUCH</mark>;</code>
+                <code>    <mark class="important">event.MSPOINTER_TYPE_PEN</mark>;</code>
+                <code>    <mark class="important">event.MSPOINTER_TYPE_MOUSE</mark>;</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Events / Pointer</h2>
+        <div>
+            <pre>
+                <code>readonly</code>
+                <code>width</code>
+                <code>height</code>
+                <code>pressure</code>
+                <code>tiltX</code>
+                <code>tiltY</code>
+                <code>pointerType</code>
+                <code>isPrimary</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Application Cache</h2>
+        <div>
+            <pre>
+                <code><mark class="important">CACHE MANIFEST</mark></code>
+                <code><mark class="important"># v1.0.0</mark></code>
+                <code>index.html</code>
+                <code>main.css</code>
+                <code><mark class="important">NETWORK:</mark></code>
+                <code>/api/*</code>
+                <code><mark class="important">FALLBACK:</mark></code>
+                <code>index.html /offline.html</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Icons</h2>
+        <div>
+            <pre>
+                <code>&lt;link rel="apple-touch-icon" href="touch-icon-iphone.png"&gt;</code>
+                <code><mark class="comment">// 60 x 60</mark></code>
+                <code>&lt;link rel="<mark class="important">*</mark>" sizes="<mark class="important">76x76</mark>" href="<mark class="important">*</mark>-ipad.png"&gt;</code>
+                <code>&lt;link rel="<mark class="important">*</mark>" sizes="<mark class="important">120x120</mark>" href="<mark class="important">*</mark>-iphone-retina.png"&gt;</code>
+                <code>&lt;link rel="<mark class="important">*</mark>" sizes="<mark class="important">152x152</mark>" href="<mark class="important">*</mark>-ipad-retina.png"&gt;</code>
+                <code>&lt;link rel="<mark class="important">*</mark>" sizes="<mark class="important">180x180</mark>" href="<mark class="important">*</mark>-ipad-retina.png"&gt;</code>
+                <code>&lt;link rel="<mark class="important">*</mark>" sizes="<mark class="important">180x180</mark>" href="<mark class="important">*</mark>-iphone6-plus.png"&gt;</code>
+            </pre>
+            <p><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html">Подробнее</a></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Storage</h2>
+        <div>
+            <blockquote>
+                <strong>localStorage</strong> - Синхронное key / value<br /><br />
+                <strong>IndexedDB</strong> - Асинхронное<sup>*</sup> key / value<br />
+                <strong>Web SQL</strong> - Асинхронное<sup>*</sup> SQLite<br />
+                <strong><a href="http://nparashuram.com/IndexedDBShim/">IndexedDB Polyfill</a></strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <img src="../../pics/devices.jpeg" alt="" style="width:100%;" />
+    </section>
+
+    <section class="slide">
+        <h2>Разработка</h2>
+        <div>
+            <blockquote><strong>iOS SDK - Xcode</strong><br /><a href="https://developer.apple.com/xcode/">https://developer.apple.com/xcode/</a></blockquote>
+            <blockquote><strong>Android SDK - AVD Manager</strong><br /><a href="http://developer.android.com/sdk/">http://developer.android.com/sdk/</a></blockquote>
+            <blockquote><strong>Genymotion</strong><br /><a href="https://www.genymotion.com/">https://www.genymotion.com/</a></blockquote>
+            <blockquote>
+                <strong>Nokia<sub>*</sub>(MS) SDK</strong> - <a href="https://dev.windows.com/">https://dev.windows.com/</a><br />
+                <strong>BlackBerry SDK</strong> - <a href="http://developer.blackberry.com/">http://developer.blackberry.com/</a>
+            </blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Xcode</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/xcode1.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>iOS Simulator</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/5f14cc542507d9ed0955571455a6.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Android</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/d47effa5fdc0de69480709ff1f0d.png" alt="" style="width:80%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Android</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/android1.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Android</h2>
+        <div style="text-align:center;">
+            <img src="../../pics/sdk/b3a8082e75d5a7ccfb97fa8d9cf0.png" alt="" style="height:90%;" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Genymotion</h2>
+        <div style="text-align:center;">
+            <a href="https://www.genymotion.com/">https://www.genymotion.com/</a>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Инструменты</h2>
+        <div>
+            <blockquote>
+                <strong>Modernizr</strong> - <a href="http://modernizr.com/">http://modernizr.com/</a><br />
+                <strong>Mobile Boilerplate</strong> - <a href="http://html5boilerplate.com/mobile/">http://html5boilerplate.com/mobile/</a><br />
+                <strong>Hammer.js</strong> - <a href="http://eightmedia.github.io/hammer.js/">http://eightmedia.github.io/hammer.js/</a><br />
+                <strong>Sencha Touch</strong> - <a href="http://www.sencha.com/products/touch/">http://www.sencha.com/products/touch/</a>
+            </blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Домашнее задание</h2>
+        <div>
+            <pre>
+                <code>ДОБАВИТЬ МОБИЛЬНУЮ СТРАНИЦУ ДЖОЙСТИКА</code>
+                <code>ОРГАНИЗОВАТЬ WEBSOCKET СОЕДИНЕНИЕ СТРАНИЦ,<br />МОБИЛЬНОЙ И ДЕСКТОПА</code>
+                <code>ДЖОЙСТИК ДОЛЖЕН РЕАГИРОВАТЬ И КОРРЕКТНО ОТРАБАТЫВАТЬ:</code>
+                <code>  TOUCH EVENTS</code>
+                <code>  ORIENTATIONCHANGE</code>
+                <code>  DEVICEMOTION / DEVICEORIENTATION</code>
+                <code>  ОБЯЗАТЕЛЬНА ПРОВЕРКА ПОДДЕРЖКИ ФУНКЦИОНАЛА</code>
+            </pre>
+        </div>
+    </section>
+
+    <!-- Рекомендованная леитература к лекции 11 "Мобильный веб" -->
+    <section class="slide">
+        <h2>Что почитать, посмотреть?</h2>
+        <div>
+<!--         <h3>Почитать:</h3>
+        <ol>
+            <li>
+                <img alt="habr" src="../../pics/habr.png">
+                <a href="http://habrahabr.ru/company/mailru/blog/236021/">Анализ рендеринга через Skia Debugger: как можно найти самые дорогие для отрисовки элементы</a>
+            </li>
+            <li>
+                <a href="http://www.artlebedev.ru/tools/technogrette/html/browser-performance/">Сергей Чикуенок. Производительность браузеров в зависимости от верстки</a>
+            </li>
+            <li>
+                <a href="http://chikuyonok.ru/2011/08/optimize-with-canvas/">Сергей Чикуенок. Canvas как способ оптимизации графики
+                </a>
+            </li>
+        </ol> -->
+        <h3>Посмотреть:</h3>
+        <ol>
+            <li>
+                <img alt="en" src="../../pics/en.gif">
+                <a href="https://www.udacity.com/course/cs256">Mobile Web Development. Building Mobile Web Experiences</a>
+            </li>
+        </ol>
+        </div>
+    </section>
+
+    <div class="progress"><div></div></div>
+    <script src="../../shower/shower.min.js"></script>
+</body>
+</html>

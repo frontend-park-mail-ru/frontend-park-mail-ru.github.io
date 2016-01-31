@@ -1,0 +1,572 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <title>I. Работа с GIT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=792, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../shower/themes/tech-mail/styles/screen.css">
+</head>
+<body class="list">
+    <header class="caption">
+        <h1>I. Работа с GIT</h1>
+    </header>
+
+    <section class="slide title">
+        <h2>
+            <span>
+                <img src="/pics/git/badge-course.png" style="vertical-align: middle; margin-right: 5%;" alt="" />
+                О контроле версий
+            </span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Это займет не больше 15 минут!</h2>
+        <div style="background: url('/pics/git/cover.jpg') no-repeat 100% 100%; background-size: contain;">
+            <figure>
+                <blockquote>
+                    <p><strong>Что такое контроль версий?</strong> Система контроля версий (<strong>СКВ</strong>) — это система, регистрирующая изменения в одном или нескольких файлах с тем, чтобы в дальнейшем была возможность вернуться к определённым старым версиям этих файлов.</p>
+                </blockquote>
+                <figcaption><a href="http://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B5-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B9">ProGit</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Поехали!</h2>
+        <div>
+            <img src="/pics/git/qr-code.gif" alt="">
+
+            <a style="position: absolute;" href="https://try.github.io/levels/1/challenges/1">
+                https://try.github.io/
+            </a>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Процесс пошел...</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    С помощью GIT группа людей может работать над одним и тем же документом (чаще всего документ - это программный код) в одно и то же время не мешая друг-другу. Это и есть распределенная  система контроля версий.
+                </p>
+
+                <p>
+                    Ниже вы можете увидеть окошко терминала, вы находитесь в папке "octobox". Чтобы проинициализировать Git репозиторий введите команду: <strong>git init</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/1">1.1 Есть свободные 15 минут и хочешь выучить Git?</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Кажется, получилось!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Отлично! Как только что нам сказал Git, наша папка "octobox" теперь обзавелась пустым репозиторием в /.git/. <strong>Репозиторий</strong> - это скрытая папка, в которой Git творит свою магию.
+                </p>
+
+                <p>
+                    Следующее задание! Давайте попробуем набрать комнаду, выводяющую статус репозитория, чтобы увидеть в каком состоянии находится наш проект: <strong>git status</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/2">1.2 Проверяем статус</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Статус - это важно!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    В вашем репозитории для вас создан файл с именем <strong>octocat.txt</strong>. Вы можете убедиться в этом, изучив содержимое папки в просмоторщике файлов под консолью.
+                </p>
+
+                <p>
+                    Выполним команду статуса еще раз:<strong>git status</strong>; посмотрим как поменялся статус репозитория.
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/3">1.3 Добавляем файлы и коммитим</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Добавляемся!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Хорошо. Похоже, что репозиторий работает правильно. Обратите внимание, что Git говорит octocat.txt является "неотслеживаемым"? Это означает, что Git видит, что octocat.txt является новым файлом.
+                </p>
+
+                <p>
+                    Чтобы сообщить Git о том, что пора начать отслеживать изменения, внесенные в octocat.txt, мы сначала должны добавить его с помощью <strong>git add</strong>.
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/4">1.4 Добавление изменений</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>За нами следят!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Продолжаем! Сейчас git отслеживает наш файл octocat.txt. Давайте выполним <strong>git status</strong> снова, чтобы понять, что изменилось!
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/5">1.5 Отслеживаение изменений</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Я такого не коммитил!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Вы обратили внимание, что Git говорит о возможности закоммитить изменения? Файлы, перечисленные здесь находятся в промежуточной области, пока что они не добавлены в наш репозиторий. Мы могли бы добавить или удалить файлы из этого состояния, прежде чем добавить их в хранилище.
+                </p>
+
+                <p>
+                    Чтобы сохранить изменения на данном этапе мы выполним команду создания коммита и передадим ей в качестве аргумента сообщение, описывающие изменения, сделанные в этом коммите.<br/> <strong>git commit -m "Add cute octocat story"</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/6">1.6 Коммитимся</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Добавлять каждый файл???</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Отлично! Вы так же можете использовать шаблоны, если хотите добавить несколько файлов одного типа. Обраьтите внимание, что у нас появилось несколько файлов .txt в проекте.
+                </p>
+
+                <p>
+                    Некоторые оказались в папке с именем "octofamily", а другие в корне проекта. К счастью, у нас есть возможность доьавить все файлы, используя шаблон. Не забывайте про кавычки!
+                    <br>
+                    <strong>git add '*.txt'</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/7">1.7 Добавляем все изменения</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Коммитить каждый файл???</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    ОК! Вы добавили все текстовые файлы в промежуточную область. Не стесняйтесь еще раз выполнить <strong>git status</strong>, чтобы понять, что вы собираетесь закоммитить.
+                </p>
+
+                <p class="next">
+                    Выглядит неплохо, выполняем:
+                    <br>
+                    <strong>git commit -m 'Add all the octocat txt files'</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/8">1.8 Коммитим все изменения</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Major Tom to Ground control!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Отличная работа! Для вас создан новый пустой репозиторий на GitHub для работы с этим туториалом. Чтобы разместить наш локальный репозиторий на GitHub, мы должны добавить удаленный репозиторий.
+                    <br>
+                    Эта команда принимает имя удаленного репозитория и его URL. В нашем слуае это https://github.com/try-git/try_git.git
+                </p>
+
+                <p class="next">
+                    Выполняем команду с указанными аргументами:
+                    <br>
+                    <strong class="next">git remote add origin https://github.com/try-git/try_git.git</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/10">1.10 Удаленные репозитории</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Major Tom to Ground control!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Команда <strong>git push</strong> говорит Git, куда отправить наши изменения, когда все готово. Итак, запушим наши локальные изменения в наш удаленный репозиторий на GitHub.
+                    <br>
+                    Имя удаленного репозитория origin, а ветка по умолчанию называется master(не думайте пока что о ветках!). Параметр -u позволит нам в будующем не указывать дополнительные параметры, а просто выполнять <strong>git push</strong>. Git будет знать, что нужно делать.
+                </p>
+
+                <p class="next">
+                    Сделаем это!
+                    <br>
+                    <strong class="next">git push -u origin master</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/11">1.11 Отпрвка изменений</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Ground control to Major Tom!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Давайте представим, что прошло какое-то время. Мы пригласили других людей в наш проект, они забрали наши изменения в свои локальные репозитории и внесли свои изменения, запушили их.
+                    <br>
+                    Мы можем проверить изменения на GitHub и спуллить их с помощью команды:
+                </p>
+
+                <p class="next">
+                    <strong class="next">git pull origin master</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/12">1.12 Получение изменений</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>dy/dx !== const</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Ой! Похоже, кто-то еще вносил изменения в наш проект! Давайте посмотрим, что изменилось, с нашего последнего коммита, с помощью команды <strong>git diff</strong>.
+                    <br>
+                    Мы можем проверить изменения на GitHub и спуллить их с помощью команды:
+                </p>
+
+                <p>
+                    В данном случае мы хотим получить изменения с нашего последнего коммита, ссылку на который мы можем получить с помощью указателя <strong>HEAD</strong>.
+                    <br>
+                    <strong class="next">git diff HEAD</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/13">1.13 Различия</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>dy/dx !== const</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Еще один полезный вариант использования <strong>git diff</strong> - просмотр изменения, которые уже были помещены в промежуточную область. Запомните! В этой области находятся файлы, которые git готов(!) закоммитить.
+                    <br>
+                    Мы можем проверить изменения на GitHub и спуллить их с помощью команды:
+                </p>
+
+                <p>
+                    Давайте добавим новый файл octofamily/octodog.txt!
+                    <br>
+                    <strong class="next">git add octofamily/octodog.txt</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/14">1.14 Локальные различия</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Yet another title about dy/dx</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Отлично, теперь выполним предыдущую команду с флагом <strong>--staged</strong>. И увидим, какие изменения в нашем проекте мы собираемся коммитить. Вы должны увидеть, что файл octodog.txt создан.
+                </p>
+
+                <p>
+                    <strong class="next">git diff --staged</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/15">1.15 Локальные различия (продолжение)</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Integrate it!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Не стоило добавлять октособак к октокотам! Мы все-таки больше любим котиков. Удалим октопса из репозитория!
+                </p>
+
+                <p>
+                    Вы можете удалять файлы из промежуточной области с помощью <strong>git reset</strong>. Сделаем это!
+                    <br>
+                    <strong class="next">git reset octofamily/octodog.txt</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/16">1.16 Отмена изменений</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Ctrl-Z</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Безусловно, git проделал огромную работу по извлечению файла octodog.txt из промежуточной области. Но сам файл все еще находится в проекте! Было бы здорово, если бы мы могли вернуться к тому моменту, пока octodog не пришел и все не испортил.
+                </p>
+
+                <p>
+                    Файлы могут быть возвращены в состояние последнего коммита с помощью команды: <strong>git checkout -- &lt;target&gt;</strong>. Откатим octocat.txt
+                <br>
+                    <strong class="next">git checkout -- octocat.txt</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/17">1.17 Откатка изменений</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Plant a tree...</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Когда разработчики работают над новой фичей или багом, они обычно создают копию(или ветку) кода проекта, в которую они могут коммитить независимо. Когда разработка завершена, изменения из этой копии(ветки) нужно влить(вмержить) обратно в основную ветку проекта.
+                </p>
+
+                <p>
+                    Мы решили удалить всех этих несчастных октокотиков, давайте созданим новую ветку и назовем ее clean_up
+                <br>
+                    <strong class="next">git branch clean_up</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/18">1.18 Отбранчевываемся</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Short brush of bound straw</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Отлично! Сейчас, если вы выполните <strong>git branch</strong>, то увидете, что существует две ветки: <strong>master</strong> и <strong>clean_up</strong>.
+                </p>
+
+                <p>
+                    Вы можете переключаться между ними с помощью команды <strong>git checkout &lt;branch&gt;</strong>. Попробуем!
+                <br>
+                    <strong class="next">git checkout clean_up</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/19">1.19 Переключение веток</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Kill them all!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    ОК, сейчас вы находитесь в ветке clean_up. Теперь можно удалять несчастных октокотиков с помощью команды <strong>git rm</strong>, которая не только удалит файлы с диска, но и добавит сведения об их удалении в Git.
+                </p>
+
+                <p>
+                    Наверняка вы захотите воспользоваться шаблоном снова, чтобы сделать всю работу одним махом. Выполним:
+                <br>
+                    <strong class="next">git rm '*.txt'</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/20">1.20 Удаление всего</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Я такое коммитил!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    После того, как вы удалили всех октокотиков, вам необходимо закоммитить ваши изменения.
+                </p>
+
+                <p>
+                    Не забывапйте выполнить <strong>git status</strong>, чтобы проверить изменения перед коммитом. После этого смело выполняем уже известную нам команду:
+                <br>
+                    <strong class="next">git commit -m "Remove all the cats"</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/21">1.21 Коммитим изменения в ветке</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Go home!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Отлично! Мы почти закончили с котиками... Т.е. с исправлением бага. Теперь вам необходимо вернуться в ветку master и скопировать (смержить) ваши изменения из ветки clean_up.
+                </p>
+
+                <p>
+                    Возвращаемся в master
+                <br>
+                    <strong class="next">git checkout master</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/22">1.22 Возвращаемся в master</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Ready! Steady! Go!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Настал момент, когда вы должны смержить изменения из ветки clean_up в ветку master. Вдохните поглубже, это не так страшно!
+                </p>
+
+                <p>
+                    Мы уже находимся в ветке master (вы уже знаете, как в этом убедиться). Осталось только сказать Git, что мы хотим смержить в текущую ветку другую - clean_up:
+                <br>
+                    <strong class="next">git merge clean_up</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/23">1.23 Подготовка к слиянию</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Keeping Things Clean</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Поздравляем! Вы только что закончили свой первый самостоятельный багфикс и мерж. Все, что осталось сделать, -  убрать за собой. После того как вы закончили работать с веткой clean_up, она вам больше не нужна.
+                </p>
+
+                <p>
+                    Вы можете использовать команда <strong>git brnach -d &lt;branch name&gt;</strong> для удаления ветки. Сделаем это:
+                <br>
+                    <strong class="next">git branch -d clean_up</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/24">1.24 Удаление ветки</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Final countdown!</h2>
+        <div>
+        <figure>
+            <blockquote>
+                <p>
+                    Вот мы и на последнем шаге! Все, что нам осталось - залить (запушить) наши изменения в удаленный репозиторий на GitHub.
+                </p>
+
+                <p>
+                    Вы уже знаете, что нужно делать:
+                <br>
+                    <strong class="next">git push</strong>
+                </p>
+            </blockquote>
+            <figcaption><a href="https://try.github.io/levels/1/challenges/25">1.25 Последний push</a></figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <!-- Рекомендованная летература к лекции  "GIT" -->
+    <section class="slide">
+        <h2>Что почитать, посмотреть?</h2>
+        <div>
+        <h3>Почитать:</h3>
+        <ol>
+            <li>
+                <a href="http://git-scm.com/book/ru/v1">ProGit</a>
+            </li>
+            <li>
+                <img alt="habr" src="../../pics/habr.png">
+                <a href="http://habrahabr.ru/post/60347/">Git Wizardry</a>
+            </li>
+
+            <li>
+                <img alt="habr" src="../../pics/habr.png">
+                <a href="http://habrahabr.ru/post/231839/">6 мифов, мешающих разработчикам использовать Git</a>
+            </li>
+        </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что почитать, посмотреть?</h2>
+        <div>
+        <h3>Посмотреть:</h3>
+        <ol>
+            <li>
+                <img alt="en" src="../../pics/en.gif">
+                <a href="https://www.codeschool.com/paths/git">Git path on codeschool.com</a></li>
+        </ol>
+        </div>
+    </section>
+
+    <section class="slide" style="background-image: url('/pics/git/banner.jpg'); background-size: contain;"></section>
+
+
+    <div class="progress"><div></div></div>
+    <script src="../../shower/shower.min.js"></script>
+</body>
+</html>

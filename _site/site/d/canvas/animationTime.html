@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Canvas - Figures</title>
+<style type="text/css">
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#startAnimate {
+  position: absolute;
+  left: 100px;
+  top: 30px;
+  font-size: 50px;
+}
+</style>
+</head>
+<body>
+<button id="startAnimate">Поехали!</button>
+<canvas></canvas>
+<script type="text/javascript">
+var canvas = document.querySelector('canvas');
+var context = canvas.getContext('2d');
+var animateStep = 0;
+
+/* Код из слайда */
+var startTime, animationTime, length;
+/* Код из слайда */
+
+var animate = function(){
+
+  resize();
+  
+  /* Трансформации */
+  context.beginPath();
+
+  /* context.arc( x, y, radius, startAngle, endAngle [, anticlockwise] ); */
+  var padding = 200;
+  var radius = 130;
+  var length = canvas.width - padding * 2;
+  var y = canvas.height / 2;
+
+  /* Код из слайда */
+  var time = new Date().getTime();
+  var shiftTime = time - startTime;
+  var multiply = shiftTime / animationTime;
+  var x = length * multiply + padding;
+  /* Код из слайда */
+
+  context.arc( x, y, radius, 0, 2*Math.PI, false ); // Окружность
+
+  context.stroke();
+  context.fillStyle = 'gold';
+  context.fill();
+
+  if (multiply < 1) {
+    requestAnimationFrame(animate);
+  } else {
+    end();
+  }
+};
+
+/* Хелперы */
+var resize = function(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  var bigStep = 100;
+  var smallStep = 10;
+  context.beginPath();
+  context.strokeStyle = '#eeeeee';
+  for (var x = 0; x < canvas.width; x += smallStep) {
+    context.moveTo( x, 0 );
+    context.lineTo( x, canvas.height );
+  }
+  for (var y = 0; y < canvas.height; y += smallStep) {
+    context.moveTo( 0, y );
+    context.lineTo( canvas.width, y );
+  }
+  context.stroke();
+
+  context.beginPath();
+  context.strokeStyle = '#aaaaaa';
+  for (var x = 0; x < canvas.width; x += bigStep) {
+    context.moveTo( x, 0 );
+    context.lineTo( x, canvas.height );
+  }
+  for (var y = 0; y < canvas.height; y += bigStep) {
+    context.moveTo( 0, y );
+    context.lineTo( canvas.width, y );
+  }
+  context.stroke();
+
+  context.strokeStyle = '#ff0000';
+};
+window.addEventListener('resize', resize);
+resize();
+
+var _startTime = 0;
+var start = function(){
+  _startTime = new Date();
+};
+var end = function(){
+  alert(new Date() - _startTime);
+};
+
+document.querySelector('#startAnimate').addEventListener('click', function(){
+  animateStep = 0;
+  animationTime = 2000;
+  startTime = new Date().getTime();
+  start();
+  animate();
+});
+</script>
+</body>
+</html>

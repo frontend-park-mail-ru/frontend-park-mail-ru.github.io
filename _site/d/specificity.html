@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Selectors Specificity</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 24px;
+            background: #f9f9f9;
+            font-size: 36px;
+        }
+        .input {
+            outline: 0;
+            color: #333;
+            border: 1px dashed #eee;
+            min-height: 1em; /* Empty elements are collapsed in Firefox */
+        }
+        .output {
+            margin-top: 24px;
+        }
+        .output del {
+            text-decoration: none;
+            background: #e6e6e6;
+        }
+        .comment {
+            color: #999;
+        }
+    </style>
+</head><body>
+    <div class="input" contenteditable>tag#id.class</div>
+    <div class="output">
+    </div>
+    <script>
+        var input = document.querySelector('.input'),
+            output = document.querySelector('.output'),
+            textProp = 'innerText' in input ? 'innerText' : 'textContent';
+        input.addEventListener('keydown', function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+            }
+        });
+        function update () {
+            var selector = input[textProp].replace(/\s+/g, ' ').trim(),
+                m, a = 0, b = 0, c = 0, d = 0,
+                reb = /(#\w+)/g,
+                rec = /(\[[^\]]*\]|[:.]\w+)/g,
+                red = /(\w+)/g,
+                log = '';
+            // Number of ID attributes in the selector
+            m = selector.match(reb);
+            if (m) {
+                b = m.length;
+                log += '<p class="comment">' + selector.replace(reb, '<del>$&</del>') + ' ⤑</p>'
+                selector = selector.replace(reb, '');
+            }
+            // Number of other attributes and pseudo-classes
+            m = selector.match(rec);
+            if (m) {
+                c = m.length;
+                log += '<p class="comment">' + selector.replace(rec, '<del>$&</del>') + ' ⤑</p>'
+                selector = selector.replace(rec, '');
+            }
+            c = m ? m.length : 0;
+            // Number of element names and pseudo-elements
+            m = selector.match(red);
+            if (m) {
+                d = m.length;
+                log += '<p class="comment">' + selector.replace(red, '<del>$&</del>') + ' ⤑</p>'
+            }
+            log += '<p class="comment">∅</p>'
+            output.innerHTML = '<p><strong>' + a + ', ' + b + ', ' + c + ', ' + d +' </strong></p>' + log;
+
+        }
+        input.addEventListener('input', update);
+        input.focus();
+        update();
+    </script>
+</body></html>

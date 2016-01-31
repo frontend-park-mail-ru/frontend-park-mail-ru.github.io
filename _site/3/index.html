@@ -1,0 +1,25 @@
+<!DOCTYPE  html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <% if (page_title) { %>
+            <title><%=page_title%> — <%=site_title%></title>
+        <% } else { %>
+            <title><%=site_title%></title>
+        <% } %>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href='../main.css' rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <script>
+            //TODO: own GA
+        </script>
+        <div id="page">
+            <%=content%>
+            <div id="footer">✢ ✢ ✢</div>
+        </div>
+        <script src="../highlight.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>

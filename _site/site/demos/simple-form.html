@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Формы</title>
+		<script src="js/libs/jquery-1.11.0.min.js"></script>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/mail.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<form class="password-recovery__remind__new">
+			<p><label>Customer name: <input class="form__field"></label></p>
+			<p><label>Telephone: <input class="form__field"></label></p>
+			<p><label>E-mail address: <input class="form__field"></label></p>
+			<p><label>Order type: <select class="form__select__box">
+				<option>Business</option>
+				<option>Customer</option>
+			</select>
+		</label>
+		</p>
+		<fieldset>
+			<legend> Pizza Size </legend>
+			<p><label> <input type="radio" name="size"> Small </label></p>
+			<p><label> <input type="radio" name="size"> Medium </label></p>
+			<p><label> <input type="radio" name="size"> Large </label></p>
+		</fieldset>
+		<br/>
+		<fieldset>
+			<legend> Pizza Toppings </legend>
+			<p><label> <input type="checkbox"> Bacon </label></p>
+			<p><label> <input type="checkbox"> Extra Cheese </label></p>
+			<p><label> <input type="checkbox"> Onion </label></p>
+			<p><label> <input type="checkbox"> Mushroom </label></p>
+		</fieldset>
+		<p><label>Delivery instructions: <textarea class="form__field"></textarea></label></p>
+		<p><button class="btn btn_stylish btn_main">Submit order</button></p>
+	</form>
+</body>
+</html>

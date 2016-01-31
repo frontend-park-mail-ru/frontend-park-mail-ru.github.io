@@ -1,0 +1,106 @@
+<!DOCTYPE  html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        
+            <title>DOM & AJAX — Фронтенд разработка</title>
+        
+        
+            <meta name="description" content="Материалы курса «Фронтенд разработка», читаемого во втором семестре Технопарка Mail.ru."/>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href='../main.css' rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <script>
+
+            // if (location.host === 'eprev.github.io') location.href= 'http://frontend.tech-mail.ru';
+            //
+            // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            //
+            // ga('create', 'UA-12144011-3', 'eprev.org');
+            // ga('send', 'pageview');
+
+        </script>
+        <div id="page">
+            
+<p><a href="/">ГЛАВНАЯ</a></p>
+
+<h1 id="2">2 DOM &amp; AJAX</h1>
+
+<p><strong>ВНИМАНИЕ! РАЗДЕЛ НАХОДИТСЯ В СТАДИИ РАЗРАБОТКИ.</strong></p>
+
+<p>Содержание:</p>
+
+<p>2.1. <a href="#2.1">HTML, CSS</a></p>
+
+<p class="toc">2.1.1 <a href="#2.1.1">Полезные ресурсы</a><br />
+2.1.2 <a href="#2.1.2">Смешанное занятие</a><br />
+2.1.3 <a href="#2.1.3">Домашнее задание</a><br />
+2.1.4 <a href="#2.1.4">Техническое задание</a></p>
+
+<p>2.2. <a href="#2.2">Работа с DOM, Events</a></p>
+
+<p class="toc">2.2.1 <a href="#2.2.1">Полезные ресурсы</a><br />
+2.2.2 <a href="#2.2.2">Смешанное занятие</a><br />
+2.2.3 <a href="#2.2.3">Домашнее задание</a><br />
+2.2.4 <a href="#2.2.4">Техническое задание</a></p>
+
+<h2 id="2.1">2.1 HTML, CSS</h2>
+
+<h3 id="2.1.1">2.1.1 Полезные ресурсы</h3>
+
+<h3 id="2.1.2">2.1.2 Смешанное занятие</h3>
+
+<h3 id="2.1.3">2.1.3 Домашнее задание</h3>
+
+<h3 id="2.1.4">2.1.4 Техническое задание</h3>
+
+<h2 id="2.2">2.2 Работа с DOM, Events</h2>
+
+<h3 id="2.2.1">2.2.1 Полезные ресурсы</h3>
+
+<ol>
+  <li>Mozilla Developer Network. <a href="https://developer.mozilla.org/en/docs/DOM">Document Object Model (DOM)</a>.</li>
+  <li>W3C. <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html">Document Object Model Events</a>.</li>
+  <li>Илья Кантор. <a href="http://learn.javascript.ru">Современный учебник JavaScript</a> // 2013.</li>
+  <li><a href="http://www.json-p.org">JSONP</a>.</li>
+</ol>
+
+<h3 id="2.2.2">2.2.2 Смешанное занятие</h3>
+
+<h3 id="2.2.3">2.2.3 Домашнее задание</h3>
+
+<ol>
+  <li>Реализация игровой механики (на протяжении последующих домашних заданий в этом модуле).</li>
+  <li>Задействовать механизм publish–subscribe и реализовать ViewManager в соответствии с техническим заданием.</li>
+</ol>
+
+<h3 id="2.2.4">2.2.4 Техническое задание</h3>
+
+<ol>
+  <li>Модернизировать используемые <code>View</code> так, чтобы у каждого представления был свой элемент в DOM. Другими словами, отрисовывать (метод <code>render()</code>) представление необходимо всего один раз, а методы<code>show()</code> и <code>hide()</code> использовать для управления видимостью элемента, который содержит отрисованное представление.</li>
+  <li>Необходимо создать представление <code>ViewManager</code> и организовать его работу следующим образом:
+    <ol>
+      <li>Добавить зависимость <code>ViewManager</code> в роутер.</li>
+      <li>Каждый <code>View</code> должен бросать событие <code>show</code> во время вызова метода <code>show()</code>, на которое будет подписываться <code>ViewManager</code>.</li>
+      <li>Роутер должен информировать <code>ViewManager</code> об используемых <code>View</code>, а <code>ViewMagaer</code> подписываться на событие <code>show</code> новых представлений.</li>
+      <li>В роутере для показа <code>View</code> необходимо использовать метод <code>show()</code> соотвествующего представления.</li>
+      <li>Роутер не должен управлять скрытием остальных представлений (то есть вызовы метода <code>hide()</code> представлений в роутере должны отсутствовать).</li>
+      <li>Обработка события <code>show</code> представлений в <code>ViewManager</code> заключается в том, чтобы скрыть все известные ему представления за исключением представления, которое породило это событие.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Таким образом, у нас должен получится гибкий механизм управления экранами. Когда нам необходимо показать какой-нибудь экран, мы просто вызываем метод <code>show()</code> у соотвествующего представления, а все остальные представления за нас скроет <code>ViewManager</code>.</p>
+
+
+            <div id="footer">✢ ✢ ✢</div>
+        </div>
+        <script src="/highlight.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>

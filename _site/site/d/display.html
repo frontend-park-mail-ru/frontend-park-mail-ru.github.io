@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>display</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 0;
+            background: #f9f9f9;
+            font-size: 36px;
+        }
+        .ct {
+            margin: 50px;
+        }
+        .block {
+
+        }
+        .block::before {
+            /*display: inline;*/
+            content: '0';
+        }
+        .block::before::before {
+            /*display: inline;*/
+            content: '!';
+        }
+        .block::after {
+            /*display: inline;*/
+            content: '+';
+        }
+        .color_1 {
+            background: #e33;
+        }
+        .color_2 {
+            background: #ee3;
+        }
+        .color_3 {
+            background: #3ee;
+        }
+        .color_4 {
+            background: #3e3;
+        }
+        .color_5 {
+            background: #e3e;
+        }
+    </style>
+</head><body>
+    <div class="ct">
+        <div class="block color_1">1</div>
+        <div class="block color_2">2</div>
+        <div class="block color_3">3</div>
+        <div class="block color_4">4</div>
+        <div class="block color_5">5</div>
+    </div>
+</body></html>

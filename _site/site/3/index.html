@@ -1,0 +1,210 @@
+<!DOCTYPE  html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        
+            <title>Отладка и мобильный веб — Фронтенд разработка</title>
+        
+        
+            <meta name="description" content="Материалы курса «Фронтенд разработка», читаемого во втором семестре Технопарка Mail.ru."/>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href='../main.css' rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <script>
+
+            // if (location.host === 'eprev.github.io') location.href= 'http://frontend.tech-mail.ru';
+            //
+            // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            //
+            // ga('create', 'UA-12144011-3', 'eprev.org');
+            // ga('send', 'pageview');
+
+        </script>
+        <div id="page">
+            
+<p><a href="/">ГЛАВНАЯ</a></p>
+
+<h1 id="3">3 AJAX, хранение данных</h1>
+
+<p><strong>ВНИМАНИЕ! РАЗДЕЛ НАХОДИТСЯ В СТАДИИ РАЗРАБОТКИ.</strong></p>
+
+<p>Содержание:</p>
+
+<p>3.1 <a href="#3.1">Сетевое взаимодествие</a></p>
+
+<p class="toc">3.1.1 <a href="#3.1.1">Полезные ресурсы</a><br />
+3.1.2 <a href="#3.1.2">Смешанное занятие</a><br />
+3.1.3 <a href="#3.1.3">Домашнее задание</a><br />
+3.1.4 <a href="#3.1.4">Техническое задание</a></p>
+
+<p>3.2 <a href="#3.2">Хранение данных на клиенте</a></p>
+
+<p class="toc">3.2.1 <a href="#3.2.1">Полезные ресурсы</a><br />
+3.2.2 <a href="#3.2.2">Смешанное занятие</a><br />
+3.2.3 <a href="#3.2.3">Домашнее задание</a><br />
+3.2.4 <a href="#3.2.4">Техническое задание</a></p>
+
+<p>3.3. <a href="#3.3">Web Inspector и препроцессоры CSS</a></p>
+
+<p class="toc">3.3.1 <a href="#3.3.1">Полезные ресурсы</a><br />
+3.3.2 <a href="#3.3.2">Смешанное занятие</a><br />
+3.3.3 <a href="#3.3.3">Домашнее задание</a><br />
+3.3.4 <a href="#3.3.4">Техническое задание</a></p>
+
+<h2 id="3.1">3.1 Сетевое взаимодествие</h2>
+
+<h3 id="3.1.1">3.1.1 Полезные ресурсы</h3>
+
+<ol>
+  <li>Википедия. <a href="http://en.wikipedia.org/wiki/HTTP_status_code">List of HTTP status codes</a>.</li>
+  <li>Mozilla Developer Network. <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>.</li>
+  <li>Tiffany Brown. <a href="http://dev.opera.com/articles/view/xhr2/">Introduction to XMLHttpRequest Level 2</a> // 2012.</li>
+  <li>Armin Ronacher. <a href="http://lucumr.pocoo.org/2012/9/24/websockets-101/">Websockets 101</a> // 2012.</li>
+  <li>Malte Ubl, Eiji Kitamura. <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">Introducing WebSockets: Bringing Sockets to the Web</a> // 2010.</li>
+  <li>Илья Кантор. <a href="http://learn.javascript.ru/websockets">WebSocket</a>.</li>
+</ol>
+
+<h3 id="3.1.2">3.1.2 Смешанное занятие</h3>
+
+<h3 id="3.1.3">3.1.3 Домашнее задание</h3>
+
+<ol>
+  <li>Наладить взаимодествие с сервером с помощью <code>AJAX</code>.
+    <ol>
+      <li>Организовать хранение и обработку <code>Scores</code> на сервере (взять готовый сервер)</li>
+      <li>Добавить форму ввода имени игрока с сохранением результатов на сервер</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="3.1.4">3.1.4 Техническое задание</h3>
+
+<ol>
+  <li>Создать новый <code>view GameOver</code> на экране <code>Game</code>
+    <ol>
+      <li><code>View</code> должна содержать поле ввода имени игрока, кнопку сохранения и отображать переданный при инициализации счет игрока.</li>
+      <li><code>View GameOver</code> не имеет отдульного маршрута и отображатеся только через экран <code>Game</code></li>
+      <li>При <a href="http://learn.javascript.ru/forms-methods"><code>сабмите формы</code></a> создается <a href="http://backbonejs.org/#Collection-create"><code>модель score</code></a> с указанными в форме данными и добавляется в коллекцию scores и сохраняется на сервер</li>
+      <li>На время сохранения форма блокируется</li>
+      <li>При ошибке сохранения пользователю выводится ошибка и форма разблокируется</li>
+      <li>После успешного сохранения форма разблокируется, сбрасывается и происходит переход на экран <code>Scoreboard</code></li>
+    </ol>
+  </li>
+  <li>Модифицировать экран <code>Scoreboard</code> для получения данных с сервера (топ 10, заданные через <code>?limit=N</code>)
+    <ol>
+      <li>При отображении экрана происходит <a href="http://backbonejs.org/#Collection-fetch"><code>fetch</code></a> коллекции <code>scores</code></li>
+      <li>Во время загрузки пользователю отображается индикатор загрузки</li>
+      <li>В случае ошибки загрузки пользователю отображается соответствующее сообщение с возможностью обновить экран</li>
+      <li>В случае успешной загрузки отображается список</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="3.1.5">3.1.5 RESTful API</h3>
+
+<p>Серверное RESTful API для работы со Score.</p>
+
+<ol>
+  <li><code>GET /scores</code>
+    <ul>
+      <li>Код <code>200</code> — возвращает всю коллкцию scores или первые x элементов (заданные через <code>?limit=N</code>) отсортированную по убыванию счета игрока</li>
+    </ul>
+  </li>
+  <li><code>GET /scores/:id</code>
+    <ul>
+      <li>Код <code>200</code> — возвращает модель с переданным id</li>
+      <li>Код <code>400</code> — не верные входные данные</li>
+      <li>Код <code>404</code> — модель с указанным id не найдена</li>
+    </ul>
+  </li>
+  <li><code>POST /scores</code>
+    <ul>
+      <li>Тело запроса: <code>{"name": "&lt;name&gt;", "score": &lt;score&gt;}</code></li>
+      <li>Код <code>200</code> — возвращает id созданной модели</li>
+      <li>Код <code>400</code> — не верные входные данные</li>
+    </ul>
+  </li>
+  <li><code>DELETE /scores/:id</code>
+    <ul>
+      <li>Код <code>200</code> — удаляет модель с переданным id</li>
+      <li>Код <code>400</code> — не верные входные данные</li>
+      <li>Код <code>404</code> — модель с указанным id не найдена</li>
+    </ul>
+  </li>
+  <li><code>PUT /scores/:id</code>
+    <ul>
+      <li>Тело запроса: <code>{"id": &lt;id&gt;, "name": "&lt;name&gt;", "score": &lt;score&gt;}</code></li>
+      <li>Код <code>200</code> — обновляет и возвращает модель с переданным id</li>
+      <li>Код <code>400</code> — не верные входные данные</li>
+      <li>Код <code>404</code> — модель с указанным id не найдена</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="3.2">3.2 Хранение данных на клиенте</h2>
+
+<h3 id="3.2.1">3.2.1 Полезные ресурсы</h3>
+
+<ol>
+  <li>Википедия. <a href="http://ru.wikipedia.org/wiki/HTTP_cookie">HTTP cookie</a>.</li>
+  <li>Илья Кантор. <a href="http://learn.javascript.ru/cookie">Куки, document.cookie</a> // 2013.</li>
+  <li>Michael Mahemoff. <a href="http://www.html5rocks.com/en/tutorials/offline/storage">Client-Side Storage</a> // 2010.</li>
+</ol>
+
+<h3 id="3.2.2">3.2.2 Смешанное занятие</h3>
+
+<h3 id="3.2.3">3.2.3 Домашнее задание</h3>
+
+<ol>
+  <li>Организовать хранение пользовательских настроек на клиенте. Сохранять результаты игры на клиенте, при остуствии связи с сервером.</li>
+</ol>
+
+<h3 id="3.2.4">3.2.4 Техническое задание</h3>
+
+<ol>
+  <li>При возникновении серверных ошибок (5хх) в момент сохранения результатов игры или отсутствии сети, несохраненные на сервере данные должны помещаться в localStorage.</li>
+  <li>Необходимо предусмотреть одновременное хранение нескольких резульататов игры в localStorage.</li>
+  <li>При загрузке экрана ScoreBoard необходимо проверить наличие несохраненных на сервере результатов игры. Если такие данные в localStorage есть, тогда необходимо их отправить на сервер. Когда все данные из localStorage будут сохранены на сервере, следует обновить список игроков на экране с сервера.</li>
+</ol>
+
+<h2 id="3.3">3.3 Web Inspector и препроцессоры CSS</h2>
+
+<h3 id="3.3.1">3.3.1 Полезные ресурсы</h3>
+
+<ol>
+  <li><a href="https://developers.google.com/chrome-developer-tools/">Chrome DevTools</a>.</li>
+  <li><a href="http://sass-lang.com">Sass</a>.</li>
+  <li><a href="https://developers.google.com/chrome-developer-tools/docs/css-preprocessors">Source Maps</a>.</li>
+</ol>
+
+<h3 id="3.3.2">3.3.2 Смешанное занятие</h3>
+
+<!--
+- WebInspector (demo).
+    + breakpoints
+    + source maps
+    + overrides
+- Sass
+    + mixins
+-->
+
+<h3 id="3.3.3">3.3.3 Домашнее задание</h3>
+
+<ol>
+  <li>Перевести CSS на Sass. Используйте <code>grunt-contrib-sass</code> для сборки проекта.</li>
+  <li>Настроить <code>grunt-contrib-watch</code> для SCSS файлов.</li>
+  <li>Рефакторинг SCSS файлов (переменные, mixin, nesting).</li>
+</ol>
+
+
+            <div id="footer">✢ ✢ ✢</div>
+        </div>
+        <script src="/highlight.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>
