@@ -2,21 +2,86 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8" />
-        <% if (page_title) { %>
-            <title><%=page_title%> — <%=site_title%></title>
-        <% } else { %>
-            <title><%=site_title%></title>
-        <% } %>
-
+        
+            <title>Преамбула — Фронтенд разработка</title>
+        
+        
+            <meta name="description" content="Материалы курса «Фронтенд разработка», читаемого во втором семестре Технопарка Mail.ru."/>
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href='../main.css' rel='stylesheet' type='text/css' />
     </head>
     <body>
         <script>
-            //TODO: own GA
+
+            // if (location.host === 'eprev.github.io') location.href= 'http://frontend.tech-mail.ru';
+            //
+            // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            //
+            // ga('create', 'UA-12144011-3', 'eprev.org');
+            // ga('send', 'pageview');
+
         </script>
         <div id="page">
-            <%=content%>
+            
+<p><a href="/">ГЛАВНАЯ</a></p>
+
+<h1>Преамбула</h1>
+
+<p>Предполагается, что студент имеет базовые знания веб-технологий (HTML, CSS, JavaScript) и практические навыки решения задач с помощью базовых алгоритмов и структур данных.</p>
+
+<p>Проектная работа выполняется в группах по 2–3 человека (роли каждого должны быть представлены при формировании группы).</p>
+
+<p>Для выполнения проектной работы на занятиях потребуется ноутбук/виртуальная машина с установленной ОС Linux/MacOS/Windows. Из программного обеспечения — <a href="http://git-scm.com">Git</a> и <a href="http://nodejs.org">Node.js</a> 0.8+.</p>
+
+<p>Ресурсы для самостоятельного изучения:</p>
+
+<ol>
+  <li>Влад Мержевич. <a href="http://htmlbook.ru/samhtml">Самоучитель HTML4</a> // 2010.</li>
+  <li>Влад Мержевич. <a href="http://htmlbook.ru/samcss">Самоучитель CSS</a> // 2010.</li>
+  <li>Илья Кантор. <a href="http://learn.javascript.ru">Современный учебник JavaScript</a> // 2013.</li>
+  <li>Антон Шевчук. <a href="http://anton.shevchuk.name/jquery-book/">jQuery для начинающих</a> // 2013.</li>
+  <li>Mark Piligrim. <a href="http://diveintohtml5.info">Dive into HTML5</a> // 2013.</li>
+</ol>
+
+<p>Интересные ресурсы:</p>
+
+<ol>
+  <li><a href="https://developer.mozilla.org/">Mozilla Developer Network</a>.</li>
+  <li><a href="http://www.html5rocks.com/">HTML5 Rocks</a>.</li>
+  <li><a href="http://buildnewgames.com">Build New Games. Open Web techniques for cutting-edge game development</a>.</li>
+  <li><a href="http://devdocs.io">DevDocs</a>.</li>
+</ol>
+
+<p>Примеры игры на HTML5 &amp; JavaScript для вдохновения:</p>
+
+<ol>
+  <li><a href="http://atari.com/arcade/">Atari Arcade</a>.</li>
+  <li><a href="https://www.google.com/doodles/30th-anniversary-of-pac-man">30th Anniversary of PAC-MAN</a>.</li>
+  <li><a href="http://flattybirdgame.com">Flatty Bird</a>.</li>
+  <li><a href="http://gopherwoodstudios.com/sandtrap/sand-trap.htm">Sand Trap</a>.</li>
+  <li><a href="http://chrome.com/campaigns/rollit">Roll It!</a> из <a href="http://www.chromeexperiments.com/detail/roll-it/">Chrome Experiments</a>.</li>
+  <li><a href="http://www.playmapscube.com">Cube</a>.</li>
+  <li><a href="http://www.contrejour.ie">Contre Jour</a>.</li>
+  <li><a href="http://cssdeck.com/labs/html5-doodle-jump">Doodle Jump</a>.</li>
+  <li><a href="http://cssdeck.com/labs/classic-snake-game-with-html5-canvas">Classic Snake</a>.</li>
+  <li><a href="http://cssdeck.com/labs/ping-pong-game-tutorial-with-html5-canvas-and-sounds">Ping-Pong</a>.</li>
+  <li><a href="http://sysach.com/circle-game/">Circle Game</a>.</li>
+  <li><a href="http://missile-game.bwhmather.com">Missile Game</a>.</li>
+</ol>
+
+<p>Над проектом работали:</p>
+
+<ul>
+  <li><a href="https://github.com/eprev">Антон Епрев</a></li>
+  <li><a href="https://github.com/iketari">Артем Мезин</a></li>
+  <li><a href="https://github.com/madimp">Егор Дыдыкин</a></li>
+  <li><a href="https://github.com/ivan-chashkin">Иван Чашкин</a></li>
+</ul>
+
             <div id="footer">✢ ✢ ✢</div>
         </div>
         <script src="../highlight.js"></script>
