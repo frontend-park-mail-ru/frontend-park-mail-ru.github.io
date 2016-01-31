@@ -2,7 +2,7 @@ timezone: Europe/Moscow
 
 safe: true
 markdown: kramdown
-pygments: true
+highlighter: true
 
 exclude: [package.json, .gitignore, .editorconfig, node_modules, README.md]
 
