@@ -441,32 +441,9 @@
     <section class="slide">
         <h2>Установка Node.JS</h2>
         <div>
-            <p><a target="_blank" href="http://nodejs.org">nodejs.org</a></p>
-            <pre>
-                <code>Для Ubuntu</code>
-                <code>curl -sL deb.nodesource.com/setup | sudo bash -</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Установка Node.JS</h2>
-        <div>
             <pre>
                 <code>apt-get uninstall nodejs</code>
                 <code>apt-get install nodejs</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Установка Node.JS</h2>
-        <div>
-            <p><a target="_blank" href="http://nodejs.org/download/">nodejs.org/download</a></p>
-            <pre>
-                <code>./configure</code>
-                <code>make</code>
-                <code>make install</code>
             </pre>
         </div>
     </section>
@@ -482,11 +459,112 @@
     </section>
 
     <section class="slide">
+        <h2>Что такое NodeJS?</h2>
+        <div>
+            <p>
+                <ul>
+                    <li>Исполняется на сервере</li>
+                    <li>Использует движек V8 (Chrome)</li>
+                    <li>Содержит Модули для работы системой (файловой, сокетами и т.д.)</li>
+                </ul>
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
         <h2>Установка git</h2>
         <div>
             <p><a target="_blank" href="http://git-scm.com/downloads">git-scm.com/downloads</a></p>
             <pre>
                 <code>git --version</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что такое СКВ (GIT) ?</h2>
+        <div style="background: url('/pics/git/cover.jpg') no-repeat 100% 100%; background-size: contain;">
+            <figure>
+                <blockquote>
+                    <p>Система контроля версий (<strong>СКВ</strong>) — это система, регистрирующая изменения в одном или нескольких файлах с тем, чтобы в дальнейшем была возможность вернуться к определённым старым версиям этих файлов.</p>
+                </blockquote>
+                <figcaption><a target="_blank" href="http://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B5-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B9">ProGit</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Как обычно используют GIT</h2>
+        <div style="background: url('/pics/git_mrg_flow.png') no-repeat 100% 100%; background-size: contain; background-position-x: left;">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Базовы термины GIT</h2>
+        <div>
+            <ul>
+                <li>clone - создание локального репозитория</li>
+                <li>commit - сохранения изменений в локальном репозитории</li>
+                <li>remote - удаленный репозиторий</li>
+                <li>branch - ветка</li>
+                <li>pull/fetch - выкачать изменения из удаленного репозитория </li>
+                <li>push - отправить изменения на удаленный репозиторий</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Как используется в OpenSource</h2>
+        <div style="background: url('/pics/git_opensource_flow.png') no-repeat 100% 100%; background-size: contain; background-position-x: left;">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Термины Github</h2>
+        <div>
+            <ul>
+                <li>fork - копия проекта на github</li>
+                <li>upstream - проект от которого сделан fork </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Форкаемся</h2>
+        <div style="background: url('/pics/fork.png') no-repeat 100% 100%; background-size: contain; background-position-y: top;">
+            <p style="margin-top: 185px; font-size: 32px;">Переходим по ссылке https://goo.gl/mO3W9i и нажимаем "Fork"</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Клонируем форк</h2>
+        <div>
+            <pre>
+                <code style="font-size: 21px;">git clone https://github.com/{github_name}/frontend-upstream.git {проект}</code>
+                <code>cd {проект}</code>
+                <code>git status</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Начинаем нажимать кнопки</h2>
+        <div>
+            <p></p>
+            <pre>
+                <code>git checkout v0</code>
+                <code>*нажимаем кнопки*</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Коммитим и Пушим</h2>
+        <div>
+            <pre>
+                <code>git checkout -b v0-{ваше имя через точку}</code>
+                <code>git commit -am "{комментарий к своим изменениям}"</code>
+                <code>git push origin v0-{ваше имя через точку}</code>
             </pre>
         </div>
     </section>
@@ -529,17 +607,6 @@
         </h2>
     </section>
 
-    <section class="slide">
-        <h2>Это займет не больше 15 минут!</h2>
-        <div style="background: url('/pics/git/cover.jpg') no-repeat 100% 100%; background-size: contain;">
-            <figure>
-                <blockquote>
-                    <p><strong>Что такое контроль версий?</strong> Система контроля версий (<strong>СКВ</strong>) — это система, регистрирующая изменения в одном или нескольких файлах с тем, чтобы в дальнейшем была возможность вернуться к определённым старым версиям этих файлов.</p>
-                </blockquote>
-                <figcaption><a target="_blank" href="http://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B5-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B9">ProGit</a></figcaption>
-            </figure>
-        </div>
-    </section>
 
     <section class="slide">
         <h2>Поехали!</h2>
