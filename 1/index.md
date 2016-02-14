@@ -487,7 +487,7 @@ showMainScreen();
 {: id="1.2.1"}
 
 1. Addy Osmani. [Patterns For Large-Scale JavaScript Application Architecture](http://addyosmani.com/largescalejavascript/) // 2011.
-2. Эдди Османи. [Паттерны для масштабируемых JavaScript-приложений](http://largescalejs.ru) // 2011.
+<!-- 2. Эдди Османи. [Паттерны для масштабируемых JavaScript-приложений](http://largescalejs.ru) // 2011. -->
 3. Addy Osmani. [Developing Backbone.js Applications](http://addyosmani.github.io/backbone-fundamentals/) // 2013.
 4. Документация [Backbone.js](http://backbonejs.org).
 5. Неофициальный перевод документации [Backbone.js](http://backbonejs.ru).
