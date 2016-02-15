@@ -1717,18 +1717,54 @@
     </section>
 
     <section class="slide">
-        <h2>JavaScript</h2>
+        <h2>Unit тестирование</h2>
         <div>
-        <pre>
-            <code><mark class="comment">/* Конструктор экрана "Лучшие игроки" */</mark></code>
-            <code>function showScoreboardScreen() {</code>
-            <code>    hideMainScreen();</code>
-            <code>}</code>
-            <code><mark class="comment">/* Деструктор экрана "Лучшие игроки" */</mark></code>
-            <code>function hideScoreboardScreen() {}</code>
-        </pre>
+            <p>
+                <strong>Это</strong> - процесс в программировании, позволяющий проверить на корректность отдельные модули исходного кода программы
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Зачем тестировать?</h2>
+        <div>
+            <ul>
+                <li>Повысить качество кода</li>
+                <li>Сделать код более устойчивым к изменениям</li>
+                <li>Улучшить уровень документированности кода</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что тестировать?</h2>
+        <div>
+            <ul>
+                <li>Участки кода, которые вызываются редко</li>
+                <li>Сложные участки кода</li>
+                <li>"Опасные" участки кода</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="slide">
+        <h2>QUnit</h2>
+        <div>
+          <code>
+              cat public_html/tests/index.html
+              <br/>
+              ...
+              <br/>
+              &lt;head&gt;<br/>
+              &lt;link rel=&quot;stylesheet&quot; href=&quot;qunit.css&quot;&gt; <br/>
+              &lt;script src=&quot;qunit.js&quot;&gt;&lt;/script&gt; <br/>
+              &lt;script src=&quot;your-code-for-testing.js&quot;&gt;&lt;/script&gt; <br/>
+              &lt;script src=&quot;your-tests.js&quot;&gt;&lt;/script&gt; <br/>
+              ...
+          </code>
        </div>
     </section>
+
 
     <section class="slide">
         <h2>Домашнее задание</h2>
