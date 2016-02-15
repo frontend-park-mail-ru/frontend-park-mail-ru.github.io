@@ -121,7 +121,7 @@
             </h3>
             <br>
             <ul>
-                <li>ES5. Поддерживается большинством барузеров.</li>
+                <li>ES5. Поддерживается большинством браузеров.</li>
                 <li>ES6(2015). Частично поддерживается</li>
                 <li>ES7(2016). Лето 2016</li>
             </ul>
@@ -136,7 +136,7 @@
             </h3>
             <br>
             <ul>
-                <li><strong>ES5. Поддерживается большинством барузеров.</strong></li>
+                <li><strong>ES5. Поддерживается большинством браузеров.</strong></li>
                 <li>ES6(2015). <a href="https://babeljs.io/">BabelJS</a></li>
                 <li><s>ES7(2016). Лето 2016</s></li>
             </ul>
@@ -312,7 +312,7 @@
             <code>АРХИТЕКТУРА <mark class="comment">// 4 + КР</mark></code>
             <code>DOM &amp; Events <mark class="comment">// 3 + КР</mark></code>
             <code>AJAX, хранение данных и отладка <mark class="comment">// 3 + КР</mark></code>
-            <code>ОТДЛАДКА И МОБИЛЬНЫЙ ВЕБ <mark class="comment">// 2 + КР</mark></code>
+            <code>ОТЛАДКА И МОБИЛЬНЫЙ ВЕБ <mark class="comment">// 2 + КР</mark></code>
         </pre>
         </div>
     </section>
@@ -422,6 +422,17 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Возможности браузера</h2>
+        <div>
+            <ol>
+                <li><a target="_blank" href="http://html5demos.com/">http://html5demos.com/</a></li>
+                <li><a target="_blank" href="http://html5test.com/">http://html5test.com/</a></li>
+                <li><a target="_blank" href="http://html5please.com/">http://html5please.com/</a></li>
+            </ol>
+        </div>
+    </section>
+
 
     <!-- Практическая часть -->
 
@@ -441,32 +452,9 @@
     <section class="slide">
         <h2>Установка Node.JS</h2>
         <div>
-            <p><a target="_blank" href="http://nodejs.org">nodejs.org</a></p>
-            <pre>
-                <code>Для Ubuntu</code>
-                <code>curl -sL deb.nodesource.com/setup | sudo bash -</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Установка Node.JS</h2>
-        <div>
             <pre>
                 <code>apt-get uninstall nodejs</code>
                 <code>apt-get install nodejs</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Установка Node.JS</h2>
-        <div>
-            <p><a target="_blank" href="http://nodejs.org/download/">nodejs.org/download</a></p>
-            <pre>
-                <code>./configure</code>
-                <code>make</code>
-                <code>make install</code>
             </pre>
         </div>
     </section>
@@ -482,11 +470,112 @@
     </section>
 
     <section class="slide">
+        <h2>Что такое NodeJS?</h2>
+        <div>
+            <p>
+                <ul>
+                    <li>Исполняется на сервере</li>
+                    <li>Использует движок V8 (Chrome)</li>
+                    <li>Содержит Модули для работы с системой (файловой, сокетами и т.д.)</li>
+                </ul>
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
         <h2>Установка git</h2>
         <div>
             <p><a target="_blank" href="http://git-scm.com/downloads">git-scm.com/downloads</a></p>
             <pre>
                 <code>git --version</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что такое СКВ (GIT) ?</h2>
+        <div style="background: url('/pics/git/cover.jpg') no-repeat 100% 100%; background-size: contain;">
+            <figure>
+                <blockquote>
+                    <p>Система контроля версий (<strong>СКВ</strong>) — это система, регистрирующая изменения в одном или нескольких файлах с тем, чтобы в дальнейшем была возможность вернуться к определённым старым версиям этих файлов.</p>
+                </blockquote>
+                <figcaption><a target="_blank" href="http://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B5-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B9">ProGit</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Как обычно используют GIT</h2>
+        <div style="background: url('/pics/git_mrg_flow.png') no-repeat 100% 100%; background-size: contain; background-position-x: left;">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Базовые термины GIT</h2>
+        <div>
+            <ul>
+                <li>clone - создание локального репозитория</li>
+                <li>commit - сохранения изменений в локальном репозитории</li>
+                <li>remote - удаленный репозиторий</li>
+                <li>branch - ветка</li>
+                <li>pull/fetch - выкачать изменения из удаленного репозитория </li>
+                <li>push - отправить изменения на удаленный репозиторий</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Как используется в OpenSource</h2>
+        <div style="background: url('/pics/git_opensource_flow.png') no-repeat 100% 100%; background-size: contain; background-position-x: left;">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Термины Github</h2>
+        <div>
+            <ul>
+                <li>fork - копия проекта на github</li>
+                <li>upstream - проект, от которого сделан fork </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Форкаемся</h2>
+        <div style="background: url('/pics/fork.png') no-repeat 100% 100%; background-size: contain; background-position-y: top;">
+            <p style="margin-top: 185px; font-size: 32px;">Переходим по ссылке <b>https://goo.gl/mO3W9i</b> и нажимаем "Fork"</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Клонируем форк</h2>
+        <div>
+            <pre>
+                <code style="font-size: 21px;">git clone https://github.com/{github_name}/frontend-upstream.git {проект}</code>
+                <code>cd {проект}</code>
+                <code>git status</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Начинаем нажимать кнопки</h2>
+        <div>
+            <p></p>
+            <pre>
+                <code>git checkout v0</code>
+                <code>*нажимаем кнопки*</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Коммитим и Пушим</h2>
+        <div>
+            <pre>
+                <code>git checkout -b v0-{ваше имя через точку}</code>
+                <code>git commit -am "{комментарий к своим изменениям}"</code>
+                <code>git push origin v0-{ваше имя через точку}</code>
             </pre>
         </div>
     </section>
@@ -529,17 +618,6 @@
         </h2>
     </section>
 
-    <section class="slide">
-        <h2>Это займет не больше 15 минут!</h2>
-        <div style="background: url('/pics/git/cover.jpg') no-repeat 100% 100%; background-size: contain;">
-            <figure>
-                <blockquote>
-                    <p><strong>Что такое контроль версий?</strong> Система контроля версий (<strong>СКВ</strong>) — это система, регистрирующая изменения в одном или нескольких файлах с тем, чтобы в дальнейшем была возможность вернуться к определённым старым версиям этих файлов.</p>
-                </blockquote>
-                <figcaption><a target="_blank" href="http://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B5-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B9">ProGit</a></figcaption>
-            </figure>
-        </div>
-    </section>
 
     <section class="slide">
         <h2>Поехали!</h2>
@@ -1092,8 +1170,143 @@
     <!-- Лекция 2. Инструменты, настройка окружения -->
     <header class="caption">
         <h1>Архитектура</h1>
-        <p>Инструменты, настройка окружения.</p>
+        <p>Инструменты. Настройка окружения для разработки.</p>
     </header>
+
+    <section class="slide title">
+        <h2>
+            <span>Пожалуйста, зачекиньтесь на лекции</span>
+        </h2>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <a href="/p/js">JS за 60 минут!</a>
+        </h2>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Шаблонизация</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Микрошаблоны</h2>
+        <div>
+            <pre>
+            <code>&lt;div class=&quot;menu&quot;&gt;</code>
+            <code>    &lt;span class=&quot;title&quot;&gt;&lt;%-title%&gt;&lt;/span&gt;</code>
+            <code>    &lt;ul&gt;</code>
+            <code>        &lt;% items.forEach(function(item) { %&gt;</code>
+            <code>            &lt;li&gt;&lt;%-item%&gt;&lt;/li&gt;</code>
+            <code>        &lt;% }); %&gt;</code>
+            <code>    &lt;/ul&gt;</code>
+            <code>&lt;/div&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>
+            Можно разделить код на два типа
+        </h2>
+        <div>
+            <b>Бизнес-логика</b> – код, формирующий данные, основной код приложения.
+            <br>
+            <b>Презентационная логика</b> – код, описывающий, как показываются данные.
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>"Свой" язык</h2>
+        <div>
+        <pre>
+            <code><mark>&lt;fest:template xmlns:fest="http://fest.mail.ru"</mark></code>
+            <code>    <mark>context_name="json"&gt;</mark></code>
+            <code>    &lt;div&gt;</code>
+            <code>        &lt;h1&gt;Epic Game&lt;/h1&gt;</code>
+            <code>    &lt;/div&gt;</code>
+            <code><mark>&lt;/fest:template&gt;</mark></code>
+        </pre>
+       </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            Шаблонизация компонент
+        </h2>
+        <div>
+            <a href="https://facebook.github.io/react/docs/tutorial.html">React. JSX.</a>
+            <br>
+            <a href="https://learn.javascript.ru/templates">Подробнее про шаблонизацию</a>
+        </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Пакеты. Версии. Менеджер.</span>
+        </h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>У кого не так?</h2>
+        <div>
+            <pre>
+                <code>node -v // ^0.10.x</code>
+                <code>npm -v // ^2.x.x</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Зачем?</h2>
+        <div>
+            <ul>
+                <li>Простота установки сторонних библиотек</li>
+                <li>Инкапсуляция собственного кода</li>
+                <li>Независимость разработки и единственность ответственности</li>
+                <li>Независимость разработки</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>package.json</h2>
+        <div>
+            <ul>
+                <li>Имя пакета(name), версия(version)</li>
+                <li>Описание, ключевые слова, известные баги, репозиторий ...</li>
+                <li>Точка входа(main), конфиг, скрипты</li>
+                <li>Зависимости(dependencies) <i>--save</i></li>
+                <li>Зависимости разработки(devDependencies) <i>--save-dev</i></li>
+                <li>Обратные зависимости(peerDependencies)</li>
+            </ul>
+            <a href="https://docs.npmjs.com/files/package.json">https://docs.npmjs.com/</a>
+        </div>
+    </section>
+
+
+    <section class="slide" style="background-image: url('/pics/lectures/debugging.jpg'); background-size: contain;"></section>
+
+
+    <section class="slide">
+        <h2>YouTube</h2>
+        <div>
+            <a href="https://www.youtube.com/watch?v=-q1z8BPFItw">Очень крутое видео!</a>
+            <br>
+            <br>
+            <blockquote>
+                feel free to watch this video in speed 2, and pause when needed. Its 30min long that way :D, grate video tho.﻿
+            </blockquote>
+            <br>
+            <span>crashxxx</span>
+        </div>
+    </section>
 
 
 
@@ -1370,16 +1583,7 @@
         <h2>Приступаем!</h2>
         <div>
         <pre>
-            <code><a href="https://github.com/vitaly-chibrikov/tp_java_2014_09/blob/master/L1.2-bin/L1.2-1.0-jar-with-dependencies.jar">L1.2-1.0-jar-with-dependencies.jar</a></code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Приступаем!</h2>
-        <div>
-        <pre>
-            <code>$ npm install grunt-shell --save-dev</code>
+            <code>$ npm install grunt-express-server --save-dev</code>
             <code>$ vim Gruntfile.js</code>
         </pre>
        </div>
@@ -1391,9 +1595,9 @@
         <pre>
             <code>module.exports = function (grunt) {</code>
             <code>    grunt.initConfig({</code>
-            <code>        shell: { … } <mark class="comment">/* grunt-shell */</mark></code>
+            <code>        express: { … } <mark class="comment">/* grunt-express-server */</mark></code>
             <code>    });</code>
-            <code>    grunt.loadNpmTasks('grunt-shell');</code>
+            <code>    grunt.loadNpmTasks('grunt-express-server');</code>
             <code>};</code>
         </pre>
        </div>
@@ -1403,8 +1607,8 @@
         <h2><code>grunt-shell</code></h2>
         <div>
         <pre>
-            <code>server: { <mark class="comment">/* Подзадача */</mark></code>
-            <code>    command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'</code>
+            <code>dev: { <mark class="comment">/* Подзадача */</mark></code>
+            <code>    options: {script: 'server.js'}</code>
             <code>    <mark class="comment">/* запуск сервера */</mark></code>
             <code>}</code>
         </pre>
@@ -1415,8 +1619,7 @@
         <h2>Gruntfile.js</h2>
         <div>
         <pre>
-            <code>$ grunt shell:server</code>
-            <code>Running "shell:server" (shell) task</code>
+            <code>$ grunt express:dev</code>
             <code>Starting at port: 8000</code>
             <code>...</code>
         </pre>
@@ -1584,31 +1787,18 @@
        </div>
     </section>
 
-    <section class="slide">
-        <h2><code>grunt-contrib-watch</code></h2>
-        <div>
-        <pre>
-            <code>server: { <mark class="comment">/* Цель */</mark></code>
-            <code>    files: ['public_html/js/**/*.js'], <mark class="comment">/* следим за JS */</mark></code>
-            <code>    options: {</code>
-            <code>        livereload: true <mark class="comment">/* автоматическая перезагрузка */</mark></code>
-            <code>    }</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
 
     <section class="slide">
         <h2>Gruntfile.js</h2>
         <div>
         <pre>
             <code>grunt.initConfig({</code>
-            <code>    shell: { … } <mark class="comment">/* grunt-shell */</mark></code>
+            <code>    express: { … } <mark class="comment">/* grunt-express-server */</mark></code>
             <code>    watch: { … } <mark class="comment">/* grunt-contrib-watch */</mark></code>
             <code>     …</code>
             <code>});</code>
             <code>…</code>
-            <code>grunt.registerTask('default', ['shell', 'watch']);</code>
+            <code>grunt.registerTask('default', ['express', 'watch']);</code>
         </pre>
        </div>
     </section>
@@ -1617,27 +1807,11 @@
         <h2><code>grunt-concurrent</code></h2>
         <div>
         <pre>
-            <code>target: ['watch', 'shell'], <mark class="comment">/* Подзадача */</mark></code>
+            <code>target: ['watch', 'server'], <mark class="comment">/* Подзадача */</mark></code>
             <code>options: {</code>
             <code>        logConcurrentOutput: true, <mark class="comment">/* Вывод процесса */</mark></code>
             <code>}</code>
         </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Livereload</h2>
-        <div>
-            <pre>
-                <code><mark class="comment">&lt;!DOCTYPE html&gt;</mark></code>
-                <code><mark class="comment">&lt;html&gt;&lt;head&gt;</mark></code>
-                <code>    <mark class="comment">&lt;meta charset="utf-8"&gt;</mark></code>
-                <code>    <mark class="comment">&lt;link rel="stylesheet" href="/css/main.css"/&gt;</mark></code>
-                <code><mark class="comment">&lt;/head&gt;&lt;body&gt;</mark></code>
-                <code>    <mark class="comment">&lt;div id="page"&gt;&lt;/div&gt;</mark></code>
-                <code>    &lt;script src="//localhost:35729/livereload.js"&gt;&lt;/script&gt;</code>
-                <code><mark class="comment">&lt;/body&gt;&lt;/html&gt;</mark></code>
-            </pre>
        </div>
     </section>
 
@@ -1797,6 +1971,7 @@
             <li>Эдди Османи. Разработка Backbone.js приложений (книжка с рыбкой)</li>
             <li><a href="https://github.com/mailru/fest">Документация по Fest</a></li>
             <li><a href="http://habrahabr.ru/post/244721/">Пересмотренное руководство по Grunt для начинающих</a></li>
+            <li><a href="https://habrahabr.ru/post/243335/">npm для простых смертных</a></li>
         </ol>
         <h3>Cheatsheet:</h3>
         <ol>
