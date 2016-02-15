@@ -1583,7 +1583,7 @@
         <h2>Приступаем!</h2>
         <div>
         <pre>
-            <code>$ npm install grunt-express-server --save-dev</code>
+            <code>$ npm install grunt-shell --save-dev</code>
             <code>$ vim Gruntfile.js</code>
         </pre>
        </div>
@@ -1595,9 +1595,9 @@
         <pre>
             <code>module.exports = function (grunt) {</code>
             <code>    grunt.initConfig({</code>
-            <code>        express: { … } <mark class="comment">/* grunt-express-server */</mark></code>
+            <code>        shell: { … } <mark class="comment">/* grunt-shell */</mark></code>
             <code>    });</code>
-            <code>    grunt.loadNpmTasks('grunt-express-server');</code>
+            <code>    grunt.loadNpmTasks('grunt-shell');</code>
             <code>};</code>
         </pre>
        </div>
@@ -1608,7 +1608,7 @@
         <div>
         <pre>
             <code>dev: { <mark class="comment">/* Подзадача */</mark></code>
-            <code>    options: {script: 'server.js'}</code>
+            <code>    command: {script: 'server.js'}</code>
             <code>    <mark class="comment">/* запуск сервера */</mark></code>
             <code>}</code>
         </pre>
@@ -1619,7 +1619,7 @@
         <h2>Gruntfile.js</h2>
         <div>
         <pre>
-            <code>$ grunt express:dev</code>
+            <code>$ grunt shell:dev</code>
             <code>Starting at port: 8000</code>
             <code>...</code>
         </pre>
@@ -1793,12 +1793,12 @@
         <div>
         <pre>
             <code>grunt.initConfig({</code>
-            <code>    express: { … } <mark class="comment">/* grunt-express-server */</mark></code>
+            <code>    shell: { … } <mark class="comment">/* grunt-shell */</mark></code>
             <code>    watch: { … } <mark class="comment">/* grunt-contrib-watch */</mark></code>
             <code>     …</code>
             <code>});</code>
             <code>…</code>
-            <code>grunt.registerTask('default', ['express', 'watch']);</code>
+            <code>grunt.registerTask('default', ['shell', 'watch']);</code>
         </pre>
        </div>
     </section>
@@ -1807,7 +1807,7 @@
         <h2><code>grunt-concurrent</code></h2>
         <div>
         <pre>
-            <code>target: ['watch', 'server'], <mark class="comment">/* Подзадача */</mark></code>
+            <code>target: ['watch', 'shell'], <mark class="comment">/* Подзадача */</mark></code>
             <code>options: {</code>
             <code>        logConcurrentOutput: true, <mark class="comment">/* Вывод процесса */</mark></code>
             <code>}</code>
@@ -1920,7 +1920,7 @@
             </ul>
         </div>
     </section>
-    
+
     <section class="slide">
         <h2>QUnit</h2>
         <div>
