@@ -1722,21 +1722,6 @@
     </section>
 
     <section class="slide">
-        <h2><code>grunt-fest</code>’s options</h2>
-        <div>
-        <pre>
-            <code>template: function (data) { <mark class="comment">/* формат функции-шаблона */</mark></code>
-            <code>    return grunt.template.process(</code>
-            <code>        <mark class="comment">/* присваиваем функцию-шаблон переменной */</mark></code>
-            <code>        'var <%= name %>Tmpl = <%= contents %> ;',</code>
-            <code>        {data: data}</code>
-            <code>    );</code>
-            <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
         <h2>Grunt</h2>
         <div>
         <pre>
@@ -1888,37 +1873,6 @@
             <code>}</code>
         </pre>
        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Unit тестирование</h2>
-        <div>
-            <p>
-                <strong>Это</strong> - процесс в программировании, позволяющий проверить на корректность отдельные модули исходного кода программы
-            </p>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Зачем тестировать?</h2>
-        <div>
-            <ul>
-                <li>Повысить качество кода</li>
-                <li>Сделать код более устойчивым к изменениям</li>
-                <li>Улучшить уровень документированности кода</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что тестировать?</h2>
-        <div>
-            <ul>
-                <li>Участки кода, которые вызываются редко</li>
-                <li>Сложные участки кода</li>
-                <li>"Опасные" участки кода</li>
-            </ul>
-        </div>
     </section>
 
     <section class="slide">
@@ -2262,24 +2216,8 @@
 
     <section class="slide cover w bright">
         <div>
-            <img src="/pics/underscore.png" alt="" />
+            <img src="/pics/amd_and_require.jpg" alt="" />
         </div>
-    </section>
-
-    <section class="slide">
-        <h2>Модуль в JavaScript</h2>
-        <div>
-        <pre>
-            <code>var A = (function () {</code>
-            <code>        var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
-            <code>        return {</code>
-            <code>            say: function () { <mark class="comment">// публичный метод</mark></code>
-            <code>                alert(name);</code>
-            <code>            }</code>
-            <code>        };</code>
-            <code>    })();</code>
-        </pre>
-       </div>
     </section>
 
     <section class="slide">
@@ -2302,7 +2240,8 @@
         <h2>Asynchronous Module Definition</h2>
         <div>
         <pre>
-            <code>define('B', ['A'], function (A) {</code>
+            <code>define('B', function (require) {</code>
+            <code>    var A = require('A'); <mark class="comment">// подключаемый модуль</mark> </code>
             <code>    var name = 'B'; <mark class="comment">// приватная переменная</mark></code>
             <code>    return {</code>
             <code>        say: function () { <mark class="comment">// публичный метод</mark></code>
@@ -2314,6 +2253,58 @@
        </div>
     </section>
 
+
+    <section class="slide">
+        <h2>Что имели?</h2>
+        <div>
+        <pre>
+            <code>&lt;script src="/js/lib/jquery.js"&gt;&lt;/script&gt;</code>
+            <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
+            <code>&lt;script src="/js/tmpl/scoreboard.js"&gt;&lt;/script&gt;</code>
+            <code>&lt;script src="/js/tmpl/game.js"&gt;&lt;/script&gt;</code>
+            <code>&lt;script src="/js/tmpl/login.js"&gt;&lt;/script&gt;</code>
+        </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что получили?</h2>
+        <div>
+        <pre>
+            <code>&lt;script data-main="js/main"</code>
+            <code>     src="js/lib/require.js"&gt;&lt;/script&gt;</code>
+        </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>js/main.js</code></h2>
+        <div>
+        <pre>
+            <code>…</code>
+            <code>define(function (require) {</code>
+            <code>    var router = require('router');  </code>
+            <code>    Backbone.history.start();</code>
+            <code>});</code>
+        </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>grunt-fest</code>’s options</h2>
+        <div>
+        <pre>
+            <code>template: function (data) { <mark class="comment">/* формат функции-шаблона */</mark></code>
+            <code>    return grunt.template.process(</code>
+            <code>        <mark class="comment">/* присваиваем функцию-шаблон переменной */</mark></code>
+            <code>        'var <%= name %>Tmpl = <%= contents %> ;',</code>
+            <code>        {data: data}</code>
+            <code>    );</code>
+            <code>}</code>
+        </pre>
+        </div>
+    </section>
+    
     <section class="slide cover w bright">
         <div>
             <img src="/pics/backbone.png" alt="" />
@@ -2502,6 +2493,49 @@
     </section>
 
     <section class="slide">
+        <h2>Unit тестирование</h2>
+        <div>
+            <p>
+                <strong>Это</strong> - процесс в программировании, позволяющий проверить на корректность отдельные модули исходного кода программы
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Зачем тестировать?</h2>
+        <div>
+            <ul>
+                <li>Повысить качество кода</li>
+                <li>Сделать код более устойчивым к изменениям</li>
+                <li>Улучшить уровень документированности кода</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что тестировать?</h2>
+        <div>
+            <ul>
+                <li>Участки кода, которые вызываются редко</li>
+                <li>Сложные участки кода</li>
+                <li>"Опасные" участки кода</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Критерии хорошего решения</h2>
+        <div>
+            <ul>
+                <li>Maintainable</li>
+                <li>Understandable</li>
+                <li>Testable</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="slide">
         <h2><code>grunt-fest</code>’s options</h2>
         <div>
         <pre>
@@ -2512,85 +2546,6 @@
             <code>        {data: data}</code>
             <code>    );</code>
             <code>}</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/requirejs.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что имели?</h2>
-        <div>
-        <pre>
-            <code>&lt;script src="/js/lib/jquery.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/scoreboard.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/game.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/login.js"&gt;&lt;/script&gt;</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что получили?</h2>
-        <div>
-        <pre>
-            <code>&lt;script data-main="js/main"</code>
-            <code>     src="js/lib/require.js"&gt;&lt;/script&gt;</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>js/main.js</code></h2>
-        <div>
-        <pre>
-            <code>…</code>
-            <code>define([</code>
-            <code>    'router'</code>
-            <code>], function () {</code>
-            <code>    Backbone.history.start();</code>
-            <code>});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Подготовка</h2>
-        <div>
-        <pre>
-            <code>$ git init</code>
-            <code class="next">$ echo "node_modules" > .gitignore</code>
-            <code class="next">$ git add .</code>
-            <code class="next">$ git commit -m "Initial"</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Подготовка</h2>
-        <div>
-        <pre>
-            <code>$ git remote add tp \</code>
-            <code>→ https://github.com/eprev/frontend-stub.git</code>
-            <code class="next">$ git fetch tp</code>
-            <code class="next">$ git merge tp/v2</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Разрешаем конфликты</h2>
-        <div>
-        <pre>
-            <code>$ git status</code>
-            <code class="next">$ git add …</code>
-            <code class="next">$ git commit -m "Fix merge conflicts"</code>
-            <code class="next">$ grunt</code>
         </pre>
        </div>
     </section>
