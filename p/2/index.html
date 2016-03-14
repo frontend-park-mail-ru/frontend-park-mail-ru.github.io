@@ -750,6 +750,54 @@
         </div>
     </section>
 
+    <section class="slide shout">
+        <h2>
+            Паттерны js
+        </h2>
+        <div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>this</h2>
+        <div>
+            <pre>
+                <code>function Person() { </code>
+                <code>}</code>
+                <code>Person.prototype.say = function () { console.log(this.name) }</code>
+                <code></code>
+                <code>var jack = new Person();</code>
+                <code>jack.name = 'jack';</code>
+                <code>jack.say(); // -> jack</code>
+                <code>setTimeout(jack.say, 1000); // -> undefined</code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>call apply bind</h2>
+        <div>
+            <pre>
+                <code>function Person(name) {   </code>
+                <code>  this.name = name;       </code>
+                <code>}</code>
+                <code>Person.prototype.say = function () { console.log(this.name) }</code>
+                <code></code>
+                <code>var jack = new Person('jack');</code>
+                <code>var notJack = new Person('notJack');</code>
+
+                <code>jack.say(); // -> jack</code>
+                <code>notJack.say.call(jack); // -> jack</code>
+
+                <code>setTimeout(jack.say.bind(jack), 1000); // -> jack</code>
+
+            </pre>
+        </div>
+    </section>
+
+
+
     <section class="slide">
         <h2>Функция-конструктор</h2>
         <div>
