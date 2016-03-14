@@ -665,6 +665,39 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Одиночка (Singleton)</h2>
+        <div>
+            <pre>
+                <code>var inst;</code>
+                <code>…</code>
+                <code>Singleton = function() {</code>
+                <code>    if (inst) {</code>
+                <code>        return inst;</code>
+                <code>    }</code>
+                <code>    …</code>
+                <code>    inst = this;</code>
+                <code>};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Издатель-подписчик (PubSub)</h2>
+        <div>
+            <pre>
+                <code>var events = (function(){ … })();</code>
+                <code>…</code>
+                <code>// module src/router.js</code>
+                <code>events.publish('app:ready', {url: '/test', loadTime: 100});</code>
+                <code>…</code>
+                <code>// module src/statistic.js</code>
+                <code>events.subscribe('app:ready', processLoadEvent);</code>
+            </pre>
+        </div>
+    </section>
+
+
     <section class="slide shout">
         <h2>
             DOM
@@ -742,6 +775,19 @@
                     <code>$('#page div .link') <mark class="comment">/* ⟷</mark></code>
                     <code><mark class="comment">    document.querySelectorAll('#page div .link') */</mark></code>
                 </div>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Query Selector</h2>
+        <div>
+            <pre>
+                <code>$('#page') <mark class="comment">/* ⟷ выбрать все узлы с id=page */</mark></code>
+                <code class="next">$('.error') <mark class="comment">/* ⟷ выбрать все узлы у которых есть класс error*/</mark></code>
+                <code class="next">$('.error .fatal') <mark class="comment">/* ⟷ выбрать все узлы у которых есть <br/>  класс fatal и они вложенные в узел с классом error*/</mark></code>
+                <code class="next">$('[checked="checked"]') <mark class="comment">/* ⟷ найти все узлы у которых есть <br/>  аттрибут checked со значением checked*/</mark></code>
+                <code class="next">$('.error:first') <mark class="comment">/* ⟷ найти первый узел с классом error */</mark></code>
             </pre>
         </div>
     </section>
@@ -1046,6 +1092,42 @@
             <p clas="note">
                 <a href="/d/events.html">Демонстрация</a>
             </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Event stopPropagation</h2>
+        <div>
+            <pre>
+                <code>$('table').on('click', 'td', function (e) {</code>
+                <code>    e.stopPropagation();</code>
+                <code>});</code>
+                <code>$('table').on('click', 'tr', function () {</code>
+                <code>    // не сработает </code>
+                <code>})</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Event preventDefault</h2>
+        <div>
+            <pre>
+                <code>$('form').on('submit', function (e) {</code>
+                <code>    e.preventDefault(); </code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>О чем следует помнить</h2>
+        <div>
+            <ul>
+                <li>Слушаем только события узла, поведение которого реализуем в модуле</li>
+                <li>Прото так не прерываем всплытие DOM событий</li>
+                <li>DOM события - это события испускаемые на действия пользователя, а не на Бизнес Логику приложения</li>
+            </ul>
         </div>
     </section>
 
