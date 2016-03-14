@@ -549,7 +549,19 @@
 
     <section class="slide title">
         <h2>
+            <span>Пожалуйста, зачекиньтесь на лекции</span>
+        </h2>
+    </section>
+
+    <section class="slide title">
+        <h2>
             <span>DOM, Events</span>
+        </h2>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Native and Host objects</span>
         </h2>
     </section>
 
@@ -605,6 +617,93 @@
             </pre>
         </div>
     </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Class vs Prototype</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Class</h2>
+        <div>
+            <a class="jsbin-embed" href="http://jsbin.com/cilukoruce/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.11"></script>
+        </div>
+        <!-- https://gist.github.com/iketari/3961736b0ef982f7115f -->
+    </section>
+
+    <section class="slide">
+        <h2>Prototype</h2>
+        <div>
+            <a class="jsbin-embed" href="http://jsbin.com/welegim/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.11"></script>
+        </div>
+        <script type="example/javascript">
+            'use script';
+
+            var PointPrototype = {
+              identify: function () {
+                console.log('x: ' + this.x + ' y: ' + this.y);
+              }
+            };
+
+            var pointDistance = function (a, b) {
+              var dx = a.x - b.x;
+              var dy = a.y - b.y;
+
+              return Math.sqrt(dx*dx + dy*dy);
+            };
+
+            var p1 = Object.create(PointPrototype);
+            p1.x = 5;
+            p1.y = 5;
+            var p2 = Object.create(PointPrototype);
+            p2.x = 10;
+            p2.y = 10;
+
+
+            p1.identify();
+            p2.identify();
+
+            console.log(pointDistance(p1, p2));
+        </script>
+    </section>
+
+
+    <section class="slide">
+        <h2>Prototype</h2>
+        <div>
+            <a class="jsbin-embed" href="http://jsbin.com/jitovo/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.11"></script>
+        </div>
+        <script type="example/javascript">
+            'use script';
+
+            function Point (x, y) {
+              this.x = x;
+              this.y = y;
+            }
+
+            Point.prototype.identify = function () {
+              console.log('x: ' + this.x + ' y: ' + this.y);
+            }
+
+            Point.distance = function (a, b) {
+              var dx = a.x - b.x;
+              var dy = a.y - b.y;
+
+              return Math.sqrt(dx*dx + dy*dy);
+            }
+
+            const p1 = new Point(5, 5);
+            const p2 = new Point(10, 10);
+
+            p1.identify();
+            p2.identify();
+
+            console.log(Point.distance(p1, p2));
+        </script>
+    </section>
+
+
 
     <section class="slide">
         <h2>Prototype</h2>
@@ -1075,6 +1174,12 @@
             </li>
         </ol>
         </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Пожалуйста, оставьте мне фидбек!</span>
+        </h2>
     </section>
 
     <header class="caption">
