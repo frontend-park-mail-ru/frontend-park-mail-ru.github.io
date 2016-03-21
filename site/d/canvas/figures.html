@@ -37,8 +37,8 @@ var demonstration = function(){
 	context.beginPath();
 
 	/* context.rect( x, y, width, height ); */
-	// context.rect( 30, 30, 150, 100 ); // Прямоугольник
-	// context.fillRect( 30, 30, 150, 100 ); // Прямоугольник
+	context.rect( 30, 30, 150, 100 ); // Прямоугольник
+	context.fillRect( 30, 30, 150, 100 ); // Прямоугольник
 
 		/* Как перестать поворачивать контекст? */
 	// context.rotate( 0 );
@@ -86,38 +86,38 @@ var demonstration = function(){
 		context.restore();
 	}
 
-	var x0 = 50;
-	var y0 = 50;
-
-	var x1 = 50;
-	var y1 = 200;
-
-	var x2 = 350;
-	var y2 = 350;
-
-	var r = 205;
-
-	context.translate( 100, 0 );
-	context.save();
-
+	// var x0 = 50;
+	// var y0 = 50;
+	//
+	// var x1 = 50;
+	// var y1 = 200;
+	//
+	// var x2 = 350;
+	// var y2 = 350;
+	//
+	// var r = 205;
+	//
+	// context.translate( 100, 0 );
+	// context.save();
+	//
 	context.strokeStyle = 'rgb(190,49,49)';
 	context.lineWidth = 2;
-
-	point('a', x0, y0);
-	context.moveTo( x0, y0 );
-
-	point('b', x1, y1);
-	context.lineTo( x1, y1 );
-
-	point('c', x2, y2);
-	context.lineTo( x2, y2 );
-	context.stroke();
-
-	context.restore();
-	context.beginPath();
-
-	context.moveTo( x0, y0 );
-	context.arcTo( x1, y1, x2, y2, r );
+	//
+	// point('a', x0, y0);
+	// context.moveTo( x0, y0 );
+	//
+	// point('b', x1, y1);
+	// context.lineTo( x1, y1 );
+	//
+	// point('c', x2, y2);
+	// context.lineTo( x2, y2 );
+	// context.stroke();
+	//
+	// context.restore();
+	// context.beginPath();
+	//
+	// context.moveTo( x0, y0 );
+	// context.arcTo( x1, y1, x2, y2, r );
 	context.stroke();
 
 
