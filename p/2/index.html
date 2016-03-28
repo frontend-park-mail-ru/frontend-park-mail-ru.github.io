@@ -2014,6 +2014,146 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Функции: Параметры по умолчанию</h2>
+        <div>
+            <pre>
+                <code>function doSome(arg1 = 'some', agr2 = true){</code>
+                <code>  console.log(arg1, arg2);</code>
+                <code>}</code>
+                <code>…</code>
+                <code>doSome('string'); // 'string', true</code>
+                <code>doSome(undefined, null); // 'some', null</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции: Параметры по умолчанию</h2>
+        <div>
+            <pre>
+                <code>function doSome(arg1 = arg().toUpperCase()){</code>
+                <code>  console.log(arg1);</code>
+                <code>}</code>
+                <code>function arg(){</code>
+                <code>  return 'argument';</code>
+                <code>}</code>
+                <code> </code>
+                <code>doSome(); // 'ARGUMENT'</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции: spread вместо arguments</h2>
+        <div>
+            <pre>
+                <code>function doSome(arg1, arg2, ...rest){</code>
+                <code>  console.log(arg1, arg2, rest);</code>
+                <code>}</code>
+                <code> </code>
+                <code>doSome('string', true, 1, null); // 'string', true, [1, null]</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции: spread вместо arguments</h2>
+        <div>
+            <pre>
+                <code>let array = [2, 3, 15];</code>
+                <code> </code>
+                <code>Math.max(...array);</code>
+                <code>Math.max.apply(Math, array);</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Деструктуризация в параметрах</h2>
+        <div>
+            <pre>
+                <code>function doSome({arg1 = 'some', arg2 = true}){</code>
+                <code>  console.log(arg1, arg2);</code>
+                <code>}</code>
+                <code>…</code>
+                <code>doSome({ arg1: 'string'}); // 'string', true</code>
+                <code>doSome({ arg1: undefined, arg2: null}); // 'some', null</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции: Функции в блоке</h2>
+        <div>
+            <pre>
+                <code>if (true) {</code>
+                <code>  doSome(); // Hello!!!</code>
+                <code> </code>
+                <code>  function doSome(){</code>
+                <code>      alert('Hello!!!')</code>
+                <code>  }</code>
+                <code>}</code>
+                <code>doSome(); // ошибка</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции через =></h2>
+        <div>
+            <pre>
+                <code>let inc = x => x+1;</code>
+                <code> </code>
+                <code>alert(inc(1)); // 2</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции через =></h2>
+        <div>
+            <pre>
+                <code>let inc = x => {</code>
+                <code>  x++;</code>
+                <code>  return x;</code>
+                <code>}</code>
+                <code> </code>
+                <code>alert(inc(1)); // 2</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции через =></h2>
+        <div>
+            <pre>
+                <code>let sum = (x, y) => {</code>
+                <code>  return x + y;</code>
+                <code>}</code>
+                <code> </code>
+                <code>alert(sum(1, 2)); // 3</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции через =></h2>
+        <div>
+            <pre>
+                <code>let obj = {</code>
+                <code>  prop: ['some', 'string'],</code>
+                <code>  func: function(){</code>
+                <code>      this.prop.forEach(</code>
+                <code>          (prop, i) => alert(`${prop} ${this.prop[i]}`)</code>
+                <code>      );</code>
+                <code>  }</code>
+                <code>}</code>
+                <code>obj.func(); </code>
+            </pre>
+        </div>
+    </section>
+
 
     <section class="slide">
         <h2>Строки</h2>
