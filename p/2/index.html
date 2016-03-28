@@ -1995,7 +1995,7 @@
     </section>
 
     <section class="slide">
-        <h2>Деструктуризация и ...rest</h2>
+        <h2>Деструктуризация и ...spread</h2>
         <div>
             <a class="jsbin-embed" href="http://jsbin.com/nupuhe/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.11"></script>
         </div>
@@ -2105,7 +2105,6 @@
         </h2>
     </section>
 
-
     <section class="slide">
         <h2>
             <span>The Iterator protocol</span>
@@ -2146,6 +2145,132 @@
             </ul>
         </div>
     </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Promises</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Callback hell</h2>
+        <div>
+            <a class="jsbin-embed" href="http://jsbin.com/zuyahap/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.11"></script>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>Используем Promises</span>
+        </h2>
+        <div>
+            <pre>
+                <code>'use strict';</code>
+                <code>requestFromServer()</code>
+                <code>    .then(function (res) { return res2;})</code>
+                <code>    .then(function (res2) { return res3;})</code>
+                <code>    .then(function (res3) { return res4;})</code>
+                <code>        .catch(function (err) { ...act...;});</code>
+            </pre>
+
+            <span>Once an error is thrown, it is passed through the chain until it meets the first catch</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>Используем Promises асинхронно</span>
+        </h2>
+        <div>
+            <span>Если внутри колбека then вернуть <strong>thenable</strong> объект, можно работать с его результатом напрямую</span>
+            <pre>
+                <code>'use strict';</code>
+                <code>requestFromServer()</code>
+                <code>    .then(function (res) {</code>
+                <code>        return readFile(res); </code>
+                <code>    }).then(function (file) {</code>
+                <code>      // do something with file</code>
+                <code>    });</code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>
+            <span>Создание Promises</span>
+        </h2>
+        <div>
+            <pre>
+                <code>'use strict';</code>
+                <code>new Promise(function (resolve, reject) {</code>
+                <code>    if (testSomething()) {</code>
+                <code>        resolve(resolutionValue);</code>
+                <code>    } else {</code>
+                <code>        reject(errorValue);</code>
+                <code>    }</code>
+                <code>});</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>Состояние Promise</span>
+        </h2>
+        <div>
+            <img src="/pics/es2015/promise_state.png" height="90%" alt="">
+        </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Презентации</span>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>Презентации</span>
+        </h2>
+        <div>
+            <ul>
+                <li>
+                    <a href="http://lab.hakim.se/reveal-js/#/">reveal.js</a>
+                </li>
+                <li>
+                    <a href="http://shwr.me/">Shower</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Рекомендованная леитература к лекции 4 "HTML CSS" -->
+    <section class="slide">
+        <h2>Что почитать, посмотреть?</h2>
+        <div>
+        <h3>Почитать:</h3>
+        <ol>
+            <li>
+                <a href="https://ponyfoo.com/">https://ponyfoo.com/</a>
+            </li>
+            <li>
+                <a href="http://www.2ality.com/2014/10/es6-promises-api.html">ES6 Promises API</a>
+            </li>
+            </li>
+            <li>
+                <a href="https://github.com/getify/You-Dont-Know-JS">You Dont Know JS</a>
+            </li>
+        </ol>
+        </div>
+    </section>
+
+    <section class="slide title">
+        <h2>
+            <span>Пожалуйста, оставьте мне фидбек!</span>
+        </h2>
+    </section>
+
 
 
 
