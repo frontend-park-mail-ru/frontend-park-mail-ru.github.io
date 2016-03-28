@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="../../shower/themes/tech-mail/styles/screen.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 </head>
 <body class="list">
     <header class="caption">
@@ -1956,7 +1959,6 @@
         </div>
     </section>
 
-
     <section class="slide title">
         <h2>
             <span>Итераторы</span>
@@ -1964,24 +1966,34 @@
     </section>
 
 
-
     <section class="slide">
-        <h2>Prototype</h2>
+        <h2>
+            <span>The Iterator protocol</span>
+        </h2>
         <div>
+            <h3>В ES6 цикл (for...of) по итерируемым объектам работает так, как вы ожидаете</h3>
             <pre>
-                <code><mark class="comment">/* Конструктор */</mark></code>
-                <code>Polygon = function(){ ... };</code>
-                <code>…</code>
-                <code><mark class="comment">/* Экземпляр */</mark></code>
-                <code>foursquare = new Polygon(4);</code>
+                <code>'use strict';</code>
+                <code>for (let n of ['a', 'b', 'c']) { </code>
+                <code>    console.log(n);</code>
+                <code>}</code>
+                <code>// 'a'</code>
+                <code>// 'b'</code>
+                <code>// 'c'</code>
             </pre>
-            <p clas="note">
-                <a href="/d/prototype-v2.html">Демонстрация</a>
-            </p>
         </div>
     </section>
 
+    <section class="slide">
+        <h2>The Iterator protocol</h2>
+        <div>
+            <a class="jsbin-embed" href="http://jsbin.com/buqoko/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.11"></script>
+        </div>
+    </section>
+
+
     <div class="progress"><div></div></div>
+        <script>hljs.initHighlightingOnLoad();</script>
     <script src="../../shower/shower.min.js"></script>
 </body>
 </html>
