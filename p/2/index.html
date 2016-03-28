@@ -1830,16 +1830,156 @@
         </div>
     </section>
 
+    <section class="slide title">
+        <h2>
+            <span>Объявление и область видимости</span>
+        </h2>
+    </section>
+
     <section class="slide">
-        <h2>Переменные</h2>
+        <h2>
+            <span>￼let - A New <s>Hope</s> Scope</span>
+        </h2>
         <div>
+            <span><strong>var</strong> is function scope</span>
+            <pre>
+                <code>if (true) {</code>
+                <code>     var x = 3;</code>
+                <code>};</code>
+                <code>console.log(x); // 3</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>￼let - A New <s>Hope</s> Scope</span>
+        </h2>
+        <div>
+            <span><strong>let</strong> is block scope</span>
+            <pre>
+                <code>if (true) {</code>
+                <code>     let x = 3;</code>
+                <code>};</code>
+                <code>console.log(x); // ReferenceError</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>Пару слов о Hoisting</span>
+        </h2>
+        <div>
+            <span><strong>To hoist</strong> is to rise</span>
+            <pre>
+                <code>f(); //3</code>
+                <code>function f() {</code>
+                <code>    return 3;</code>
+                <code>};</code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>
+            <span>Пару слов о Hoisting</span>
+        </h2>
+        <div>
+            <span>But you can’t do it with <strong>classes</strong> or <strong>let</strong> variables </span>
+            <pre>
+                <code>new X(); // TypeError</code>
+                <code>class X{</code>
+                <code>   constructor () {}</code>
+                <code>};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>Temporal dead zone</span>
+        </h2>
+        <div>
+            <span><strong>let</strong> variable declarations are <strong>not hoisted</strong></span>
+            <pre>
+                <code>console.log(x); // ReferenceError </code>
+                <code>let x = 3;</code>
+                <code>console.log(x); // 3</code>
+            </pre>
+
             <p>
-                var
-                <br>
-                let
-                <br>
-                const
+                The time between block start and declaration is called  “Temporal Dead Zone”. Same with ‘const’
             </p>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>
+            <span>Temporal dead zone</span>
+        </h2>
+        <div>
+            <span>TDZ is based on <strong>time</strong> and <strong>not on location</strong></span>
+            <pre>
+                <code>function block() {</code>
+                <code>  function foo() {</code>
+                <code>    console.log(x);</code>
+                <code>  }</code>
+                <code>foo(); // ReferenceError</code>
+                <code>let x = 3;</code>
+                <code>foo(); // 3</code>
+                <code>}</code>
+            </pre>
+
+            <p>
+                The time between block start and declaration is called  “Temporal Dead Zone”. Same with ‘const’
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            <span>Loop scoping</span>
+        </h2>
+        <div>
+            <span>Значение let сохраняется для каждой <strong>итерации</strong></span>
+            <pre>
+                <code>let vals = [];</code>
+                <code>for (let x = 0; x < 4; x += 1) {</code>
+                <code>    vals.push(() => x);</code>
+                <code>}</code>
+                <code>console.log(vals.map(x => x())); // [0, 1, 2, 3]</code>
+            </pre>
+
+            <p class="next">
+                Если бы мы использовали var, получили бы [4, 4, 4, 4]
+            </p>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>
+            <span>const makes variables <strong>immutable</strong></span>
+        </h2>
+        <div>
+            <pre>
+                <code>const obj = { par: 3 }; obj = 4; // TypeError</code>
+            <pre>
+            <pre class="next">
+                <code>obj.par = 12;</code>
+                <code>console.seal(obj.par); // 12;</code>
+            </pre>
+            <pre class="next">
+                <code>Object.freeze(obj);</code>
+                <code>obj.par = 10; // TypeError</code>
+            </pre>
+            <pre class="next">
+                <code>console.seal(obj); // 17</code>
+                <code>obj.newParam = 3 // TypeError</code>
+            </pre>
         </div>
     </section>
 
@@ -1990,6 +2130,24 @@
             <a class="jsbin-embed" href="http://jsbin.com/buqoko/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.11"></script>
         </div>
     </section>
+
+
+
+    <section class="slide">
+        <h2>Iterable data sources</h2>
+        <div>
+            <ul>
+                <li>Arrays</li>
+                <li>Maps (Not WeakMaps)</li>
+                <li>DOM queries</li>
+                <li>Strings</li>
+                <li>Sets (Not WeakSets)</li>
+                <li>Arguments</li>
+            </ul>
+        </div>
+    </section>
+
+
 
 
     <div class="progress"><div></div></div>
