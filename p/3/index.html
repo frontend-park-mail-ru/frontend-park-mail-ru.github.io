@@ -907,9 +907,46 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Zombie Cookie</h2>
+        <div>
+            <img style="float:left" src="../../pics/storage/Zombie_Cookie.png">
+            <p>
+                <strong>What are Zombie Cookies?</strong>
+                <br>
+                A zombie cookie is an HTTP cookie that returns to life automatically after being deleted by the user.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Zombie Cookie</h2>
+        <div>
+            <ul>
+                <li>Storing cookies in and reading out web history</li>
+                <li>Storing cookies in HTTP ETags</li>
+                <li>Internet Explorer userData storage   (starting IE9, userData is no longer supported)</li>
+                <li>HTML5 Storage</li>
+                <li>Storing cookies in RGB values of auto-generated, force-cached PNGs using HTML5 Canvas tag to read pixels (cookies) back out</li>
+                <li>Local Shared Objects (Flash cookies)</li>
+                <li>Silverlight Isolated Storage</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>HSTS Cookie</h2>
+        <div>
+            <a href="https://github.com/ben174/hsts-cookie">https://github.com/ben174/hsts-cookie</a>
+        </div>
+    </section>
+
+
+
+
     <section class="slide shout">
         <h2>
-            localStorage
+            localStorage / sessionStorage
         </h2>
     </section>
 
@@ -963,19 +1000,42 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>JSON</h2>
+        <div>
+            <pre>
+                <code>function setJSON(key, value) {</code>
+                <code>    localStorage[key] = JSON.stringify(value);</code>
+                <code>}</code>
+                <code>function getJSON(key) {</code>
+                <code>    var value = localStorage[key];</code>
+                <code>    return value ? JSON.parse(value) : null;</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
     <section class="slide shout">
         <h2>
-            sessionStorage
+            Service Workers
         </h2>
     </section>
 
     <section class="slide">
-        <h2><a href="http://www.html5rocks.com/en/tutorials/offline/storage/">Что есть еще?</a></h2>
+        <h2>Service Workers solve</h2>
         <div>
-            <pre>
-                <code>IndexedDB</code>
-                <code>FileSystem</code>
-            </pre>
+            <ul>
+                <li>Offline usage</li>
+                <li>Background processing</li>
+                <li>Push messages, Alarms (Task Scheduler), BackgroundSync</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Reuse</h2>
+        <div>
+            <a href="http://www.slideshare.net/jungkees/service-workers">http://www.slideshare.net/jungkees/service-workers</a>
         </div>
     </section>
 
@@ -996,10 +1056,13 @@
         <ol>
             <li>
                 <a href="http://www.html5rocks.com/ru/features/storage">HTML5. Хранилище</a>
+                <img alt="en" src="../../pics/en.gif">
+                <a href="https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md">SW explainer</a>
             </li>
             <li>
                 <img alt="habr" src="../../pics/habr.png">
-                <a href="http://habrahabr.ru/post/245145/">Выразительный JavaScript: HTTP</a>
+                <a href="https://habrahabr.ru/post/245145/">Выразительный JavaScript: HTTP</a>
+                <a href="https://habrahabr.ru/post/213515/">Готовим IndexedDB</a>
             </li>
         </ol>
         <h3>Посмотреть:</h3>
