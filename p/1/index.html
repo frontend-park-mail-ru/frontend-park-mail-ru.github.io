@@ -13,7 +13,7 @@
 <body class="list">
     <header class="caption">
         <h1>Архитектура</h1>
-        <p>Фронтед. Начало.</p>
+        <p>Фронтенд. Начало.</p>
     </header>
 
     <section class="slide title">
@@ -121,9 +121,9 @@
             </h3>
             <br>
             <ul>
-                <li>ES5. Поддерживается большинством браузеров.</li>
-                <li>ES6(2015). Частично поддерживается</li>
-                <li>ES7(2016). Лето 2016</li>
+                <li>ES5. Поддерживается большинством барузеров.</li>
+                <li>ES6 (2015). Частично поддерживается</li>
+                <li>ES7 (2016). Лето 2016</li>
             </ul>
         </div>
     </section>
@@ -136,9 +136,9 @@
             </h3>
             <br>
             <ul>
-                <li><strong>ES5. Поддерживается большинством браузеров.</strong></li>
-                <li>ES6(2015). <a href="https://babeljs.io/">BabelJS</a></li>
-                <li><s>ES7(2016). Лето 2016</s></li>
+                <li><strong>ES5. Поддерживается большинством барузеров.</strong></li>
+                <li>ES6 (2015). <a href="https://babeljs.io/">BabelJS</a></li>
+                <li><s>ES7 (2016). Лето 2016</s></li>
             </ul>
         </div>
     </section>
@@ -183,7 +183,7 @@
                 padding-right: 2em;" src="/pics/lectures/Frontend_Architecture__01_1.png" alt="">
 
             <p>
-                <b>Схема</b>: Браузер(Клик) -- (Запрос) --  Сервер(Выбор документ на сервере)  -- (Ответ) -- Браузер(Рендер документа)<br>
+                <b>Схема</b>: Браузер (Клик) &mdash; (Запрос) &mdash; Сервер&nbsp;(Выбор&nbsp;документа на сервере) &mdash; (Ответ) &mdash; Браузер (Рендер&nbsp;документа)<br>
                 <b>Проблема</b>: много однотипных документов, копипаста
                 <br>
                 <b>Фронтенд</b>: все, только верстка в ClientSide
@@ -212,7 +212,7 @@
         <div style="position: relative">
 
             <p>
-                <b>Схема</b>: Браузер (Клик) -- (Запрос) --  Сервер(<i>Генерация</i> документ на сервере)  -- (Ответ) -- Браузер(Рендер документа) -- (Запрос дополнительных ресурсов) -- Браузер (Рендер документа)<br><br>
+                <b>Схема</b>: Браузер (Клик) &mdash; (Запрос) &mdash; Сервер (<i>Генерация</i> документа на сервере) &mdash; (Ответ) &mdash; Браузер&nbsp;(Рендер документа) &mdash; (Запрос дополнительных ресурсов) &mdash; Браузер&nbsp;(Рендер&nbsp;документа)<br><br>
                 <b>Проблема</b>: генерация нового документа ради минимальных изменений, нагрузка на сервер
                 <br>
                 <b>Фронтенд</b>: обработка данных, серверная шаблонизация
@@ -242,7 +242,7 @@
         <div>
             <p>
                 <b>Схема:</b> (как на прошлом слайде) + без перезагрузки документа<br>
-                (Клик) --> (AJAX запрос) --  Генерация фрагмента документа  -> (Ответ) --> (Изменение исходного документа)
+                (Клик) &rarr; (AJAX запрос) &mdash; Генерация фрагмента документа &rarr; (Ответ) &rarr; (Изменение исходного документа)
             </p>
             <p>
                 <b>Фронтенд</b>: так же, но сложнее
@@ -273,7 +273,7 @@
         <h2>Транспорт данных</h2>
         <div>
             <p>
-                <b>Схема:</b>(Клик) --> (AJAX запрос) --  Генерация данных  -> (Ответ) --> (Рендер результата в браузере)
+                <b>Схема:</b> (Клик) &rarr; (AJAX запрос) &mdash; Генерация данных &rarr; (Ответ) &rarr; (Рендер результата в браузере)
             </p>
             <p>
                 Проблема: "толстый клиент"
@@ -515,7 +515,7 @@
         <div>
             <ul>
                 <li>clone - создание локального репозитория</li>
-                <li>commit - сохранения изменений в локальном репозитории</li>
+                <li>commit - сохранение изменений в локальном репозитории</li>
                 <li>remote - удаленный репозиторий</li>
                 <li>branch - ветка</li>
                 <li>pull/fetch - выкачать изменения из удаленного репозитория </li>
@@ -636,7 +636,7 @@
         <figure>
             <blockquote>
                 <p>
-                    С помощью GIT группа людей может работать над одним и тем же документом (чаще всего документ - это программный код) в одно и то же время не мешая друг-другу. Это и есть распределенная  система контроля версий.
+                    С помощью GIT группа людей может работать над одним и тем же документом (чаще всего документ - это программный код) в одно и то же время, не мешая друг другу. Это и есть распределенная  система контроля версий.
                 </p>
 
                 <p>
@@ -678,7 +678,7 @@
                 </p>
 
                 <p>
-                    Выполним команду статуса еще раз:<strong>git status</strong>; посмотрим как поменялся статус репозитория.
+                    Выполним команду статуса еще раз: <strong>git status</strong>; посмотрим, как поменялся статус репозитория.
                 </p>
             </blockquote>
             <figcaption><a target="_blank" href="https://try.github.io/levels/1/challenges/3">1.3 Добавляем файлы и коммитим</a></figcaption>
@@ -810,7 +810,7 @@
                 <p>
                     Команда <strong>git push</strong> говорит Git, куда отправить наши изменения, когда все готово. Итак, запушим наши локальные изменения в наш удаленный репозиторий на GitHub.
                     <br>
-                    Имя удаленного репозитория origin, а ветка по умолчанию называется master(не думайте пока что о ветках!). Параметр -u позволит нам в будущем не указывать дополнительные параметры, а просто выполнять <strong>git push</strong>. Git будет знать, что нужно делать.
+                    Имя удаленного репозитория origin, а ветка по умолчанию называется master (не думайте пока что о ветках!). Параметр -u позволит нам в будущем не указывать дополнительные параметры, а просто выполнять <strong>git push</strong>. Git будет знать, что нужно делать.
                 </p>
 
                 <p class="next">
@@ -957,7 +957,7 @@
         <figure>
             <blockquote>
                 <p>
-                    Когда разработчики работают над новой фичей или багом, они обычно создают копию(или ветку) кода проекта, в которую они могут коммитить независимо. Когда разработка завершена, изменения из этой копии(ветки) нужно влить(вмержить) обратно в основную ветку проекта.
+                    Когда разработчики работают над новой фичей или багом, они обычно создают копию (или ветку) кода проекта, в которую они могут коммитить независимо. Когда разработка завершена, изменения из этой копии (ветки) нужно влить (вмержить) обратно в основную ветку проекта.
                 </p>
 
                 <p>
@@ -1084,7 +1084,7 @@
                 </p>
 
                 <p>
-                    Вы можете использовать команда <strong>git brnach -d &lt;branch name&gt;</strong> для удаления ветки. Сделаем это:
+                    Вы можете использовать команду <strong>git branch -d &lt;branch name&gt;</strong> для удаления ветки. Сделаем это:
                 <br>
                     <strong class="next">git branch -d clean_up</strong>
                 </p>
@@ -1486,7 +1486,7 @@
                 <code>    cwd: 'lib/',      <mark class="comment">// Базовый путь источника</mark></code>
                 <code>    src: ['**/*.js'], <mark class="comment">// Паттерн поиска файлов</mark></code>
                 <code>    dest: 'build/',   <mark class="comment">// Место назначения</mark></code>
-                <code>    ext: '.min.js',   <mark class="comment">// Постфикс фалов для сохранения</mark></code>
+                <code>    ext: '.min.js',   <mark class="comment">// Постфикс файлов для сохранения</mark></code>
                 <code>  }</code>
                 <code>]</code>
             </pre>
@@ -2103,7 +2103,7 @@
         <h2>Блоки и элементы</h2>
         <div>
         <pre>
-            <code>porta-menu <mark class="comment">/* блок portal-menu */</mark></code>
+            <code>portal-menu <mark class="comment">/* блок portal-menu */</mark></code>
             <code>nav <mark class="comment">/* блок nav */</mark></code>
             <code>letters <mark class="comment">/* блок letters */</mark></code>
             <code>toolbar <mark class="comment">/* блок toolbar */</mark></code>
@@ -2438,7 +2438,7 @@
                 <code>&lt;a href="#" class="js-game"&gt;Game&lt;/a&gt;</code>
                 <code>&lt;a href="#" class="js-login"&gt;Game&lt;/a&gt;</code>
                 <code>&lt;script&gt;</code>
-                <code>    $('.js-scoreborad').on("click", function () { … });</code>
+                <code>    $('.js-scoreboard').on("click", function () { … });</code>
                 <code>    $('.js-game').on("click", function () { … });</code>
                 <code>    $('.js-login').on("click", function () { … });</code>
                 <code>&lt;/script&gt;</code>
@@ -2556,7 +2556,7 @@
         <pre>
             <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ UNDERSCORE, BACKBONE, REQUIREJS и БЭМ.</code>
             <code>ДОРАБОТАТЬ ПРОТОТИП ПО ТЗ.</code>
-            <code>ПРИСТУПИТЬ К РЕАЛИЗАЦИЯ ИГРОВОЙ МЕХАНИКИ.</code>
+            <code>ПРИСТУПИТЬ К РЕАЛИЗАЦИИ ИГРОВОЙ МЕХАНИКИ.</code>
         </pre>
         </div>
     </section>
@@ -2621,7 +2621,7 @@
         <ol>
             <li>Веб формы. Назначение и основные определения</li>
             <li class="next">HTML верстка. Элементы форм. Атрибуты формы и ее элементов</li>
-            <li class="next">Работа с формами на JavaScript. Событиия формы и ее элементов. Валидация</li>
+            <li class="next">Работа с формами на JavaScript. События формы и ее элементов. Валидация</li>
             <li class="next">Передача данных на сервер</li>
             <li class="next">UX решения в формах. Возможности HTML5</li>
         </ol>
@@ -2653,7 +2653,7 @@
                 <blockquote>
                     <p>A form is a component of a Web page that has form controls, such as text fields, buttons, checkboxes, range controls, or color pickers. A user can interact with such a form, providing data that can then be sent to the server for further processing (e.g. returning the results of a search or calculation).</p>
                 </blockquote>
-                <figcaption><a href="www.w3.org/TR/html5/forms.html">HTML5 - World Wide Web Consortium</a></figcaption>
+                <figcaption><a href="http://www.w3.org/TR/html5/forms.html">HTML5 - World Wide Web Consortium</a></figcaption>
             </figure>
         </div>
     </section>
@@ -2665,7 +2665,7 @@
                 <blockquote>
                     <p><strong>Форма (англ. form) в HTML</strong> — раздел документа, позволяющий пользователю вводить информацию для последующей обработки системой. Синтаксически форма в HTML задаётся с помощью элемента form и в дополнение к разметке обычных элементов содержит разметку для элементов управления(англ. controls), надписей (англ. label) и других.</p>
                 </blockquote>
-                <figcaption><a href="ru.wikipedia.org/wiki/Форма_(HTML)">Википедия</a></figcaption>
+                <figcaption><a href="http://ru.wikipedia.org/wiki/Форма_(HTML)">Википедия</a></figcaption>
             </figure>
         </div>
     </section>
@@ -3117,7 +3117,7 @@
         <h2>Сабмит данных на сервер</h2>
         <div>
             <ol>
-                <li>Сабмит формы с ренедером новой страницы в новом или текущем окне <a href="/demos/submit-simple.html">Демо</a></li>
+                <li>Сабмит формы с рендером новой страницы в новом или текущем окне <a href="/demos/submit-simple.html">Демо</a></li>
                 <li class="next">Сабмит формы в iframe <a href="/demos/submit-iframe.html">Демо</a></li>
                 <li class="next">Сериализация данных формы и AJAX</li>
             </ol>
