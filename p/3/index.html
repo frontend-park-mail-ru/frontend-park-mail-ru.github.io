@@ -1761,7 +1761,7 @@
                     Главной концепцией управления памятью в JavaScript - <b>принцип достижимости</b>.
                 </li>
                 <li>
-                    <b>Значение сохраняетс</b> я в памяти, пока <b>доступно из корня</b> по ссылке или цепочке ссылок.
+                    <b>Значение сохраняется</b> я в памяти, пока <b>доступно из корня</b> по ссылке или цепочке ссылок.
                 </li>
             </ul>
         </div>
@@ -1861,6 +1861,67 @@
         </div>
     </section>
 
+    <section class="slide shout">
+        <h2>
+            Как искать утечки?
+        </h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>
+            Условия для работы
+        </h2>
+        <div>
+            <ul>
+                <li>Запущен только браузер</li>
+                <li>Chrome запущен с дефолтными настройками (chrome://flags)</li>
+                <li>Открыта только одна вкладка</li>
+                <li>Выключены все плагины</li>
+                <li>Инкогнито режим</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            Теория
+        </h2>
+        <div>
+            <p>
+                <strong>JSHeap</strong> — граф из связанных объектов. Корнем этого графа обычно является глобальный объект (GC Roots).
+            </p>
+            <p>
+                <strong>shallow size</strong> - чистое количество памяти, занимаемое объектом.
+            </p>
+            <p>
+                <strong>retained size</strong> - это общее количество памяти, которое освободится при сборке мусора.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            API
+        </h2>
+        <div>
+            <pre>
+                <code>window.performance.memory</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            Примеры утечек от Google
+        </h2>
+        <div>
+            <a href="https://developer.chrome.com/devtools/docs/demos/memory/example7">eval</a>
+            <br>
+            <a href="https://developer.chrome.com/devtools/docs/demos/memory/example10">Retaining path</a>
+        </div>
+    </section>
+
     <section class="slide">
         <h2>Домашнее задание</h2>
         <div>
@@ -1881,6 +1942,10 @@
             <li>
                 <img alt="en" src="../../pics/en.gif">
                 <a href="https://developer.chrome.com/devtools">Chrome DevTools Overview</a>
+            </li>
+            <li>
+                <img alt="en" src="../../pics/en.gif">
+                <a href="https://developer.chrome.com/devtools/docs/javascript-memory-profiling">JavaScript Memory Profiling</a>
             </li>
             <li>
                 <img alt="en" src="../../pics/en.gif">
