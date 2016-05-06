@@ -1851,6 +1851,42 @@
     </section>
 
     <section class="slide">
+        <h2>Функции</h2>
+        <div>
+             <pre>
+                <code>function f() {</code>
+                <code>  var value = 123;</code>
+                <code></code>
+                <code>  function g() {} // g видна только изнутри</code>
+                <code>}</code>
+                <code></code>
+                <code>f();</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции</h2>
+        <div>
+             <pre>
+                <code>function f() {</code>
+                <code>  var value = Math.random();</code>
+                <code></code>
+                <code>  function g() {} // g видна только изнутри</code>
+                <code></code>
+                <code>  return g;</code>
+                <code>}</code>
+                <code></code>
+                <code>var g = f(); // функция g будет жить и сохранит ссылку на объект переменных</code>
+                <code>// g->[[SCOPE f]]->value</code>
+                <code></code>
+                <code>g = null // вот теперь ссылка удалена</code>
+                <code>var a = [f(), f(), f()] // а вот теперь 3 версии [[SCOPE]] в куче</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
         <h2>Пример утечки памяти</h2>
         <div>
             <ol>
