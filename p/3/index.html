@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="../../shower/themes/tech-mail/styles/screen.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 </head>
 <body class="list">
 
@@ -1303,43 +1306,8 @@
 
     <header class="caption">
         <h1>IX. Отладка и Оптимизация</h1>
-        <p>Web Inspector, Sass.</p>
+        <p>Инструменты разработчика и профилирование</p>
     </header>
-
-    <section class="slide shout">
-        <h2>
-            Web Inspector
-        </h2>
-    </section>
-
-    <section class="slide">
-        <h2>Инструменты</h2>
-        <div>
-            <pre>
-                <code>Chrome DevTools <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
-                <code>Safari Web Inspector <mark class="comment">/* ⌘ + ⌥ + I */</mark></code>
-                <code>Firefox Web Developer <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
-                <code>IE Developer Tools <mark class="comment">/* F12 */</mark></code>
-                <code>Firebug <mark class="comment">/* Firefox Extension */</mark></code>
-                <code>Opera Dragonfly <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⌥ + I */</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Возможности</h2>
-        <div>
-            <pre>
-                <code>ИНСПЕКТОР DOM</code>
-                <code>КОНСОЛЬ</code>
-                <code>ОТЛАДЧИК JavaScript</code>
-                <code>СЕТЕВАЯ АКТИВНОСТЬ</code>
-                <code>ПРОФАЙЛЕРЫ</code>
-                <code>ЭМУЛЯТОР</code>
-            </pre>
-        </div>
-    </section>
-
 
     <section class="slide title">
         <h2>
@@ -1360,6 +1328,7 @@
                 <code>ПЕРЕМЕННЫЕ</code>
                 <code>DRY (DON’T REPEAT YOURSELF)</code>
                 <code>ВЕНДОРНЫЕ ПРЕФИКСЫ</code>
+                <code>БЭМ</code>
             </pre>
         </div>
     </section>
@@ -1380,8 +1349,12 @@
         <img src="../../pics/sass-logo.png" alt="" />
     </section>
 
+    <section class="slide cover h bright">
+        <img src="../../pics/node-sass-logo.svg" alt="" />
+    </section>
+
     <section class="slide">
-        <h2>Установка</h2>
+        <h2>Установка sass</h2>
         <div>
             <pre>
                 <code>Ruby (<a href="http://rubyinstaller.org">Windows</a>)</code>
@@ -1392,11 +1365,35 @@
     </section>
 
     <section class="slide">
-        <h2>Использование</h2>
+        <h2>Установка node-sass</h2>
+        <div>
+            <pre>
+                <code>npm install node-sass</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Использование sass</h2>
         <div>
             <pre>
                 <code>$ sass in.scss out.css</code>
                 <code>$ sass --watch in.scss:out.css</code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Использование node-sass</h2>
+        <div>
+            <pre>
+                <code>var sass = require('node-sass');</code>
+                <code>sass.render({</code>
+                <code>  file: scss_filename,</code>
+                <code>}, function(err, result) { /*...*/ });</code>
+                <code>// OR</code>
+                <code>var result = sass.renderSync({ data: scss_content });</code>
             </pre>
         </div>
     </section>
@@ -1617,6 +1614,108 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>SCSS: Lists and loops</h2>
+        <div>
+            <pre>
+                    <code>$col_list = 1 2 3 4;</code>
+                    <code>for $col in $col_list {</code>
+                    <code>    td:nth-child({$col}) {</code>
+                    <code>        width: 10% * $col;</code>
+                    <code>    }</code>
+                    <code>}            </code>
+                    <code>for $col in (1..4) {...}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS: Lists and loops</h2>
+        <div>
+            <pre>
+                <code>td:nth-child(1) {</code>
+                <code>    width: 10%;</code>
+                <code>}</code>
+<code></code>
+                <code>td:nth-child(2) {</code>
+                <code>    width: 20%;</code>
+                <code>}</code>
+                <code>...</code>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>SCSS: Conditional statements</h2>
+        <div>
+            <pre>
+                <code>$theme = 'day';</code>
+<code></code>
+                <code>.sky {</code>
+                <code>    if $theme == 'day' {</code>
+                <code>        background: blue;</code>
+                <code>        background-image: url(sun.png);</code>
+                <code>    } else {</code>
+                <code>        background: black;</code>
+                <code>        background-image: url(stars.png);</code>
+                <code>    }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS: Conditional statements</h2>
+        <div>
+            <pre>
+                <code>.sky {</code>
+                <code>    background: #00f;</code>
+                <code>    background-image: url(sun.png);</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>PostCSS</h2>
+        <div>
+            <a href="https://github.com/postcss/postcss">https://github.com/postcss/postcss</a>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>
+            Web Inspector
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Инструменты</h2>
+        <div>
+            <pre>
+                <code>Chrome DevTools <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
+                <code>Safari Web Inspector <mark class="comment">/* ⌘ + ⌥ + I */</mark></code>
+                <code>Firefox Web Developer <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
+                <code>IE Developer Tools <mark class="comment">/* F12 */</mark></code>
+                <code>Firebug <mark class="comment">/* Firefox Extension */</mark></code>
+                <code>Opera Dragonfly <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⌥ + I */</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Возможности</h2>
+        <div>
+            <pre>
+                <code>ИНСПЕКТОР DOM</code>
+                <code>КОНСОЛЬ</code>
+                <code>ОТЛАДЧИК JavaScript</code>
+                <code>СЕТЕВАЯ АКТИВНОСТЬ</code>
+                <code>ПРОФАЙЛЕРЫ</code>
+                <code>ЭМУЛЯТОР</code>
+            </pre>
+        </div>
+    </section>
+
     <section class="slide shout">
         <h2>
             Профилирование
@@ -1799,6 +1898,7 @@
     </section>
 
     <div class="progress"><div></div></div>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script src="../../shower/shower.min.js"></script>
 </body>
 </html>
