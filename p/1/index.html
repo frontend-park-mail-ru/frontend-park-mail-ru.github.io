@@ -503,13 +503,7 @@
             </figure>
         </div>
     </section>
-
-    <section class="slide">
-        <h2>Как обычно используют GIT</h2>
-        <div style="background: url('/pics/git_mrg_flow.png') no-repeat 100% 100%; background-size: contain; background-position-x: left;">
-        </div>
-    </section>
-
+	
     <section class="slide">
         <h2>Базовые термины GIT</h2>
         <div>
@@ -521,6 +515,12 @@
                 <li>pull/fetch - выкачать изменения из удаленного репозитория </li>
                 <li>push - отправить изменения на удаленный репозиторий</li>
             </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Как обычно используют GIT</h2>
+        <div style="background: url('/pics/git_mrg_flow.png') no-repeat 100% 100%; background-size: contain; background-position-x: left;">
         </div>
     </section>
 
@@ -541,45 +541,28 @@
     </section>
 
     <section class="slide">
-        <h2>Форкаемся</h2>
-        <div style="background: url('/pics/fork.png') no-repeat 100% 100%; background-size: contain; background-position-y: top;">
-            <p style="margin-top: 185px; font-size: 32px;">Переходим по ссылке <b>https://goo.gl/mO3W9i</b> и нажимаем "Fork"</p>
+        <h2>Fork & Clone</h2>
+        <div style="background: url('/pics/gitflow/fork.png') no-repeat 100% 100%;height: 450px; padding: 0px; background-size: contain; background-position-y: top;">
         </div>
     </section>
 
-    <section class="slide">
-        <h2>Клонируем форк</h2>
-        <div>
-            <pre>
-                <code style="font-size: 21px;">git clone https://github.com/{github_name}/frontend-upstream.git {проект}</code>
-                <code>cd {проект}</code>
-                <code>git status</code>
-            </pre>
-        </div>
-    </section>
+	<section class="slide">
+		<h2>Нажимаем кнопки</h2>
+		<div>
+			<ul>
+				<li>fork - делаем форк sample репозитория</li>
+				<li>git clone \<путь до вашего форка\></li>
+				<li>cd sample</li>
+				<li>node server.js</li>
+			</ul>
+		</div>
+	</section>
 
-    <section class="slide">
-        <h2>Начинаем нажимать кнопки</h2>
-        <div>
-            <p></p>
-            <pre>
-                <code>git checkout v0</code>
-                <code>*нажимаем кнопки*</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Коммитим и Пушим</h2>
-        <div>
-            <pre>
-                <code>git checkout -b v0-{ваше имя через точку}</code>
-                <code>git commit -am "{комментарий к своим изменениям}"</code>
-                <code>git push origin v0-{ваше имя через точку}</code>
-            </pre>
-        </div>
-    </section>
-
+	<section class="slide">
+		<h2>Pull request</h2>
+		<div style="background: url('/pics/gitflow/push.png') no-repeat 100% 100%;height: 450px; padding: 0px; background-size: contain; background-position-y: top;">
+		</div>
+	</section>
 
     <section class="slide shout"><div>
         <h2>Архитектурное решение</h2>
