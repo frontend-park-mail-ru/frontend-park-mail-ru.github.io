@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="../../shower/themes/tech-mail/styles/screen.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 </head>
 <body class="list">
 
@@ -1303,47 +1306,13 @@
 
     <header class="caption">
         <h1>IX. Отладка и Оптимизация</h1>
-        <p>Web Inspector, Sass.</p>
+        <p>Инструменты разработчика и профилирование</p
     </header>
 
     <section class="slide title">
         <h2>
-            <span>Web Inspector, Sass</span>
+            <span>Инструменты для работы с CSS</span>
         </h2>
-    </section>
-
-    <section class="slide shout">
-        <h2>
-            Web Inspector
-        </h2>
-    </section>
-
-    <section class="slide">
-        <h2>Инструменты</h2>
-        <div>
-            <pre>
-                <code>Chrome DevTools <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
-                <code>Safari Web Inspector <mark class="comment">/* ⌘ + ⌥ + I */</mark></code>
-                <code>Firefox Web Developer <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
-                <code>IE Developer Tools <mark class="comment">/* F12 */</mark></code>
-                <code>Firebug <mark class="comment">/* Firefox Extension */</mark></code>
-                <code>Opera Dragonfly <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⌥ + I */</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Возможности</h2>
-        <div>
-            <pre>
-                <code>ИНСПЕКТОР DOM</code>
-                <code>КОНСОЛЬ</code>
-                <code>ОТЛАДЧИК JavaScript</code>
-                <code>СЕТЕВАЯ АКТИВНОСТЬ</code>
-                <code>ПРОФАЙЛЕРЫ</code>
-                <code>ЭМУЛЯТОР</code>
-            </pre>
-        </div>
     </section>
 
     <section class="slide shout">
@@ -1359,6 +1328,7 @@
                 <code>ПЕРЕМЕННЫЕ</code>
                 <code>DRY (DON’T REPEAT YOURSELF)</code>
                 <code>ВЕНДОРНЫЕ ПРЕФИКСЫ</code>
+                <code>БЭМ</code>
             </pre>
         </div>
     </section>
@@ -1379,8 +1349,12 @@
         <img src="../../pics/sass-logo.png" alt="" />
     </section>
 
+    <section class="slide cover h bright">
+        <img src="../../pics/node-sass-logo.svg" alt="" />
+    </section>
+
     <section class="slide">
-        <h2>Установка</h2>
+        <h2>Установка sass</h2>
         <div>
             <pre>
                 <code>Ruby (<a href="http://rubyinstaller.org">Windows</a>)</code>
@@ -1391,11 +1365,35 @@
     </section>
 
     <section class="slide">
-        <h2>Использование</h2>
+        <h2>Установка node-sass</h2>
+        <div>
+            <pre>
+                <code>npm install node-sass</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Использование sass</h2>
         <div>
             <pre>
                 <code>$ sass in.scss out.css</code>
                 <code>$ sass --watch in.scss:out.css</code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Использование node-sass</h2>
+        <div>
+            <pre>
+                <code>var sass = require('node-sass');</code>
+                <code>sass.render({</code>
+                <code>  file: scss_filename,</code>
+                <code>}, function(err, result) { /*...*/ });</code>
+                <code>// OR</code>
+                <code>var result = sass.renderSync({ data: scss_content });</code>
             </pre>
         </div>
     </section>
@@ -1762,6 +1760,350 @@
     </section>
 
     <section class="slide">
+        <h2>SCSS: Lists and loops</h2>
+        <div>
+            <pre>
+                    <code>$col_list = 1 2 3 4;</code>
+                    <code>for $col in $col_list {</code>
+                    <code>    td:nth-child({$col}) {</code>
+                    <code>        width: 10% * $col;</code>
+                    <code>    }</code>
+                    <code>}            </code>
+                    <code>for $col in (1..4) {...}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS: Lists and loops</h2>
+        <div>
+            <pre>
+                <code>td:nth-child(1) {</code>
+                <code>    width: 10%;</code>
+                <code>}</code>
+<code></code>
+                <code>td:nth-child(2) {</code>
+                <code>    width: 20%;</code>
+                <code>}</code>
+                <code>...</code>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>SCSS: Conditional statements</h2>
+        <div>
+            <pre>
+                <code>$theme = 'day';</code>
+<code></code>
+                <code>.sky {</code>
+                <code>    if $theme == 'day' {</code>
+                <code>        background: blue;</code>
+                <code>        background-image: url(sun.png);</code>
+                <code>    } else {</code>
+                <code>        background: black;</code>
+                <code>        background-image: url(stars.png);</code>
+                <code>    }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS: Conditional statements</h2>
+        <div>
+            <pre>
+                <code>.sky {</code>
+                <code>    background: #00f;</code>
+                <code>    background-image: url(sun.png);</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>PostCSS</h2>
+        <div>
+            <a href="https://github.com/postcss/postcss">https://github.com/postcss/postcss</a>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>
+            Web Inspector
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Инструменты</h2>
+        <div>
+            <pre>
+                <code>Chrome DevTools <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
+                <code>Safari Web Inspector <mark class="comment">/* ⌘ + ⌥ + I */</mark></code>
+                <code>Firefox Web Developer <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⇧ + I */</mark></code>
+                <code>IE Developer Tools <mark class="comment">/* F12 */</mark></code>
+                <code>Firebug <mark class="comment">/* Firefox Extension */</mark></code>
+                <code>Opera Dragonfly <mark class="comment">/* Ctrl + Shift + I, ⌘ + ⌥ + I */</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Возможности</h2>
+        <div>
+            <pre>
+                <code>ИНСПЕКТОР DOM</code>
+                <code>КОНСОЛЬ</code>
+                <code>ОТЛАДЧИК JavaScript</code>
+                <code>СЕТЕВАЯ АКТИВНОСТЬ</code>
+                <code>ПРОФАЙЛЕРЫ</code>
+                <code>ЭМУЛЯТОР</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>
+            Профилирование
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Области видимости</h2>
+        <div>
+            <ol>
+                <li>
+                    <b>Lexical Scoping (Lexical Environment)</b> -  область видимости ограничена текстом определения этой функции
+                </li>
+                <li>
+                    <b>Dynamic Scoping</b> -  область видимости ограничена временем исполнения функции
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Lexical Environment</h2>
+        <div>
+            <pre>
+                <code>var y = 5;</code>
+                <code>var x = function(){</code>
+                <code>  return y;</code>
+                <code>};</code>
+                <code>var z = function(t){</code>
+                <code>  var y = 10;</code>
+                <code>  return t();</code>
+                <code>};</code>
+                <code>console.log(z(x)); // ?</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Управление памятью</h2>
+        <div>
+            <ul>
+                <li>
+                    Главной концепцией управления памятью в JavaScript - <b>принцип достижимости</b>.
+                </li>
+                <li>
+                    <b>Значение сохраняется</b> я в памяти, пока <b>доступно из корня</b> по ссылке или цепочке ссылок.
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section class="slide">
+        <h2>Достижимыми изначально считаются</h2>
+        <div>
+            <ol>
+                <li>
+                    <b>Ссылки из стека вызова</b> -  локальные переменные, параметры функций
+                </li>
+                <li>
+                    <b>Глобальные переменные</b> -  window, etc..
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Алгоритм сборки мусора</h2>
+        <div>
+            <pre>
+                <code>function marry(man, woman) {</code>
+                <code>  woman.husband = man;</code>
+                <code>  man.wife = woman;</code>
+                <code>  return {</code>
+                <code>      father: man,</code>
+                <code>      mother: woman</code>
+                <code>}};</code>
+                <code>var family = marry({ name: "Василий" }, { name: "Мария" });</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div style="
+        background-image: url('/pics/opt-family.png');
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        top: 40px;
+        ">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Удаляем "Отца"</h2>
+        <div>
+            <pre>
+                <code>delete family.father;</code>
+                <code>delete family.mother.husband;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div style="
+        background-image: url('/pics/opt-family-no-father.png');
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        top: 40px;
+        ">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Удаляем "Семью"</h2>
+        <div>
+            <pre>
+                <code>window.family = null;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div style="
+            background-image: url('/pics/opt-family-no-family.png');
+            background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            top: 40px;
+        ">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции</h2>
+        <div>
+             <pre>
+                <code>function f() {</code>
+                <code>  var value = 123;</code>
+                <code></code>
+                <code>  function g() {} // g видна только изнутри</code>
+                <code>}</code>
+                <code></code>
+                <code>f();</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Функции</h2>
+        <div>
+             <pre>
+                <code>function f() {</code>
+                <code>  var value = Math.random();</code>
+                <code></code>
+                <code>  function g() {} // g видна только изнутри</code>
+                <code></code>
+                <code>  return g;</code>
+                <code>}</code>
+                <code></code>
+                <code>var g = f(); // функция g будет жить и сохранит ссылку на объект переменных</code>
+                <code>// g->[[SCOPE f]]->value</code>
+                <code></code>
+                <code>g = null // вот теперь ссылка удалена</code>
+                <code>var a = [f(), f(), f()] // а вот теперь 3 версии [[SCOPE]] в куче</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Пример утечки памяти</h2>
+        <div>
+            <ol>
+                <li>
+                    <a href="/p/examples/profiling.html">ссылка</a>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>
+            Как искать утечки?
+        </h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>
+            Условия для работы
+        </h2>
+        <div>
+            <ul>
+                <li>Запущен только браузер</li>
+                <li>Chrome запущен с дефолтными настройками (chrome://flags)</li>
+                <li>Открыта только одна вкладка</li>
+                <li>Выключены все плагины</li>
+                <li>Инкогнито режим</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            Теория
+        </h2>
+        <div>
+            <p>
+                <strong>JSHeap</strong> — граф из связанных объектов. Корнем этого графа обычно является глобальный объект (GC Roots).
+            </p>
+            <p>
+                <strong>shallow size</strong> - чистое количество памяти, занимаемое объектом.
+            </p>
+            <p>
+                <strong>retained size</strong> - это общее количество памяти, которое освободится при сборке мусора.
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            API
+        </h2>
+        <div>
+            <pre>
+                <code>window.performance.memory</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>
+            Примеры утечек от Google
+        </h2>
+        <div>
+            <a href="https://developer.chrome.com/devtools/docs/demos/memory/example7">eval</a>
+            <br>
+            <a href="https://developer.chrome.com/devtools/docs/demos/memory/example10">Retaining path</a>
+        </div>
+    </section>
+
+    <section class="slide">
         <h2>Домашнее задание</h2>
         <div>
             <pre>
@@ -1784,6 +2126,10 @@
             </li>
             <li>
                 <img alt="en" src="../../pics/en.gif">
+                <a href="https://developer.chrome.com/devtools/docs/javascript-memory-profiling">JavaScript Memory Profiling</a>
+            </li>
+            <li>
+                <img alt="en" src="../../pics/en.gif">
                 <a href="http://sass-lang.com/">Документация SASS</a>
             </li>
         </ol>
@@ -1798,6 +2144,7 @@
     </section>
 
     <div class="progress"><div></div></div>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script src="../../shower/shower.min.js"></script>
 </body>
 </html>

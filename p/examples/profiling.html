@@ -5,9 +5,10 @@
     <title></title>
 </head>
 <body>
-    <button id="btn">leak 1</button>
+    <button id="btn">leak</button>
+	<button id="noLeak">no leak</button>
 
-    <script>
+	<script>
         var btn = document.getElementById('btn');
         var a = null;
 
@@ -20,6 +21,21 @@
                     var unused = function() {
                         console.log(b);
                     };
+                    console.log("Hi, JS-dude!");
+                }
+            };
+
+        });
+
+		var noLeak = document.getElementById('noLeak');
+        var c = null;
+
+        noLeak.addEventListener('click', function () {
+            var b = c;
+
+            a = {
+                longStr: new Array(1000000).join(Math.random().toString()),  // создаем 1Mб объект
+                someMethod: function () {
                     console.log("Hi, JS-dude!");
                 }
             };
