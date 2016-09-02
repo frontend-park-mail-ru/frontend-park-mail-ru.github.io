@@ -1306,7 +1306,7 @@
 
     <header class="caption">
         <h1>IX. Отладка и Оптимизация</h1>
-        <p>Инструменты разработчика и профилирование</p>
+        <p>Инструменты разработчика и профилирование</p
     </header>
 
     <section class="slide title">
@@ -1611,6 +1611,151 @@
                 <code>    background: #e33;</code>
                 <code>    padding: 8px; }</code>
             </pre>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <h2>
+            Профилирование
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2>Области видимости</h2>
+        <div>
+            <ol>
+                <li>
+                    <b>Lexical Scoping (Lexical Environment)</b> -  область видимости ограничена текстом определения этой функции
+                </li>
+                <li>
+                    <b>Dynamic Scoping</b> -  область видимости ограничена временем исполнения функции
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Lexical Environment</h2>
+        <div>
+            <pre>
+                <code>var y = 5;</code>
+                <code>var x = function(){</code>
+                <code>  return y;</code>
+                <code>};</code>
+                <code>var z = function(t){</code>
+                <code>  var y = 10;</code>
+                <code>  return t();</code>
+                <code>};</code>
+                <code>console.log(z(x)); // ?</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Управление памятью</h2>
+        <div>
+            <ul>
+                <li>
+                    Главной концепцией управления памятью в JavaScript - <b>принцип достижимости</b>.
+                </li>
+                <li>
+                    <b>Значение сохраняетс</b> я в памяти, пока <b>доступно из корня</b> по ссылке или цепочке ссылок.
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section class="slide">
+        <h2>Достижимыми изначально считаются</h2>
+        <div>
+            <ol>
+                <li>
+                    <b>Ссылки из стека вызова</b> -  локальные переменные, параметры функций
+                </li>
+                <li>
+                    <b>Глобальные переменные</b> -  window, etc..
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Алгоритм сборки мусора</h2>
+        <div>
+            <pre>
+                <code>function marry(man, woman) {</code>
+                <code>  woman.husband = man;</code>
+                <code>  man.wife = woman;</code>
+                <code>  return {</code>
+                <code>      father: man,</code>
+                <code>      mother: woman</code>
+                <code>}};</code>
+                <code>var family = marry({ name: "Василий" }, { name: "Мария" });</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div style="
+        background-image: url('/pics/opt-family.png');
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        top: 40px;
+        ">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Удаляем "Отца"</h2>
+        <div>
+            <pre>
+                <code>delete family.father;</code>
+                <code>delete family.mother.husband;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div style="
+        background-image: url('/pics/opt-family-no-father.png');
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        top: 40px;
+        ">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Удаляем "Семью"</h2>
+        <div>
+            <pre>
+                <code>window.family = null;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div style="
+            background-image: url('/pics/opt-family-no-family.png');
+            background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            top: 40px;
+        ">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Утечки памяти</h2>
+        <div>
+            <ol>
+                <li>
+                    <a href="/p/examples/profiling.html">Утечка по событию</a>
+                </li>
+            </ol>
         </div>
     </section>
 
