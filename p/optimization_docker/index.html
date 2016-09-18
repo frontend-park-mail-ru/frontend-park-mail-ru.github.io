@@ -88,7 +88,7 @@
             <pre>
                 <code>Docker - cистема управления контейнерами</code>
                 <code>Контейнер ≈ легковесная виртуальная машина</code>
-                <code>Контейнер будет работать везде где есть Docker</code>
+                <code>Контейнер будет работать везде, где есть Docker</code>
             </pre>
         </div>
     </section>
@@ -104,7 +104,7 @@
         <h2>Dockerfile</h2>
         <div>
             <pre>
-                <code>FROM nginx <mark class="comment"># За основу возьмен Docker образ nginx</mark></code>
+                <code>FROM nginx <mark class="comment"># За основу возьмем Docker образ nginx</mark></code>
                 <code>COPY nginx.conf /etc/nginx/ <mark class="comment"># Скопируем конфиг nginx</mark></code>
                 <code>ADD ./public_html /opt/public_html <mark class="comment"># Скопируем статику</mark></code>
                 <code>CMD nginx -g 'daemon off;' <mark class="comment"># Команда для запуска контейнера</mark></code>
