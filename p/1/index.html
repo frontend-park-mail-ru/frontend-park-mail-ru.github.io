@@ -2604,7 +2604,7 @@
 
     <section class="slide cover w">
         <div>
-            <img src="/pics/forms/login_emailru.png" alt="" />
+            <img src="/pics/forms/login_emailru_new.png" alt="" />
         </div>
     </section>
 
@@ -2646,7 +2646,7 @@
 
     <section class="slide cover w">
         <div>
-            <img src="/pics/forms/google.jpg" alt="" />
+            <img src="/pics/forms/google_new.png" alt="" />
         </div>
     </section>
 
@@ -2735,7 +2735,7 @@
             <code>&lt;input name=&quot;custname&quot;&gt;</code>
 
             <code>...</code>
-            <code>&lt;select name=&quot;custtype&quot;&gt;</code>
+            <code>&lt;select name=&quot;custtype&quot;&gt; name=&quot;custtype&quot;&gt;</code>
             <code>  &lt;option value=&quot;Business&quot;&gt;Business&lt;/option&gt;</code>
             <code>  &lt;option value=&quot;Customer&quot;&gt;Customer&lt;/option&gt;</code>
             <code>&lt;/select&gt;</code>
@@ -2784,6 +2784,39 @@
         </pre>
        </div>
     </section>
+
+
+	<section class="slide">
+		<h2>Tabindex</h2>
+		<div>
+		<pre>
+			<code>...</code>
+			<code>&lt;input type=text name=&quot;login&quot;&gt;</code>
+			<code>&lt;a href=&quot;/remind/&quot;&gt;забыли пароль?&lt;/a&gt;</code>
+			<code>&lt;input type=password name=&quot;password&quot;&gt;</code>
+			<code>...</code>
+		</pre>
+	   </div>
+	</section>
+
+	<section class="slide cover w">
+		<div>
+			<img src="/pics/forms/tabindex.png" alt="" />
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Tabindex</h2>
+		<div>
+		<pre>
+			<code>...</code>
+			<code>&lt;input type=text name=&quot;login&quot; <b>tabindex=&quot;1&quot;</b> &gt;</code>
+			<code>&lt;a href=&quot;/remind/&quot;&gt;забыли пароль?&lt;/a&gt;</code>
+			<code>&lt;input type=password name=&quot;password&quot; <b>tabindex=&quot;2&quot;</b>&gt;</code>
+			<code>...</code>
+		</pre>
+	   </div>
+	</section>
 
     <section class="slide title">
         <h2>
@@ -3038,7 +3071,6 @@
                 <li class="next">Несколько ошибок на одном поле</li>
                 <li class="next">Когда проверять?</li>
                 <li class="next">Когда юзер решил отправить форму?</li>
-                <li class="next">Apple</li>
             </ul>
        </div>
     </section>
@@ -3086,7 +3118,6 @@
         <div>
             <ol>
                 <li>Сабмит формы с рендером новой страницы в новом или текущем окне <a href="/demos/submit-simple.html">Демо</a></li>
-                <li class="next">Сабмит формы в iframe <a href="/demos/submit-iframe.html">Демо</a></li>
                 <li class="next">Сериализация данных формы и AJAX</li>
             </ol>
         </div>
