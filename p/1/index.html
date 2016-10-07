@@ -1974,18 +1974,6 @@
        </div>
     </section>
 
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/mvc-ss.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide cover h bright">
-        <div>
-            <img src="/pics/mvc-cs.png" alt="" />
-        </div>
-    </section>
-
     <section class="slide">
         <h2>Устройство веб-приложения</h2>
         <div>
@@ -2006,16 +1994,6 @@
             </blockquote>
             <figcaption><a href="http://ru.wikipedia.org/wiki/Модуль_(программирование)">Википедия</a></figcaption>
         </figure>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Модуль веб-приложения</h2>
-        <div>
-        <pre>
-            <code>Состоит из HTML, CSS и JavaScript.</code>
-            <code>Характеризуется слабой связностью.</code>
-        </pre>
         </div>
     </section>
 
@@ -2055,9 +2033,95 @@
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Блок веб-приложения</h2>
+        <div>
+        <pre>
+            <code>Состоит из HTML, CSS и JavaScript.</code>
+            <code>Характеризуется слабой связностью.</code>
+        </pre>
+        </div>
+    </section>
+
+    <!-- БЕМ -->
+
     <section class="slide cover w bright">
         <div>
             <img src="/pics/bem.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Определение</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p><strong>БЭМ (Блок, Элемент, Модификатор)</strong> — омпонентный подход к веб-разработке. В его основе лежит принцип разделения интерфейса на независимые блоки. Он позволяет легко и быстро разрабатывать интерфейсы любой сложности и повторно использовать существующий код, избегая «Copy-Paste».</p>
+                </blockquote>
+                <figcaption><a href="https://ru.bem.info/methodology/quick-start">Bem.info</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Блок</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p><strong>Блок</strong> — Функционально независимый компонент страницы, который может быть повторно использован. В HTML блоки представлены атрибутом <b>class</b>.</p>
+                </blockquote>
+            </figure>
+            <div>
+                <ul>
+                    <li class="next">Название блока характеризует смысл (отвечает на вопрос <b>"Что это?"</b>)</li>
+                    <li class="next">Блок не должен влиять на свое окружение</li>
+                    <li class="next">В CSS по БЭМ также не рекомендуется использовать селекторы по тегам или id.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Элемент</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p><strong>Элемент</strong> —Составная часть блока, которая не может использоваться в отрыве от него.</p>
+                </blockquote>
+            </figure>
+            <div>
+                <ul>
+                    <li class="next">Название блока характеризует смысл (отвечает на вопрос <b>"Что это?"</b>)</li>
+                    <li class="next">Структура полного имени элемента соответствует схеме: имя-блока__имя-элемента (header<b>__</b>search-form)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Когда создавать блок, когда элемент?</h2>
+        <div>
+            <ul>
+                <li class="next">Если фрагмент кода может использоваться повторно и не зависит от реализации других компонентов страницы, необходимо создавать <b>блок.</b></li>
+                <li class="next">Если фрагмент кода не может использоваться самостоятельно, без родительской сущности (блока), в большинстве случаев создается <b>элемент.</b></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Модификатор</h2>
+        <div>
+            <figure>
+                <blockquote>
+                    <p><strong>Модификатор</strong> — Cущность, определяющая внешний вид, состояние или поведение блока либо элемента.</p>
+                </blockquote>
+            </figure>
+            <div>
+                <ul>
+                    <li class="next">Название модификатора характеризует внешний вид (<b>«какой размер?»</b>, <b>«какая тема?»</b> )</li>
+                    <li class="next">Имя модификатора отделяется от имени блока или элемента одним подчеркиванием (search-form<b>_</b>invalid)</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -2175,201 +2239,9 @@
         <h2>Устройство веб-приложения</h2>
         <div>
         <pre>
-            <code>УРОВЕНЬ МОДУЛЕЙ. <mark class="comment">// AMD &amp; RequireJS</mark></code>
-            <code class="next">УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ. <mark class="comment">// Backbone</mark></code>
-            <code class="next">УРОВЕНЬ БИБЛИОТЕК. <mark class="comment">// jQuery &amp; Underscore</mark></code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/amd_and_require.jpg" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Asynchronous Module Definition</h2>
-        <div>
-        <pre>
-            <code>define('A', function () {</code>
-            <code>    var name = 'A'; <mark class="comment">// приватная переменная</mark></code>
-            <code>    return {</code>
-            <code>        say: function () { <mark class="comment">// публичный метод</mark></code>
-            <code>            alert(name);</code>
-            <code>        }</code>
-            <code>    };</code>
-            <code>});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Asynchronous Module Definition</h2>
-        <div>
-        <pre>
-            <code>define('B', function (require) {</code>
-            <code>    var A = require('A'); <mark class="comment">// подключаемый модуль</mark> </code>
-            <code>    var name = 'B'; <mark class="comment">// приватная переменная</mark></code>
-            <code>    return {</code>
-            <code>        say: function () { <mark class="comment">// публичный метод</mark></code>
-            <code>            A.say(); <mark class="comment">// вызов публичного метода модуля A</mark></code>
-            <code>            alert(name);</code>
-            <code>        }</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-
-    <section class="slide">
-        <h2>Что имели?</h2>
-        <div>
-        <pre>
-            <code>&lt;script src="/js/lib/jquery.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/main.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/scoreboard.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/game.js"&gt;&lt;/script&gt;</code>
-            <code>&lt;script src="/js/tmpl/login.js"&gt;&lt;/script&gt;</code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что получили?</h2>
-        <div>
-        <pre>
-            <code>&lt;script data-main="js/main"</code>
-            <code>     src="js/lib/require.js"&gt;&lt;/script&gt;</code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>js/main.js</code></h2>
-        <div>
-        <pre>
-            <code>…</code>
-            <code>define(function (require) {</code>
-            <code>    var router = require('router');  </code>
-            <code>    Backbone.history.start();</code>
-            <code>});</code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-fest</code>’s options</h2>
-        <div>
-        <pre>
-            <code>template: function (data) { <mark class="comment">/* формат функции-шаблона */</mark></code>
-            <code>    return grunt.template.process(</code>
-            <code>        <mark class="comment">/* присваиваем функцию-шаблон переменной */</mark></code>
-            <code>        'var <%= name %>Tmpl = <%= contents %> ;',</code>
-            <code>        {data: data}</code>
-            <code>    );</code>
-            <code>}</code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide cover w bright">
-        <div>
-            <img src="/pics/backbone.png" alt="" />
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Backbone</h2>
-        <div>
-        <pre>
-            <code>МОДЕЛИ <mark class="comment"> // models</mark></code>
-            <code>КОЛЛЕКЦИИ <mark class="comment">// collections</mark></code>
-            <code>ПРЕДСТАВЛЕНИЯ <mark class="comment"> // view</mark></code>
-        </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.Events</code></h2>
-        <div>
-        <pre>
-            <code>var object = {};</code>
-            <code>_.extend(object, Backbone.Events);</code>
-            <code>object.on("alert", function (msg) {</code>
-            <code>    alert("Triggered " + msg);</code>
-            <code>});</code>
-            <code>object.trigger("alert", "an event");</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.Model</code></h2>
-        <div>
-        <pre>
-            <code>var PlayerModel = Backbone.Model.extend({});</code>
-            <code>var player = new PlayerModel();</code>
-            <code>player.on('change:name', function(model, name) {</code>
-            <code>    alert('Player name is ' + name);</code>
-            <code>});</code>
-            <code>player.set({name: 'Mark'});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>var PlayerView = Backbone.View.extend({</code>
-            <code>    tagName: "li",</code>
-            <code>    className: "score__item",</code>
-            <code>    template: fest['player'],</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>    …</code>
-            <code>    events: {</code>
-            <code>        "click .button_delete": "destroy"</code>
-            <code>    },</code>
-            <code>    destroy: function () {},</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>    …</code>
-            <code>    initialize: function () {</code>
-            <code>        this.listenTo(this.model, "change", this.render);</code>
-            <code>    },</code>
-
-            <code>    render: function () {</code>
-            <code>        this.$el.html(this.template(this.model.attributes));</code>
-            <code>    }</code>
-            <code>});</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.View</code></h2>
-        <div>
-        <pre>
-            <code>var playerView = new PlayerView({</code>
-            <code>        model: player,</code>
-            <code>        id: "player-" + player.id</code>
-            <code>    });</code>
+            <code>УРОВЕНЬ МОДУЛЕЙ. <mark class="comment">// es6 модули </mark></code>
+            <code class="next">УРОВЕНЬ ЯДРА ПРИЛОЖЕНИЯ. <mark class="comment">// View, Router</mark></code>
+            <code class="next">УРОВЕНЬ БИБЛИОТЕК. <mark class="comment">// jQuery &amp; Underscore ...</mark></code>
         </pre>
        </div>
     </section>
@@ -2377,6 +2249,32 @@
     <section class="slide cover w bright">
         <div>
             <img src="/pics/prototype-scheme.png" alt="" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что у нас сейчас</h2>
+        <div>
+            <pre>
+                <code>&lt;a href="#" class="js-chat"&gt;Chat&lt;/a&gt;</code>
+                <code>&lt;a href="#" class="js-login"&gt;Login&lt;/a&gt;</code>
+                <code>&lt;a href="#" class="js-register"&gt;Register&lt;/a&gt;</code>
+                <code>&lt;script&gt;</code>
+                <code>    document.querySelector('.js-scoreboard').addEventListener("click", function () { … });</code>
+                <code>    document.querySelector('.js-game').addEventListener("click", function () { … });</code>
+                <code>    document.querySelector('.js-login').addEventListener("click", function () { … });</code>
+                <code>&lt;/script&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Минусы текущего решения</h2>
+        <div>
+            <ul>
+                <li class="next">Сложность кода, особенно при добавлении новых экранов</li>
+                <li class="next">Не возможность сделать отдельные url для отдельных состояний приложения</li>
+            </ul>
         </div>
     </section>
 
@@ -2393,23 +2291,9 @@
         <h2>Событие <code>hashchange</code></h2>
         <div>
             <pre>
-                <code>Backbone.history.start();</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что имели?</h2>
-        <div>
-            <pre>
-                <code>&lt;a href="#" class="js-scoreboard"&gt;Scoreboard&lt;/a&gt;</code>
-                <code>&lt;a href="#" class="js-game"&gt;Game&lt;/a&gt;</code>
-                <code>&lt;a href="#" class="js-login"&gt;Game&lt;/a&gt;</code>
-                <code>&lt;script&gt;</code>
-                <code>    $('.js-scoreboard').on("click", function () { … });</code>
-                <code>    $('.js-game').on("click", function () { … });</code>
-                <code>    $('.js-login').on("click", function () { … });</code>
-                <code>&lt;/script&gt;</code>
+                <code>window.addEventListener('hashchange', function (e) {</code>
+                <code>      console.log(e);</code>
+                <code>});</code>
             </pre>
         </div>
     </section>
@@ -2425,69 +2309,10 @@
         </div>
     </section>
 
-    <section class="slide">
-        <h2><code>Backbone.Router</code></h2>
+    <section class="slide cover w bright">
+        <h2>А что на самом деле?</h2>
         <div>
-        <pre>
-            <code>var Router = Backbone.Router.extend({</code>
-            <code>    routes: {</code>
-            <code>        'scoreboard': 'scoreboardAction',</code>
-            <code>        'game'      : 'gameAction',</code>
-            <code>        '*default'  : 'defaultActions'</code>
-            <code>    },</code>
-            <code>    scoreboardAction: function () {},</code>
-            <code>    …</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>Backbone.Router</code></h2>
-        <div>
-        <pre>
-            <code>    …</code>
-            <code>    gameAction: function () {},</code>
-            <code>    defaultActions: function () {}</code>
-            <code>});</code>
-            <code>new Router();</code>
-        </pre>
-       </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>Один модуль — один файл.</h2>
-        <div>
-       </div>
-    </section>
-
-    <section class="slide">
-        <h2>Unit тестирование</h2>
-        <div>
-            <p>
-                <strong>Это</strong> - процесс в программировании, позволяющий проверить на корректность отдельные модули исходного кода программы
-            </p>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Зачем тестировать?</h2>
-        <div>
-            <ul>
-                <li>Повысить качество кода</li>
-                <li>Сделать код более устойчивым к изменениям</li>
-                <li>Улучшить уровень документированности кода</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Что тестировать?</h2>
-        <div>
-            <ul>
-                <li>Участки кода, которые вызываются редко</li>
-                <li>Сложные участки кода</li>
-                <li>"Опасные" участки кода</li>
-            </ul>
+            <img src="/pics/single-resp.jpg" alt="" />
         </div>
     </section>
 
@@ -2502,31 +2327,45 @@
         </div>
     </section>
 
+    <section class="slide shout">
+        <h2>Один модуль — один файл</h2>
+    </section>
 
-    <section class="slide">
-        <h2><code>grunt-fest</code>’s options</h2>
-        <div>
-        <pre>
-            <code>template: function (data) {</code>
-            <code>    return grunt.template.process(</code>
-            <code>        <mark class="comment">/* 'var <%= name %>Tmpl = <%= contents %> ;' */</mark></code>
-            <code>        'define(function () { return <%= contents %> ; });',</code>
-            <code>        {data: data}</code>
-            <code>    );</code>
-            <code>}</code>
-        </pre>
-       </div>
+    <section class="slide shout">
+        <h2>У модуля должна быть только одна причина для изменения.</h2>
     </section>
 
     <section class="slide">
-        <h2>Домашнее задание</h2>
+        <h2><code>Router</code></h2>
         <div>
-        <pre>
-            <code>САМОСТОЯТЕЛЬНО ИЗУЧИТЬ UNDERSCORE, BACKBONE, REQUIREJS и БЭМ.</code>
-            <code>ДОРАБОТАТЬ ПРОТОТИП ПО ТЗ.</code>
-            <code>ПРИСТУПИТЬ К РЕАЛИЗАЦИИ ИГРОВОЙ МЕХАНИКИ.</code>
-        </pre>
+        <div>
+            <img src="/pics/router.png" alt="" />
         </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>View</code></h2>
+        <div>
+            <div>
+                <img src="/pics/view.png" alt="" />
+            </div>
+    </section>
+
+    <section class="slide">
+        <h2><code>Model</code></h2>
+        <div>
+            <div>
+                <img src="/pics/model.png" alt="" />
+            </div>
+    </section>
+
+
+    <section class="slide">
+        <h2><code>Правила взаимодействия</code></h2>
+        <div>
+            <div>
+                <img style="height: 420px;" src="/pics/concept.png" alt="" />
+            </div>
     </section>
 
     <!-- Рекомендованная летература к лекции 3 "Архитектура" -->
@@ -2537,14 +2376,6 @@
         <ol>
             <li>
                 <a href="http://bem.info/">БЭМ (посмотреть Methodology, Articles, Talks)</a>
-            </li>
-            <li>
-                <img alt="en" src="../../pics/en.gif">
-                <a href="http://underscorejs.org/">Документация по Underscore</a>
-            </li>
-            <li>
-                <img alt="en" src="../../pics/en.gif">
-                <a href="http://backbonejs.org/">Документация по Backbone (посмотрите исходный код)</a>
             </li>
             <li>
                 <img alt="habr" src="../../pics/habr.png">
