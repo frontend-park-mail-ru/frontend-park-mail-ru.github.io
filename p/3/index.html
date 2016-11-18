@@ -1582,6 +1582,7 @@
                 <li>Минификация</li>
                 <li>Сжатие и инлайн картинок/шрифтов</li>
             </ul>
+            <a href="http://postcss.parts/">Список плагинов</a>
         </div>
     </section>
 
@@ -1598,8 +1599,34 @@
             <pre>
                 <code>$ npm install -g postcss-cli</code>
                 <code>$ npm install autoprefixer</code>
-                <code>$ postcss [options] [-o output-file|-d output-directory|-r] [input-file]</code>
+                <code>$ postcss --local-plugins autoprefixer
+        -o main.compiled.css -d public/css public/css/main.css</code>
             </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS-Modules</h2>
+        <div style="text-align: center;">
+            <img src="../../pics/css-modules.png" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS-Modules - Зачем?</h2>
+        <div>
+            <ul>
+                <li>Все классы находятся в локальной области видимости компонента</li>
+                <li>Имена классов генерируются автоматически и являются уникальными</li>
+                <li>&rarr; БЭМ не нужен</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS-Modules - Как?</h2>
+        <div style="text-align: center;">
+            <img src="../../pics/css-modules-work.png" alt="">
         </div>
     </section>
 
