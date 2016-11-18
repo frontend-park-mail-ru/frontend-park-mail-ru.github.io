@@ -1383,7 +1383,6 @@
         </div>
     </section>
 
-
     <section class="slide">
         <h2>Использование node-sass</h2>
         <div>
@@ -1397,53 +1396,6 @@
             </pre>
         </div>
     </section>
-
-    <section class="slide">
-        <h2><code>grunt-sass</code></h2>
-        <div>
-            <pre>
-                <code>$ npm install --save-dev grunt-sass</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>npmjs.com</code></h2>
-        <div>
-            <p><a href="https://www.npmjs.com/package/grunt-sass">grunt-sass</a></p>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Gruntfile.js</h2>
-        <div>
-            <pre>
-                <code>grunt.initConfig({</code>
-                <code>    sass: { … } <mark class="comment">/* grunt-sass */</mark></code>
-                <code>});</code>
-                <code></code>
-                <code>grunt.loadNpmTasks('grunt-sass');</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2><code>grunt-sass</code></h2>
-        <div>
-            <pre>
-                <code>css: { <mark class="comment">/* Цель */</mark></code>
-                <code>    files: [{</code>
-                <code>        expand: true,</code>
-                <code>        cwd: 'public_html/css', <mark class="comment">/* исходная директория */</mark></code>
-                <code>        src: '*.scss', <mark class="comment">/* имена шаблонов */</mark></code>
-                <code>        dest: 'public_html/css', <mark class="comment">/* результирующая директория */</mark></code>
-                <code>        ext:  '.css'</code>
-                <code>    }]}</code>
-            </pre>
-        </div>
-    </section>
-
-    <!-- http://sassmeister.com/gist/10103589 -->
 
     <section class="slide">
         <h2>SCSS: Variables</h2>
@@ -1610,6 +1562,43 @@
                 <code>    color: #333;</code>
                 <code>    background: #e33;</code>
                 <code>    padding: 8px; }</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>PostCSS</h2>
+        <div>
+            <img src="../../pics/postcss-logo.png" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>PostCSS - Зачем?</h2>
+        <div>
+            <ul>
+                <li>Autoprefixer</li>
+                <li>Удаление дубликатов</li>
+                <li>Минификация</li>
+                <li>Сжатие и инлайн картинок/шрифтов</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>PostCSS - Как?</h2>
+        <div>
+            <img src="../../pics/postcss.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>PostCSS - Как?</h2>
+        <div>
+            <pre>
+                <code>$ npm install -g postcss-cli</code>
+                <code>$ npm install autoprefixer</code>
+                <code>$ postcss [options] [-o output-file|-d output-directory|-r] [input-file]</code>
             </pre>
         </div>
     </section>
