@@ -1565,6 +1565,67 @@
             </pre>
         </div>
     </section>
+    
+    <section class="slide">
+        <h2>SCSS: Lists and loops</h2>
+        <div>
+            <pre>
+                    <code>$col_list = 1 2 3 4;</code>
+                    <code>for $col in $col_list {</code>
+                    <code>    td:nth-child({$col}) {</code>
+                    <code>        width: 10% * $col;</code>
+                    <code>    }</code>
+                    <code>}            </code>
+                    <code>for $col in (1..4) {...}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS: Lists and loops</h2>
+        <div>
+            <pre>
+                <code>td:nth-child(1) {</code>
+                <code>    width: 10%;</code>
+                <code>}</code>
+<code></code>
+                <code>td:nth-child(2) {</code>
+                <code>    width: 20%;</code>
+                <code>}</code>
+                <code>...</code>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>SCSS: Conditional statements</h2>
+        <div>
+            <pre>
+                <code>$theme = 'day';</code>
+<code></code>
+                <code>.sky {</code>
+                <code>    if $theme == 'day' {</code>
+                <code>        background: blue;</code>
+                <code>        background-image: url(sun.png);</code>
+                <code>    } else {</code>
+                <code>        background: black;</code>
+                <code>        background-image: url(stars.png);</code>
+                <code>    }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS: Conditional statements</h2>
+        <div>
+            <pre>
+                <code>.sky {</code>
+                <code>    background: #00f;</code>
+                <code>    background-image: url(sun.png);</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
 
     <section class="slide">
         <h2>PostCSS</h2>
@@ -1634,219 +1695,6 @@
         <h2>CSS-Modules - Как?</h2>
         <div style="text-align: center;">
             <img src="../../pics/css-modules-work.png" alt="">
-        </div>
-    </section>
-
-    <section class="slide shout">
-        <h2>
-            Профилирование
-        </h2>
-    </section>
-
-    <section class="slide">
-        <h2>Области видимости</h2>
-        <div>
-            <ol>
-                <li>
-                    <b>Lexical Scoping (Lexical Environment)</b> -  область видимости ограничена текстом определения этой функции
-                </li>
-                <li>
-                    <b>Dynamic Scoping</b> -  область видимости ограничена временем исполнения функции
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Lexical Environment</h2>
-        <div>
-            <pre>
-                <code>var y = 5;</code>
-                <code>var x = function(){</code>
-                <code>  return y;</code>
-                <code>};</code>
-                <code>var z = function(t){</code>
-                <code>  var y = 10;</code>
-                <code>  return t();</code>
-                <code>};</code>
-                <code>console.log(z(x)); // ?</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Управление памятью</h2>
-        <div>
-            <ul>
-                <li>
-                    Главной концепцией управления памятью в JavaScript - <b>принцип достижимости</b>.
-                </li>
-                <li>
-                    <b>Значение сохраняетс</b> я в памяти, пока <b>доступно из корня</b> по ссылке или цепочке ссылок.
-                </li>
-            </ul>
-        </div>
-
-    </section>
-
-    <section class="slide">
-        <h2>Достижимыми изначально считаются</h2>
-        <div>
-            <ol>
-                <li>
-                    <b>Ссылки из стека вызова</b> -  локальные переменные, параметры функций
-                </li>
-                <li>
-                    <b>Глобальные переменные</b> -  window, etc..
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Алгоритм сборки мусора</h2>
-        <div>
-            <pre>
-                <code>function marry(man, woman) {</code>
-                <code>  woman.husband = man;</code>
-                <code>  man.wife = woman;</code>
-                <code>  return {</code>
-                <code>      father: man,</code>
-                <code>      mother: woman</code>
-                <code>}};</code>
-                <code>var family = marry({ name: "Василий" }, { name: "Мария" });</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div style="
-        background-image: url('/pics/opt-family.png');
-        background-size: contain;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        top: 40px;
-        ">
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Удаляем "Отца"</h2>
-        <div>
-            <pre>
-                <code>delete family.father;</code>
-                <code>delete family.mother.husband;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div style="
-        background-image: url('/pics/opt-family-no-father.png');
-        background-size: contain;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        top: 40px;
-        ">
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Удаляем "Семью"</h2>
-        <div>
-            <pre>
-                <code>window.family = null;</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div style="
-            background-image: url('/pics/opt-family-no-family.png');
-            background-size: contain;
-            background-position: 50%;
-            background-repeat: no-repeat;
-            top: 40px;
-        ">
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>Утечки памяти</h2>
-        <div>
-            <ol>
-                <li>
-                    <a href="/p/examples/profiling.html">Утечка по событию</a>
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>SCSS: Lists and loops</h2>
-        <div>
-            <pre>
-                    <code>$col_list = 1 2 3 4;</code>
-                    <code>for $col in $col_list {</code>
-                    <code>    td:nth-child({$col}) {</code>
-                    <code>        width: 10% * $col;</code>
-                    <code>    }</code>
-                    <code>}            </code>
-                    <code>for $col in (1..4) {...}</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>CSS: Lists and loops</h2>
-        <div>
-            <pre>
-                <code>td:nth-child(1) {</code>
-                <code>    width: 10%;</code>
-                <code>}</code>
-<code></code>
-                <code>td:nth-child(2) {</code>
-                <code>    width: 20%;</code>
-                <code>}</code>
-                <code>...</code>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>SCSS: Conditional statements</h2>
-        <div>
-            <pre>
-                <code>$theme = 'day';</code>
-<code></code>
-                <code>.sky {</code>
-                <code>    if $theme == 'day' {</code>
-                <code>        background: blue;</code>
-                <code>        background-image: url(sun.png);</code>
-                <code>    } else {</code>
-                <code>        background: black;</code>
-                <code>        background-image: url(stars.png);</code>
-                <code>    }</code>
-                <code>}</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>CSS: Conditional statements</h2>
-        <div>
-            <pre>
-                <code>.sky {</code>
-                <code>    background: #00f;</code>
-                <code>    background-image: url(sun.png);</code>
-                <code>}</code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>PostCSS</h2>
-        <div>
-            <a href="https://github.com/postcss/postcss">https://github.com/postcss/postcss</a>
         </div>
     </section>
 
