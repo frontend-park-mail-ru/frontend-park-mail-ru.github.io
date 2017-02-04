@@ -1,0 +1,7 @@
+@import "normalize.css";
+@import "modest.css";
+@import "hljs/styles/github.css";
+
+h1 {
+	font-weight: bold;
+}
