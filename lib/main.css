@@ -5,3 +5,8 @@
 h1 {
 	font-weight: bold;
 }
+
+body > h1:first-child,
+body > h2:first-child {
+	margin-top: 12vh;
+}
