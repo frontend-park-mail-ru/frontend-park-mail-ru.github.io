@@ -1,3 +1,3 @@
 'use strict';
 
-alert('hello, frontend');
+alert('hello, frontend!');
