@@ -5,19 +5,40 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="stylesheet" href="/lib/shower/themes/material/styles/screen-16x10.css">
+
+	<script>
+		'use strict';
+
+		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+		const w = screen.width;
+		const h = screen.height;
+		const r = gcd(w, h);
+
+		console.log(`${w}x${h}`);
+		let aspect = `${w / r}x${h / r}`;
+		console.log(aspect);
+
+		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
+		if (!ratios.includes(aspect)) {
+			aspect = ratios[0];
+		}
+
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+
+	</script>
 </head>
 <body class="shower list">
-	<header class="caption">
-		<h1>Заголовок презентации</h1>
-		<p>Технопарк, 2017 г.</p>
-	</header>
-	<section class="slide">
-		<h2>Заголовок слайда</h2>
-		<p>Цель нашего курса достаточно амбициозна: мы хотим, чтобы после его прохождения у вас появились необходимые навыки и знания для самостоятельной разработки современных веб-приложений.</p>
-		<p class="note">JavaScript &mdash; основной инструмент frontend-разработчика.</p>
-	</section>
-	<div class="progress"></div>
-	<script src="/lib/shower/shower.min.js"></script>
+<header class="caption">
+	<h1>Заголовок презентации</h1>
+	<p>Технопарк, 2017 г.</p>
+</header>
+<section class="slide">
+	<h2>Заголовок слайда</h2>
+	<p>Цель нашего курса достаточно амбициозна: мы хотим, чтобы после его прохождения у вас появились необходимые навыки
+		и знания для самостоятельной разработки современных веб-приложений.</p>
+	<p class="note">JavaScript &mdash; основной инструмент frontend-разработчика.</p>
+</section>
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
 </body>
 </html>
