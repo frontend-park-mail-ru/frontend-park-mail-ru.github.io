@@ -26,6 +26,15 @@
 		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
 	</script>
+
+	<style>
+		span.accent {
+			font-weight: 500;
+			text-transform: uppercase;
+			/*letter-spacing: 3pt;*/
+			/*font-size: 1.2em;*/
+		}
+	</style>
 </head>
 <body class="shower list">
 
@@ -180,7 +189,142 @@
 	</section>
 
 	<section class="slide">
+		<h2>Структура курса</h2>
+		<p class="medium-content">
+		<ul lang="en">
+			<li><span class="accent">Модуль 1</span> &mdash; 4 занятия + РК1</li>
+			<li><span class="accent">Модуль 2</span> &mdash; 3 занятия + РК2</li>
+			<li><span class="accent">СОВМЕСТНАЯ ПРЕДЗАЩИТА</span></li>
+			<li><span class="accent">Модуль 3</span> &mdash; 3 занятия + РК3</li>
+			<li><span class="accent">Модуль 4</span> &mdash; 2 занятия + РК4</li>
+			<li><span class="accent">Защита проекта</span></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Первый модуль</h2>
+		<p class="small-content">
+		<ul lang="en">
+			<li>Введение во фронтенд</li>
+			<li>Работа с DOM, браузерные события, сеть</li>
+			<li>Модульность, разработка компонентов, шаблонизация</li>
+			<li>Работа с сетью, разработка API</li>
+		</ul>
+
+		<p>РК 1, оценивается в 30 баллов</p>
+	</section>
+
+	<section class="slide">
+		<h2>Второй модуль</h2>
+		<p class="small-content">
+		<ul lang="en">
+			<li>Архитектура проекта и роутинг, сборка проекта</li>
+			<li>Графика, разработка игр в браузере</li>
+			<li>ЛЕКЦИЯ: Современное состояние JavaScript</li>
+		</ul>
+
+		<p>РК 2, оценивается в 30 баллов</p>
+	</section>
+
+	<section class="slide">
+		<h2>Третий модуль</h2>
+		<p class="small-content">
+		<ul lang="en">
+			<li>Работа с данными в браузере</li>
+			<li>Использование препроцессоров CSS, разработка под мобильные устройства</li>
+			<li>ЛЕКЦИЯ: Веб-компоненты и Virtual DOM</li>
+		</ul>
+
+		<p>РК 3, оценивается в 20 баллов</p>
+	</section>
+
+	<section class="slide">
+		<h2>Четвёртый модуль</h2>
+		<p class="small-content">
+		<ul lang="en">
+			<li>Производительность, использование инструментов разработчика</li>
+			<li>ЛЕКЦИЯ: Современное состояние WEB</li>
+		</ul>
+
+		<p>РК 4, оценивается в 10 баллов</p>
+	</section>
+
+	<section class="slide">
+		<h2>Что по чём?</h2>
+		<ul lang="en">
+			<li>Домашнее задание №0 <mark>5 баллов</mark></li>
+			<li>Рубежный контроль №1 <mark>30 баллов</mark></li>
+			<li>Рубежный контроль №2 <mark>30 баллов</mark></li>
+			<li>Рубежный контроль №3 <mark>20 баллов</mark></li>
+			<li>Рубежный контроль №4 <mark>10 баллов</mark></li>
+			<li>Защита проекта <mark>5 баллов</mark></li>
+		</ul>
+
+		<p>Максимальная сумма баллов за семестр &mdash; <mark>100 баллов</mark></p>
+	</section>
+
+	<section class="slide">
+		<h2>Рубежный контроль</h2>
+		<p class="small-content">
+		<ul lang="en">
+			<li>Выполнение всех ДЗ в модуле</li>
+			<li><strong>Code review</strong>, допуск от ментора</li>
+			<li>Проверка работы приложения, проверка ДЗ</li>
+			<li>Беседа с преподавателем</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Критерии оценивания</h2>
+		<p class="small-content">
+
+		<ul lang="en" style="font-weight: 300;">
+			<li>СООТВЕТСТВИЕ РЕЗУЛЬТАТА ПРЕДЪЯВЛЯЕМЫМ ТРЕБОВАНИЯМ</li>
+			<li>ОПТИМАЛЬНОСТЬ ПРЕДЛАГАЕМОГО РЕШЕНИЯ</li>
+			<li>ПРАКТИЧНОСТЬ РЕШЕНИЯ</li>
+			<li>КАЧЕСТВО ОФОРМЛЕНИЯ РЕЗУЛЬТАТОВ РАБОТЫ</li>
+			<li>ДОКАЗАТЕЛЬНОСТЬ АРГУМЕНТАЦИИ ПРИ ЗАЩИТЕ РАБОТЫ</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Итоговая оценка</h2>
+		<p class="medium-content">
+
+		<ul lang="en">
+			<li><mark>0 <= </mark>  &nbsp;"неудовлетворительно" <mark> <= 69</mark></li>
+			<li><mark>70 <= </mark>  &nbsp;"удовлетворительно" <mark> <= 84</mark></li>
+			<li><mark>85 <= </mark>  &nbsp;"хорошо" <mark> <= 99</mark></li>
+			<li>"отлично" <mark> === 100 баллов + выступление на защите</mark></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Дополнительные критерии (sic!)</h2>
+		<p>Для получения оценки <mark>удовлетворительно</mark>, необходимо следующее</p>
+
+		<ul lang="en">
+			<li>Приложение должно быть доступно в Интернете</li>
+			<li>В приложении должна присутствовать правильно работающая регистрация и авторизация пользователей</li>
+			<li>Это должно быть SPA-приложение с правильно работающим роутингом</li>
+			<li>В приложении должен присутствовать работающий singleplayer</li>
+			<li>Приложение должно открываться и работать на мобильных устройствах</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Дополнительные критерии (sic!)</h2>
+		<p>Для получения оценки <mark>хорошо</mark>, необходимо также</p>
+
+		<ul lang="en">
+			<li>В приложении должен присутствовать multiplayer</li>
+			<li>Приложение должно открываться и работать при отсутствии сети (те функции, которые не требуют Интернета, например singleplayer)</li>
+		</ul>
+	</section>
+
+	<section class="slide">
 		<h2>Введение во фронтенд</h2>
+		<p class="small-content">
 		<ul lang="en">
 			<li>Введение и структура курса</li>
 			<li>Порядок работы и требования к проекту</li>
