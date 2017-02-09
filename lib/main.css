@@ -6,7 +6,12 @@ h1 {
 	font-weight: bold;
 }
 
-body > h1:first-child,
-body > h2:first-child {
+#main-content {
+	width: 100%;
 	margin-top: 12vh;
+	min-height: 70vh;
+}
+
+footer {
+	text-align: center;
 }
