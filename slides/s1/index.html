@@ -393,14 +393,163 @@
 
 
 	<section class="slide">
-		<h2>Введение во фронтенд</h2>
-		<p class="small-content">
+		<h2 class="shout">Практика!</h2>
+	</section>
+
+
+	<section class="slide">
+		<h2>Ограничения JS</h2>
+		<p class="medium-content">
 		<ul lang="en">
-			<li>Введение и структура курса</li>
-			<li>Порядок работы и требования к проекту</li>
-			<li>Клиент-серверное взаимодействие</li>
-			<li>NodeJS, npm и git</li>
-			<li>Создание и деплой приложения</li>
+			<li>Нельзя взаимодействовать с файловой системой</li>
+			<li>Нет дотупа к сетевым функциям</li>
+			<li>Нет возможности организовывать многопоточные вычисления</li>
+			<li>Нельзя создавать новые процессы / запускать программы</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Node.js</h2>
+		<blockquote>
+			<p class="small-content"><b>Node.js</b> &mdash; программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код), превращающая JavaScript из узкоспециализированного языка в язык общего назначения. Node.js добавляет возможность JavaScript взаимодействовать с устройствами ввода-вывода через свой API (написанный на C++), подключать другие внешние библиотеки, написанные на разных языках, обеспечивая вызовы к ним из JavaScript-кода</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Демонстрация использования</h2>
+		<pre>
+			<code>// script.js</code>
+			<code>const fs = require('fs');</code>
+			<code> </code>
+			<code>fs.readFile('script.js', 'utf8', function (err, source) {</code>
+			<code>    console.log(source);</code>
+			<code>});</code>
+			<code></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Запуск скрипта</h2>
+		<pre>
+			<code>~$ node script.js <mark>&lt;ENTER></mark></code>
+			<code> </code>
+			<code>const fs = require('fs');</code>
+			<code> </code>
+			<code>fs.readFile('script.js', 'utf8', function (err, source) {</code>
+			<code>    console.log(source);</code>
+			<code>});</code>
+			<code> </code>
+			<code>~$ </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>npm &mdash; Node Packaged Modules</h2>
+		<blockquote>
+			<p><b>npm</b> &mdash; is the package manager for JavaScript</p>
+		</blockquote>
+
+		<p>Использование</p>
+		<pre>
+			<code>~$ npm install md5 <mark>&lt;ENTER></mark></code>
+			<code> </code>
+			<code>~$ </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Можно создать свой собственный<br/>npm-модуль!</h2>
+		<pre>
+			<code>~$ mkdir awesome && cd awesome <mark>&lt;ENTER></mark></code>
+			<code>~$ npm init -y <mark>&lt;ENTER></mark></code>
+			<code>~$ ls</code>
+			<code>package.json</code>
+			<code> </code>
+			<code>~$ </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Содержимое package.json</h2>
+		<pre>
+			<code>{</code>
+			<code>    "name": "awesome",</code>
+			<code>    "version": "1.0.0",</code>
+			<code>    "description": "",</code>
+			<code>    "main": "index.js",</code>
+			<code>    "keywords": [],</code>
+			<code>    "author": "",</code>
+			<code>    "license": "ISC"</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Зачем всё это нужно?</h2>
+		<img class="place" src="q.png" alt="Знак вопроса" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.43)">
+	</section>
+
+	<section class="slide">
+		<h2>Бесплатный хостинг <a href="https://heroku.com/">heroku.com</a></h2>
+		<p class="medium-content">
+		<ul lang="en">
+			<li>Бесплатный (есть и платная версия)</li>
+			<li>Большие возможности по деплою приложений</li>
+			<li>Поддерживает много языков программирования, в т.ч. и JavaScript (с&nbsp;помощью Node.js)</li>
+		</ul>
+	</section>
+
+
+
+	<section class="slide">
+		<h2>Домашнее задание</h2>
+		<ul lang="en">
+			<li>Разбиться на команды по 3-4 человека и отметиться в нашем посте "Перепись населения":
+				<ul>
+					<li>С вами свяжется вам ментор</li>
+					<li>Ментор создаст вам репозиторий</li>
+					<li>Дальше ментор расскажет вам, что делать</li>
+				</ul>
+			</li>
+			<li>Думать над идеей игры</li>
+			<li>...</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Домашнее задание</h2>
+		<ul lang="en">
+			<li>Уже в командах сверстать в вашем репозитории статичные html-файлы с основными страницами вашего будущего приложения:
+				<ul>
+					<li>Все скрипты/стили должны быть вынесены в отдельные файлы</li>
+					<li>Должны быть созданы все необходимые страницы и они должны быть связаны гиперссылками</li>
+					<li>Нужно будет дописать скрипт сервера, чтобы он мог отдавать всю вашу статику</li>
+					<li>Результат необходимо зафиксировать в репозитории и задеплоить на хероку</li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul lang="en">
+			<li>Ссылка на <a href="https://github.com/frontend-park-mail-ru">нашу группу на github.com</a></li>
+			<li>Ссылка на <a href="http://frontend.tech-mail.ru/">блог</a>, где мы публикуем все материалы к занятиям</li>
+			<li>Документация к <a href="https://nodejs.org/api/">Node.js</a> и <a href="https://docs.npmjs.com/">npm</a></li>
+			<li><a href="https://learn.javascript.ru/screencast/nodejs">Скринкаст</a> по Node.js</li>
+			<li><a href="https://developer.mozilla.org/ru/docs/Web">MDN</a> (Mozilla Developer Network &mdash; веб-технологии для разработчиков)</li>
+			<li><a href="https://learn.javascript.ru/js">learn.javascript.ru</a> &mdash; основной источник информации о JS для начинающих</li>
+			<li><a href="https://webref.ru/ref">WebReference.ru</a> &mdash; основной источник информации о HTML5 и CSS3 для начинающих</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul lang="en">
+			<li><a href="https://github.com/azat-io/you-dont-know-js-ru">"Вы не знаете JavaScript"</a> &mdash; серия переводов популярных и простых книг по JavaScript</li>
+			<li><a href="http://frontender.info/">Frontender Magazine</a> и <a href="http://forwebdev.ru/">Проект «For Web»</a> &mdash; два неплохих русскоязычных блога, посвящённых Frontend-разработке</li>
+			<li>И напоследок, не побоюсь этого слова, <a href="https://www.youtube.com/watch?v=AdGyfW7Z6nU">угарное видео про JS</a></li>
 		</ul>
 	</section>
 
