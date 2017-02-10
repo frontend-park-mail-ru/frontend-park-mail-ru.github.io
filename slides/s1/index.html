@@ -166,14 +166,12 @@
 	<section class="slide">
 		<h2>Наша Dream-team <em>Менторов</em></h2>
 		<ul lang="ru">
-			<li>Тюльдюков Алексей &mdash; разработчик Поиска@Mail.RU, Ментор команды менторов &#x263A;</li>
-			<li>Титова Марина &mdash; разработчица Почты@Mail.RU</li>
+			<li>Тюльдюков Алексей &mdash; разработчик Поиска@Mail.RU, ментор менторов &#x263A;</li>
+			<li>Махмутов Шамиль &mdash; разработчик Target.My.com</li>
+			<li>Паничкина Анна &mdash; выпускница Технопарка</li>
+			<li>Слимов Никита &mdash; студент 4-го семестра Технопарка</li>
 			<li>Цветков Александр &mdash; разработчик Почты@Mail.RU</li>
 			<li>Щадько Александр &mdash; разработчик Почты@Mail.RU</li>
-			<li>Утробин Егор &mdash; разработчик Лаборатории Технопарка</li>
-			<li>Телышев Антон &mdash; разработчик ??? =)</li>
-			<li>Паничкина Анна &mdash; о_О</li>
-			<li>Слимов Никита &mdash; студент 3-го семестра Технопарка</li>
 		</ul>
 	</section>
 
@@ -181,11 +179,13 @@
 		<h2>Наша Dream-team <em>Менторов</em></h2>
 		<ul lang="ru">
 			<li>Булавинцев Илья &mdash; студент 3-го семестра Технопарка</li>
-			<li>Егорова Варвара &mdash; студент 3-го семестра Технопарка</li>
+			<li>Егорова Варвара &mdash; студентка 3-го семестра Технопарка</li>
 			<li>Козинченко Евгений &mdash; студент 4-го семестра Технопарка</li>
 			<li>Никитин Илья &mdash; студент 3-го семестра Технопарка</li>
-			<li>Сычугина Анна &mdash; студент 3-го семестра Технопарка</li>
-			<li>Махмутов Шамиль &mdash; разработчик ??? =)</li>
+			<li>Сычугина Анна &mdash; студентка 3-го семестра Технопарка</li>
+			<li>Телышев Антон &mdash; разработчик Поиска@Mail.RU</li>
+			<li>Титова Марина &mdash; разработчица Почты@Mail.RU</li>
+			<li>Утробин Егор &mdash; разработчик Лаборатории Технопарка</li>
 		</ul>
 	</section>
 
@@ -398,6 +398,47 @@
 
 
 	<section class="slide">
+		<h2>В какой ОС разрабатывать?</h2>
+		<p class="medium-content">В любой, где доступны git и Node.js:</p>
+		<ul lang="en">
+			<li>Windows</li>
+			<li>OS X</li>
+			<li>Linux (Ubuntu/Debian)</li>
+			<li>Что то ещё?</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Где писать код?</h2>
+		<p class="medium-content">
+		<ul lang="en">
+			<li>Atom Text Editor &mdash; <a href="https://atom.io/">atom.io</a></li>
+			<li>Visual Studio Code &mdash; <a href="https://code.visualstudio.com/">code.visualstudio.com</a></li>
+			<li>JavaScript IDE WebStorm &mdash; <a href="https://www.jetbrains.com/webstorm/">jetbrains.com</a></li>
+			<li>etc...</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Хостинг репозиториев <a href="https://github.com/">github.com</a></h2>
+		<p class="medium-content">
+		<ul lang="en">
+			<li>Бесплатный</li>
+			<li>Совместная работа над проектом</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Бесплатный хостинг <a href="https://heroku.com/">heroku.com</a></h2>
+		<p class="medium-content">
+		<ul lang="en">
+			<li>Бесплатный (есть и платная версия)</li>
+			<li>Большие возможности по деплою приложений</li>
+			<li>Поддерживает много языков программирования, в т.ч. и JavaScript (с&nbsp;помощью Node.js)</li>
+		</ul>
+	</section>
+
+	<section class="slide">
 		<h2>Ограничения JS</h2>
 		<p class="medium-content">
 		<ul lang="en">
@@ -421,10 +462,9 @@
 			<code>// script.js</code>
 			<code>const fs = require('fs');</code>
 			<code> </code>
-			<code>fs.readFile('script.js', 'utf8', function (err, source) {</code>
-			<code>    console.log(source);</code>
-			<code>});</code>
-			<code></code>
+			<code>const text = fs.readFileSync('script.js', 'utf8');</code>
+			<code>console.log(text);</code>
+			<code> </code>
 		</pre>
 	</section>
 
@@ -434,9 +474,9 @@
 			<code>~$ node script.js <mark>&lt;ENTER></mark></code>
 			<code>const fs = require('fs');</code>
 			<code> </code>
-			<code>fs.readFile('script.js', 'utf8', function (err, source) {</code>
-			<code>    console.log(source);</code>
-			<code>});</code>
+			<code>const text = fs.readFileSync('script.js', 'utf8');</code>
+			<code>console.log(text);</code>
+			<code> </code>
 			<code>~$ </code>
 		</pre>
 	</section>
@@ -482,20 +522,7 @@
 		</pre>
 	</section>
 
-	<section class="slide">
-		<h2>Зачем всё это нужно?</h2>
-		<img class="place" src="q.png" alt="Знак вопроса" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.43)">
-	</section>
 
-	<section class="slide">
-		<h2>Бесплатный хостинг <a href="https://heroku.com/">heroku.com</a></h2>
-		<p class="medium-content">
-		<ul lang="en">
-			<li>Бесплатный (есть и платная версия)</li>
-			<li>Большие возможности по деплою приложений</li>
-			<li>Поддерживает много языков программирования, в т.ч. и JavaScript (с&nbsp;помощью Node.js)</li>
-		</ul>
-	</section>
 
 
 
@@ -547,8 +574,12 @@
 		<ul lang="en">
 			<li><a href="https://github.com/azat-io/you-dont-know-js-ru">"Вы не знаете JavaScript"</a> &mdash; серия переводов популярных и простых книг по JavaScript</li>
 			<li><a href="http://frontender.info/">Frontender Magazine</a> и <a href="http://forwebdev.ru/">Проект «For Web»</a> &mdash; два неплохих русскоязычных блога, посвящённых Frontend-разработке</li>
-			<li>И напоследок, не побоюсь этого слова, <a href="https://www.youtube.com/watch?v=AdGyfW7Z6nU">угарное видео про JS</a></li>
+			<li>И напоследок, <a href="https://www.youtube.com/watch?v=AdGyfW7Z6nU">смешное видео про JS</a>, просто чтобы отвлечься и посмеяться</li>
 		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Всем спасибо!</h2>
 	</section>
 
 	<div class="progress"></div>
