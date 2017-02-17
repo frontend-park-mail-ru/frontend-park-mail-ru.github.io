@@ -79,7 +79,7 @@
 		<h2>Глобальные объекты</h2>
 		<p>В глобальной области видимости <code>this</code> ссылается на глобальный объект</p>
 		<pre>
-			<code><span class="comment">// in browser</span></code>
+			<code><span class="comment rus">// в браузере</span></code>
 			<code class="mark">console.log(this === window); <span class="comment">// true</span></code>
 			<code> </code>
 		</pre>
@@ -345,6 +345,162 @@
 		<h2 class="shout">Браузерные события</h2>
 	</section>
 
+	<section class="slide">
+		<h2>События</h2>
+		<p class="medium-content">Для реакции на действия посетителя и внутреннего взаимодействия скриптов существуют <em>события</em></p>
+		<blockquote>
+			<p><b>Событие</b> &mdash; это сигнал от браузера о том, что что-то произошло. Существует много видов событий</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>События</h2>
+		<p>События мыши:</p>
+		<ul lang="ru">
+			<li><code>click</code> – происходит, когда кликнули на элемент левой кнопкой мыши</li>
+			<li><code>contextmenu</code> – происходит, когда кликнули на элемент правой кнопкой мыши</li>
+			<li><code>mouseover</code> – возникает, когда на элемент наводится мышь</li>
+			<li><code>mousemove</code> – при движении мыши</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>События</h2>
+		<p>События на элементах управления:</p>
+		<ul lang="ru" style="margin-bottom: 5px;">
+			<li><code>submit</code> – посетитель отправил форму &lt;form></li>
+			<li><code>focus</code> – посетитель фокусируется на элементе, например нажимает на &lt;input></li>
+		</ul>
+		<p style="margin-top: 5px;">Клавиатурные события:</p>
+		<ul lang="ru">
+			<li><code>keydown</code> – когда посетитель нажимает клавишу</li>
+			<li><code>keyup</code> – когда посетитель отпускает клавишу</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Обработчики событий</h2>
+		<blockquote>
+			<p class="small-content">Событию можно назначить <b>обработчик</b>, то есть функцию, которая сработает, как только событие произошло. Именно благодаря обработчикам JavaScript-код может реагировать на действия посетителя</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Добавление обработчиков <br/>через атрибут</h2>
+		<pre>
+			<code>&lt;button onclick="this.parentElement.innerHTML+=</code>
+			<code>    '&lt;span>click&lt;/span>'">Нажми меня&lt;/button> </code>
+		</pre>
+		<button onclick="this.parentElement.innerHTML+='<span>click </span>'" style="font-size: 26px;">Нажми меня</button>
+		<br/>
+	</section>
+
+	<section class="slide">
+		<h2>Добавление обработчиков <br/>через свойства DOM-объекта</h2>
+		<button id="super-button" style="font-size: 26px;">Кликнуто 0 раз</button>
+		<pre>
+			<code>let count = 0;</code>
+			<code>const element = document.getElementsByTagName('BUTTON')[0];</code>
+			<code>element.onclick = function() {</code>
+			<code>    element.innerHTML = `Кликнуто ${++count} раз(а)`;</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+		<script>
+			'use strict';
+			let count = 0;
+			window['super-button'].onclick = function () {
+				window['super-button'].innerHTML = `Кликнуто ${++count} раз(а)`;
+			};
+		</script>
+	</section>
+
+	<section class="slide">
+		<h2><code>addEventListener</code> и <code>removeEventListener</code></h2>
+		<pre>
+			<code><span class="comment rus">// добавление обработчика</span></code>
+			<code>element.addEventListener(event, handler[, phase]);</code>
+			<code> </code>
+			<code><span class="comment rus">// удаление обработчика</span></code>
+			<code><span class="comment rus">// нужно передать те же аргументы, что были у addEventListener</span></code>
+			<code>element.removeEventListener(event, handler[, phase]);</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Объект события <code>event</code></h2>
+		<button id="super-button2" style="font-size: 26px;">Кликни на меня</button>
+		<span id="textext"></span>
+		<pre>
+			<code>element.addEventListener('click', function (<mark>event</mark>) {</code>
+			<code>    console.log(`${<mark>event.type</mark>} на ${<mark>event.currentTarget</mark>}`);</code>
+			<code>    console.log(`${<mark>event.clientX</mark>}:${<mark>event.clientY</mark>}`);</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+		<script>
+			'use strict';
+			window['super-button2'].addEventListener('click', function (event) {
+				window['textext'].innerHTML = '<br/>'
+					+`${event.type} на ${event.currentTarget}`
+					+ '<br/>'
+					+ `${event.clientX}:${event.clientY}`;
+			});
+		</script>
+	</section>
+
+	<section class="slide">
+		<h2>Фазы обработки событий</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events1.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Фазы обработки событий</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Фазы обработки событий</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events3.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Фазы обработки событий</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events4.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Фазы обработки событий</h2>
+		<pre>
+			<code>event.preventDefault(); <span class="comment rus">// предотвращает поведение по умолчанию</span></code>
+			<code>event.stopPropagation(); <span class="comment rus">// предотвращает всплывание события</span></code>
+			<code> </code>
+			<code><span class="comment rus">// останавливает обработку событий на текущем элементе</span></code>
+			<code>event.stopImmediatePropagation();</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>SPA &mdash; Single Page Application</h2>
+		<blockquote>
+			<p class="small-content"><b>Одностраничное приложение (SPA)</b> &mdash; это веб-приложение, использующее единственный HTML-документ как оболочку для всех веб-страниц и организующий взаимодействие с пользователем через динамически подгружаемые ресурсы и данные, обычно посредством AJAX</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Практика</h2>
+	</section>
+
+
+
+
+
+
+	<section class="slide">
+		<h2 class="shout">Работа с сетью</h2>
+	</section>
 
 
 
@@ -354,10 +510,11 @@
 	<section class="slide">
 		<h2>Полезные ссылки</h2>
 		<ul lang="en">
-			<li>Разница между хост-объектами и нативными объектами <a href="http://stackoverflow.com/a/7614380">описана здесь</a></li>
-			<li>Описание всех нативных глобальных объектов <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects">здесь</a></li>
-			<li>"Что такое DOM?" - статья на <a href="http://frontender.info/dom/">Frontender Magazine</a></li>
-			<li>Статья на <a href="https://developer.mozilla.org/ru/docs/DOM/DOM_Reference/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">MDN</a> про DOM</li>
+			<li>Разница между хост-объектами и нативными объектами <a href="http://stackoverflow.com/a/7614380" target="_blank">описана здесь</a></li>
+			<li>Описание всех нативных глобальных объектов <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects" target="_blank">здесь</a></li>
+			<li>"Что такое DOM?" - статья на <a href="http://frontender.info/dom/" target="_blank">Frontender Magazine</a></li>
+			<li>Статья на <a href="https://developer.mozilla.org/ru/docs/DOM/DOM_Reference/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank">MDN</a> про DOM</li>
+			<li><a href="https://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm" target="_blank">Подробнее</a> про события в JS</li>
 		</ul>
 	</section>
 
