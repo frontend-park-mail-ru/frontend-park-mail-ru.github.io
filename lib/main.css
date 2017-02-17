@@ -20,3 +20,7 @@ h1 {
 footer {
 	text-align: center;
 }
+
+code span.comment.rus {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}

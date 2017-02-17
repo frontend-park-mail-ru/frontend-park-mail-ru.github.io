@@ -28,17 +28,345 @@
 	</script>
 </head>
 <body class="shower list">
-<header class="caption">
-	<h1>Работа с DOM, браузерные события, сеть</h1>
-	<p>Технопарк, 2017 г.</p>
-</header>
-<section class="slide">
-	<h2>Заголовок слайда</h2>
-	<p>Цель нашего курса достаточно амбициозна: мы хотим, чтобы после его прохождения у вас появились необходимые навыки
-		и знания для самостоятельной разработки современных веб-приложений.</p>
-	<p class="note">JavaScript &mdash; основной инструмент frontend-разработчика.</p>
-</section>
-<div class="progress"></div>
-<script src="/lib/shower/shower.min.js"></script>
+
+	<header class="caption">
+		<h1>Работа с DOM, браузерные события, сеть</h1>
+		<p>Технопарк, 2017 г.</p>
+	</header>
+
+	<section class="slide">
+		<h2 class="shout">Работа с DOM в браузере<br/>
+			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Глобальные объекты</h2>
+		<blockquote>
+			<p class="small-content"><b>Глобальными</b> называют переменные и функции, которые не находятся внутри какой-то функции или блока</p>
+		</blockquote>
+		<p>В JavaScript все глобальные переменные и функции являются свойствами специального объекта, который называется «глобальный объект» <em>(global object)</em>. Присваивая или читая глобальную переменную, мы, фактически, работаем со свойствами глобального объекта.</p>
+	</section>
+
+	<section class="slide">
+		<h2>Глобальные объекты</h2>
+		<p>В браузере это объект <code>window</code></p>
+		<pre>
+			<code>console.log(typeof foo, typeof bar); <span class="comment">// undefined undefined</span></code>
+			<code> </code>
+			<code>const foo = 42;</code>
+			<code class="mark">window.bar = '42';</code>
+			<code> </code>
+			<code>console.log(typeof foo); <span class="comment">// number</span></code>
+			<code>console.log(typeof bar); <span class="comment">// string</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Глобальные объекты</h2>
+		<p>В Node.js тоже есть глобальный объект <code>global</code></p>
+		<pre>
+			<code>console.log(global);</code>
+			<code> </code>
+			<code>const foo = 42;</code>
+			<code class="mark">console.log(global.foo); <span class="comment">// 42</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Глобальные объекты</h2>
+		<p>В глобальной области видимости <code>this</code> ссылается на глобальный объект</p>
+		<pre>
+			<code><span class="comment">// in browser</span></code>
+			<code class="mark">console.log(this === window); <span class="comment">// true</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Глобальные объекты</h2>
+		<p>В Node.js не всё так просто (попробуйте разобраться почему)</p>
+		<pre>
+			<code><span class="comment">// script.js</span></code>
+			<code class="mark">console.log(this === global);</code>
+			<code> </code>
+		</pre>
+		<pre>
+			<code>node script.js <span class="comment">// false</span></code>
+			<code>node <mark>-p</mark> 'console.log(this === global)' <span class="comment">// true</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Нативные объекты</h2>
+		<blockquote>
+			<p class="small-content"><b>Нативными (native object)</b> объектами в JS называют объекты, свойства и поведение которых описаны в спецификации языка JavaScript. Их наличие <mark>не зависит от того окружения</mark>, где запускается код</p>
+		</blockquote>
+		<p>Например <code>Object</code>, <code>Array</code>, <code>Infinity</code>, <code>Date</code>, <code>Math</code>, <code>parseInt</code>...</p>
+	</section>
+
+	<section class="slide">
+		<h2>Хост объекты</h2>
+		<blockquote>
+			<p class="small-content"><b>Хост (host object)</b> объектами в JS называют объекты, которые предоставляются окружением (зависят от того, где работает код)</p>
+		</blockquote>
+		<p>Например, для браузеров это будут <code>document</code>, <code>location</code>, <code>getElementById</code>, <code>XMLHttpRequest</code>... Для Node.js хост объекты будут другими, например <code>process</code></p>
+	</section>
+
+	<section class="slide">
+		<h2>BOM &mdash; Browser Object Model</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="window.jpg" alt="BOM" style="transform-origin: center;transform: translate(-50%,-55.5%) scale(1.4);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>DOM &mdash; <mark>Document</mark> Object Model</h2>
+		<blockquote>
+			<p class="medium-content"><b>Объектная Модель Документа (DOM)</b> &mdash; это программный интерфейс (API) для HTML и XML документов. DOM предоставляет структурированное представление документа и то как эта структура может быть доступна из программ. По существу представление DOM соединяет веб страницу с языком JavaScript, позволяя изменять содержимое, стиль и структуру документа</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>DOM-дерево</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="dom-tree.png" alt="DOM-tree" style="transform-origin: center;transform: translate(-55%,-70%) scale(1.25);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>DOM &mdash; <mark>Document</mark> Object Model</h2>
+		<p>DOM нужен для того, чтобы манипулировать страницей &mdash; читать информацию из HTML, создавать и изменять элементы</p>
+		<pre>
+			<code>document <span class="comment rus">// хост-объект, который даёт доступ к DOM</span></code>
+			<code> </code>
+			<code>document.documentElement <span class="comment rus">// узел HTML</span></code>
+			<code>document.head <span class="comment rus">// узел HEAD</span></code>
+			<code>document.body <span class="comment rus">// узел BODY</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Перебор узлов DOM</h2>
+		<pre>
+			<code>element.parentNode <span class="comment rus">// родительская нода</span></code>
+			<code> </code>
+			<code>element.childNodes <span class="comment rus">// дочерние ноды</span></code>
+			<code>element.firstChild <span class="comment rus">// первый ребёнок</span></code>
+			<code>element.lastChild <span class="comment rus">// последний ребёнок</span></code>
+			<code> </code>
+			<code>document.previousSibling <span class="comment rus">// предыдущий "сосед"</span></code>
+			<code>document.nextSibling <span class="comment rus">// следующий "сосед"</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Перебор <mark>элементов</mark> DOM</h2>
+		<pre>
+			<code>element.parentElement <span class="comment rus">// родитель-элемент</span></code>
+			<code>element.children <span class="comment rus">// только дочерние узлы-элементы</span></code>
+			<code> </code>
+
+			<code><span class="comment rus">// первый и последний дети-элементы</span></code>
+			<code>element.first<mark>Element</mark>Child и element.last<mark>Element</mark>Child</code>
+			<code> </code>
+
+			<code><span class="comment rus">// соседи-элементы</span></code>
+			<code>document.previous<mark>Element</mark>Sibling и document.next<mark>Element</mark>Sibling</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Дополнительные возможности</h2>
+		<p>У конкретных элементов DOM могут быть свои дополнительные ссылки для большего удобства навигации</p>
+		<pre>
+			<code>const elements = formElement.elements <span class="comment rus">// все поля формы</span></code>
+			<code>elements[1] <span class="comment rus">// выбор поля по порядку</span></code>
+			<code>elements['username'] <span class="comment rus">// выбор поля по имени</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Дополнительные возможности</h2>
+		<p>У конкретных элементов DOM могут быть свои дополнительные ссылки для большего удобства навигации</p>
+		<pre>
+			<code>tableElement.rows <span class="comment rus">// коллекция строк TR таблицы</span></code>
+			<code>tableElement.caption <span class="comment rus">// элемент CAPTION таблицы</span></code>
+			<code>tableElement.tBodies <span class="comment rus">// коллекция элементов таблицы TBODY</span></code>
+			<code> </code>
+			<code>tableRowElement.cells <span class="comment rus">// коллекция ячеек строки таблицы</span></code>
+			<code>tableRowElement.rowIndex <span class="comment rus">// номер строки в таблице</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Поиск элементов <mark>по ID/name</mark></h2>
+		<pre>
+			<code><span class="comment rus">// вернёт элемент с ID 'my-header'</span></code>
+			<code>document.getElementById('my-header')</code>
+			<code> </code>
+			<code><span class="comment rus">// вернёт все элементы с атрибутом name="username"</span></code>
+			<code>document.getElementsByName('username')</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Поиск элементов <mark>по имени тега</mark></h2>
+		<pre>
+			<code><span class="comment rus">// во всём документе</span></code>
+			<code>document.getElementsByTagName('h1')</code>
+			<code> </code>
+			<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+			<code>element.getElementsByTagName('h1')</code>
+			<code>element.getElementsByTagName('*') <span class="comment rus">// все элементы</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Поиск элементов <mark>по имени класса</mark></h2>
+		<pre>
+			<code><span class="comment rus">// во всём документе</span></code>
+			<code>document.getElementsByClassName('red-button')</code>
+			<code> </code>
+			<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+			<code>element.getElementsByClassName('red-button')</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Поиск <mark>по CSS-селектору</mark></h2>
+		<pre>
+			<code><span class="comment rus">// во всём документе</span></code>
+			<code>document.querySelector<mark>All</mark>('input[type=button].red-button')</code>
+			<code> </code>
+			<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+			<code>element.querySelector<mark>All</mark>('input[type=button].red-button')</code>
+			<code> </code>
+			<code><span class="comment rus">// ищет только <mark>первый</mark> элемент</span></code>
+			<code>element.querySelector('input[type=button].red-button')</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Классы, иерархия DOM</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="hierarchy.png" alt="DOM-hierarchy" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.25);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Свойства элементов</h2>
+		<pre>
+			<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+		</pre>
+		<pre>
+			<code>element.tagName <span class="comment rus">// имя тега</span></code>
+			<code>h1.tagName <span class="comment rus">// "H1"</span></code>
+			<code> </code>
+
+			<code>element.innerHTML <span class="comment rus">// Внутреннее содержимое узла-элемента в виде HTML</span></code>
+			<code>h1.innerHTML <span class="comment rus">// "Сслыка: &lt;a href="/">тут&lt;/a>"</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Свойства элементов</h2>
+		<pre>
+			<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+		</pre>
+		<pre>
+			<code>element.outerHTML <span class="comment rus">// Полный HTML узла-элемента</span></code>
+			<code>h1.outerHTML <span class="comment rus">// "&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1>"</span></code>
+			<code> </code>
+
+			<code>element.textContent <span class="comment rus">// Содержит только текст внутри элемента,</span></code>
+			<code>                    <span class="comment rus">// за вычетом всех тегов</span></code>
+			<code>h1.textContent <span class="comment rus">// "Сслыка: "</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Свойства элементов</h2>
+		<pre>
+			<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+		</pre>
+		<pre>
+			<code>element.hidden <span class="comment rus">// Атрибут, отвечающий за видимость элемента</span></code>
+			<code>h1.hidden = true <span class="comment rus">// скроет заголовок</span></code>
+			<code> </code>
+
+			<code>link.href <span class="comment rus">// Адрес ссылки</span></code>
+			<code>input.value <span class="comment rus">// Значение, введённое в текстовое поле</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Атрибуты элементов</h2>
+		<pre>
+			<code>element.hasAttribute(name) <span class="comment rus">// проверяет наличие атрибута</span></code>
+			<code>element.getAttribute(name) <span class="comment rus">// получает значение атрибута</span></code>
+			<code>element.setAttribute(name, value) <span class="comment rus">// устанавливает атрибут</span></code>
+			<code>element.removeAttribute(name) <span class="comment rus">// удаляет атрибут</span></code>
+			<code> </code>
+			<code>elem.attributes <span class="comment rus">// получить все атрибуты</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Создание элементов</h2>
+		<pre>
+			<code>document.createElement(tag) <span class="comment rus">// создаёт элемент с тегом tag</span></code>
+			<code>document.createTextNode(value) <span class="comment rus">// создает текстовый узел</span></code>
+			<code>element.cloneNode(deep) <span class="comment rus">// клонирует элемент</span></code>
+			<code> </code>
+			<code>parent.appendChild(el) <span class="comment rus">// вставляет узел в конец</span></code>
+			<code>parent.removeChild(el) <span class="comment rus">// удаляет узел</span></code>
+			<code>parent.replaceChild(newEl, oldEl) <span class="comment rus">// заменяет узел</span></code>
+			<code>parent.insertBefore(elem, nextSibling) <span class="comment rus">// вставляет узел</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+
+
+
+	<section class="slide">
+		<h2 class="shout">Браузерные события</h2>
+	</section>
+
+
+
+
+
+
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul lang="en">
+			<li>Разница между хост-объектами и нативными объектами <a href="http://stackoverflow.com/a/7614380">описана здесь</a></li>
+			<li>Описание всех нативных глобальных объектов <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects">здесь</a></li>
+			<li>"Что такое DOM?" - статья на <a href="http://frontender.info/dom/">Frontender Magazine</a></li>
+			<li>Статья на <a href="https://developer.mozilla.org/ru/docs/DOM/DOM_Reference/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">MDN</a> про DOM</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Всем спасибо!</h2>
+	</section>
+
+
+	<div class="progress"></div>
+	<script src="/lib/shower/shower.min.js"></script>
 </body>
 </html>
