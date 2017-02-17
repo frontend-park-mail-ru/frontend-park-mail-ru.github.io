@@ -502,7 +502,106 @@
 		<h2 class="shout">Работа с сетью</h2>
 	</section>
 
+	<section class="slide">
+		<h2>Протокол HTTP</h2>
+		<blockquote>
+			<p class="small-content"><b>HTTP (HyperText Transfer Protocol — «протокол передачи гипертекста»)</b> &mdash; протокол прикладного уровня передачи данных (изначально &mdash; в виде гипертекстовых документов в формате «HTML»), в настоящий момент используется для передачи произвольных данных</p>
+		</blockquote>
+	</section>
 
+	<section class="slide">
+		<h2>Протокол HTTP</h2>
+		<div style="position:relative;width: 100%; height: 75%; overflow: hidden"><img class="place" src="client-server-diagram-internet.png" alt="Клиент-серверная архитектура Интернета" style="transform-origin: center;transform: translate(-50%,-51.5%) scale(1.4);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>HTTP запрос</h2>
+		<pre>
+			<code><span class="comment rus">// METHOD URI HTTP/VERSION <= стартовая строка</span></code>
+			<code>GET /hello.html?name=alex HTTP/1.1</code>
+			<code>Host: frontend.tech-mail.ru</code>
+			<code>Content-Type: text/plain; charset=utf-8</code>
+			<code><span class="comment rus">другие заголовки...</span></code>
+			<code> </code>
+			<code>        <span class="comment rus">тело запроса (опционально)</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>HTTP ответ</h2>
+		<pre>
+			<code><span class="comment rus">// HTTP/VERSION STATUS_CODE REASON_PHRASE <= стартовая строка</span></code>
+			<code>HTTP/1.0 200 OK</code>
+			<code>Host: frontend.tech-mail.ru</code>
+			<code>Content-Type: text/plain; charset=utf-8</code>
+			<code><span class="comment rus">другие заголовки...</span></code>
+			<code> </code>
+			<code>        <span class="comment rus">тело ответа (опционально)</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Работа с сетью в браузере: <br/>XMLHttpRequest</h2>
+		<pre>
+			<code><span class="comment rus">// 1. Создаём новый объект XMLHttpRequest</span></code>
+			<code>const xhr = new XMLHttpRequest();</code>
+			<code> </code>
+			<code><span class="comment rus">// 2. Конфигурируем его: GET-запрос на URL '/'</span></code>
+			<code>xhr.open('GET', 'phones.json', false);</code>
+			<code> </code>
+			<code><span class="comment rus">// 3. Отсылаем запрос</span></code>
+			<code>xhr.send();</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Работа с сетью в браузере: <br/>XMLHttpRequest</h2>
+		<pre>
+			<code><span class="comment rus">// 4. Если код ответа сервера не 200, то это ошибка</span></code>
+			<code>if (+xhr.status !== 200) {</code>
+			<code>    console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</code>
+			<code>} else {</code>
+			<code>    console.log(xhr.responseText);</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Пример POST-запроса</h2>
+		<pre>
+			<code>const xhr = new XMLHttpRequest();</code>
+			<code>xhr.open('POST', '/post', false);</code>
+			<code> </code>
+			<code><span class="comment rus">// Выставляем заголовок</span></code>
+			<code>xhr.setRequestHeader('Content-Type', 'application/json');</code>
+			<code>xhr.send(JSON.stringify({name: 'Alex'}));</code>
+			<code><span class="comment rus">// ждём ответа</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Асинхронные запросы</h2>
+		<pre>
+			<code>const xhr = new XMLHttpRequest();</code>
+			<code>xhr.open('GET', '/', true);</code>
+			<code> </code>
+			<code>xhr.<mark>onreadystatechange</mark> = function() {</code>
+			<code>    if (xhr.<mark>readyState</mark> !== 4) return;</code>
+			<code>    console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</code>
+			<code>    console.log(xhr.responseText);</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Практика</h2>
+	</section>
 
 
 
