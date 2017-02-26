@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Canvas</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<script>
+		'use strict';
+
+		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+		const w = screen.width;
+		const h = screen.height;
+		const r = gcd(w, h);
+
+		console.log(`${w}x${h}`);
+		let aspect = `${w / r}x${h / r}`;
+		console.log(aspect);
+
+		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
+		if (!ratios.includes(aspect)) {
+			aspect = ratios[0];
+		}
+
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+
+	</script>
+</head>
+<body class="shower list">
+<header class="caption">
+	<h1>Canvas</h1>
+	<p>Технопарк, 2016 г.</p>
+</header>
+
+	<section class="slide">
+		<h2 class="shout">Canvas<br/>
+			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Canvas</h2>
+		<p class="medium-content"></p>
+		<figure>
+			<blockquote>
+				<p>Canvas (англ. canvas — «холст», рус. канва́с) — элемент HTML5, предназначенный для создания
+					растрового двухмерного изображения при помощи скриптования, обычно на языке JavaScript.</p>
+			</blockquote>
+			<figcaption><a href="http://www.w3.org/TR/2dcontext/">HTML Canvas 2D Context</a></figcaption>
+		</figure>
+	</section>
+
+	<section class="slide">
+		<h2>Поддержка</h2>
+		<div style="position:relative;width: 100%; height: 85%;"><img class="place" src="caniuse-canvas.png" alt="DOM-hierarchy" style="transform-origin: center;transform: translate(-50%,-70%) scale(0.8);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>2d context</h2>
+		<pre>
+			<code>const canvas = document.createElement('canvas');</code>
+			<code>document.body.appendChild(canvas);</code>
+			<code>canvas.width = 300;</code>
+			<code>canvas.height = 150;</code>
+			<code>    <mark class="comment rus">/* HTMLCanvasElement */</mark></code>
+			<code>const <strong>context</strong> = canvas.getContext( '2d' );</code>
+			<code>    <mark class="comment rus">/* объект двумерного контекста */</mark></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Линия</h2>
+		<pre>
+			<code>context.beginPath();</code>
+			<code>context.moveTo( x, y );</code>
+			<code>context.lineTo( x, y );</code>
+			<code>context.stroke();</code>
+			<code> </code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/line.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Линия</h2>
+		<pre>
+			<code>context.beginPath();</code>
+			<code>context.moveTo( x, y );</code>
+			<code>context.lineTo( x, y );</code>
+			<code>context.lineTo( x, y );</code>
+			<code>context.stroke();</code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/line.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Лини<span style="color:red;">и</span></h2>
+		<pre>
+			<code>context.lineWidth = 10;</code>
+			<code>context.lineCap = 'butt'; <mark class="comment rus">// butt round square</mark></code>
+			<code>context.lineJoin = 'miter'; <mark class="comment rus">// miter round bevel</mark></code>
+			<code>context.closePath(); <mark class="comment rus">// Замкнуть контур</mark></code>
+			<code>context.fill(); <mark class="comment rus">// Залить</mark></code>
+			<code>context.stroke(); <mark class="comment rus">// Обвести</mark></code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/lines.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Стилизация</h2>
+		<p class="small-content"></p>
+		<pre>
+			<code>context.fillStyle = '#000000'; <mark class="comment rus">// Цвет заливки</mark></code>
+			<code>context.strokeStyle = '#000000'; <mark class="comment rus">// Цвет обводки</mark></code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/lines.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Пунктирные линии</h2>
+		<p class="small-content"></p>
+		<pre>
+			<code>context.setLineDash([x1, x2, ...]); <mark class="comment rus">// Сегменты пунктира</code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/lines.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Прямоугольник</h2>
+		<p class="small-content"></p>
+		<pre>
+			<code>context.rect( x, y, width, height ); <mark class="comment rus">// Прямоугольник</mark></code>
+			<code>context.fillRect( x, y, width, height ); <mark class="comment rus">// Прямоугольник</mark></code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/figures.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Окружность</h2>
+		<pre>
+			<code>context.arc( </code>
+			<code>  x, y, radius, startAngle, </code>
+			<code>  endAngle [, anticlockwise ]</code>
+			<code>); <mark class="comment rus">// Окружность</mark></code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/figures.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Закругление</h2>
+		<pre>
+			<code>context.arcTo( </code>
+			<code>  x1, y1, x2, y2, </code>
+			<code>  radiusX [, radiusY, rotation ] </code>
+			<code>); <mark class="comment rus">// Соединение точек</mark></code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/figures.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Кривая Безье</h2>
+		<p class="small-content"></p>
+		<pre>
+			<code>context.quadraticCurveTo(x,y,x2,y2) <mark class="comment rus">// Квадратичная кривая</mark></code>
+			<code>context.bezierCurveTo(x,y,x2,y2,x3,y3) <mark class="comment rus">// Кубическая кривая</mark></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>quadraticCurveTo</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="Bezier_2_big.gif" alt="DOM-hierarchy" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.25);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>bezierCurveTo</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="Bezier_3_big.gif" alt="DOM-hierarchy" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.25);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Трансформации</h2>
+		<pre>
+			<code>context.scale( x, y ) <mark class="comment rus">// Масштабирование</mark></code>
+			<code>context.rotate( angle ) <mark class="comment rus">// Поворот</mark></code>
+			<code>context.translate( x, y ) <mark class="comment rus">// Перенос</mark></code>
+			<code>context.transform(a, b, c, d, e, f) <mark class="comment rus">// ...</mark></code>
+			<code>context.save() <mark class="comment rus">// Сохранить текущее состояние</mark></code>
+			<code>context.restore() <mark class="comment rus">// Все как было, save и restore это стек!</mark></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>transform</h2>
+		<pre>
+			<code>context.transform(a, b, c, d, e, f); <mark class="comment rus">// Матрица преобразований</mark></code>
+			<code><mark class="comment rus">// a &mdash; Масштабирование, горизонтальное</mark></code>
+			<code><mark class="comment rus">// b &mdash; Наклон, горизонтальный</mark></code>
+			<code><mark class="comment rus">// c &mdash; Наклон, вертикальный</mark></code>
+			<code><mark class="comment rus">// d &mdash; Масштабирование, вертикальное</mark></code>
+			<code><mark class="comment rus">// e &mdash; Смещение, горизонтальное</mark></code>
+			<code><mark class="comment rus">// f &mdash; Смещение, вертикальное</mark></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Градиенты</h2>
+		<pre>
+			<code><mark class="comment rus">// Радиальный градиент</mark></code>
+			<code>context.createRadialGradient(x1, y1, r1, x2, y2, r2)</code>
+			<code><mark class="comment rus">// Линейный градиент</mark></code>
+			<code>context.createLinearGradient(x1, y1, x2, y2)</code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/gradients.html">Демонстрация</a>
+		</p>
+	</section>
+
+
+	<section class="slide">
+		<h2>Изображения и шаблоны</h2>
+		<p>Шаблоны можно сделать элемента canvas, изображения или видео</p>
+		<pre>
+			<code>context.createPattern(image, repetition);</code>
+			<code><mark class="comment rus">// image &mdash; image, canvas, video element</mark></code>
+			<code><mark class="comment rus">// repetition &mdash; repeat | repeat-x | repeat-y | no-repeat</mark></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Изображения</h2>
+		<pre>
+			<code>context.drawImage(image, dx, dy)</code>
+			<code>context.drawImage(image, dx, dy, dw, dh)</code>
+			<code>context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)</code>
+			<code><mark class="comment rus">// image &mdash; image, canvas, video element</mark></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>drawImage</h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="drawImage.png" alt="DOM-hierarchy" style="transform-origin: center;transform: translate(-50%,-55%) scale(1.2);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Compositing</h2>
+		<p class="small-content"></p>
+		<pre>
+			<code>context.globalAlpha = 0.0 .. 1.0</code>
+			<code>context.globalCompositeOperation = value</code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/compositing.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Image Data</h2>
+		<pre>
+			<code><mark class="comment rus">// pixel manipulation</mark></code>
+			<code>ImageData createImageData(sw, sh);</code>
+			<code>ImageData createImageData(ImageData);</code>
+			<code>ImageData getImageData(sx, sy, sw, sh);</code>
+			<code>void putImageData(ImageData, dx, dy, dirtyX, dirtyY, </code>
+			<code>      dirtyWidth, dirtyHeight);</code>
+			<code>void putImageData(ImageData, dx, dy);</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Shadow</h2>
+		<pre>
+			<code>context.shadowColor = "#000000"</code>
+			<code>context.shadowOffsetX = 0</code>
+			<code>context.shadowOffsetY = 0</code>
+			<code>context.shadowBlur = 0</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Text</h2>
+		<p class="small-content"></p>
+		<pre>
+			<code>context.font</code>
+			<code>context.textAlign</code>
+			<code>context.textBaseline</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Анимация</h2>
+		<ul>
+			<li>Рисуем</li>
+			<li>Стираем</li>
+			<li>Рисуем</li>
+			<li>Стираем</li>
+			<li>...</li>
+		</ul>
+		<p class="note">
+			<a href="/examples/canvas/animation.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Анимация</h2>
+		<p class="small-content"></p>
+		<figure>
+			<blockquote>
+				<p>Что-то пошло не так</p>
+			</blockquote>
+		</figure>
+	</section>
+
+	<section class="slide">
+		<h2>Анимация</h2>
+		<ul>
+			<li>Рисуем</li>
+			<li><mark class="comment rus">Ждем</mark></li>
+			<li>Стираем</li>
+			<li>Рисуем</li>
+			<li><mark class="comment rus">Ждем</mark></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Анимация и время</h2>
+		<pre>
+			<code>let startTime, animationTime, length;</code>
+			<code>let time = new Date().getTime();</code>
+			<code>let shiftTime = time - startTime;</code>
+			<code>let multiply = shiftTime / animationTime;</code>
+			<code>let x = length * multiply;</code>
+		</pre>
+		<p class="note">
+			<a href="/examples/canvas/animationTime.html">Демонстрация</a>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Конец</h2>
+	</section>
+
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+</body>
+</html>
