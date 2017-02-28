@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Работа с DOM, браузерные события, сеть</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<script>
+		'use strict';
+
+		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+		const w = screen.width;
+		const h = screen.height;
+		const r = gcd(w, h);
+
+		console.log(`${w}x${h}`);
+		let aspect = `${w / r}x${h / r}`;
+		console.log(aspect);
+
+		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
+		if (!ratios.includes(aspect)) {
+			aspect = ratios[0];
+		}
+
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+
+	</script>
+</head>
+<body class="shower list">
+
+	<header class="caption">
+		<h1>Замыкания, модули, компоненты</h1>
+		<p>Технопарк, 2017 г.</p>
+	</header>
+
+	<section class="slide">
+		<h2 class="shout">Замыкания, модули, компоненты<br/>
+			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Лексическое окружение</h2>
+		<p>Все переменные внутри функции – это свойства специального внутреннего объекта LexicalEnvironment, который создаётся при её запуске.</p>
+		<pre>
+			<code>function sayHello(name) {</code>
+			<code>  var magicNumber = 42;</code>
+			<code>  console.log(`Hello, ${name}`);</code>
+			<code>} </code>
+			<code> </code>
+			<code>sayHello('Лаврентий'); </code>
+			<code><span class="comment">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Внешние переменные</h2>
+		<pre>
+      <code>let otherName = 'Ivan'; <span class="comment">// window.otherName = Ivan</span></code>
+      <code></code>
+      <code>function sayHello(name) {</code>
+			<code>  var magicNumber = 42;</code>
+			<code>  console.log(`Hello, ${otherName}`);</code>
+			<code>} </code>
+			<code> </code>
+			<code>sayHello('Лаврентий'); </code>
+			<code><span class="comment">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
+			<code><span class="comment">// sayHello.[[Scope]] = window</span></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<img class="place" src="le.png" alt="" style="transform-origin: center;transform: translate(-50%,-52.5%) scale(0.4);">
+	</section>
+
+	<section class="slide">
+    <h2>Внешние переменные</h2>
+		<pre>
+      <code>function sum(operand1) {</code>
+      <code>  return function(operand2) {</code>
+			<code>    console.log(operand1 + operand2);</code>
+			<code>  } </code>
+			<code>}</code>
+			<code> </code>
+			<code>let plus3 = sum(3);</code>
+			<code>plus3(6); <span class="comment">// 9</span></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+    <h2>Внешние переменные</h2>
+    <img class="place" src="closure.png" alt="" style="transform-origin: center;transform: translate(-59%,-50.5%) scale(0.5);">
+	</section>
+
+  <section class="slide">
+    <h2>Приватные переменные</h2>
+		<pre>
+      <code>function sum(operand1) {</code>
+      <code>  let privateOperand = 1;</code>
+      <code>  </code>
+      <code>  return function(operand2) {</code>
+			<code>    console.log(operand1 + operand2 + privateOperand);</code>
+			<code>  } </code>
+			<code>}</code>
+			<code> </code>
+			<code>let plus3 = sum(3);</code>
+			<code>plus3(6); <span class="comment">// 10</span></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Самовызывающиеся функции</h2>
+    <pre>
+      <code>(function () {</code>
+      <code>  let privateVariable = 1;</code>
+      <code>  </code>
+      <code>  <span class="comment">// some code</span></code>
+			<code>})();</code>
+			<code> </code>
+			<code>console.log(window.privateVariable);  <span class="comment">// undefined</span></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Модули</h2>
+		<blockquote>
+			<p class="small-content"><b>Модуль</b> — функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах.</p>
+		</blockquote>
+	</section>
+
+  <section class="slide">
+    <h2>Модули</h2>
+    <pre>
+      <code>(function () {</code>
+      <code>  let importedModule = window.importedModule;</code>
+      <code>  </code>
+      <code>  class AwesomeClass {</code>
+      <code>    //...</code>
+      <code>  }</code>
+      <code>  </code>
+      <code>  window.exportedModule = AwesomeClass;</code>
+      <code>})();</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Модули - будущее</h2>
+    <pre>
+      <span class="comment">// main.js</span>
+      <code>import AwesomeClass from './package.js'</code>
+      <code>let awesome = new AwesomeClass();</code>
+    </pre>
+    <pre>
+      <span class="comment">// package.js</span>
+      <code>class AwesomeClass {</code>
+      <code>  //...</code>
+      <code>}</code>
+      <code></code>
+      <code>export default AwesomeClass;</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Модули - будущее</h2>
+    <img class="place" src="modules-caniuse.png" alt="" style="transform-origin: center;transform: translate(-50%,-47%) scale(0.4);">
+  </section>
+
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul lang="en">
+			<li><a href="http://largescalejs.ru" target="_blank">Книга "Паттерны для масштабируемых javascript приложений" описана здесь</a></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Всем спасибо!</h2>
+	</section>
+
+
+	<div class="progress"></div>
+	<script src="/lib/shower/shower.min.js"></script>
+</body>
+</html>
