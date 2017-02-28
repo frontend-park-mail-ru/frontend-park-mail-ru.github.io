@@ -263,7 +263,7 @@
 	<section class="slide">
 		<h2>Свойства элементов</h2>
 		<pre>
-			<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+			<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
 		</pre>
 		<pre>
 			<code>element.tagName <span class="comment rus">// имя тега</span></code>
@@ -271,7 +271,7 @@
 			<code> </code>
 
 			<code>element.innerHTML <span class="comment rus">// Внутреннее содержимое узла-элемента в виде HTML</span></code>
-			<code>h1.innerHTML <span class="comment rus">// "Сслыка: &lt;a href="/">тут&lt;/a>"</span></code>
+			<code>h1.innerHTML <span class="comment rus">// "Ссылка: &lt;a href="/">тут&lt;/a>"</span></code>
 			<code> </code>
 		</pre>
 	</section>
@@ -279,16 +279,16 @@
 	<section class="slide">
 		<h2>Свойства элементов</h2>
 		<pre>
-			<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+			<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
 		</pre>
 		<pre>
 			<code>element.outerHTML <span class="comment rus">// Полный HTML узла-элемента</span></code>
-			<code>h1.outerHTML <span class="comment rus">// "&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1>"</span></code>
+			<code>h1.outerHTML <span class="comment rus">// "&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1>"</span></code>
 			<code> </code>
 
 			<code>element.textContent <span class="comment rus">// Содержит только текст внутри элемента,</span></code>
 			<code>                    <span class="comment rus">// за вычетом всех тегов</span></code>
-			<code>h1.textContent <span class="comment rus">// "Сслыка: "</span></code>
+			<code>h1.textContent <span class="comment rus">// "Ссылка: "</span></code>
 			<code> </code>
 		</pre>
 	</section>
@@ -452,22 +452,22 @@
 
 	<section class="slide">
 		<h2>Фазы обработки событий</h2>
-		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events1.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events1.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(.9);"></div>
 	</section>
 
 	<section class="slide">
 		<h2>Фазы обработки событий</h2>
-		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(.9);"></div>
 	</section>
 
 	<section class="slide">
 		<h2>Фазы обработки событий</h2>
-		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events3.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events3.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(.9);"></div>
 	</section>
 
 	<section class="slide">
 		<h2>Фазы обработки событий</h2>
-		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events4.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(1);"></div>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="events4.png" alt="event-phases" style="transform-origin: center;transform: translate(-67%,-50%) scale(.9);"></div>
 	</section>
 
 	<section class="slide">
@@ -540,11 +540,10 @@
 	</section>
 
 	<section class="slide">
-		<h2>Работа с сетью в браузере: <br/>XMLHttpRequest</h2>
+		<h2>Работа с XMLHttpRequest</h2>
 		<pre>
 			<code><span class="comment rus">// 1. Создаём новый объект XMLHttpRequest</span></code>
 			<code>const xhr = new XMLHttpRequest();</code>
-			<code> </code>
 			<code><span class="comment rus">// 2. Конфигурируем его: GET-запрос на URL '/'</span></code>
 			<code>xhr.open('GET', 'phones.json', false);</code>
 			<code> </code>

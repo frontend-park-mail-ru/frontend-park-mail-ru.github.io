@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Canvas - Balls</title>
+<style type="text/css">
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+
+	<style>
+		.splash {
+			background: #2b2b2b;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		.splash__info {
+		  width:500px;
+		  margin:40px auto;
+		  opacity: 1;
+		}
+		.splash__line {
+		  font-size:140px;
+		  font-family: sans-serif;
+		  color: #fff;
+		  margin:0;
+		}
+		.seasonNum,.episodeNum {
+		  font-size:14px;
+		  display:inline-block;
+		  position: absolute;
+		  margin-left:115px;
+		}
+		.episodeNum {
+		  margin-left:90px;
+		}
+		.bad {
+		  margin:24px 189px;
+		}
+		.B {
+		  padding:10px;
+		  background:green;
+		  border:3px solid #fff;
+		  width:200px;
+		  height:200px;
+		  background: #46a08c;
+		  background: linear-gradient(130deg, #46a08c 0%, #1C3F1D 100%, #303030 90%);
+		  box-shadow:inset 0px 2px 2px rgba(50,50,50,.6);
+		}
+		.br {
+		  padding:10px 22px;
+		}
+	</style>
+
+	<div class="splash">
+		<div class="splash__info">
+			<p class="splash__line">
+				<span class="seasonNum">15</span>
+				<span class="B br">P</span>ress
+			</p>
+			<p class="bad splash__line">
+				<span class="episodeNum">16</span>
+				<span class="B">S</span>pace
+			</p>
+		</div>
+	</div>
+
+<canvas></canvas>
+
+<script type="text/javascript">
+(function () {
+'use strict';
+
+var canvas = document.querySelector('canvas');
+var context = canvas.getContext('2d');
+
+var isStopped = true;
+
+class Ball {
+	constructor (x, y , r) {
+		this._x = x;
+		this._y = y;
+		this._r = r;
+
+		this._color = '#000';
+	}
+
+	set dY (dY) {
+		this._y += dY;
+	}
+
+	set dX (dX) {
+		this._x += dX;
+	}
+
+	set color (color) {
+		this._color = color || '#'+Math.floor(Math.random()*16777215).toString(16);
+	}
+
+	draw (ctx) {
+		ctx.beginPath();
+		ctx.arc(this._x, this._y, this._r, 0, Math.PI * 2, false);
+		ctx.fillStyle = this._color;
+		ctx.fill();
+		ctx.closePath();
+	}
+
+	static random (min, max) {
+		return min + Math.random() * (max - min);
+	}
+}
+
+Ball.instances = [];
+
+
+function init () {
+	for (let i = 0; i < 10; i += 1) {
+		let ball = new Ball(canvas.width / 2, canvas.height / 2, 20);
+		ball.color = null;
+		ball.draw(context);
+
+		Ball.instances.push(ball);
+	}
+
+	animate();
+}
+
+const min = -10;
+const max = 10;
+
+function animate() {
+	Ball.instances.forEach(ball => {
+		ball.dX = Ball.random(min, max);
+		ball.dY = Ball.random(min, max);
+		ball.draw(context)
+	});
+	if (!isStopped) {
+		requestAnimationFrame(animate);
+	}
+}
+
+var toggleSpalsh = function (state) {
+	let splash = document.querySelector('.splash');
+	splash.style.display = state ? '' : 'none';
+}
+
+var keypress = function (event) {
+	// Space button
+	if (event.which === 32) {
+		if (isStopped) {
+			isStopped = false;
+			animate();
+		} else {
+			isStopped = true;
+		}
+		toggleSpalsh(isStopped);
+	}
+}
+
+/* Хелперы */
+var resize = function(){
+
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+	var bigStep = 100;
+	var smallStep = 10;
+	context.beginPath();
+	context.strokeStyle = '#eeeeee';
+	for (var x = 0; x < canvas.width; x += smallStep) {
+		context.moveTo( x, 0 );
+		context.lineTo( x, canvas.height );
+	}
+	for (var y = 0; y < canvas.height; y += smallStep) {
+		context.moveTo( 0, y );
+		context.lineTo( canvas.width, y );
+	}
+	context.stroke();
+
+	context.beginPath();
+	context.strokeStyle = '#aaaaaa';
+	for (var x = 0; x < canvas.width; x += bigStep) {
+		context.moveTo( x, 0 );
+		context.lineTo( x, canvas.height );
+	}
+	for (var y = 0; y < canvas.height; y += bigStep) {
+		context.moveTo( 0, y );
+		context.lineTo( canvas.width, y );
+	}
+	context.stroke();
+
+	// Draw balls
+	init();
+};
+window.addEventListener('resize', resize);
+window.addEventListener('keydown', keypress);
+
+resize();
+})();
+</script>
+</body>
+</html>
