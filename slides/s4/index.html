@@ -39,16 +39,89 @@
 	</header>
 
 	<section class="slide">
-		<h2 class="shout">Same Origin Policy. CORS-запросы<br/>
+		<h2 class="shout"><span style="font-size:80%;">Same Origin Policy. CORS-запросы</span><br/>
 			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
 		</h2>
 	</section>
 
 	<section class="slide">
-		<h2>План лекции</h2>
-		<ul lang="ru">
-			<li></li>
+		<h2>Same Origin Policy</h2>
+		<blockquote>
+			<p class="medium-content"><b>Правило ограничения домена (Same Origin Policy &mdash; «Принцип одинакового источника»)</b> &mdash; это важная концепция безопасности и работы web-приложений. Она призвана <mark>ограничивать возможности</mark> пользовательских сценариев из определённого источника по доступу к ресурсам и информации из других источников</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Same Origin Policy</h2>
+		<p>Вводится понятие <mark>источника</mark> (адрес в интернете, откуда был загружен ресурс). Два URL считаются имеющим один источник («same origin»), если у них <mark>одинаковый протокол, домен и порт</mark></p>
+		<p>У этих ресурсов одинаковые источники:</p>
+		<ul>
+			<li><code>http://site.com</code></li>
+			<li><code>http://site.com/</code></li>
+			<li><code>http://site.com/my/page.html</code></li>
 		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Same Origin Policy</h2>
+		<p>У этих ресурсов <strong>разные</strong> источники:</p>
+		<ul>
+			<li><code>http://site.com</code></li>
+			<li><code>http://<strong>www</strong>.site.com</code> (другой домен)</li>
+			<li><code>http://site.<strong>org</strong></code> (другой домен)</li>
+			<li><code><strong>https</strong>://site.com</code> (другой протокол)</li>
+			<li><code>http://site.com:<strong>8080</strong></code> (другой порт)</li>
+		</ul>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 65%">Как именно это помогает обеспечить <mark>безопасность</mark> web-приложений?</span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Элемент <code>&lt;iframe></code></h2>
+		<blockquote>
+			<p class="medium-content">Элемент <code>&lt;iframe></code> создаёт фрейм &mdash; область заданных размеров, которая находится внутри обычного документа, в которую можно загружать любые другие независимые документы</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Элемент <code>&lt;iframe></code></h2>
+		<code>&lt;iframe src="https://www.w3.org/" width="900" height="300"></code>
+
+		<iframe src="https://www.w3.org/" frameborder="0" id="frameMy" width="900" height="310"></iframe>
+	</section>
+
+	<section class="slide">
+		<h2>Cross Origin HTTP-запросы (<mark>XHR</mark>)</h2>
+		<pre class="hljs js">
+			<code>const xhr = new XMLHttpRequest();</code>
+			<code>xhr.open('GET', <mark>'https://e.mail.ru/messages/inbox/'</mark>, false);</code>
+			<code>xhr.send();</code>
+			<code> </code>
+			<code>console.log(xhr.responseText)</code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul lang="en">
+			<li>Same-origin policy описано <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank">здесь (MDN)</a> и
+				<a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">здесь (wiki)</a></li>
+			<li>Метода обхода Same-origin policy <a href="http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy" target="_blank">stackoverflow</a></li>
+			<li>Iframe: <a href="https://webref.ru/html/iframe" target="_blank">WebReference.ru</a> и <a
+					href="https://learn.javascript.ru/same-origin-policy" target="_blank">learn.javascript.ru</a></li>
+			<li>Кроссдоменные запросы на <a href="https://learn.javascript.ru/xhr-crossdomain" target="_blank">learn.javascript.ru</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank">Описание</a> HTTP access control (CORS)</li>
+			<li>Документация к <strong>Spring</strong> про CORS: <a href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank">здесь</a></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Всем спасибо!</h2>
 	</section>
 
 	<div class="progress"></div>
