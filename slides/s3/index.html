@@ -1,135 +1,136 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Модульность, разработка компонентов, шаблонизация</title>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Модульность, разработка компонентов, шаблонизация</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>
+    	'use strict';
 
-	<script>
-		'use strict';
+    	const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+    	const w = screen.width;
+    	const h = screen.height;
+    	const r = gcd(w, h);
 
-		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
-		const w = screen.width;
-		const h = screen.height;
-		const r = gcd(w, h);
+    	console.log(`${w}x${h}`);
+    	let aspect = `${w / r}x${h / r}`;
+    	console.log(aspect);
 
-		console.log(`${w}x${h}`);
-		let aspect = `${w / r}x${h / r}`;
-		console.log(aspect);
+    	const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
+    	if (!ratios.includes(aspect)) {
+    		aspect = ratios[0];
+    	}
 
-		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
-		if (!ratios.includes(aspect)) {
-			aspect = ratios[0];
-		}
+    	document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
-		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+    </script>
+    </head>
+    <body class="shower list">
 
-	</script>
-</head>
-<body class="shower list">
+    <header class="caption">
+    	<h1>Замыкания, модули, компоненты</h1>
+    	<p>Технопарк, 2017 г.</p>
+    </header>
 
-	<header class="caption">
-		<h1>Замыкания, модули, компоненты</h1>
-		<p>Технопарк, 2017 г.</p>
-	</header>
+    <section class="slide">
+    	<h2 class="shout">Замыкания, модули, компоненты<br/>
+    		<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
+    	</h2>
+    </section>
 
-	<section class="slide">
-		<h2 class="shout">Замыкания, модули, компоненты<br/>
-			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
-		</h2>
-	</section>
+    <section class="slide">
+    	<h2>Лексическое окружение</h2>
+    	<p>Все переменные внутри функции – это свойства специального внутреннего объекта LexicalEnvironment, который создаётся при её запуске.</p>
+    	<pre>
+    		<code>function sayHello(name) {</code>
+    		<code>  let magicNumber = 42;</code>
+    		<code>  console.log(`Hello, ${name}`);</code>
+    		<code>} </code>
+    		<code> </code>
+    		<code>sayHello('Лаврентий'); </code>
+    		<code><span class="comment">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
+    	</pre>
+    </section>
 
-	<section class="slide">
-		<h2>Лексическое окружение</h2>
-		<p>Все переменные внутри функции – это свойства специального внутреннего объекта LexicalEnvironment, который создаётся при её запуске.</p>
-		<pre>
-			<code>function sayHello(name) {</code>
-			<code>  let magicNumber = 42;</code>
-			<code>  console.log(`Hello, ${name}`);</code>
-			<code>} </code>
-			<code> </code>
-			<code>sayHello('Лаврентий'); </code>
-			<code><span class="comment">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Внешние переменные</h2>
-		<pre>
+    <section class="slide">
+    	<h2>Внешние переменные</h2>
+    	<pre>
       <code>let otherName = 'Ivan'; <span class="comment">// window.otherName = Ivan</span></code>
       <code></code>
       <code>function sayHello(name) {</code>
-			<code>  let magicNumber = 42;</code>
-			<code>  console.log(`Hello, ${otherName}`);</code>
-			<code>} </code>
-			<code> </code>
-			<code>sayHello('Лаврентий'); </code>
-			<code><span class="comment">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
-			<code><span class="comment">// sayHello.[[Scope]] = window</span></code>
-		</pre>
-	</section>
+    		<code>  let magicNumber = 42;</code>
+    		<code>  console.log(`Hello, ${otherName}`);</code>
+    		<code>} </code>
+    		<code> </code>
+    		<code>sayHello('Лаврентий'); </code>
+    		<code><span class="comment">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
+    		<code><span class="comment">// sayHello.[[Scope]] = window</span></code>
+    	</pre>
+    </section>
 
-	<section class="slide">
-		<img class="place" src="le.png" alt="" style="transform-origin: center;transform: translate(-50%,-52.5%) scale(0.4);">
-	</section>
+    <section class="slide">
+    	<img class="place" src="le.png" alt="" style="transform-origin: center;transform: translate(-50%,-52.5%) scale(0.4);">
+    </section>
 
-	<section class="slide">
+    <section class="slide">
     <h2>Внешние переменные</h2>
-		<pre>
+    	<pre>
       <code>function sum(operand1) {</code>
       <code>  return function(operand2) {</code>
-			<code>    console.log(operand1 + operand2);</code>
-			<code>  } </code>
-			<code>}</code>
-			<code> </code>
-			<code>let plus3 = sum(3);</code>
-			<code>plus3(6); <span class="comment">// 9</span></code>
-		</pre>
-	</section>
+    		<code>    console.log(operand1 + operand2);</code>
+    		<code>  } </code>
+    		<code>}</code>
+    		<code> </code>
+    		<code>let plus3 = sum(3);</code>
+    		<code>plus3(6); <span class="comment">// 9</span></code>
+    	</pre>
+    </section>
 
-	<section class="slide">
+    <section class="slide">
     <h2>Внешние переменные</h2>
     <img class="place" src="closure.png" alt="" style="transform-origin: center;transform: translate(-59%,-50.5%) scale(0.5);">
-	</section>
+    </section>
 
-  <section class="slide">
+    <section class="slide">
     <h2>Приватные переменные</h2>
-		<pre>
+    	<pre>
       <code>function sum(operand1) {</code>
       <code>  let privateOperand = 1;</code>
       <code>  </code>
       <code>  return function(operand2) {</code>
-			<code>    console.log(operand1 + operand2 + privateOperand);</code>
-			<code>  } </code>
-			<code>}</code>
-			<code> </code>
-			<code>let plus3 = sum(3);</code>
-			<code>plus3(6); <span class="comment">// 10</span></code>
-		</pre>
-	</section>
+    		<code>    console.log(operand1 + operand2 + privateOperand);</code>
+    		<code>  } </code>
+    		<code>}</code>
+    		<code> </code>
+    		<code>let plus3 = sum(3);</code>
+    		<code>plus3(6); <span class="comment">// 10</span></code>
+    	</pre>
+    </section>
 
-	<section class="slide">
-		<h2>Самовызывающиеся функции</h2>
+    <section class="slide">
+    	<h2>Самовызывающиеся функции</h2>
     <pre>
       <code>(function () {</code>
       <code>  let privateVariable = 1;</code>
       <code>  </code>
       <code>  <span class="comment">// some code</span></code>
-			<code>})();</code>
-			<code> </code>
-			<code>console.log(window.privateVariable);  <span class="comment">// undefined</span></code>
-		</pre>
-	</section>
+    		<code>})();</code>
+    		<code> </code>
+    		<code>console.log(window.privateVariable);  <span class="comment">// undefined</span></code>
+    	</pre>
+    </section>
 
-	<section class="slide">
-		<h2>Модули</h2>
-		<blockquote>
-			<p class="small-content"><b>Модуль</b> — функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах.</p>
-		</blockquote>
-	</section>
+    <section class="slide">
+    	<h2>Модули</h2>
+    	<blockquote>
+    		<p class="small-content"><b>Модуль</b> — функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах.</p>
+    	</blockquote>
+    </section>
 
-  <section class="slide">
+    <section class="slide">
     <h2>Модули</h2>
     <pre>
       <code>(function () {</code>
@@ -142,9 +143,9 @@
       <code>  window.exportedModule = AwesomeClass;</code>
       <code>})();</code>
     </pre>
-  </section>
+    </section>
 
-  <section class="slide">
+    <section class="slide">
     <h2>Модули - будущее</h2>
     <pre>
       <span class="comment">// main.js</span>
@@ -159,27 +160,27 @@
       <code></code>
       <code>export default AwesomeClass;</code>
     </pre>
-  </section>
+    </section>
 
-  <section class="slide">
+    <section class="slide">
     <h2>Модули - будущее</h2>
     <img class="place" src="modules-caniuse.png" alt="" style="transform-origin: center;transform: translate(-50%,-47%) scale(0.4);">
-  </section>
+    </section>
 
-	<section class="slide">
+    <section class="slide">
     <h2>Компоненты</h2>
     <img class="place" src="components.png" alt="" style="transform-origin: center;transform: translate(-50%,-47%) scale(0.3);">
-  </section>
+    </section>
 
-	<section class="slide">
+    <section class="slide">
     <h2>Компоненты</h2>
     <img class="place" src="components-1.png" alt="" style="transform-origin: center;transform: translate(-50%,-47%) scale(0.3);">
-  </section>
+    </section>
 
-	<section class="slide">
-    <h2>Компоненты</h2>
-    <img class="place" src="components-2.png" alt="" style="transform-origin: center;transform: translate(-50%,-47%) scale(0.3);">
-  </section>
+    <section class="slide">
+        <h2>Компоненты</h2>
+        <img class="place" src="components-2.png" alt="" style="transform-origin: center;transform: translate(-50%,-47%) scale(0.3);">
+    </section>
 
 	<section class="slide">
 		<h2>Полезные ссылки</h2>
@@ -188,12 +189,129 @@
 		</ul>
 	</section>
 
+    <section class="slide">
+        <h2 class="shout">Template engines</h2>
+    </section>
+
+    <section class="slide">
+       <h2>Создадим простой элемент</h2>
+       <div>
+           <pre>
+            <code>let data = {text: 'Текст элемента!'};</code>
+            <code>let block = document.createElement('div');</code>
+            <code>block.classList.add('block');</code>
+            <code>    </code>
+            <code>let blockEl = document.createElement('div');</code>
+            <code>blockEl.classList.add('block__el', 'block__el_mod');</code>
+            <code>blockEl.textContent = data.text</code>
+            <code>    </code>
+            <code>block.appendChild(blockEl);</code>
+           </pre>
+       </div>
+   </section>
+
+   <section class="slide">
+      <h2>Можно поступить проще</h2>
+      <div>
+          <pre>
+           <code>let data = {text: 'Текст элемента!'};</code>
+           <code>let block = document.createElement('div');</code>
+           <code>block.innerHTML = `</code>
+           <code>    &lt;div class=&quot;block&quot;&gt; </code>
+           <code>        &lt;div class=&quot;block__el block__el_mod&quot;&gt;</code>
+           <code>           ${data.text}</code>
+           <code>        &lt;/div&gt;</code>
+           <code>    &lt;/div&gt;`;</code>
+           <code>    </code>
+           <code>block.appendChild(blockEl);</code>
+          </pre>
+      </div>
+  </section>
+
+
+    <section class="slide">
+       <h2>Микрошаблоны</h2>
+       <div>
+           <pre>
+           <code>&lt;div class=&quot;menu&quot;&gt;</code>
+           <code>    &lt;span class=&quot;title&quot;&gt;&lt;%-title%&gt;&lt;/span&gt;</code>
+           <code>    &lt;ul&gt;</code>
+           <code>        &lt;% items.forEach(function(item) { %&gt;</code>
+           <code>            &lt;li&gt;&lt;%-item%&gt;&lt;/li&gt;</code>
+           <code>        &lt;% }); %&gt;</code>
+           <code>    &lt;/ul&gt;</code>
+           <code>&lt;/div&gt;</code>
+           </pre>
+       </div>
+   </section>
+
+   <section class="slide">
+       <h2>"Свой" язык</h2>
+       <div>
+       <pre>
+           <code><mark>&lt;fest:template xmlns:fest="http://fest.mail.ru"</mark></code>
+           <code>    <mark>context_name="json"&gt;</mark></code>
+           <code>    &lt;div&gt;</code>
+           <code>        &lt;h1&gt;Epic Game&lt;/h1&gt;</code>
+           <code>    &lt;/div&gt;</code>
+           <code><mark>&lt;/fest:template&gt;</mark></code>
+       </pre>
+      </div>
+   </section>
+
+   <section class="slide">
+       <h2>В результате - JS код</h2>
+       <div>
+       <pre>
+            <code>;(function(){var x=Function('return this')();if(!x.fest)x.fest={};</code>
+            <code>x.fest['fest']=function (__fest_context){"use strict";</code>
+            <code>var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[]</code>
+            <code>,__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",</code>
+            <code>__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",</code>
+            <code>__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,</code>
+            <code>...</code>
+            <code>...</code>
+            <code>...</code>
+            <code>return __fest_html+__fest_buf;} else {return __fest_buf;}}})();</code>
+       </pre>
+      </div>
+   </section>
+
+   <section class="slide">
+       <h2>
+           Шаблонизация компонент
+       </h2>
+       <pre>
+           <code>    &lt;div class=&quot;block&quot;&gt; </code>
+           <code>        &lt;div data-bind=&quot;text: text&quot; class=&quot;block__el block__el_mod&quot;&gt;</code>
+           <code>        &lt;/div&gt;</code>
+           <code>    &lt;/div&gt;</code>
+           <code>    &lt;input data-bind=&quot;value: name, valueUpdate: 'input'&quot; /&gt;</code>
+       </pre>
+   </section>
+
+   <section class="slide">
+       <h2>
+           VDOM
+       </h2>
+       <div>
+           <a href="https://facebook.github.io/react/docs/tutorial.html">React. JSX.</a>
+           <br>
+           <a href="https://facebook.github.io/react/docs/tutorial.html">How to write your own Virtual DOM</a>
+           <br>
+           <a href="https://learn.javascript.ru/templates">Подробнее про шаблонизацию</a>
+       </div>
+   </section>
+
 	<section class="slide">
 		<h2 class="shout">Всем спасибо!</h2>
 	</section>
 
 
+
+
 	<div class="progress"></div>
 	<script src="/lib/shower/shower.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
