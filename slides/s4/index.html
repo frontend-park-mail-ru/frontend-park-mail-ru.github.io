@@ -95,6 +95,7 @@
 	<section class="slide">
 		<h2>Cross Origin HTTP-запросы (<mark>XHR</mark>)</h2>
 		<pre class="hljs js">
+			<code><span class="comment rus">// Находимся на https://evil.com/</span></code>
 			<code>const xhr = new XMLHttpRequest();</code>
 			<code>xhr.open('GET', <mark>'https://e.mail.ru/messages/inbox/'</mark>, false);</code>
 			<code>xhr.send();</code>
@@ -103,6 +104,133 @@
 			<code> </code>
 		</pre>
 	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 85%">Архитектура наших приложений?</span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Архитектура наших приложений?</h2>
+		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="arch.png" alt="Архитектура наших приложений" style="transform-origin: center;transform: translate(-50.45%,-51%) scale(.893);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Когда отправляются запросы?</h2>
+		<p class="small-content"></p>
+		<ul>
+			<li>При загрузке ресурсов (элементы <code>&lt;img></code>, <code>&lt;script></code>)</li>
+			<li>При отправке форм (форму можно сабмитить с двумя методами: GET и POST)</li>
+			<li>С помощью JavaScript (XHR, fetch)</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>HTTP access control (CORS)</h2>
+		<blockquote>
+			<p class="small-content"><b>Cross-Origin Resource Sharing (CORS) standard</b> &mdash; спецификация, накладывающая ограничения на запросы такого типа (работает по принципам Same Origin Policy). Появилась относительно недавно</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Запросы делятся на два типа</h2>
+		<p>Простыми считаются запросы, если они удовлетворяют следующим двум условиям:</p>
+		<ul>
+			<li>Простой метод: GET, POST или HEAD</li>
+			<li>Простые заголовки &mdash; только из списка:
+			<ul>
+				<li><code>Accept</code></li>
+				<li><code>Accept-Language</code></li>
+				<li><code>Content-Language</code></li>
+				<li><code>Content-Type</code></li>
+			</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Запросы делятся на два типа</h2>
+		<p class="small-content">Остальные запросы считаются <mark>"непростыми"</mark>, и при отправке таких запросов необходимо понять, согласен ли сервер на обработку таких запросов. Эти запросы всегда отсылаются со специальным заголовком <code>Origin</code></p>
+	</section>
+
+	<section class="slide">
+		<h2>CORS для простых запросов</h2>
+		<pre class="hljs http">
+			<code>GET /data HTTP/1.1</code>
+			<code>Host: e.mail.ru</code>
+			<code>Origin: http://frontend.tech-mail.ru</code>
+			<code> </code>
+		</pre>
+		<pre class="hljs http">
+			<code>HTTP/1.1 200 OK</code>
+			<code>Content-Type: text/html; charset=UTF-8</code>
+			<code><mark>Access-Control-Allow-Origin:</mark> http://frontend.tech-mail.ru</code>
+			<code><span class="comment">// Access-Control-Allow-Origin: *</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>CORS для простых запросов:<br/>дополнительные заголовки</h2>
+		<pre class="hljs http">
+			<code>HTTP/1.1 200 OK</code>
+			<code>Content-Type: text/html; charset=UTF-8</code>
+			<code>Access-Control-Allow-Origin: http://frontend.tech-mail.ru</code>
+			<code>...</code>
+			<code>X-UID: 42</code>
+			<code>X-Secret: 2c9de507f2c54aa1</code>
+			<code><mark>Access-Control-Expose-Headers:</mark> X-Uid, X-Authentication</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>CORS для простых запросов:<br/>данные авторизации</h2>
+		<pre class="hljs js">
+			<code>const xhr = new XMLHttpRequest();</code>
+			<code>xhr.<mark>withCredentials</mark> = true;</code>
+			<code>xhr.open('GET', 'https://e.mail.ru/messages/inbox/', false);</code>
+			<code> </code>
+		</pre>
+		<pre class="hljs http">
+			<code>HTTP/1.1 200 OK</code>
+			<code>Content-Type: text/html; charset=UTF-8</code>
+			<code>Access-Control-Allow-Origin: <mark>domain</mark> <span class="comment">// '*' запрещено</span></code>
+			<code><mark>Access-Control-Allow-Credentials:</mark> true</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>"Непростые" запросы</h2>
+		<p>При отправке "непростого" запроса, браузер сделает на самом деле <strong>два</strong> HTTP-запроса.
+			<ul>
+				<li>«Предзапрос» (английский термин «preflight») OPTIONS. Cодержит название желаемого метода в заголовке <code>Access-Control-Request-Method</code>, а если добавлены особые заголовки, то и их тоже &mdash; в <code>Access-Control-Request-Headers</code>.</li>
+				<li>Основной HTTP-запрос с заголовком <code>Origin</code></li>
+			</ul>
+	</section>
+
+	<section class="slide">
+		<h2>"Непростые" запросы</h2>
+		<p>Ответ на предзапрос может содержать следующие заголовки</p>
+		<pre class="hljs http">
+			<code>HTTP/1.1 200 OK</code>
+			<code>Content-Type: text/plain</code>
+			<code><mark>Access-Control-Allow-Methods:</mark> DELETE, PUT, HEAD, OPTIONS, GET, POST</code>
+			<code><mark>Access-Control-Allow-Headers:</mark> Content-Type, User-Agent ...</code>
+			<code>         ... X-Requested-With, If-Modified-Since, Cache-Control</code>
+			<code><mark>Access-Control-Max-Age:</mark> 86400</code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+	<!--закончили с CORS-->
+
+
+	<section class="slide">
+		<h2 class="shout">Работа с API</h2>
+	</section>
+
 
 
 
