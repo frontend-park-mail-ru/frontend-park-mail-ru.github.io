@@ -231,6 +231,115 @@
 		<h2 class="shout">Работа с API</h2>
 	</section>
 
+	<section class="slide">
+		<h2>Что есть <mark>API</mark></h2>
+		<blockquote>
+			<p class="medium-content"><b>API (application programming interface, интерфейс программирования приложений)</b> &mdash; набор готовых классов, процедур, функций, структур и констант, предоставляемых приложением (библиотекой, сервисом) или операционной системой для использования во внешних программных продуктах. Используется программистами при написании всевозможных приложений</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Что есть <mark>API</mark></h2>
+		<p>API определяет <mark>функциональность</mark>, которую предоставляет программа (модуль, библиотека), при этом API позволяет абстрагироваться от того, как именно эта функциональность реализована</p>
+		<p><b>Web API</b> &mdash; используется в веб-разработке, как правило, определённый набор HTTP-запросов, а также определение <mark>структуры</mark> HTTP-ответов, для выражения которых используют XML или JSON форматы</p>
+	</section>
+
+	<section class="slide">
+		<h2>Сема́нтика</h2>
+		<blockquote>
+			<p><b>Сема́нтика</b> &mdash; раздел лингвистики, изучающий смысловое значение единиц языка</p>
+		</blockquote>
+		<p> <br/>
+			&ndash; <em>Работодатель:</em> Назовите вашу главную слабость <br/>
+			&ndash; <em>Кандидат:</em> Я даю <mark>семантически</mark> корректные, но практически неприменимые ответы на вопросы <br/>
+			&ndash; <em>Работодатель:</em> Могли бы вы привести пример? <br/>
+			&ndash; <em>Кандидат:</em> Да, мог бы</p>
+	</section>
+
+	<section class="slide">
+		<h2>CRUD</h2>
+		<blockquote>
+			<p><b>CRUD (create, read, update, delete)</b> &mdash; акроним, обозначающий четыре базовые функции, используемые при работе с персистентными хранилищами данных, описывает семантику методов HTTP</p>
+		</blockquote>
+		<ul>
+			<li>GET (чтение данных)</li>
+			<li>POST (создание данных)</li>
+			<li>PUT (полное обновление данных) или PATCH (частичное обновление данных)</li>
+			<li>DELETE (удаление данных)</li>
+			<li>HEAD запрашивает ресурс так же, как и GET, но без тела ответа</li>
+			<li>OPTIONS используется для описания параметров соединения с ресурсом</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>REST</h2>
+		<blockquote>
+			<p><b>REST (в применении к именованию ресурсов)</b> &mdash; набор методик и практик, которые используются для именования ресурсов, с которыми работает система</p>
+		</blockquote>
+		<p>Все типы ресурсов делятся на две категории:</p>
+		<ul>
+			<li><mark>коллекции ресурсов</mark> &mdash; имеют имя</li>
+			<li><mark>отдельные представители</mark> &mdash; принадлежат к какой-то коллекции и имеют идентификатор, чтобы отличать различных представителей коллекции друг от друга</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>REST</h2>
+		<p>Коллекция книг (books):</p>
+		<ul>
+			<li>Вся коллекция получает URI <code>/books</code></li>
+			<li>Идентификатор книги &mdash; её ISBN. Отдельные книги:
+				<ul>
+					<li><code>/books/2-266-11156-6</code></li>
+					<li><code>/books/3-720-55486-7</code></li>
+					<li><code>/books/1-054-55901-2</code></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>REST</h2>
+		<p>Коллекция пользователей (users):</p>
+		<ul>
+			<li>Вся коллекция получает URI <code>/users</code></li>
+			<li>Идентификатор пользователя &mdash; его ID. Отдельные пользователи:
+				<ul>
+					<li><code>/users/id2</code></li>
+					<li><code>/users/id432</code></li>
+					<li><code>/users/id1211177181</code></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>REST + CRUD = семантическое API</h2>
+		<pre class="hljs http">
+			<code>Получение всех книг</code>
+			<code>GET /books HTTP/1.1</code>
+			<code>Host: awesome.com</code>
+			<code> </code>
+			<code>Получение конкретной книги</code>
+			<code>GET /books/3-720-55486-7 HTTP/1.1</code>
+			<code>Host: awesome.com</code>
+			<code> </code>
+			<code>Удаление конкретной книги</code>
+			<code>DELETE /books/3-720-55486-7 HTTP/1.1</code>
+			<code>Host: awesome.com</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Документирование API</h2>
+		<ul>
+			<li><a href="http://swagger.io/" target="_blank">swagger</a></li>
+			<li><a href="https://apiary.io/" target="_blank">apiary</a></li>
+			<li><a href="https://apiblueprint.org/" target="_blank">apiblueprint</a></li>
+		</ul>
+	</section>
+
 
 
 
@@ -245,6 +354,8 @@
 			<li>Кроссдоменные запросы на <a href="https://learn.javascript.ru/xhr-crossdomain" target="_blank">learn.javascript.ru</a></li>
 			<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank">Описание</a> HTTP access control (CORS)</li>
 			<li>Документация к <strong>Spring</strong> про CORS: <a href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank">здесь</a></li>
+			<li>API (application programming interface) <a href="https://en.wikipedia.org/wiki/Application_programming_interface" target="_blank">wiki</a></li>
+			<li>Документирование API с помощью <a href="http://swagger.io/" target="_blank">swagger</a>, <a href="https://apiary.io/" target="_blank">apiary</a> или <a href="https://apiblueprint.org/" target="_blank">apiblueprint</a></li>
 		</ul>
 	</section>
 
