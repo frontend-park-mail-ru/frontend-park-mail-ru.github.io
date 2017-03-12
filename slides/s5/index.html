@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Архитектура проекта и роутинг</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<script>
+		'use strict';
+
+		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+		const w = screen.width;
+		const h = screen.height;
+		const r = gcd(w, h);
+
+		console.log(`${w}x${h}`);
+		let aspect = `${w / r}x${h / r}`;
+		console.log(aspect);
+
+		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
+		if (!ratios.includes(aspect)) {
+			aspect = ratios[0];
+		}
+
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+
+	</script>
+
+	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
+
+</head>
+<body class="shower list">
+
+	<header class="caption">
+		<h1>Архитектура проекта и роутинг</h1>
+		<p>Технопарк, 2017 г.</p>
+	</header>
+
+	<section class="slide">
+		<h2 class="shout">Архитектура, MVC и роутинг<br/>
+			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Архитектура</h2>
+		<blockquote>
+			<p class="medium-content"><b>Архитектура</b> идентифицирует главные компоненты системы и способы их взаимодействия. Также это выбор таких решений, которые интерпретируются как основополагающие и не подлежащие изменению в будущем</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Архитектура</h2>
+		<blockquote>
+			<p class="medium-content"><b>Архитектура</b> &mdash; это <mark>организация системы</mark>, воплощенная в её компонентах, их отношениях между собой и с окружением. <mark>Система</mark> &mdash; это набор компонентов, объединенных для выполнения определенной функции</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Критерии хорошей архитектуры</h2>
+		<ul lang="en">
+			<li>Эффективность системы</li>
+			<li>Гибкость системы</li>
+			<li>Расширяемость системы</li>
+			<li>Масштабируемость процесса разработки</li>
+			<li>Тестируемость</li>
+			<li>Возможность повторного использования</li>
+			<li>Хорошо структурированный, читаемый и понятный код. Сопровождаемость</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Декомпозиция системы</h2>
+		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="decomposition.png" alt="Декомпозиция системы" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.85);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Замена прямых зависимостей на<br/>обмен сообщениями</h2>
+		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="mediator.png" alt="Паттерн 'Медиатор'" style="transform-origin: center;transform: translate(-50%,-55%) scale(1.2);"></div>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 80%; color: darkblue"><a href="https://habrahabr.ru/post/276593/" target="_blank">Как проектировать хорошую архитектуру</a><br/><em style="font-size: 70%; color: darkgrey">очень крутая статья</em></span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>MV-паттерны для проектирования<br/>веб-приложений</h2>
+		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="mv.jpg" alt="MV-паттерны" style="transform-origin: center;transform: translate(-50%,-65%) scale(1);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Шаблон MVC</h2>
+		<blockquote>
+			<p class="medium-content"><b>Шаблон MVC (Модель-Вид-Контроллер или Модель-Состояние-Поведение)</b> описывает простой способ построения структуры приложения, целью которого является отделение бизнес-логики от пользовательского интерфейса. В результате, приложение легче масштабируется, тестируется, сопровождается и конечно же реализуется	</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Шаблон MVC</h2>
+		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="mvc.png" alt="Шаблон MVC" style="transform-origin: center;transform: translate(-50%,-60%) scale(1.2);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Как нам сделать шаг в<br/>сторону MVC?</h2>
+		<ul lang="en">
+			<li>Создаём базовый класс <code>View</code></li>
+			<li>Наследуем от него <code>MenuView, SignView, ScoreboardView...</code></li>
+			<li>Во вьюхах описываем описываем отображение и работу определённой части приложения</li>
+			<li>Каждый момент времени активна только одна <code>View</code></li>
+			<li>Во время работы приложения управление передаётся между различными <code>View</code></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Получается вот такая система</h2>
+		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="views-hall.png" alt="Взаимодействие views" style="transform-origin: center;transform: translate(-50%,-55%) scale(1);"></div>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 75%">А если Views <mark>очень&nbsp;много</mark>?</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 75%">Вспоминаем про паттерн <mark>"Медиатор"</mark></span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Роутер</h2>
+		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="router.png" alt="Роутер" style="transform-origin: center;transform: translate(-50%,-55%) scale(1);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Что такое роутинг?</h2>
+		<blockquote>
+			<p class="medium-content">На сервере <b>роутинг</b> &mdash; это процесс определения маршрута внутри приложения в зависимости от запроса. Проще говоря, это поиск контроллера по запрошенному URL и выполнение соответствующих действий</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Что такое роутинг?</h2>
+		<blockquote>
+			<p>На клиенте роутинг позволяет <mark>установить соответствие</mark> между адресом в адресной строке браузера и <code>View</code>, которая будет отображаться. Таким образом, роутинг &mdash; это вариант реализации паттерна <mark>"Медиатор"</mark> для MV* архитектуры приложений</p>
+			<p>Кроме этого, роутеры решают ещё одну очень важную задачу. Они позволяют эмулировать <strong><mark>историю переходов</mark></strong> в SPA-приложениях</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Что такое роутинг?</h2>
+		<p>Таким образом взаимодействие и переключение между <code>View</code> происходит посредством роутера, а сами <code>View</code> друг о друге ничего не знают</p>
+		<pre class="hljs js">
+			<code>Router.register('/', MenuView);</code>
+			<code>Router.register('/signup', SignupView);</code>
+			<code>Router.register('/scores/pages/{page}', ScoreboardView);</code>
+			<code><span class="comment">...</span></code>
+			<code>Router.go('/scores/page/3'); <span class="comment rus">// переход на 3 страницу (панигация)</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Что такое роутинг?</h2>
+		<pre class="hljs js">
+			<code>class Router {</code>
+			<code>    constructor() { ... }</code>
+			<code>    register(path: string, view: View) { ... }</code>
+			<code>    start() { ... } <span class="comment rus">// запустить роутер</span></code>
+			<code>    go(path: string) { ... }</code>
+			<code>    back() { ... } <span class="comment rus">// переход назад по истории браузера</span></code>
+			<code>    forward() { ... } <span class="comment rus">// переход вперёд по истории браузера</span></code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>History API</h2>
+		<blockquote>
+			<p><b>History API</b> &mdash; браузерное API, позволяет манипулировать историей браузера <mark>в пределах сессии</mark>, а именно историей о посещённых страницах в пределах вкладки или фрейма, загруженного внутри страницы. Позволяет перемещаться по истории переходов, а так же управлять <mark>содержимым адресной строки браузера</mark></p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>History API</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// Перемещение вперед и назад по истории</span></code>
+			<code>window.history.back(); <span class="comment rus">// работает как кнопка "Назад"</span></code>
+			<code>window.history.forward(); <span class="comment rus">// работает как кнопка "Вперёд"</span></code>
+			<code> </code>
+			<code>window.history.go(-2); <span class="comment rus">// перемещение на несколько записей</span></code>
+			<code>window.history.go( 2);</code>
+			<code> </code>
+			<code>const length = window.history.length; <span class="comment rus">// количество записей</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>History API</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// Изменение истории</span></code>
+			<code>const state = { foo: 'bar' };</code>
+			<code>window.history.pushState(</code>
+			<code>    state,         <span class="comment rus">// объект состояния</span></code>
+			<code>    'Page Title',  <span class="comment rus">// заголовок состояния</span></code>
+			<code>    '/pages/menu'  <span class="comment rus">// URL новой записи (same origin)</span></code>
+			<code>);</code>
+			<code>window.history.replaceState(state2, 'Other Title', '/another/page');</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>History API</h2>
+		<blockquote>
+			<p><b>Событие <code>popstate</code></b> отсылается объекту <code>window</code> каждый раз, когда активная запись истории меняется между двумя записями истории для одного и того же документа</p>
+		</blockquote>
+		<p>Простой вызов <code>pushState()</code> или <code>replaceState()</code> не вызовет событие <code>popstate</code>. Оно срабатывает только тогда, когда происходят какие-то действия в браузере, такие как нажатие кнопки "назад" (или вызов <code>history.back()</code> из JavaScript)</p>
+	</section>
+
+	<section class="slide">
+		<h2>History API</h2>
+		<pre class="hljs js">
+			<code>window.onpopstate = event => console.log(location.pathname);</code>
+			<code> </code>
+			<code>history.pushState({ page: 1 }, 'Title 1', '/menu?page=1');</code>
+			<code>history.pushState({ page: 2 }, 'Title 2', '/app?page=2');</code>
+			<code>history.pushState({ page: 3 }, 'Title 3', '/scores?page=3');</code>
+			<code>history.back();   <span class="comment">// /app?page=2</span></code>
+			<code>history.back();   <span class="comment">// /menu?page=1</span></code>
+			<code>history.go(2);    <span class="comment">// /scores?page=3</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+	<!--про БЭМ-->
+
+	<section class="slide">
+		<h2 class="shout">Методология БЭМ</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Методология БЭМ</h2>
+		<blockquote>
+			<p class="medium-content"><b>БЭМ (Блок, Элемент, Модификатор)</b> &mdash; методология, описывающая компонентный подход к веб-разработке. В его основе лежит принцип разделения интерфейса на независимые блоки</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Методология БЭМ &mdash; Блок</h2>
+		<blockquote>
+			<p><b>Блок в методологии БЭМ</b> &mdash; функционально независимый компонент страницы, который может быть повторно использован. В HTML блоки представлены атрибутом <code>class</code></p>
+		</blockquote>
+		<ul style="font-size: 90%">
+			<li>Название блока характеризует смысл («что это?» — «меню»: menu, «кнопка»: button), а не состояние («какой, как выглядит?» — «красный»: red, «большой»: big)</li>
+			<li>В CSS по БЭМ также не рекомендуется использовать селекторы по тегам или id</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Методология БЭМ &mdash; Элемент</h2>
+		<blockquote>
+			<p><b>Элемент в методологии БЭМ</b> &mdash; составная часть блока, которая не может использоваться в отрыве от него</p>
+		</blockquote>
+		<ul style="font-size: 90%">
+			<li>Название элемента характеризует смысл («что это?» — «пункт»: item, «текст»: text), а не состояние («какой, как выглядит?» — «красный»: red, «большой»: big)</li>
+			<li>Структура полного имени элемента соответствует схеме: <code>имя-блока__имя-элемента</code>. Имя элемента отделяется от имени блока двумя подчеркиваниями</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Методология БЭМ &mdash; Модификатор</h2>
+		<blockquote>
+			<p><b>Модификатор в методологии БЭМ</b> &mdash; сущность, определяющая внешний вид, состояние или поведение блока либо элемента.</p>
+		</blockquote>
+		<ul style="font-size: 90%">
+			<li>Название модификатора характеризует внешний вид («размер»: size_s, «тема»: theme_islands), состояние («отключен»: disabled, «фокусированный»: focused) и поведение («направление»: directions_left-top)</li>
+			<li>Имя модификатора отделяется от имени блока или элемента одним подчеркиванием</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<pre class="hljs html" style="transform: scale(0.78); transform-origin: left top;">
+			<code>&lt;form class="login-form"></code>
+			<code>    &lt;input type="text" </code>
+			<code>          <span hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+			<code>    &lt;div class="login-form__buttons"></code>
+			<code>        &lt;button class="login-form__submit button"></code>
+			<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+			<code>        &lt;/button></code>
+			<code>        &lt;button class="login-form__reset login-form__reset_disabled button"></code>
+			<code>            RESET&lt;/button></code>
+			<code>    &lt;/div></code>
+			<code>&lt;/form></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<small style="font-size: 70%; margin: 0;">Основной блок</small>
+		<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top; ">
+			<code>&lt;form class=<mark>"login-form"</mark>></code>
+			<code>    &lt;input type="text" </code>
+			<code>          <span hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+			<code>    &lt;div class="login-form__buttons"></code>
+			<code>        &lt;button class="login-form__submit button"></code>
+			<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+			<code>        &lt;/button></code>
+			<code>        &lt;button class="login-form__reset login-form__reset_disabled button"></code>
+			<code>            RESET&lt;/button></code>
+			<code>    &lt;/div></code>
+			<code>&lt;/form></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<small style="font-size: 70%; margin: 0;">Блок и его элементы</small>
+		<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+			<code>&lt;form class=<mark>"login-form"</mark>></code>
+			<code>    &lt;input type="text" </code>
+			<code>          <span hidden="hidden">&lt;input</span> class="text-input <mark>login-form__username-input</mark>"/></code>
+			<code>    &lt;div class=<mark>"login-form__buttons"</mark>></code>
+			<code>        &lt;button class="<mark>login-form__submit</mark> button"></code>
+			<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+			<code>        &lt;/button></code>
+			<code>        &lt;button class="<mark>login-form__reset</mark> login-form__reset_disabled button"></code>
+			<code>            RESET&lt;/button></code>
+			<code>    &lt;/div></code>
+			<code>&lt;/form></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<small style="font-size: 70%; margin: 0;">Вложенные блоки</small>
+		<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+			<code>&lt;form class="login-form"></code>
+			<code>    &lt;input type="text" </code>
+			<code>          <span hidden="hidden">&lt;input</span> class="<mark>text-input</mark> login-form__username-input"/></code>
+			<code>    &lt;div class="login-form__buttons"></code>
+			<code>        &lt;button class="login-form__submit <mark>button</mark>"></code>
+			<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+			<code>        &lt;/button></code>
+			<code>        &lt;button class="login-form__reset login-form__reset_disabled <mark>button</mark>"></code>
+			<code>            RESET&lt;/button></code>
+			<code>    &lt;/div></code>
+			<code>&lt;/form></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<small style="font-size: 70%; margin: 0;">Вложенный блок и его элементы</small>
+		<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+			<code>&lt;form class="login-form"></code>
+			<code>    &lt;input type="text" </code>
+			<code>          <span hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+			<code>    &lt;div class="login-form__buttons"></code>
+			<code>        &lt;button class="login-form__submit <mark>button</mark>"></code>
+			<code>            &lt;span class="<mark>button__capture</mark> button__capture_red">CLICK ME&lt;/span></code>
+			<code>        &lt;/button></code>
+			<code>        &lt;button class="login-form__reset login-form__reset_disabled button"></code>
+			<code>            RESET&lt;/button></code>
+			<code>    &lt;/div></code>
+			<code>&lt;/form></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<small style="font-size: 70%; margin: 0;">Модификаторы</small>
+		<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+			<code>&lt;form class="login-form"></code>
+			<code>    &lt;input type="text" </code>
+			<code>          <span hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+			<code>    &lt;div class="login-form__buttons"></code>
+			<code>        &lt;button class="login-form__submit button"></code>
+			<code>            &lt;span class="button__capture <mark>button__capture_red</mark>">CLICK ME&lt;/span></code>
+			<code>        &lt;/button></code>
+			<code>        &lt;button class="login-form__reset <mark>login-form__reset_disabled</mark> button"></code>
+			<code>            RESET&lt;/button></code>
+			<code>    &lt;/div></code>
+			<code>&lt;/form></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<pre class="hljs css" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+			<code><span class="comment rus">/* блок */</span></code>
+			<code>.login-form { ... }</code>
+			<code><span class="comment rus">/* эмененты */</span></code>
+			<code>.login-form__buttons { ... }</code>
+			<code>.login-form__submit { ... }</code>
+			<code>.login-form__reset { ... }</code>
+			<code>.login-form__username-input { ... }</code>
+			<code>.login-form__password-input { ... }</code>
+			<code><span class="comment rus">/* модификаторы */</span></code>
+			<code>.login-form__submit_disabled { ... }</code>
+			<code>.login-form__reset_disabled { ... }</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Форма по БЭМу</h2>
+		<pre class="hljs css" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+			<code><span class="comment rus">/* блок */</span></code>
+			<code>.button { ... }</code>
+			<code><span class="comment rus">/* эмененты */</span></code>
+			<code>.button__capture { ... }</code>
+			<code>.button__icon { ... }</code>
+			<code><span class="comment rus">/* модификаторы */</span></code>
+			<code>.button_big { ... }</code>
+			<code>.button_inverted { ... }</code>
+			<code>.button__capture_red { ... }</code>
+			<code>.button__capture_green { ... }</code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+	<section class="slide">
+		<h2 class="shout">Практика</h2>
+	</section>
+
+
+
+	<!--полезные ссылки-->
+
+
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul lang="en">
+			<li><a href="https://habrahabr.ru/post/276593/" target="_blank">Создание архитектуры программы или как проектировать табуретку</a> &mdash; ХАБР</li>
+			<li><a href="https://habrahabr.ru/post/151219/" target="_blank">Шпаргалка по MV-паттернам</a> для проектирования веб-приложений</li>
+			<li><a href="https://habrahabr.ru/company/mailru/blog/172333/" target="_blank">Подробнее про роутинг в javascript</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank">Подробнее про History API</a> и про <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate" target="_blank">событие popstate</a></li>
+			<li><a href="https://habrahabr.ru/company/yandex/blog/276035/" target="_blank">Очень подробное описание</a> методологии БЭМ и <a href="https://ru.bem.info/methodology/quick-start/" target="_blank">сайт проекта</a></li>
+
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Всем спасибо!</h2>
+	</section>
+
+
+	<div class="progress"></div>
+	<script src="/lib/shower/shower.min.js"></script>
+	<script src="/lib/hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
