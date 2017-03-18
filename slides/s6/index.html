@@ -44,10 +44,374 @@
 	</section>
 
 	<section class="slide">
-		<h2>Заголовок слайда</h2>
-		<p>Цель нашего курса достаточно амбициозна: мы хотим, чтобы после его прохождения у вас появились необходимые навыки
-			и знания для самостоятельной разработки современных веб-приложений.</p>
-		<p class="note">JavaScript &mdash; основной инструмент frontend-разработчика.</p>
+		<h2>Графика в браузере</h2>
+		<p class="medium-content"></p>
+		<ul>
+			<li>Картинки (.png/.jpg)</li>
+			<li>SVG-графика</li>
+			<li>HTML + CSS</li>
+			<li>canvas</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Элемент <code>&lt;canvas></code></h2>
+		<blockquote>
+			<p class="small-content">Элемент <code>&lt;canvas></code> (англ. canvas &mdash; «холст», рус. канва́с) &mdash; это HTML5 элемент, предназначенный для создания <em>растрового двухмерного</em> изображения на web-страницах с помощью программирования на JavaScript</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Элемент <code>&lt;canvas></code></h2>
+		<p class="medium-content"></p>
+		<code>&lt;canvas id="canvas" width="300" height="150">&lt;/canvas></code>
+		<br />
+		<canvas id="canvas" width="300" height="150" style="border:solid"></canvas>
+	</section>
+
+	<section class="slide">
+		<h2>Контекст рендеринга</h2>
+		<pre class="hljs js">
+			<code>const canvas = document.createElement( 'canvas' );</code>
+			<code>document.appendChild(canvas);</code>
+			<code> </code>
+			<code><span class="comment rus">// Объект двумерного контекста</span></code>
+			<code>const context = canvas.<mark>getContext</mark>( '2d' );</code>
+			<code><span class="comment rus">// Объект WebGL (3D) контекста</span></code>
+			<code>const webgl = canvas.<mark>getContext</mark>( 'webgl' );</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 65%">Рисование примитивов</span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Рисование примитивов:<br/>прямоугольник</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// обводит прямоугольную область</span></code>
+			<code>ctx.strokeRect(x, y, width, height);</code>
+			<code><span class="comment rus">// заливает прямоугольную область</span></code>
+			<code>ctx.fillRect(x, y, width, height);</code>
+			<code><span class="comment rus">// очищает прямоугольную область</span></code>
+			<code>ctx.clearRect(x, y, width, height);</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Рисование примитивов: линии</h2>
+		<pre class="hljs js">
+			<code>ctx.beginPath();     <span class="comment rus">// создаёт новую линию (новый путь)</span></code>
+			<code> </code>
+			<code>ctx.moveTo(x1, y1);  <span class="comment rus">// передвигает перо в нужную точку</span></code>
+			<code>ctx.lineTo(x2, y2);  <span class="comment rus">// проводит линию до другой точки</span></code>
+			<code>ctx.stroke();        <span class="comment rus">// обводит созданный путь</span></code>
+			<code>ctx.fill();          <span class="comment rus">// заливает область, обведённую путём</span></code>
+			<code> </code>
+			<code>ctx.closePath();     <span class="comment rus">// завершает редактирование пути</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Рисование примитивов: дуги</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// создаёт путь-дугу</span></code>
+			<code>ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);</code>
+			<code><span class="comment rus">// <b>x, y</b> - центр дуги</span></code>
+			<code><span class="comment rus">// <b>radius</b> - радиус дуги (в радианах)</span></code>
+			<code><span class="comment rus">// <b>startAngle</b> - начальный угол</span></code>
+			<code><span class="comment rus">// <b>endAngle</b> - конечный угол</span></code>
+			<code><span class="comment rus">// <b>anticlockwise</b> - проводить против часовой стрелки</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Рисование примитивов:<br/>кривые-Безье</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// квадратичная кривая</span></code>
+			<code>ctx.quadraticCurveTo(cp1x, cp1y, x, y);</code>
+			<code><span class="comment rus">// кубическая кривая</span></code>
+			<code>ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);</code>
+			<code> </code>
+			<code><span class="comment rus">// <b>cpx, cpy</b> - опорные точки</span></code>
+			<code><span class="comment rus">// <b>x, y</b> - куда вести</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2><code>quadraticCurveTo</code></h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="Bezier_2_big.gif" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.25);"></div>
+	</section>
+
+	<section class="slide">
+		<h2><code>bezierCurveTo</code></h2>
+		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="Bezier_3_big.gif" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.25);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Рисование примитивов:<br/>прямоугольные пути</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// добавляет прямоугольный путь к текущему пути (не рисует)</span></code>
+			<code>ctx.rect(x, y, width, height);</code>
+			<code><span class="comment rus">// <b>x, y</b> - координаты левого верхнего угла</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Рисование примитивов: текст</h2>
+		<pre class="hljs js">
+			<code>ctx.fillText(text, x, y, maxWidth);</code>
+			<code>ctx.strokeText(text, x, y, maxWidth);</code>
+			<code> </code>
+			<code><span class="comment rus">// <b>text</b> - текст</span></code>
+			<code><span class="comment rus">// <b>x, y</b> - координаты точки начала</span></code>
+			<code><span class="comment rus">// <b>maxWidth</b> - опциональное ограничение по ширине</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 65%">Стилизация</span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Стилизация линий</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// ширина линий</span></code>
+			<code>ctx.lineWidth = value;</code>
+			<code> </code>
+			<code><span class="comment rus">// пунктир</span></code>
+			<code>ctx.setLineDash(segments);  <span class="comment rus">// шаблон (массив чисел)</span></code>
+			<code>ctx.getLineDash();          <span class="comment rus">// получить текущий шаблон</span></code>
+			<code>ctx.lineDashOffset = value; <span class="comment rus">// установить смещение (число)</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Стилизация линий</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// окончание линий</span></code>
+			<code>ctx.lineCap = 'butt';    <span class="comment rus">// обрезанные концы</span></code>
+			<code>ctx.lineCap = 'round';   <span class="comment rus">// скруглённые концы</span></code>
+			<code>ctx.lineCap = 'square';  <span class="comment rus">// квадраты</span></code>
+			<code> </code>
+			<code><span class="comment rus">// оформление углов</span></code>
+			<code>ctx.lineJoin = 'bevel';  <span class="comment rus">// срезанные углы</span></code>
+			<code>ctx.lineJoin = 'round';  <span class="comment rus">// скруглённые углы</span></code>
+			<code>ctx.lineJoin = 'miter';  <span class="comment rus">// острые углы</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Использование цветов</h2>
+		<pre class="hljs js">
+			<code>ctx.fillStyle = color;   <span class="comment rus">// задаёт стиль заливки</span></code>
+			<code>ctx.strokeStyle = color; <span class="comment rus">// задаёт стиль обводки</span></code>
+			<code>ctx.globalAlpha = value; <span class="comment rus">// задаёт уровень прозрачности (0.0 .. 1.0)</span></code>
+			<code> </code>
+			<code>ctx.fillStyle = 'orange';</code>
+			<code>ctx.fillStyle = '#FFA500';</code>
+			<code>ctx.fillStyle = 'rgb(255, 165, 0)';</code>
+			<code>ctx.fillStyle = 'rgba(255, 165, 0, 1)';</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Использование градиентов</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// создание линейного градиента</span></code>
+			<code>let gradient = ctx.createLinearGradient(x1, y1, x2, y2);</code>
+			<code><span class="comment rus">// создание радиального градиента</span></code>
+			<code>gradient = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);</code>
+			<code><span class="comment rus">// добавление контрольной точки</span></code>
+			<code>gradient.addColorStop(position, color);</code>
+			<code> </code>
+			<code>ctx.fillStyle = gradient;</code>
+			<code>ctx.strokeStyle = gradient;</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Прочее</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// создание паттерна</span></code>
+			<code>let pattern = ctx.createPattern(image, type);</code>
+			<code> </code>
+			<code><span class="comment rus">// тени</span></code>
+			<code>ctx.shadowOffsetX = float;</code>
+			<code>ctx.shadowOffsetY = float;</code>
+			<code>ctx.shadowBlur = float;</code>
+			<code>ctx.shadowColor = color;</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 65%">Трансформации</span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Простые трансформации</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// перенос точки отсчёта</span></code>
+			<code>ctx.translate(x, y);</code>
+			<code> </code>
+			<code><span class="comment rus">// поворот осей</span></code>
+			<code>ctx.rotate(angle);</code>
+			<code> </code>
+			<code><span class="comment rus">// масштабирование по осям</span></code>
+			<code>ctx.scale(x, y);</code>
+			<code> </code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Комплексные трансформации</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// перенос точки отсчёта</span></code>
+			<code>ctx.transform(a, b, c, d, e, f);</code>
+			<code><span class="comment rus">// <b>a</b> - горизонтальный масштаб</span></code>
+			<code><span class="comment rus">// <b>b</b> - горизонтальный скос</span></code>
+			<code><span class="comment rus">// <b>c</b> - вертикальный скос</span></code>
+			<code><span class="comment rus">// <b>d</b> - вертикальный масштаб</span></code>
+			<code><span class="comment rus">// <b>e</b> - горизонтальное смещение</span></code>
+			<code><span class="comment rus">// <b>f</b> - вертикальное смещение</span></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Комплексные трансформации</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// сброс текущей трансформации</span></code>
+			<code>ctx.resetTransform();</code>
+			<code> </code>
+			<code><span class="comment rus">// сброс текущей и установка новой трансформации</span></code>
+			<code>ctx.setTransform(a, b, c, d, e, f);</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>А так же</h2>
+		<ul>
+			<li>Работа с изображениями и видео</li>
+			<li>Режимы наложения и обрезка</li>
+			<li>Работа с пикселями</li>
+			<li>...</li>
+		</ul>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 65%">Анимации</span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Алгоритм работы с анимациями</h2>
+		<ul lang="ru">
+			<li>Рисуем кадр</li>
+			<li>Стираем</li>
+			<li>Рисуем новый кадр</li>
+			<li>Стираем</li>
+			<li>???????</li>
+			<li>PROFIT</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Правильный алгоритм работы<br/>с анимациями</h2>
+		<ul lang="ru">
+			<li>Рисуем кадр</li>
+			<li><mark>Ждём</mark></li>
+			<li>Стираем</li>
+			<li>Рисуем новый кадр</li>
+			<li><mark>Ждём</mark></li>
+			<li>Стираем</li>
+			<li>...</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Как ждать?</h2>
+		<ul lang="ru">
+			<li><code>window.setInterval(function, delay)</code></li>
+			<li><code>window.setTimeout(function, delay)</code></li>
+			<li><code>window.requestAnimationFrame(callback)</code></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2><code>requestAnimationFrame</code></h2>
+		<pre class="hljs js">
+			<code>let current = perfomance.now();</code>
+			<code>function animation(now) { <span class="comment rus">// передаётся текущее <mark>perfomance.now()</mark></span></code>
+			<code>    const <mark>delay</mark> = now - current;</code>
+			<code>    current = now;</code>
+			<code>    redraw(delay);        <span class="comment rus">// перерисовываем кадр</span></code>
+			<code>    <mark>requestAnimationFrame</mark>(animation);</code>
+			<code>}</code>
+			<code> </code>
+			<code>animation(perfomance.now());</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Оптимизации производительности</h2>
+		<ul lang="ru">
+			<li>Оптимизация анимации с помощью <code>requestAnimationFrame</code></li>
+			<li>Используйте многослойные элементы <code>canvas</code> для сложных сцен</li>
+			<li>Рендеринг только разницы, а не нового состояния целиком</li>
+			<li>Группировка вызовов <code>canvas</code></li>
+			<li>Предварительный рендеринг во внеэкранный элемент <code>canvas</code></li>
+			<li>Отказ от координат с плавающей запятой</li>
+			<li>Отказ от рендеринга текста с <code>canvas</code> и свойства <code>shadowBlur</code></li>
+			<li>...</li>
+		</ul>
+	</section>
+
+
+
+
+
+	<section class="slide">
+		<h2 class="shout">Разработка<br/>игры</h2>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul lang="en">
+			<li>Про <a href="http://frontender.info/using-svg/" target="_blank">SVG-графику</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies" target="_blank">Описание и ДЕМО</a> различных WEB-технологий, которые могут быть полезны при разработке</li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank">Туториал по</a> Canvas API</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Всем спасибо!</h2>
 	</section>
 
 	<div class="progress"></div>
