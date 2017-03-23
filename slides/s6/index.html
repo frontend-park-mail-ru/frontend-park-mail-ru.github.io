@@ -83,6 +83,8 @@
 		</pre>
 	</section>
 
+
+
 	<section class="slide question">
 		<h2><span style="font-size: 65%">Рисование примитивов</span></h2>
 	</section>
@@ -236,19 +238,16 @@
 		<pre class="hljs js short">
 			<code>ctx.beginPath();</code>
 			<code>ctx.arc(100, 100, 50, -Math.PI, 0);</code>
-			<code>ctx.closePath();</code>
-			<code>ctx.fill();</code>
+			<code>ctx.closePath(); ctx.fill();</code>
 			<code> </code>
 			<code>ctx.beginPath();</code>
 			<code>ctx.arc(100, 110, 40, 0, Math.PI);</code>
-			<code>ctx.closePath();</code>
-			<code>ctx.fill();</code>
+			<code>ctx.closePath(); ctx.fill();</code>
 			<code> </code>
 			<code>ctx.beginPath();</code>
 			<code>ctx.arc(200, 200, 50, -Math.PI, 0);</code>
 			<code>ctx.arc(220, 200, 30, 0, Math.PI);</code>
-			<code>ctx.closePath();</code>
-			<code>ctx.stroke();</code>
+			<code>ctx.closePath(); ctx.stroke();</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -279,6 +278,44 @@
 	</section>
 
 	<section class="slide">
+		<h2>Рисование примитивов:<br/>кривые-Безье</h2>
+		<canvas id="beziers" width="150" height="150" style="position:fixed;transform-origin: right top;transform:scale(2);right:0;margin-right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
+		<script>
+			(function () {
+				const canvas = document.getElementById('beziers');
+				const ctx = canvas.getContext('2d');
+
+				ctx.beginPath();
+				ctx.moveTo(75, 25);
+				ctx.quadraticCurveTo(25, 25, 25, 62.5);
+				ctx.quadraticCurveTo(25, 100, 50, 100);
+				ctx.quadraticCurveTo(50, 120, 30, 125);
+				ctx.quadraticCurveTo(60, 120, 65, 100);
+				ctx.quadraticCurveTo(125, 100, 125, 62.5);
+				ctx.quadraticCurveTo(125, 25, 75, 25);
+				ctx.stroke();
+
+			})();
+		</script>
+		<pre class="hljs js short">
+			<code>ctx.beginPath();</code>
+			<code>ctx.moveTo(75, 25);</code>
+			<code> </code>
+			<code>ctx.quadraticCurveTo(25, 25, 25, 62.5);</code>
+			<code>ctx.quadraticCurveTo(25, 100, 50, 100);</code>
+			<code>ctx.quadraticCurveTo(50, 120, 30, 125);</code>
+			<code>ctx.quadraticCurveTo(60, 120, 65, 100);</code>
+			<code>ctx.quadraticCurveTo(25, 25, 25, 62.5);</code>
+			<code>ctx.quadraticCurveTo(125, 100, 125, 62.5);</code>
+			<code>ctx.quadraticCurveTo(125, 25, 75, 25);</code>
+			<code> </code>
+			<code>ctx.stroke();</code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+	<section class="slide">
 		<h2>Рисование примитивов:<br/>прямоугольные пути</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// добавляет прямоугольный путь к текущему пути (не рисует)</span></code>
@@ -300,6 +337,8 @@
 			<code> </code>
 		</pre>
 	</section>
+
+
 
 	<section class="slide question">
 		<h2><span style="font-size: 65%">Стилизация</span></h2>
@@ -336,6 +375,88 @@
 	</section>
 
 	<section class="slide">
+		<h2>Стилизация линий</h2>
+		<canvas id="styline" width="300" height="300" style="position:fixed;right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
+		<script>
+			(function () {
+				const canvas = document.getElementById('styline');
+				const ctx = canvas.getContext('2d');
+
+				ctx.beginPath();
+				[1, 5, 10, 20, 50].forEach((v, i) => {
+					ctx.beginPath();
+					ctx.lineWidth = v; ctx.setLineDash([5, 5, 50, 5, 5, v]);
+					ctx.moveTo(20, 30 + 55 * i); ctx.lineTo(280, 30 + 55 * i);
+					ctx.stroke();
+				});
+
+			})();
+		</script>
+		<pre class="hljs js short">
+			<code> </code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Стилизация линий</h2>
+		<canvas id="okon" width="300" height="300" style="position:fixed;right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
+		<script>
+			(function () {
+				const canvas = document.getElementById('okon');
+				const ctx = canvas.getContext('2d');
+
+				const lineJoin = ['round', 'bevel', 'miter'];
+				ctx.lineWidth = 30;
+				lineJoin.forEach((v, i) => {
+					ctx.lineJoin = v; ctx.beginPath();
+					ctx.moveTo(70, 110 + i * 80);
+					ctx.lineTo(150, 30 + i * 80);
+					ctx.lineTo(230, 110 + i * 80);
+					ctx.stroke();
+				});
+
+			})();
+		</script>
+		<pre class="hljs js short">
+			<code> </code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Стилизация линий</h2>
+		<canvas id="corn" width="300" height="300" style="position:fixed;right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
+		<script>
+			(function () {
+				const canvas = document.getElementById('corn');
+				const ctx = canvas.getContext('2d');
+
+				ctx.beginPath();
+				ctx.moveTo(20, 20);  ctx.lineTo(280, 20);
+				ctx.moveTo(20, 280); ctx.lineTo(280, 280);
+				ctx.stroke();
+
+				ctx.lineWidth = 20;
+				const lineCap = ['butt', 'round', 'square'];
+				// Draw lines
+				lineCap.forEach((v, i) => {
+					ctx.lineCap = v; ctx.beginPath();
+					ctx.moveTo(50 + i * 100, 20);
+					ctx.lineTo(50 + i * 100, 280);
+					ctx.stroke();
+				});
+
+			})();
+		</script>
+		<pre class="hljs js short">
+			<code> </code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+	<section class="slide">
 		<h2>Использование цветов</h2>
 		<pre class="hljs js">
 			<code>ctx.fillStyle = color;   <span class="comment rus">// задаёт стиль заливки</span></code>
@@ -349,6 +470,37 @@
 			<code> </code>
 		</pre>
 	</section>
+
+	<section class="slide">
+		<h2>Использование цветов</h2>
+		<canvas id="colo" width="300" height="300" style="position:fixed;right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
+		<script>
+			(function () {
+				const canvas = document.getElementById('colo');
+				const ctx = canvas.getContext('2d');
+
+				ctx.fillStyle = 'yellow';        ctx.fillRect(0, 0, 150, 150);
+				ctx.fillStyle = '#6C0';          ctx.fillRect(150, 0, 150, 150);
+				ctx.fillStyle = '#0099FF';       ctx.fillRect(0, 150, 150, 150);
+				ctx.fillStyle = 'rgb(255,48,0)'; ctx.fillRect(150, 150, 150, 150);
+				ctx.fillStyle = 'white';
+
+				// Draw semi transparent circles
+				for (i = 0; i < 7; i++) {
+					ctx.beginPath();
+					ctx.fillStyle = 'rgba(255,255,255,' + (i + 1) / 12 + ')';
+					ctx.arc(150, 150, 10 + 20 * i, 0, Math.PI * 2, true);
+					ctx.fill();
+				}
+
+			})();
+		</script>
+		<pre class="hljs js short">
+			<code> </code>
+			<code> </code>
+		</pre>
+	</section>
+
 
 	<section class="slide">
 		<h2>Использование градиентов</h2>
@@ -380,6 +532,8 @@
 			<code> </code>
 		</pre>
 	</section>
+
+
 
 	<section class="slide question">
 		<h2><span style="font-size: 65%">Трансформации</span></h2>
@@ -437,6 +591,8 @@
 			<li>...</li>
 		</ul>
 	</section>
+
+
 
 	<section class="slide question">
 		<h2><span style="font-size: 65%">Анимации</span></h2>
@@ -509,21 +665,186 @@
 
 
 
+	<section class="slide">
+		<h2 class="shout">Как делать игры?</h2>
+	</section>
+
+
+
+
+
+
+
+
 
 	<section class="slide">
-		<h2 class="shout">Разработка<br/>игры</h2>
+		<h2 class="shout">Дополнительные возможности<br/>
+			<small style="font-size:32px;">WebGL, FullScreen API, PointerLock API</small>
+		</h2>
 	</section>
 
-	<section class="slide question">
-		<h2><span style="font-size: 65%">Как писать </span></h2>
+	<section class="slide">
+		<h2>WebGl</h2>
+		<blockquote>
+			<p class="small-content"><b>WebGL (Web Graphics Library)</b> &mdash; программная библиотека для языка JavaScript предназначенная для визуализации интерактивной трехмерной графики и двухмерной графики в пределах совместимости веб-браузера без использования плагинов. WebGL приносит в веб трехмерную графику, вводя API, который построен на основе <mark>OpenGL ES 2.0</mark>, что позволяет его использовать в элементах <code>canvas</code> HTML5</p>
+		</blockquote>
 	</section>
 
+	<section class="slide">
+		<h2>Преймущества WebGl</h2>
+		<ul lang="ru">
+			<li>Производительность за счет GPU</li>
+			<li>Отсутствие компиляции</li>
+			<li>Кроссплатформенность</li>
+			<li>Автоматическое управление памятью</li>
+			<li>Открытый стандарт</li>
+		</ul>
+	</section>
 
+	<section class="slide">
+		<h2>Шейдеры</h2>
+		<blockquote>
+			<p class="small-content"><b>Шейдеры</b> &mdash; программы, которые работают на GPU. Шейдеры пишутся на специальном языке: OpenGL ES Shader Language (известный как ES SL). ES SL имеет переменные своих собственных типов данных и свои специфические встроенные функции. В свою очередь ES SL основан на C++. ES Sl также называют GLSL, что означает Graphics Library Shader Language (язык программирования шейдеров графической библиотеки)</p>
+		</blockquote>
+	</section>
 
+	<section class="slide">
+		<h2>Виды шейдеров</h2>
+		<ul lang="ru">
+			<li>Вершинные шейдеры</li>
+			<li>Фрагментные шейдеры</li>
+		</ul>
+		<img class="place" src="img/shader.png" style="margin-top: 80px;" width="800" height="230">
+	</section>
 
+	<section class="slide">
+		<h2>Растеризация</h2>
+		<div>
+			<img class="place" src="img/raster.png" style="margin-top: -80px;" width="472" height="183">
+			<img class="place" src="img/raster2.png" style="margin-top: 150px;" width="219" height="220">
+		</div>
+	</section>
 
+	<section class="slide">
+		<h2>Вершинный шейдер</h2>
+		<pre class="hljs html">
+			<code>&lt;script type="x-shader/x-<mark>vertex</mark>" id="vshader"&gt;</code>
+			<code>  varying vec2 vUv;</code>
+			<code>  void main() {</code>
+			<code>    vUv = uv;</code>
+			<code>    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);</code>
+			<code>    <mark>gl_Position</mark> = projectionMatrix * mvPosition;</code>
+			<code>  }</code>
+			<code>&lt;/script&gt;</code>
+			<code> </code>
+		</pre>
+	</section>
 
+	<section class="slide">
+		<h2>Фрагментный шейдер</h2>
+		<pre class="hljs html">
+			<code>&lt;script type="x-shader/x-<mark>fragment</mark>" id="fshader"&gt;</code>
+			<code>  uniform sampler2D u_Sampler;</code>
+			<code>  varying vec2 vUv;</code>
+			<code>  void main() {</code>
+			<code>    <mark>gl_FragColor</mark> = texture2D(u_Sampler, vUv);</code>
+			<code>  }</code>
+			<code>&lt;/script&gt;</code>
+			<code> </code>
+		</pre>
+	</section>
 
+	<section class="slide">
+		<h2>Практическое применение WebGL</h2>
+		<ul lang="ru">
+			<li>Визуализации растровой графики</li>
+			<li>Редактирование и анализ изображений</li>
+			<li>Фильтрация видео</li>
+			<li>Игры</li>
+			<li>Интерактивая графика</li>
+			<li>Статистика в виде графиков</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Примеры использования шейдеров</h2>
+		<ul lang="ru">
+			<li><a href="http://madebyevan.com/webgl-water/">madebyevan.com</a></li>
+			<li><a href="https://threejs.org/examples/webgl_shaders_ocean">webgl_shaders_ocean</a></li>
+			<li><a href="https://threejs.org/examples/webgl_shaders_ocean2">webgl_shaders_ocean2</a></li>
+			<li><a href="https://threejs.org/examples/webgl_shaders_sky">webgl_shaders_sky</a></li>
+			<li><a href="http://nucleal.com">nucleal.com</a></li>
+			<li><a href="http://www.bongiovi.tw/experiments/webgl/blossom/">bongiovi.tw</a></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Pointer Lock API</h2>
+		<blockquote>
+			<p class="small-content"><b>Pointer Lock API</b> &mdash; это браузерный API, позволяющий создавать интерфейсы для работы с мышкой на основе ее относительных перемещений, а не только абсолютной позиции курсора</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Pointer Lock (<a href="/examples/PointerLock/">пример</a>)</h2>
+		<pre class="hljs js">
+			<code>function lockStatusChange() {</code>
+			<code>    if (document.pointerLockElement === canv){</code>
+			<code>        document.addEventListener('mousemove', updateCirclePosition);</code>
+			<code>    } else {</code>
+			<code>        document.removeEventListener('mousemove', updateCirclePosition);</code>
+			<code>    }</code>
+			<code>}</code>
+			<code>document.addEventListener('pointerlockchange', lockStatusChange);</code>
+			<code>canv.onclick = canv.requestPointerLock;</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Request Full Screen API (<a href="/examples/Fullscreen/">пример</a>)</h2>
+		<blockquote>
+			<p><b>Request Full Screen API</b> &mdash; позволяет отображать элемент в полноэкранном режиме. Метод может применяться к любому элементу, даже, например, к простому блоку</p>
+		</blockquote>
+		<pre class="hljs js">
+			<code>element.requestFullscreen();</code>
+			<code>document.exitFullscreen();</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Используйте библиотеки!</h2>
+		<ul lang="ru">
+			<li><a href="https://threejs.org">three.js</a></li>
+			<li><a href="http://www.babylonjs.com">babylonjs</a></li>
+			<li><a href="http://lo-th.github.io/Oimo.js/">Oimo.js</a>   (Надстройка над three.js)</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Средства 3D моделирования</h2>
+		<ul lang="ru">
+			<li><a href="https://www.blender.org">blender</a></li>
+			<li><a href="https://threejs.org/editor/">three.js editor</a></li>
+			<li><a href="https://www.maxon.net/ru/produkty/cinema-4d/obzor/">Cinema-4D</a>   (Платный)</li>
+		</ul>
+		<p>Модельки</>
+		<ul lang="ru">
+			<li><a href="https://clara.io">clara.io</a></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Примеры 3D</h2>
+		<ul lang="ru">
+			<li><a href="http://gorescript.com">Shooter</a></li>
+			<li><a href="https://www.cubeslam.com/givvln">cubeslam</a></li>
+			<li><a href="http://media.tojicode.com/q3bsp/">Quake</a></li>
+			<li><a href="http://kiddisco.asmallgame.com">asmallgame</a></li>
+			<li><a href="http://www.babylonjs.com/Demos/TheCar/">TheCar</a></li>
+		</ul>
+	</section>
 
 
 
