@@ -144,6 +144,7 @@
 			<code>ctx.lineTo(x2, y2);  <span class="comment rus">// проводит линию до другой точки</span></code>
 			<code>ctx.stroke();        <span class="comment rus">// обводит созданный путь</span></code>
 			<code>ctx.fill();          <span class="comment rus">// заливает область, обведённую путём</span></code>
+			<code>                     <span class="comment rus">// "nonzero" or "evenodd"</span></code>
 			<code> </code>
 			<code>ctx.closePath();     <span class="comment rus">// завершает редактирование пути</span></code>
 			<code> </code>
@@ -393,7 +394,13 @@
 			})();
 		</script>
 		<pre class="hljs js short">
-			<code> </code>
+			<code>ctx.beginPath();</code>
+			<code>[1, 5, 10, 20, 50].forEach((v, i) => {</code>
+			<code>    ctx.beginPath();</code>
+			<code>    ctx.lineWidth = v; ctx.setLineDash([5, 5, 50, 5, 5, v]);</code>
+			<code>    ctx.moveTo(20, 30 + 55 * i); ctx.lineTo(280, 30 + 55 * i);</code>
+			<code>    ctx.stroke();</code>
+			<code>});</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -419,7 +426,15 @@
 			})();
 		</script>
 		<pre class="hljs js short">
-			<code> </code>
+			<code>const lineJoin = ['round', 'bevel', 'miter'];</code>
+			<code>ctx.lineWidth = 30;</code>
+			<code>lineJoin.forEach((v, i) => {</code>
+			<code>    ctx.lineJoin = v; ctx.beginPath();</code>
+			<code>    ctx.moveTo(70, 110 + i * 80);</code>
+			<code>    ctx.lineTo(150, 30 + i * 80);</code>
+			<code>    ctx.lineTo(230, 110 + i * 80);</code>
+			<code>    ctx.stroke();</code>
+			<code>});</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -450,7 +465,15 @@
 			})();
 		</script>
 		<pre class="hljs js short">
-			<code> </code>
+			<code>ctx.lineWidth = 20;</code>
+			<code>const lineCap = ['butt', 'round', 'square'];</code>
+			<code><span class="comment rus">// Рисуем линии</span></code>
+			<code>lineCap.forEach((v, i) => {</code>
+			<code>    ctx.lineCap = v; ctx.beginPath();</code>
+			<code>    ctx.moveTo(50 + i * 100, 20);</code>
+			<code>    ctx.lineTo(50 + i * 100, 280);</code>
+			<code>    ctx.stroke();</code>
+			<code>});</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -486,7 +509,7 @@
 				ctx.fillStyle = 'white';
 
 				// Draw semi transparent circles
-				for (i = 0; i < 7; i++) {
+				for (let i = 0; i < 7; i++) {
 					ctx.beginPath();
 					ctx.fillStyle = 'rgba(255,255,255,' + (i + 1) / 12 + ')';
 					ctx.arc(150, 150, 10 + 20 * i, 0, Math.PI * 2, true);
@@ -496,7 +519,18 @@
 			})();
 		</script>
 		<pre class="hljs js short">
+			<code>ctx.fillStyle = 'yellow';        ctx.fillRect(0, 0, 150, 150);</code>
+			<code>ctx.fillStyle = '#6C0';          ctx.fillRect(150, 0, 150, 150);</code>
+			<code>ctx.fillStyle = '#0099FF';       ctx.fillRect(0, 150, 150, 150);</code>
+			<code>ctx.fillStyle = 'rgb(255,48,0)'; ctx.fillRect(150, 150, 150, 150);</code>
+			<code>ctx.fillStyle = 'white';</code>
 			<code> </code>
+			<code>for (let i = 0; i < 7; i++) {</code>
+			<code>    ctx.beginPath();</code>
+			<code>    ctx.fillStyle = 'rgba(255,255,255,' + (i + 1) / 12 + ')';</code>
+			<code>    ctx.arc(150, 150, 10 + 20 * i, 0, Math.PI * 2, true);</code>
+			<code>    ctx.fill();</code>
+			<code>}</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -517,6 +551,50 @@
 			<code> </code>
 		</pre>
 	</section>
+
+	<section class="slide">
+		<h2>Использование градиентов</h2>
+		<canvas id="grad" width="300" height="300" style="position:fixed;right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
+		<script>
+			(function () {
+				const canvas = document.getElementById('grad');
+				const ctx = canvas.getContext('2d');
+
+				const linear = ctx.createLinearGradient(0, 150, 0, 0);
+				const radial = ctx.createRadialGradient(150, 150, 0, 150, 150, 151);
+				[linear, radial].forEach(grad => {
+					grad.addColorStop(0, 'yellow');
+					grad.addColorStop(0.5, 'green');
+					grad.addColorStop(0.99, 'blue');
+					grad.addColorStop(1, 'white');
+				});
+
+				ctx.fillStyle = linear;
+				ctx.fillRect(0, 0, 300, 150);
+				ctx.fillStyle = radial;
+				ctx.fillRect(0, 150, 300, 150);
+
+			})();
+		</script>
+		<pre class="hljs js short">
+			<code>const linear = ctx.createLinearGradient(0, 150, 0, 0);</code>
+			<code>const radial = ctx.createRadialGradient(150, 150, 0, 150, 150, 151);</code>
+			<code>[linear, radial].forEach(grad => {</code>
+			<code>    grad.addColorStop(0, 'yellow');</code>
+			<code>    grad.addColorStop(0.5, 'green');</code>
+			<code>    grad.addColorStop(0.99, 'blue');</code>
+			<code>    grad.addColorStop(1, 'white');</code>
+			<code>});</code>
+			<code> </code>
+			<code>ctx.fillStyle = linear;</code>
+			<code>ctx.fillRect(0, 0, 300, 150);</code>
+			<code>ctx.fillStyle = radial;</code>
+			<code>ctx.fillRect(0, 150, 300, 150);</code>
+			<code> </code>
+		</pre>
+	</section>
+
+
 
 	<section class="slide">
 		<h2>Прочее</h2>
@@ -608,6 +686,9 @@
 			<li>???????</li>
 			<li>PROFIT</li>
 		</ul>
+
+		<a href="/examples/canvas/animation.html" target="_blank">ПРИМЕР</a>
+
 	</section>
 
 	<section class="slide">
@@ -621,6 +702,9 @@
 			<li>Стираем</li>
 			<li>...</li>
 		</ul>
+
+		<a href="/examples/canvas/animationTime.html" target="_blank">ПРИМЕР</a>
+
 	</section>
 
 	<section class="slide">
@@ -890,6 +974,10 @@
 			<li><a target="_blank" href="http://kiddisco.asmallgame.com">asmallgame</a></li>
 			<li><a target="_blank" href="http://www.babylonjs.com/Demos/TheCar/">TheCar</a></li>
 		</ul>
+	</section>
+
+	<section class="slide question">
+		<h2><a style="color:blue" href="https://youtu.be/Z4E2drxNjMk?t=1h12m55s" target="_blank">"Играем в браузере"</a></h2>
 	</section>
 
 
