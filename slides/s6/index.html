@@ -669,6 +669,37 @@
 		<h2 class="shout">Как делать игры?</h2>
 	</section>
 
+	<section class="slide question">
+		<h2><span style="font-size: 65%">SinglePlayer &mdash; это <mark>специальная версия</mark> MultiPlayer</span></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Основные определения</h2>
+		<ul lang="ru">
+			<li>Игровой цикл (gameloop)</li>
+			<li>Игровой мир</li>
+			<li>Состояние игрового мира</li>
+			<li>Сцена</li>
+			<li>Игровая стратегия</li>
+			<li>Контроллер контролов</li>
+			<li>Менеджер сессий</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Основные подходы</h2>
+		<ul lang="ru">
+			<li>Раздерение всего</li>
+			<li>Использование модели акторов (event-based программирование)</li>
+			<li>Перерисовка игрового мира отдельно от обновления состояния</li>
+			<li>Использование паттернов: стратегия, медиатор</li>
+			<li>Что-то ещё...</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Практика</h2>
+	</section>
 
 
 
@@ -681,6 +712,56 @@
 		<h2 class="shout">Дополнительные возможности<br/>
 			<small style="font-size:32px;">WebGL, FullScreen API, PointerLock API</small>
 		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Pointer Lock API</h2>
+		<blockquote>
+			<p class="small-content"><b>Pointer Lock API</b> &mdash; это браузерный API, позволяющий создавать интерфейсы для работы с мышкой на основе ее <mark>относительных перемещений</mark>, а не только абсолютной позиции курсора. Это дает нам доступ к необработанным движениям мыши, прикрепляет курсор мыши к любому элементу в окне браузера, предоставляет возможность вычислять координаты мыши не ограниченной областью окна проекции, и скрывает курсор из поля зрения</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Pointer Lock API</h2>
+		<pre class="hljs js">
+			<code>document.addEventListener('pointerlockchange', lockStatusChange);</code>
+			<code>canv.onclick = canv.<mark>requestPointerLock</mark>;</code>
+			<code>function lockStatusChange() {</code>
+			<code>    if (document.pointerLockElement === canv){</code>
+			<code>        document.addEventListener('mousemove', update);</code>
+			<code>    } else {</code>
+			<code>        document.removeEventListener('mousemove', update);</code>
+			<code>    }</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Pointer Lock API</h2>
+		<pre class="hljs js">
+			<code><span class="comment rus">// обработчик события</span></code>
+			<code>function update(event) {</code>
+			<code>    <span class="comment rus">// событие содержит смещение</span></code>
+			<code>    const dx = event.movementX;</code>
+			<code>    const dy = event.movementY;</code>
+			<code>    animate(dx, dy);</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Request Full Screen API</h2>
+		<blockquote>
+			<p><b>Request Full Screen API</b> &mdash; позволяет отображать элемент в полноэкранном режиме. Метод может применяться к любому элементу, даже, например, к простому блоку</p>
+		</blockquote>
+		<pre class="hljs js">
+			<code>element.requestFullscreen();</code>
+			<code>document.exitFullscreen();</code>
+			<code> </code>
+		</pre>
+		<a target="_blank" href="/examples/Fullscreen/">Пример</a>
 	</section>
 
 	<section class="slide">
@@ -704,7 +785,7 @@
 	<section class="slide">
 		<h2>Шейдеры</h2>
 		<blockquote>
-			<p class="small-content"><b>Шейдеры</b> &mdash; программы, которые работают на GPU. Шейдеры пишутся на специальном языке: OpenGL ES Shader Language (известный как ES SL). ES SL имеет переменные своих собственных типов данных и свои специфические встроенные функции. В свою очередь ES SL основан на C++. ES Sl также называют GLSL, что означает Graphics Library Shader Language (язык программирования шейдеров графической библиотеки)</p>
+			<p class="small-content"><b>Шейдеры</b> &mdash; программы, которые работают на GPU. Шейдеры пишутся на специальном языке: OpenGL ES Shader Language (известный как ES SL). ES SL имеет переменные своих собственных типов данных и свои специфические встроенные функции. В свою очередь ES SL основан на C++. ES SL также называют GLSL, что означает Graphics Library Shader Language (язык программирования шейдеров графической библиотеки)</p>
 		</blockquote>
 	</section>
 
@@ -769,80 +850,45 @@
 	<section class="slide">
 		<h2>Примеры использования шейдеров</h2>
 		<ul lang="ru">
-			<li><a href="http://madebyevan.com/webgl-water/">madebyevan.com</a></li>
-			<li><a href="https://threejs.org/examples/webgl_shaders_ocean">webgl_shaders_ocean</a></li>
-			<li><a href="https://threejs.org/examples/webgl_shaders_ocean2">webgl_shaders_ocean2</a></li>
-			<li><a href="https://threejs.org/examples/webgl_shaders_sky">webgl_shaders_sky</a></li>
-			<li><a href="http://nucleal.com">nucleal.com</a></li>
-			<li><a href="http://www.bongiovi.tw/experiments/webgl/blossom/">bongiovi.tw</a></li>
+			<li><a target="_blank" href="http://madebyevan.com/webgl-water/">madebyevan.com</a></li>
+			<li><a target="_blank" href="https://threejs.org/examples/webgl_shaders_ocean">webgl_shaders_ocean</a></li>
+			<li><a target="_blank" href="https://threejs.org/examples/webgl_shaders_ocean2">webgl_shaders_ocean2</a></li>
+			<li><a target="_blank" href="https://threejs.org/examples/webgl_shaders_sky">webgl_shaders_sky</a></li>
+			<li><a target="_blank" href="http://nucleal.com">nucleal.com</a></li>
+			<li><a target="_blank" href="http://www.bongiovi.tw/experiments/webgl/blossom/">bongiovi.tw</a></li>
 		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Pointer Lock API</h2>
-		<blockquote>
-			<p class="small-content"><b>Pointer Lock API</b> &mdash; это браузерный API, позволяющий создавать интерфейсы для работы с мышкой на основе ее относительных перемещений, а не только абсолютной позиции курсора</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Pointer Lock (<a href="/examples/PointerLock/">пример</a>)</h2>
-		<pre class="hljs js">
-			<code>function lockStatusChange() {</code>
-			<code>    if (document.pointerLockElement === canv){</code>
-			<code>        document.addEventListener('mousemove', updateCirclePosition);</code>
-			<code>    } else {</code>
-			<code>        document.removeEventListener('mousemove', updateCirclePosition);</code>
-			<code>    }</code>
-			<code>}</code>
-			<code>document.addEventListener('pointerlockchange', lockStatusChange);</code>
-			<code>canv.onclick = canv.requestPointerLock;</code>
-			<code> </code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Request Full Screen API (<a href="/examples/Fullscreen/">пример</a>)</h2>
-		<blockquote>
-			<p><b>Request Full Screen API</b> &mdash; позволяет отображать элемент в полноэкранном режиме. Метод может применяться к любому элементу, даже, например, к простому блоку</p>
-		</blockquote>
-		<pre class="hljs js">
-			<code>element.requestFullscreen();</code>
-			<code>document.exitFullscreen();</code>
-			<code> </code>
-		</pre>
 	</section>
 
 	<section class="slide">
 		<h2>Используйте библиотеки!</h2>
 		<ul lang="ru">
-			<li><a href="https://threejs.org">three.js</a></li>
-			<li><a href="http://www.babylonjs.com">babylonjs</a></li>
-			<li><a href="http://lo-th.github.io/Oimo.js/">Oimo.js</a>   (Надстройка над three.js)</li>
+			<li><a target="_blank" href="https://threejs.org">three.js</a></li>
+			<li><a target="_blank" href="http://www.babylonjs.com">babylonjs</a></li>
+			<li><a target="_blank" href="http://lo-th.github.io/Oimo.js/">Oimo.js</a>   (Надстройка над three.js)</li>
 		</ul>
 	</section>
 
 	<section class="slide">
 		<h2>Средства 3D моделирования</h2>
 		<ul lang="ru">
-			<li><a href="https://www.blender.org">blender</a></li>
-			<li><a href="https://threejs.org/editor/">three.js editor</a></li>
-			<li><a href="https://www.maxon.net/ru/produkty/cinema-4d/obzor/">Cinema-4D</a>   (Платный)</li>
+			<li><a target="_blank" href="https://www.blender.org">blender</a></li>
+			<li><a target="_blank" href="https://threejs.org/editor/">three.js editor</a></li>
+			<li><a target="_blank" href="https://www.maxon.net/ru/produkty/cinema-4d/obzor/">Cinema-4D</a>   (Платный)</li>
 		</ul>
-		<p>Модельки</>
+		<p>Модельки</p>
 		<ul lang="ru">
-			<li><a href="https://clara.io">clara.io</a></li>
+			<li><a target="_blank" href="https://clara.io">clara.io</a></li>
 		</ul>
 	</section>
 
 	<section class="slide">
 		<h2>Примеры 3D</h2>
 		<ul lang="ru">
-			<li><a href="http://gorescript.com">Shooter</a></li>
-			<li><a href="https://www.cubeslam.com/givvln">cubeslam</a></li>
-			<li><a href="http://media.tojicode.com/q3bsp/">Quake</a></li>
-			<li><a href="http://kiddisco.asmallgame.com">asmallgame</a></li>
-			<li><a href="http://www.babylonjs.com/Demos/TheCar/">TheCar</a></li>
+			<li><a target="_blank" href="http://gorescript.com">Shooter</a></li>
+			<li><a target="_blank" href="https://www.cubeslam.com/givvln">cubeslam</a></li>
+			<li><a target="_blank" href="http://media.tojicode.com/q3bsp/">Quake</a></li>
+			<li><a target="_blank" href="http://kiddisco.asmallgame.com">asmallgame</a></li>
+			<li><a target="_blank" href="http://www.babylonjs.com/Demos/TheCar/">TheCar</a></li>
 		</ul>
 	</section>
 
@@ -855,6 +901,7 @@
 			<li>Про <a href="http://frontender.info/using-svg/" target="_blank">SVG-графику</a></li>
 			<li><a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies" target="_blank">Описание и ДЕМО</a> различных WEB-технологий, которые могут быть полезны при разработке</li>
 			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank">Туториал по</a> Canvas API</li>
+			<li>Доклад <a href="https://youtu.be/Z4E2drxNjMk?t=1h12m55s" target="_blank">"Играем в браузере"</a> на WSD в Москве и <a href="https://wsd.events/2017/01/28/pres/browser-games/" target="_blank">слайды</a> доклада</li>
 		</ul>
 	</section>
 
