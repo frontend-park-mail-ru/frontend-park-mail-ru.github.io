@@ -371,7 +371,7 @@
 			<code>        this.fields = Object.assign(this.fields, {name, count});</code>
 			<code>    }</code>
 			<code>}</code>
-			<code></code>
+			<code> </code>
 		</pre>
 	</section>
 
@@ -468,7 +468,189 @@
 		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">TypeScript</h2>
 	</section>
 
+	<section class="slide">
+		<h2>TypeScript</h2>
+		<blockquote>
+			<p><b>TypeScript</b> &mdash; язык программирования, представленный Microsoft в 2012 году. TypeScript является <mark>обратно совместимым с JavaScript и компилируется в последний</mark>. TypeScript отличается от JavaScript возможностью <mark>явного статического назначения типов</mark>, а также поддержкой <mark>подключения модулей</mark></p>
+		</blockquote>
+	</section>
 
+	<section class="slide">
+		<h2>Преимущества TypeScript</h2>
+		<ul lang="ru">
+			<li>Аннотации типов и проверка их согласования на этапе компиляции</li>
+			<li>Интерфейсы, кортежи, декораторы свойств и методов, расширенные возможности ООП</li>
+			<li>TypeScript — надмножество JavaScript, поэтому любой код на JavaScript будет выполнен и в TypeScript</li>
+			<li>Широкая поддержка IDE и адекватный автокомплит</li>
+			<li>Поддержка ES6-модулей из коробки</li>
+			<li>Высокая скорость разработки</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Установка и использование</h2>
+		<pre class="hljs bash">
+			<code><span class="comment rus"># установка компилятора</span></code>
+			<code>$ npm install -g typescript</code>
+			<code> </code>
+			<code><span class="comment rus"># компиляция файла</span></code>
+			<code>$ tsc helloworld.ts</code>
+			<code> </code>
+			<code><span class="comment rus"># утилита позволяет компилировать и сразу запускать .ts файлы</span></code>
+			<code>$ npm install -g ts-node</code>
+			<code>$ ts-node script.ts</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Файл <code>tsconfig.json</code></h2>
+		<pre class="hljs json">
+			<code>{</code>
+			<code>    "compilerOptions": {</code>
+			<code>        "outDir": "cache/",</code>
+			<code>        "target": "es2016",</code>
+			<code>        "declaration": false,</code>
+			<code>        "module": "commonjs",</code>
+			<code>        "strictNullChecks": true,</code>
+			<code>        "sourceMap": true</code>
+			<code>        ... }</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Аннотации типов</h2>
+		<pre class="hljs ts">
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Функции в TypeScript</h2>
+		<pre class="hljs ts">
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Интерфейсы</h2>
+		<pre class="hljs ts">
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Классы в TypeScript</h2>
+		<pre class="hljs ts">
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Генерики и enum</h2>
+		<pre class="hljs ts">
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Декораторы свойств и методов</h2>
+		<pre class="hljs ts">
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>TypeScript Declaration Files</h2>
+		<blockquote>
+			<p><b>TypeScript Declaration Files (<code>.d.ts</code>)</b> &mdash; служат для описания интерфейсов, экспортируемых классов и методов для модулей, написанных на обычном JavaScript</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2><code>.d.ts</code> файлы</h2>
+		<pre class="hljs ts">
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide question">
+		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Ваши вопросы?</h2>
+	</section>
 
 
 
@@ -490,8 +672,9 @@
 	<section class="slide">
 		<h2>Полезные ссылки</h2>
 		<ul lang="en">
-			<li><a href="https://tc39.github.io/process-document/" target="_blank">Процесс TC39</a>, <a href="https://github.com/tc39/proposals/" target="_blank">репозиторий</a> со списком всех текущих предложений и <a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md
-" target="_blank">предложения</a>, перешедшие в stage-4</li>
+			<li><a href="https://tc39.github.io/process-document/" target="_blank">Процесс TC39</a>, <a href="https://github.com/tc39/proposals/" target="_blank">репозиторий</a> со списком всех текущих предложений и <a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md" target="_blank">предложения</a>, перешедшие в stage-4</li>
+			<li><a href="https://www.typescriptlang.org/index.html" target="_blank">Источник</a> информации о TypeScript</li>
+			<li><a href="https://github.com/TypeStrong/ts-node" target="_blank">Модуль ts-node</a>: TypeScript execution environment and REPL for node.js</li>
 		</ul>
 	</section>
 
