@@ -50,6 +50,14 @@
 	</section>
 
 	<section class="slide question">
+		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">165 слайдов</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">180 минут</span></h2>
+	</section>
+
+	<section class="slide question">
 		<h2 style="text-align: center; padding: 0"><span style="font-size: 80%">ISO/IEC 16262:2011(E)</span></h2>
 	</section>
 
@@ -148,12 +156,12 @@
 		<h2><code>let / const</code></h2>
 		<pre class="hljs js">
 			<code>if (true) {</code>
-			<code>    const bar = 42;</code>
+			<code>    <mark>const</mark> bar = 42;</code>
 			<code>}</code>
 			<code>console.log(typeof foo);  <span class="comment">// ReferenceError</span></code>
 			<code>console.log(typeof bar);  <span class="comment">// ReferenceError</span></code>
 			<code> </code>
-			<code>let foo = 'bar';</code>
+			<code><mark>let</mark> foo = 'bar';</code>
 			<code>foo = 'baz';  <span class="comment">// TypeError</span></code>
 			<code> </code>
 		</pre>
@@ -189,9 +197,9 @@
 			<code>console.log('\u{1F600}'); <span class="comment" >// <span style="font-style: normal">😀</span></span></code>
 			<code>console.log('\uD83D\uDE00'); <span class="comment">// <span style="font-style: normal">😀</span></span></code>
 			<code> </code>
-			<code>String.prototype.charAt(index);       '😀'.charAt(0) === �</code>
-			<code>String.prototype.charCodeAt(index);   '😀'.charCodeAt(0) === 55357</code>
-			<code>String.prototype.codePointAt(index);  '😀'.codePointAt(0) === 128512</code>
+			<code>String.prototype.<mark>charAt</mark>(index);       '😀'.charAt(0) === �</code>
+			<code>String.prototype.<mark>charCodeAt</mark>(index);   '😀'.charCodeAt(0) === 55357</code>
+			<code>String.prototype.<mark>codePointAt</mark>(index);  '😀'.codePointAt(0) === 128512</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -240,12 +248,12 @@
 		<h2>Промисы</h2>
 		<pre class="hljs js">
 			<code>getJSON('/data/books.json')</code>
-			<code>    .then(function (books) {</code>
+			<code>    .<mark>then</mark>(function (books) {</code>
 			<code>        books.forEach(function (book) {</code>
 			<code>            console.log(book.title);</code>
 			<code>        });</code>
 			<code>    })</code>
-			<code>    .catch(function (error) {</code>
+			<code>    .<mark>catch</mark>(function (error) {</code>
 			<code>         console.error(error);</code>
 			<code>    });</code>
 			<code> </code>
@@ -275,8 +283,8 @@
 	<section class="slide">
 		<h2>ES6-классы</h2>
 		<pre class="hljs js">
-			<code>class User {</code>
-			<code>    constructor(login, password) {</code>
+			<code><mark>class</mark> User {</code>
+			<code>    <mark>constructor</mark>(login, password) {</code>
 			<code>        this._login = login;</code>
 			<code>        this._password = password;</code>
 			<code>    }</code>
@@ -292,10 +300,10 @@
 		<h2>ES6-классы: cтатические методы</h2>
 		<pre class="hljs js">
 			<code>class MathUtils {</code>
-			<code>    static sqr(number) {</code>
+			<code>    <mark>static</mark> sqr(number) {</code>
 			<code>        return number * number;</code>
 			<code>    }</code>
-			<code>    static abs(number) {</code>
+			<code>    <mark>static</mark> abs(number) {</code>
 			<code>        return number < 0 ? -number : number;</code>
 			<code>    }</code>
 			<code>}</code>
@@ -326,8 +334,8 @@
 			<code>        this._width = width;</code>
 			<code>        this._height = height;</code>
 			<code>    }</code>
-			<code>    get Square() { return this._width * this._height; }</code>
-			<code>    set SideLength(value) {</code>
+			<code>    <mark>get</mark> Square() { return this._width * this._height; }</code>
+			<code>    <mark>set</mark> SideLength(value) {</code>
 			<code>        this._width = this._height = value;</code>
 			<code>    }</code>
 			<code>}</code>
@@ -365,13 +373,13 @@
 	<section class="slide">
 		<h2>ES6-классы: наследование</h2>
 		<pre class="hljs js">
-			<code>class LoginView {</code>
+			<code>class LoginView <mark>extends View</mark> {</code>
 			<code>    constructor() {</code>
-			<code>        super(document.getElementById('login'));</code>
+			<code>        <mark>super</mark>(document.getElementById('login'));</code>
 			<code>        this._form = this._el.querySelector('.login__form');</code>
 			<code>    }</code>
 			<code>    hide() {</code>
-			<code>        super.hide();</code>
+			<code>        <mark>super</mark>.hide();</code>
 			<code>        this._form.clear();</code>
 			<code>    }</code>
 			<code>}</code>
@@ -389,14 +397,14 @@
 		<h2>ES6-модули</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// экспортируем значения</span></code>
-			<code>export const PI = 4;</code>
+			<code><mark>export</mark> const PI = 4;</code>
 			<code>export function square(number) { return number * number; }</code>
-			<code>export default class User {</code>
+			<code>export <mark>default</mark> class User {</code>
 			<code>    constructor() { ... }</code>
 			<code>}</code>
 			<code> </code>
 			<code>const name = 'Jon Snow', years = 42;</code>
-			<code>export { name, years as age };</code>
+			<code>export <mark>{ name, years as age }</mark>;</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -405,13 +413,13 @@
 		<h2>ES6-модули</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// импортируем значения</span></code>
-			<code>import { PI, square } from '../module.js';</code>
+			<code><mark>import</mark> { PI, square } from '../module.js';</code>
 			<code>import { name as login } from '../module.js';</code>
 			<code>import UserClass from '../module.js';</code>
-			<code>import * as Utils from '../module.js';</code>
+			<code>import <mark>* as Utils</mark> from '../module.js';</code>
 			<code>import '../module.js';</code>
 			<code><span class="comment rus">// ре-экспорт</span></code>
-			<code>export { PI, login as username } from '../module.js';</code>
+			<code><mark>export</mark> { PI, login as username } <mark>from</mark> '../module.js';</code>
 			<code>export * from '../module.js';</code>
 			<code> </code>
 		</pre>
@@ -429,9 +437,9 @@
 			<code>const User = {login, age}; // {login: 'Jon Snow', age: 42}</code>
 			<code> </code>
 			<code>const Obj = {</code>
-			<code>    func() { ... },                   // inline methods</code>
+			<code>    <mark>func()</mark> { ... },                   // inline methods</code>
 			<code>    array: [1, 2, 3, 4, 5,],          // trailing commas</code>
-			<code>    get Arr() { return this.array; }, // object getters & setters</code>
+			<code>    <mark>get Arr()</mark> { return this.array; }, // object getters & setters</code>
 			<code>    prop: value,                      // trailing commas</code>
 			<code>}</code>
 			<code> </code>
@@ -449,8 +457,8 @@
 			<code>Object.is(false, false);      // true</code>
 			<code>Object.is({a: 42}, {a: 42});  // false</code>
 			<code> </code>
-			<code>Object.is(NaN, NaN);    // true   (NaN === NaN) === false</code>
-			<code>Object.is(0, -0);       // false  (-0 === 0) === true</code>
+			<code>Object.is(NaN, NaN);    // <mark>true</mark>   (NaN === NaN) === false</code>
+			<code>Object.is(0, -0);       // <mark>false</mark>  (-0 === 0) === true</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -475,13 +483,13 @@
 		<h2>Дополнительные методы</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// Запаковывание объектов</span></code>
-			<code>Object.seal(target);    <span class="comment rus">// можно изменить значение имеющихся свойств,</span></code>
+			<code>Object.<mark>seal</mark>(target);    <span class="comment rus">// можно изменить значение имеющихся свойств,</span></code>
 			<code>                        <span class="comment rus">// но нельзя добавить или удалить их</span></code>
 			<code><span class="comment rus">// Заморозка объектов</span></code>
-			<code>Object.freeze(target);  <span class="comment rus">// нельзя изменять значения имеющихся свойств,</span></code>
+			<code>Object.<mark>freeze</mark>(target);  <span class="comment rus">// нельзя изменять значения имеющихся свойств,</span></code>
 			<code>                        <span class="comment rus">// удалять их, добавлять новые</span></code>
 			<code> </code>
-			<code>Object.isFrozen(target);   Object.isSealed(target);</code>
+			<code>Object.<mark>isFrozen</mark>(target);   Object.<mark>isSealed</mark>(target);</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -492,9 +500,9 @@
 			<code><span class="comment rus">// Перебор ключей, значений и свойств</span></code>
 			<code>const user = {login: 'Jon Snow', age: 42};</code>
 			<code> </code>
-			<code>Object.keys(user);     // ['login', 'age']</code>
-			<code>Object.values(user);   // ['Jon Snow', 42]</code>
-			<code>Object.entries(user);  // [['login', 'Jon Snow'], ['age', 42]]</code>
+			<code>Object.<mark>keys</mark>(user);     // ['login', 'age']</code>
+			<code>Object.<mark>values</mark>(user);   // ['Jon Snow', 42]</code>
+			<code>Object.<mark>entries</mark>(user);  // [['login', 'Jon Snow'], ['age', 42]]</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -538,7 +546,7 @@
 	<section class="slide">
 		<h2><code>Map</code> &mdash; хэш-таблица</h2>
 		<pre class="hljs js">
-			<code>const map = new Map();</code>
+			<code>const map = new <mark>Map</mark>();</code>
 			<code>map.set(key, value);   <span class="comment rus">// добавить значение</span></code>
 			<code>map.get(key);          <span class="comment rus">// получить значение</span></code>
 			<code>map.has(key);          <span class="comment rus">// проверить наличие ключа</span></code>
@@ -554,7 +562,7 @@
 	<section class="slide">
 		<h2><code>Set</code> &mdash; набор значений<br/>без повторения</h2>
 		<pre class="hljs js">
-			<code>const set = new Set();</code>
+			<code>const set = new <mark>Set</mark>();</code>
 			<code>set.add(value);          <span class="comment rus">// добавить значение</span></code>
 			<code>set.has(value);          <span class="comment rus">// проверить наличие значения</span></code>
 			<code>set.delete(value);   set.clear();</code>
@@ -594,7 +602,7 @@
 	<section class="slide">
 		<h2>Работа с дескрипторами</h2>
 		<pre class="hljs js">
-			<code>// Reflect.defineProperty(target, propertyKey, attributes)</code>
+			<code>// Reflect.<mark>defineProperty</mark>(target, propertyKey, attributes)</code>
 			<code>const object = {};</code>
 			<code>Reflect.defineProperty(object, 'foo', {</code>
 			<code>    enumerable: false,    <span class="comment rus">// разрешает перечисление</span></code>
@@ -617,8 +625,8 @@
 		<h2>Оператор возведения в степень</h2>
 		<pre class="hljs js">
 			<code><span class="comment">// hello python from es7</span></code>
-			<code>console.log(3 ** 4);     // 81</code>
-			<code>console.log(49 ** 0.5);  // 7</code>
+			<code>console.log(3 <mark>**</mark> 4);     // 81</code>
+			<code>console.log(49 <mark>**</mark> 0.5);  // 7</code>
 			<code> </code>
 			<code> </code>
 		</pre>
@@ -628,23 +636,23 @@
 
 	<!--оно самое-->
 
-	<section class="slide">
-		<h2>Variable hoisting</h2>
-		<pre class="hljs js">
-			<code><span class="comment rus">// before</span></code>
-			<code> </code>
-			<code> </code>
-			<code> </code>
-			<code> </code>
-			<code> </code>
-			<code> </code>
-			<code> </code>
-			<code> </code>
-			<code> </code>
-			<code><span class="comment">// ReferenceError</span></code>
-			<code> </code>
-		</pre>
-	</section>
+	<!--<section class="slide">-->
+		<!--<h2>Variable hoisting</h2>-->
+		<!--<pre class="hljs js">-->
+			<!--<code><span class="comment rus">// before</span></code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code> </code>-->
+			<!--<code><span class="comment">// ReferenceError</span></code>-->
+			<!--<code> </code>-->
+		<!--</pre>-->
+	<!--</section>-->
 
 
 
@@ -679,7 +687,7 @@
 		<h2>Деструктуризация массивов</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// значения по умолчанию</span></code>
-			<code>const [name, family = 'Black'] = 'Jon';</code>
+			<code>const [name, <mark>family = 'Black'</mark>] = 'Jon';</code>
 			<code>console.log(name);    // Jon</code>
 			<code>console.log(family);  // Black</code>
 			<code> </code>
@@ -698,11 +706,11 @@
 			<code><span class="comment rus">// деструктуризация</span></code>
 			<code>const {login, age} = person;</code>
 			<code><span class="comment rus">// значения по умолчанию</span></code>
-			<code>const {login, age, password = 'qwerty123'} = person;</code>
+			<code>const {login, age, <mark>password = 'qwerty123'</mark>} = person;</code>
 			<code><span class="comment rus">// переименование свойств</span></code>
-			<code>const {login: username, age} = person;    // username === 'Jon Snow'</code>
+			<code>const {<mark>login: username</mark>, age} = person;    // username === 'Jon Snow'</code>
 			<code><span class="comment rus">// комбинация</span></code>
-			<code>const {login: username = 'Anonimous', age} = person;</code>
+			<code>const {<mark>login: username = 'Anonimous'</mark>, age} = person;</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -783,7 +791,7 @@
 		<pre class="hljs js">
 			<code><span class="comment rus">// расширение массивов</span></code>
 			<code>const arr = ['a', 'b', 'c', 'd'];</code>
-			<code>const arr2 = [1, 2, ...arr, 3];</code>
+			<code>const arr2 = [1, 2, <mark>...arr</mark>, 3];</code>
 			<code>console.dir(arr2); // [1, 2, 'a', 'b', 'c', 'd', 3];</code>
 			<code> </code>
 		</pre>
@@ -794,7 +802,7 @@
 		<pre class="hljs js">
 			<code><span class="comment rus">// используется при деструктуризации</span></code>
 			<code>const places = ['Jane', 'Jon', 'Alex', 'Max'];</code>
-			<code>const [first, second, ...loosers] = places;</code>
+			<code>const [first, second, <mark>...loosers</mark>] = places;</code>
 			<code> </code>
 			<code>// first === 'Jane'</code>
 			<code>// second === 'Jon'</code>
@@ -807,7 +815,7 @@
 		<h2>Оператор расширения</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// пока что так нельзя</span></code>
-			<code>const {login, password, ...profile} = {</code>
+			<code>const {login, password, <mark>...profile</mark>} = {</code>
 			<code>     login: 'Jon',</code>
 			<code>     password: 'qwerty123',</code>
 			<code>     age: 42,</code>
@@ -823,11 +831,11 @@
 		<pre class="hljs js">
 			<code><span class="comment rus">// может проитерироваться по элементам коллекции</span></code>
 			<code><span class="comment rus">// и вернуть массив, состоящий из её элементов</span></code>
-			<code>const letters = [...'abcde'];</code>
+			<code>const letters = [<mark>...'abcde'</mark>];</code>
 			<code>console.dir(letters);   // ['a', 'b', 'c', 'd', 'e'];</code>
 			<code> </code>
 			<code><span class="comment rus">// <mark>panes</mark> будет настоящим массивом</span></code>
-			<code>const panes = [...document.querySelectorAll('.pane')];</code>
+			<code>const panes = [<mark>...document.querySelectorAll('.pane')</mark>];</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -851,8 +859,8 @@
 		<pre class="hljs js">
 			<code><span class="comment rus">// передача параметров в функцию</span></code>
 			<code>const numbers = [1, 2, 42, 532, -3.14, -Infinity];</code>
-			<code>const maximum = Math.max(...numbers);   // 532</code>
-			<code>const minimum = Math.min(...numbers);   // -Infinity</code>
+			<code>const maximum = Math.max(<mark>...numbers</mark>);   // 532</code>
+			<code>const minimum = Math.min(<mark>...numbers</mark>);   // -Infinity</code>
 			<code> </code>
 		</pre>
 	</section>
@@ -861,7 +869,7 @@
 		<h2>Оператор расширения</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// сбор праметров функции</span></code>
-			<code>function summ(...nums) {</code>
+			<code>function summ(<mark>...nums</mark>) {</code>
 			<code>    <span class="comment rus">// можно работать не с <mark>arguments</mark>, а с настоящим массивом <mark>nums</mark></span></code>
 			<code>    return nums.reduce((sum, current) => sum + current, 0);</code>
 			<code>}</code>
@@ -875,7 +883,7 @@
 		<h2>Оператор расширения</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// сбор праметров функции</span></code>
-			<code>function split(coeff, ...nums) {</code>
+			<code>function split(coeff, <mark>...nums</mark>) {</code>
 			<code>    return nums.filter(num => num < coeff);</code>
 			<code>}</code>
 			<code> </code>
@@ -900,7 +908,7 @@
 			<li>Object</li>
 			<li>null</li>
 			<li>undefined</li>
-			<li>Symbol</li>
+			<li><mark>Symbol</mark></li>
 		</ol>
 	</section>
 
@@ -917,8 +925,8 @@
 		<h2>Создание символов</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// без <mark>new</mark></span></code>
-			<code>const symbol1 = Symbol();</code>
-			<code>const symbol2 = Symbol('label');</code>
+			<code>const symbol1 = <mark>Symbol()</mark>;</code>
+			<code>const symbol2 = <mark>Symbol('label')</mark>;</code>
 			<code>const symbol3 = Symbol('label');</code>
 			<code> </code>
 			<code>console.log(typeof symbol1);       // symbol</code>
@@ -933,12 +941,12 @@
 		<pre class="hljs js">
 			<code><span class="comment rus">// берутся из реестра глобальных символов</span></code>
 			<code><span class="comment rus">// если символа нет в реестре - создаётся новый символ</span></code>
-			<code>const symbol1 = Symbol.for('label');</code>
+			<code>const symbol1 = <mark>Symbol.for</mark>('label');</code>
 			<code>const symbol2 = Symbol.for('label');</code>
 			<code>console.dir(symbol1 == symbol2);       // true</code>
 			<code> </code>
 			<code>const symbol3 = Symbol('label');</code>
-			<code>console.dir(Symbol.keyFor(symbol1));   // 'label'</code>
+			<code>console.dir(<mark>Symbol.keyFor</mark>(symbol1));   // 'label'</code>
 			<code>console.dir(Symbol.keyFor(symbol3));   // undefined</code>
 			<code> </code>
 		</pre>
@@ -949,7 +957,7 @@
 		<pre class="hljs js">
 			<code>const User = {</code>
 			<code>    name: 'Jon Snow',</code>
-			<code>    [Symbol.for('hello')]() {</code>
+			<code>    <mark>[Symbol.for('hello')]</mark>() {</code>
 			<code>        console.log(`Hello, ${this.name}!`);</code>
 			<code>    }</code>
 			<code>}</code>
@@ -985,7 +993,7 @@
 	<section class="slide">
 		<h2>Итераторы</h2>
 		<blockquote>
-			<p class="medium-content"><b>Итераторы</b> &mdash; расширяющая понятие «массив» концепция, которая пронизывает современный стандарт JavaScript сверху донизу. Итерируемые или, иными словами, «перебираемые» объекты &mdash; это те, содержимое которых можно перебрать в цикле</p>
+			<p class="medium-content"><b>Итераторы</b> &mdash; расширяющая понятие «массив» концепция, которая пронизывает современный стандарт JavaScript сверху донизу. Итерируемые или, иными словами, <mark>«перебираемые»</mark> объекты &mdash; это те, содержимое которых можно перебрать в цикле</p>
 		</blockquote>
 	</section>
 
@@ -1012,7 +1020,7 @@
 		<pre class="hljs js">
 			<code>const numbers = [2, 3, 5, 7, 11, 13];</code>
 			<code> </code>
-			<code>for (const prime of numbers) {</code>
+			<code>for (<mark>const prime of numbers</mark>) {</code>
 			<code>    console.log(`Prime number ${prime}!`);</code>
 			<code>}</code>
 			<code> </code>
@@ -1022,7 +1030,7 @@
 	<section class="slide">
 		<h2>Связь со спредами</h2>
 		<pre class="hljs js">
-			<code><span class="comment rus">// оператор расширения итерируется по итератору</span></code>
+			<code><span class="comment rus">// оператор расширения <mark>итерируется</mark> по итератору</span></code>
 			<code><span class="comment rus">// и возвращает массив из элементов итератора</span></code>
 			<code> </code>
 			<code>function arrayUniq()</code>
@@ -1097,9 +1105,9 @@
 	<section class="slide">
 		<h2>Объявление функции-генератора</h2>
 		<pre class="hljs js">
-			<code>function * generator() {</code>
-			<code>    yield 1;</code>
-			<code>    yield 2;</code>
+			<code><mark>function *</mark> generator() {</code>
+			<code>    <mark>yield</mark> 1;</code>
+			<code>    <mark>yield</mark> 2;</code>
 			<code>    return 3;</code>
 			<code>}</code>
 			<code> </code>
@@ -1165,7 +1173,7 @@
 			<code>}</code>
 			<code>const gen = simple();</code>
 			<code>console.log(gen.next());     // { value: 'line 2', done: false }</code>
-			<code>console.log(gen.next(42));   // { value: 42, done: true }</code>
+			<code>console.log(<mark>gen.next(42)</mark>);   // { value: 42, done: true }</code>
 			<code>console.log(gen.next());     // { value: undefined, done: true }</code>
 			<code> </code>
 		</pre>
@@ -1207,7 +1215,7 @@
 			<code>const gen = wow();</code>
 			<code>gen.next();      // { value: 0, done: false }</code>
 			<code>gen.next(1);     // { value: 1, done: false }</code>
-			<code>gen.throw(new Error('kek'));  // Error: kek</code>
+			<code>gen.<mark>throw</mark>(new Error('kek'));  // Error: kek</code>
 			<code> </code>
 			<code>gen.next(0);     <span class="comment rus">// до этого места выполнение не дойдёт</span></code>
 			<code> </code>
@@ -1221,8 +1229,8 @@
 			<code>    yield element; yield element;</code>
 			<code>}</code>
 			<code>function * test() {</code>
-			<code>    yield * twicer(42);</code>
-			<code>    yield * twicer('test');</code>
+			<code>    <mark>yield *</mark> twicer(42);</code>
+			<code>    <mark>yield *</mark> twicer('test');</code>
 			<code>}</code>
 			<code> </code>
 			<code>console.log([...test()]);    // [ 42, 42, 'test', 'test' ]</code>
@@ -1240,7 +1248,7 @@
 	<section class="slide">
 		<h2><code>async/await</code></h2>
 		<blockquote>
-			<p class="medium-content">Ключевое слово <b><code>async</code></b> позволяет объявлять асинхронные функции, которые возвращают промис. Внутри таких функций возможна "синхронная" работа с промисами с помощью ключевого слова <code>await</code></p>
+			<p class="medium-content">Ключевое слово <b><code>async</code></b> позволяет объявлять асинхронные функции, которые возвращают промис. Внутри таких функций возможна <mark>"синхронная"</mark> работа с промисами с помощью ключевого слова <code>await</code></p>
 		</blockquote>
 
 		<p class="note">Код, использующий <code>async/await</code>-функции очень похож на код, написанный на генераторах с использованием <a href="https://github.com/tj/co" target="_blank">библиотеки <em>co</em></a></p>
@@ -1249,7 +1257,7 @@
 	<section class="slide">
 		<h2>Объявление функций</h2>
 		<pre class="hljs js">
-			<code>async function good() {</code>
+			<code><mark>async</mark> function good() {</code>
 			<code>    return 42;</code>
 			<code>}</code>
 			<code> </code>
@@ -1262,7 +1270,7 @@
 	<section class="slide">
 		<h2>Объявление функций</h2>
 		<pre class="hljs js">
-			<code>async function bad() {</code>
+			<code><mark>async</mark> function bad() {</code>
 			<code>    throw new Error('kek');</code>
 			<code>}</code>
 			<code> </code>
@@ -1293,11 +1301,11 @@
 		<h2>Использование</h2>
 		<pre class="hljs js">
 			<code>async function loadJSON(url) {</code>
-			<code>    const response = await fetch(url, {method: 'GET'});</code>
+			<code>    const response = <mark>await</mark> fetch(url, {method: 'GET'});</code>
 			<code>    if (response.statusCode !== 200) {</code>
 			<code>        throw new Error(`Can not load json ${url}`);</code>
 			<code>    }</code>
-			<code>    const json = await response.json();</code>
+			<code>    const json = <mark>await</mark> response.json();</code>
 			<code>    return json;</code>
 			<code>}</code>
 			<code> </code>
@@ -1308,11 +1316,11 @@
 		<h2>Использование</h2>
 		<pre class="hljs js">
 			<code>async function loadBook(pages) {</code>
-			<code>    const responses = await pages</code>
+			<code>    const responses = <mark>await</mark> pages</code>
 			<code>        .map(page => {</code>
 			<code>            return fetch(`/book/page/${page}`, {method: 'GET'});</code>
 			<code>        };</code>
-			<code>    return responses.map(res => res.json());</code>
+			<code>    <mark>return</mark> Promise.all(responses.map(res => res.json()));</code>
 			<code>}</code>
 			<code> </code>
 		</pre>
@@ -1643,7 +1651,7 @@
 			<code>{</code>
 			<code>    "compilerOptions": {</code>
 			<code>        "outDir": "cache/",</code>
-			<code>        "target": "es2016",</code>
+			<code>        <mark>"target"</mark>: "es2016",</code>
 			<code>        "declaration": false,</code>
 			<code>        "module": "commonjs",</code>
 			<code>        "strictNullChecks": true,</code>
@@ -1952,6 +1960,7 @@
 			<li><a href="https://www.typescriptlang.org/index.html" target="_blank">Источник</a> информации о TypeScript</li>
 			<li><a href="https://github.com/TypeStrong/ts-node" target="_blank">Модуль ts-node</a>: TypeScript execution environment and REPL for node.js</li>
 			<li><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash; крутая книга по TypeScript</li>
+			<li><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Крутая серия книг</a> о JavaScript</li>
 		</ul>
 	</section>
 
