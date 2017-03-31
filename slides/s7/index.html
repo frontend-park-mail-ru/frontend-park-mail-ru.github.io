@@ -1237,6 +1237,31 @@
 		<h2 style="text-align: center; padding: 0"><span style="font-size: 85%">Асинхронные функции (<code>async/await</code>)</span></h2>
 	</section>
 
+	<section class="slide">
+		<h2><code>async/await</code></h2>
+		<blockquote>
+			<p class="medium-content">Ключевое слово <b><code>async</code></b> позволяет объявлять асинхронные функции, которые возвращают промис. Внутри таких функций возможна "синхронная" работа с промисами с помощью ключевого слова <code>await</code></p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Объявление <code>async/await</code>-функций</h2>
+		<pre class="hljs js">
+			<code>function * twicer(element) {</code>
+			<code>    yield element; yield element;</code>
+			<code>}</code>
+			<code>function * test() {</code>
+			<code>    yield * twicer(42);</code>
+			<code>    yield * twicer('test');</code>
+			<code>}</code>
+			<code> </code>
+			<code>console.log([...test()]);    // [ 42, 42, 'test', 'test' ]</code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+
 
 
 
