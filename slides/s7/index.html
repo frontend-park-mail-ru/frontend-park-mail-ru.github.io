@@ -1242,27 +1242,81 @@
 		<blockquote>
 			<p class="medium-content">Ключевое слово <b><code>async</code></b> позволяет объявлять асинхронные функции, которые возвращают промис. Внутри таких функций возможна "синхронная" работа с промисами с помощью ключевого слова <code>await</code></p>
 		</blockquote>
+
+		<p class="note">Код, использующий <code>async/await</code>-функции очень похож на код, написанный на генераторах с использованием <a href="https://github.com/tj/co" target="_blank">библиотеки <em>co</em></a></p>
 	</section>
 
 	<section class="slide">
-		<h2>Объявление <code>async/await</code>-функций</h2>
+		<h2>Объявление функций</h2>
 		<pre class="hljs js">
-			<code>function * twicer(element) {</code>
-			<code>    yield element; yield element;</code>
-			<code>}</code>
-			<code>function * test() {</code>
-			<code>    yield * twicer(42);</code>
-			<code>    yield * twicer('test');</code>
+			<code>async function good() {</code>
+			<code>    return 42;</code>
 			<code>}</code>
 			<code> </code>
-			<code>console.log([...test()]);    // [ 42, 42, 'test', 'test' ]</code>
+			<code>good()</code>
+			<code>    .then(res => console.log('Good: ', res);</code>
 			<code> </code>
 		</pre>
 	</section>
 
+	<section class="slide">
+		<h2>Объявление функций</h2>
+		<pre class="hljs js">
+			<code>async function bad() {</code>
+			<code>    throw new Error('kek');</code>
+			<code>}</code>
+			<code> </code>
+			<code>good()</code>
+			<code>    .then(res => console.log('Good: ', res));</code>
+			<code>    .catch(err => console.error(err));</code>
+			<code> </code>
+		</pre>
+	</section>
 
+	<section class="slide">
+		<h2>Объявление функций</h2>
+		<pre class="hljs js">
+			<code>async function luck(num) {</code>
+			<code>    if (Math.random() < 0.5) {</code>
+			<code>        return num * 2;</code>
+			<code>    }</code>
+			<code>    throw new Error('kek');</code>
+			<code>}</code>
+			<code>luck(21)</code>
+			<code>    .then(res => console.log('Good: ', res));   // may be 42</code>
+			<code>    .catch(err => console.error(err));          // or may be an Error</code>
+			<code> </code>
+		</pre>
+	</section>
 
+	<section class="slide">
+		<h2>Использование</h2>
+		<pre class="hljs js">
+			<code>async function loadJSON(url) {</code>
+			<code>    const response = await fetch(url, {method: 'GET'});</code>
+			<code>    if (response.statusCode !== 200) {</code>
+			<code>        throw new Error(`Can not load json ${url}`);</code>
+			<code>    }</code>
+			<code>    const json = await response.json();</code>
+			<code>    return json;</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
 
+	<section class="slide">
+		<h2>Использование</h2>
+		<pre class="hljs js">
+			<code>async function loadBook(pages) {</code>
+			<code>    const responses = await pages</code>
+			<code>        .map(page => {</code>
+			<code>            return fetch(`/book/page/${page}`, {method: 'GET'});</code>
+			<code>        };</code>
+			<code>    return responses.map(res => res.json());</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
 
 
 
