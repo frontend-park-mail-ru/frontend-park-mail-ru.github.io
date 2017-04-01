@@ -21,7 +21,7 @@ fs.readFile('./files/list', 'utf8', function (err, text) {
 			readed--;
 
 			if (readed === 0) {
-				fs.writeFile('result.txt', JSON.stringify(files), 'utf-8', function (err) {
+				fs.writeFile('result.txt', JSON.stringify(files, null, 4), 'utf-8', function (err) {
 					if (err) {
 						return console.error(err);
 					}

@@ -35,15 +35,15 @@ function write(file, source) {
 	});
 }
 
+
 const gen = function *() {
 	const list = yield read('./files/list');
 	const names = list.split('\n').filter(name => !!name);
-	const res = yield Promise.all(names.map(name => read(`./files/${name}`)));
-
+	const res = yield Promise
+		.all(names.map(name => read(`./files/${name}`)));
 	const files = {};
 	names.forEach((name, pos) => files[name] = res[pos].trim());
-	yield write('result2.txt', JSON.stringify(files));
-
+	yield write('result2.txt', JSON.stringify(files, null, '\t'));
 };
 
 execute(gen());

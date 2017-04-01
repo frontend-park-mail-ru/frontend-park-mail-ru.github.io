@@ -23,13 +23,13 @@
 			aspect = ratios[0];
 		}
 
-		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${'4x3'}.css">`);
 
 	</script>
 
 	<style>
 		.slide pre {
-			font-size: 77%;
+			font-size: 90%;
 		}
 	</style>
 
@@ -47,14 +47,6 @@
 		<h2 class="shout">Развитие JavaScript<br/>
 			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
 		</h2>
-	</section>
-
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">165 слайдов</span></h2>
-	</section>
-
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">180 минут</span></h2>
 	</section>
 
 	<section class="slide question">
@@ -156,12 +148,12 @@
 		<h2><code>let / const</code></h2>
 		<pre class="hljs js">
 			<code>if (true) {</code>
-			<code>    <mark>const</mark> bar = 42;</code>
+			<code>    <mark>let</mark> bar = 42;</code>
 			<code>}</code>
 			<code>console.log(typeof foo);  <span class="comment">// ReferenceError</span></code>
 			<code>console.log(typeof bar);  <span class="comment">// ReferenceError</span></code>
 			<code> </code>
-			<code><mark>let</mark> foo = 'bar';</code>
+			<code><mark>const</mark> foo = 'bar';</code>
 			<code>foo = 'baz';  <span class="comment">// TypeError</span></code>
 			<code> </code>
 		</pre>
@@ -193,7 +185,7 @@
 		<h2>Поддержка Юникода</h2>
 		<pre class="hljs js">
 			<code><span class="comment">// unicode support</span></code>
-			<code>console.log('😀'); <span class="comment">// 2</span></code>
+			<code>console.log('😀'.length); <span class="comment">// 2</span></code>
 			<code>console.log('\u{1F600}'); <span class="comment" >// <span style="font-style: normal">😀</span></span></code>
 			<code>console.log('\uD83D\uDE00'); <span class="comment">// <span style="font-style: normal">😀</span></span></code>
 			<code> </code>
@@ -449,11 +441,11 @@
 	<section class="slide">
 		<h2>Дополнительные методы</h2>
 		<pre class="hljs js">
-			<code><span class="comment rus">// Проверка двух выражений на совпадение</span></code>
+			<code><span class="comment rus">// проверка двух выражений на совпадение</span></code>
 			<code>Object.is(value1, value2);</code>
 			<code> </code>
-			<code>Object.is(1, 2);              // true</code>
-			<code>Object.is(1, '2');            // false</code>
+			<code>Object.is(1, 1);              // true</code>
+			<code>Object.is(1, '1');            // false</code>
 			<code>Object.is(false, false);      // true</code>
 			<code>Object.is({a: 42}, {a: 42});  // false</code>
 			<code> </code>
@@ -466,7 +458,7 @@
 	<section class="slide">
 		<h2>Дополнительные методы</h2>
 		<pre class="hljs js">
-			<code><span class="comment rus">// Копирование свойств</span></code>
+			<code> <span class="comment rus">// копирование свойств</span></code>
 			<code>Object.assign(target, ...sources);</code>
 			<code> </code>
 			<code>const s1 = {a: 'Jhon'}, s2 = {b: 42};</code>
@@ -515,7 +507,7 @@
 	<section class="slide">
 		<h2>Стрелочные функции</h2>
 		<pre class="hljs js">
-			<code>const hello = () => { console.log('Hello, World!'); };</code>
+			<code>const hello = () => console.log('Hello, World!');</code>
 			<code>const sqr = num => num * 2;</code>
 			<code>[1, 2, 3, 4].map(sqr); // [1, 4, 9, 16]</code>
 			<code> </code>
@@ -687,7 +679,7 @@
 		<h2>Деструктуризация массивов</h2>
 		<pre class="hljs js">
 			<code><span class="comment rus">// значения по умолчанию</span></code>
-			<code>const [name, <mark>family = 'Black'</mark>] = 'Jon';</code>
+			<code>const [name, <mark>family = 'Black'</mark>] = ['Jon'];</code>
 			<code>console.log(name);    // Jon</code>
 			<code>console.log(family);  // Black</code>
 			<code> </code>
@@ -1319,7 +1311,7 @@
 			<code>    const responses = <mark>await</mark> pages</code>
 			<code>        .map(page => {</code>
 			<code>            return fetch(`/book/page/${page}`, {method: 'GET'});</code>
-			<code>        };</code>
+			<code>        });</code>
 			<code>    <mark>return</mark> Promise.all(responses.map(res => res.json()));</code>
 			<code>}</code>
 			<code> </code>
@@ -1601,7 +1593,7 @@
 
 
 	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">TypeScript</h2>
+		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">TypeScript</span></h2>
 	</section>
 
 	<section class="slide">
@@ -1928,7 +1920,7 @@
 	</section>
 
 	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Ваши вопросы?</h2>
+		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Ваши вопросы?</span></h2>
 	</section>
 
 
