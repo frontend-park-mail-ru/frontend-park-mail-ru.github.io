@@ -23,6 +23,10 @@
 			aspect = ratios[0];
 		}
 
+		if (['localhost', '127.0.0.1'].includes( window.location.hostname )) {
+			aspect = '4x3';
+		}
+
 		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
 	</script>
