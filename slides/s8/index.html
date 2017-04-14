@@ -574,6 +574,23 @@
 		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="swcaniuse.png" style="transform-origin: center;transform: translate(-50.4%,-50%) scale(0.8);"></div>
 	</section>
 
+	<section class="slide">
+		<h2>Service Workers &mdash; это просто файл</h2>
+		<pre class="hljs js">
+			<code>this.addEventListener('install', function (event) {</code>
+			<code>    console.log('Service worker установлен')</code>
+			<code>    event.waitUntil(</code>
+			<code>        <span class="comment rus">// находим Cache-объект с нашим именем</span></code>
+			<code>        caches.open('MY_CACHE')</code>
+			<code>            .then(function (cache) {</code>
+			<code>                <span class="comment rus">// загружаем в наш cache необходимые файлы</span></code>
+			<code>                return cache.addAll(['/index.html']);</code>
+			<code>            });</code>
+			<code>    );</code>
+			<code>});</code>
+			<code> </code>
+		</pre>
+	</section>
 
 
 
@@ -608,7 +625,7 @@
 	</section>
 
 	<section class="slide">
-		<h2>Hypertext Transfer Protocol -- HTTP/1.1</h2>
+		<h2>Hypertext Transfer Protocol: HTTP/1.1</h2>
 		<div style="position:relative;width: 100%;height: 100%;overflow: hidden;margin: 0 auto;">
 			<iframe src="https://rfc2.ru/2068.rfc/original" frameborder="0" width="100%" height="80%" style="transform-origin: center;transform: translate(10%,-10%) scale(1.2)"></iframe>
 		</div>
@@ -675,7 +692,7 @@
 	</section>
 
 	<section class="slide">
-		<h2>HTTP/2 requires server-side and client-side implementations</h2>
+		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
 		<p>Servers:</p>
 		<ul lang="ru">
 			<li>nginx 1.9.5</li>
@@ -687,14 +704,14 @@
 	</section>
 
 	<section class="slide">
-		<h2>HTTP/2 requires server-side and client-side implementations</h2>
+		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
 		<div style="position:relative;width: 100%;height: 80%;">
 			<img class="place" src="images/caniuse-http2.png" style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.85);">
 		</div>
 	</section>
 
 	<section class="slide">
-		<h2>HTTP/2 requires server-side and client-side implementations</h2>
+		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
 		<p>CDNs:</p>
 		<ul lang="ru">
 			<li>Akamai is the first major CDN to support HTTP/2 and HTTP/2 Server Push</li>
@@ -706,7 +723,7 @@
 	</section>
 
 	<section class="slide">
-		<h2>HTTP/2 requires server-side and client-side implementations</h2>
+		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
 		<p>Web services (<mark>HTTP/2 is used by 12.6%</mark> of all the websites):</p>
 		<ul lang="ru">
 			<li>google.com</li>
@@ -848,33 +865,6 @@
 		<h2>So... The HTTP/2 is much good!</h2>
 	</section>
 
-	<section class="slide">
-		<h2 class="shout">Thank you for attention!!!</h2>
-	</section>
-
-	<section class="slide question">
-		<h2>No! That's not all</h2>
-	</section>
-
-	<section class="slide">
-		<h2>No! That's not all</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/many-wires.png" style="transform-origin: center;transform: translate(-50%, -68%) scale(0.27);">
-			<div style="overflow:hidden;height:8%;position:relative;transform:translate(0%, 205px)"><img class="place" src="images/one-wire.jpg" style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);"></div>
-			<div style="overflow:hidden;height:8%;position:relative;transform:translate(0%, 205px)"><img class="place" src="images/one-wire.jpg" style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);"></div>
-			<div style="overflow:hidden;height:8%;position:relative;transform:translate(0%, 205px)"><img class="place" src="images/one-wire.jpg" style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);"></div>
-			<div style="overflow:hidden;height:8%;position:relative;transform:translate(0%, 205px)"><img class="place" src="images/one-wire.jpg" style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);"></div>
-			<div style="overflow:hidden;height:8%;position:relative;transform:translate(0%, 205px)"><img class="place" src="images/one-wire.jpg" style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);"></div>
-			<div style="overflow:hidden;height:8%;position:relative;transform:translate(0%, 205px)"><img class="place" src="images/one-wire.jpg" style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Package Loss Rate</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/plr.png" style="transform-origin: center;transform: translate(-50%, -48%) scale(0.9);">
-		</div>
-	</section>
 
 
 
@@ -883,10 +873,11 @@
 		<ul lang="en">
 			<li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=ru" target="_blank">Кэширование HTTP</a> &mdash; Google Developers</li>
 			<li><a href="https://developer.mozilla.org/ru/docs/WebSockets" target="_blank">WebSockets | MDN</a></li>
+			<li><a href="https://habrahabr.ru/post/279291/" target="_blank">ServiceWorker и CacheStorage | Habr</a></li>
 			<li>This excellent <a href="https://docs.google.com/presentation/d/1r7QXGYOLCh4fcUq0jDdDwKJWNqWK1o4xMtYpKZCJYjM/present?slide=id.p19" target="_blank">set of slides</a> has more information on some of the points covered in this presentation</li>
 			<li>Vitaly Friedman: <a href="https://youtu.be/whFhyHysYYg" target="_blank">How We Moved To HTTP/2 To Improve Performance... And Failed</a></li>
 			<li>High Performance Browser Networking (O'Reilly): <a href="https://youtu.be/whFhyHysYYg" target="_blank">HTTP/2</a></li>
-			<li><a href="" target="_blank">ССЫЛКА</a></li>
+			<!--<li><a href="" target="_blank">ССЫЛКА</a></li>-->
 		</ul>
 	</section>
 
