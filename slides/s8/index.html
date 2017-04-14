@@ -164,6 +164,14 @@
 		</pre>
 	</section>
 
+	<section class="slide">
+		<h2>"Управление" кэшированием</h2>
+		<ul>
+			<li><span>Гет-параметр:</span><br><code>GET /script.js?_=1492172324776</code></li>
+			<li><span>Уникальные имена:</span><br><code>GET /bundle.026f8e459c8f89ef75fa7a78265a0025.js</code></li>
+		</ul>
+	</section>
+
 	<section class="slide question">
 		<h2>Cookies</h2>
 	</section>
@@ -575,7 +583,40 @@
 	</section>
 
 	<section class="slide">
-		<h2>Service Workers &mdash; это просто файл</h2>
+		<h2>Service Workers</h2>
+		<p class="medium-content">Работает в специальном скоупе <code>ServiceWorkerGlobalScope</code><br>События</p>
+		<ul>
+			<li><code>install</code></li>
+			<li><code>activate</code></li>
+			<li><code>fetch</code></li>
+			<li><code>message</code></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Service Worker lifecycle</h2>
+		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="sw-lifecycle.png" style="transform-origin: center;transform: translate(-56%,-50%) scale(0.85);"></div>
+	</section>
+
+	<section class="slide">
+		<h2>Установка Service Worker'а</h2>
+		<pre class="hljs js">
+			<code>navigator.serviceWorker.register('/sw.js', { scope: '/' })</code>
+			<code>    .then(function(registration) {</code>
+			<code>        // Registration was successful</code>
+			<code>        console.log('SW registration OK:', registration);</code>
+			<code>    })</code>
+			<code>    .catch(function(err) {</code>
+			<code>        // registration failed :(</code>
+			<code>        console.log('SW registration FAIL:', err);</code>
+			<code>    });</code>
+			<code>});</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Service Worker &mdash; это просто файл</h2>
 		<pre class="hljs js">
 			<code>this.addEventListener('install', function (event) {</code>
 			<code>    console.log('Service worker установлен')</code>
@@ -591,6 +632,9 @@
 			<code> </code>
 		</pre>
 	</section>
+
+
+
 
 
 
