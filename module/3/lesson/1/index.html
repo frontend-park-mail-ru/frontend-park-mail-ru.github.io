@@ -12,8 +12,23 @@
 
 <main id="main-content"><h2 id="работа-с-данными-в-браузере">Работа с данными в браузере</h2>
 <p><strong>Смешанное занятие №7</strong></p>
-<p>Кэширование данных в браузере, использование cookies, хранение данных на клиенте. Service Workers и оффлайн-работа веб-приложений. Протокол WebSocket, взаимодействие клиента и сервера. HTTP/2.</p>
-<p><strong><a href="/slides/s8">Презентация лекции</a></strong></p></main>
+<p>Кэширование данных в браузере, использование cookies, хранение данных на клиенте. Протокол WebSocket, взаимодействие клиента и сервера. Service Workers и оффлайн-работа веб-приложений. HTTP/2.</p>
+<p><strong><a href="/slides/s8">Презентация лекции</a></strong></p>
+<h4 id="домашнее-задание">Домашнее задание</h4>
+<p>Теперь у вас есть все знания, чтобы начать реализовывать мультиплеер. Для общения между клиентом и сервером необходимо использовать быстрые и легковесные веб-сокеты.</p>
+<p>Внедрите в ваше приложение возможность работы в <strong><em>оффлайне</em></strong>. Напишите сервис-воркер и закешируйте в нём всю статику, необходимую для работы вашего приложения. В оффлайне должен быть доступен синглплеер. Если в вашей игре начисляются очки, то при игре в оффлайн-режиме они должны сохраняться в каком-нибудь сторадже и при появлении сети, они должны синхронизироваться с сервером. Как всегда, приветствуются продуктовые решения, удивите нас!</p>
+<p>Пример использования веб-сокетов и сервис-воркеров для организации <strong><em>оффлайн</em></strong>-работы приложения можно посмотреть в нашей мини-игрушке с танчиками. Я задеплоил её на хероку, она доступна <a href="https://sample-game-frontend.herokuapp.com/">по ссылке</a>. Исходники игры лежат в <a href="https://github.com/frontend-park-mail-ru/sample-game">репозитории на гитхабе</a>. Можно запустить игрушку локально и поизучать, как она работает. Если после этого <em>выключить</em> интернет на компьютере и <em>обновить</em> страницу, то все файлы игры достанутся из кэша и вы всё равно сможете в неё поиграть.</p>
+<p>С любыми вопросами вы можете обращаться к своим менторам и к любому их преподавателей. До встречи на следующей лекции!!!</p>
+<h4 id="полезные-ссылки">Полезные ссылки</h4>
+<ul lang="en">
+            <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=ru" target="_blank">Кэширование HTTP</a> &mdash; Google Developers</li>
+            <li><a href="https://developer.mozilla.org/ru/docs/WebSockets" target="_blank">WebSockets | MDN</a></li>
+            <li><a href="https://ru.wikipedia.org/wiki/JSON-RPC" target="_blank">Описание JSON-RPC</a> и хорошая <a href="https://github.com/teambition/jsonrpc-lite" target="_blank">библиотечка</a> для работы с ним из браузера</li>
+            <li><a href="https://habrahabr.ru/post/279291/" target="_blank">ServiceWorker и CacheStorage | Habr</a></li>
+            <li>This excellent <a href="https://docs.google.com/presentation/d/1r7QXGYOLCh4fcUq0jDdDwKJWNqWK1o4xMtYpKZCJYjM/present?slide=id.p19" target="_blank">set of slides</a> has more information on some of the points covered in this presentation</li>
+            <li>Vitaly Friedman: <a href="https://youtu.be/whFhyHysYYg" target="_blank">How We Moved To HTTP/2 To Improve Performance... And Failed</a></li>
+            <li>High Performance Browser Networking (O'Reilly): <a href="https://youtu.be/whFhyHysYYg" target="_blank">HTTP/2</a></li>
+</ul></main>
 
 
 <footer>
