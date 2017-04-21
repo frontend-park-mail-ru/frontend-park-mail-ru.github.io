@@ -531,7 +531,7 @@
 
 
 
-
+	<!--css всё-->
 
 
 
@@ -693,8 +693,180 @@
 
 
 
+	<section class="slide">
+		<h2>Область просмотра <mark>(viewport)</mark></h2>
+		<div style="position:relative;width: 100%;height: 80%;">
+			<img class="place" src="viewports.png" style="transform-origin: center;transform: translate(-50%, -50%) scale(1.1);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Область просмотра <mark>(viewport)</mark></h2>
+		<pre class="hljs html">
+			<code>&lt;meta name=viewport</code>
+			<code>     <span hidden>&lt;meta</span> content="width=device-width, initial-scale=1"></code>
+			<code> </code>
+		</pre>
+		<b>Значения:</b>
+		<ul>
+			<li>width, height</li>
+			<li>initial-scale</li>
+			<li>minimum-scale, maximum-scale</li>
+			<li>user-scalable</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>CSS-правило <mark>@viewport</mark></h2>
+		<pre class="hljs css">
+			<code>@viewport {</code>
+			<code>     width: device-width;</code>
+			<code>     height: device-height;</code>
+			<code>     zoom: 2;</code>
+			<code>     user-zoom: fixed;</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Пиксели? Пиксели!</h2>
+		<div style="position:relative;width: 100%;height: 80%;">
+			<img class="place" src="css1.png" style="transform-origin: center;transform: translate(-50%, -50%) scale(1.5);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Типы пикселей</h2>
+		<p class="small-content"></p>
+		<ul>
+			<li>Аппаратные пиксели</li>
+			<li>Аппаратно-независимые пиксели (Device-independent pixels, dip)</li>
+			<li>Пиксель CSS</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Пиксели? Пиксели!</h2>
+		<div style="position:relative;width: 100%;height: 80%;">
+			<img class="place" src="css2.gif" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.8);">
+		</div>
+	</section>
+
+
+
+
+
+
+	<section class="slide">
+		<h2>Нативное взаимодействие</h2>
+		<p>Проблемы:</p>
+		<ul>
+			<li>Зоопарк событий</li>
+			<li>300-ms задержка</li>
+			<li>Нет нужных событий</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Зоопарк событий</h2>
+		<p class="medium-content">События mouse-events:</p>
+		<ul>
+			<li>mousedown</li>
+			<li>mouseup</li>
+			<li>click</li>
+			<li>dblclick</li>
+			<li>contextmenu</li>
+			<li>mouseover (-out, -move)</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Зоопарк событий</h2>
+		<p class="medium-content">События touch-events:</p>
+		<ul>
+			<li>touchstart</li>
+			<li>touchmove</li>
+			<li>touchcancel</li>
+			<li>touchend</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Решение</h2>
+		<div style="position:relative;width: 100%;height: 80%;">
+			<img class="place" src="pointer.png" style="transform-origin: center;transform: translate(-50%, -50%) scale(1.5);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Зоопарк событий</h2>
+		<p class="medium-content">События pointer-events:</p>
+		<ul>
+			<li>pointerdown</li>
+			<li>pointerup</li>
+			<li>pointercancel</li>
+			<li>pointermove</li>
+			<li>pointerover</li>
+			<li>pointerout</li>
+			<li>gotpointercapture</li>
+			<li>lostpointercapture</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>pointer-events</h2>
+		<div style="position:relative;width: 100%;height: 80%;">
+			<img class="place" src="peciu.png" style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.8);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>300-ms задержка</h2>
+		<p>Между событием touchend и click проходит 300-350ms</p>
+		<pre class="hljs css">
+			<code>html {</code>
+    		<code>    touch-action: manipulation;</code>
+   		 	<code>    touch-action: auto;</code>
+   		 	<code>    touch-action: pan-x; /* pan-x */</code>
+   		 	<code>    touch-action: pinch-zoom;</code>
+   		 	<code>}</code>
+   		 	<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Чего-то не хватает?</h2>
+		<p class="small-content"></p>
+		<ul>
+			<li>pan</li>
+			<li>swipe</li>
+			<li>rotate</li>
+			<li>pinch/zoom</li>
+			<li>doubletap</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Решение</h2>
+		<pre class="hljs js">
+			<code>// HammerJS - http://hammerjs.github.io/</code>
+    		<code>const hammertime = new Hammer(element, options);</code>
+   		 	<code>hammertime.on('swipe', function(event) {</code>
+   		 	<code>    console.log(event);</code>
+   		 	<code>});</code>
+   		 	<code> </code>
+		</pre>
+	</section>
+
+
+
+
+
+
+
 	<section class="slide question">
-		<h2><a style="color: royalblue" href="https://goo.gl/eDCsJK" target="_blank">https://goo.gl/eDCsJK</a></h2>
+		<h2><a style="color: royalblue; font-size: 85%" href="https://goo.gl/eDCsJK" target="_blank">https://goo.gl/eDCsJK</a></h2>
 	</section>
 
 
@@ -769,31 +941,6 @@
 			<code> </code>
 		</pre>
 	</section>
-
-
-
-
-
-
-
-	<section class="slide">
-		<h2>Планчик</h2>
-		<ul>
-			<li>Актуальность</li>
-			<li>Подходы (отдельная версия -> responsive -> adaptive -> gd&pe -> pwa)</li>
-			<li>Стили (медиа запросы CSS и SCSS)</li>
-			<li>Взаимодействие с пользователем</li>
-			<li>Всякие API</li>
-			<li>PWA</li>
-		</ul>
-	</section>
-
-
-
-
-
-
-
 
 
 
