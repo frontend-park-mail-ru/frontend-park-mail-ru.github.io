@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Data Binding</title>
+	<meta name="viewport" content="initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+</head>
+<body style="padding-top: 15%">
+
+	<div class="ui text container">
+		<form class="ui form">
+			<h1 class="ui dividing header" data-bind data-bind-source="username" data-bind-type="textContent">Привет, мир!</h1>
+			<div class="field">
+				<label for="name">Как вас зовут?</label>
+				<input type="text" id="name" name="name" value="" placeholder="Представьтесь" data-bind data-bind-to="username" data-bind-type="value">
+			</div>
+		</form>
+	</div>
+
+
+
+	<script src="script.js"></script>
+
+</body>
+</html>

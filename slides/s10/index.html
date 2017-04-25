@@ -33,36 +33,261 @@
 
 	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
 
+	<style>
+		.slide pre {
+			font-size: 100%;
+		}
+	</style>
+
 </head>
 <body class="shower list">
 
 	<header class="caption">
-		<h1>Веб-компоненты и Virtual DOM</h1>
+		<h1>Веб-компоненты, Data Binding и Virtual DOM</h1>
 		<p>Технопарк, 2017 г.</p>
 	</header>
 
 	<section class="slide">
-		<h2 class="shout">Веб-компоненты и Virtual DOM<br/>
+		<h2 class="shout"><small style="font-size:80%">Веб-компоненты, Data Binding и Virtual DOM</small><br/>
 			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
 		</h2>
 	</section>
 
+
+
+
+
+
+
+	<section class="slide question">
+		<h2>Веб-компоненты</h2>
+	</section>
+
 	<section class="slide">
 		<h2>Современные веб-компоненты</h2>
-		<p></p>
+		<blockquote>
+			<p class="small-content"><b>Веб-компоненты</b> &mdash; технология, которая позволяет создавать многократно используемые компоненты в веб-приложениях. Веб-компоненты поддерживаются веб-браузерами напрямую и <mark>не требуют дополнительных библиотек для работы</mark>. Модель веб-компонентов подразумевает инкапсуляцию и совместимость отдельных элементов</p>
+			<p class="note">На данный момент частичная поддержка существует в браузерах Chrome, Firefox, Opera и Safari. Для браузеров не поддерживающих веб-компоненты реализованы полифиллы</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Современные веб-компоненты</h2>
+		<p>Веб-компоненты включают в себя четыре технологии:</p>
 		<ul>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
+			<li>HTML Templates &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template" target="_blank">MDN</a></li>
+			<li>Shadow DOM v1 &mdash; <a href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">developers.google.com</a></li>
+			<li>Custom Elements API v1 &mdash; <a href="https://github.com/shawnbot/custom-elements" target="_blank">описание</a></li>
+			<li>HTML Imports &mdash; <a href="https://htmlhook.ru/html-imports.html" target="_blank">htmlhook.ru</a></li>
 		</ul>
 	</section>
 
 
 
 	<section class="slide">
+		<h2>HTML Templates</h2>
+		<blockquote>
+			<p class="small-content"><b>HTML Templates</b> &mdash; фрагменты HTML, которые могут быть переиспользованы программистом. Содержимое тегов <code>&lt;template></code> парсится браузером, но отрабатывает только в момент вставки шаблона в DOM</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="html-tmpl-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+		</div>
+	</section>
+
+
+
+
+
+	<section class="slide question" style="background-color:#e6e6e6;">
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="shadow.jpg" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.9);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Shadow DOM v1</h2>
+		<blockquote>
+			<p class="small-content"><b>Shadow DOM</b> &mdash; инструмент инкапсуляции HTML. Shadow DOM позволяет изменять внутреннее представление HTML элементов, оставляя внешнее представление неизменным</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Shadow DOM v1</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="shadow-dom-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+		</div>
+	</section>
+
+
+
+	<section class="slide">
+		<h2>Custom Elements API v1</h2>
+		<blockquote>
+			<p class="small-content"><b>Custom Elements API</b> &mdash; позволяют создавать и определять API <mark>собственных</mark> HTML элементов</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements API v1</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="custom-elements-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+		</div>
+	</section>
+
+
+
+	<section class="slide">
+		<h2>HTML Imports</h2>
+		<blockquote>
+			<p class="small-content"><b>HTML Imports</b> &mdash; позволяют импортировать фрагменты разметки из других файлов без использования AJAX и похожих способов</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Imports</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="html-imports-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+		</div>
+	</section>
+
+
+
+
+	<section class="slide">
+		<h2>Современные веб-компоненты</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="web-components.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.9);">
+		</div>
+	</section>
+
+	<section class="slide question">
+		<h2><a style="color: royalblue" href="/examples/web-components/" target="_blank">Пример</a></h2>
+	</section>
+
+
+
+
+
+
+	<section class="slide question">
+		<h2>Data Binding</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Связывание данных (Data Binding)</h2>
+		<blockquote>
+			<p class="small-content"><b>Связывание данных</b> &mdash; это процесс, который устанавливает соединение между UI приложения и бизнес-логикой</p>
+			<p class="note">Различают <mark>одностороннее</mark> и <mark>двустороннее</mark> связывание данных &mdash; <a href="/examples/data-binding/" target="_blank">пример</a></p>
+			<p class="note"><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/" target="_blank">Easy Two-Way Data Binding in JavaScript</a></p>
+		</blockquote>
+	</section>
+
+
+
+
+
+
+
+
+
+	<section class="slide question">
+		<h2>Virtual DOM</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Virtual DOM</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="dom-vs-virtual_dom.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.35);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Virtual DOM</h2>
+		<blockquote>
+			<p class="small-content"><b>Virtual DOM</b> &mdash; это <mark>техника и набор библиотек / алгоритмов</mark>, которые позволяют нам улучшить производительность на клиентской стороне, избегая прямой работы с DOM путем создания и работы c <mark>абстракцией</mark>, имитирующей DOM-дерево</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>Virtual DOM</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="meme.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Virtual DOM</h2>
+		<div style="display: flex; justify-content: center; width: 100%" id="kek">
+			<style>
+				.slide #kek pre code {
+					line-height: 1.5;
+				}
+			</style>
+			<div style="width: 50%">
+				<pre class="hljs js">
+					<code>// before</code>
+					<code>{</code>
+					<code>    tagName: 'div',</code>
+					<code>    classes: ['header'],</code>
+					<code>    attributes: {</code>
+					<code>        hidden: false</code>
+					<code>    }</code>
+					<code>}</code>
+					<code> </code>
+				</pre>
+			</div>
+			<div style="width: 50%">
+				<pre class="hljs js">
+					<code>// after</code>
+					<code>{</code>
+					<code>    tagName: 'div',</code>
+					<code>    classes: ['header'],</code>
+					<code>    attributes: {</code>
+					<code>        <mark>hidden: true</mark></code>
+					<code>    }</code>
+					<code>}</code>
+					<code> </code>
+				</pre>
+			</div>
+		</div>
+		<pre class="hljs js">
+			<code>// Real DOM change</code>
+			<code>div.setAttribute('hidden', 'true')</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Virtual DOM</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="vdom.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+		</div>
+	</section>
+
+	<section class="slide question">
+		<h2><a style="color: royalblue" href="/examples/vdom/" target="_blank">Пример</a></h2>
+	</section>
+
+
+
+
+
+
+
+	<section class="slide">
 		<h2>Полезные ссылки</h2>
 		<ul lang="en">
+			<li>Статьи на хабре про <a href="https://habrahabr.ru/post/210058/" target="_blank">веб-компоненты</a>, про <a href="https://habrahabr.ru/post/180377/" target="_blank">Shadow DOM</a></li>
+			<li><a href="https://learn.javascript.ru/webcomponents" target="_blank">Веб-компоненты: взгляд в будущее</a> на learn.javascript.ru</li>
+			<li><a href="https://developers.google.com/web/fundamentals/getting-started/primers/customelements" target="_blank">Custom Elements v1</a> на developers.google.com</li>
+			<li><a href="https://frontender.info/shadowdom/" target="_blank">Shadow DOM</a> на frontender.info</li>
+			<li><a href="https://www.webcomponents.org/" target="_blank">webcomponents.org</a></li>
+			<li><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/" target="_blank">Easy Two-Way Data Binding in JavaScript</a></li>
+			<li><a href="https://github.com/Matt-Esch/virtual-dom" target="_blank">Описание принципа работы VDOM</a> и <a href="https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060" target="_blank">статья на медиуме</a></li>
 			<li><a href="" target="_blank">ССЫЛКА</a></li>
 		</ul>
 	</section>
