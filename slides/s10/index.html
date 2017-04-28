@@ -59,8 +59,8 @@
 
 	<!--ВЕБ-КОМПОНЕНТЫ-->
 
-	<section class="slide question">
-		<h2>Веб-компоненты</h2>
+	<section class="slide">
+		<h2 class="shout">Веб-компоненты</h2>
 	</section>
 
 	<section class="slide">
@@ -182,6 +182,25 @@
 			<code> </code>
 		</pre>
 		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>Shadow DOM</h2>
+		<pre class="hljs html">
+			<code>#shadow-root</code>
+			<code>&lt;style></code>
+			<code>    :host {</code>
+			<code>        opacity: 0.4;</code>
+			<code>        will-change: opacity;</code>
+			<code>        transition: opacity 300ms ease-in-out;</code>
+			<code>    }</code>
+			<code>    :host(:hover) {</code>
+			<code>        opacity: 1;</code>
+			<code>    }</code>
+			<code>    ::slotted(&lt;selector>) { ... }</code>
+			<code>&lt;/style></code>
+			<code> </code>
+		</pre>
 	</section>
 
 
@@ -437,6 +456,10 @@
 		</pre>
 	</section>
 
+	<section class="slide question">
+		<h2><a style="color: royalblue" href="/examples/web-components/component.html" target="_blank">Пример</a></h2>
+	</section>
+
 
 
 
@@ -457,6 +480,55 @@
 		</div>
 	</section>
 
+	<section class="slide">
+		<h2>HTML Imports</h2>
+		<pre class="hljs html">
+			<code>&lt;!-- imported.html --></code>
+			<code>&lt;div id="loader"></code>
+			<code>    &lt;span>Loading...&lt;/span></code>
+			<code>&lt;/div></code>
+			<code>&lt;script></code>
+			<code>    window.Module = class M { ... }</code>
+			<code>&lt;/script></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Imports</h2>
+		<pre class="hljs html">
+			<code>&lt;!-- index.html --></code>
+			<code>&lt;head></code>
+			<code>    &lt;link rel="<mark>import</mark>" href="<mark>imported.html</mark>"></code>
+			<code>&lt;/head></code>
+			<code> </code>
+		</pre>
+		<pre class="hljs js">
+			<code>const link = document.querySelector('link[rel=import]');</code>
+			<code>const content = link.<mark>import</mark>.querySelector('#loader');</code>
+			<code>document.body.appendChild(content.cloneNode(true));</code>
+			<code>const module = new Module();</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Imports</h2>
+		<pre class="hljs html">
+			<code>&lt;!-- imported.html --></code>
+			<code>&lt;style <mark>scoped</mark>></code>
+			<code>    div { font-weight: 900; }</code>
+			<code>&lt;/style></code>
+			<code>&lt;div id="loader"></code>
+			<code>    &lt;span>Loading...&lt;/span></code>
+			<code>&lt;/div></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide question">
+		<h2><a style="color: royalblue" href="/examples/web-components/main.html" target="_blank">Пример</a></h2>
+	</section>
 
 
 
@@ -480,8 +552,8 @@
 
 	<!--DATA-BINDING-->
 
-	<section class="slide question">
-		<h2>Data Binding</h2>
+	<section class="slide">
+		<h2 class="shout">Data Binding</h2>
 	</section>
 
 	<section class="slide">
@@ -503,8 +575,8 @@
 	<!--VDOM-->
 
 
-	<section class="slide question">
-		<h2>Virtual DOM</h2>
+	<section class="slide">
+		<h2 class="shout">Virtual DOM</h2>
 	</section>
 
 	<section class="slide">
