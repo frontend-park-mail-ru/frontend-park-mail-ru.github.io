@@ -8,12 +8,12 @@
 </head>
 <body style="padding-top: 15%">
 
-	<div class="ui text container">
+	<div class="ui text container" id="root">
 		<form class="ui form">
-			<h1 class="ui dividing header" data-bind data-bind-source="username" data-bind-type="textContent">Привет, мир!</h1>
+			<h1 class="ui dividing header">Привет, <span data-bind data-bind-source-to="username" data-bind-type="textContent">мир</span>!</h1>
 			<div class="field">
 				<label for="name">Как вас зовут?</label>
-				<input type="text" id="name" name="name" value="" placeholder="Представьтесь" data-bind data-bind-to="username" data-bind-type="value">
+				<input type="text" id="name" name="name" value="" placeholder="Представьтесь" data-bind data-bind-source-from="username">
 			</div>
 		</form>
 	</div>
