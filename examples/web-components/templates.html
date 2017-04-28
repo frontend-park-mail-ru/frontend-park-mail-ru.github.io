@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Templates</title>
+</head>
+<body>
+
+<template id="tmpl">
+	<h1>Заголовок: <slot name="title"></slot></h1>
+	<img src="cat.jpg" alt="My Image">
+	<script>
+		alert(1);
+	</script>
+</template>
+
+<div id="source">
+	<span slot="title">Hello, World!</span>
+</div>
+
+<script>
+	const target = document.getElementById('source');
+	const tmpl = document.getElementById('tmpl');
+
+	// two way
+	// target.appendChild(tmpl.content.cloneNode(true));
+
+	/*  or  */
+
+	// target.appendChild(document.importNode(tmpl.content, true));
+
+	// /*  or  */
+
+	 const root = target.attachShadow({ mode: 'open' });
+	 root.appendChild(tmpl.content.cloneNode(true));
+</script>
+
+</body>
+</html>

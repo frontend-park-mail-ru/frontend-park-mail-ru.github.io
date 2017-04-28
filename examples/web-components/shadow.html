@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Templates</title>
+</head>
+<body>
+
+<div id="element1">
+	<h1>Header h1</h1>
+	<h3>Subheader h3</h3>
+</div>
+
+<hr/>
+
+<div id="element2">
+	<h1 slot="h1">Header h1</h1>
+	<h3 slot="h3">Subheader h3</h3>
+</div>
+
+<script>
+	const root1 = element1.attachShadow({ mode: 'open' });
+	root1.innerHTML = `
+		<div>
+			<slot></slot>
+		</div>
+	`;
+
+	const root2 = element2.attachShadow({ mode: 'open' });
+	root2.innerHTML = `
+		<div>
+			<slot name="h1"></slot>
+			<p>Hello, world!</p>
+			<slot name="h3"></slot>
+		</div>
+	`;
+</script>
+
+</body>
+</html>

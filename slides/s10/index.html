@@ -75,8 +75,8 @@
 		<h2>Современные веб-компоненты</h2>
 		<p>Веб-компоненты включают в себя четыре технологии:</p>
 		<ul>
-			<li>HTML Templates &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template" target="_blank">MDN</a></li>
 			<li>Shadow DOM v1 &mdash; <a href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">developers.google.com</a></li>
+			<li>HTML Templates &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template" target="_blank">MDN</a></li>
 			<li>Custom Elements API v1 &mdash; <a href="https://github.com/shawnbot/custom-elements" target="_blank">описание</a></li>
 			<li>HTML Imports &mdash; <a href="https://htmlhook.ru/html-imports.html" target="_blank">htmlhook.ru</a></li>
 		</ul>
@@ -84,23 +84,7 @@
 
 
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<blockquote>
-			<p class="small-content"><b>HTML Templates</b> &mdash; фрагменты HTML, которые могут быть переиспользованы программистом. Содержимое тегов <code>&lt;template></code> парсится браузером, но отрабатывает только в момент вставки шаблона в DOM</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="html-tmpl-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
-		</div>
-	</section>
-
-
-
-
+	<!--shadow dom-->
 
 	<section class="slide question" style="background-color:#e6e6e6;">
 		<div style="position:relative;width: 100%; height: 75%;">
@@ -122,7 +106,195 @@
 		</div>
 	</section>
 
+	<section class="slide">
+		<h2><code>&lt;input type="range"></code></h2>
+		<input type="range" style="transform: scale(3) translateX(-50%); margin-left: 50%;">
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="shadow-user-agent.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+		</div>
+	</section>
 
+	<section class="slide">
+		<h2>Shadow DOM</h2>
+		<pre class="hljs js">
+			<code>// Shadow DOM v0</code>
+			<code>const root = element.createShadowRoot();</code>
+			<code> </code>
+			<code>// Shadow DOM v1</code>
+			<code>const root = element.attachShadow({ <mark>mode: 'open'</mark> });</code>
+			<code>// const root = element.attachShadow({ <mark>mode: 'close'</mark> });</code>
+			<code> </code>
+			<code>element.shadowRoot === root; // true</code>
+			<code> </code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs html">
+			<code>&lt;!--html--></code>
+			<code>&lt;div id="element1"></code>
+			<code>    &lt;h1>Header h1&lt;/h1></code>
+			<code>    &lt;h3>Subheader h3&lt;/h3></code>
+			<code>&lt;/div></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Shadow DOM</h2>
+		<pre class="hljs js">
+			<code>const root1 = element1.attachShadow({ <mark>mode: 'open'</mark> });</code>
+			<code>root1.innerHTML = `</code>
+			<code class="hljs html">    &lt;div></code>
+			<code class="hljs html">        <mark>&lt;slot>&lt;/slot></mark></code>
+			<code class="hljs html">    &lt;/div></code>
+			<code>`;</code>
+			<code> </code>
+		</pre>
+		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs html">
+			<code>&lt;!--html--></code>
+			<code>&lt;div id="element2"></code>
+			<code>    &lt;h1 slot="h1">Header h1&lt;/h1></code>
+			<code>    &lt;h3 slot="h3">Subheader h3&lt;/h3></code>
+			<code>&lt;/div></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Shadow DOM</h2>
+		<pre class="hljs js">
+			<code>const root2 = element2.attachShadow({ <mark>mode: 'open'</mark> });</code>
+			<code>root2.innerHTML = `</code>
+			<code class="hljs html">    &lt;div></code>
+			<code class="hljs html">        <mark>&lt;slot name="h1">&lt;/slot></mark></code>
+			<code class="hljs html">        &lt;p>Hello, world!&lt;/p></code>
+			<code class="hljs html">        <mark>&lt;slot name="h3">&lt;/slot></mark></code>
+			<code class="hljs html">    &lt;/div></code>
+			<code>`;</code>
+			<code> </code>
+		</pre>
+		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
+	</section>
+
+
+
+
+	<!--html templates-->
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<blockquote>
+			<p class="small-content"><b>HTML Templates</b> &mdash; это механизм для отложенного рендера клиентского контента, который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript. Содержимое тегов <code>&lt;template></code> парсится браузером, но отрабатывает только в момент вставки шаблона в DOM</p>
+		</blockquote>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<div style="position:relative;width: 100%; height: 75%;">
+			<img class="place" src="html-tmpl-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs html">
+			<code>&lt;!--html--></code>
+			<code>&lt;template id="tmpl"></code>
+			<code>    &lt;h3>Заголовок: &lt;slot name="title">&lt;/slot>&lt;/h3></code>
+			<code>    &lt;img src="image.png" alt="My Image"></code>
+			<code>    &lt;script></code>
+			<code>        alert(1);</code>
+			<code>    &lt;/script></code>
+			<code>&lt;/template></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs html">
+			<code>&lt;!--html--></code>
+			<code>&lt;div id="source"></code>
+			<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
+			<code>&lt;/div></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs js">
+			<code>const target = document.getElementById('source');</code>
+			<code>const tmpl = document.getElementById('tmpl');</code>
+			<code> </code>
+			<code>// two way</code>
+			<code>target.appendChild(tmpl.content.cloneNode(true));</code>
+			<code>/*  or  */</code>
+			<code>target.appendChild(document.importNode(tmpl.content, true));</code>
+			<code> </code>
+		</pre>
+		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs html">
+			<code>&lt;!-- result --></code>
+			<code>&lt;div id="source"></code>
+			<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
+			<code> </code>
+			<code>    &lt;h3>Заголовок: &lt;slot name="title">&lt;/slot>&lt;/h3></code>
+			<code>    &lt;img src="image.png" alt="My Image"></code>
+			<code>    &lt;script></code>
+			<code>        alert(1);</code>
+			<code>    &lt;/script></code>
+			<code>&lt;/div></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs js">
+			<code>const target = document.getElementById('source');</code>
+			<code>const tmpl = document.getElementById('tmpl');</code>
+			<code> </code>
+			<code>/*  or  */</code>
+			<code>const root = target.<mark>attachShadow</mark>({mode:'open'});</code>
+			<code>root.appendChild(tmpl.content.cloneNode(true));</code>
+			<code> </code>
+		</pre>
+		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>HTML Templates</h2>
+		<pre class="hljs html">
+			<code>&lt;!-- result --></code>
+			<code>&lt;div id="source"></code>
+			<code>    &lt;h3>Заголовок: &lt;slot name="title">Hello, World!&lt;/slot>&lt;/h3></code>
+			<code>    &lt;img src="image.png" alt="My Image"></code>
+			<code>    &lt;script></code>
+			<code>        alert(1);</code>
+			<code>    &lt;/script></code>
+			<code>&lt;/div></code>
+			<code> </code>
+		</pre>
+	</section>
+
+
+
+
+
+	<!--custom elements-->
 
 	<section class="slide">
 		<h2>Custom Elements API v1</h2>
@@ -140,6 +312,10 @@
 
 
 
+
+
+	<!--html imports-->
+
 	<section class="slide">
 		<h2>HTML Imports</h2>
 		<blockquote>
@@ -156,6 +332,10 @@
 
 
 
+
+
+
+	<!--modern web-components-->
 
 	<section class="slide">
 		<h2>Современные веб-компоненты</h2>
@@ -413,7 +593,7 @@
 			<li>Статьи на хабре про <a href="https://habrahabr.ru/post/210058/" target="_blank">веб-компоненты</a>, про <a href="https://habrahabr.ru/post/180377/" target="_blank">Shadow DOM</a></li>
 			<li><a href="https://learn.javascript.ru/webcomponents" target="_blank">Веб-компоненты: взгляд в будущее</a> на learn.javascript.ru</li>
 			<li><a href="https://developers.google.com/web/fundamentals/getting-started/primers/customelements" target="_blank">Custom Elements v1</a> на developers.google.com</li>
-			<li><a href="https://frontender.info/shadowdom/" target="_blank">Shadow DOM</a> на frontender.info</li>
+			<li>Shadow DOM <a href="https://frontender.info/shadowdom/" target="_blank">на frontender.info</a> и <a href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">на developers.google.com</a></li>
 			<li><a href="https://www.webcomponents.org/" target="_blank">webcomponents.org</a></li>
 			<li><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/" target="_blank">Easy Two-Way Data Binding in JavaScript</a></li>
 			<li><a href="https://github.com/Matt-Esch/virtual-dom" target="_blank">Описание принципа работы VDOM</a> и <a href="https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060" target="_blank">статья на медиуме</a></li>
