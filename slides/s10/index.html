@@ -310,6 +310,133 @@
 		</div>
 	</section>
 
+	<section class="slide">
+		<h2>Custom Elements</h2>
+		<pre class="hljs js">
+			<code>customElements.define(tagName, constructor, options);</code>
+			<code> </code>
+			<code>class MyHTMLElement extends HTMLElement {}</code>
+			<code>window.customElements.define('my-element', MyHTMLElement);</code>
+			<code> </code>
+		</pre>
+
+		<pre class="hljs html">
+			<code>&lt;!-- PROFIT --></code>
+			<code>&lt;my-element>&lt;/my-element></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements</h2>
+		<pre class="hljs js">
+			<code>// "super" is not a valid custom element name</code>
+			<code>document.createElement('super')</code>
+			<code>                instanceof HTMLUnknownElement; // true</code>
+			<code> </code>
+			<code>// "x-super" is a valid custom element name</code>
+			<code>document.createElement('x-super')</code>
+			<code>                instanceof HTMLElement; // true</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements styling</h2>
+		<pre class="hljs css">
+			<code>x-super:<mark>defined</mark> {</code>
+			<code>    display: block;</code>
+			<code>}</code>
+			<code>x-super:not(:defined) {</code>
+			<code>    display: none;</code>
+			<code>}</code>
+			<code>x-super {</code>
+			<code>    color: black;</code>
+			<code>}</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements</h2>
+		<pre class="hljs js">
+			<code>customElements.define('bigger-img', class extends Image {</code>
+			<code>    constructor(width=50, height=50) {</code>
+			<code>        super(width * 10, height * 10);</code>
+			<code>    }</code>
+			<code>}, {extends: 'img'});</code>
+			<code> </code>
+		</pre>
+
+		<pre class="hljs html">
+			<code>&lt;!-- This &lt;img> is a bigger img. --></code>
+			<code>&lt;img is="bigger-img" width="15" height="20"></code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements</h2>
+		<pre class="hljs js">
+			<code>const BiggerImage = customElements.get('bigger-img');</code>
+			<code>const image = new BiggerImage(15, 20);</code>
+			<code>console.assert(image.width === 150);</code>
+			<code>console.assert(image.height === 200);</code>
+			<code> </code>
+			<code>customElements.whenDefined('bigger-img')</code>
+			<code>    .then(() => {</code>
+			<code>        console.log('`bigger-img` ready!');</code>
+			<code>    });</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements</h2>
+		<pre class="hljs js">
+			<code>customElements.define('my-element', class extends HTMLElement {</code>
+			<code>    constructor() {</code>
+			<code>        super();</code>
+			<code>    }</code>
+			<code>    <mark>connectedCallback</mark>() { ... }</code>
+			<code>    <mark>disconnectedCallback</mark>() { ... }</code>
+			<code>    <mark>adoptedCallback</mark>() { ... }</code>
+			<code>    ...</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements</h2>
+		<pre class="hljs js">
+			<code>    ...</code>
+			<code>    get disabled() {</code>
+			<code>        return this.hasAttribute('disabled');</code>
+			<code>    }</code>
+			<code>    set disabled(value) {</code>
+			<code>        if (value) {</code>
+			<code>            return this.setAttribute('disabled', '');</code>
+			<code>        }</code>
+			<code>        this.removeAttribute('disabled');</code>
+			<code>    }</code>
+			<code>    ...</code>
+			<code> </code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Elements</h2>
+		<pre class="hljs js">
+			<code>    ...</code>
+			<code>    <mark>attributeChangedCallback</mark>(attrName, oldVal, newVal) { ... }</code>
+			<code>    static get <mark>observedAttributes</mark>() {</code>
+			<code>        return ['open', 'disabled'];</code>
+			<code>    }</code>
+			<code>});</code>
+			<code> </code>
+		</pre>
+	</section>
+
 
 
 
@@ -590,10 +717,10 @@
 	<section class="slide">
 		<h2>Полезные ссылки</h2>
 		<ul lang="en">
-			<li>Статьи на хабре про <a href="https://habrahabr.ru/post/210058/" target="_blank">веб-компоненты</a>, про <a href="https://habrahabr.ru/post/180377/" target="_blank">Shadow DOM</a></li>
-			<li><a href="https://learn.javascript.ru/webcomponents" target="_blank">Веб-компоненты: взгляд в будущее</a> на learn.javascript.ru</li>
 			<li><a href="https://developers.google.com/web/fundamentals/getting-started/primers/customelements" target="_blank">Custom Elements v1</a> на developers.google.com</li>
 			<li>Shadow DOM <a href="https://frontender.info/shadowdom/" target="_blank">на frontender.info</a> и <a href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">на developers.google.com</a></li>
+			<li>Статьи на хабре про <a href="https://habrahabr.ru/post/210058/" target="_blank">веб-компоненты</a>, про <a href="https://habrahabr.ru/post/180377/" target="_blank">Shadow DOM</a> (немного устаревшие)</li>
+			<li><a href="https://learn.javascript.ru/webcomponents" target="_blank">Веб-компоненты: взгляд в будущее</a> на learn.javascript.ru (устарело)</li>
 			<li><a href="https://www.webcomponents.org/" target="_blank">webcomponents.org</a></li>
 			<li><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/" target="_blank">Easy Two-Way Data Binding in JavaScript</a></li>
 			<li><a href="https://github.com/Matt-Esch/virtual-dom" target="_blank">Описание принципа работы VDOM</a> и <a href="https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060" target="_blank">статья на медиуме</a></li>
