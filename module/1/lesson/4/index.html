@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>Работа с сетью, разработка API</title>
+	<title>Безопасность web-приложений, архитектура web-приложений и разработка API, тестирование компонент</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="/lib/main.css">
 	<link rel="icon" type="image/png" href="/lib/favicon.png" />
@@ -10,53 +10,14 @@
 </head>
 <body>
 
-<main id="main-content"><h2 id="работа-с-сетью-разработка-api">Работа с сетью, разработка API</h2>
+<main id="main-content"><h2 id="безопасность-web-приложений-архитектура-web-приложений-и-разработка-api-тестирование-компонент">Безопасность web-приложений, архитектура web-приложений и разработка API, тестирование компонент</h2>
 <p><strong>Смешанное занятие №4</strong></p>
-<p>Основы HTTP, методы HTTP. Организация работы с сетью из браузера. Написание сервисов. Промисы JS. Понятие API, разработка, документирование и тестирование API.</p>
-<p><strong><a href="/slides/s4">Презентация лекции</a></strong></p>
-<h4 id="домашнее-задание">Домашнее задание</h4>
-<p>Подходит к концу первый модуль, на кону рубежный контроль, а мы должны применить на практике знания, полученные на лекции про работу с Сетью.</p>
-<p><strong>Необходимо сделать следующее</strong></p>
-<ul>
-<li>Напишите свою собственную реализацию транспорта (модуля, который упрощает работу с HTTP-запросами) и необходимые для работы приложения сервисы. За использование Fetch API будет респект от преподавателей ;)</li>
-<li>Договоритесь в команде об API и задокументируйте его, используя любой инструмент</li>
-<li>Реализуйте интеграцию между фронтендом и бекендом. В вашем приложении должны быть функции регистрации/авторизации, должна быть возможность посмотреть список всех пользователей (таблицу лидеров)</li>
-<li>Напишите тесты на все методы вашего API. Пример того, как это сделать, можно посмотреть в нашем репозитории sample. Необходимо протестировать все аспекты работы API: коды ответов, формат запросов и ответов, возвращаемые ошибки в случаях, когда отправляются неверные данные...</li>
-</ul>
-<p>На рубежном контроле мы будем проверять выполнение всех домашних заданий. Для вашего удобства привожу здесь краткий</p>
-<h4 id="чек-лист-к-рк1">Чек лист к РК1</h4>
-<ul>
-<li>Ваше приложение <strong>задеплоено на heroku</strong></li>
-<li>Страницы приложения переключаются без перезагрузки сайта</li>
-<li>Выполнена интеграция с бекендом</li>
-<li>Используется модульный и компонентный подход, используются шаблонизаторы</li>
-<li>Есть формы авторизации и регистрации с валидацией данных</li>
-<li>Есть линтер, который не ругается на ваш код</li>
-<li>Всё ваше API протестировано и <strong>тесты действительно проходят</strong></li>
-</ul>
-<p>Для допуска к РК необходимо <strong>обязательно получить аппрув от ментора</strong>. Перед РК мы распределим команды по преподавателям, инфа об этом появится в <a href="https://goo.gl/Qh7N9T">ведомости</a>.</p>
-<p>Все материалы с занятия доступны в <a href="https://github.com/frontend-park-mail-ru/sample/tree/lesson-4">нашем репозитории sample</a> в ветке lesson-4. Посмотреть работу приложения можно <a href="https://sample-frontend.herokuapp.com/">здесь</a>. Чтобы запустить тесты, необходимо перейти <a href="https://sample-frontend.herokuapp.com/tests.html">вот сюда</a>.</p>
-<p>По всем вопросам вы можете обращаться к своим менторам или к преподавателям. Желаю вам успехов и до встречи на рубежном контроле!</p>
-<h4 id="полезные-ссылки">Полезные ссылки</h4>
-<ul lang="en">
-            <li>Same-origin policy описано <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank">здесь (MDN)</a> и <a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">здесь (wiki)</a></li>
-            <li>Метода обхода Same-origin policy <a href="http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy" target="_blank">stackoverflow</a></li>
-            <li>Iframe: <a href="https://webref.ru/html/iframe" target="_blank">WebReference.ru</a> и <a href="https://learn.javascript.ru/same-origin-policy" target="_blank">learn.javascript.ru</a></li>
-            <li>Кроссдоменные запросы на <a href="https://learn.javascript.ru/xhr-crossdomain" target="_blank">learn.javascript.ru</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank">Описание</a> HTTP access control (CORS)</li>
-            <li>Документация к <strong>Spring</strong> про CORS: <a href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank">здесь</a></li>
-            <li>API (application programming interface) <a href="https://en.wikipedia.org/wiki/Application_programming_interface" target="_blank">wiki</a></li>
-            <li>Документирование API с помощью <a href="http://swagger.io/" target="_blank">swagger</a>, <a href="https://apiary.io/" target="_blank">apiary</a> или <a href="https://apiblueprint.org/" target="_blank">apiblueprint</a></li>
-            <li>Семантический API: <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank">CRUD</a> и <a href="http://www.ibm.com/developerworks/ru/library/ws-restfu/" target="_blank">REST</a></li>
-            <li>Тестирование JavaScript <a href="https://jasmine.github.io/" target="_blank">с помощью Jasmine</a></li>
-            <li>Очень подробные посты, про Promise на <a href="https://learn.javascript.ru/promise" target="_blank">learn.javascript.ru</a> и на <a href="https://habrahabr.ru/post/209662/" target="_blank">хабре</a></li>
-            <li><a href="https://learn.javascript.ru/fetch" target="_blank">Fetch API</a></li>
-</ul></main>
+<p>Понятие Same Origin Policy, понятие CORS, понятие 3rd-party cookies. Понятие API и разработка API. Продвинутые способы работы с сетью, использование Fetch API. Тестирование клиентского кода, написание тестов на компоненты.</p></main>
 
 
 <footer>
 	<small>
-		<a href="/">Главная</a>  |  <a href="/articles/list">Список всех постов</a>  |  <a href="https://github.com/frontend-park-mail-ru" target="_blank">Наш github</a>  |  <a href="https://goo.gl/Qh7N9T" target="_blank">Ведомость с оценками</a>  |  <a href="https://park.mail.ru/blog/view/12/" target="_blank">Блог на портале</a>
+		<a href="/">Главная</a>  |  <a href="https://github.com/frontend-park-mail-ru" target="_blank">Наш github</a>  |  <a href="https://goo.gl/Qh7N9T" target="_blank">Ведомость с оценками</a>  |  <a href="https://park.mail.ru/blog/view/12/" target="_blank">Блог на портале</a>
 	</small>
 	<h4 style="margin-top: 0;">✢ ✢ ✢</h4>
 </footer>
