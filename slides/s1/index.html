@@ -321,9 +321,13 @@
 	<h2>Что такое Frontend-разработка?</h2>
 	<blockquote>
 		<p class="small-content"><b>Frontend-разработка</b> &mdash; это работа по созданию публичной части
-			веб-приложения, с которой непосредственно контактирует пользователь и функционала который обычно выполняется
+			веб-приложения, с которой непосредственно контактирует пользователь, и функционала который обычно выполняется
 			на стороне клиента</p>
 	</blockquote>
+</section>
+
+<section class="slide question">
+	<h2><a href="https://thefwa.com/" style="font-size: 150%;" target="_blank" title="Favourite Website Awards">thefwa.com</a></h2>
 </section>
 
 <section class="slide">
@@ -366,17 +370,16 @@
 	<h2>Наша Dream-team <em>Менторов</em></h2>
 	<ul lang="ru">
 		<li>Телышев Антон &mdash; разработчик в Техдепартаменте Mail.Ru</li>
-		<li>Махмутов Шамиль &mdash; разработчик в Сбертехе???</li>
-		<li>Козинченко Евгений &mdash; кто?)</li>
-		<li>Слимов Никита &mdash; кто?))</li>
+		<li>Махмутов Шамиль &mdash; разработчик в Сбертехе</li>
+		<li>Козинченко Евгений &mdash; разработчик в компании SkyTrack фонда Сколково</li>
+		<li>Слимов Никита &mdash; разработчик электронного журнала ELJUR</li>
 		<li>Никитин Илья &mdash; разработчик в AT Consulting</li>
 		<li>Утробин Егор &mdash; разработчик в Почте@Mail.Ru</li>
-		<li>Сычугина Анна &mdash; кто?</li>
 		<li>Пешков Сергей &mdash; разработчик в Почте@Mail.Ru</li>
 		<li>Володин Сергей &mdash; разработчик в Почте@Mail.Ru</li>
 		<li>Орёл Александр &mdash; разработчик в Поиске@Mail.Ru</li>
-		<li>Степанов Денис &mdash; разработчик в Yandex???</li>
-		<li>Перескоков Владислав &mdash; студент 4-го семестра Технопарка</li>
+		<li>Степанов Денис &mdash; разработчик в Yandex</li>
+		<li>Перескоков Владислав &mdash; разработчик в Yandex</li>
 	</ul>
 </section>
 
@@ -601,9 +604,8 @@
 
 <section class="slide">
 	<h2>Клиент-серверная модель</h2>
-	<div style="position:relative;width: 100%; height: 80%; overflow: hidden"><img class="place" src="csm-large.png"
-																				   alt="Клиент-серверная модель"
-																				   style="transform-origin: center;transform: translate(-50%,-55%) scale(0.55);">
+	<div style="position:relative;width: 100%; height: 80%; overflow: hidden">
+		<img class="place" src="csm-large.png" style="transform-origin: center;transform: translate(-50%,-55%) scale(0.65);">
 	</div>
 </section>
 
@@ -617,28 +619,97 @@
 </section>
 
 <section class="slide">
-	<h2>Клиент-серверная vs p2p модель</h2>
-	<div style="position:relative;width: 100%; height: 80%; overflow: hidden"><img class="place" src="cs-vs-p2p.jpg"
-																				   alt="Сравнение клиент-серверной модели с моделью p2p"
-																				   style="transform-origin: center;transform: translate(-50%,-59.3%) scale(1.35);">
+	<h2>Структура web-приложений: этап 1</h2>
+	<div style="position:relative;width: 100%; height: 80%;">
+		<img class="place" src="web10.png" style="transform-origin: center; transform: translate(-50%, -50%) scale(0.45);" />
 	</div>
 </section>
 
 <section class="slide">
-	<h2>Клиент-серверная архитектура</h2>
-	<div style="position:relative;width: 100%; height: 75%; overflow: hidden"><img class="place"
-																				   src="client-server-diagram-internet.png"
-																				   alt="Клиент-серверная архитектура Интернета"
-																				   style="transform-origin: center;transform: translate(-50%,-51.5%) scale(1.4);">
+	<h2>Структура web-приложений: этап 1</h2>
+	<p class="medium-content"></p>
+	<ul lang="ru">
+		<li>
+			<strong>Frontend</strong>
+			<ol>
+				<li>Отображение статических HTML-страниц (HTML, CSS)</li>
+				<li>Контент на страницах, переходы по гиперссылкам</li>
+			</ol>
+		</li>
+		<li>
+			<strong>Backend</strong>
+			<ol>
+				<li>Хранение статических документов и отдача по запросу по протоколу HTTP</li>
+			</ol>
+		</li>
+	</ul>
+	<p class="note">На данном этапе сайты назывались web-ресурсами</p>
+</section>
+
+<section class="slide">
+	<h2>Структура web-приложений: этап 2</h2>
+	<div style="position:relative;width: 100%; height: 80%;">
+		<img class="place" src="web20.png" style="transform-origin: center; transform: translate(-50%, -50%) scale(0.35);" />
 	</div>
 </section>
 
 <section class="slide">
-	<h2>Современные веб-приложения</h2>
-	<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place"
-																				   src="web-application-models-over-time.png"
-																				   alt="Современные веб-приложения"
-																				   style="transform-origin: center;transform: translate(-50%,-55.5%) scale(0.95);">
+	<h2>Структура web-приложений: этап 2</h2>
+	<ul lang="ru">
+		<li>
+			<strong>Frontend</strong>
+			<ol>
+				<li>Отображение статических HTML-страниц (HTML, CSS)</li>
+				<li>Контент на страницах, переходы по гиперссылкам</li>
+				<li>Взаимодействие с сервисом посредством форм</li>
+			</ol>
+		</li>
+		<li>
+			<strong>Backend</strong>
+			<ol>
+				<li>Хранение статических документов и отдача по запросу по протоколу HTTP</li>
+				<li>Обработка пользовательских запросов и генерация динамических страниц</li>
+				<li>Хранение данных в базе данных</li>
+			</ol>
+		</li>
+	</ul>
+	<p class="note">На данном этапе сайты назывались web-сервисами</p>
+</section>
+
+<section class="slide">
+	<h2>Структура web-приложений: этап 3</h2>
+	<div style="position:relative;width: 100%; height: 60%; overflow: hidden; margin-top: 10%;">
+		<img class="place" src="rest-api-on-rpi.png" style="transform-origin: center; transform: translate(-50%, -26%) scale(1.3);" />
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Структура web-приложений: этап 3</h2>
+	<ul lang="ru">
+		<li>
+			<strong>Frontend</strong>
+			<ol>
+				<li>Хранение и доступ к статическому контенту (файлы стилей, скрипты)</li>
+				<li>Генерация и отображение пользовательского интерфейса</li>
+				<li>Взаимодействие с пользователем и выполнение запросов к API</li>
+				<li>Обновление пользовательского интерфейса в ответ на действия пользователя</li>
+			</ol>
+		</li>
+		<li>
+			<strong>Backend</strong>
+			<ol>
+				<li>Реализация публичного API</li>
+				<li>Хранение данных в базе данных и работа с ними</li>
+			</ol>
+		</li>
+	</ul>
+	<p class="note">Сейчас такие сайты правильно называть web-приложениями</p>
+</section>
+
+<section class="slide">
+	<h2>Современные web-приложения</h2>
+	<div style="position:relative;width: 100%; height: 85%;">
+		<img class="place" src="web-application-models-over-time.png" style="transform-origin: center;transform: translate(-50%,-55.5%) scale(1);">
 	</div>
 </section>
 
@@ -646,7 +717,6 @@
 <section class="slide">
 	<h2 class="shout">Практика!</h2>
 </section>
-
 
 <section class="slide">
 	<h2>В какой ОС разрабатывать?</h2>
@@ -672,8 +742,8 @@
 
 <section class="slide">
 	<h2>Хостинг репозиториев <a href="https://github.com/">github.com</a></h2>
-	<p class="medium-content">
-	<ul lang="en">
+	<p class="small-content">
+	<ul lang="ru">
 		<li>Бесплатный</li>
 		<li>Совместная работа над проектом</li>
 	</ul>
@@ -681,8 +751,8 @@
 
 <section class="slide">
 	<h2>Бесплатный хостинг <a href="https://heroku.com/">heroku.com</a></h2>
-	<p class="medium-content">
-	<ul lang="en">
+	<p class="small-content">
+	<ul lang="ru">
 		<li>Бесплатный (есть и платная версия)</li>
 		<li>Большие возможности по деплою приложений</li>
 		<li>Поддерживает много языков программирования, в т.ч. и JavaScript (с&nbsp;помощью Node.js)</li>
@@ -691,16 +761,15 @@
 
 <section class="slide">
 	<h2>Что находится внутри браузера?</h2>
-	<p class="medium-content">
 	<div style="position:relative;width: 100%; height: 80%; overflow: hidden">
-		<img class="place" src="browser.png" style="transform-origin: center;transform: translate(-50%,-59.3%) scale(0.9);">
+		<img class="place" src="browser.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1);">
 	</div>
 </section>
 
 <section class="slide">
 	<h2>Ограничения JS</h2>
-	<p class="medium-content">
-	<ul lang="en">
+	<p class="small-content">
+	<ul lang="ru">
 		<li>Нельзя взаимодействовать с файловой системой</li>
 		<li>Нет дотупа к сетевым функциям</li>
 		<li>Нет возможности организовывать многопоточные вычисления</li>
@@ -721,27 +790,30 @@
 
 <section class="slide">
 	<h2>Демонстрация использования</h2>
+	<p class="small-content">
 	<pre>
-			<code>// script.js</code>
-			<code>const fs = require('fs');</code>
-			<code> </code>
-			<code>const text = fs.readFileSync('script.js', 'utf8');</code>
-			<code>console.log(text);</code>
-			<code> </code>
-		</pre>
+		<code>// script.js</code>
+		<code>const fs = require('fs');</code>
+		<code> </code>
+		<code>const text = fs.readFileSync('script.js', 'utf8');</code>
+		<code>console.log(text);</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Запуск скрипта</h2>
+	<p class="small-content">
 	<pre>
-			<code>~$ node script.js <mark>&lt;ENTER></mark></code>
-			<code>const fs = require('fs');</code>
-			<code> </code>
-			<code>const text = fs.readFileSync('script.js', 'utf8');</code>
-			<code>console.log(text);</code>
-			<code> </code>
-			<code>~$ </code>
-		</pre>
+		<code>~$ node script.js <mark>&lt;ENTER></mark></code>
+		<code>const fs = require('fs');</code>
+		<code> </code>
+		<code>const text = fs.readFileSync('script.js', 'utf8');</code>
+		<code>console.log(text);</code>
+		<code> </code>
+		<code>~$ </code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
@@ -752,39 +824,47 @@
 
 	<p>Использование</p>
 	<pre>
-			<code>~$ npm install md5 <mark>&lt;ENTER></mark></code>
-			<code> </code>
-			<code>~$ </code>
-		</pre>
+		<code>~$ npm install md5 <mark>&lt;ENTER></mark></code>
+		<code> </code>
+		<code>~$ </code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Можно создать свой собственный<br/>npm-модуль!</h2>
+	<p class="small-content">
 	<pre>
-			<code>~$ mkdir awesome && cd awesome <mark>&lt;ENTER></mark></code>
-			<code>~$ npm init -y <mark>&lt;ENTER></mark></code>
-			<code>~$ ls</code>
-			<code>package.json</code>
-			<code> </code>
-			<code>~$ </code>
-		</pre>
+		<code>~$ mkdir awesome && cd awesome <mark>&lt;ENTER></mark></code>
+		<code>~$ npm init -y <mark>&lt;ENTER></mark></code>
+		<code>~$ ls</code>
+		<code>package.json</code>
+		<code> </code>
+		<code>~$ </code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Содержимое package.json</h2>
+	<p class="small-content">
 	<pre>
-			<code>{</code>
-			<code>    "name": "awesome",</code>
-			<code>    "version": "1.0.0",</code>
-			<code>    "description": "",</code>
-			<code>    "main": "index.js",</code>
-			<code>    "keywords": [],</code>
-			<code>    "author": "",</code>
-			<code>    "license": "ISC"</code>
-			<code>}</code>
-		</pre>
+		<code>{</code>
+		<code>    "name": "awesome",</code>
+		<code>    "version": "1.0.0",</code>
+		<code>    "description": "",</code>
+		<code>    "main": "index.js",</code>
+		<code>    "keywords": [],</code>
+		<code>    "author": "",</code>
+		<code>    "license": "ISC"</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
+<section class="slide">
+	<h2 class="shout">Практика</h2>
+</section>
 
 <section class="slide">
 	<h2>Домашнее задание</h2>
@@ -822,7 +902,7 @@
 	<ul lang="en">
 		<li>Ссылка на <a href="https://github.com/frontend-park-mail-ru" target="_blank">нашу группу на github.com</a>
 		</li>
-		<li>Ссылка на <a href="http://frontend.tech-mail.ru/" target="_blank">блог</a>, где мы публикуем все материалы к
+		<li>Ссылка на <a href="https://frontend-park-mailru.firebaseapp.com/" target="_blank">блог</a>, где мы публикуем все материалы к
 			занятиям
 		</li>
 		<li>Документация к <a href="https://nodejs.org/api/" target="_blank">Node.js</a> и <a
