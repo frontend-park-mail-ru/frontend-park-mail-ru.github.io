@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Введение во фронтенд</title>
+	<title>Введение во Frontend</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,439 +23,680 @@
 			aspect = ratios[0];
 		}
 
-		if (['localhost', '127.0.0.1'].includes( window.location.hostname )) {
+		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
 			aspect = '4x3';
 		}
+		aspect = '4x3';
 
 		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
 	</script>
 
 	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
+	<link rel="stylesheet" href="/lib/slides.css">
+
+	<style>
+		#professors {
+			width: 100%;
+			height: 100%;
+			margin-top: 8%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+		}
+
+		#professors > div {
+			background-color: transparent;
+			height: 100%;
+			width: 23.5%;
+		}
+
+		#professors div p {
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			text-align: center;
+			line-height: 145%;
+			font-size: 1.6rem;
+			margin-top: 15%;
+			text-indent: 0;
+		}
+
+		#professors div img {
+			transform-origin: left top;
+			position: absolute;
+		}
+
+		#professors div.crop {
+			position: relative;
+			height: 70%;
+			width: 90%;
+			margin-left: 5%;
+			margin-top: 5%;
+			overflow: hidden;
+			box-shadow: 0 0 24px -8px rgba(0, 0, 0, 1);
+		}
+
+		#professors .pane {
+			position: absolute;
+			display: block;
+			width: 1000px;
+			height: 1000px;
+			background-color: rgba(255, 255, 255, 0.3);
+			transform-origin: left top;
+		}
+
+		#professors .pane-1 {
+			transform: translateX(25%) translateY(29%) rotate(80deg);
+			box-shadow: inset 0 0 64px -8px rgba(255, 255, 255, 0.9);
+		}
+
+		#professors .pane-2 {
+			transform: translateX(25%) translateY(28%) rotate(73deg);
+			box-shadow: inset 0 0 64px -8px rgba(255, 255, 255, 0.9);
+		}
+
+		#professors .pane-3 {
+			transform: translateX(25%) translateY(36%) rotate(95deg);
+			box-shadow: inset 0 0 64px -8px rgba(255, 255, 255, 0.9);
+		}
+
+		#professors .pane-4 {
+			transform: translateX(25%) translateY(37.5%) rotate(95deg);
+			box-shadow: inset 0 0 64px -8px rgba(255, 255, 255, 0.9);
+		}
+
+		#professors .pane-5 {
+			transform: translateX(25%) translateY(26.8%) rotate(66deg);
+			box-shadow: inset 0 0 24px -2px rgba(0, 0, 0, 0.2);
+			background-color: white;
+		}
+
+		#professors .firstname {
+			position: absolute;
+			display: block;
+			color: #000;
+			font-weight: 900;
+			top: 72%;
+			left: 8%;
+			font-size: 30px;
+		}
+
+		#professors .lastname {
+			position: absolute;
+			display: block;
+			color: #000;
+			font-weight: 400;
+			top: 79%;
+			left: 8%;
+			font-size: 25px;
+		}
+
+		#professors .email {
+			position: absolute;
+			display: block;
+			color: #000;
+			font-weight: 300;
+			top: 85.5%;
+			left: 8%;
+			font-size: 20px;
+		}
+
+		#professors .email a {
+			color: darkslateblue;
+			text-decoration: none;
+			background: none;
+		}
+
+		#professors .work {
+			position: absolute;
+			display: inline-block;
+			color: #000;
+			font-weight: 200;
+			top: 93%;
+			left: 8%;
+			font-size: 14px;
+			line-height: 1em;
+		}
+	</style>
+
+	<style>
+		.helper {
+			position: absolute;
+			display: block;
+			margin-left: 20%;
+
+			font-size: 50%;
+			font-weight: 100;
+			will-change: opacity;
+			opacity: 1;
+			transition: opacity 3s ease;
+		}
+
+		.helper.helper_hidden {
+			opacity: 0;
+		}
+	</style>
 
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Введение во фронтенд</h1>
-		<p>Технопарк, 2017 г.</p>
-	</header>
+<header class="caption">
+	<h1>Введение во Frontend</h1>
+	<p>Технопарк, осень, 2017 г.</p>
+</header>
 
-	<section class="slide">
-		<h2 class="shout">Введение во фронтенд<br/>
-			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
-		</h2>
-	</section>
+<section class="slide first">
+	<h2 class="shout">Введение во Frontend<br/>
+		<small>Слайды доступны по ссылке<br/>
+			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
+		</small>
+	</h2>
+</section>
 
-	<section class="slide">
-		<h2>Давайте знакомиться!</h2>
-
-		<section id="professors">
-			<style>
-				#professors {
-					width: 100%;
-					height: 70%;
-					margin-top: 10%;
-					display: flex;
-					flex-direction: row;
-					justify-content: space-around;
-				}
-
-				#professors > div {
-					background-color: transparent;
-					height: 100%;
-					width: 23%;
-				}
-
-				#professors div p {
-					text-transform: uppercase;
-					letter-spacing: 2px;
-					text-align: center;
-					line-height: 145%;
-					font-size: 1.6rem;
-					margin-top: 15%;
-					text-indent: 0;
-				}
-
-				#professors div img {
-					transform-origin: left top;
-					position: absolute;
-				}
-
-				#professors div.crop {
-					position: relative;
-					height: 60%;
-					width: 90%;
-					margin-left: 5%;
-					margin-top: 5%;
-					overflow: hidden;
-					box-shadow: 6px 6px 48px -1px rgba(145,139,145,0.65);
-				}
-			</style>
-
-			<div>
-				<div class="crop"><img src="a.mezin.jpg" alt="Мезин Артём" style="transform:scale(0.15);left:-10px;top:-25px;"></div>
-				<p>Мезин<br/>Артём</p>
+<section class="slide">
+	<h2>Давайте знакомиться!</h2>
+	<div id="professors">
+		<div class="user-1">
+			<div class="crop">
+				<img src="a.udalov.jpg" style="transform: scale(0.29); left: -70%; top: -9%;">
+				<div class="pane pane-1"></div>
+				<div class="pane pane-2"></div>
+				<div class="pane pane-3"></div>
+				<div class="pane pane-4"></div>
+				<div class="pane pane-5"></div>
+				<div class="firstname">Артур</div>
+				<div class="lastname">Удалов</div>
+				<div class="email"><a href="mailto:a.udalov@corp.mail.ru?subject=Технопарк" target="_blank">@a.udalov</a></div>
+				<div class="work">Почта@Mail.RU</div>
 			</div>
-			<div>
-				<div class="crop"><img src="a.ostapenko.jpg" alt="Остапенко Анатолий" style="transform:scale(0.20);left:-40px;top:0px;"></div>
-				<p>Остапенко<br/>Анатолий</p>
+		</div>
+		<div class="user-2">
+			<div class="crop">
+				<img src="a.tyuldukov.jpg" style="transform: scale(0.306); left: -190%; top: -9%;">
+				<div class="pane pane-1"></div>
+				<div class="pane pane-2"></div>
+				<div class="pane pane-3"></div>
+				<div class="pane pane-4"></div>
+				<div class="pane pane-5"></div>
+				<div class="firstname">Алексей</div>
+				<div class="lastname">Тюльдюков</div>
+				<div class="email"><a href="mailto:a.tyuldyukov@corp.mail.ru?subject=Технопарк" target="_blank">@a.tyuldyukov</a></div>
+				<div class="work">Beepcar</div>
 			</div>
-			<div>
-				<div class="crop"><img src="d.dorofeev.jpg" alt="Дорофеев Дмитрий" style="transform:scale(0.65);left:-25px;top:0px;"></div>
-				<p>Дорофеев<br/>Дмитрий</p>
+		</div>
+		<div class="user-3">
+			<div class="crop">
+				<img src="a.ostapenko.jpg" style="transform: scale(0.43); left: -192%; top: -1px;">
+				<div class="pane pane-1"></div>
+				<div class="pane pane-2"></div>
+				<div class="pane pane-3"></div>
+				<div class="pane pane-4"></div>
+				<div class="pane pane-5"></div>
+				<div class="firstname">Анатолий</div>
+				<div class="lastname">Остапенко</div>
+				<div class="email"><a href="mailto:a.ostapenko@corp.mail.ru?subject=Технопарк" target="_blank">@a.ostapenko</a></div>
+				<div class="work">Почта@Mail.RU</div>
 			</div>
-			<div>
-				<div class="crop"><img src="i.burlak.jpg" alt="Бурлак Илья" style="transform:scale(0.55);left:-80px;top:-20px;"></div>
-				<p>Бурлак<br/>Илья</p>
+		</div>
+		<div class="user-4">
+			<div class="crop">
+				<img src="d.dorofeev.jpg" style="transform: scale(0.87); left: -40%; top: -0.5%;">
+				<div class="pane pane-1"></div>
+				<div class="pane pane-2"></div>
+				<div class="pane pane-3"></div>
+				<div class="pane pane-4"></div>
+				<div class="pane pane-5"></div>
+				<div class="firstname">Дмитрий</div>
+				<div class="lastname">Дорофеев</div>
+				<div class="email"><a href="mailto:d.dorofeev@corp.mail.ru?subject=Технопарк" target="_blank">@d.dorofeev</a></div>
+				<div class="work">Beepcar</div>
 			</div>
+		</div>
+		<div class="user-5">
+			<div class="crop">
+				<img src="m.titova.jpg" style="transform: scale(0.285); left: -143%; top: -1px;">
+				<div class="pane pane-1"></div>
+				<div class="pane pane-2"></div>
+				<div class="pane pane-3"></div>
+				<div class="pane pane-4"></div>
+				<div class="pane pane-5"></div>
+				<div class="firstname">Марина</div>
+				<div class="lastname">Титова</div>
+				<div class="email"><a href="mailto:marina.titova@corp.mail.ru?subject=Технопарк" target="_blank">@marina.titova</a></div>
+				<div class="work">Почта@Mail.RU</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-		</section>
+<section class="slide question" id="q42">
+	<h2>
+		<span style="font-size: 150%; font-weight: 200;">Что такое <strong>Frontend</strong>?</span>
+		<span id="helper" class="helper helper_hidden">это вёрстка, HTML и CSS?</span>
+	</h2>
+	<script>
+		(function () {
+			'use strict';
+			let interval = setInterval(() => {
+				if (location.hash === '#q42') {
+					setTimeout(() => {
+						const helper = document.getElementById('helper');
+						helper.classList.toggle('helper_hidden');
+					}, 5000);
 
-	</section>
+					clearInterval(interval);
+				}
+			}, 5000);
+		})();
+	</script>
+</section>
 
-	<section class="slide">
-		<h2>Что есть Frontend-разработка?</h2>
-		<blockquote>
-			<p class="small-content"><b>Frontend-разработка</b> &mdash; это работа по созданию публичной части веб-приложения, с которой непосредственно контактирует пользователь и функционала который обычно выполняется на стороне клиента</p>
-		</blockquote>
-		<p>Отсюда старое название <em>"client-side"</em></p>
-	</section>
+<section class="slide">
+	<h2>Что такое Frontend?</h2>
+	<blockquote>
+		<p class="small-content"><b>Frontend</b> &mdash; публичная часть web-приложений, с которой непосредственно контактирует и взаимодействует пользователь. Во Frontend входят отображение пользовательского интерфейса, функционал, выполняющийся на стороне клиента, и обработка пользовательских запросов</p>
+	</blockquote>
+	<p class="note">Так же можно встретить название <em>"client-side"</em></p>
+</section>
 
-	<section class="slide">
-		<h2>Что есть Веб-приложение?</h2>
-		<blockquote>
-			<p class="small-content"><b>Веб-приложение </b> &mdash; клиент-серверное приложение, в котором клиентом выступает браузер, а сервером — веб-сервер. Логика веб-приложения распределена между сервером и клиентом, хранение данных осуществляется, преимущественно, на сервере, обмен информацией происходит по сети</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>Что такое web-приложение?</h2>
+	<blockquote>
+		<p class="small-content"><b>Web-приложение </b> &mdash; клиент-серверное приложение, в котором клиентом выступает в основном браузер, а сервером &mdash; web-сервер. Логика веб-приложения распределена между сервером и клиентом, хранение данных осуществляется преимущественно на сервере, обмен информацией происходит по сети</p>
+	</blockquote>
+	<p class="note">Примеры web-приложений &mdash; <em>vk.com</em>, <em>google.com</em>, <em>facebook.com</em>...</p>
+</section>
 
-	<section class="slide">
-		<h2>Семестровый проект</h2>
-		<p class="medium-content"><b>Веб-приложение &mdash; мультиплеерная игра в браузере</b></p>
-		<ul lang="en">
-			<li>Меню приложения</li>
-			<li>Формы входа и регистрации</li>
-			<li>Таблица лидеров</li>
-			<li>Игра (сингл- и мультиплеер)</li>
-			<li>Окно "about"</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Что такое Frontend-разработка?</h2>
+	<blockquote>
+		<p class="small-content"><b>Frontend-разработка</b> &mdash; это работа по созданию публичной части веб-приложения, с которой непосредственно контактирует пользователь и функционала который обычно выполняется на стороне клиента</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2>Семестровый проект: меню</h2>
-		<img class="place" src="menu-ex.png" alt="Пример меню" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.43)">
-	</section>
+<section class="slide">
+	<h2>Семестровый проект</h2>
+	<p class="medium-content"><b>Веб-приложение &mdash; мультиплеерная игра в браузере</b></p>
+	<ul lang="ru">
+		<li>Меню приложения</li>
+		<li>Формы входа и регистрации</li>
+		<li>Таблица лидеров</li>
+		<li>Игра (сингл- и мультиплеер)</li>
+		<li>Окно "about"</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Семестровый проект: авторизация</h2>
-		<img class="place" src="signup-ex.png" alt="Пример авторизации" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.43)">
-	</section>
+<section class="slide">
+	<h2>Семестровый проект</h2>
+	<img class="place" src="menu-ex.png"
+		 style="transform-origin: center;transform: translate(-50%,-48%) scale(0.43); box-shadow: 0 0 100px -10px rgba(0, 0, 0, 1);">
+</section>
 
-	<section class="slide">
-		<h2>Семестровый проект: "about"</h2>
-		<img class="place" src="about-ex.png" alt="Пример окна 'about'" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.43)">
-	</section>
+<section class="slide">
+	<h2>Семестровый проект</h2>
+	<img class="place" src="auth.png"
+		 style="transform-origin: center;transform: translate(-50%,-48%) scale(0.75); box-shadow: 0 0 60px -20px rgba(0, 0, 0, 1);">
+</section>
 
-	<section class="slide">
-		<h2>Семестровый проект: игра</h2>
-		<img class="place" src="game-ex.png" alt="Пример игры" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.43)">
-	</section>
+<section class="slide">
+	<h2>Семестровый проект</h2>
+	<img class="place" src="about-ex.png"
+		 style="transform-origin: center;transform: translate(-50%,-48%) scale(0.43); box-shadow: 0 0 100px -10px rgba(0, 0, 0, 1);">
+</section>
 
-	<section class="slide">
-		<h2>Наша Dream-team <em>Менторов</em></h2>
-		<ul lang="ru">
-			<li>Тюльдюков Алексей &mdash; разработчик Поиска@Mail.RU, ментор менторов &#x263A;</li>
-			<li>Махмутов Шамиль &mdash; разработчик Target.My.com</li>
-			<li>Паничкина Анна &mdash; выпускница Технопарка</li>
-			<li>Слимов Никита &mdash; студент 4-го семестра Технопарка</li>
-			<li>Цветков Александр &mdash; разработчик Почты@Mail.RU</li>
-			<li>Щадько Александр &mdash; разработчик Почты@Mail.RU</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Семестровый проект</h2>
+	<img class="place" src="gameplay.jpg"
+		 style="transform-origin: center;transform: translate(-50%,-48%) scale(0.7); box-shadow: 0 0 100px -10px rgba(0, 0, 0, 1);">
+</section>
 
-	<section class="slide">
-		<h2>Наша Dream-team <em>Менторов</em></h2>
-		<ul lang="ru">
-			<li>Булавинцев Илья &mdash; студент 3-го семестра Технопарка</li>
-			<li>Егорова Варвара &mdash; студентка 3-го семестра Технопарка</li>
-			<li>Козинченко Евгений &mdash; студент 4-го семестра Технопарка</li>
-			<li>Никитин Илья &mdash; студент 3-го семестра Технопарка</li>
-			<li>Сычугина Анна &mdash; студентка 3-го семестра Технопарка</li>
-			<li>Телышев Антон &mdash; разработчик Поиска@Mail.RU</li>
-			<li>Титова Марина &mdash; разработчица Почты@Mail.RU</li>
-			<li>Утробин Егор &mdash; разработчик Лаборатории Технопарка</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Наша Dream-team <em>Менторов</em></h2>
+	<ul lang="ru">
+		<li>Телышев Антон &mdash; разработчик в Техдепартаменте Mail.Ru</li>
+		<li>Махмутов Шамиль &mdash; разработчик в Сбертехе???</li>
+		<li>Козинченко Евгений &mdash; кто?)</li>
+		<li>Слимов Никита &mdash; кто?))</li>
+		<li>Никитин Илья &mdash; разработчик в AT Consulting</li>
+		<li>Утробин Егор &mdash; разработчик в Почте@Mail.Ru</li>
+		<li>Сычугина Анна &mdash; кто?</li>
+		<li>Пешков Сергей &mdash; разработчик в Почте@Mail.Ru</li>
+		<li>Володин Сергей &mdash; разработчик в Почте@Mail.Ru</li>
+		<li>Орёл Александр &mdash; разработчик в Поиске@Mail.Ru</li>
+		<li>Степанов Денис &mdash; разработчик в Yandex???</li>
+		<li>Перескоков Владислав &mdash; студент 4-го семестра Технопарка</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Структура курса</h2>
-		<p class="medium-content">
-		<ul lang="en">
-			<li><span class="accent">Модуль 1</span> &mdash; 4 занятия + РК1</li>
-			<li><span class="accent">Модуль 2</span> &mdash; 3 занятия + РК2</li>
-			<li><span class="accent">СОВМЕСТНАЯ ПРЕДЗАЩИТА</span></li>
-			<li><span class="accent">Модуль 3</span> &mdash; 3 занятия + РК3</li>
-			<li><span class="accent">Модуль 4</span> &mdash; 2 занятия + РК4</li>
-			<li><span class="accent">Защита проекта</span></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Структура курса</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li><span class="accent">Модуль 1</span> &mdash; 4 занятия + РК1</li>
+		<li><span class="accent">Модуль 2</span> &mdash; 3 занятия + РК2</li>
+		<li><span class="accent">Совместная предзащита</span></li>
+		<li><span class="accent">Модуль 3</span> &mdash; 3 занятия + РК3</li>
+		<li><span class="accent">Модуль 4</span> &mdash; 2 занятия + РК4</li>
+		<li><span class="accent">Защита проекта</span></li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Первый модуль</h2>
-		<p class="small-content">
-		<ul lang="en">
-			<li>Введение во фронтенд</li>
-			<li>Работа с DOM, браузерные события, сеть</li>
-			<li>Модульность, разработка компонентов, шаблонизация</li>
-			<li>Работа с сетью, разработка API</li>
-		</ul>
+<section class="slide">
+	<h2>Первый модуль</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li>Введение во Frontend</li>
+		<li>Работа с DOM, браузерные события, работа с сетью</li>
+		<li>Модульность, разработка компонентов, шаблонизация</li>
+		<li>Безопасность web-приложений, архитектура web-приложений и разработка API, тестирование компонент</li>
+	</ul>
 
-		<p>РК 1, оценивается в 30 баллов</p>
-	</section>
+	<p>РК 1, оценивается в 30 баллов</p>
+</section>
 
-	<section class="slide">
-		<h2>Второй модуль</h2>
-		<p class="small-content">
-		<ul lang="en">
-			<li>Архитектура проекта и роутинг, сборка проекта</li>
-			<li>Графика, разработка игр в браузере</li>
-			<li>ЛЕКЦИЯ: Современное состояние JavaScript</li>
-		</ul>
+<section class="slide">
+	<h2>Второй модуль</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li>Архитектура проекта, роутинг, методологии вёрстки</li>
+		<li>Графика, разработка игр в браузере</li>
+		<li>ЛЕКЦИЯ: Современное состояние JavaScript</li>
+	</ul>
 
-		<p>РК 2, оценивается в 30 баллов</p>
-	</section>
+	<p>РК 2, оценивается в 30 баллов</p>
+</section>
 
-	<section class="slide">
-		<h2>Третий модуль</h2>
-		<p class="small-content">
-		<ul lang="en">
-			<li>Работа с данными в браузере</li>
-			<li>Использование препроцессоров CSS, разработка под мобильные устройства</li>
-			<li>ЛЕКЦИЯ: Веб-компоненты и Virtual DOM</li>
-		</ul>
+<section class="slide">
+	<h2>Третий модуль</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li>Работа с данными в браузере и производительность web-приложений, HTTP/2</li>
+		<li>Современные возможности CSS, разработка под мобильные устройства</li>
+		<li>ЛЕКЦИЯ: Веб-компоненты и Virtual DOM</li>
+	</ul>
 
-		<p>РК 3, оценивается в 20 баллов</p>
-	</section>
+	<p>РК 3, оценивается в 20 баллов</p>
+</section>
 
-	<section class="slide">
-		<h2>Четвёртый модуль</h2>
-		<p class="small-content">
-		<ul lang="en">
-			<li>Производительность, использование инструментов разработчика</li>
-			<li>ЛЕКЦИЯ: Современное состояние WEB</li>
-		</ul>
+<section class="slide">
+	<h2>Четвёртый модуль</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li>Использование DevTools браузеров при разработке приложений, инфраструктура и деплой web-приложений</li>
+		<li>ЛЕКЦИЯ: Резюме Frontend-разработчика в 2018 году</li>
+	</ul>
 
-		<p>РК 4, оценивается в 10 баллов</p>
-	</section>
+	<p>РК 4, оценивается в 10 баллов</p>
+</section>
 
-	<section class="slide">
-		<h2>Что по чём?</h2>
-		<ul lang="en">
-			<li>Домашнее задание №0 <mark>5 баллов</mark></li>
-			<li>Рубежный контроль №1 <mark>30 баллов</mark></li>
-			<li>Рубежный контроль №2 <mark>30 баллов</mark></li>
-			<li>Рубежный контроль №3 <mark>20 баллов</mark></li>
-			<li>Рубежный контроль №4 <mark>10 баллов</mark></li>
-			<li>Защита проекта <mark>5 баллов</mark></li>
-		</ul>
+<section class="slide">
+	<h2>Что по чём?</h2>
+	<p class="medium-content"></p>
+	<ul lang="ru">
+		<li>Домашнее задание №0
+			<mark>5 баллов</mark>
+		</li>
+		<li>Рубежный контроль №1
+			<mark>30 баллов</mark>
+		</li>
+		<li>Рубежный контроль №2
+			<mark>30 баллов</mark>
+		</li>
+		<li>Рубежный контроль №3
+			<mark>20 баллов</mark>
+		</li>
+		<li>Рубежный контроль №4
+			<mark>10 баллов</mark>
+		</li>
+		<li>Защита проекта
+			<mark>5 баллов</mark>
+		</li>
+	</ul>
 
-		<p>Максимальная сумма баллов за семестр &mdash; <mark>100 баллов</mark></p>
-	</section>
+	<p>Максимальная сумма баллов за семестр &mdash;
+		<mark>100 баллов</mark>
+	</p>
+</section>
 
-	<section class="slide">
-		<h2>Рубежный контроль</h2>
-		<p class="small-content">
-		<ul lang="en">
-			<li>Выполнение всех ДЗ в модуле</li>
-			<li><strong>Code review</strong>, допуск от ментора</li>
-			<li>Проверка работы приложения, проверка ДЗ</li>
-			<li>Беседа с преподавателем</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Как проходит рубежный контроль</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li>Выполнение всех ДЗ в модуле</li>
+		<li>Отправка мерж-реквеста <mark>не позднее, чем за <strong>сутки</strong></mark> до РК</li>
+		<li><strong>Code review</strong>, допуск от ментора</li>
+		<li>Проверка работы приложения, проверка ДЗ</li>
+		<li>Беседа с преподавателем, решение задач, теоретические вопросы</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Критерии оценивания</h2>
-		<p class="small-content">
+<section class="slide">
+	<h2>Критерии оценивания</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li>Соответствие результата предъявляемым требованиям</li>
+		<li>Оптимальность предлагаемого решения</li>
+		<li>Практичность решения</li>
+		<li>Качество оформления результатов работы</li>
+		<li>Доказательность аргументации при защите работы</li>
+	</ul>
+</section>
 
-		<ul lang="en" style="font-weight: 300;">
-			<li>СООТВЕТСТВИЕ РЕЗУЛЬТАТА ПРЕДЪЯВЛЯЕМЫМ ТРЕБОВАНИЯМ</li>
-			<li>ОПТИМАЛЬНОСТЬ ПРЕДЛАГАЕМОГО РЕШЕНИЯ</li>
-			<li>ПРАКТИЧНОСТЬ РЕШЕНИЯ</li>
-			<li>КАЧЕСТВО ОФОРМЛЕНИЯ РЕЗУЛЬТАТОВ РАБОТЫ</li>
-			<li>ДОКАЗАТЕЛЬНОСТЬ АРГУМЕНТАЦИИ ПРИ ЗАЩИТЕ РАБОТЫ</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Итоговая оценка</h2>
+	<p class="small-content">
+	<ul lang="ru">
+		<li>
+			<mark>0 <=</mark> &nbsp;"неудовлетворительно"
+			<mark> <= 69</mark>
+		</li>
+		<li>
+			<mark>70 <=</mark> &nbsp;"удовлетворительно"
+			<mark> <= 84</mark>
+		</li>
+		<li>
+			<mark>85 <=</mark> &nbsp;"хорошо"
+			<mark> <= 99</mark>
+		</li>
+		<li>"отлично"
+			<mark> === 100 баллов + выступление на защите</mark>
+		</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Итоговая оценка</h2>
-		<p class="medium-content">
+<section class="slide">
+	<h2>Дополнительные критерии <em>(sic!)</em></h2>
+	<p>Для получения оценки
+		<mark>удовлетворительно</mark>
+		, необходимо следующее
+	</p>
 
-		<ul lang="en">
-			<li><mark>0 <= </mark>  &nbsp;"неудовлетворительно" <mark> <= 69</mark></li>
-			<li><mark>70 <= </mark>  &nbsp;"удовлетворительно" <mark> <= 84</mark></li>
-			<li><mark>85 <= </mark>  &nbsp;"хорошо" <mark> <= 99</mark></li>
-			<li>"отлично" <mark> === 100 баллов + выступление на защите</mark></li>
-		</ul>
-	</section>
+	<ul lang="ru">
+		<li>Корректно работающая авторизация и регистрация пользователей</li>
+		<li>Приложение представляет собой клиентское SPA</li>
+		<li>Современный подход к написанию кода приложения</li>
+		<li>В приложении присутствует и используется шаблонизация</li>
+		<li>В приложении присутствует роутинг</li>
+		<li>В приложении присутствует <strong>singleplayer-версия</strong> игры</li>
+		<li>Приложение должно быть доступно в Интернете</li>
+		<li>Используются современные инструменты и методологии вёрстки</li>
+		<li>Приложение должно корректно отображаться и работать на <strong>мобильных устройствах</strong> и устройствах с сенсорным экраном</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Дополнительные критерии (sic!)</h2>
-		<p>Для получения оценки <mark>удовлетворительно</mark>, необходимо следующее</p>
+<section class="slide">
+	<h2>Дополнительные критерии <em>(sic!)</em></h2>
+	<p>Для получения оценки
+		<mark>хорошо</mark>
+		, необходимо также
+	</p>
 
-		<ul lang="en">
-			<li>Приложение должно быть доступно в Интернете</li>
-			<li>В приложении должна присутствовать правильно работающая регистрация и авторизация пользователей</li>
-			<li>Это должно быть SPA-приложение с правильно работающим роутингом</li>
-			<li>В приложении должен присутствовать работающий singleplayer</li>
-			<li>Приложение должно открываться и работать на мобильных устройствах</li>
-		</ul>
-	</section>
+	<ul lang="ru">
+		<li>В приложении должен присутствовать <strong>multiplayer</strong></li>
+		<li>В приложении должен присутствовать обмен данными с сервером через WebSocket-соединение</li>
+		<li>Приложение должно уметь запускаться и работать <strong>offline</strong></li>
+		<li>Приложение должно быть оптимизировано, в приложении должен быть настроен автоматический CI</li>
+		<li>Приложение должно быть задеплоено на VPS</li>
+	</ul>
+	<p class="note"><a href="https://goo.gl/Wv1ner" target="_blank">Подробнее...</a></p>
+</section>
 
-	<section class="slide">
-		<h2>Дополнительные критерии (sic!)</h2>
-		<p>Для получения оценки <mark>хорошо</mark>, необходимо также</p>
+<section class="slide">
+	<h2>За что отвечает Frontend</h2>
+	<p class="medium-content"></p>
+	<ul lang="ru">
+		<li>Создание пользовательского интерфейса</li>
+		<li>Программирование той логики приложения, которая исполняется на клиенте</li>
+		<li>Программирование игры</li>
+		<li>Тестирование приложения (от обычных юнит-тестов до интеграционных и нагрузочных тестов)</li>
+		<li>Настройка и программирование процесса сборки приложения</li>
+		<li>Деплой приложения</li>
+		<li>etc...</li>
+	</ul>
+</section>
 
-		<ul lang="en">
-			<li>В приложении должен присутствовать multiplayer</li>
-			<li>Приложение должно открываться и работать при отсутствии сети (те функции, которые не требуют Интернета, например singleplayer)</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Командная работа</h2>
+	<p class="small-content">
+	<ul lang="en">
+		<li>2&ndash;4 человека в команде</li>
+		<li>Каждый вносит общий вклад в создание игры</li>
+		<li>Работа ведётся в наших репозиториях под руководством ваших менторов</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Фронтенд &mdash; это не только вёрстка</h2>
-		<ul lang="en">
-			<li>Программирование пользовательского интерфейса</li>
-			<li>Программирование той логики приложения, которая исполняется на клиенте</li>
-			<li>Программирование игры</li>
-			<li>Тестирование приложения (от обычных юнит-тестов до интеграционных и нагрузочных тестов)</li>
-			<li>Настройка и программирование процесса сборки приложения</li>
-			<li>Программирование деплоя приложения</li>
-			<li>etc...</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Командная работа</h2>
-		<p class="medium-content">
-		<ul lang="en">
-			<li>3&ndash;4 человека в команде</li>
-			<li>Каждый вносит общий вклад в создание игры</li>
-			<li>Разработчик, отвечающий за приложение</li>
-			<li>Разработчик, отвечающий за игру</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout">Будет круто!</h2>
-	</section>
-
-
-
-
-	<section class="slide">
-		<h2 class="shout"><span style="font-size: 4rem;">Теория клиент-серверного взаимодействия<br/>Порядок работы</span></h2>
-	</section>
-
-	<section class="slide question">
-		<h2>Как работают сайты?</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Клиент-серверная модель</h2>
-		<div style="position:relative;width: 100%; height: 80%; overflow: hidden"><img class="place" src="csm-large.png" alt="Клиент-серверная модель" style="transform-origin: center;transform: translate(-50%,-55%) scale(0.55);"></div>
-	</section>
-
-	<section class="slide">
-		<h2>Клиент-серверная модель</h2>
-		<blockquote>
-			<p class="small-content"><b>Клиент &ndash; серверная модель</b> &mdash; вычислительная или сетевая архитектура, в которой задания или сетевая нагрузка распределены между поставщиками услуг, называемыми серверами, и заказчиками услуг, называемыми клиентами</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Клиент-серверная vs p2p модель</h2>
-		<div style="position:relative;width: 100%; height: 80%; overflow: hidden"><img class="place" src="cs-vs-p2p.jpg" alt="Сравнение клиент-серверной модели с моделью p2p" style="transform-origin: center;transform: translate(-50%,-59.3%) scale(1.35);"></div>
-	</section>
-
-	<section class="slide">
-		<h2>Клиент-серверная архитектура</h2>
-		<div style="position:relative;width: 100%; height: 75%; overflow: hidden"><img class="place" src="client-server-diagram-internet.png" alt="Клиент-серверная архитектура Интернета" style="transform-origin: center;transform: translate(-50%,-51.5%) scale(1.4);"></div>
-	</section>
-
-	<section class="slide">
-		<h2>Современные веб-приложения</h2>
-		<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place" src="web-application-models-over-time.png" alt="Современные веб-приложения" style="transform-origin: center;transform: translate(-50%,-55.5%) scale(0.95);"></div>
-	</section>
-
-
-
-	<section class="slide">
-		<h2 class="shout">Практика!</h2>
-	</section>
+<section class="slide">
+	<h2 class="shout">Будет круто!</h2>
+</section>
 
 
-	<section class="slide">
-		<h2>В какой ОС разрабатывать?</h2>
-		<p class="medium-content">В любой, где доступны git и Node.js:</p>
-		<ul lang="en">
-			<li>Windows</li>
-			<li>OS X</li>
-			<li>Linux (Ubuntu/Debian)</li>
-			<li>Что то ещё?</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 80%; display: inline-block;">Теория клиент-серверного взаимодействия</span>
+		<br/>
+		<span style="font-size: 55%; display: inline-block;">Порядок работы</span>
+	</h2>
+</section>
 
-	<section class="slide">
-		<h2>Где писать код?</h2>
-		<p class="medium-content">
-		<ul lang="en">
-			<li>Atom Text Editor &mdash; <a href="https://atom.io/">atom.io</a></li>
-			<li>Visual Studio Code &mdash; <a href="https://code.visualstudio.com/">code.visualstudio.com</a></li>
-			<li>JavaScript IDE WebStorm &mdash; <a href="https://www.jetbrains.com/webstorm/">jetbrains.com</a></li>
-			<li>etc...</li>
-		</ul>
-	</section>
+<section class="slide question">
+	<h2>Как работают сайты?</h2>
+</section>
 
-	<section class="slide">
-		<h2>Хостинг репозиториев <a href="https://github.com/">github.com</a></h2>
-		<p class="medium-content">
-		<ul lang="en">
-			<li>Бесплатный</li>
-			<li>Совместная работа над проектом</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Клиент-серверная модель</h2>
+	<div style="position:relative;width: 100%; height: 80%; overflow: hidden"><img class="place" src="csm-large.png"
+																				   alt="Клиент-серверная модель"
+																				   style="transform-origin: center;transform: translate(-50%,-55%) scale(0.55);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Бесплатный хостинг <a href="https://heroku.com/">heroku.com</a></h2>
-		<p class="medium-content">
-		<ul lang="en">
-			<li>Бесплатный (есть и платная версия)</li>
-			<li>Большие возможности по деплою приложений</li>
-			<li>Поддерживает много языков программирования, в т.ч. и JavaScript (с&nbsp;помощью Node.js)</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Клиент-серверная модель</h2>
+	<blockquote>
+		<p class="small-content"><b>Клиент &ndash; серверная модель</b> &mdash; вычислительная или сетевая архитектура,
+			в которой задания или сетевая нагрузка распределены между поставщиками услуг, называемыми серверами, и
+			заказчиками услуг, называемыми клиентами</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2>Ограничения JS</h2>
-		<p class="medium-content">
-		<ul lang="en">
-			<li>Нельзя взаимодействовать с файловой системой</li>
-			<li>Нет дотупа к сетевым функциям</li>
-			<li>Нет возможности организовывать многопоточные вычисления</li>
-			<li>Нельзя создавать новые процессы / запускать программы</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Клиент-серверная vs p2p модель</h2>
+	<div style="position:relative;width: 100%; height: 80%; overflow: hidden"><img class="place" src="cs-vs-p2p.jpg"
+																				   alt="Сравнение клиент-серверной модели с моделью p2p"
+																				   style="transform-origin: center;transform: translate(-50%,-59.3%) scale(1.35);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Node.js</h2>
-		<blockquote>
-			<p class="small-content"><b>Node.js</b> &mdash; программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код), превращающая JavaScript из узкоспециализированного языка в язык общего назначения. Node.js добавляет возможность JavaScript взаимодействовать с устройствами ввода-вывода через свой API (написанный на C++), подключать другие внешние библиотеки, написанные на разных языках, обеспечивая вызовы к ним из JavaScript-кода</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>Клиент-серверная архитектура</h2>
+	<div style="position:relative;width: 100%; height: 75%; overflow: hidden"><img class="place"
+																				   src="client-server-diagram-internet.png"
+																				   alt="Клиент-серверная архитектура Интернета"
+																				   style="transform-origin: center;transform: translate(-50%,-51.5%) scale(1.4);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Демонстрация использования</h2>
-		<pre>
+<section class="slide">
+	<h2>Современные веб-приложения</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden"><img class="place"
+																				   src="web-application-models-over-time.png"
+																				   alt="Современные веб-приложения"
+																				   style="transform-origin: center;transform: translate(-50%,-55.5%) scale(0.95);">
+	</div>
+</section>
+
+
+<section class="slide">
+	<h2 class="shout">Практика!</h2>
+</section>
+
+
+<section class="slide">
+	<h2>В какой ОС разрабатывать?</h2>
+	<p class="medium-content">В любой, где доступны git и Node.js:</p>
+	<ul lang="en">
+		<li>Windows</li>
+		<li>OS X</li>
+		<li>Linux (Ubuntu/Debian)</li>
+		<li>Что то ещё?</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Где писать код?</h2>
+	<p class="medium-content">
+	<ul lang="en">
+		<li>Atom Text Editor &mdash; <a href="https://atom.io/">atom.io</a></li>
+		<li>Visual Studio Code &mdash; <a href="https://code.visualstudio.com/">code.visualstudio.com</a></li>
+		<li>JavaScript IDE WebStorm &mdash; <a href="https://www.jetbrains.com/webstorm/">jetbrains.com</a></li>
+		<li>etc...</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Хостинг репозиториев <a href="https://github.com/">github.com</a></h2>
+	<p class="medium-content">
+	<ul lang="en">
+		<li>Бесплатный</li>
+		<li>Совместная работа над проектом</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Бесплатный хостинг <a href="https://heroku.com/">heroku.com</a></h2>
+	<p class="medium-content">
+	<ul lang="en">
+		<li>Бесплатный (есть и платная версия)</li>
+		<li>Большие возможности по деплою приложений</li>
+		<li>Поддерживает много языков программирования, в т.ч. и JavaScript (с&nbsp;помощью Node.js)</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Ограничения JS</h2>
+	<p class="medium-content">
+	<ul lang="en">
+		<li>Нельзя взаимодействовать с файловой системой</li>
+		<li>Нет дотупа к сетевым функциям</li>
+		<li>Нет возможности организовывать многопоточные вычисления</li>
+		<li>Нельзя создавать новые процессы / запускать программы</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Node.js</h2>
+	<blockquote>
+		<p class="small-content"><b>Node.js</b> &mdash; программная платформа, основанная на движке V8 (транслирующем
+			JavaScript в машинный код), превращающая JavaScript из узкоспециализированного языка в язык общего
+			назначения. Node.js добавляет возможность JavaScript взаимодействовать с устройствами ввода-вывода через
+			свой API (написанный на C++), подключать другие внешние библиотеки, написанные на разных языках, обеспечивая
+			вызовы к ним из JavaScript-кода</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Демонстрация использования</h2>
+	<pre>
 			<code>// script.js</code>
 			<code>const fs = require('fs');</code>
 			<code> </code>
@@ -463,11 +704,11 @@
 			<code>console.log(text);</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Запуск скрипта</h2>
-		<pre>
+<section class="slide">
+	<h2>Запуск скрипта</h2>
+	<pre>
 			<code>~$ node script.js <mark>&lt;ENTER></mark></code>
 			<code>const fs = require('fs');</code>
 			<code> </code>
@@ -476,25 +717,25 @@
 			<code> </code>
 			<code>~$ </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>npm &mdash; Node Packaged Modules</h2>
-		<blockquote>
-			<p><b>npm</b> &mdash; is the package manager for JavaScript</p>
-		</blockquote>
+<section class="slide">
+	<h2>npm &mdash; Node Packaged Modules</h2>
+	<blockquote>
+		<p><b>npm</b> &mdash; is the package manager for JavaScript</p>
+	</blockquote>
 
-		<p>Использование</p>
-		<pre>
+	<p>Использование</p>
+	<pre>
 			<code>~$ npm install md5 <mark>&lt;ENTER></mark></code>
 			<code> </code>
 			<code>~$ </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Можно создать свой собственный<br/>npm-модуль!</h2>
-		<pre>
+<section class="slide">
+	<h2>Можно создать свой собственный<br/>npm-модуль!</h2>
+	<pre>
 			<code>~$ mkdir awesome && cd awesome <mark>&lt;ENTER></mark></code>
 			<code>~$ npm init -y <mark>&lt;ENTER></mark></code>
 			<code>~$ ls</code>
@@ -502,11 +743,11 @@
 			<code> </code>
 			<code>~$ </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Содержимое package.json</h2>
-		<pre>
+<section class="slide">
+	<h2>Содержимое package.json</h2>
+	<pre>
 			<code>{</code>
 			<code>    "name": "awesome",</code>
 			<code>    "version": "1.0.0",</code>
@@ -517,75 +758,95 @@
 			<code>    "license": "ISC"</code>
 			<code>}</code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide">
+	<h2>Домашнее задание</h2>
+	<ul lang="en">
+		<li>Разбиться на команды по 3-4 человека и отметиться в нашем посте "Перепись населения":
+			<ul>
+				<li>С вами свяжется ваш ментор</li>
+				<li>Ментор создаст вам репозиторий</li>
+				<li>Дальше ментор расскажет вам, что делать</li>
+			</ul>
+		</li>
+		<li>Думать над идеей игры</li>
+		<li>...</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Домашнее задание</h2>
+	<ul lang="en">
+		<li>Уже в командах сверстать в вашем репозитории статичные html-файлы с основными страницами вашего будущего
+			приложения:
+			<ul>
+				<li>Все скрипты/стили должны быть вынесены в отдельные файлы</li>
+				<li>Должны быть созданы все необходимые страницы и они должны быть связаны гиперссылками</li>
+				<li>Нужно будет дописать скрипт сервера, чтобы он мог отдавать всю вашу статику</li>
+				<li>Результат необходимо зафиксировать в репозитории и задеплоить на хероку</li>
+			</ul>
+		</li>
+	</ul>
+</section>
 
 
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li>Ссылка на <a href="https://github.com/frontend-park-mail-ru" target="_blank">нашу группу на github.com</a>
+		</li>
+		<li>Ссылка на <a href="http://frontend.tech-mail.ru/" target="_blank">блог</a>, где мы публикуем все материалы к
+			занятиям
+		</li>
+		<li>Документация к <a href="https://nodejs.org/api/" target="_blank">Node.js</a> и <a
+				href="https://docs.npmjs.com/" target="_blank">npm</a></li>
+		<li><a href="https://learn.javascript.ru/screencast/nodejs" target="_blank">Скринкаст</a> по Node.js</li>
+		<li><a href="https://developer.mozilla.org/ru/docs/Web" target="_blank">MDN</a> (Mozilla Developer Network
+			&mdash; веб-технологии для разработчиков)
+		</li>
+		<li><a href="https://learn.javascript.ru/js" target="_blank">learn.javascript.ru</a> &mdash; основной источник
+			информации о JS для начинающих
+		</li>
+		<li><a href="https://webref.ru/ref" target="_blank">WebReference.ru</a> &mdash; основной источник информации о
+			HTML5 и CSS3 для начинающих
+		</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Домашнее задание</h2>
-		<ul lang="en">
-			<li>Разбиться на команды по 3-4 человека и отметиться в нашем посте "Перепись населения":
-				<ul>
-					<li>С вами свяжется ваш ментор</li>
-					<li>Ментор создаст вам репозиторий</li>
-					<li>Дальше ментор расскажет вам, что делать</li>
-				</ul>
-			</li>
-			<li>Думать над идеей игры</li>
-			<li>...</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li><a href="https://github.com/azat-io/you-dont-know-js-ru" target="_blank">"Вы не знаете JavaScript"</a>
+			&mdash; серия переводов популярных и простых книг по JavaScript
+		</li>
+		<li><a href="http://frontender.info/" target="_blank">Frontender Magazine</a> и <a href="http://forwebdev.ru/"
+																						   target="_blank">Проект «For
+			Web»</a> &mdash; два неплохих русскоязычных блога, посвящённых Frontend-разработке
+		</li>
+		<li>Документация на <a href="https://www.sitepoint.com/creating-a-http-server-in-node-js/" target="_blank">статью</a>,
+			где описывается как создать сервер на Node.js и на
+			<a href="https://github.com/expressjs/express" target="_blank">специальный npm-модуль</a>, который позволяет
+			делать это намного проще
+		</li>
+		<li><a href="https://habrahabr.ru/company/wrike/blog/302896/" target="_blank">Простая статья на хабре</a>, про
+			асинхронность в JS (для желающих)
+		</li>
+		<li>И напоследок, <a href="https://www.youtube.com/watch?v=AdGyfW7Z6nU" target="_blank">смешное видео про JS</a>,
+			просто чтобы отвлечься и посмеяться
+		</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Домашнее задание</h2>
-		<ul lang="en">
-			<li>Уже в командах сверстать в вашем репозитории статичные html-файлы с основными страницами вашего будущего приложения:
-				<ul>
-					<li>Все скрипты/стили должны быть вынесены в отдельные файлы</li>
-					<li>Должны быть созданы все необходимые страницы и они должны быть связаны гиперссылками</li>
-					<li>Нужно будет дописать скрипт сервера, чтобы он мог отдавать всю вашу статику</li>
-					<li>Результат необходимо зафиксировать в репозитории и задеплоить на хероку</li>
-				</ul>
-			</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2 class="shout">Всем спасибо!</h2>
+</section>
 
-
-	<section class="slide">
-		<h2>Полезные ссылки</h2>
-		<ul lang="en">
-			<li>Ссылка на <a href="https://github.com/frontend-park-mail-ru" target="_blank">нашу группу на github.com</a></li>
-			<li>Ссылка на <a href="http://frontend.tech-mail.ru/" target="_blank">блог</a>, где мы публикуем все материалы к занятиям</li>
-			<li>Документация к <a href="https://nodejs.org/api/" target="_blank">Node.js</a> и <a href="https://docs.npmjs.com/" target="_blank">npm</a></li>
-			<li><a href="https://learn.javascript.ru/screencast/nodejs" target="_blank">Скринкаст</a> по Node.js</li>
-			<li><a href="https://developer.mozilla.org/ru/docs/Web" target="_blank">MDN</a> (Mozilla Developer Network &mdash; веб-технологии для разработчиков)</li>
-			<li><a href="https://learn.javascript.ru/js" target="_blank">learn.javascript.ru</a> &mdash; основной источник информации о JS для начинающих</li>
-			<li><a href="https://webref.ru/ref" target="_blank">WebReference.ru</a> &mdash; основной источник информации о HTML5 и CSS3 для начинающих</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Полезные ссылки</h2>
-		<ul lang="en">
-			<li><a href="https://github.com/azat-io/you-dont-know-js-ru" target="_blank">"Вы не знаете JavaScript"</a> &mdash; серия переводов популярных и простых книг по JavaScript</li>
-			<li><a href="http://frontender.info/" target="_blank">Frontender Magazine</a> и <a href="http://forwebdev.ru/" target="_blank">Проект «For Web»</a> &mdash; два неплохих русскоязычных блога, посвящённых Frontend-разработке</li>
-			<li>Документация на <a href="https://www.sitepoint.com/creating-a-http-server-in-node-js/" target="_blank">статью</a>, где описывается как создать сервер на Node.js и на
-				<a href="https://github.com/expressjs/express" target="_blank">специальный npm-модуль</a>, который позволяет делать это намного проще</li>
-			<li><a href="https://habrahabr.ru/company/wrike/blog/302896/" target="_blank">Простая статья на хабре</a>, про асинхронность в JS (для желающих)</li>
-			<li>И напоследок, <a href="https://www.youtube.com/watch?v=AdGyfW7Z6nU" target="_blank">смешное видео про JS</a>, просто чтобы отвлечься и посмеяться</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout">Всем спасибо!</h2>
-	</section>
-
-	<div class="progress"></div>
-	<script src="/lib/shower/shower.min.js"></script>
-	<script src="/lib/hljs/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+<script src="/lib/hljs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>
