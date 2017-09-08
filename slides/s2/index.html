@@ -879,6 +879,20 @@
 </section>
 
 <section class="slide">
+	<h2>Credentials вместе с XHR</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code>xhr.open('GET', '/auth', <mark>true</mark>);</code>
+		<code> </code>
+		<code>xhr.withCredentials = true; <span class="comment rus">// отправляем cookies</span></code>
+		<code> </code>
+		<code>xhr.send();</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
 	<h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
