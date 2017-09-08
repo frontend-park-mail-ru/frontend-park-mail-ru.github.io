@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Работа с DOM, браузерные события, работа с сетью</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<script>
+		'use strict';
+
+		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+		const w = screen.width;
+		const h = screen.height;
+		const r = gcd(w, h);
+
+		console.log(`${w}x${h}`);
+		let aspect = `${w / r}x${h / r}`;
+		console.log(aspect);
+
+		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
+		if (!ratios.includes(aspect)) {
+			aspect = ratios[0];
+		}
+
+		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+			aspect = '4x3';
+		}
+		aspect = '4x3';
+
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+
+	</script>
+
+	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
+	<link rel="stylesheet" href="/lib/slides.css">
+
+</head>
+<body class="shower list">
+
+<header class="caption">
+	<h1>Работа с DOM, браузерные события, работа с сетью</h1>
+	<p>Технопарк, осень, 2017 г.</p>
+</header>
+
+<section class="slide first">
+	<h2 class="shout">Работа с DOM в браузере<br/>
+		<small>Слайды доступны по ссылке<br/>
+			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
+		</small>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Глобальные объекты и глобальная<br>область видимости</h2>
+	<blockquote>
+		<p class="small-content"><b>Глобальными</b> называют переменные и функции, которые не находятся внутри какой-то
+			функции или блока</p>
+	</blockquote>
+	<p>В JavaScript все глобальные переменные и функции являются свойствами специального объекта, который называется
+		«глобальный объект» <em>(global object)</em>. Присваивая или читая глобальную переменную, мы, фактически,
+		работаем со свойствами глобального объекта.</p>
+</section>
+
+<section class="slide">
+	<h2>Глобальные объекты</h2>
+	<p class="medium-content">В браузере это объект <code>window</code></p>
+	<pre>
+		<code>var foo = 42;</code>
+		<code>console.log(window.foo); // 42</code>
+		<code> </code>
+		<code>const bar = 'top kek';</code>
+		<code><mark>console.log(window.bar); // undefined</mark></code>
+		<code> </code>
+		<code>window.baz = 'JavaScript <3';</code>
+		<code>console.log(<mark>baz</mark>); // JavaScript <3</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Глобальные объекты</h2>
+	<p class="medium-content">В Node.js тоже есть глобальный объект <code>global</code></p>
+	<pre>
+		<code>console.log(global);</code>
+		<code> </code>
+		<code>var foo = 42;</code>
+		<code><mark>console.log(global.foo); // 42</mark></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Глобальные объекты</h2>
+	<p class="small-content">В глобальной области видимости <code>this</code> ссылается на глобальный объект</p>
+	<pre>
+		<code><span class="comment rus">// в браузере</span></code>
+		<code>console.log(<mark>this === window</mark>); // true</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Глобальные объекты</h2>
+	<p class="small-content">В Node.js не всё так просто (попробуйте разобраться почему)</p>
+	<pre>
+		<code><span class="comment">// script.js</span></code>
+		<code>console.log(this === global);</code>
+		<code> </code>
+	</pre>
+	<pre>
+		<code>node script.js // false</code>
+		<code>node <mark>-p</mark> 'console.log(this === global)' // true</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Объекты в JavaScript</h2>
+	<p class="small-content"></p>
+	<ul lang="en">
+		<li>Нативные объекты</li>
+		<li>Хост объекты</li>
+		<li>Пользовательские объекты</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Нативные объекты</h2>
+	<blockquote>
+		<p class="small-content"><b>Нативными (<em>native object</em>)</b> объектами в JS называют объекты, свойства и поведение которых описаны в спецификации языка JavaScript. Их наличие <mark>не&nbsp;зависит от того окружения</mark>, где запускается код</p>
+	</blockquote>
+	<p>Например <code>Object</code>, <code>Array</code>, <code>Infinity</code>, <code>Date</code>, <code>Math</code>, <code>parseInt</code>, <code>eval</code>...</p>
+</section>
+
+<section class="slide">
+	<h2>Хост объекты</h2>
+	<blockquote>
+		<p class="small-content"><b>Хост (host object)</b> объектами в JS называют объекты, которые предоставляются окружением (зависят от того, где работает код)</p>
+	</blockquote>
+	<p>Например, для браузеров это будут <code>document</code>, <code>location</code>, <code>history</code>, <code>XMLHttpRequest</code>, <code>setTimeout</code>, <code>setInterval</code>... Для Node.js хост-объекты будут другими, например <code>process</code></p>
+</section>
+
+<section class="slide">
+	<h2>BOM &mdash; Browser Object Model</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
+		<img class="place" src="window.jpg" style="transform-origin: center;transform: translate(-50%,-62%) scale(1.9);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>DOM &mdash;
+		<mark>Document</mark>
+		Object Model
+	</h2>
+	<blockquote>
+		<p class="medium-content"><b>Объектная Модель Документа (DOM)</b> &mdash; это программный интерфейс (API) для
+			HTML и XML документов. DOM предоставляет структурированное представление документа и то как эта структура
+			может быть доступна из программ. По существу представление DOM соединяет веб страницу с языком JavaScript,
+			позволяя изменять содержимое, стиль и структуру документа</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>DOM-дерево</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
+		<img class="place" src="dom-tree.png" alt="DOM-tree" style="transform-origin: center;transform: translate(-55%,-70%) scale(1.25);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>DOM &mdash;
+		<mark>Document</mark>
+		Object Model
+	</h2>
+	<p class="medium-content">DOM нужен для того, чтобы манипулировать страницей &mdash; читать информацию из HTML, создавать и изменять
+		элементы</p>
+	<pre>
+		<code>document <span class="comment rus">// хост-объект, который даёт доступ к DOM</span></code>
+		<code> </code>
+		<code>document.documentElement <span class="comment rus">// узел HTML</span></code>
+		<code>document.head <span class="comment rus">// узел HEAD</span></code>
+		<code>document.body <span class="comment rus">// узел BODY</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Перебор узлов DOM</h2>
+	<p class="small-content"></p>
+	<pre>
+		<code>element.parentNode <span class="comment rus">// родительская нода</span></code>
+		<code> </code>
+		<code>element.childNodes <span class="comment rus">// дочерние ноды</span></code>
+		<code>element.firstChild <span class="comment rus">// первый ребёнок</span></code>
+		<code>element.lastChild <span class="comment rus">// последний ребёнок</span></code>
+		<code> </code>
+		<code>document.previousSibling <span class="comment rus">// предыдущий "сосед"</span></code>
+		<code>document.nextSibling <span class="comment rus">// следующий "сосед"</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Перебор
+		<mark>элементов</mark>
+		DOM
+	</h2>
+	<p class="small-content"></p>
+	<pre>
+		<code>element.parentElement <span class="comment rus">// родитель-элемент</span></code>
+		<code>element.children <span class="comment rus">// только дочерние узлы-элементы</span></code>
+		<code> </code>
+
+		<code><span class="comment rus">// первый и последний дети-элементы</span></code>
+		<code>element.first<mark>Element</mark>Child и element.last<mark>Element</mark>Child</code>
+		<code> </code>
+
+		<code><span class="comment rus">// соседи-элементы</span></code>
+		<code>document.previous<mark>Element</mark>Sibling и document.next<mark>Element</mark>Sibling</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Дополнительные возможности</h2>
+	<p class="small-content">У конкретных элементов DOM могут быть свои дополнительные ссылки для большего удобства навигации</p>
+	<pre>
+		<code>const elements = formElement.elements <span class="comment rus">// все поля формы</span></code>
+		<code>elements[1] <span class="comment rus">// выбор поля по порядку</span></code>
+		<code>elements['username'] <span class="comment rus">// выбор поля по имени</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Дополнительные возможности</h2>
+	<p class="medium-content">У конкретных элементов DOM могут быть свои дополнительные ссылки для большего удобства навигации</p>
+	<pre>
+		<code>tableElement.rows <span class="comment rus">// коллекция строк TR таблицы</span></code>
+		<code>tableElement.caption <span class="comment rus">// элемент CAPTION таблицы</span></code>
+		<code>tableElement.tBodies <span class="comment rus">// коллекция элементов таблицы TBODY</span></code>
+		<code> </code>
+		<code>tableRowElement.cells <span class="comment rus">// коллекция ячеек строки таблицы</span></code>
+		<code>tableRowElement.rowIndex <span class="comment rus">// номер строки в таблице</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Поиск элементов
+		<mark>по ID/name</mark>
+	</h2>
+	<p class="small-content"></p>
+	<pre>
+		<code><span class="comment rus">// вернёт элемент с ID 'my-header'</span></code>
+		<code>document.getElementById('my-header')</code>
+		<code> </code>
+		<code><span class="comment rus">// вернёт все элементы с атрибутом name="username"</span></code>
+		<code>document.getElementsByName('username')</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Поиск элементов
+		<mark>по имени тега</mark>
+	</h2>
+	<p class="small-content"></p>
+	<pre>
+		<code><span class="comment rus">// во всём документе</span></code>
+		<code>document.getElementsByTagName('h1')</code>
+		<code> </code>
+		<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+		<code>element.getElementsByTagName('h1')</code>
+		<code>element.getElementsByTagName('*') <span class="comment rus">// все элементы</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Поиск элементов
+		<mark>по имени класса</mark>
+	</h2>
+	<p class="small-content"></p>
+	<pre>
+		<code><span class="comment rus">// во всём документе</span></code>
+		<code>document.getElementsByClassName('red-button')</code>
+		<code> </code>
+		<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+		<code>element.getElementsByClassName('red-button')</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Поиск
+		<mark>по CSS-селектору</mark>
+	</h2>
+	<p class="medium-content"></p>
+	<pre>
+		<code><span class="comment rus">// во всём документе</span></code>
+		<code>document.querySelector<mark>All</mark>('input[type=button].red-button')</code>
+		<code> </code>
+		<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+		<code>element.querySelector<mark>All</mark>('input[type=button].red-button')</code>
+		<code> </code>
+		<code><span class="comment rus">// ищет только <mark>первый</mark> элемент</span></code>
+		<code>element.querySelector('input[type=button].red-button')</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Методы <code>getElementsBy*(...)</code><br>возвращают <strong>живую</strong> коллекцию</h2>
+	<p class="medium-content">Pезультат запросов <code>getElementsBy*</code> &mdash; это не массив (<code>Array</code>), а специальный объект, имеющий тип <code>NodeList</code> или <code>HTMLCollection</code>. Он похож на массив, так как имеет нумерованные элементы и длину, но внутри это не готовая коллекция, а «живой поисковой запрос»</p>
+	<p class="note">Собственно поиск выполняется только при обращении к элементам коллекции или к её длине</p>
+</section>
+
+<section class="slide">
+	<h2>Классы, иерархия DOM</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
+		<img class="place" src="hierarchy.png" style="transform-origin: center;transform: translate(-50%,-65%) scale(1.60);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Свойства элементов</h2>
+	<pre>
+		<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+	</pre>
+	<pre>
+		<code>element.tagName <span class="comment rus">// имя тега</span></code>
+		<code>h1.tagName <span class="comment rus">// "H1"</span></code>
+		<code> </code>
+
+		<code>element.innerHTML <span class="comment rus">// Внутреннее содержимое узла-элемента в виде HTML</span></code>
+		<code>h1.innerHTML <span class="comment rus">// "Ссылка: &lt;a href="/">тут&lt;/a>"</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Свойства элементов</h2>
+	<pre>
+		<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+	</pre>
+	<pre>
+		<code>element.outerHTML <span class="comment rus">// Полный HTML узла-элемента</span></code>
+		<code>h1.outerHTML <span
+				class="comment rus">// "&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1>"</span></code>
+		<code> </code>
+
+		<code>element.textContent <span class="comment rus">// Содержит только текст внутри элемента,</span></code>
+		<code>                    <span class="comment rus">// за вычетом всех тегов</span></code>
+		<code>h1.textContent <span class="comment rus">// "Ссылка: "</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Свойства элементов</h2>
+	<pre>
+		<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Сслыка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
+	</pre>
+	<pre>
+		<code>element.hidden <span class="comment rus">// Атрибут, отвечающий за видимость элемента</span></code>
+		<code>h1.hidden = true <span class="comment rus">// скроет заголовок</span></code>
+		<code> </code>
+
+		<code>link.href <span class="comment rus">// Адрес ссылки</span></code>
+		<code>input.value <span class="comment rus">// Значение, введённое в текстовое поле</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Атрибуты элементов</h2>
+	<p class="medium-content"></p>
+	<pre>
+		<code>element.hasAttribute(name) <span class="comment rus">// проверяет наличие атрибута</span></code>
+		<code>element.getAttribute(name) <span class="comment rus">// получает значение атрибута</span></code>
+		<code>element.setAttribute(name, value) <span class="comment rus">// устанавливает атрибут</span></code>
+		<code>element.removeAttribute(name) <span class="comment rus">// удаляет атрибут</span></code>
+		<code> </code>
+		<code>elem.attributes <span class="comment rus">// получить все атрибуты</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Создание элементов</h2>
+	<p class="medium-content"></p>
+	<pre>
+		<code>document.createElement(tag) <span class="comment rus">// создаёт элемент с тегом tag</span></code>
+		<code>document.createTextNode(value) <span class="comment rus">// создает текстовый узел</span></code>
+		<code>element.cloneNode(deep) <span class="comment rus">// клонирует элемент</span></code>
+		<code> </code>
+		<code>parent.appendChild(el) <span class="comment rus">// вставляет узел в конец</span></code>
+		<code>parent.removeChild(el) <span class="comment rus">// удаляет узел</span></code>
+		<code>parent.replaceChild(newEl, oldEl) <span class="comment rus">// заменяет узел</span></code>
+		<code>parent.insertBefore(elem, nextSibling) <span class="comment rus">// вставляет узел</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+
+<section class="slide">
+	<h2 class="shout">Браузерные события</h2>
+</section>
+
+<section class="slide">
+	<h2>События</h2>
+	<p class="medium-content">Для реакции на действия посетителя и внутреннего взаимодействия скриптов существуют <em>события</em></p>
+	<blockquote>
+		<p><b>Событие</b> &mdash; это сигнал от браузера о том, что что-то произошло. Существует много видов событий</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>События</h2>
+	<p>События мыши:</p>
+	<ul lang="ru">
+		<li><code>click</code> – происходит, когда кликнули на элемент левой кнопкой мыши</li>
+		<li><code>contextmenu</code> – происходит, когда кликнули на элемент правой кнопкой мыши</li>
+		<li><code>mouseover</code> – возникает, когда на элемент наводится мышь</li>
+		<li><code>mousemove</code> – при движении мыши</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>События</h2>
+	<p>События на элементах управления:</p>
+	<ul lang="ru" style="margin-bottom: 5px;">
+		<li><code>submit</code> – посетитель отправил форму &lt;form></li>
+		<li><code>focus</code> – посетитель фокусируется на элементе, например нажимает на &lt;input></li>
+	</ul>
+	<p style="margin-top: 5px;">Клавиатурные события:</p>
+	<ul lang="ru">
+		<li><code>keydown</code> – когда посетитель нажимает клавишу</li>
+		<li><code>keyup</code> – когда посетитель отпускает клавишу</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Обработчики событий</h2>
+	<blockquote>
+		<p class="small-content">Событию можно назначить <b>обработчик</b>, то есть функцию, которая сработает, как
+			только событие произошло. Именно благодаря обработчикам JavaScript-код может реагировать на действия
+			посетителя</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Добавление обработчиков <br/>через атрибут</h2>
+	<p class="medium-content"></p>
+	<pre>
+		<code>&lt;button onclick="this.parentElement.innerHTML+=</code>
+		<code>    <span style="display: none;">&lt;button onclick="this.parentElement.innerHTML+=</span>'&lt;span>click&lt;/span>'">Нажми меня&lt;/button> </code>
+	</pre>
+	<button onclick="this.parentElement.innerHTML+='<span>click </span>'" style="font-size: 26px;">Нажми меня</button>
+	<br/>
+</section>
+
+<section class="slide">
+	<h2>Добавление обработчиков <br/>через свойства DOM-объекта</h2>
+	<p class="medium-content"></p>
+	<button id="super-button" style="font-size: 26px;">Кликнуто 0 раз</button>
+	<pre>
+		<code>let count = 0;</code>
+		<code>const element = document.getElementsByTagName('BUTTON')[0];</code>
+		<code>element.onclick = function() {</code>
+		<code>    element.innerHTML = `Кликнуто ${++count} раз(а)`;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+
+	<script>
+		'use strict';
+		let count = 0;
+
+		window['super-button'].onclick = function () {
+			window['super-button'].innerHTML = `Кликнуто ${++count} раз(а)`;
+		};
+	</script>
+
+</section>
+
+<section class="slide">
+	<h2><code>addEventListener</code> и <code>removeEventListener</code></h2>
+	<p class="medium-content"></p>
+	<pre>
+		<code><span class="comment rus">// добавление обработчика</span></code>
+		<code>element.addEventListener(event, handler);</code>
+		<code> </code>
+		<code><span class="comment rus">// удаление обработчика</span></code>
+		<code><span class="comment rus">// нужно передать те же аргументы, что были у addEventListener</span></code>
+		<code>element.removeEventListener(event, handler);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Объект события <code>event</code></h2>
+	<p class="medium-content"></p>
+	<button id="super-button2" style="font-size: 26px;">Кликни на меня</button>
+	<span id="textext"></span>
+	<pre>
+		<code>element.addEventListener('click', function (<mark>event</mark>) {</code>
+		<code>    console.log(`${<mark>event.type</mark>} на ${<mark>event.currentTarget</mark>}`);</code>
+		<code>    console.log(`${<mark>event.clientX</mark>}:${<mark>event.clientY</mark>}`);</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+	<script>
+		'use strict';
+		window['super-button2'].addEventListener('click', function (event) {
+			window['textext'].innerHTML = '<br/>'
+				+ `${event.type} на ${event.currentTarget}`
+				+ '<br/>'
+				+ `${event.clientX}:${event.clientY}`;
+		});
+	</script>
+</section>
+
+<section class="slide">
+	<h2>Распространение событий <br>(events <em>propagation</em>)</h2>
+	<div style="position:relative;width: 100%; height: 85%;">
+		<img class="place" src="javascript-event-delegation.png" style="transform-origin: center;transform: translate(-50%,-60%) scale(0.9);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Фазы обработки событий</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
+		<img class="place" src="events1.png" style="transform-origin: center;transform: translate(-67%,-50%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Фазы обработки событий</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
+		<img class="place" src="events.png" style="transform-origin: center;transform: translate(-68%,-52%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Фазы обработки событий</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
+		<img class="place" src="events3.png" style="transform-origin: center;transform: translate(-70%,-50%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Фазы обработки событий</h2>
+	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
+		<img class="place" src="events4.png" style="transform-origin: center;transform: translate(-62%,-50%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Фазы обработки событий</h2>
+	<p class="medium-content"><strong>Строго говоря</strong>, стандарт выделяет целых три стадии прохода события:</p>
+	<ul lang="ru">
+		<li>Событие сначала идет сверху вниз. Эта стадия называется <mark>«стадия перехвата»</mark> (capturing stage)</li>
+		<li>Событие достигло целевого элемента. Это &mdash; <mark>«стадия цели»</mark> (target stage)</li>
+		<li>После этого событие начинает всплывать. Это &mdash; <mark>«стадия всплытия»</mark> (bubbling stage)</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Перехват события на определённой<br>стадии</h2>
+	<p>Используем третий аргумент <code>addEventListener</code></p>
+	<pre>
+		<code><span class="comment rus">// добавление обработчика</span></code>
+		<code>element.addEventListener(event, handler, phase);</code>
+		<code> </code>
+		<code><span class="comment rus">// phase === true - событие будет перехвачено по дороге вниз</span></code>
+		<code><span class="comment rus">// phase === false - событие будет поймано при всплытии</span></code>
+		<code> </code>
+		<code><span class="comment rus">// при удалении нужно передать те же аргументы,</span></code>
+		<code><span class="comment rus">// что были у addEventListener</span></code>
+		<code>element.removeEventListener(event, handler, phase);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Предотвращение обработки<br>событий</h2>
+	<p class="medium-content"></p>
+	<pre>
+		<code>event.preventDefault(); <span class="comment rus">// предотвращает поведение по умолчанию</span></code>
+		<code>event.stopPropagation(); <span class="comment rus">// предотвращает <mark>всплывание</mark> события</span></code>
+		<code>                         <span class="comment rus">// (все обработчики на этом элементе выполнятся)</span></code>
+		<code> </code>
+		<code><span class="comment rus">// <strong>останавливает</strong> обработку событий на текущем элементе</span></code>
+		<code><span class="comment rus">// (все остальные обработчики на этом элементе не выполнятся)</span></code>
+		<code>event.stopImmediatePropagation();</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>SPA &mdash; Single Page Application</h2>
+	<blockquote>
+		<p class="small-content"><b>Одностраничное приложение (SPA)</b> &mdash; это веб-приложение, использующее
+			единственный HTML-документ как оболочку для всех веб-страниц и организующий взаимодействие с пользователем
+			через динамически подгружаемые ресурсы и данные, обычно посредством AJAX</p>
+	</blockquote>
+</section>
+
+
+<section class="slide">
+	<h2 class="shout">Работа с сетью</h2>
+</section>
+
+<section class="slide">
+	<h2>Протокол HTTP</h2>
+	<blockquote>
+		<p class="small-content"><b>HTTP (HyperText Transfer Protocol — «протокол передачи гипертекста»)</b> &mdash;
+			протокол прикладного уровня передачи данных (изначально &mdash; в виде гипертекстовых документов в формате
+			«HTML»), в настоящий момент используется для передачи произвольных данных</p>
+	</blockquote>
+	<p class="note">HTTP &mdash; текстовый протокол (имеются в виду версии протокола до версии HTTP/2)</p>
+</section>
+
+<section class="slide">
+	<h2>Протокол HTTP</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="client-server-diagram-internet.png" style="transform-origin: center;transform: translate(-50%,-45%) scale(1.4);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>HTTP запрос</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs http">
+		<code><span class="comment rus">// METHOD URI HTTP/VERSION <= стартовая строка</span></code>
+		<code>GET /lib/slides.css HTTP/1.1</code>
+		<code>Host: frontend-park-mailru.firebaseapp.com</code>
+		<code>Content-Type: text/css; charset=utf-8</code>
+		<code><span class="comment rus">другие заголовки...</span></code>
+		<code> </code>
+		<code>        <span class="comment rus">тело запроса (опционально)</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>HTTP ответ</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs http">
+		<code><span class="comment rus">// HTTP/VERSION STATUS_CODE REASON_PHRASE <= стартовая строка</span></code>
+		<code>HTTP/1.0 200 OK</code>
+		<code>Host: frontend-park-mailru.firebaseapp.com</code>
+		<code>Content-Type: text/css; charset=utf-8</code>
+		<code><span class="comment rus">другие заголовки...</span></code>
+		<code> </code>
+		<code>        <span class="comment rus">тело ответа (опционально)</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Работа с XMLHttpRequest</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code><span class="comment rus">// 1. Создаём новый объект XMLHttpRequest</span></code>
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code><span class="comment rus">// 2. Конфигурируем его: GET-запрос на URL '/lib/slides.css'</span></code>
+		<code>xhr.open('GET', '/lib/slides.css', <mark>false</mark>);</code>
+		<code> </code>
+		<code><span class="comment rus">// 3. Отсылаем запрос</span></code>
+		<code>xhr.send();</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Работа с XMLHttpRequest</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code><span class="comment rus">// 4. Если код ответа сервера не 200, то это ошибка</span></code>
+		<code><span class="comment rus">console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</span></code>
+		<code>if (+xhr.status === 200) {</code>
+		<code>    console.log(xhr.responseText);</code>
+		<code>} else {</code>
+		<code>    console.error('Ошибка!')</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Пример POST-запроса</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code>xhr.open('POST', '/post', <mark>false</mark>);</code>
+		<code> </code>
+		<code><span class="comment rus">// Выставляем заголовок</span></code>
+		<code>xhr.<mark>setRequestHeader</mark>('Content-Type', 'application/json; charset=utf-8');</code>
+		<code>xhr.send(JSON.stringify({name: 'Alex'}));</code>
+		<code><span class="comment rus">// ждём ответа</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><mark>Асинхронные</mark> запросы</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code>xhr.open('GET', '/lib/slides.css', <mark>true</mark>);</code>
+		<code> </code>
+		<code>xhr.<mark>onreadystatechange</mark> = function() {</code>
+		<code>    if (xhr.<mark>readyState</mark> !== 4) return;</code>
+		<code>    console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</code>
+		<code>    console.log(xhr.responseText);</code>
+		<code>}</code>
+		<code>xhr.timeout = 5000; <span class="comment rus">// 5 секунд (в миллисекундах)</span></code>
+		<code>xhr.send();</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Событие <code>readystatechange</code></h2>
+	<p class="medium-content"></p>
+	<pre class="hljs c">
+		<code><span class="comment rus">// Значения <mark>readyState</mark></span></code>
+		<code>const unsigned short UNSENT = 0; <span class="comment rus">// начальное состояние</span></code>
+		<code>const unsigned short OPENED = 1; <span class="comment rus">// вызван open</span></code>
+		<code>const unsigned short HEADERS_RECEIVED = 2; <span class="comment rus">// получены заголовки</span></code>
+		<code>const unsigned short LOADING = 3; <span class="comment rus">// загружается тело</span></code>
+		<code>const unsigned short DONE = 4; <span class="comment rus">// запрос завершён</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Другие события</h2>
+	<p class="medium-content"></p>
+	<ul lang="ru">
+		<li><code>loadstart</code> &mdash; запрос начат</li>
+		<li><code>progress</code> &mdash; браузер получил очередной пакет данных</li>
+		<li><code>abort</code> &mdash; запрос был отменён вызовом <code>xhr.abort()</code></li>
+		<li><code>error</code> &mdash; произошла ошибка</li>
+		<li><code>load</code> &mdash; запрос был успешно (без ошибок) завершён</li>
+		<li><code>loadend</code> &mdash; запрос был прекращён по таймауту</li>
+		<li><code>readystatechange</code> &mdash; запрос был завершён (успешно или неуспешно)</li>
+	</ul>
+</section>
+
+
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li>Разница между хост-объектами и нативными объектами <a href="http://stackoverflow.com/a/7614380"
+																  target="_blank">описана здесь</a></li>
+		<li>Описание всех нативных глобальных объектов <a
+				href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects" target="_blank">здесь</a>
+		</li>
+		<li>"Что такое DOM?" &mdash; статья на <a href="http://frontender.info/dom/" target="_blank">Frontender
+			Magazine</a></li>
+		<li>Статья на <a
+				href="https://developer.mozilla.org/ru/docs/DOM/DOM_Reference/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"
+				target="_blank">MDN</a> про DOM
+		</li>
+		<li><a href="https://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm" target="_blank">Подробнее</a>
+			про события в JS
+		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Всем спасибо!</h2>
+</section>
+
+
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+<script src="/lib/hljs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
