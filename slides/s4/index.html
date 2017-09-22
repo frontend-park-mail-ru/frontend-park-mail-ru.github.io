@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Безопасность web-приложений, архитектура web-приложений и разработка API, тестирование компонент</title>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Безопасность web-приложений, архитектура web-приложений и разработка API, тестирование компонент</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<script>
+    <script>
 		'use strict';
 
 		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
@@ -30,86 +30,233 @@
 
 		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
-	</script>
+    </script>
 
-	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
-	<link rel="stylesheet" href="/lib/slides.css">
+    <link rel="stylesheet" href="/lib/hljs/styles/github.css">
+    <link rel="stylesheet" href="/lib/slides.css">
 
 </head>
 <body class="shower list">
 
 <header class="caption">
-	<h1>Безопасность web-приложений, архитектура web-приложений и разработка API, тестирование компонент</h1>
-	<p>Технопарк, осень, 2017 г.</p>
+    <h1>Безопасность web-приложений, архитектура web-приложений и разработка API, тестирование компонент</h1>
+    <p>Технопарк, осень, 2017 г.</p>
 </header>
 
 <section class="slide first">
-	<h2 class="shout">Безопасность web-приложений<br/>
-		<small>Слайды доступны по ссылке<br/>
-			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
-		</small>
-	</h2>
+    <h2 class="shout">Безопасность web-приложений<br/>
+        <small>Слайды доступны по ссылке<br/>
+            <a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
+        </small>
+    </h2>
 </section>
 
 <section class="slide">
-	<h2>Same Origin Policy</h2>
-	<blockquote>
-		<p class="medium-content"><b>Правило ограничения домена (Same Origin Policy &mdash; «Принцип одинакового
-			источника»)</b> &mdash; это важная концепция безопасности и работы web-приложений. Она призвана
-			<mark>ограничивать возможности</mark>
-			пользовательских сценариев из определённого источника по доступу к ресурсам и информации из других
-			источников
-		</p>
-	</blockquote>
+    <h2>Same Origin Policy</h2>
+    <blockquote>
+        <p class="medium-content"><b>Правило ограничения домена (Same Origin Policy &mdash; «Принцип одинакового
+            источника» a.k.a. «Политика единого источника»)</b> &mdash; это важная концепция безопасности и работы web-приложений. Она призвана
+            <mark>ограничивать возможности</mark> пользовательских сценариев из определённого источника по доступу к ресурсам и информации из других
+            источников</p>
+    </blockquote>
 </section>
 
 <section class="slide">
-	<h2>Same Origin Policy</h2>
-	<p>Вводится понятие
-		<mark>источника</mark>
-		(адрес в интернете, откуда был загружен ресурс). Два URL считаются имеющим один источник («same origin»), если у
-		них
-		<mark>одинаковый протокол, домен и порт</mark>
-	</p>
-	<p>У этих ресурсов одинаковые источники:</p>
-	<ul>
-		<li><code>http://site.com</code></li>
-		<li><code>http://site.com/</code></li>
-		<li><code>http://site.com/my/page.html</code></li>
-	</ul>
+    <h2>Same Origin Policy</h2>
+    <p>Вводится понятие
+        <mark>источника</mark>
+        (адрес в интернете, откуда был загружен ресурс). Два URL считаются имеющим один источник («same origin»), если у
+        них
+        <mark>одинаковый протокол, домен и порт</mark>
+    </p>
+    <p>У этих ресурсов одинаковые источники:</p>
+    <ul>
+        <li><code>http://site.com</code></li>
+        <li><code>http://site.com/</code></li>
+        <li><code>http://site.com/my/page.html</code></li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>Same Origin Policy</h2>
-	<p>У этих ресурсов <strong>разные</strong> источники:</p>
-	<ul>
-		<li><code>http://site.com</code></li>
-		<li><code>http://<strong>www</strong>.site.com</code> (другой домен)</li>
-		<li><code>http://site.<strong>org</strong></code> (другой домен)</li>
-		<li><code><strong>https</strong>://site.com</code> (другой протокол)</li>
-		<li><code>http://site.com:<strong>8080</strong></code> (другой порт)</li>
-	</ul>
+    <h2>Same Origin Policy</h2>
+    <p>У этих ресурсов <strong>разные</strong> источники:</p>
+    <ul>
+        <li><code>http://site.com</code></li>
+        <li><code>http://<strong>www</strong>.site.com</code> (другой домен)</li>
+        <li><code>http://site.<strong>org</strong></code> (другой домен)</li>
+        <li><code><strong>https</strong>://site.com</code> (другой протокол)</li>
+        <li><code>http://site.com:<strong>8080</strong></code> (другой порт)</li>
+    </ul>
 </section>
 
 <section class="slide question">
-	<h2><span style="font-size: 65%">Как именно это помогает обеспечить <mark>безопасность</mark> web-приложений?</span>
-	</h2>
+    <h2>
+        <span style="font-size: 85%">Способы обхода Same Origin Policy</span>
+    </h2>
+</section>
+
+<section class="slide question">
+    <h2>
+        <span style="font-size: 85%">Cross-Site Scripting (XSS)</span>
+    </h2>
 </section>
 
 <section class="slide">
-	<h2>Элемент <code>&lt;iframe></code></h2>
-	<blockquote>
-		<p class="medium-content">Элемент <code>&lt;iframe></code> создаёт фрейм &mdash; область заданных размеров,
-			которая находится внутри обычного документа, в которую можно загружать любые другие независимые документы
-		</p>
-	</blockquote>
+    <h2>Cross-Site Scripting (XSS)</h2>
+    <blockquote>
+        <p class="medium-content"><b>Cross-Site Scripting</b> &mdash; атака, заключающаяся во <mark>внедрении на страницу вредоносного кода</mark>, который будет выполнен в контексте источника конкретного сайта с целью обхода политик единого источника, и взаимодействии этого кода с веб-сервером злоумышленника</p>
+    </blockquote>
+    <p class="note">С помощью XSS злоумышленник может <strong>украсть из браузера пользователя sensitive-данные</strong> (например, cookies с ID сессии пользователя, приватные данные пользователя или данные из форм), может <strong>выполнить от имени пользователя различные действия</strong> или, например, <strong>провести DOS-атаку</strong></p>
 </section>
 
 <section class="slide">
-	<h2>Элемент <code>&lt;iframe></code></h2>
-	<code>&lt;iframe src="https://www.w3.org/" width="900" height="300"></code>
+    <h2>Способы защиты от XSS</h2>
+    <p class="medium-content"></p>
+    <ul>
+        <li>Тщательная фильтрация и экранирование пользовательского контента, вставляемого через <code>innerHTML</code></li>
+        <li>Использование белых списков при фильтрации HTML</li>
+        <li>Правильная работа с куками, использование <code>httpOnly</code></li>
+        <li>Использование специального заголовка <code>X-XSS-Protection</code></li>
+        <li>Ещё больше про XSS <a href="https://habrahabr.ru/company/pt/blog/149152/" target="_blank">тут</a></li>
+    </ul>
+</section>
 
-	<iframe src="https://www.w3.org/" frameborder="0" id="frameMy" width="900" height="310"></iframe>
+<section class="slide question">
+    <h2>
+        <span style="font-size: 85%">Clickjacking (угон&nbsp;кликов)</span>
+    </h2>
+</section>
+
+<section class="slide">
+    <h2>Элемент <code>&lt;iframe></code></h2>
+    <blockquote>
+        <p class="medium-content">Элемент <code>&lt;iframe></code> создаёт фрейм &mdash; область заданных размеров,
+            которая находится внутри обычного документа, в которую можно загружать любые другие независимые документы
+        </p>
+    </blockquote>
+</section>
+
+<section class="slide">
+    <h2>Элемент <code>&lt;iframe></code></h2>
+    <code>&lt;iframe src="https://www.w3.org/" width="900" height="500"></code>
+
+    <iframe src="https://www.w3.org/" frameborder="0" id="frameMy" width="900" height="510"></iframe>
+</section>
+
+<section class="slide">
+    <h2>Атака Clickjacking (угон кликов)</h2>
+    <blockquote>
+        <p class="medium-content"><b>Атака Clickjacking</b> &mdash; механизм обмана пользователей, при котором злоумышленник может получить доступ к конфиденциальной информации или даже заставить пользователя выполнить определённые действия, заманив его на внешне безобидную страницу или внедрив вредоносный код на безопасную страницу</p>
+    </blockquote>
+</section>
+
+<section class="slide">
+    <h2>Атака Clickjacking (угон кликов)</h2>
+    <p class="medium-content"></p>
+    <ol>
+        <li>Заманиваем пользователя на нашу страницу</li>
+        <li>Открываем на нашей странице <mark>iframe с facebook'ом</mark>, делаем ему <code>opacity:&nbsp;0;</code> и позиционируем под курсором пользователя</li>
+        <li>Смещаем содержимое iframe так, чтобы в окне оказалась кнопка подписки на сообщество</li>
+        <li>Пользователь делает клик</li>
+        <li>???????</li>
+        <li>PROFIT!</li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>Защита от Clickjacking</h2>
+    <p>Используем заголовок <code>X-Frame-Options</code>:</p>
+    <ul>
+        <li><code>X-Frame-Options: DENY</code> &mdash; запрещает открывать сайт внутри iframe</li>
+        <li><code>X-Frame-Options: SAMEORIGIN</code> &mdash; разрешает открывать сайт внутри iframe на страницах с тем же самым origin</li>
+        <li><code>X-Frame-Options: ALLOW-FROM https://example.com/</code> &mdash; разрешает открывать сайт внутри iframe на страницах с указанным origin</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Какая ещё есть угроза <br>связанная с <strong>iframe</strong>?</h2>
+    <p>У элемента <code>iframe</code> есть свойства, позволяющие получить доступ до содержимого страницы:</p>
+    <ul>
+        <li><code>iframe.contentWindow</code> &mdash; ссылка на <code>window</code> страницы,<br>загруженной в <code>iframe</code></li>
+        <li><code>iframe.contentWindow.document</code> &mdash; ссылка на <code>document</code> страницы, загруженной в <code>iframe</code></li>
+        <li><code>window.parent</code> &mdash; внутри <code>iframe</code> ссылается на родительский документ</li>
+        <li><code>window.top</code> &mdash; внутри <code>iframe</code> ссылается самый верхний родительский элемент (в случае iframe в iframe)</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Ограничения <strong>iframe</strong></h2>
+    <p class="medium-content"></p>
+    <ul>
+        <li>На все <code>iframe</code> всегда накладываются ограничения, диктуемые <br> Same Origin Policy</li>
+        <li>В частности, если в <code>iframe</code> загружен ресурс с другим Origin, то эти две страницы не имеют доступа друг до друга через <code>iframe.contentWindow</code> и <code>window.parent</code></li>
+        <li>У элемента <code>iframe</code> есть атрибут <code>sandbox</code> с возможными значениями: <code>allow-same-origin</code>, <code>allow-top-navigation</code>, <code>allow-forms</code>, <code>allow-scripts</code></li>
+    </ul>
+</section>
+
+<section class="slide question">
+    <h2>
+        <span style="font-size: 75%">Cross-Site Request Forgery (CSRF-атака)</span>
+    </h2>
+</section>
+
+<section class="slide">
+    <h2>Атака CSRF</h2>
+    <ol>
+        <li>Пользователь заходит на сайт, на котором размещена вот такая форма:</li>
+        <pre class="hljs html">
+			<code>&lt;form action="https://e.mail.ru/messages/send" method="POST" hidden></code>
+			<code>    &lt;input name="message" value="Evil message"></code>
+			<code>    &lt;!-- ... --></code>
+			<code>&lt;/form></code>
+			<code> </code>
+		</pre>
+        <li>При заходе на сайт, скрипт вызывает <code>submit()</code> у формы</li>
+        <li>Отправляется POST-запрос на страницу <mark>https://e.mail.ru/messages/send</mark></li>
+        <li>Т.к. пользователь авторизован в Почте, то запрос отправляется с куками пользователя и от имени пользователя отправляется письмо</li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>В атаке используется слабая<br>сторона авторизации через cookies</h2>
+    <blockquote>
+        <p class="medium-content"><b>Cookies</b> позволяют проверить, кто отправил определённый запрос, но они ничего не говорят о данных этого запроса</p>
+    </blockquote>
+    <p class="note">Браузеры не понимают, как различить, было ли действие явно совершено пользователем <em>(как, скажем, нажатие кнопки на форме или переход по ссылке)</em> или пользователь неумышленно выполнил это действие <em>(зайдя на "плохой" сайт)</em></p>
+</section>
+
+<section class="slide">
+    <h2>Защита от CSRF-атак с помощью<br>CSRF-токенов</h2>
+    <ol>
+        <li>При первом запросе на сервер в теле ответа или в заголовке <code>X-CSRF-Token</code> сервер передаёт на клиент <mark>token</mark> &mdash; случайную строку, и клиент сохраняет её у себя в какой-то переменной, но не в cookies</li>
+        <li>При последующих запросах на сервер клиент добавляет этот токен в заголовки запросов или в специальное поле в теле запроса</li>
+        <li>Сервер на каждый запрос валидирует <mark>token</mark> и если он не был передан, либо он неверный, то сервер отклоняет этот запрос</li>
+        <li>Т.к. злоумышленнику токен не известен, то он не сможет подделать наш запрос</li>
+    </ol>
+</section>
+
+<section class="slide question">
+    <h2><span style="font-size: 65%; display: inline-block;">Почему бы просто не запретить такие запросы?</span></h2>
+</section>
+
+<section class="slide question">
+    <h2><span style="font-size: 85%">Архитектура наших приложений?</span></h2>
+</section>
+
+<section class="slide">
+    <h2>Архитектура наших приложений?</h2>
+    <div style="position:relative;width: 100%; height: 75%;">
+        <img class="place" src="arch.png" style="transform-origin: center;transform: translate(-50.45%,-51%) scale(.893);">
+    </div>
+</section>
+
+<section class="slide">
+    <h2>HTTP access control (CORS)</h2>
+    <blockquote>
+        <p class="small-content"><b>Cross-Origin Resource Sharing (CORS) standard</b> &mdash; спецификация,
+            накладывающая ограничения на запросы такого типа (работает по принципам Same Origin Policy). Появилась
+            относительно недавно</p>
+    </blockquote>
 </section>
 
 <section class="slide">
@@ -118,79 +265,49 @@
 		)
 	</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// Находимся на https://evil.com/</span></code>
-			<code>const xhr = new XMLHttpRequest();</code>
-			<code>xhr.open('GET', <mark>'https://e.mail.ru/messages/inbox/'</mark>, false);</code>
-			<code>xhr.send();</code>
-			<code> </code>
-			<code>console.log(xhr.responseText)</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide question">
-	<h2><span style="font-size: 85%">Архитектура наших приложений?</span></h2>
+		<code><span class="comment rus">// Находимся на https://evil.com/</span></code>
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code>xhr.open('GET', <mark>'https://e.mail.ru/messages/inbox/'</mark>, false);</code>
+		<code>xhr.send();</code>
+		<code> </code>
+		<code>console.log(xhr.responseText)</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
-	<h2>Архитектура наших приложений?</h2>
-	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="arch.png" style="transform-origin: center;transform: translate(-50.45%,-51%) scale(.893);">
-	</div>
+    <h2>Запросы делятся на два типа</h2>
+    <p>Простыми считаются запросы, если они удовлетворяют следующим двум условиям:</p>
+    <ul>
+        <li>Простой метод: GET, POST или HEAD</li>
+        <li>Простые заголовки &mdash; только из списка:
+            <ul>
+                <li><code>Accept</code></li>
+                <li><code>Accept-Language</code></li>
+                <li><code>Content-Language</code></li>
+                <li><code>Content-Type</code></li>
+            </ul>
+        </li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>Когда отправляются запросы?</h2>
-	<p class="small-content"></p>
-	<ul>
-		<li>При загрузке ресурсов (элементы <code>&lt;img></code>, <code>&lt;script></code>)</li>
-		<li>При отправке форм (форму можно сабмитить с двумя методами: GET и POST)</li>
-		<li>С помощью JavaScript (XHR, fetch)</li>
-	</ul>
+    <h2>Запросы делятся на два типа</h2>
+    <p class="small-content">Остальные запросы считаются
+        <mark>"непростыми"</mark>
+        , и при отправке таких запросов необходимо понять, согласен ли сервер на обработку таких запросов. Эти запросы
+        всегда отсылаются со специальным заголовком <code>Origin</code></p>
 </section>
 
 <section class="slide">
-	<h2>HTTP access control (CORS)</h2>
-	<blockquote>
-		<p class="small-content"><b>Cross-Origin Resource Sharing (CORS) standard</b> &mdash; спецификация,
-			накладывающая ограничения на запросы такого типа (работает по принципам Same Origin Policy). Появилась
-			относительно недавно</p>
-	</blockquote>
-</section>
-
-<section class="slide">
-	<h2>Запросы делятся на два типа</h2>
-	<p>Простыми считаются запросы, если они удовлетворяют следующим двум условиям:</p>
-	<ul>
-		<li>Простой метод: GET, POST или HEAD</li>
-		<li>Простые заголовки &mdash; только из списка:
-			<ul>
-				<li><code>Accept</code></li>
-				<li><code>Accept-Language</code></li>
-				<li><code>Content-Language</code></li>
-				<li><code>Content-Type</code></li>
-			</ul>
-		</li>
-	</ul>
-</section>
-
-<section class="slide">
-	<h2>Запросы делятся на два типа</h2>
-	<p class="small-content">Остальные запросы считаются
-		<mark>"непростыми"</mark>
-		, и при отправке таких запросов необходимо понять, согласен ли сервер на обработку таких запросов. Эти запросы
-		всегда отсылаются со специальным заголовком <code>Origin</code></p>
-</section>
-
-<section class="slide">
-	<h2>CORS для простых запросов</h2>
-	<pre class="hljs http">
+    <h2>CORS для простых запросов</h2>
+    <pre class="hljs http">
 			<code>GET /data HTTP/1.1</code>
 			<code>Host: e.mail.ru</code>
 			<code>Origin: http://frontend.tech-mail.ru</code>
 			<code> </code>
 		</pre>
-	<pre class="hljs http">
+    <pre class="hljs http">
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: text/html; charset=UTF-8</code>
 			<code><mark>Access-Control-Allow-Origin:</mark> http://frontend.tech-mail.ru</code>
@@ -200,8 +317,8 @@
 </section>
 
 <section class="slide">
-	<h2>CORS для простых запросов:<br/>дополнительные заголовки</h2>
-	<pre class="hljs http">
+    <h2>CORS для простых запросов:<br/>дополнительные заголовки</h2>
+    <pre class="hljs http">
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: text/html; charset=UTF-8</code>
 			<code>Access-Control-Allow-Origin: http://frontend.tech-mail.ru</code>
@@ -214,14 +331,14 @@
 </section>
 
 <section class="slide">
-	<h2>CORS для простых запросов:<br/>данные авторизации</h2>
-	<pre class="hljs js">
+    <h2>CORS для простых запросов:<br/>данные авторизации</h2>
+    <pre class="hljs js">
 			<code>const xhr = new XMLHttpRequest();</code>
 			<code>xhr.<mark>withCredentials</mark> = true;</code>
 			<code>xhr.open('GET', 'https://e.mail.ru/messages/inbox/', false);</code>
 			<code> </code>
 		</pre>
-	<pre class="hljs http">
+    <pre class="hljs http">
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: text/html; charset=UTF-8</code>
 			<code>Access-Control-Allow-Origin: <mark>domain</mark> <span class="comment">// '*' запрещено</span></code>
@@ -231,20 +348,20 @@
 </section>
 
 <section class="slide">
-	<h2>"Непростые" запросы</h2>
-	<p>При отправке "непростого" запроса, браузер сделает на самом деле <strong>два</strong> HTTP-запроса.
-	<ul>
-		<li>«Предзапрос» (английский термин «preflight») OPTIONS. Cодержит название желаемого метода в заголовке <code>Access-Control-Request-Method</code>,
-			а если добавлены особые заголовки, то и их тоже &mdash; в <code>Access-Control-Request-Headers</code>.
-		</li>
-		<li>Основной HTTP-запрос с заголовком <code>Origin</code></li>
-	</ul>
+    <h2>"Непростые" запросы</h2>
+    <p>При отправке "непростого" запроса, браузер сделает на самом деле <strong>два</strong> HTTP-запроса.
+    <ul>
+        <li>«Предзапрос» (английский термин «preflight») OPTIONS. Cодержит название желаемого метода в заголовке <code>Access-Control-Request-Method</code>,
+            а если добавлены особые заголовки, то и их тоже &mdash; в <code>Access-Control-Request-Headers</code>.
+        </li>
+        <li>Основной HTTP-запрос с заголовком <code>Origin</code></li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>"Непростые" запросы</h2>
-	<p>Ответ на предзапрос может содержать следующие заголовки</p>
-	<pre class="hljs http">
+    <h2>"Непростые" запросы</h2>
+    <p>Ответ на предзапрос может содержать следующие заголовки</p>
+    <pre class="hljs http">
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: text/plain</code>
 			<code><mark>Access-Control-Allow-Methods:</mark> DELETE, PUT, HEAD, OPTIONS, GET, POST</code>
@@ -260,119 +377,119 @@
 
 
 <section class="slide">
-	<h2 class="shout">Работа с API</h2>
+    <h2 class="shout">Работа с API</h2>
 </section>
 
 <section class="slide">
-	<h2>Что есть
-		<mark>API</mark>
-	</h2>
-	<blockquote>
-		<p class="medium-content"><b>API (application programming interface, интерфейс программирования приложений)</b>
-			&mdash; набор готовых классов, процедур, функций, структур и констант, предоставляемых приложением
-			(библиотекой, сервисом) или операционной системой для использования во внешних программных продуктах.
-			Используется программистами при написании всевозможных приложений</p>
-	</blockquote>
+    <h2>Что есть
+        <mark>API</mark>
+    </h2>
+    <blockquote>
+        <p class="medium-content"><b>API (application programming interface, интерфейс программирования приложений)</b>
+            &mdash; набор готовых классов, процедур, функций, структур и констант, предоставляемых приложением
+            (библиотекой, сервисом) или операционной системой для использования во внешних программных продуктах.
+            Используется программистами при написании всевозможных приложений</p>
+    </blockquote>
 </section>
 
 <section class="slide">
-	<h2>Что есть
-		<mark>API</mark>
-	</h2>
-	<p>API определяет
-		<mark>функциональность</mark>
-		, которую предоставляет программа (модуль, библиотека), при этом API позволяет абстрагироваться от того, как
-		именно эта функциональность реализована
-	</p>
-	<p><b>Web API</b> &mdash; используется в веб-разработке, как правило, определённый набор HTTP-запросов, а также
-		определение
-		<mark>структуры</mark>
-		HTTP-ответов, для выражения которых используют XML или JSON форматы
-	</p>
+    <h2>Что есть
+        <mark>API</mark>
+    </h2>
+    <p>API определяет
+        <mark>функциональность</mark>
+        , которую предоставляет программа (модуль, библиотека), при этом API позволяет абстрагироваться от того, как
+        именно эта функциональность реализована
+    </p>
+    <p><b>Web API</b> &mdash; используется в веб-разработке, как правило, определённый набор HTTP-запросов, а также
+        определение
+        <mark>структуры</mark>
+        HTTP-ответов, для выражения которых используют XML или JSON форматы
+    </p>
 </section>
 
 <section class="slide">
-	<h2>Сема́нтика</h2>
-	<blockquote>
-		<p><b>Сема́нтика</b> &mdash; раздел лингвистики, изучающий смысловое значение единиц языка</p>
-	</blockquote>
-	<p><br/>
-		&ndash; <em>Работодатель:</em> Назовите вашу главную слабость <br/>
-		&ndash; <em>Кандидат:</em> Я даю
-		<mark>семантически</mark>
-		корректные, но практически неприменимые ответы на вопросы <br/>
-		&ndash; <em>Работодатель:</em> Могли бы вы привести пример? <br/>
-		&ndash; <em>Кандидат:</em> Да, мог бы
-	</p>
+    <h2>Сема́нтика</h2>
+    <blockquote>
+        <p><b>Сема́нтика</b> &mdash; раздел лингвистики, изучающий смысловое значение единиц языка</p>
+    </blockquote>
+    <p><br/>
+        &ndash; <em>Работодатель:</em> Назовите вашу главную слабость <br/>
+        &ndash; <em>Кандидат:</em> Я даю
+        <mark>семантически</mark>
+        корректные, но практически неприменимые ответы на вопросы <br/>
+        &ndash; <em>Работодатель:</em> Могли бы вы привести пример? <br/>
+        &ndash; <em>Кандидат:</em> Да, мог бы
+    </p>
 </section>
 
 <section class="slide">
-	<h2>CRUD</h2>
-	<blockquote>
-		<p><b>CRUD (create, read, update, delete)</b> &mdash; акроним, обозначающий четыре базовые функции, используемые
-			при работе с персистентными хранилищами данных, описывает семантику методов HTTP</p>
-	</blockquote>
-	<ul>
-		<li>GET (чтение данных)</li>
-		<li>POST (создание данных)</li>
-		<li>PUT (полное обновление данных) или PATCH (частичное обновление данных)</li>
-		<li>DELETE (удаление данных)</li>
-		<li>HEAD запрашивает ресурс так же, как и GET, но без тела ответа</li>
-		<li>OPTIONS используется для описания параметров соединения с ресурсом</li>
-	</ul>
+    <h2>CRUD</h2>
+    <blockquote>
+        <p><b>CRUD (create, read, update, delete)</b> &mdash; акроним, обозначающий четыре базовые функции, используемые
+            при работе с персистентными хранилищами данных, описывает семантику методов HTTP</p>
+    </blockquote>
+    <ul>
+        <li>GET (чтение данных)</li>
+        <li>POST (создание данных)</li>
+        <li>PUT (полное обновление данных) или PATCH (частичное обновление данных)</li>
+        <li>DELETE (удаление данных)</li>
+        <li>HEAD запрашивает ресурс так же, как и GET, но без тела ответа</li>
+        <li>OPTIONS используется для описания параметров соединения с ресурсом</li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>REST</h2>
-	<blockquote>
-		<p><b>REST (в применении к именованию ресурсов)</b> &mdash; набор методик и практик, которые используются для
-			именования ресурсов, с которыми работает система</p>
-	</blockquote>
-	<p>Все типы ресурсов делятся на две категории:</p>
-	<ul>
-		<li>
-			<mark>коллекции ресурсов</mark> &mdash; имеют имя
-		</li>
-		<li>
-			<mark>отдельные представители</mark> &mdash; принадлежат к какой-то коллекции и имеют идентификатор, чтобы
-			отличать различных представителей коллекции друг от друга
-		</li>
-	</ul>
+    <h2>REST</h2>
+    <blockquote>
+        <p><b>REST (в применении к именованию ресурсов)</b> &mdash; набор методик и практик, которые используются для
+            именования ресурсов, с которыми работает система</p>
+    </blockquote>
+    <p>Все типы ресурсов делятся на две категории:</p>
+    <ul>
+        <li>
+            <mark>коллекции ресурсов</mark> &mdash; имеют имя
+        </li>
+        <li>
+            <mark>отдельные представители</mark> &mdash; принадлежат к какой-то коллекции и имеют идентификатор, чтобы
+            отличать различных представителей коллекции друг от друга
+        </li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>REST</h2>
-	<p>Коллекция книг (books):</p>
-	<ul>
-		<li>Вся коллекция получает URI <code>/books</code></li>
-		<li>Идентификатор книги &mdash; её ISBN. Отдельные книги:
-			<ul>
-				<li><code>/books/2-266-11156-6</code></li>
-				<li><code>/books/3-720-55486-7</code></li>
-				<li><code>/books/1-054-55901-2</code></li>
-			</ul>
-		</li>
-	</ul>
+    <h2>REST</h2>
+    <p>Коллекция книг (books):</p>
+    <ul>
+        <li>Вся коллекция получает URI <code>/books</code></li>
+        <li>Идентификатор книги &mdash; её ISBN. Отдельные книги:
+            <ul>
+                <li><code>/books/2-266-11156-6</code></li>
+                <li><code>/books/3-720-55486-7</code></li>
+                <li><code>/books/1-054-55901-2</code></li>
+            </ul>
+        </li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>REST</h2>
-	<p>Коллекция пользователей (users):</p>
-	<ul>
-		<li>Вся коллекция получает URI <code>/users</code></li>
-		<li>Идентификатор пользователя &mdash; его ID. Отдельные пользователи:
-			<ul>
-				<li><code>/users/id2</code></li>
-				<li><code>/users/id432</code></li>
-				<li><code>/users/id1211177181</code></li>
-			</ul>
-		</li>
-	</ul>
+    <h2>REST</h2>
+    <p>Коллекция пользователей (users):</p>
+    <ul>
+        <li>Вся коллекция получает URI <code>/users</code></li>
+        <li>Идентификатор пользователя &mdash; его ID. Отдельные пользователи:
+            <ul>
+                <li><code>/users/id2</code></li>
+                <li><code>/users/id432</code></li>
+                <li><code>/users/id1211177181</code></li>
+            </ul>
+        </li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>REST + CRUD = семантическое API</h2>
-	<pre class="hljs http">
+    <h2>REST + CRUD = семантическое API</h2>
+    <pre class="hljs http">
 			<code>Получение всех книг</code>
 			<code>GET /books HTTP/1.1</code>
 			<code>Host: awesome.com</code>
@@ -389,14 +506,14 @@
 </section>
 
 <section class="slide">
-	<h2>Документирование API</h2>
-	<p class="small-content"></p>
-	<ul>
-		<li><a href="http://swagger.io/" target="_blank">swagger</a></li>
-		<li><a href="https://apiary.io/" target="_blank">apiary</a></li>
-		<li><a href="https://apiblueprint.org/" target="_blank">apiblueprint</a></li>
-		<li>Ваши варианты ;)</li>
-	</ul>
+    <h2>Документирование API</h2>
+    <p class="small-content"></p>
+    <ul>
+        <li><a href="http://swagger.io/" target="_blank">swagger</a></li>
+        <li><a href="https://apiary.io/" target="_blank">apiary</a></li>
+        <li><a href="https://apiblueprint.org/" target="_blank">apiblueprint</a></li>
+        <li>Ваши варианты ;)</li>
+    </ul>
 </section>
 
 
@@ -404,34 +521,231 @@
 
 
 <section class="slide">
-	<h2 class="shout">Promise и<br/>Fetch API</h2>
+    <h2 class="shout">Promise и<br/>Fetch API</h2>
+</section>
+
+
+<section class="slide">
+    <!--
+    прежде чем говорить о промисах и прочей ерунде
+    надо рассказать о том что такое callback hell
+    или более широкое понятие pyramid of doom.
+
+    Не тот Doom который лучше чем DOM.
+    -->
+    <h2>План лекции</h2>
+	<p class="small-content"></p>
+    <ol>
+        <li>Асинхронность и проблемы</li>
+        <li>Промисы</li>
+        <li>Fetch API</li>
+        <li>Тестирование</li>
+    </ol>
 </section>
 
 <section class="slide question">
-	<h2>
-		<span style="font-size: 85%">Что такое <mark>Promise</mark>?</span>
-	</h2>
+    <h2>
+        <span style="font-size: 85%">Асинхронность в JavaScript</span>
+    </h2>
 </section>
 
 <section class="slide">
-	<h2>Что такое Promises</h2>
-	<blockquote>
-		<p><b>Promises (промисы)</b> &mdash; это специальные объекты, которые могут находиться в одном из трёх состояний:
-			<ul>
-				<li>вначале <strong>pending</strong> («ожидание»)</li>
-				<li>затем либо <strong>fulfilled</strong> («выполнено успешно»)</li>
-				<li>либо <strong>rejected</strong> («выполнено с ошибкой»)</li>
-			</ul>
-		</p>
-	</blockquote>
-	<div style="position:relative;width: 100%; height: 40%;">
-		<img class="place" src="promiseInit.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.6);">
-	</div>
+    <!--
+    вспомним о том что такое callback-и
+
+    функции могут возвращать результат естественным путем
+    функции могут возвращать результат через callback (когда мы работаем с асинхронным кодом)
+
+    callback это функция которую мы передаем в другую функцию чтобы та в свою очередь вызвала
+
+    из-за этой особенности многим трудно понимать код на JS:
+    код выполняется не сверху вниз а фиг пойми как
+
+    например на слайде нижнее сообщение выполнится первым
+
+    это сделано не просто так а ради неблокирующих операций IO
+
+    асинхронность в JS это сила а не слабость, но за всё надо платить
+
+    но какой код мы напишем если после первой операции
+    нам нужно будет сделать еще одну асинхронную и вывести результат?
+    -->
+    <h2>Асинхронность в JavaScript</h2>
+    <pre class="hljs js">
+		<code>http.get('/user', function (err, user) {</code>
+		<code>    if (err) {</code>
+		<code>        console.error(err);</code>
+		<code>        return;</code>
+		<code>    }</code>
+		<code>    console.log('User is', user);</code>
+		<code>});</code>
+		<code> </code>
+		<code>console.log('Waiting...');</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
-	<h2>Что такое Promises</h2>
-	<pre class="hljs js">
+    <!--
+    скорей всего мы просто добавим её вызов в наш callback
+    финальный console.log вынесем в новый callback
+
+    а что если нам нужен еще один вызов? или if вставить?
+    -->
+    <h2>Callback Hell</h2>
+    <pre class="hljs js">
+		<code>http.post('/singup', user, function (err, resp1) {</code>
+		<code>    if (err) { return console.error(err); }</code>
+		<code>    http.get(`/users/${resp1.id}`, function (err, resp2) {</code>
+		<code>        if (err) { return console.error(err); }</code>
+		<code>        http.get(`/photos/${resp2.avatarId}`, function (err, avatar) {</code>
+		<code>            if (err) { return console.error(err); }</code>
+		<code>            // ... callback hell!</code>
+		<code>        });</code>
+		<code>    });</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <!--
+    будет так
+
+    это и называется callback hell или pyramid of doom
+
+    пирамида потому-что пирамида
+    callback hell потому что это callback-и и это ад
+
+    т.е. суть в том когда код растет вправо быстрей чем вниз
+
+    надеюсь не надо объяснять почему это плохо
+    тех кому это не понятно понимание настигнет само,
+    главное больше так писать
+
+    -->
+    <h2>Callback Hell</h2>
+    <div style="position:relative;width: 100%; height: 75%;">
+        <img class="place" src="callbackHell.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.25);">
+    </div>
+</section>
+
+<section class="slide">
+    <h2>Избавляемся от пирамид</h2>
+    <!--
+    как только мы осознали что пирамиды это плохо
+    хочется от них избавиться
+
+    сделать это можно например так:
+
+    выносим колбеки как отдельные функции
+    придумываем адекватные названия
+
+    расположить их при этом можно в порядке выполненения (JS это позволяет)
+    или по старинке следуя правилу "не использовать до объявления"
+
+    пирамид больше нет но callback-и остались
+    -->
+    <pre class="hljs js">
+		<code>http.post('/singup', user, <mark>onSignup</mark>);</code>
+		<code> </code>
+		<code>function onSignup (err, resp1) {</code>
+		<code>    if (err) { return console.error(err); }</code>
+		<code>    http.get(`/users/${resp1.id}`, <mark>onLoadUser</mark>);</code>
+		<code>}</code>
+		<code> </code>
+		<code>function onLoadUser (err, resp2) {</code>
+		<code>    if (err) { return console.error(err); }</code>
+		<code>    http.get(`/photos/${resp2.avatarId}`, <mark>onLoadAvatar</mark>);</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Try, catch</h2>
+    <p class="medium-content"></p>
+    <pre class="hljs js">
+		<code>try {</code>
+		<code>    <span class="comment rus">// Выбрасываем исключение вручную</span></code>
+  		<code>    throw 'Ooops!';</code>
+		<code>} catch (err) {</code>
+		<code>    alert(err); <span class="comment rus">// Привет, я ошибка!</span></code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Асинхронные ошибки</h2>
+    <pre class="hljs js">
+		<code>try {</code>
+		<code>    http.get('/user', function (err) {</code>
+		<code>        if (err) {</code>
+		<code>            throw err;</code>
+		<code>        }</code>
+		<code>        console.log('User is', user);</code>
+		<code>    });</code>
+		<code>} catch (err) {</code>
+		<code>    alert(err); // Не выполнится</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <!--
+    рассказ про то когда и зачем придумали Promise
+    -->
+    <h2>Futures или Promises</h2>
+    <p class="small-content">Термин <mark>promise</mark> был предложен в 1976 году Дэниэлом Фридманом и Дэвидом Вайзом, а Питер Хиббард назвал его <mark>eventual</mark>. Похожая концепция под названием <mark>future</mark> была предложена в 1977 году в статье Генри Бейкера и Карла Хьюитта</p>
+</section>
+
+<section class="slide">
+    <!--
+    В переводе с иностранного "Promise" означет "Обещание".
+
+    Аналогия про вопросы о времени:
+    - Я могу спросить кого-нибудь о том который час - это "синхронный" вызов
+    - Я могу попросить сказать мне когда пройдет 5 минут - это будет "callback"
+    - Я могу попросить а затем сказать всем что этот человек ОБЕЩАЛ
+      сказать когда пройдет 5 минут - обещание
+
+    Т.е. обещание это отдельная сущность, которой можно поделиться с другими
+    -->
+    <h2>Что такое Promise?</h2>
+    <div style="position:relative;width: 100%; height: 75%;">
+        <img class="place" src="promise.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.8);">
+    </div>
+</section>
+
+<section class="slide">
+    <h2>Promise</h2>
+    <blockquote>
+        <p><b>Promise (обещание)</b> &mdash; представляет собой обертку для значения, неизвестного на момент создания обещания</p>
+    </blockquote>
+    <p class="note">Он позволяет обрабатывать результаты асинхронных операций так, как если бы они были синхронными: вместо конечного результата асинхронного метода возвращается обещание получить результат в некоторый момент в будущем</p>
+</section>
+
+<section class="slide">
+    <h2>Promise</h2>
+    <blockquote>
+        <p><b>Promises (промисы)</b> &mdash; это специальные объекты, которые могут находиться в одном из трёх состояний:
+        <ul>
+            <li>вначале <strong>pending</strong> («ожидание»)</li>
+            <li>затем либо <strong>fulfilled</strong> («выполнено успешно»)</li>
+            <li>либо <strong>rejected</strong> («выполнено с ошибкой»)</li>
+        </ul>
+        </p>
+    </blockquote>
+    <div style="position:relative;width: 100%; height: 40%;">
+        <img class="place" src="promiseInit.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.6);">
+    </div>
+</section>
+
+<section class="slide">
+    <h2>Promise</h2>
+    <pre class="hljs js">
 		<code>const promise = new Promise(function(resolve, reject) {</code>
 		<code>    <span class="comment rus">// Здесь можно выполнять любые действия</span></code>
 		<code> </code>
@@ -449,20 +763,17 @@
 </section>
 
 <section class="slide">
-	<h2>Зачем нужны Promises</h2>
-	<blockquote>
-		<p><b>Promises</b> &mdash; это инструмент для контроля и изменения <mark>execution flow</mark> JavaScript-приложений</p>
-	</blockquote>
-	<p>Это возможно за счёт того, что на промисы можно навесить два коллбека:</p>
-	<ul>
-		<li><code>onFulfilled</code> &mdash; срабатывают, когда promise находится в состоянии «выполнен успешно»</li>
-		<li><code>onRejected</code> &mdash; срабатывают, когда promise находится в состоянии «выполнен с ошибкой»</li>
-	</ul>
+    <h2>Promise</h2>
+    <p>Основной способ взаимодействия с промисом это регистрация функций обратного вызова для получения конечного результата промиса или сообщения о причине, по которой он не был выполнен. Иными словами, на промисы можно навесить два коллбека:</p>
+    <ul>
+        <li><code>onFulfilled</code> &mdash; срабатывают, когда promise находится в состоянии «выполнен успешно»</li>
+        <li><code>onRejected</code> &mdash; срабатывают, когда promise находится в состоянии «выполнен с ошибкой»</li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>Зачем нужны Promises</h2>
-	<pre class="hljs js">
+    <h2>Promise</h2>
+    <pre class="hljs js">
 		<code>const promise = new Promise( ... );</code>
 		<code> </code>
 		<code><span class="comment rus">// Можно навесить их одновременно</span></code>
@@ -479,8 +790,8 @@
 </section>
 
 <section class="slide">
-	<h2>Работа промисов</h2>
-	<pre class="hljs js">
+    <h2>Promise</h2>
+    <pre class="hljs js">
 		<code>const promise = new Promise(function(resolve, reject) {</code>
 		<code>    // do smth</code>
 		<code>    resolve('success'); // or</code>
@@ -495,18 +806,44 @@
 </section>
 
 <section class="slide">
-	<h2>Чейнинг промисов</h2>
-	<pre class="hljs js">
+    <!--
+    Этот небольшой трюк дарит нам много возможностей
+    для организации нашего асинхронного кода
+
+    Перечисляю и рассказываю первые три пункта, на последнем скипаю к след слайду
+    -->
+    <h2>Какая польза от промисов?</h2>
+    <p class="small-content"></p>
+    <ul>
+        <li>Можно навешивать несколько обработчиков-колбэков</li>
+        <li>Можно навесить обработчик-колбэк потом</li>
+        <li>Можно передавать промисы в качестве аргументов в другие части системы</li>
+        <li>Можно строить цепочки асинхронных вызовов без callback hell</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Добавление нескольких коллбэков</h2>
+    <pre class="hljs js">
 		<code>// 'value 1', 'value 2', 'value 3', 'value 4'</code>
+		<code>const promise = Promise.resolve('success');</code>
+		<code> </code>
+		<code>promise.then(res => { console.log('cb1', res); });</code>
+		<code>promise.then(res => { console.log('cb2', res); });</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Чейнинг промисов</h2>
+    <pre class="hljs js">
+		<code>// 'value 1', 'value 2', 'value 3'</code>
 		<code>const promise = Promise.resolve('value 1');</code>
 		<code> </code>
 		<code>const p2 = promise</code>
 		<code>    .then(res => { console.log(res); return 'value 2'; })</code>
-		<code>    .then(res => { console.log(res); return 'value 3'; });</code>
-		<code> </code>
-		<code>p2</code>
-		<code>    .then(res => { console.log(res); return 'value 4'; })</code>
-		<code>    .then(res => { console.log(res); return 'value 5'; });</code>
+		<code>    .then(res => { console.log(res); return 'value 3'; })</code>
+		<code>    .then(res => { console.log(res); });</code>
 		<code> </code>
 		<code>p2 === promise // false</code>
 		<code> </code>
@@ -514,8 +851,8 @@
 </section>
 
 <section class="slide">
-	<h2>Чейнинг промисов</h2>
-	<pre class="hljs js">
+    <h2>Обработка асинхронных ошибок</h2>
+    <pre class="hljs js">
 		<code>// 'value 1', 'Error!', 'Error catched!'</code>
 		<code>const promise = Promise.resolve('value 1');</code>
 		<code> </code>
@@ -531,8 +868,8 @@
 </section>
 
 <section class="slide">
-	<h2>Из промиса можно возвращать<br/>промис!</h2>
-	<pre class="hljs js">
+    <h2>Из промиса можно возвращать<br/>промис!</h2>
+    <pre class="hljs js">
 		<code>// 'foo', 'baz', 'bar', 'foobar'</code>
 		<code>const promise1 = Promise.resolve('foo')</code>
 		<code>    .then(res => { console.log(res); return 'bar'; });</code>
@@ -545,38 +882,12 @@
 	</pre>
 </section>
 
-<section class="slide question">
-	<h2>
-		<span style="font-size: 75%">В чём всё-таки<br/><mark><strong>крутота&nbsp;Промисов</strong></mark>?</span>
-	</h2>
-</section>
-
 <section class="slide">
-	<h2><strong>Крутота</strong> промисов!</h2>
-	<blockquote>
-		<p>Функции <code>resolve</code> и <code>reject</code> можно вызывать <strong>асинхронно</strong>!</p>
-	</blockquote>
-	<pre class="hljs js">
-		<code>const promise = new Promise(function(resolve, reject) {</code>
-		<code>    http.Get('/path', <mark>function (err, response) {</mark></code>
-		<code>    <mark>    if (err) { reject(err); }</mark></code>
-		<code>    <mark>    resolve(response);</mark></code>
-		<code>    <mark>}</mark>);</code>
-		<code>});</code>
-		<code> </code>
-		<code>promise</code>
-		<code>    .then(response => console.log('Fetched data', response))</code>
-		<code>    .catch(error => console.error('Failed', error));</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>Промисификация</h2>
-	<blockquote>
-		<p>Оборачивание <strong>асинхронного функционала</strong> в функцию, возвращающую промис</p>
-	</blockquote>
-	<pre class="hljs js">
+    <h2>Промисификация</h2>
+    <blockquote>
+        <p>Оборачивание <strong>асинхронного функционала</strong> в функцию, возвращающую промис</p>
+    </blockquote>
+    <pre class="hljs js">
 		<code>function PromiseGet(url) {</code>
 		<code>    return new Promise(function (resolve, reject) {</code>
 		<code>        http.Get(url, function (err, response) {</code>
@@ -590,8 +901,8 @@
 </section>
 
 <section class="slide">
-	<h2>Удобно обрабатывать<br><strong>последовательные</strong> запросы</h2>
-	<pre class="hljs js">
+    <h2>Callback Hell!</h2>
+    <pre class="hljs js">
 		<code>http.post('/singup', user, function (err, resp1) {</code>
 		<code>    if (err) { return console.error(err); }</code>
 		<code>    http.get(`/users/${resp1.id}`, function (err, resp2) {</code>
@@ -607,8 +918,8 @@
 </section>
 
 <section class="slide">
-	<h2>Удобно обрабатывать<br><strong>последовательные</strong> запросы</h2>
-	<pre class="hljs js">
+    <h2><s>Callback Hell!</s> Красота :)</h2>
+    <pre class="hljs js">
 		<code>PromisePost('/singup', user)</code>
 		<code>    .then(resp1 => PromiseGet(`/users/${resp1.id}`))</code>
 		<code>    .then(resp2 => PromiseGet(`/photos/${resp2.avatarId}`))</code>
@@ -618,60 +929,169 @@
 	</pre>
 </section>
 
+<section class="slide">
+    <h2><code>Promise.all</code></h2>
+    <pre class="hljs js">
+		<code><span class="comment rus">// Делаем что-нибудь асинхронное и важное параллельно</span></code>
+		<code>Promise.all([</code>
+		<code>	  PromiseGet('/user/1'),</code>
+		<code>	  PromiseGet('/user/2'),</code>
+		<code>]).then(function(users) {</code>
+		<code>	  <span class="comment rus">// Результатом станет массив из значений всех обещаний</span></code>
+		<code>	  users.forEach(function(user, i) {</code>
+		<code>	  	  console.log(`User #${i}: ${value}`);</code>
+		<code>	  });</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2><code>Promise.race</code></h2>
+    <pre class="hljs js">
+		<code>// Делаем что-нибудь асинхронное и важное наперегонки!</code>
+		<code>Promise.race([</code>
+		<code>	promiseSomething(),</code>
+		<code>	promiseSomethingElse()</code>
+		<code>]).then(function(result) {</code>
+		<code>	// Результатом станет значение самого "быстрого" промиса</code>
+		<code>	console.log(`Результат: ${value}`);</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Fetch API</h2>
+    <blockquote>
+        <p>
+            Метод <mark>fetch</mark> &mdash; это <mark>XMLHttpRequest</mark> нового поколения.
+            Он предоставляет улучшенный интерфейс для осуществления запросов к серверу:
+            как по части возможностей и контроля над происходящим,
+            так и по синтаксису, так как построен на <b>промисах</b>
+        </p>
+    </blockquote>
+	<pre class="hljs js">
+		<code><span class="comment rus">// Синтаксис метода fetch:</span></code>
+		<code>const fetchPromise = fetch(url[, options]);</code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Fetch API options</h2>
+	<ul>
+		<li><code>method</code> &mdash; метод запроса</li>
+		<li><code>headers</code> &mdash; заголовки запроса (объект)</li>
+		<li><code>body</code> &mdash; тело запроса: <code>FormData</code>, <code>Blob</code>, строка и т.п.</li>
+		<li><code>mode</code> &mdash; одно из: «same-origin», «no-cors», «cors», указывает, в каком режиме кросс-доменности предполагается делать запрос</li>
+		<li><code>credentials</code> &mdash; одно из: «omit», «same-origin», «include», указывает, пересылать ли куки и заголовки авторизации вместе с запросом</li>
+		<li><code>cache</code> &mdash; одно из «default», «no-store», «reload», «no-cache», «force-cache», «only-if-cached», указывает, как кешировать запрос</li>
+	</ul>
+</section>
+
+<section class="slide">
+    <h2>Fetch API</h2>
+    <div style="display: flex; justify-content: center; align-items: center; height: 600px; width: 100%;">
+			<pre class="hljs js">
+				<code>
+fetch('/books', {
+	mode: 'cors',
+	method: 'POST',
+	credentials: 'include',
+	data: JSON.stringify({
+		title: 'Как перестать писать на PHP и начать жить',
+		authors: [
+			'Анатолий Остапенко',
+			'Дмитрий Дорофеев',
+			'Марина Титова',
+			'Артур Удалов',
+			'Алексей Тюльдюков'
+		]
+	})
+});
+				</code>
+			</pre>
+    </div>
+</section>
+
 <!--закончили с Promise и Fetch API-->
 
-
 <section class="slide">
-	<h2 class="shout">Тестирование?</h2>
-</section>
-
-
-<!--закончили с Тестированием?-->
-
-
-<section class="slide">
-	<h2>Полезные ссылки</h2>
-	<ul lang="en">
-		<li>Same-origin policy описано <a
-				href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank">здесь
-			(MDN)</a> и
-			<a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">здесь (wiki)</a></li>
-		<li>Метода обхода Same-origin policy <a
-				href="http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy"
-				target="_blank">stackoverflow</a></li>
-		<li>Iframe: <a href="https://webref.ru/html/iframe" target="_blank">WebReference.ru</a> и <a
-				href="https://learn.javascript.ru/same-origin-policy" target="_blank">learn.javascript.ru</a></li>
-		<li>Кроссдоменные запросы на <a href="https://learn.javascript.ru/xhr-crossdomain" target="_blank">learn.javascript.ru</a>
-		</li>
-		<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank">Описание</a>
-			HTTP access control (CORS)
-		</li>
-		<li>Документация к <strong>Spring</strong> про CORS: <a
-				href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank">здесь</a></li>
-		<li>API (application programming interface) <a
-				href="https://en.wikipedia.org/wiki/Application_programming_interface" target="_blank">wiki</a></li>
-		<li>Документирование API с помощью <a href="http://swagger.io/" target="_blank">swagger</a>, <a
-				href="https://apiary.io/" target="_blank">apiary</a> или <a href="https://apiblueprint.org/"
-																			target="_blank">apiblueprint</a></li>
-	</ul>
+    <h2 class="shout">Тестирование</h2>
 </section>
 
 <section class="slide">
-	<h2>Полезные ссылки</h2>
-	<ul lang="en">
-		<li>Семантический API: <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank">CRUD</a>
-			и
-			<a href="http://www.ibm.com/developerworks/ru/library/ws-restfu/" target="_blank">REST</a></li>
-		<li>Тестирование JavaScript <a href="https://jasmine.github.io/" target="_blank">с помощью Jasmine</a></li>
-		<li>Очень подробные посты, про Promise на <a href="https://learn.javascript.ru/promise" target="_blank">learn.javascript.ru</a>
-			и на
-			<a href="https://habrahabr.ru/post/209662/" target="_blank">хабре</a></li>
-		<li><a href="https://learn.javascript.ru/fetch" target="_blank">Fetch API</a></li>
-	</ul>
+    <h2>Каким бывает тестирование?</h2>
+    <img class="place" src="testing1.png" height="500">
 </section>
 
 <section class="slide">
-	<h2 class="shout">Всем спасибо!</h2>
+    <h2>Юнит-тестирование</h2>
+    <p class="medium-content"></p>
+	<blockquote>
+        <p>
+            <b>Модульное тестирование</b>, или <b>юнит-тестирование</b> (англ. unit testing) —
+            процесс в программировании, позволяющий проверить на корректность отдельные
+            модули исходного кода программы.
+        </p>
+	</blockquote>
+	<p class="note">
+            Идея состоит в том, чтобы писать тесты для каждой нетривиальной функции или метода.
+            Это позволяет достаточно быстро проверить, не привело ли очередное
+            изменение кода к регрессии, то есть к появлению ошибок в уже оттестированных
+            местах программы, а также облегчает обнаружение и устранение таких ошибок.
+        </p>
+</section>
+
+<section class="slide">
+    <h2>Что тестировать?</h2>
+    <img class="place" src="testing_code.png" height="500">
+</section>
+
+
+<section class="slide">
+    <h2>Полезные ссылки</h2>
+    <ul lang="en">
+        <li>Same-origin policy описано <a
+                href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank">здесь
+            (MDN)</a> и
+            <a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">здесь (wiki)</a></li>
+        <li>Метода обхода Same-origin policy <a
+                href="http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy"
+                target="_blank">stackoverflow</a></li>
+        <li>Iframe: <a href="https://webref.ru/html/iframe" target="_blank">WebReference.ru</a> и <a
+                href="https://learn.javascript.ru/same-origin-policy" target="_blank">learn.javascript.ru</a></li>
+        <li>Кроссдоменные запросы на <a href="https://learn.javascript.ru/xhr-crossdomain" target="_blank">learn.javascript.ru</a>
+        </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank">Описание</a>
+            HTTP access control (CORS)
+        </li>
+        <li>Документация к <strong>Spring</strong> про CORS: <a
+                href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank">здесь</a></li>
+        <li>API (application programming interface) <a
+                href="https://en.wikipedia.org/wiki/Application_programming_interface" target="_blank">wiki</a></li>
+        <li>Документирование API с помощью <a href="http://swagger.io/" target="_blank">swagger</a>, <a
+                href="https://apiary.io/" target="_blank">apiary</a> или <a href="https://apiblueprint.org/"
+                                                                            target="_blank">apiblueprint</a></li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Полезные ссылки</h2>
+    <ul lang="en">
+        <li>Семантический API: <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank">CRUD</a>
+            и
+            <a href="http://www.ibm.com/developerworks/ru/library/ws-restfu/" target="_blank">REST</a></li>
+        <li>Тестирование JavaScript <a href="https://jasmine.github.io/" target="_blank">с помощью Jasmine</a></li>
+        <li>Очень подробные посты, про Promise на <a href="https://learn.javascript.ru/promise" target="_blank">learn.javascript.ru</a>
+            и на
+            <a href="https://habrahabr.ru/post/209662/" target="_blank">хабре</a></li>
+        <li><a href="https://learn.javascript.ru/fetch" target="_blank">Fetch API</a></li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2 class="shout">Всем спасибо!</h2>
 </section>
 
 <div class="progress"></div>
