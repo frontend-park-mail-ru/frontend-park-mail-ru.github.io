@@ -687,7 +687,26 @@
 		<code>        console.log('User is', user);</code>
 		<code>    });</code>
 		<code>} catch (err) {</code>
-		<code>    alert(err); // Не выполнится</code>
+		<code>    alert(err); <span class="comment rus">// Не выполнится</span></code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Асинхронные ошибки</h2>
+    <pre class="hljs js">
+		<code>const callback = function (err) {</code>
+		<code>    if (err) {</code>
+		<code>        throw err;</code>
+		<code>    }</code>
+		<code>    console.log('User is', user);</code>
+		<code>};</code>
+		<code> </code>
+		<code>try {</code>
+		<code>    http.get('/user', callback);</code>
+		<code>} catch (err) {</code>
+		<code>    alert(err); <span class="comment rus">// Не выполнится</span></code>
 		<code>}</code>
 		<code> </code>
 	</pre>
@@ -825,11 +844,11 @@
 <section class="slide">
     <h2>Добавление нескольких коллбэков</h2>
     <pre class="hljs js">
-		<code>// 'value 1', 'value 2', 'value 3', 'value 4'</code>
+		<code>// 'cb1 success', 'cb2 success'</code>
 		<code>const promise = Promise.resolve('success');</code>
 		<code> </code>
-		<code>promise.then(res => { console.log('cb1', res); });</code>
-		<code>promise.then(res => { console.log('cb2', res); });</code>
+		<code>promise.then(res => { console.log('cb1', res); }); // 1</code>
+		<code>promise.then(res => { console.log('cb2', res); }); // 2</code>
 		<code> </code>
 	</pre>
 </section>
@@ -841,9 +860,9 @@
 		<code>const promise = Promise.resolve('value 1');</code>
 		<code> </code>
 		<code>const p2 = promise</code>
-		<code>    .then(res => { console.log(res); return 'value 2'; })</code>
-		<code>    .then(res => { console.log(res); return 'value 3'; })</code>
-		<code>    .then(res => { console.log(res); });</code>
+		<code>    .then(res => { console.log(res); return 'value 2'; }) // 1</code>
+		<code>    .then(res => { console.log(res); return 'value 3'; }) // 2</code>
+		<code>    .then(res => { console.log(res); });                  // 3</code>
 		<code> </code>
 		<code>p2 === promise // false</code>
 		<code> </code>
@@ -857,12 +876,12 @@
 		<code>const promise = Promise.resolve('value 1');</code>
 		<code> </code>
 		<code>promise</code>
-		<code>    .then(res => { console.log(res); throw 'Error!'; })</code>
+		<code>    .then(res => { console.log(res); throw 'Error!'; })             // 1</code>
 		<code>    .then(res => { console.log('foo'); })</code>
 		<code>    .then(res => { console.log('bar'); })</code>
 		<code>    .then(res => { console.log('baz'); })</code>
-		<code>    .catch(err => { console.error(err); return 'Error catched!'; })</code>
-		<code>    .then(res => { console.log(res); });</code>
+		<code>    .catch(err => { console.error(err); return 'Error catched!'; }) // 2</code>
+		<code>    .then(res => { console.log(res); });                            // 3</code>
 		<code> </code>
 	</pre>
 </section>
@@ -872,12 +891,12 @@
     <pre class="hljs js">
 		<code>// 'foo', 'baz', 'bar', 'foobar'</code>
 		<code>const promise1 = Promise.resolve('foo')</code>
-		<code>    .then(res => { console.log(res); return 'bar'; });</code>
+		<code>    .then(res => { console.log(res); return 'bar'; });    // foo</code>
 		<code> </code>
 		<code>const promise2 = Promise.resolve('baz')</code>
-		<code>    .then(res => { console.log(res); <mark>return promise1</mark>; })</code>
-		<code>    .then(res => { console.log(res); return 'foobar'; })</code>
-		<code>    .then(res => { console.log(res); });</code>
+		<code>    .then(res => { console.log(res); <mark>return promise1</mark>; })  // baz</code>
+		<code>    .then(res => { console.log(res); return 'foobar'; })  // bar</code>
+		<code>    .then(res => { console.log(res); });                  // foobar</code>
 		<code> </code>
 	</pre>
 </section>
@@ -937,7 +956,7 @@
 		<code>	  PromiseGet('/user/1'),</code>
 		<code>	  PromiseGet('/user/2'),</code>
 		<code>]).then(function(users) {</code>
-		<code>	  <span class="comment rus">// Результатом станет массив из значений всех обещаний</span></code>
+		<code>	  <span class="comment rus">// Результатом станет массив из значений всех промисов</span></code>
 		<code>	  users.forEach(function(user, i) {</code>
 		<code>	  	  console.log(`User #${i}: ${value}`);</code>
 		<code>	  });</code>
@@ -949,13 +968,13 @@
 <section class="slide">
     <h2><code>Promise.race</code></h2>
     <pre class="hljs js">
-		<code>// Делаем что-нибудь асинхронное и важное наперегонки!</code>
+		<code><span class="comment rus">// Делаем что-нибудь асинхронное и важное наперегонки!</span></code>
 		<code>Promise.race([</code>
-		<code>	promiseSomething(),</code>
-		<code>	promiseSomethingElse()</code>
+		<code>	  promiseSomething(),</code>
+		<code>	  promiseSomethingElse()</code>
 		<code>]).then(function(result) {</code>
-		<code>	// Результатом станет значение самого "быстрого" промиса</code>
-		<code>	console.log(`Результат: ${value}`);</code>
+		<code>	  <span class="comment rus">// Результатом станет значение самого "быстрого" промиса</span></code>
+		<code>	  console.log(`Result: ${value}`);</code>
 		<code>});</code>
 		<code> </code>
 	</pre>
@@ -990,28 +1009,22 @@
 </section>
 
 <section class="slide">
-    <h2>Fetch API</h2>
-    <div style="display: flex; justify-content: center; align-items: center; height: 600px; width: 100%;">
-			<pre class="hljs js">
-				<code>
-fetch('/books', {
-	mode: 'cors',
-	method: 'POST',
-	credentials: 'include',
-	data: JSON.stringify({
-		title: 'Как перестать писать на PHP и начать жить',
-		authors: [
-			'Анатолий Остапенко',
-			'Дмитрий Дорофеев',
-			'Марина Титова',
-			'Артур Удалов',
-			'Алексей Тюльдюков'
-		]
-	})
-});
-				</code>
-			</pre>
-    </div>
+	<h2>Fetch API</h2>
+	<pre class="hljs js">
+		<code>fetch('/books', {</code>
+		<code>	mode: 'cors',</code>
+		<code>	method: 'POST',</code>
+		<code>	credentials: 'include',</code>
+		<code>	data: JSON.stringify({</code>
+		<code>		title: 'Как перестать писать на PHP и начать жить',</code>
+		<code>		authors: [</code>
+		<code>			'Анатолий Остапенко', 'Дмитрий Дорофеев',</code>
+		<code>			'Марина Титова', 'Артур Удалов', 'Алексей Тюльдюков'</code>
+		<code>		]</code>
+		<code>	})</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
 </section>
 
 <!--закончили с Promise и Fetch API-->
@@ -1022,7 +1035,9 @@ fetch('/books', {
 
 <section class="slide">
     <h2>Каким бывает тестирование?</h2>
-    <img class="place" src="testing1.png" height="500">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="testing1.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1);">
+	</div>
 </section>
 
 <section class="slide">
@@ -1040,12 +1055,14 @@ fetch('/books', {
             Это позволяет достаточно быстро проверить, не привело ли очередное
             изменение кода к регрессии, то есть к появлению ошибок в уже оттестированных
             местах программы, а также облегчает обнаружение и устранение таких ошибок.
-        </p>
+	</p>
 </section>
 
 <section class="slide">
     <h2>Что тестировать?</h2>
-    <img class="place" src="testing_code.png" height="500">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="testing_code.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.3);">
+	</div>
 </section>
 
 
