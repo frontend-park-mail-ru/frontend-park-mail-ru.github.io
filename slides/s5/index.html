@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Архитектура web-приложений, роутинг, методологии написания CSS</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script>
+		'use strict';
+
+		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+		const w = screen.width;
+		const h = screen.height;
+		const r = gcd(w, h);
+
+		console.log(`${w}x${h}`);
+		let aspect = `${w / r}x${h / r}`;
+		console.log(aspect);
+
+		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
+		if (!ratios.includes(aspect)) {
+			aspect = ratios[0];
+		}
+
+		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+			aspect = '4x3';
+		}
+		aspect = '4x3';
+
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
+
+	</script>
+
+	<link rel="stylesheet" href="/lib/slides.css">
+
+</head>
+<body class="shower list">
+
+<header class="caption">
+	<h1>Архитектура web-приложений, роутинг, методологии написания CSS</h1>
+	<p>Технопарк, осень, 2017 г.</p>
+</header>
+
+<!-- Краткое введение о модуле. Пара ремарок об использовании кода с занятий. -->
+
+<section class="slide first">
+	<h2 class="shout">Архитектура web-приложений<br/>
+		<small>Слайды доступны по ссылке<br/>
+			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
+		</small>
+	</h2>
+</section>
+
+<!-- О том, что такое архитектура и почему она важна в разработке приложений. Принципы хорошей архитектуры. Краткие сведения о таких вещах, как SOLID и пр. -->
+
+<section class="slide">
+	<h2>Архитектура</h2>
+	<p class="note">Какие-то определения с википедии...</p>
+	<blockquote>
+		<p><b>Архитектура</b> идентифицирует главные компоненты системы и способы их взаимодействия. Также это выбор таких решений, которые интерпретируются как основополагающие и не подлежащие изменению в будущем</p>
+	</blockquote>
+	<blockquote>
+		<p class="medium-content"><b>Архитектура</b> &mdash; это <mark>организация системы</mark>, воплощенная в её компонентах, их отношениях между собой и с окружением. <mark>Система</mark> &mdash; это набор компонентов, объединенных для выполнения определенной функции</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Архитектурные решения</h2>
+	<p><strong>Как определить качество архитектурного решения?</strong> Задайте себе вопрос:</p>
+	<blockquote>
+		<p class="medium-content">А что если я ошибся и мне придется изменить это решение в будущем? Какие будут последствия?</p>
+	</blockquote>
+	<p class="note">Если некоторое решение размазано ровным слоем по всему приложению, то стоимость его изменения будет огромной, а значит это решение является архитектурным</p>
+</section>
+
+<section class="slide">
+	<h2>Проектирование системы</h2>
+	<strong>Критерии хорошего дизайна системы</strong>
+	<p class="medium-content"></p>
+	<ul lang="ru">
+		<li>Эффективность системы</li>
+		<li>Гибкость и расширяемость системы</li>
+		<li>Масштабируемость процесса разработки</li>
+		<li>Тестируемость и сопровождаемость</li>
+		<li>Возможность повторного использования</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Проектирование системы</h2>
+	<strong>Критерии <em>плохого</em> дизайна системы</strong>
+	<p class="medium-content"></p>
+	<ul lang="ru">
+		<li>Его тяжело изменить, поскольку любое изменение влияет на слишком большое количество других частей системы</li>
+		<li>При внесении изменений неожиданно ломаются другие части системы</li>
+		<li>Код тяжело использовать повторно в другом приложении, поскольку его слишком тяжело «выпутать» из текущего приложения</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Методологии и принципы <br> проектирования ПО</h2>
+	<ul lang="en">
+		<li><mark>DRY</mark> &mdash; don’t repeat yourself (не повторяйте себя) &mdash; <em class="note">пфф, изи!!!</em></li>
+		<li><mark>KISS</mark> &mdash; keep it simple stupid (делайте вещи проще) &mdash; <em class="note">проще простого!</em></li>
+		<li><mark>YAGNI</mark> &mdash; you ain’t gonna need it (вам это не понадобится) &mdash; <em class="note">действительно</em></li>
+		<li><mark>GRASP</mark> &mdash; документированные и стандартизированные принципы объектно-ориентированного анализа &mdash; <em class="note">ну как скажешь...</em></li>
+		<li><mark>S.O.L.I.D.</mark> &mdash; пять основных принципов объектно-ориентированного программирования и проектирования &mdash; <em class="note">эээээ, океееей...</em></li>
+		<li><mark>PACKAGE PRINCIPLES</mark> &mdash; package cohesion (REP, CRP и CCP) и package coupling (ADP, SDP и SAP) &mdash; <em class="note">........</em></li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="memes.jpg" style="transform-origin: center; transform: translate(-50%,-55%) scale(1.7);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Методологии и принципы <br> проектирования ПО</h2>
+	<p class="medium-content">Где про всё это почитать?</p>
+	<ul lang="en">
+		<li>Про различные принципы <a href="https://web-creator.ru/articles/subjects/%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5" target="_blank">здесь</a></li>
+		<li>Про GRASP <a href="https://ru.wikipedia.org/wiki/GRASP" target="_blank">на вики</a></li>
+		<li>Про S.O.L.I.D. &mdash; <a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">тоже на вики</a></li>
+		<li><a href="https://en.wikipedia.org/wiki/Package_principles" target="_blank">Package principles</a> &mdash; вообще высший пилотаж (<s>но будучи трезвым читать не советую</s>)</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 100%; color: #000055;"><a href="https://www.youtube.com/watch?v=wi3wPzReKZQ" target="_blank">S.O.L.I.D-ый JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">Как же создать <em>хорошую</em> архитектуру?</span>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">Использовать <strong>проверенные</strong> подходы!</span>
+	</h2>
+</section>
+
+<!-- Дробим монолит. О паттерне Модуль. О разных его реализациях. -->
+
+<section class="slide">
+	<h2>Декомпозиция как основа<br>модульной архитектуры</h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="decomposition_start.png" style="transform-origin: center; transform: translate(-50%,-100%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Хорошая декомпозиция должна<br>быть иерархической</h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="decomposition.png" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.3);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Хорошая декомпозиция должна<br>быть функциональной</h2>
+	<p>Во главе функциональной декомпозиции лежит <mark>паттерн Модуль</mark></p>
+	<blockquote>
+		<p class="medium-content"><b>Модуль</b> &mdash; это Функция + Данные, необходимые для её выполнения</p>
+	</blockquote>
+	<ul lang="ru">
+		<li>Инкапсуляция данных</li>
+		<li>Явное управление зависимостями (создание чёткой структуры подключаемых модулей)</li>
+		<li>Уход от засорения глобального контекста</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Простейший модуль на основе <br><em>самовызывающейся функции</em></h2>
+	<pre class="hljs js">
+		<code>(function () {</code>
+		<code>    <mark>const data1 = ... ; const data2 = ... ;</mark>  // локальные переменные</code>
+		<code>    <mark>const Base = window.Base;</mark> // импортируем модуль</code>
+		<code>    class Module extends Base {</code>
+		<code>        constructor () { ... }</code>
+		<code>        do () {</code>
+		<code>            console.log(data1, data2);</code>
+		<code>        }</code>
+		<code>    }</code>
+		<code> </code>
+		<code>    <mark>window.Module = Module;</mark> // экспортируем модуль</code>
+		<code>})();</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Простейший модуль на основе <br><em>самовызывающейся функции</em></h2>
+	<pre class="hljs js">
+		<code>// Использование</code>
+		<code>const Module = window.Module; // импортируем модуль</code>
+		<code>const m1 = new Module();</code>
+		<code>const m2 = new Module();</code>
+		<code>// ...</code>
+		<code> </code>
+		<code>m1.do();</code>
+		<code>// ...</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Используем всего лишь <strong>одну</strong><br>глобальную переменную!</h2>
+	<pre class="hljs js">
+		<code>(function (modules) {</code>
+		<code>    <mark>const Base = modules.Base;</mark> // импортируем модуль</code>
+		<code>    class Module extends Base {</code>
+		<code>        constructor () { ... }</code>
+		<code>        do () { ... }</code>
+		<code>    }</code>
+		<code> </code>
+		<code>    <mark>modules.Module = Module;</mark> // экспортируем модуль</code>
+		<code>})(<mark>window.___all_modules</mark>);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Множество <strong>систем определения<br>модулей</strong></h2>
+	<p class="note"><s>Почти</s> все из них <a href="https://habrahabr.ru/company/yandex/blog/192874/" target="_blank">здесь</a></p>
+	<ul lang="ru">
+		<li>Простейшая через <mark>IIFE</mark></li>
+		<li><mark>CommonJS Modules</mark> &mdash; используется в Node.js</li>
+		<li><mark>AMD <em>Asynchronous Module Definition</em></mark> &mdash; используется в очень популярной библиотеке RequireJS, и встречается в большом количестве "взрослых" проектов</li>
+		<li><mark>UMD <em>Universal Module Definition</em></mark> &mdash; обёртка-хамелеон, используется для определения модулей как в CommonJS-, так и для AMD-форматов</li>
+		<li><mark>ES2015 Modules</mark> &mdash; часть стандарта языка JavaScript</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>PRO TIPs использования модулей</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li><mark><strong>ОДИН файл &mdash; ОДИН модуль</strong></mark> &mdash; самое главное правило, если появляется необходимость определить в одном файле несколько модулей, значит вы что-то делаете не так</li>
+		<li><mark>Не допускать <em>циклические</em> зависимости</mark> &mdash; есть специальные алгоритмы избавления от них</li>
+		<li><mark>Не создавайте <em>утилитарные</em> мега-модули с множеством экспортируемых функций</mark> &mdash; создавайте просто набор маленьких функций-модулей</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%; color: #000055;"><a href="https://www.youtube.com/watch?v=wi3wPzReKZQ" target="_blank">Антон Немцев &mdash; Паттерны JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
+	</h2>
+</section>
+
+<!-- О таких вещах, как коупелинг и кохежион. Как уменьшать связность приложения. -->
+
+<section class="slide">
+	<h2>Парочка определений</h2>
+	<p class="medium-content"></p>
+	<blockquote>
+		<p><b>Internal Cohesion</b> &mdash; высокая сопряженность или «сплоченность» внутри модуля</p>
+	</blockquote>
+	<blockquote>
+		<p><b>External Coupling</b> &mdash; слабая связанность взаимодействующих друг с другом модулей. Модули, на которые разбивается система, должны быть, по возможности, независимы или слабо связанны друг с другом. Они должны иметь возможность взаимодействовать, но при этом как можно меньше знать друг о друге</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Хорошая декомпозиция должна<br>создавать <strong>слабосвязанную</strong> систему</h2>
+	<p class="medium-content">Модули, полученные в результате декомпозиции, должны быть максимально сопряженны внутри (<mark>high internal cohesion</mark>) и минимально связанны друг с другом (<mark>low external coupling</mark>)</p>
+	<p class="note">Ослаблять связанность нужно на всех уровнях иерархии</p>
+	<ul lang="ru">
+		<li><em>Какую функцию выполняет каждый модуль?</em></li>
+		<li><em>Насколько модули легко тестировать?</em></li>
+		<li><em>Возможно ли использовать модули самостоятельно или в другом окружении?</em></li>
+		<li><em>Как сильно изменения в одном модуле отразятся на остальных?</em></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Способы снижения связанности<br>модулей</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Использование паттернов ООП, интерфейсы, фасад</li>
+		<li>Использование Dependency Inversion &mdash; корректное создание и получение зависимостей</li>
+		<li>Замена прямых зависимостей на обмен сообщениями</li>
+		<li>Замена прямых зависимостей на синхронизацию через общее ядро</li>
+		<li>Следование Закону Деметры (law of Demeter), запрет неявных и транзитивных зависимостей</li>
+		<li>Композиция вместо наследования</li>
+	</ul>
+</section>
+
+<!-- О паттерне обзёрвабл. Как написать свой паблиш-сабскрайбер. -->
+
+<section class="slide">
+	<h2>Паттерн <mark>Observable</mark></h2>
+	<p class="note">Интерфейс подписки на события</p>
+	<pre class="hljs js">
+		<code>// event-emitter</code>
+		<code>class SomeService {</code>
+		<code>    constructor () { ... }</code>
+		<code>    do () { ... }</code>
+		<code> </code>
+		<code>    addEventListener(event, callback) { ... }</code>
+		<code>    removeEventListener(event, callback) { ... }</code>
+		<code>    emitEvent(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>Observable</mark></h2>
+	<p class="note">Интерфейс подписки на события</p>
+	<pre class="hljs js">
+		<code>// on-off</code>
+		<code>class SomeService {</code>
+		<code>    constructor () { ... }</code>
+		<code>    do () { ... }</code>
+		<code> </code>
+		<code>    on(event, callback) { ... }</code>
+		<code>    off(event, callback) { ... }</code>
+		<code>    emit(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>Observable</mark></h2>
+	<p class="note">Интерфейс подписки на события</p>
+	<pre class="hljs js">
+		<code>// pub-sub</code>
+		<code>class SomeService {</code>
+		<code>    constructor () { ... }</code>
+		<code>    do () { ... }</code>
+		<code> </code>
+		<code>    subscribe(event, callback) { ... }</code>
+		<code>    unsubscribe(event, callback) { ... }</code>
+		<code>    publish(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>Observable</mark></h2>
+	<p class="note">Интерфейс подписки на события</p>
+	<pre class="hljs js">
+		<code>// event-dispatcher</code>
+		<code>class SomeService {</code>
+		<code>    constructor () { ... }</code>
+		<code>    do () { ... }</code>
+		<code> </code>
+		<code>    attachEvent(event, callback) { ... }</code>
+		<code>    detachEvent(event, callback) { ... }</code>
+		<code>    dispatchEvent(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Реализация паттерна <mark>Observable</mark></h2>
+	<pre class="hljs js">
+		<code>class SomeService {</code>
+		<code>    on(event, callback) {    // подписываемся на событие</code>
+		<code>        this.listeners[event].push(callback)</code>
+		<code>    }</code>
+		<code>    off(event, callback) {   // отписываемся от события</code>
+		<code>        this.listeners[event] = this.listeners[event]</code>
+		<code>            .filter(function (listener) { return listener !== callback; })</code>
+		<code>    }</code>
+		<code>    emit(event, data) {      // публикуем (диспатчим, эмитим) событие</code>
+		<code>        this.listeners[event].forEach(function (listener) {</code>
+		<code>            listener(data)</code>
+		<code>        })</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Реализация паттерна <mark>Observable</mark></h2>
+	<pre class="hljs js">
+		<code>const service = new SomeService();</code>
+		<code>// функция-обработчик события</code>
+		<code>const onload = function (data) { console.log(data); }</code>
+		<code> </code>
+		<code>// подписываемся на событие</code>
+		<code>service.on('loaded', onload);</code>
+		<code>service.emit('loaded', {data: 42});    // событие 1</code>
+		<code>service.emit('loaded', {foo: 'bar'});  // событие 2</code>
+		<code>// отписываемся от события</code>
+		<code>service.off('loaded', onload);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Реализация паттерна <mark>Observable</mark></h2>
+	<pre class="hljs js">
+		<code>const service = new SomeService();</code>
+		<code>// функция-обработчик события</code>
+		<code>const onload = function (data) { console.log(data); }</code>
+		<code> </code>
+		<code>// подписываемся на событие</code>
+		<code>service.on('loaded', onload);</code>
+		<code>service.emit('loaded', {data: 42});    // событие 1</code>
+		<code>service.emit('loaded', {foo: 'bar'});  // событие 2</code>
+		<code>// отписываемся от события</code>
+		<code>service.off('loaded', onload);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 70%;">Итак, как это помогает уменьшить <em>связность</em> приложения?</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Что было до?</h2>
+	<pre class="hljs js">
+		<code>// services/user-service.js</code>
+		<code>class UserService {</code>
+		<code>    auth (login, password) {</code>
+		<code>        return HTTP.POST('/api', {login, password})</code>
+		<code>            .then(function (user) {</code>
+		<code>                this.user = user;</code>
+		<code>                <mark>this.menuSection</mark>.reRender();</code>
+		<code>                <mark>this.signupSection</mark>.hide();</code>
+		<code>                <mark>this.profileSection</mark>.show(user);</code>
+		<code>                // ...</code>
+		<code>            }.bind(this));</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Что было до?</h2>
+	<pre class="hljs js">
+		<code>// blocks/scoreboard.js</code>
+		<code>const UserService = window.UserService;</code>
+		<code> </code>
+		<code>class ScoreBoardBlock {</code>
+		<code>    constructor () {</code>
+		<code>        <mark>this.userService</mark> = new UserService();</code>
+		<code>    }</code>
+		<code> </code>
+		<code>    render (login, password) {</code>
+		<code>        const users = <mark>this.userService</mark>.getUsers();</code>
+		<code>        this.el.innerHTML = tmpl({users: users});</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Как станет?</h2>
+	<pre class="hljs js">
+		<code>// services/user-service.js</code>
+		<code>class UserService {</code>
+		<code>    auth (login, password) {</code>
+		<code>        return HTTP.POST('/api', {login, password})</code>
+		<code>            .then(function (user) {</code>
+		<code>                this.user = user;</code>
+		<code>                <mark>this.emit</mark>('signed', user);</code>
+		<code>                // всё!</code>
+		<code>            }.bind(this));</code>
+		<code>    }</code>
+		<code>    on(event, callback) { ... }</code>
+		<code>    emit(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Как станет?</h2>
+	<pre class="hljs js">
+		<code>// blocks/scoreboard.js</code>
+		<code>class ScoreBoardBlock {</code>
+		<code>    onUsersLoaded (users) {</code>
+		<code>        this.el.innerHTML = tmpl({users: users});</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+	<pre class="hljs js">
+		<code>// main.js</code>
+		<code>UserService.on('signed', menuSection.reRender.bind(menuSection));</code>
+		<code>UserService.on('users-loaded', scoreboard.onUsersLoaded.bind(scoreboard));</code>
+		<code>// ...</code>
+		<code>UserService.auth('login', 'password');</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>В чём преимущество?</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Все Observable-модули реализуют один и тот же интерфейс методов</li>
+		<li>Модули, на которые мы подписываемся, <mark>сами знают, когда и какие события эмитить</mark></li>
+		<li>Модули, которые подписываются, <mark>сами знают, как обрабатывать эти события</mark></li>
+		<li>И те, и другие, <mark>ничего друг о друге не знают</mark>, модулям известны только названия и формат сообщений</li>
+		<li>Все необходимые подписки происходят в одном месте (<code>main.js</code>)</li>
+		<li>Удобно оповещать систему о новых событиях</li>
+	</ul>
+</section>
+
+<!-- Композиция vs наследование. О том, как не дублировать код. Выделение в миксины в js. -->
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">А если таких <mark><em>Observable-модулей</em></mark> очень много?</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Реализовывать паттерн Observable <br>в каждом модуле?</h2>
+	<pre class="hljs js">
+		<code>// плохо... дублирование кода</code>
+		<code>class UserService {</code>
+		<code>    on(event, callback) { ... }</code>
+		<code>    emit(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code>class GameService {</code>
+		<code>    on(event, callback) { ... }</code>
+		<code>    emit(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code>class ShopService {</code>
+		<code>    // ...</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Выделить Observable в отдельный<br>модуль и отнаследоваться от него?</h2>
+	<pre class="hljs js">
+		<code>class UserService extends Observable {</code>
+		<code>    // ...</code>
+		<code>}</code>
+		<code>class GameService extends Observable {</code>
+		<code>    // ...</code>
+		<code>}</code>
+		<code> </code>
+		<code>// а если таких <mark>модулей-интерфейсов</mark> будет несколько?</code>
+		<code>class ShopService extends Observable, Loggable, Serializable {</code>
+		<code>    // ...</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">Паттерн <mark>Примесь&nbsp;(Mixin)</mark></span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>Примесь (Mixin)</mark></h2>
+	<p class="medium-content"></p>
+	<blockquote>
+		<p><b>Примесь (англ. mixin)</b> &mdash; класс или объект, реализующий какое-либо чётко выделенное поведение. Используется для уточнения поведения других классов, не предназначен для самостоятельного использования. Решают проблему множественного наследования. Отличаются от <mark>интерфейсов</mark> тем, что содержат готовый функционал, а не всего лишь специфицирует поведение</p>
+	</blockquote>
+	<p class="note">Подробнее в статье <a href="https://habrahabr.ru/post/147901/" target="_blank">по ссылке</a> и на <a href="https://learn.javascript.ru/mixins" target="_blank">learn.javascript.ru</a></p>
+</section>
+
+<section class="slide">
+	<h2>Использование примеси</h2>
+	<pre class="hljs js">
+		<code>const ObservableMixin = {</code>
+		<code>    on(event, callback) { ... }</code>
+		<code>    emit(eventName, eventData) { ... }</code>
+		<code>    // ...</code>
+		<code>}</code>
+		<code>class UserService {</code>
+		<code>    constructor () {</code>
+		<code>        <mark>this.emit</mark>('event', { ... });</code>
+		<code>        // ...</code>
+		<code>    }</code>
+		<code>}</code>
+		<code>Object.assign(<mark>UserService.prototype</mark>, ObservableMixin);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">А что <em>кроме</em> наследования?</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Как создать класс МФУ?</h2>
+	<pre class="hljs js">
+		<code>class ЧБПринтер {</code>
+		<code>    print (doc) { ... }</code>
+		<code>}</code>
+		<code> </code>
+		<code>class ЦветнойПринтер {</code>
+		<code>    print (doc) { ... }</code>
+		<code>}</code>
+		<code> </code>
+		<code>class Сканер {</code>
+		<code>    scan (doc) { ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><s>Наследование</s> Композиция!</h2>
+	<pre class="hljs js">
+		<code>class МФУ {</code>
+		<code>    constructor () {</code>
+		<code>        this.чбПринтер = new ЧБПринтер();</code>
+		<code>        this.цветнойПринтер = new ЦветнойПринтер();</code>
+		<code>        this.сканер = new Сканер();</code>
+		<code>        // ...</code>
+		<code>    }</code>
+		<code> </code>
+		<code>    scan (doc) {</code>
+		<code>        return this.сканер.scan(doc);</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<!-- Концепции единых источников всего. Единый источник событий - паттерн медиатор. -->
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">А если будет много <em>Observable</em>-модулей?</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>медиатор</mark></h2>
+	<blockquote>
+		<p>Когда в системе присутствует большое количество модулей, их прямое взаимодействие друг с другом <mark>(даже с учётом применения publish-subscriber подхода)</mark> становится слишком сложным. Поэтому имеет смысл взаимодействие «все со всеми» заменить на взаимодействие <b>«один со всеми»</b>. Для этого вводится некий обобщенный посредник &mdash; <strong>медиатор</strong></p>
+	</blockquote>
+	<div style="position: relative; width: 100%; height: 50%;">
+		<img class="place" src="mediator.png" style="transform-origin: center; transform: translate(-50%,-80%) scale(1.2);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>медиатор</mark></h2>
+	<pre class="hljs js">
+		<code>// modules/event-bus.js</code>
+		<code>export default class EventBus {</code>
+		<code>    on(event, callback) { ... }</code>
+		<code>    off(event, callback) { ... }</code>
+		<code>    emit(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code> </code>
+		<code>// main.js</code>
+		<code>import EventBus from './modules/event-bus.js';</code>
+		<code><mark>window.bus</mark> = new EventBus();</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>медиатор</mark></h2>
+	<pre class="hljs js">
+		<code>// services/user-service.js</code>
+		<code>export default class UserService {</code>
+		<code>    login () {</code>
+		<code>        HTTP.post({ ... })</code>
+		<code>            .then(function (user) {</code>
+		<code>                // do stuff</code>
+		<code>                </code>
+		<code>                <mark>window.bus.emit</mark>('user:logged-in', user);</code>
+		<code>            })</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>медиатор</mark></h2>
+	<pre class="hljs js">
+		<code>// blocks/user-profile.js</code>
+		<code>export default class UserProfile {</code>
+		<code>    constructor () {</code>
+		<code>        <mark>window.bus.on</mark>('user:logged-in', function (user) {</code>
+		<code>            // do stuff</code>
+		<code>            </code>
+		<code>            this.render();</code>
+		<code>        }.bind(this))</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">Глобальные переменные &mdash; зло!</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>синглтон</mark></h2>
+	<pre class="hljs js">
+		<code>// modules/event-bus.js</code>
+		<code>class EventBus {</code>
+		<code>    on(event, callback) { ... }</code>
+		<code>    off(event, callback) { ... }</code>
+		<code>    emit(eventName, eventData) { ... }</code>
+		<code>}</code>
+		<code> </code>
+		<code><mark>export default new EventBus();</mark></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Паттерн <mark>синглтон</mark></h2>
+	<pre class="hljs js">
+		<code>// blocks/user-profile.js</code>
+		<code>import bus from '../modules/event-bus.js';</code>
+		<code> </code>
+		<code>export default class UserProfile {</code>
+		<code>    constructor () {</code>
+		<code>        <mark>bus.on</mark>('user:logged-in', function (user) {</code>
+		<code>            // do stuff</code>
+		<code>            </code>
+		<code>            this.render();</code>
+		<code>        }.bind(this))</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>А можно и вот так</h2>
+	<pre class="hljs js">
+		<code>// modules/event-bus.js</code>
+		<code>export default class EventBus {</code>
+		<code>    constructor () {</code>
+		<code>        if (EventBus.__instance) {</code>
+		<code>            return EventBus.__instance;</code>
+		<code>        }</code>
+		<code>        // initialization logic</code>
+		<code>        </code>
+		<code>        EventBus.__instance = this;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>А можно и вот так</h2>
+	<pre class="hljs js">
+		<code>// main.js</code>
+		<code>import EventBus from './modules/event-bus.js';</code>
+		<code> </code>
+		<code>const bus1 = new EventBus();</code>
+		<code>const bus2 = new EventBus();</code>
+		<code> </code>
+		<code><mark>bus1 === bus2</mark>; // true</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>PRO TIPs хорошей декомпозиции</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li><mark>Минимизировать использование глобальных зависимостей</mark></li>
+		<li><mark>Не использовать неявные зависимости</mark> &mdash; все зависимости модуля должны быть обозначены явно</li>
+		<li><mark>Минимизировать связи между модулями</mark> &mdash; например, с помощью паттернов Observable и Mediator</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Какие ещё есть подходы?</h2>
+	<p class="small-content"></p>
+	<ul>
+		<li>Inversion of Control и Dependency Injection &mdash; найти хороший материал оказалось сложновато, но вот, <a href="https://habrahabr.ru/post/149912/" target="_blank">например</a>, или <a href="https://habrahabr.ru/post/232851/" target="_blank">здесь</a></li>
+		<li>Event Driven Development &mdash; <a href="https://habrahabr.ru/post/119304/" target="_blank">статейка на хабре</a></li>
+		<li>Ещё много всего, творите!</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055;"><a href="https://habrahabr.ru/post/276593/" target="_blank">Как проектировать хорошую архитектуру&nbsp;<i class="material-icons noitalic">open_in_new</i></a><em style="font-size: 70%; color: darkgrey">очень крутая статья</em></span>
+	</h2>
+</section>
+
+<!-- Как управлять приложением, его состоянием, представлением и логикой? Паттерны для создания веб-приложений. Набор паттернов MV* -->
+
+<section class="slide first">
+	<h2 class="shout">Шаблоны MV*</h2>
+</section>
+
+<section class="slide">
+	<h2>MV-паттерны для проектирования<br/>веб-приложений</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="mv.jpg" style="transform-origin: center;transform: translate(-50%,-65%) scale(1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Шаблон MVC</h2>
+	<blockquote>
+		<p class="medium-content"><b>Шаблон MVC (Модель-Вид-Контроллер или Модель-Состояние-Поведение)</b> описывает простой способ построения структуры приложения, целью которого является <mark>отделение бизнес-логики от пользовательского интерфейса</mark>. В результате, приложение легче масштабируется, тестируется, сопровождается и, конечно же, реализуется</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Модели в MVC</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Cодержит <mark>бизнес-логику</mark> приложения: методы для получения и обработки данных</li>
+		<li>Не взаимодействуют с напрямую пользователем</li>
+		<li>Не генерируют никакого HTML (<b>не управляют отображением данных</b>)</li>
+		<li>Модели могут хранить в себе данные и они могут взаимодействовать с другими моделями</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Представления (aka вьюхи) в MVC</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Отвечают за <mark>отображение данных</mark>, содержат в себе вызовы шаблонизаторов, создание блоков и компонентов и всего такого</li>
+		<li>Получают данные от напрямую от моделей или от контроллеров</li>
+		<li>Взаимодействуют с моделями посредством контроллеров</li>
+		<li>Являются посредниками между пользователем и контроллером</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Контроллеры в MVC</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li><mark>Являются связующим звеном приложения</mark></li>
+		<li>Реализуют взаимодействие между вьюхами и моделями и взаимодействие вьюх друг с другом</li>
+		<li>Должны содержать минимум бизнес-логики и быть максимально простыми в конфигурации (для возможности удобного изменения и расширения приложения)</li>
+		<li><b>Логика контроллера довольно типична и большая ее часть выносится в базовые классы</b>, в отличие от моделей, логика которых, как правило, довольно специфична для конкретного приложения</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 80%;">Собираем всё воедино</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Как нам сделать шаг в<br/>сторону MVC?</h2>
+	<ul lang="en">
+		<li>Создаём базовый класс <code>View</code></li>
+		<li>Наследуем от него <code>MenuView, SignView, ScoreboardView...</code></li>
+		<li>Во вьюхах описываем описываем отображение определённой части приложения</li>
+		<li>Содержимое <code>View</code> генерируется с помощью шаблонизатора</li>
+		<li>Далее на основе уже имеющейся разметки создаются блоки и компоненты, либо они генерируются динамически на каком-то этапе жизненного цикла приложения</li>
+		<li>Каждый момент времени активна только одна <code>View</code></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Как нам сделать шаг в<br/>сторону MVC?</h2>
+	<p class="medium-content"></p>
+	<ul lang="en">
+		<li>У нас уже имеются сервисы и модули, которые выполняют роли моделей в нашем приложении и описывают бизнес-логику работы с данными</li>
+		<li>Настраиваем взаимодействие между частями приложения посредством контроллеров (например, медиатора)</li>
+		<li>Во время работы приложения управление передаётся между разными <code>View</code></li>
+		<li>Стараемся уменьшить связность приложения, отделив модели и представления друг от друга (проведя правильную декомпозицию)</li>
+	</ul>
+</section>
+
+<!-- Управление состоянием приложения посредством роутера. Роутер, как паттерн Медиатор для веб приложений. ‎Роутинг и History API -->
+
+<section class="slide first">
+	<h2 class="shout">Роутинг в <em>web-приложениях</em></h2>
+</section>
+
+<section class="slide">
+	<h2>Вернёмся немного назад</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="views-hell.png" style="transform-origin: center; transform: translate(-50%, -50%) scale(1);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 75%">А если Views <mark>очень&nbsp;много</mark>?</span></h2>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 75%">Вспоминаем про паттерн <mark>"Медиатор"</mark></span></h2>
+</section>
+
+<section class="slide">
+	<h2>Роутер</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="router.png" style="transform-origin: center;transform: translate(-50%,-55%) scale(1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Что такое роутинг?</h2>
+	<blockquote>
+		<p class="medium-content">На сервере <b>роутинг</b> &mdash; это процесс определения маршрута внутри приложения в
+			зависимости от запроса. Проще говоря, это поиск контроллера по запрошенному URL и выполнение соответствующих
+			действий</p>
+	</blockquote>
+	<blockquote>
+		<p>На клиенте роутинг позволяет
+			<mark>установить соответствие</mark>
+			между адресом в адресной строке браузера и <code>View</code>, которая будет отображаться. Таким образом,
+			роутинг &mdash; это вариант реализации паттерна
+			<mark>"Медиатор"</mark>
+			для MV* архитектуры приложений
+		</p>
+		<p>Кроме этого, роутеры решают ещё одну очень важную задачу. Они позволяют эмулировать <strong>
+			<mark>историю переходов</mark>
+		</strong> в SPA-приложениях
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Что такое роутинг?</h2>
+	<p>Таким образом взаимодействие и переключение между <code>View</code> происходит посредством роутера, а сами <code>View</code>
+		друг о друге ничего не знают</p>
+	<pre class="hljs js">
+		<code>Router.register('/', MenuView);</code>
+		<code>Router.register('/signup', SignupView);</code>
+		<code>Router.register('/scores/pages/{page}', ScoreboardView);</code>
+		<code><span class="comment">...</span></code>
+		<code>Router.go('/scores/page/3'); // переход на 3 страницу (пагинация)</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Что такое роутинг?</h2>
+	<pre class="hljs js">
+		<code>class Router {</code>
+		<code>    constructor() { ... }</code>
+		<code>    register(path: string, view: View) { ... }</code>
+		<code>    start() { ... }      // запустить роутер</code>
+		<code>    go(path: string) { ... }</code>
+		<code>    back() { ... }       // переход назад по истории браузера</code>
+		<code>    forward() { ... }    // переход вперёд по истории браузера</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>History API</h2>
+	<p class="medium-content"></p>
+	<blockquote>
+		<p><b>History API</b> &mdash; браузерное API, позволяет манипулировать историей браузера
+			<mark>в пределах сессии</mark>
+			, а именно историей о посещённых страницах в пределах вкладки или фрейма, загруженного внутри страницы.
+			Позволяет перемещаться по истории переходов, а так же управлять
+			<mark>содержимым адресной строки браузера</mark>
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>History API</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code><span class="comment rus">// Перемещение вперед и назад по истории</span></code>
+		<code>window.history.back(); <span class="comment rus">// работает как кнопка "Назад"</span></code>
+		<code>window.history.forward(); <span class="comment rus">// работает как кнопка "Вперёд"</span></code>
+		<code> </code>
+		<code>window.history.go(-2); <span class="comment rus">// перемещение на несколько записей</span></code>
+		<code>window.history.go( 2);</code>
+		<code> </code>
+		<code>const length = window.history.length; <span class="comment rus">// количество записей</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>History API</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code><span class="comment rus">// Изменение истории</span></code>
+		<code>const state = { foo: 'bar' };</code>
+		<code>window.history.pushState(</code>
+		<code>    state,         <span class="comment rus">// объект состояния</span></code>
+		<code>    'Page Title',  <span class="comment rus">// заголовок состояния</span></code>
+		<code>    '/pages/menu'  <span class="comment rus">// URL новой записи (same origin)</span></code>
+		<code>);</code>
+		<code>window.history.replaceState(state2, 'Other Title', '/another/page');</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>History API</h2>
+	<p class="medium-content"></p>
+	<blockquote>
+		<p><b>Событие <code>popstate</code></b> отсылается объекту <code>window</code> каждый раз, когда активная запись
+			истории меняется между двумя записями истории для одного и того же документа</p>
+	</blockquote>
+	<p>Простой вызов <code>pushState()</code> или <code>replaceState()</code> не вызовет событие <code>popstate</code>.
+		Оно срабатывает только тогда, когда происходят какие-то действия в браузере, такие как нажатие кнопки "назад"
+		(или вызов <code>history.back()</code> из JavaScript)</p>
+</section>
+
+<section class="slide">
+	<h2>History API</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>window.onpopstate = event => console.log(location.pathname);</code>
+		<code> </code>
+		<code>history.pushState({ page: 1 }, 'Title 1', '/menu?page=1');</code>
+		<code>history.pushState({ page: 2 }, 'Title 2', '/app?page=2');</code>
+		<code>history.pushState({ page: 3 }, 'Title 3', '/scores?page=3');</code>
+		<code>history.back();   <span class="comment">// /app?page=2</span></code>
+		<code>history.back();   <span class="comment">// /menu?page=1</span></code>
+		<code>history.go(2);    <span class="comment">// /scores?page=3</span></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Практика (если есть время...)</h2>
+</section>
+
+<!-- "Архитектура" CSS -->
+
+<!-- Каскадирование CSS, разные типы селекторов, импортант -->
+
+<!-- Два подхода к написанию стилей - использование композиции маленьких селекторов или использование модификаторов в названиях классов. Использование специальных имён классов для JS. Антипаттерны CSS (использование везде идентификаторов, использование везде большой вложенности стилей) -->
+
+<!-- Идея о разделении стилей на модули (выделение стилей компонентов в отдельные файлы стилей) -->
+
+<!-- CSS in JS, модульный CSS. ‎Темы с помощью CSS in JS -->
+
+<section class="slide">
+	<h2 class="shout">"Архитектура" CSS</h2>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 75%">С JS'ом разобрались, а с CSS что?</span></h2>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 75%">Какие могут возникнуть проблемы?</span></h2>
+</section>
+
+<section class="slide">
+	<h2>Глобальная область видимости селесторов</h2>
+	<p class="small-content">Из-за особенностей CSS все селекторы и на объявляются как-бы в "глобальной" области видимости</p>
+	<ul>
+		<li>Стили селекторов могут быть переопределены в совершенно непонятном месте, например в стилях какого-нибудь встраиваемого модуля, или в стилях блокировщика рекламы, или в стилях встраиваемых виджетов</li>
+		<li>Имена классов у элементов в достаточно крупном web-приложении могут</li>
+		<li></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Методология БЭМ &mdash; Блок</h2>
+	<blockquote>
+		<p><b>Блок в методологии БЭМ</b> &mdash; функционально независимый компонент страницы, который может быть
+			повторно использован. В HTML блоки представлены атрибутом <code>class</code></p>
+	</blockquote>
+	<ul style="font-size: 90%">
+		<li>Название блока характеризует смысл («что это?» — «меню»: menu, «кнопка»: button), а не состояние («какой,
+			как выглядит?» — «красный»: red, «большой»: big)
+		</li>
+		<li>В CSS по БЭМ также не рекомендуется использовать селекторы по тегам или id</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Методология БЭМ &mdash; Элемент</h2>
+	<blockquote>
+		<p><b>Элемент в методологии БЭМ</b> &mdash; составная часть блока, которая не может использоваться в отрыве от
+			него</p>
+	</blockquote>
+	<ul style="font-size: 90%">
+		<li>Название элемента характеризует смысл («что это?» — «пункт»: item, «текст»: text), а не состояние («какой,
+			как выглядит?» — «красный»: red, «большой»: big)
+		</li>
+		<li>Структура полного имени элемента соответствует схеме: <code>имя-блока__имя-элемента</code>. Имя элемента
+			отделяется от имени блока двумя подчеркиваниями
+		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Методология БЭМ &mdash; Модификатор</h2>
+	<blockquote>
+		<p><b>Модификатор в методологии БЭМ</b> &mdash; сущность, определяющая внешний вид, состояние или поведение
+			блока либо элемента.</p>
+	</blockquote>
+	<ul style="font-size: 90%">
+		<li>Название модификатора характеризует внешний вид («размер»: size_s, «тема»: theme_islands), состояние
+			(«отключен»: disabled, «фокусированный»: focused) и поведение («направление»: directions_left-top)
+		</li>
+		<li>Имя модификатора отделяется от имени блока или элемента одним подчеркиванием</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<pre class="hljs html" style="transform: scale(0.78); transform-origin: left top;">
+		<code>&lt;form class="login-form"></code>
+		<code>    &lt;input type="text" </code>
+		<code>          <span
+				hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+		<code>    &lt;div class="login-form__buttons"></code>
+		<code>        &lt;button class="login-form__submit button"></code>
+		<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+		<code>        &lt;/button></code>
+		<code>        &lt;button class="login-form__reset login-form__reset_disabled button"></code>
+		<code>            RESET&lt;/button></code>
+		<code>    &lt;/div></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<small style="font-size: 70%; margin: 0;">Основной блок</small>
+	<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top; ">
+		<code>&lt;form class=<mark>"login-form"</mark>></code>
+		<code>    &lt;input type="text" </code>
+		<code>          <span
+				hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+		<code>    &lt;div class="login-form__buttons"></code>
+		<code>        &lt;button class="login-form__submit button"></code>
+		<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+		<code>        &lt;/button></code>
+		<code>        &lt;button class="login-form__reset login-form__reset_disabled button"></code>
+		<code>            RESET&lt;/button></code>
+		<code>    &lt;/div></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<small style="font-size: 70%; margin: 0;">Блок и его элементы</small>
+	<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+		<code>&lt;form class=<mark>"login-form"</mark>></code>
+		<code>    &lt;input type="text" </code>
+		<code>          <span hidden="hidden">&lt;input</span> class="text-input <mark>login-form__username-input</mark>"/></code>
+		<code>    &lt;div class=<mark>"login-form__buttons"</mark>></code>
+		<code>        &lt;button class="<mark>login-form__submit</mark> button"></code>
+		<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+		<code>        &lt;/button></code>
+		<code>        &lt;button class="<mark>login-form__reset</mark> login-form__reset_disabled button"></code>
+		<code>            RESET&lt;/button></code>
+		<code>    &lt;/div></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<small style="font-size: 70%; margin: 0;">Вложенные блоки</small>
+	<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+		<code>&lt;form class="login-form"></code>
+		<code>    &lt;input type="text" </code>
+		<code>          <span hidden="hidden">&lt;input</span> class="<mark>text-input</mark> login-form__username-input"/></code>
+		<code>    &lt;div class="login-form__buttons"></code>
+		<code>        &lt;button class="login-form__submit <mark>button</mark>"></code>
+		<code>            &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+		<code>        &lt;/button></code>
+		<code>        &lt;button class="login-form__reset login-form__reset_disabled <mark>button</mark>"></code>
+		<code>            RESET&lt;/button></code>
+		<code>    &lt;/div></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<small style="font-size: 70%; margin: 0;">Вложенный блок и его элементы</small>
+	<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+		<code>&lt;form class="login-form"></code>
+		<code>    &lt;input type="text" </code>
+		<code>          <span
+				hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+		<code>    &lt;div class="login-form__buttons"></code>
+		<code>        &lt;button class="login-form__submit <mark>button</mark>"></code>
+		<code>            &lt;span class="<mark>button__capture</mark> button__capture_red">CLICK ME&lt;/span></code>
+		<code>        &lt;/button></code>
+		<code>        &lt;button class="login-form__reset login-form__reset_disabled button"></code>
+		<code>            RESET&lt;/button></code>
+		<code>    &lt;/div></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<small style="font-size: 70%; margin: 0;">Модификаторы</small>
+	<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+		<code>&lt;form class="login-form"></code>
+		<code>    &lt;input type="text" </code>
+		<code>          <span
+				hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+		<code>    &lt;div class="login-form__buttons"></code>
+		<code>        &lt;button class="login-form__submit button"></code>
+		<code>            &lt;span class="button__capture <mark>button__capture_red</mark>">CLICK ME&lt;/span></code>
+		<code>        &lt;/button></code>
+		<code>        &lt;button class="login-form__reset <mark>login-form__reset_disabled</mark> button"></code>
+		<code>            RESET&lt;/button></code>
+		<code>    &lt;/div></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<pre class="hljs css" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+		<code><span class="comment rus">/* блок */</span></code>
+		<code>.login-form { ... }</code>
+		<code><span class="comment rus">/* эмененты */</span></code>
+		<code>.login-form__buttons { ... }</code>
+		<code>.login-form__submit { ... }</code>
+		<code>.login-form__reset { ... }</code>
+		<code>.login-form__username-input { ... }</code>
+		<code>.login-form__password-input { ... }</code>
+		<code><span class="comment rus">/* модификаторы */</span></code>
+		<code>.login-form__submit_disabled { ... }</code>
+		<code>.login-form__reset_disabled { ... }</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<pre class="hljs css" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+		<code><span class="comment rus">/* блок */</span></code>
+		<code>.button { ... }</code>
+		<code><span class="comment rus">/* элементы */</span></code>
+		<code>.button__capture { ... }</code>
+		<code>.button__icon { ... }</code>
+		<code><span class="comment rus">/* модификаторы */</span></code>
+		<code>.button_big { ... }</code>
+		<code>.button_inverted { ... }</code>
+		<code>.button__capture_red { ... }</code>
+		<code>.button__capture_green { ... }</code>
+		<code> </code>
+	</pre>
+</section>
+
+
+
+
+<section class="slide">
+	<h2 class="shout">Практика</h2>
+</section>
+
+<!--полезные ссылки-->
+
+
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li><a href="https://habrahabr.ru/post/276593/" target="_blank">Создание архитектуры программы или как
+			проектировать табуретку</a> &mdash; ХАБР
+		</li>
+		<li><a href="https://habrahabr.ru/post/151219/" target="_blank">Шпаргалка по MV-паттернам</a> для проектирования
+			веб-приложений
+		</li>
+		<li><a href="https://habrahabr.ru/company/mailru/blog/172333/" target="_blank">Подробнее про роутинг в
+			javascript</a></li>
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank">Подробнее про History
+			API</a> и про <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate"
+							 target="_blank">событие popstate</a></li>
+		<li><a href="https://habrahabr.ru/company/yandex/blog/276035/" target="_blank">Очень подробное описание</a>
+			методологии БЭМ и <a href="https://ru.bem.info/methodology/quick-start/" target="_blank">сайт проекта</a>
+		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Всем спасибо!</h2>
+</section>
+
+
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+<script src="/lib/hljs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/reload/reload.js"></script>
+
+</body>
+</html>

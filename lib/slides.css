@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i&subset=cyrillic,cyrillic-ext,latin-ext');
+
+@import "normalize.css";
+@import "hljs/styles/github.css";
+
 section.slide.first small {
 	display: inline-block;
 	font-size: 38px;
@@ -7,4 +13,12 @@ section.slide.first small {
 section.slide.first small a {
 	font-size: 42px;
 	font-weight: 500;
+}
+
+.note {
+	color: #9e9e9e;
+}
+
+.noitalic {
+	font-style: normal !important;
 }

@@ -23,275 +23,281 @@
 			aspect = ratios[0];
 		}
 
-		if (['localhost', '127.0.0.1'].includes( window.location.hostname )) {
+		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
 			aspect = '4x3';
 		}
+		aspect = '4x3';
 
-		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${'4x3'}.css">`);
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
 	</script>
 
-	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
-
-	<style>
-		.slide pre {
-			font-size: 100%;
-		}
-	</style>
+	<link rel="stylesheet" href="/lib/slides.css">
 
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Современный Frontend</h1>
-		<p>Технопарк, 2017 г.</p>
-	</header>
+<header class="caption">
+	<h1>Современный Frontend</h1>
+	<p>Технопарк, 2017 г.</p>
+</header>
 
-	<section class="slide">
-		<h2 class="shout">
-			<small style="font-size:90%">Резюме <em>Frontend-разработчика</em> в 2017 году</small>
-			<br/>
-			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
-		</h2>
-	</section>
-
-	<section class="slide question">
-		<h2>Как составить резюме</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Как составить резюме</h2>
-		<ul style="margin-left: 150px; margin-top: 75px; font-size: 32px;">
-			<li>Название</li>
-			<li>Зарплата</li>
-			<li>Опыт</li>
-			<li>Навыки</li>
-		</ul>
-	</section>
-
-	<section class="slide question">
-		<h2>Название вакансии</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Урок эволюции</h2>
-		<style>
-			.engineer-evolution {
-				margin-top: 50px;
-				background: url('evolution.png');
-				width: 800px;
-				height: 500px;
-			}
-
-			.engineer-evolution div {
-				float: left;
-				margin: 0px 10px;
-				display: block;
-				position: relative;
-				top: 470px;
-				list-style: none;
-				text-align: center;
-			}
-		</style>
-		<div class="engineer-evolution">
-			<div style="width: 240px;">Bug Designer</div>
-			<div style="width: 150px;">CSS/HTML Developer</div>
-			<div style="width: 170px;">Front-End Developer</div>
-			<div style="width: 160px;">Full Stack Web Developer</div>
-		</div>
-	</section>
-
-	<section class="slide question">
-		<h2>Зарплата</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Зарплата</h2>
-		<img src="compensation.png" height="500"/>
-	</section>
-
-	<section class="slide question">
-		<h2>Навыки</h2>
-		<!--<ul style="margin-left: 150px; margin-top: 75px; font-size: 32px;">-->
-			<!--<li>Название</li>-->
-			<!--<li>Зарплата</li>-->
-			<!--<li>Опыт</li>-->
-			<!--<li>Навыки</li>-->
-		<!--</ul>-->
-	</section>
-
-	<!--Фреймворки-->
-
-	<section class="slide question">
-		<h2>Современные JS фреймворки</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Современные JS фреймворки</h2>
-		<blockquote>
-			<p class="medium-content"><b>Фреймворк</b> &mdash; программная платформа, определяющая структуру программной системы; программное обеспечение, облегчающее разработку и объединение разных компонентов большого программного проекта.</p>
-		</blockquote>
-		<blockquote>
-			<p class="medium-content"><b>Framework</b> &mdash; is an abstraction in which software providing generic functionality can be selectively changed by additional user-written code, thus providing application-specific software. A software framework provides a standard way to build and deploy applications.</p>
-		</blockquote>
-		<p class="note">Путеводитель по вебу в 2k17 &mdash; <a href="https://frontendmasters.com/books/front-end-handbook/2017/" target="_blank">Front-End Developer Handbook 2017</a></p>
-	</section>
-
-	<section class="slide">
-		<h2>Фреймворк или библиотека?</h2>
-		<style>
-			.jquery-map {
-				height: 500px;
-				width: 800px;
-				margin-top: 50px;
-				background: url("india.png") center no-repeat;
-				background-size: contain;
-				position: relative;
-			}
-
-			.jquery-map img {
-				position: absolute;
-				width: 150px;
-				top: 170px;
-				left: 252px;
-			}
-		</style>
-		<div class="jquery-map">
-			<img src="jquery-logo.png"/>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Фреймворк или библиотека?</h2>
+<section class="slide">
+	<h2 class="shout">
+		<small style="font-size:90%">Резюме <em>Frontend-разработчика</em> в 2017 году</small>
 		<br/>
-		<br/>
-		<br/>
-		<center>
-			<img src="framework-vs-library.png"/>
-		</center>
-	</section>
+		<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a>
+		</small>
+	</h2>
+</section>
 
-	<!--Ember JS-->
-	<section class="slide question">
-		<h2>Ember</h2>
-	</section>
+<section class="slide question">
+	<h2>Как составить резюме</h2>
+</section>
 
-	<section class="slide">
-		<h2>Ember CLI</h2>
-		<blockquote>
-			<b>Интерфейс командной строки</b> (англ. Command line interface, CLI) &mdash; разновидность текстового интерфейса (TUI) между человеком и компьютером, в котором инструкции компьютеру даются в основном путём ввода с клавиатуры текстовых строк (команд)
-		</blockquote>
-		<br/>
-		<div>
-			<div>Должно быть:</div>
-			<ul  style="margin-left: 50px">
-				<li>nodejs</li>
-				<li>npm</li>
-			</ul>
-			<div>Далее:</div>
-			<code>npm install -g ember-cli</code>
-		</div>
-	</section>
+<section class="slide">
+	<h2>Как составить резюме</h2>
+	<ul style="margin-left: 150px; margin-top: 75px; font-size: 32px;">
+		<li>Название</li>
+		<li>Зарплата</li>
+		<li>Опыт</li>
+		<li>Навыки</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Создание ember app</h2>
-		<div>
-			<p style="margin-top: 30px;">После установки Ember CLI у нас появился доступ к команде
-				<code>ember</code> в нашем терминале. Команда <code>ember new</code> создаст нам папку с приложением внутри</p>
-			<code>ember new ember-quickstart</code>
-			<p>В новой папке с названием<code>ember-quickstart</code> появляется полноценное Ember приложение, включая:</p>
+<section class="slide question">
+	<h2>Название вакансии</h2>
+</section>
 
-			<ul style="margin-left: 200px;">
-				<li>Сервер для разработки</li>
-				<li>Компилятор шаблонов</li>
-				<li>JavaScript и CSS минификатор.</li>
-				<li>ES2015+ прибамбасы с помощью Babel.</li>
-			</ul>
-		</div>
-	</section>
+<section class="slide">
+	<h2>Урок эволюции</h2>
+	<style>
+		.engineer-evolution {
+			margin-top: 50px;
+			background: url('evolution.png');
+			width: 800px;
+			height: 500px;
+		}
 
-	<section class="slide">
-		<h2>Запуск ember app</h2>
-		<div>
-			<p style="margin-top: 30px;">
-				Чтобы запустить приложение достоаточно выполнить
-				одну команду внутри нашей новой папки:
-			</p>
+		.engineer-evolution div {
+			float: left;
+			margin: 0px 10px;
+			display: block;
+			position: relative;
+			top: 470px;
+			list-style: none;
+			text-align: center;
+		}
+	</style>
+	<div class="engineer-evolution">
+		<div style="width: 240px;">Bug Designer</div>
+		<div style="width: 150px;">CSS/HTML Developer</div>
+		<div style="width: 170px;">Front-End Developer</div>
+		<div style="width: 160px;">Full Stack Web Developer</div>
+	</div>
+</section>
 
-			<div><code>cd ember-quickstart</code></div>
-			<div><code>ember server</code></div>
-			<br/>
-			<div>Спустя несколько секунд мы увидим вывод подобный этому:</div>
-			<pre class="hljs sh"><code>Livereload server on http://localhost:49152
-Serving on http://localhost:4200/</code></pre>
-			<div>Нажав <code>Ctrl-C</code> мы прекратим работу сервера</div>
-		</div>
-	</section>
+<section class="slide question">
+	<h2>Зарплата</h2>
+</section>
 
-	<section class="slide">
-		<h2>Запуск ember app</h2>
-		<img src="ember-s.png"/>
-	</section>
+<section class="slide">
+	<h2>Зарплата</h2>
+	<img src="compensation.png" height="500"/>
+</section>
 
-	<!--Angular 2-->
-	<section class="slide question">
-		<h2>Angular</h2>
-	</section>
+<section class="slide question">
+	<h2>Навыки</h2>
+	<!--<ul style="margin-left: 150px; margin-top: 75px; font-size: 32px;">-->
+	<!--<li>Название</li>-->
+	<!--<li>Зарплата</li>-->
+	<!--<li>Опыт</li>-->
+	<!--<li>Навыки</li>-->
+	<!--</ul>-->
+</section>
 
-	<section class="slide">
-		<h2>Настройка Angular окружения</h2>
+<!--Фреймворки-->
 
-		<p class="small-content">Должно быть:</p>
-		<ul style="margin-left: 150px">
+<section class="slide question">
+	<h2>Современные JS фреймворки</h2>
+</section>
+
+<section class="slide">
+	<h2>Современные JS фреймворки</h2>
+	<blockquote>
+		<p class="medium-content"><b>Фреймворк</b> &mdash; программная платформа, определяющая структуру программной
+			системы; программное обеспечение, облегчающее разработку и объединение разных компонентов большого
+			программного проекта.</p>
+	</blockquote>
+	<blockquote>
+		<p class="medium-content"><b>Framework</b> &mdash; is an abstraction in which software providing generic
+			functionality can be selectively changed by additional user-written code, thus providing
+			application-specific software. A software framework provides a standard way to build and deploy
+			applications.</p>
+	</blockquote>
+	<p class="note">Путеводитель по вебу в 2k17 &mdash; <a
+			href="https://frontendmasters.com/books/front-end-handbook/2017/" target="_blank">Front-End Developer
+		Handbook 2017</a></p>
+</section>
+
+<section class="slide">
+	<h2>Фреймворк или библиотека?</h2>
+	<style>
+		.jquery-map {
+			height: 500px;
+			width: 800px;
+			margin-top: 50px;
+			background: url("india.png") center no-repeat;
+			background-size: contain;
+			position: relative;
+		}
+
+		.jquery-map img {
+			position: absolute;
+			width: 150px;
+			top: 170px;
+			left: 252px;
+		}
+	</style>
+	<div class="jquery-map">
+		<img src="jquery-logo.png"/>
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Фреймворк или библиотека?</h2>
+	<br/>
+	<br/>
+	<br/>
+	<center>
+		<img src="framework-vs-library.png"/>
+	</center>
+</section>
+
+<!--Ember JS-->
+<section class="slide question">
+	<h2>Ember</h2>
+</section>
+
+<section class="slide">
+	<h2>Ember CLI</h2>
+	<blockquote>
+		<b>Интерфейс командной строки</b> (англ. Command line interface, CLI) &mdash; разновидность текстового
+		интерфейса (TUI) между человеком и компьютером, в котором инструкции компьютеру даются в основном путём ввода с
+		клавиатуры текстовых строк (команд)
+	</blockquote>
+	<br/>
+	<div>
+		<div>Должно быть:</div>
+		<ul style="margin-left: 50px">
 			<li>nodejs</li>
 			<li>npm</li>
 		</ul>
-		<p>Далее:</p>
-		<code style="margin-left: 100px">npm install -g @angular/cli</code>
+		<div>Далее:</div>
+		<code>npm install -g ember-cli</code>
+	</div>
+</section>
 
-	</section>
+<section class="slide">
+	<h2>Создание ember app</h2>
+	<div>
+		<p style="margin-top: 30px;">После установки Ember CLI у нас появился доступ к команде
+			<code>ember</code> в нашем терминале. Команда <code>ember new</code> создаст нам папку с приложением внутри
+		</p>
+		<code>ember new ember-quickstart</code>
+		<p>В новой папке с названием<code>ember-quickstart</code> появляется полноценное Ember приложение, включая:</p>
 
+		<ul style="margin-left: 200px;">
+			<li>Сервер для разработки</li>
+			<li>Компилятор шаблонов</li>
+			<li>JavaScript и CSS минификатор.</li>
+			<li>ES2015+ прибамбасы с помощью Babel.</li>
+		</ul>
+	</div>
+</section>
 
-	<section class="slide">
-
-		<h2>Создание и запуск angular проекта</h2>
-
-		<p style="margin-top: 30px;">После установки Angular CLI у нас появился доступ к команде
-			<code>ng</code> в нашем терминале. Чтобы создать проект используем команду <code>new</code></p>
-		<code>ng new my-app</code>
-
+<section class="slide">
+	<h2>Запуск ember app</h2>
+	<div>
 		<p style="margin-top: 30px;">
-			Запускать сервер мы будем следующими командами:
+			Чтобы запустить приложение достоаточно выполнить
+			одну команду внутри нашей новой папки:
 		</p>
 
-		<div><code>cd my-app</code></div>
-		<div><code>ng serve --open</code></div>
-	</section>
+		<div><code>cd ember-quickstart</code></div>
+		<div><code>ember server</code></div>
+		<br/>
+		<div>Спустя несколько секунд мы увидим вывод подобный этому:</div>
+		<pre class="hljs sh"><code>Livereload server on http://localhost:49152
+Serving on http://localhost:4200/</code></pre>
+		<div>Нажав <code>Ctrl-C</code> мы прекратим работу сервера</div>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Запуск angular проекта</h2>
-		<p class="small-content">В результате по адресу http://localhost:4200/ будет нечто подобное:</p>
-		<img src="angular1.png" width="700"/>
-	</section>
+<section class="slide">
+	<h2>Запуск ember app</h2>
+	<img src="ember-s.png"/>
+</section>
 
-	<!--React-->
-	<section class="slide question">
-		<h2>React</h2>
-	</section>
+<!--Angular 2-->
+<section class="slide question">
+	<h2>Angular</h2>
+</section>
 
-	<section class="slide">
-		<h2>JSX</h2>
-		<div style="margin-top: 100px; margin-left: 100px;">
+<section class="slide">
+	<h2>Настройка Angular окружения</h2>
+
+	<p class="small-content">Должно быть:</p>
+	<ul style="margin-left: 150px">
+		<li>nodejs</li>
+		<li>npm</li>
+	</ul>
+	<p>Далее:</p>
+	<code style="margin-left: 100px">npm install -g @angular/cli</code>
+
+</section>
+
+
+<section class="slide">
+
+	<h2>Создание и запуск angular проекта</h2>
+
+	<p style="margin-top: 30px;">После установки Angular CLI у нас появился доступ к команде
+		<code>ng</code> в нашем терминале. Чтобы создать проект используем команду <code>new</code></p>
+	<code>ng new my-app</code>
+
+	<p style="margin-top: 30px;">
+		Запускать сервер мы будем следующими командами:
+	</p>
+
+	<div><code>cd my-app</code></div>
+	<div><code>ng serve --open</code></div>
+</section>
+
+<section class="slide">
+	<h2>Запуск angular проекта</h2>
+	<p class="small-content">В результате по адресу http://localhost:4200/ будет нечто подобное:</p>
+	<img src="angular1.png" width="700"/>
+</section>
+
+<!--React-->
+<section class="slide question">
+	<h2>React</h2>
+</section>
+
+<section class="slide">
+	<h2>JSX</h2>
+	<div style="margin-top: 100px; margin-left: 100px;">
 			<pre class="hljs js jsx"><code class="javascript">ReactDOM.render(
   &lt;h1&gt;Hello, world!&lt;/h1&gt;,
   document.getElementById('root')
 );</code></pre>
-		</div>
-	</section>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>React компоненты</h2>
-		<div style="margin-top: 25px; margin-left: 100px;">
+<section class="slide">
+	<h2>React компоненты</h2>
+	<div style="margin-top: 25px; margin-left: 100px;">
 			<pre class="hljs js jsx"><code>function Welcome(props) {
   return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
 }
@@ -305,173 +311,182 @@ function App() {
     &lt;/div&gt;
   );
 }</code></pre>
-		</div>
-	</section>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>React компоненты</h2>
-		<div style="margin-top: 100px; margin-left: 100px;">
+<section class="slide">
+	<h2>React компоненты</h2>
+	<div style="margin-top: 100px; margin-left: 100px;">
 			<pre class="hljs js jsx"><code>
 ReactDOM.render(
   &lt;App /&gt;,
   document.getElementById('root')
 );</code></pre>
-		</div>
-	</section>
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>React друзья</h2>
-		<ul style="margin-left: 150px; margin-top: 100px; font-size: 48px;">
-			<li>Redux</li>
-			<li>React Router</li>
+<section class="slide">
+	<h2>React друзья</h2>
+	<ul style="margin-left: 150px; margin-top: 100px; font-size: 48px;">
+		<li>Redux</li>
+		<li>React Router</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>Почему React?</h2>
+</section>
+
+<section class="slide">
+	<h2>Почему React?</h2>
+	<img src="react-stars.png" width="900"/>
+</section>
+
+<!-- Заключение про фреймворки-->
+
+<section class="slide question">
+	<h2>Какой фреймворк изучать в 2017?</h2>
+</section>
+
+<section class="slide">
+	<h2>Какой фреймворк изучать в 2017?</h2>
+	<b>
+		<p class="medium-content">
+			Обязательно:
+		</p>
+		<ul style="margin-left: 150px">
+			<li class="next">Angular</li>
+			<li class="next">React</li>
 		</ul>
-	</section>
+	</b>
+	<div class="next">
+		<p class="medium-content">Желательно:</p>
+		<ul style="margin-left: 150px">
+			<li>Ember</li>
+			<li>Vue.js</li>
+		</ul>
+	</div>
 
-	<section class="slide question">
-		<h2>Почему React?</h2>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Почему React?</h2>
-		<img src="react-stars.png" width="900"/>
-	</section>
+<section class="slide question">
+	<h2>Functional reactive programming</h2>
+</section>
 
-	<!-- Заключение про фреймворки-->
+<section class="slide">
+	<h2>Functional reactive programming</h2>
+	<blockquote>
+		<p class="medium-content"><b>Functional reactive programming (FRP)</b> is a programming paradigm for reactive
+			programming (asynchronous dataflow programming) using the building blocks of functional programming (e.g.
+			map, reduce, filter).</p>
+	</blockquote>
+	<ul>
+		<li>RambdaJS</li>
+		<li>RxJS</li>
+	</ul>
+</section>
 
-	<section class="slide question">
-		<h2>Какой фреймворк изучать в 2017?</h2>
-	</section>
+<!--THE END-->
 
-	<section class="slide">
-		<h2>Какой фреймворк изучать в 2017?</h2>
-		<b>
-			<p class="medium-content">
-				Обязательно:
-			</p>
-			<ul style="margin-left: 150px">
-				<li class="next">Angular</li>
-				<li class="next">React</li>
+
+<section class="slide">
+	<h2 class="shout">Перерыв</h2>
+</section>
+
+<section class="slide">
+	<h2 class="shout">
+		<small style="font-size:85%">Фронтенд-разработка &mdash; это <strong>не только web</strong></small>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>Server-side</h2>
+</section>
+
+<section class="slide">
+	<h2>Node.JS</h2>
+	<blockquote>
+		<p class="medium-content"><b>Node или Node.js</b> &mdash; программная платформа, основанная на движке V8
+			(транслирующем JavaScript в машинный код), превращающая JavaScript из узкоспециализированного языка в язык
+			общего назначения</p>
+	</blockquote>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="nodewtf.png" style="transform-origin: center;transform: translate(-50%,-80%) scale(1);">
+	</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="nodejs.png"
+			 style="transform-origin: center;transform: translate(-50%,-30%) scale(1.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Node.JS</h2>
+	<ul>
+		<li><strong>Локальные и консольные утилиты</strong>
+			<ul>
+				<li>Сборщики, трансляторы, компиляторы</li>
+				<li>Скриптинг, CLI, генерация документации, тесты</li>
 			</ul>
-		</b>
-		<div class="next">
-			<p class="medium-content">Желательно:</p>
-			<ul style="margin-left: 150px">
-				<li>Ember</li>
-				<li>Vue.js</li>
+		</li>
+		<li><strong>Серверы</strong>
+			<ul>
+				<li>API, dev-сервера, бекенды для SPA</li>
+				<li>Highload & real-time системы: игры, чаты</li>
+				<li>Заплаты в узкие места уже готовых систем</li>
 			</ul>
-		</div>
+		</li>
+		<li><strong>Клиентские приложения</strong>
+			<ul>
+				<li>Кравлеры, сборщики данных, анализаторы логов, статистики</li>
+				<li>Desktop приложения (nw.js, Electron)</li>
+			</ul>
+		</li>
+		<li><strong>Железо</strong>
+			<ul>
+				<li>Работа на микроконтроллерах (Tessel, Espruino...)</li>
+			</ul>
+		</li>
+	</ul>
+</section>
 
-	</section>
+<section class="slide">
+	<h2>Node.JS</h2>
+	<div style="position:absolute;width: 100%; height: 75%;">
+		<img class="place" src="spring-stars.png"
+			 style="transform-origin: center;transform: translate(-56%,-120%) scale(1);">
+	</div>
+	<div style="position:absolute;width: 100%; height: 75%;">
+		<img class="place" src="socketio-stars.png"
+			 style="transform-origin: center;transform: translate(-56.5%,0%) scale(1);">
+	</div>
+</section>
 
-	<section class="slide question">
-		<h2>Functional reactive programming</h2>
-	</section>
+<section class="slide">
+	<h2><a href="https://habrahabr.ru/post/123154/" target="_blank">Производительность Node.js</a></h2>
+	<p class="medium-content"><strong>Дано:</strong></p>
+	<ul>
+		<li>Core i7-2600 Quad, 16Gb RAM</li>
+		<li>Ubuntu 12.04 LTS</li>
+		<li>Node.js <strong>v0.8.3</strong> (!!!)</li>
+	</ul>
+	<p><strong>Результат:</strong></p>
+	<h3 class="next" style="font-size: 300%; line-height: normal"><strong>Миллион одновременных соединений</strong></h3>
 
-	<section class="slide">
-		<h2>Functional reactive programming</h2>
-		<blockquote>
-			<p class="medium-content"><b>Functional reactive programming (FRP)</b> is a programming paradigm for reactive programming (asynchronous dataflow programming) using the building blocks of functional programming (e.g. map, reduce, filter).</p>
-		</blockquote>
-		<ul>
-			<li>RambdaJS</li>
-			<li>RxJS</li>
-		</ul>
-	</section>
+</section>
 
-	<!--THE END-->
+<section class="slide question">
+	<div><a href="http://node.green/" target="_blank">http://node.green</a></div>
+	<iframe src="http://node.green/#ES2016" frameborder="0" height="81%" width="110%" style="transform: translateX(-5%)"
+			scrolling="no"></iframe>
+</section>
 
-
-
-	<section class="slide">
-		<h2 class="shout">Перерыв</h2>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout"><small style="font-size:85%">Фронтенд-разработка &mdash; это <strong>не только web</strong></small></h2>
-	</section>
-
-	<section class="slide question">
-		<h2>Server-side</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<blockquote>
-			<p class="medium-content"><b>Node или Node.js</b> &mdash; программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код), превращающая JavaScript из узкоспециализированного языка в язык общего назначения</p>
-		</blockquote>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="nodewtf.png" style="transform-origin: center;transform: translate(-50%,-80%) scale(1);">
-		</div>
-	</section>
-
-	<section class="slide question">
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="nodejs.png" style="transform-origin: center;transform: translate(-50%,-30%) scale(1.5);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<ul>
-			<li><strong>Локальные и консольные утилиты</strong>
-				<ul>
-					<li>Сборщики, трансляторы, компиляторы</li>
-					<li>Скриптинг, CLI, генерация документации, тесты</li>
-				</ul>
-			</li>
-			<li><strong>Серверы</strong>
-				<ul>
-					<li>API, dev-сервера, бекенды для SPA</li>
-					<li>Highload & real-time системы: игры, чаты</li>
-					<li>Заплаты в узкие места уже готовых систем</li>
-				</ul>
-			</li>
-			<li><strong>Клиентские приложения</strong>
-				<ul>
-					<li>Кравлеры, сборщики данных, анализаторы логов, статистики</li>
-					<li>Desktop приложения (nw.js, Electron)</li>
-				</ul>
-			</li>
-			<li><strong>Железо</strong>
-				<ul>
-					<li>Работа на микроконтроллерах (Tessel, Espruino...)</li>
-				</ul>
-			</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<div style="position:absolute;width: 100%; height: 75%;">
-			<img class="place" src="spring-stars.png" style="transform-origin: center;transform: translate(-56%,-120%) scale(1);">
-		</div>
-		<div style="position:absolute;width: 100%; height: 75%;">
-			<img class="place" src="socketio-stars.png" style="transform-origin: center;transform: translate(-56.5%,0%) scale(1);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2><a href="https://habrahabr.ru/post/123154/" target="_blank">Производительность Node.js</a></h2>
-		<p class="medium-content"><strong>Дано:</strong></p>
-		<ul>
-			<li>Core i7-2600 Quad, 16Gb RAM</li>
-			<li>Ubuntu 12.04 LTS</li>
-			<li>Node.js <strong>v0.8.3</strong> (!!!)</li>
-		</ul>
-		<p><strong>Результат:</strong></p>
-		<h3 class="next" style="font-size: 300%; line-height: normal"><strong>Миллион одновременных соединений</strong></h3>
-
-	</section>
-
-	<section class="slide question">
-		<div><a href="http://node.green/" target="_blank">http://node.green</a></div>
-		<iframe src="http://node.green/#ES2016" frameborder="0" height="81%" width="110%" style="transform: translateX(-5%)" scrolling="no"></iframe>
-	</section>
-
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<p class="medium-content">Структура проекта</p>
-		<pre class="hljs bash">
+<section class="slide">
+	<h2>Node.JS</h2>
+	<p class="medium-content">Структура проекта</p>
+	<pre class="hljs bash">
 			<code>app/</code>
 			<code>    package.json</code>
 			<code>    node_modules/</code>
@@ -479,11 +494,11 @@ ReactDOM.render(
 			<code>    ...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Node.JS</h2>
+	<pre class="hljs js">
 			<code>// circle.js</code>
 			<code>'use strict';</code>
 			<code>const PI = 3.1415;</code>
@@ -495,11 +510,11 @@ ReactDOM.render(
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Node.JS</h2>
+	<pre class="hljs js">
 			<code>(function (exports, require, module, __filename, __dirname) {</code>
 			<code>    'use strict';</code>
 			<code>    const PI = 3.1415;</code>
@@ -512,11 +527,11 @@ ReactDOM.render(
 			<code>});</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Node.JS</h2>
+	<pre class="hljs js">
 			<code>"use strict";</code>
 			<code>const circle = <mark>require</mark>('./circle.js');</code>
 			<code>const fs = <mark>require</mark>('fs');</code>
@@ -527,189 +542,202 @@ ReactDOM.render(
 			<code>console.log('square = ', circle(2));</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Node.JS</h2>
-		<ul>
-			<li><code>os</code> &mdash; информация о ОС, в которой запускается программа</li>
-			<li><code>child_process</code> &mdash; методы для запуска и управления дочерними процессами</li>
-			<li><code>assert</code> &mdash; набор простых методов тестирования</li>
-			<li><code>process</code> &mdash; информация о текущем процессе</li>
-			<li><code>net</code> (<code>dgram</code>) &mdash; создание tcp (и udp) серверов и клиентов</li>
-			<li><code>http</code> (<code>http<strong>2</strong></code>, <code>http<strong>s</strong></code>) &mdash; модули для работы с http</li>
-			<li><code>fs</code> &mdash; работа с файловой системой</li>
-			<li><code>path</code> &mdash; методы для парсинга и работы с путями в file system</li>
-			<li><code>url</code> &mdash; методы для парсинга и работы с url-адресами</li>
-			<li><code>crypto</code> &mdash; модуль, предоставляющий криптографические методы</li>
-			<li><code>stream</code> &mdash; модуль для потоковой обработки файлов</li>
-			<li><code>cluster</code> &mdash; модуль для запуска многопроцессорных приложений</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Node.JS</h2>
+	<ul>
+		<li><code>os</code> &mdash; информация о ОС, в которой запускается программа</li>
+		<li><code>child_process</code> &mdash; методы для запуска и управления дочерними процессами</li>
+		<li><code>assert</code> &mdash; набор простых методов тестирования</li>
+		<li><code>process</code> &mdash; информация о текущем процессе</li>
+		<li><code>net</code> (<code>dgram</code>) &mdash; создание tcp (и udp) серверов и клиентов</li>
+		<li><code>http</code> (<code>http<strong>2</strong></code>, <code>http<strong>s</strong></code>) &mdash; модули
+			для работы с http
+		</li>
+		<li><code>fs</code> &mdash; работа с файловой системой</li>
+		<li><code>path</code> &mdash; методы для парсинга и работы с путями в file system</li>
+		<li><code>url</code> &mdash; методы для парсинга и работы с url-адресами</li>
+		<li><code>crypto</code> &mdash; модуль, предоставляющий криптографические методы</li>
+		<li><code>stream</code> &mdash; модуль для потоковой обработки файлов</li>
+		<li><code>cluster</code> &mdash; модуль для запуска многопроцессорных приложений</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>npm</h2>
-		<p><em>npm</em> &mdash; менеджер пакетов, входящий в состав Node.js</p>
-		<ul>
-			<li><code>express</code> &mdash; веб-сервер</li>
-			<li><code>koa</code> &mdash; веб-сервер</li>
-			<li><code>babel</code> &mdash; бабель</li>
-			<li><code>webpack</code> &mdash; вебпак</li>
-			<li><code>pm2</code> &mdash; production-демон для запуска node.js приложений</li>
-			<li><code>typescript</code> &mdash; компилятор typescript</li>
-			<li><code>debug</code> &mdash; модуль для логирования node.js приложений</li>
-			<li><code>socket.io</code> &mdash; библиотека для работы с веб-сокетами</li>
-			<li>and more...</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>npm</h2>
+	<p><em>npm</em> &mdash; менеджер пакетов, входящий в состав Node.js</p>
+	<ul>
+		<li><code>express</code> &mdash; веб-сервер</li>
+		<li><code>koa</code> &mdash; веб-сервер</li>
+		<li><code>babel</code> &mdash; бабель</li>
+		<li><code>webpack</code> &mdash; вебпак</li>
+		<li><code>pm2</code> &mdash; production-демон для запуска node.js приложений</li>
+		<li><code>typescript</code> &mdash; компилятор typescript</li>
+		<li><code>debug</code> &mdash; модуль для логирования node.js приложений</li>
+		<li><code>socket.io</code> &mdash; библиотека для работы с веб-сокетами</li>
+		<li>and more...</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>MongoDB</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="mongo-logo.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.55);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>MongoDB</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="mongo-logo.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(0.55);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>MongoDB</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="mongo-document.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.1);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>MongoDB</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="mongo-document.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.1);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>MongoDB</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="mongo-collection.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>MongoDB</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="mongo-collection.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>MongoDB</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="mongo-insert.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>MongoDB</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="mongo-insert.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+	</div>
+</section>
 
 
+<section class="slide question">
+	<h2>Desktop</h2>
+</section>
 
+<section class="slide">
+	<h2>Chromium</h2>
+	<blockquote>
+		<p class="medium-content"><b>Chromium</b> &mdash; веб-браузер с открытым исходным кодом, разрабатываемый
+			сообществом The Chromium Authors, компанией Google и некоторыми другими компаниями</p>
+	</blockquote>
+</section>
 
-	<section class="slide question">
-		<h2>Desktop</h2>
-	</section>
+<section class="slide">
+	<h2>Desktop applications</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="nw-electron.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(2.5);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Chromium</h2>
-		<blockquote>
-			<p class="medium-content"><b>Chromium</b> &mdash; веб-браузер с открытым исходным кодом, разрабатываемый сообществом The Chromium Authors, компанией Google и некоторыми другими компаниями</p>
-		</blockquote>
-	</section>
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="components-electron.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(0.6);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Desktop applications</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="nw-electron.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(2.5);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Отличия</h2>
+	<p class="small-content"></p>
+	<ul>
+		<li>Различная точка входа</li>
+		<li>Разный принцип построения билдов (Asar Archive vs. V8 Snapshot)</li>
+		<li>Использование Chromium</li>
+		<li>Разный контекст</li>
+		<li>Различия в процессе сборки</li>
+	</ul>
+</section>
 
-	<section class="slide question">
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="components-electron.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.6);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Популярность</h2>
+	<p class="small-content">Несмотря на то, что NW.js существует дольше Electron, на Electron разработано <em>гораздо
+		больше популярных приложений</em></p>
+	<ul>
+		<li>Atom</li>
+		<li>Slack</li>
+		<li>Visual Studio Code</li>
+		<li>GitHub Desktop</li>
+		<li>Hyper</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Отличия</h2>
-		<p class="small-content"></p>
-		<ul>
-			<li>Различная точка входа</li>
-			<li>Разный принцип построения билдов (Asar Archive vs. V8 Snapshot)</li>
-			<li>Использование Chromium</li>
-			<li>Разный контекст</li>
-			<li>Различия в процессе сборки</li>
-		</ul>
-	</section>
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 65%;">
+		<img class="place" src="electron-arch.jpg"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.8);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Популярность</h2>
-		<p class="small-content">Несмотря на то, что NW.js существует дольше Electron, на Electron разработано <em>гораздо больше популярных приложений</em></p>
-		<ul>
-			<li>Atom</li>
-			<li>Slack</li>
-			<li>Visual Studio Code</li>
-			<li>GitHub Desktop</li>
-			<li>Hyper</li>
-		</ul>
-	</section>
+<section class="slide question">
+	<h2>Пример</h2>
+</section>
 
-	<section class="slide question">
-		<div style="position:relative;width: 100%; height: 65%;">
-			<img class="place" src="electron-arch.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.8);">
-		</div>
-	</section>
+<section class="slide question">
+	<h2><a href="https://www.youtube.com/watch?veQ9mSH4je0U" target="_blank" style="color: darkblue;">Доклад про
+		Electron by <em>Stefan Judis</em></a></h2>
+</section>
 
-	<section class="slide question">
-		<h2>Пример</h2>
-	</section>
+<section class="slide question">
+	<h2>Mobile</h2>
+</section>
 
-	<section class="slide question">
-		<h2><a href="https://www.youtube.com/watch?veQ9mSH4je0U" target="_blank" style="color: darkblue;">Доклад про Electron by <em>Stefan Judis</em></a></h2>
-	</section>
+<section class="slide">
+	<h2>Mobile</h2>
+	<p class="small-content"></p>
+	<ul>
+		<li>PWA</li>
+		<li>React Native</li>
+		<li>Native Script</li>
+		<li>ReactXP</li>
+		<li>PhoneGap (Apache Cordova)</li>
+		<li>more...</li>
+	</ul>
+</section>
 
-	<section class="slide question">
-		<h2>Mobile</h2>
-	</section>
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 100%;">
+		<img class="place" src="mobile-gen.png"
+			 style="transform-origin: center;transform: translate(-50%,-65%) scale(1);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Mobile</h2>
-		<p class="small-content"></p>
-		<ul>
-			<li>PWA</li>
-			<li>React Native</li>
-			<li>Native Script</li>
-			<li>ReactXP</li>
-			<li>PhoneGap (Apache Cordova)</li>
-			<li>more...</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Кто есть кто?</h2>
+	<blockquote>
+		<p><b>React Native</b> &mdash; фреймворк для построения нативных мобильных приложений с использованием React</p>
+	</blockquote>
+	<blockquote>
+		<p><b>ReactXP</b> &mdash; новомодная поделка от Microsoft</p>
+	</blockquote>
+	<blockquote>
+		<p><b>Native Script</b> &mdash; библиотека, позволяющая делать кросс-платформенные приложения, используя XML,
+			CSS, JavaScript</p>
+	</blockquote>
+	<blockquote>
+		<p><b>PhoneGap (Apache Cordova)</b> &mdash; платформа для разработки мобильных приложений, запускающихся в
+			webview, и имеющих доступ к системным API устройства</p>
+	</blockquote>
+</section>
 
-	<section class="slide question">
-		<div style="position:relative;width: 100%; height: 100%;">
-			<img class="place" src="mobile-gen.png" style="transform-origin: center;transform: translate(-50%,-65%) scale(1);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Кто есть кто?</h2>
+	<p class="small-content"></p>
+	<ul>
+		<li>Facebook</li>
+		<li>Instagram</li>
+		<li>Airbnb</li>
+		<li>Walmart</li>
+		<li>Sberbank</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Кто есть кто?</h2>
-		<blockquote>
-			<p><b>React Native</b> &mdash; фреймворк для построения нативных мобильных приложений с использованием React</p>
-		</blockquote>
-		<blockquote>
-			<p><b>ReactXP</b> &mdash; новомодная поделка от Microsoft</p>
-		</blockquote>
-		<blockquote>
-			<p><b>Native Script</b> &mdash; библиотека, позволяющая делать кросс-платформенные приложения, используя XML, CSS, JavaScript</p>
-		</blockquote>
-		<blockquote>
-			<p><b>PhoneGap (Apache Cordova)</b> &mdash; платформа для разработки мобильных приложений, запускающихся в webview, и имеющих доступ к системным API устройства</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Кто есть кто?</h2>
-		<p class="small-content"></p>
-		<ul>
-			<li>Facebook</li>
-			<li>Instagram</li>
-			<li>Airbnb</li>
-			<li>Walmart</li>
-			<li>Sberbank</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Например:</h2>
-		<pre class="hljs jsx">
+<section class="slide">
+	<h2>Например:</h2>
+	<pre class="hljs jsx">
 			<code>import React, { Component } from 'react';</code>
 			<code>import { Text, View, ProgressBar } from 'react-native';</code>
 			<code>import { TheNativeComponent } from './your-native-code';</code>
@@ -724,78 +752,77 @@ ReactDOM.render(
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide question">
-		<div style="position:relative;width: 100%; height: 100%;">
-			<img class="place" src="mobile-from-js.png" style="transform-origin: center;transform: translate(-50%,-65%) scale(1.5);">
-		</div>
-	</section>
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 100%;">
+		<img class="place" src="mobile-from-js.png"
+			 style="transform-origin: center;transform: translate(-50%,-65%) scale(1.5);">
+	</div>
+</section>
 
-	<section class="slide question">
-		<div style="position:relative;width: 100%; height: 100%;">
-			<img class="place" src="native-script-works.png" style="transform-origin: center;transform: translate(-50%,-65%) scale(1.05);">
-		</div>
-	</section>
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 100%;">
+		<img class="place" src="native-script-works.png"
+			 style="transform-origin: center;transform: translate(-50%,-65%) scale(1.05);">
+	</div>
+</section>
 
-	<section class="slide question">
-		<h2>OS & SmartTV</h2>
-	</section>
+<section class="slide question">
+	<h2>OS & SmartTV</h2>
+</section>
 
-	<section class="slide">
-		<h2>OS & SmartTV</h2>
-		<blockquote>
-			<p><strong>WebOS</strong> &mdash; веб-приложение, организующее платформу (операционную
-				среду с набором готовых функций API) для выполнения других веб-приложений</p>
-		</blockquote>
-		<blockquote>
-			<p class="medium-content"><strong>Tizen</strong> &mdash; открытая операционная система на базе ядра Linux,
-				предназначенная для широкого круга устройств, включая смартфоны, интернет-планшеты, компьютеры,
-				автомобильные информационно-развлекательные системы, «умные» телевизоры и цифровые камеры</p>
-		</blockquote>
-		<blockquote>
-			<p class="medium-content"><strong>Chrome OS</strong> &mdash; ОС от компании Google. Главной особенностью
-				является доминирование веб-приложений над обычными функциями ОС</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>OS & SmartTV</h2>
+	<blockquote>
+		<p><strong>WebOS</strong> &mdash; веб-приложение, организующее платформу (операционную
+			среду с набором готовых функций API) для выполнения других веб-приложений</p>
+	</blockquote>
+	<blockquote>
+		<p class="medium-content"><strong>Tizen</strong> &mdash; открытая операционная система на базе ядра Linux,
+			предназначенная для широкого круга устройств, включая смартфоны, интернет-планшеты, компьютеры,
+			автомобильные информационно-развлекательные системы, «умные» телевизоры и цифровые камеры</p>
+	</blockquote>
+	<blockquote>
+		<p class="medium-content"><strong>Chrome OS</strong> &mdash; ОС от компании Google. Главной особенностью
+			является доминирование веб-приложений над обычными функциями ОС</p>
+	</blockquote>
+</section>
 
-	<section class="slide question">
-		<h2>more...</h2>
-	</section>
-
-
-
-	<section class="slide">
-		<h2 class="shout">
-			<small style="font-size:85%">Современные API</small>
-		</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Современность</h2>
-		<ul>
-			<li>WebRTC API</li>
-			<li>Web Bluetooth API &mdash; <a href="https://youtu.be/4LscaaiO7Ps?t14m22s" target="_blank" style="color: darkblue;">link</a></li>
-			<li>Vibration API</li>
-			<li>Ambient Light Sensor API</li>
-			<li>Battery Status API</li>
-			<li>Mobile Messaging API</li>
-			<li>and more...</li>
-		</ul>
-	</section>
+<section class="slide question">
+	<h2>more...</h2>
+</section>
 
 
+<section class="slide">
+	<h2 class="shout">
+		<small style="font-size:85%">Современные API</small>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Современность</h2>
+	<ul>
+		<li>WebRTC API</li>
+		<li>Web Bluetooth API &mdash; <a href="https://youtu.be/4LscaaiO7Ps?t14m22s" target="_blank"
+										 style="color: darkblue;">link</a></li>
+		<li>Vibration API</li>
+		<li>Ambient Light Sensor API</li>
+		<li>Battery Status API</li>
+		<li>Mobile Messaging API</li>
+		<li>and more...</li>
+	</ul>
+</section>
 
 
+<section class="slide">
+	<h2 class="shout">Всем спасибо!</h2>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">Всем спасибо!</h2>
-	</section>
-
-	<div class="progress"></div>
-	<script src="/lib/shower/shower.min.js"></script>
-	<script src="/lib/hljs/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+<script src="/lib/hljs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

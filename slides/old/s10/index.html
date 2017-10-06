@@ -23,100 +23,107 @@
 			aspect = ratios[0];
 		}
 
-		if (['localhost', '127.0.0.1'].includes( window.location.hostname )) {
+		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
 			aspect = '4x3';
 		}
+		aspect = '4x3';
 
-		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${'4x3'}.css">`);
+		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
 
 	</script>
 
-	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
-
-	<style>
-		.slide pre {
-			font-size: 100%;
-		}
-	</style>
+	<link rel="stylesheet" href="/lib/slides.css">
 
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Веб-компоненты, Data Binding и Virtual DOM</h1>
-		<p>Технопарк, 2017 г.</p>
-	</header>
+<header class="caption">
+	<h1>Веб-компоненты, Data Binding и Virtual DOM</h1>
+	<p>Технопарк, 2017 г.</p>
+</header>
 
-	<section class="slide">
-		<h2 class="shout"><small style="font-size:80%">Веб-компоненты, Data Binding и Virtual DOM</small><br/>
-			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
-		</h2>
-	</section>
-
-
-
-
-
-	<!--ВЕБ-КОМПОНЕНТЫ-->
-
-	<section class="slide">
-		<h2 class="shout">Веб-компоненты</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Современные веб-компоненты</h2>
-		<blockquote>
-			<p class="small-content"><b>Веб-компоненты</b> &mdash; технология, которая позволяет создавать многократно используемые компоненты в веб-приложениях. Веб-компоненты поддерживаются веб-браузерами напрямую и <mark>не требуют дополнительных библиотек для работы</mark>. Модель веб-компонентов подразумевает инкапсуляцию и совместимость отдельных элементов</p>
-			<p class="note">На данный момент частичная поддержка существует в браузерах Chrome, Firefox, Opera и Safari. Для браузеров не поддерживающих веб-компоненты реализованы полифиллы</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Современные веб-компоненты</h2>
-		<p>Веб-компоненты включают в себя четыре технологии:</p>
-		<ul>
-			<li>Shadow DOM v1 &mdash; <a href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">developers.google.com</a></li>
-			<li>HTML Templates &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template" target="_blank">MDN</a></li>
-			<li>Custom Elements API v1 &mdash; <a href="https://github.com/shawnbot/custom-elements" target="_blank">описание</a></li>
-			<li>HTML Imports &mdash; <a href="https://htmlhook.ru/html-imports.html" target="_blank">htmlhook.ru</a></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2 class="shout">
+		<small style="font-size:80%">Веб-компоненты, Data Binding и Virtual DOM</small>
+		<br/>
+		<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a>
+		</small>
+	</h2>
+</section>
 
 
+<!--ВЕБ-КОМПОНЕНТЫ-->
 
-	<!--shadow dom-->
+<section class="slide">
+	<h2 class="shout">Веб-компоненты</h2>
+</section>
 
-	<section class="slide question" style="background-color:#e6e6e6;">
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="shadow.jpg" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.9);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Современные веб-компоненты</h2>
+	<blockquote>
+		<p class="small-content"><b>Веб-компоненты</b> &mdash; технология, которая позволяет создавать многократно
+			используемые компоненты в веб-приложениях. Веб-компоненты поддерживаются веб-браузерами напрямую и
+			<mark>не требуют дополнительных библиотек для работы</mark>
+			. Модель веб-компонентов подразумевает инкапсуляцию и совместимость отдельных элементов
+		</p>
+		<p class="note">На данный момент частичная поддержка существует в браузерах Chrome, Firefox, Opera и Safari. Для
+			браузеров не поддерживающих веб-компоненты реализованы полифиллы</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2>Shadow DOM v1</h2>
-		<blockquote>
-			<p class="small-content"><b>Shadow DOM</b> &mdash; инструмент инкапсуляции HTML. Shadow DOM позволяет изменять внутреннее представление HTML элементов, оставляя внешнее представление неизменным</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>Современные веб-компоненты</h2>
+	<p>Веб-компоненты включают в себя четыре технологии:</p>
+	<ul>
+		<li>Shadow DOM v1 &mdash; <a
+				href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">developers.google.com</a>
+		</li>
+		<li>HTML Templates &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template"
+									  target="_blank">MDN</a></li>
+		<li>Custom Elements API v1 &mdash; <a href="https://github.com/shawnbot/custom-elements" target="_blank">описание</a>
+		</li>
+		<li>HTML Imports &mdash; <a href="https://htmlhook.ru/html-imports.html" target="_blank">htmlhook.ru</a></li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Shadow DOM v1</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="shadow-dom-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
-		</div>
-	</section>
 
-	<section class="slide">
-		<h2><code>&lt;input type="range"></code></h2>
-		<input type="range" style="transform: scale(3) translateX(-50%); margin-left: 50%;">
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="shadow-user-agent.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
-		</div>
-	</section>
+<!--shadow dom-->
 
-	<section class="slide">
-		<h2>Shadow DOM</h2>
-		<pre class="hljs js">
+<section class="slide question" style="background-color:#e6e6e6;">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="shadow.jpg"
+			 style="transform-origin: center;transform: translate(-50%,-45%) scale(0.9);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Shadow DOM v1</h2>
+	<blockquote>
+		<p class="small-content"><b>Shadow DOM</b> &mdash; инструмент инкапсуляции HTML. Shadow DOM позволяет изменять
+			внутреннее представление HTML элементов, оставляя внешнее представление неизменным</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Shadow DOM v1</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="shadow-dom-ciuse.png"
+			 style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2><code>&lt;input type="range"></code></h2>
+	<input type="range" style="transform: scale(3) translateX(-50%); margin-left: 50%;">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="shadow-user-agent.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Shadow DOM</h2>
+	<pre class="hljs js">
 			<code>// Shadow DOM v0</code>
 			<code>const root = element.createShadowRoot();</code>
 			<code> </code>
@@ -128,11 +135,11 @@
 			<code> </code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs html">
 			<code>&lt;!--html--></code>
 			<code>&lt;div id="element1"></code>
 			<code>    &lt;h1>Header h1&lt;/h1></code>
@@ -140,11 +147,11 @@
 			<code>&lt;/div></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Shadow DOM</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Shadow DOM</h2>
+	<pre class="hljs js">
 			<code>const root1 = element1.attachShadow({ <mark>mode: 'open'</mark> });</code>
 			<code>root1.innerHTML = `</code>
 			<code class="hljs html">    &lt;div></code>
@@ -153,12 +160,12 @@
 			<code>`;</code>
 			<code> </code>
 		</pre>
-		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
-	</section>
+	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs html">
 			<code>&lt;!--html--></code>
 			<code>&lt;div id="element2"></code>
 			<code>    &lt;h1 slot="h1">Header h1&lt;/h1></code>
@@ -166,11 +173,11 @@
 			<code>&lt;/div></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Shadow DOM</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Shadow DOM</h2>
+	<pre class="hljs js">
 			<code>const root2 = element2.attachShadow({ <mark>mode: 'open'</mark> });</code>
 			<code>root2.innerHTML = `</code>
 			<code class="hljs html">    &lt;div></code>
@@ -181,12 +188,12 @@
 			<code>`;</code>
 			<code> </code>
 		</pre>
-		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
-	</section>
+	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
+</section>
 
-	<section class="slide">
-		<h2>Shadow DOM</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>Shadow DOM</h2>
+	<pre class="hljs html">
 			<code>#shadow-root</code>
 			<code>&lt;style></code>
 			<code>    :host {</code>
@@ -201,30 +208,32 @@
 			<code>&lt;/style></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<!--html templates-->
 
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<blockquote>
+		<p class="small-content"><b>HTML Templates</b> &mdash; это механизм для отложенного рендера клиентского
+			контента, который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript.
+			Содержимое тегов <code>&lt;template></code> парсится браузером, но отрабатывает только в момент вставки
+			шаблона в DOM</p>
+	</blockquote>
+</section>
 
-	<!--html templates-->
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="html-tmpl-ciuse.png"
+			 style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<blockquote>
-			<p class="small-content"><b>HTML Templates</b> &mdash; это механизм для отложенного рендера клиентского контента, который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript. Содержимое тегов <code>&lt;template></code> парсится браузером, но отрабатывает только в момент вставки шаблона в DOM</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="html-tmpl-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs html">
 			<code>&lt;!--html--></code>
 			<code>&lt;template id="tmpl"></code>
 			<code>    &lt;h3>Заголовок: &lt;slot name="title">&lt;/slot>&lt;/h3></code>
@@ -235,22 +244,22 @@
 			<code>&lt;/template></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs html">
 			<code>&lt;!--html--></code>
 			<code>&lt;div id="source"></code>
 			<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
 			<code>&lt;/div></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs js">
 			<code>const target = document.getElementById('source');</code>
 			<code>const tmpl = document.getElementById('tmpl');</code>
 			<code> </code>
@@ -260,12 +269,12 @@
 			<code>target.appendChild(document.importNode(tmpl.content, true));</code>
 			<code> </code>
 		</pre>
-		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
-	</section>
+	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs html">
 			<code>&lt;!-- result --></code>
 			<code>&lt;div id="source"></code>
 			<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
@@ -278,11 +287,11 @@
 			<code>&lt;/div></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs js">
 			<code>const target = document.getElementById('source');</code>
 			<code>const tmpl = document.getElementById('tmpl');</code>
 			<code> </code>
@@ -291,12 +300,12 @@
 			<code>root.appendChild(tmpl.content.cloneNode(true));</code>
 			<code> </code>
 		</pre>
-		<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
-	</section>
+	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
+</section>
 
-	<section class="slide">
-		<h2>HTML Templates</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Templates</h2>
+	<pre class="hljs html">
 			<code>&lt;!-- result --></code>
 			<code>&lt;div id="source"></code>
 			<code>    &lt;h3>Заголовок: &lt;slot name="title">Hello, World!&lt;/slot>&lt;/h3></code>
@@ -307,31 +316,32 @@
 			<code>&lt;/div></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<!--custom elements-->
 
+<section class="slide">
+	<h2>Custom Elements API v1</h2>
+	<blockquote>
+		<p class="small-content"><b>Custom Elements API</b> &mdash; позволяют создавать и определять API
+			<mark>собственных</mark>
+			HTML элементов
+		</p>
+	</blockquote>
+</section>
 
+<section class="slide">
+	<h2>Custom Elements API v1</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="custom-elements-ciuse.png"
+			 style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+	</div>
+</section>
 
-	<!--custom elements-->
-
-	<section class="slide">
-		<h2>Custom Elements API v1</h2>
-		<blockquote>
-			<p class="small-content"><b>Custom Elements API</b> &mdash; позволяют создавать и определять API <mark>собственных</mark> HTML элементов</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Custom Elements API v1</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="custom-elements-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Custom Elements</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Custom Elements</h2>
+	<pre class="hljs js">
 			<code>customElements.define(tagName, constructor, options);</code>
 			<code> </code>
 			<code>class MyHTMLElement extends HTMLElement {}</code>
@@ -339,16 +349,16 @@
 			<code> </code>
 		</pre>
 
-		<pre class="hljs html">
+	<pre class="hljs html">
 			<code>&lt;!-- PROFIT --></code>
 			<code>&lt;my-element>&lt;/my-element></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Custom Elements</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Custom Elements</h2>
+	<pre class="hljs js">
 			<code>// "super" is not a valid custom element name</code>
 			<code>document.createElement('super')</code>
 			<code>                instanceof HTMLUnknownElement; // true</code>
@@ -358,11 +368,11 @@
 			<code>                instanceof HTMLElement; // true</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Custom Elements styling</h2>
-		<pre class="hljs css">
+<section class="slide">
+	<h2>Custom Elements styling</h2>
+	<pre class="hljs css">
 			<code>x-super:<mark>defined</mark> {</code>
 			<code>    display: block;</code>
 			<code>}</code>
@@ -374,11 +384,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Custom Elements</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Custom Elements</h2>
+	<pre class="hljs js">
 			<code>customElements.define('bigger-img', class extends Image {</code>
 			<code>    constructor(width=50, height=50) {</code>
 			<code>        super(width * 10, height * 10);</code>
@@ -387,16 +397,16 @@
 			<code> </code>
 		</pre>
 
-		<pre class="hljs html">
+	<pre class="hljs html">
 			<code>&lt;!-- This &lt;img> is a bigger img. --></code>
 			<code>&lt;img is="bigger-img" width="15" height="20"></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Custom Elements</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Custom Elements</h2>
+	<pre class="hljs js">
 			<code>const BiggerImage = customElements.get('bigger-img');</code>
 			<code>const image = new BiggerImage(15, 20);</code>
 			<code>console.assert(image.width === 150);</code>
@@ -408,11 +418,11 @@
 			<code>    });</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Custom Elements</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Custom Elements</h2>
+	<pre class="hljs js">
 			<code>customElements.define('my-element', class extends HTMLElement {</code>
 			<code>    constructor() {</code>
 			<code>        super();</code>
@@ -423,11 +433,11 @@
 			<code>    ...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Custom Elements</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Custom Elements</h2>
+	<pre class="hljs js">
 			<code>    ...</code>
 			<code>    get disabled() {</code>
 			<code>        return this.hasAttribute('disabled');</code>
@@ -441,11 +451,11 @@
 			<code>    ...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Custom Elements</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Custom Elements</h2>
+	<pre class="hljs js">
 			<code>    ...</code>
 			<code>    <mark>attributeChangedCallback</mark>(attrName, oldVal, newVal) { ... }</code>
 			<code>    static get <mark>observedAttributes</mark>() {</code>
@@ -454,31 +464,30 @@
 			<code>});</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<!--html imports-->
 
+<section class="slide">
+	<h2>HTML Imports</h2>
+	<blockquote>
+		<p class="small-content"><b>HTML Imports</b> &mdash; позволяют импортировать фрагменты разметки из других файлов
+			без использования AJAX и похожих способов</p>
+	</blockquote>
+</section>
 
+<section class="slide">
+	<h2>HTML Imports</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="html-imports-ciuse.png"
+			 style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+	</div>
+</section>
 
-	<!--html imports-->
-
-	<section class="slide">
-		<h2>HTML Imports</h2>
-		<blockquote>
-			<p class="small-content"><b>HTML Imports</b> &mdash; позволяют импортировать фрагменты разметки из других файлов без использования AJAX и похожих способов</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>HTML Imports</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="html-imports-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>HTML Imports</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Imports</h2>
+	<pre class="hljs html">
 			<code>&lt;!-- imported.html --></code>
 			<code>&lt;div id="loader"></code>
 			<code>    &lt;span>Loading...&lt;/span></code>
@@ -488,29 +497,29 @@
 			<code>&lt;/script></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>HTML Imports</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Imports</h2>
+	<pre class="hljs html">
 			<code>&lt;!-- index.html --></code>
 			<code>&lt;head></code>
 			<code>    &lt;link rel="<mark>import</mark>" href="<mark>imported.html</mark>"></code>
 			<code>&lt;/head></code>
 			<code> </code>
 		</pre>
-		<pre class="hljs js">
+	<pre class="hljs js">
 			<code>const link = document.querySelector('link[rel=import]');</code>
 			<code>const content = link.<mark>import</mark>.querySelector('#loader');</code>
 			<code>document.body.appendChild(content.cloneNode(true));</code>
 			<code>const module = new Module();</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>HTML Imports</h2>
-		<pre class="hljs html">
+<section class="slide">
+	<h2>HTML Imports</h2>
+	<pre class="hljs html">
 			<code>&lt;!-- imported.html --></code>
 			<code>&lt;style <mark>scoped</mark>></code>
 			<code>    div { font-weight: 900; }</code>
@@ -520,87 +529,96 @@
 			<code>&lt;/div></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<!--modern web-components-->
+
+<section class="slide">
+	<h2>Современные веб-компоненты</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="web-components.png"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(0.9);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h2><a style="color: royalblue" href="/examples/web-components/fancy-progress/" target="_blank">Пример</a></h2>
+</section>
 
 
+<!--DATA-BINDING-->
 
-	<!--modern web-components-->
+<section class="slide">
+	<h2 class="shout">Data Binding</h2>
+</section>
 
-	<section class="slide">
-		<h2>Современные веб-компоненты</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="web-components.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.9);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Связывание данных (Data Binding)</h2>
+	<blockquote>
+		<p class="small-content"><b>Связывание данных</b> &mdash; это процесс, который устанавливает соединение между UI
+			приложения и бизнес-логикой</p>
+		<p class="note">Различают
+			<mark>одностороннее</mark>
+			и
+			<mark>двустороннее</mark>
+			связывание данных &mdash; <a href="/examples/data-binding/" target="_blank">пример</a></p>
+		<p class="note"><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/"
+						   target="_blank">Easy Two-Way Data Binding in JavaScript</a></p>
+	</blockquote>
+</section>
 
-	<section class="slide question">
-		<h2><a style="color: royalblue" href="/examples/web-components/fancy-progress/" target="_blank">Пример</a></h2>
-	</section>
-
-
-
-
-	<!--DATA-BINDING-->
-
-	<section class="slide">
-		<h2 class="shout">Data Binding</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Связывание данных (Data Binding)</h2>
-		<blockquote>
-			<p class="small-content"><b>Связывание данных</b> &mdash; это процесс, который устанавливает соединение между UI приложения и бизнес-логикой</p>
-			<p class="note">Различают <mark>одностороннее</mark> и <mark>двустороннее</mark> связывание данных &mdash; <a href="/examples/data-binding/" target="_blank">пример</a></p>
-			<p class="note"><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/" target="_blank">Easy Two-Way Data Binding in JavaScript</a></p>
-		</blockquote>
-	</section>
-
-	<section class="slide question">
-		<h2>Proxy &mdash; <a style="color: royalblue" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank">описание</a></h2>
-	</section>
+<section class="slide question">
+	<h2>Proxy &mdash; <a style="color: royalblue"
+						 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy"
+						 target="_blank">описание</a></h2>
+</section>
 
 
+<!--VDOM-->
 
 
-	<!--VDOM-->
+<section class="slide">
+	<h2 class="shout">Virtual DOM</h2>
+</section>
 
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="dom-vs-virtual_dom.jpg"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.35);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">Virtual DOM</h2>
-	</section>
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<blockquote>
+		<p class="small-content"><b>Virtual DOM</b> &mdash; это
+			<mark>техника и набор библиотек / алгоритмов</mark>
+			, которые позволяют нам улучшить производительность на клиентской стороне, избегая прямой работы с DOM путем
+			создания и работы c
+			<mark>абстракцией</mark>
+			, имитирующей DOM-дерево
+		</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2>Virtual DOM</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="dom-vs-virtual_dom.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.35);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="meme.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Virtual DOM</h2>
-		<blockquote>
-			<p class="small-content"><b>Virtual DOM</b> &mdash; это <mark>техника и набор библиотек / алгоритмов</mark>, которые позволяют нам улучшить производительность на клиентской стороне, избегая прямой работы с DOM путем создания и работы c <mark>абстракцией</mark>, имитирующей DOM-дерево</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Virtual DOM</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="meme.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Virtual DOM</h2>
-		<div style="display: flex; justify-content: center; width: 100%" id="kek">
-			<style>
-				.slide #kek pre code {
-					line-height: 1.5;
-				}
-			</style>
-			<div style="width: 50%">
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="display: flex; justify-content: center; width: 100%" id="kek">
+		<style>
+			.slide #kek pre code {
+				line-height: 1.5;
+			}
+		</style>
+		<div style="width: 50%">
 				<pre class="hljs js">
 					<code>// before</code>
 					<code>{</code>
@@ -612,8 +630,8 @@
 					<code>}</code>
 					<code> </code>
 				</pre>
-			</div>
-			<div style="width: 50%">
+		</div>
+		<div style="width: 50%">
 				<pre class="hljs js">
 					<code>// after</code>
 					<code>{</code>
@@ -625,25 +643,25 @@
 					<code>}</code>
 					<code> </code>
 				</pre>
-			</div>
 		</div>
-		<pre class="hljs js">
+	</div>
+	<pre class="hljs js">
 			<code>// Real DOM change</code>
 			<code>div.setAttribute('hidden', 'true')</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Virtual DOM</h2>
-		<div style="position:relative;width: 100%; height: 75%;">
-			<img class="place" src="vdom.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
-		</div>
-	</section>
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="vdom.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>el</code> и <code>setProps</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>el</code> и <code>setProps</code></h2>
+	<pre class="hljs js">
 			<code>function el(type, props, ...children) {</code>
 			<code>    return {type, props, children};</code>
 			<code>}</code>
@@ -655,11 +673,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>createElement</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>createElement</code></h2>
+	<pre class="hljs js">
 			<code>function createElement(node) {</code>
 			<code>    if (typeof node === 'string') {</code>
 			<code>        return document.createTextNode(node);</code>
@@ -673,11 +691,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>updateProp</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>updateProp</code></h2>
+	<pre class="hljs js">
 			<code>function updateProp($target, name, newVal, oldVal) {</code>
 			<code>    if (typeof newVal === 'undefined') {</code>
 			<code>        $target.removeAttribute(name);</code>
@@ -687,11 +705,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>updateProps</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>updateProps</code></h2>
+	<pre class="hljs js">
 			<code>function updateProps($target, newProps, oldProps = {}) {</code>
 			<code>    const props = Object.assign({}, newProps, oldProps);</code>
 			<code>    Object.keys(props).forEach(name => {</code>
@@ -701,11 +719,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>changed</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>changed</code></h2>
+	<pre class="hljs js">
 			<code>function changed(node1, node2) {</code>
 			<code>    return typeof node1 !== typeof node2 ||</code>
 			<code>        typeof node1 === 'string' && node1 !== node2 ||</code>
@@ -713,11 +731,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>updateElement</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>updateElement</code></h2>
+	<pre class="hljs js">
 			<code>function updateElement($parent, newNode, oldNode, index = 0) {</code>
 			<code>    if (!oldNode) {</code>
 			<code>        return $parent.appendChild(</code>
@@ -732,11 +750,11 @@
 			<code>...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>updateElement</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>updateElement</code></h2>
+	<pre class="hljs js">
 			<code>...</code>
 			<code>    if (VDOM.changed(newNode, oldNode)) {</code>
 			<code>        return $parent.replaceChild(</code>
@@ -748,11 +766,11 @@
 			<code>...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функция <code>updateElement</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Функция <code>updateElement</code></h2>
+	<pre class="hljs js">
 			<code>...</code>
 			<code>    if (newNode.type) {</code>
 			<code>        updateProps($parent.childNodes[index],</code>
@@ -766,40 +784,48 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide question">
-		<h2><a style="color: royalblue" href="/examples/vdom/" target="_blank">Пример</a></h2>
-	</section>
-
-
+<section class="slide question">
+	<h2><a style="color: royalblue" href="/examples/vdom/" target="_blank">Пример</a></h2>
+</section>
 
 
+<!--THE END-->
 
-	<!--THE END-->
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li><a href="https://developers.google.com/web/fundamentals/getting-started/primers/customelements"
+			   target="_blank">Custom Elements v1</a> на developers.google.com
+		</li>
+		<li>Shadow DOM <a href="https://frontender.info/shadowdom/" target="_blank">на frontender.info</a> и <a
+				href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">на
+			developers.google.com</a></li>
+		<li>Статьи на хабре про <a href="https://habrahabr.ru/post/210058/" target="_blank">веб-компоненты</a>, про <a
+				href="https://habrahabr.ru/post/180377/" target="_blank">Shadow DOM</a> (немного устаревшие)
+		</li>
+		<li><a href="https://learn.javascript.ru/webcomponents" target="_blank">Веб-компоненты: взгляд в будущее</a> на
+			learn.javascript.ru (устарело)
+		</li>
+		<li><a href="https://www.webcomponents.org/" target="_blank">webcomponents.org</a></li>
+		<li><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/" target="_blank">Easy
+			Two-Way Data Binding in JavaScript</a></li>
+		<li><a href="https://github.com/Matt-Esch/virtual-dom" target="_blank">Описание принципа работы VDOM</a> и <a
+				href="https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060" target="_blank">статья
+			на медиуме</a></li>
+		<li><a href="" target="_blank">ССЫЛКА</a></li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Полезные ссылки</h2>
-		<ul lang="en">
-			<li><a href="https://developers.google.com/web/fundamentals/getting-started/primers/customelements" target="_blank">Custom Elements v1</a> на developers.google.com</li>
-			<li>Shadow DOM <a href="https://frontender.info/shadowdom/" target="_blank">на frontender.info</a> и <a href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom" target="_blank">на developers.google.com</a></li>
-			<li>Статьи на хабре про <a href="https://habrahabr.ru/post/210058/" target="_blank">веб-компоненты</a>, про <a href="https://habrahabr.ru/post/180377/" target="_blank">Shadow DOM</a> (немного устаревшие)</li>
-			<li><a href="https://learn.javascript.ru/webcomponents" target="_blank">Веб-компоненты: взгляд в будущее</a> на learn.javascript.ru (устарело)</li>
-			<li><a href="https://www.webcomponents.org/" target="_blank">webcomponents.org</a></li>
-			<li><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/" target="_blank">Easy Two-Way Data Binding in JavaScript</a></li>
-			<li><a href="https://github.com/Matt-Esch/virtual-dom" target="_blank">Описание принципа работы VDOM</a> и <a href="https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060" target="_blank">статья на медиуме</a></li>
-			<li><a href="" target="_blank">ССЫЛКА</a></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2 class="shout">Всем спасибо!</h2>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">Всем спасибо!</h2>
-	</section>
-
-	<div class="progress"></div>
-	<script src="/lib/shower/shower.min.js"></script>
-	<script src="/lib/hljs/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+<script src="/lib/hljs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

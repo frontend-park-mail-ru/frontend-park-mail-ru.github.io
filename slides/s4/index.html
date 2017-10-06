@@ -32,8 +32,7 @@
 
     </script>
 
-    <link rel="stylesheet" href="/lib/hljs/styles/github.css">
-    <link rel="stylesheet" href="/lib/slides.css">
+	<link rel="stylesheet" href="/lib/slides.css">
 
 </head>
 <body class="shower list">
@@ -524,25 +523,6 @@
     <h2 class="shout">Promise и<br/>Fetch API</h2>
 </section>
 
-
-<section class="slide">
-    <!--
-    прежде чем говорить о промисах и прочей ерунде
-    надо рассказать о том что такое callback hell
-    или более широкое понятие pyramid of doom.
-
-    Не тот Doom который лучше чем DOM.
-    -->
-    <h2>План лекции</h2>
-	<p class="small-content"></p>
-    <ol>
-        <li>Асинхронность и проблемы</li>
-        <li>Промисы</li>
-        <li>Fetch API</li>
-        <li>Тестирование</li>
-    </ol>
-</section>
-
 <section class="slide question">
     <h2>
         <span style="font-size: 85%">Асинхронность в JavaScript</span>
@@ -551,6 +531,12 @@
 
 <section class="slide">
     <!--
+    прежде чем говорить о промисах и прочей ерунде
+    надо рассказать о том что такое callback hell
+    или более широкое понятие pyramid of doom.
+
+    Не тот Doom который лучше чем DOM.
+
     вспомним о том что такое callback-и
 
     функции могут возвращать результат естественным путем
@@ -594,7 +580,7 @@
     -->
     <h2>Callback Hell</h2>
     <pre class="hljs js">
-		<code>http.post('/singup', user, function (err, resp1) {</code>
+		<code>http.post('/signup', user, function (err, resp1) {</code>
 		<code>    if (err) { return console.error(err); }</code>
 		<code>    http.get(`/users/${resp1.id}`, function (err, resp2) {</code>
 		<code>        if (err) { return console.error(err); }</code>
@@ -647,7 +633,7 @@
     пирамид больше нет но callback-и остались
     -->
     <pre class="hljs js">
-		<code>http.post('/singup', user, <mark>onSignup</mark>);</code>
+		<code>http.post('/signup', user, <mark>onSignup</mark>);</code>
 		<code> </code>
 		<code>function onSignup (err, resp1) {</code>
 		<code>    if (err) { return console.error(err); }</code>
@@ -922,7 +908,7 @@
 <section class="slide">
     <h2>Callback Hell!</h2>
     <pre class="hljs js">
-		<code>http.post('/singup', user, function (err, resp1) {</code>
+		<code>http.post('/signup', user, function (err, resp1) {</code>
 		<code>    if (err) { return console.error(err); }</code>
 		<code>    http.get(`/users/${resp1.id}`, function (err, resp2) {</code>
 		<code>        if (err) { return console.error(err); }</code>
@@ -939,7 +925,7 @@
 <section class="slide">
     <h2><s>Callback Hell!</s> Красота :)</h2>
     <pre class="hljs js">
-		<code>PromisePost('/singup', user)</code>
+		<code>PromisePost('/signup', user)</code>
 		<code>    .then(resp1 => PromiseGet(`/users/${resp1.id}`))</code>
 		<code>    .then(resp2 => PromiseGet(`/photos/${resp2.avatarId}`))</code>
 		<code>    .then(avatar => { ... })</code>

@@ -23,104 +23,124 @@
 			aspect = ratios[0];
 		}
 
-		if (['localhost', '127.0.0.1'].includes( window.location.hostname )) {
+		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
 			aspect = '4x3';
 		}
+		aspect = '4x3';
 
 		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
-		
+
 	</script>
 
-	<style>
-		.slide pre {
-			font-size: 90%;
-		}
-	</style>
-
-	<link rel="stylesheet" href="/lib/hljs/styles/github.css">
+	<link rel="stylesheet" href="/lib/slides.css">
 
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Современное состояние JavaScript</h1>
-		<p>Технопарк, 2017 г.</p>
-	</header>
+<header class="caption">
+	<h1>Современное состояние JavaScript</h1>
+	<p>Технопарк, 2017 г.</p>
+</header>
 
-	<section class="slide">
-		<h2 class="shout">Развитие JavaScript<br/>
-			<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a></small>
-		</h2>
-	</section>
+<section class="slide">
+	<h2 class="shout">Развитие JavaScript<br/>
+		<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a>
+		</small>
+	</h2>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 80%">ISO/IEC 16262:2011(E)</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 80%">ISO/IEC 16262:2011(E)</span></h2>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ECMA-262</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ECMA-262</span></h2>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ECMAScript</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ECMAScript</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>Что есть JavaScript?</h2>
-		<ul lang="ru">
-			<li>ECMAScript &mdash; язык программирования</li>
-			<li>JavaScript &mdash; язык программирования (коммерческое название)</li>
-			<li>ECMA-262 &mdash; спецификация ECMAScript (<a href="https://www.ecma-international.org/ecma-262/7.0/index.html" target="_blank">последняя версия</a>: 7th издание в июле 2016 года, <a href="https://tc39.github.io/ecma262/" target="_blank">последний черновик</a>: ECMAScript® 2017 Language Specification)
-			</li>
-			<li>ISO/IEC 16262:2011(E) &mdash; international standard</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Что есть JavaScript?</h2>
+	<ul lang="ru">
+		<li>ECMAScript &mdash; язык программирования</li>
+		<li>JavaScript &mdash; язык программирования (коммерческое название)</li>
+		<li>ECMA-262 &mdash; спецификация ECMAScript (<a
+				href="https://www.ecma-international.org/ecma-262/7.0/index.html" target="_blank">последняя версия</a>:
+			7th издание в июле 2016 года, <a href="https://tc39.github.io/ecma262/" target="_blank">последний
+				черновик</a>: ECMAScript® 2017 Language Specification)
+		</li>
+		<li>ISO/IEC 16262:2011(E) &mdash; international standard</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Как это было</h2>
-		<ul lang="en">
-			<li><strong>Brendan Eich</strong> разработал прототип языка в мае 1995 за 10 дней, тогда он назывался <strong>Mocha</strong></li>
-			<li>В <strong>сентябре 1995</strong> в бета-версии браузера Netscape Navigator 2.0 он был выпущен под названием LiveScript</li>
-			<li>В декабре его переименовали в <strong>JavaScript</strong></li>
-			<li>Июнь 1997 &mdash; организация <strong>Ecma International</strong> выпустила первую версию стандарта ECMA-262, в котором описывала спецификацию ECMAScript</li>
-			<li>Июнь 1998 &mdash; спецификация <strong>ECMAScript 2</strong> и международный стандарт <strong>ISO/IEC 16262</strong></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Как это было</h2>
+	<ul lang="en">
+		<li><strong>Brendan Eich</strong> разработал прототип языка в мае 1995 за 10 дней, тогда он назывался <strong>Mocha</strong>
+		</li>
+		<li>В <strong>сентябре 1995</strong> в бета-версии браузера Netscape Navigator 2.0 он был выпущен под названием
+			LiveScript
+		</li>
+		<li>В декабре его переименовали в <strong>JavaScript</strong></li>
+		<li>Июнь 1997 &mdash; организация <strong>Ecma International</strong> выпустила первую версию стандарта
+			ECMA-262, в котором описывала спецификацию ECMAScript
+		</li>
+		<li>Июнь 1998 &mdash; спецификация <strong>ECMAScript 2</strong> и международный стандарт <strong>ISO/IEC
+			16262</strong></li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Как это было</h2>
-		<ul lang="en">
-			<li>2003 &mdash; <mark>ECMAScript 4</mark> (ActionScript)</li>
-			<li>Декабрь 2009 &mdash; <mark>ECMAScript 5</mark></li>
-			<li>Июнь 2011 &mdash; <mark>ECMAScript 5.1</mark>, ISO/IEC 16262:2011</li>
-			<li>Июнь 2015 &mdash; <mark>ECMAScript 2015</mark> (ES6 Harmony) === ES6</li>
-			<li>...</li>
-			<li>Июнь 2016 &mdash; <mark>ECMAScript 2016</mark></li>
-			<li>Лето 2017 года &mdash; <mark>ECMAScript 2017</mark></li>
-			<li>...</li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Как это было</h2>
+	<ul lang="en">
+		<li>2003 &mdash;
+			<mark>ECMAScript 4</mark>
+			(ActionScript)
+		</li>
+		<li>Декабрь 2009 &mdash;
+			<mark>ECMAScript 5</mark>
+		</li>
+		<li>Июнь 2011 &mdash;
+			<mark>ECMAScript 5.1</mark>
+			, ISO/IEC 16262:2011
+		</li>
+		<li>Июнь 2015 &mdash;
+			<mark>ECMAScript 2015</mark>
+			(ES6 Harmony) === ES6
+		</li>
+		<li>...</li>
+		<li>Июнь 2016 &mdash;
+			<mark>ECMAScript 2016</mark>
+		</li>
+		<li>Лето 2017 года &mdash;
+			<mark>ECMAScript 2017</mark>
+		</li>
+		<li>...</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Современное состояние JavaScript</h2>
-		<ul lang="ru">
-			<li>ES6-модули <em>и</em> ES6-классы</li>
-			<li>Стрелочные функции</li>
-			<li>Деструктуризация</li>
-			<li>Спреды</li>
-			<li>Итераторы <em>и</em> генераторы</li>
-			<li>Aсинхронные функции</li>
-			<li><em>and more...</em></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Современное состояние JavaScript</h2>
+	<ul lang="ru">
+		<li>ES6-модули <em>и</em> ES6-классы</li>
+		<li>Стрелочные функции</li>
+		<li>Деструктуризация</li>
+		<li>Спреды</li>
+		<li>Итераторы <em>и</em> генераторы</li>
+		<li>Aсинхронные функции</li>
+		<li><em>and more...</em></li>
+	</ul>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Определение переменных</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Определение переменных</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>Поднятие переменных</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Поднятие переменных</h2>
+	<pre class="hljs js">
 			<code>console.log(typeof foo);</code>
 			<code>console.log(typeof bar);</code>
 			<code> </code>
@@ -131,11 +151,11 @@
 			<code> </code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Поднятие переменных</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Поднятие переменных</h2>
+	<pre class="hljs js">
 			<code>console.log(typeof foo);  <span class="comment">// undefined</span></code>
 			<code>console.log(typeof bar);  <span class="comment">// undefined</span></code>
 			<code> </code>
@@ -146,11 +166,11 @@
 			<code> </code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2><code>let / const</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2><code>let / const</code></h2>
+	<pre class="hljs js">
 			<code>if (true) {</code>
 			<code>    <mark>let</mark> bar = 42;</code>
 			<code>}</code>
@@ -161,16 +181,16 @@
 			<code>foo = 'baz';  <span class="comment">// TypeError</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Строки</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Строки</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>Шаблонные строки</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Шаблонные строки</h2>
+	<pre class="hljs js">
 			<code>const name = 'Jon Snow';</code>
 			<code>const answer = 40;</code>
 			<code> </code>
@@ -183,26 +203,28 @@
 			<code>multiline.split('\n').length === 3; <span class="comment">// true</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Поддержка Юникода</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Поддержка Юникода</h2>
+	<pre class="hljs js">
 			<code><span class="comment">// unicode support</span></code>
 			<code>console.log('😀'.length); <span class="comment">// 2</span></code>
-			<code>console.log('\u{1F600}'); <span class="comment" >// <span style="font-style: normal">😀</span></span></code>
-			<code>console.log('\uD83D\uDE00'); <span class="comment">// <span style="font-style: normal">😀</span></span></code>
+			<code>console.log('\u{1F600}'); <span class="comment">// <span
+					style="font-style: normal">😀</span></span></code>
+			<code>console.log('\uD83D\uDE00'); <span class="comment">// <span
+					style="font-style: normal">😀</span></span></code>
 			<code> </code>
 			<code>String.prototype.<mark>charAt</mark>(index);       '😀'.charAt(0) === �</code>
 			<code>String.prototype.<mark>charCodeAt</mark>(index);   '😀'.charCodeAt(0) === 55357</code>
 			<code>String.prototype.<mark>codePointAt</mark>(index);  '😀'.codePointAt(0) === 128512</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Дополнительные методы строк</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Дополнительные методы строк</h2>
+	<pre class="hljs js">
 			<code><span class="comment">// ECMAScript 2015 features</span></code>
 			<code>String.prototype.includes(searchString, position = 0)</code>
 			<code>String.prototype.endsWith(searchString, position = length)</code>
@@ -215,16 +237,16 @@
 			<code> </code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Промисы</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Промисы</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>Промисы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Промисы</h2>
+	<pre class="hljs js">
 			<code>function getJSON(url) {</code>
 			<code>    return new <mark>Promise</mark>(function (resolve, reject) {</code>
 			<code>        const xhr = new XMLHttpRequest();</code>
@@ -238,11 +260,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Промисы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Промисы</h2>
+	<pre class="hljs js">
 			<code>getJSON('/data/books.json')</code>
 			<code>    .<mark>then</mark>(function (books) {</code>
 			<code>        books.forEach(function (book) {</code>
@@ -254,11 +276,11 @@
 			<code>    });</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Методы промисов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Методы промисов</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// Вернёт промис в состоянии <mark>fulfilled</mark> («выполнено успешно»)</span></code>
 			<code>Promise.resolve( ... );</code>
 			<code><span class="comment rus">// Вернёт промис в состоянии <mark>rejected</mark> («выполнено с ошибкой»)</span></code>
@@ -269,16 +291,16 @@
 			<code>Promise.race( [ ... ] );</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ES6-классы</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ES6-классы</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>ES6-классы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-классы</h2>
+	<pre class="hljs js">
 			<code><mark>class</mark> User {</code>
 			<code>    <mark>constructor</mark>(login, password) {</code>
 			<code>        this._login = login;</code>
@@ -290,11 +312,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ES6-классы: cтатические методы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-классы: cтатические методы</h2>
+	<pre class="hljs js">
 			<code>class MathUtils {</code>
 			<code>    <mark>static</mark> sqr(number) {</code>
 			<code>        return number * number;</code>
@@ -305,11 +327,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ES6-классы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-классы</h2>
+	<pre class="hljs js">
 			<code>const user1 = new User('Alex', 'qwerty123');</code>
 			<code>const user2 = new User('Jon', 'passw0rd');</code>
 			<code> </code>
@@ -320,11 +342,11 @@
 			<code>MathUtils.abs(-42);  // 42</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ES6-классы: геттеры и сеттеры</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-классы: геттеры и сеттеры</h2>
+	<pre class="hljs js">
 			<code>class Shape {</code>
 			<code>    constructor(width, height) {</code>
 			<code>        this._width = width;</code>
@@ -337,11 +359,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ES6-классы: геттеры и сеттеры</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-классы: геттеры и сеттеры</h2>
+	<pre class="hljs js">
 			<code>const shape = new Shape(6, 12);</code>
 			<code>console.log(shape.Square);   // 72</code>
 			<code> </code>
@@ -349,11 +371,11 @@
 			<code>console.log(shape.Square);   // 49</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ES6-классы: наследование</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-классы: наследование</h2>
+	<pre class="hljs js">
 			<code>class View {</code>
 			<code>    constructor(el) {</code>
 			<code>        this._el = el;</code>
@@ -364,11 +386,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ES6-классы: наследование</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-классы: наследование</h2>
+	<pre class="hljs js">
 			<code>class LoginView <mark>extends View</mark> {</code>
 			<code>    constructor() {</code>
 			<code>        <mark>super</mark>(document.getElementById('login'));</code>
@@ -381,17 +403,16 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ES6-модули</span></h2>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ES6-модули</span></h2>
-	</section>
-
-	<section class="slide">
-		<h2>ES6-модули</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-модули</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// экспортируем значения</span></code>
 			<code><mark>export</mark> const PI = 4;</code>
 			<code>export function square(number) { return number * number; }</code>
@@ -403,11 +424,11 @@
 			<code>export <mark>{ name, years as age }</mark>;</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ES6-модули</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>ES6-модули</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// импортируем значения</span></code>
 			<code><mark>import</mark> { PI, square } from '../module.js';</code>
 			<code>import { name as login } from '../module.js';</code>
@@ -419,16 +440,16 @@
 			<code>export * from '../module.js';</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 90%">Работа с объектами</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 90%">Работа с объектами</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>Объявление литералов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Объявление литералов</h2>
+	<pre class="hljs js">
 			<code>const login = 'Jon Snow', age = 42;</code>
 			<code>const User = {login, age}; // {login: 'Jon Snow', age: 42}</code>
 			<code> </code>
@@ -440,11 +461,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Дополнительные методы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Дополнительные методы</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// проверка двух выражений на совпадение</span></code>
 			<code>Object.is(value1, value2);</code>
 			<code> </code>
@@ -457,11 +478,11 @@
 			<code>Object.is(0, -0);       // <mark>false</mark>  (-0 === 0) === true</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Дополнительные методы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Дополнительные методы</h2>
+	<pre class="hljs js">
 			<code> <span class="comment rus">// копирование свойств</span></code>
 			<code>Object.assign(target, ...sources);</code>
 			<code> </code>
@@ -473,11 +494,11 @@
 			<code>// }</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Дополнительные методы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Дополнительные методы</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// Запаковывание объектов</span></code>
 			<code>Object.<mark>seal</mark>(target);    <span class="comment rus">// можно изменить значение имеющихся свойств,</span></code>
 			<code>                        <span class="comment rus">// но нельзя добавить или удалить их</span></code>
@@ -488,11 +509,11 @@
 			<code>Object.<mark>isFrozen</mark>(target);   Object.<mark>isSealed</mark>(target);</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Дополнительные методы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Дополнительные методы</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// Перебор ключей, значений и свойств</span></code>
 			<code>const user = {login: 'Jon Snow', age: 42};</code>
 			<code> </code>
@@ -501,16 +522,16 @@
 			<code>Object.<mark>entries</mark>(user);  // [['login', 'Jon Snow'], ['age', 42]]</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Стрелочные функции</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Стрелочные функции</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>Стрелочные функции</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Стрелочные функции</h2>
+	<pre class="hljs js">
 			<code>const hello = () => console.log('Hello, World!');</code>
 			<code>const sqr = num => num * 2;</code>
 			<code>[1, 2, 3, 4].map(sqr); // [1, 4, 9, 16]</code>
@@ -523,25 +544,28 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Стрелочные функции</h2>
-		<ul lang="ru">
-			<li>Короткий синтаксис</li>
-			<li>Не являются <em>"настоящими"</em> функциями, не имеют своего <code>this</code> и своего <code>arguments</code>: берут их их <mark>LexicalEnvironment</mark></li>
-			<li>Нельзя использовать с оператором <code>new</code></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2>Стрелочные функции</h2>
+	<ul lang="ru">
+		<li>Короткий синтаксис</li>
+		<li>Не являются <em>"настоящими"</em> функциями, не имеют своего <code>this</code> и своего
+			<code>arguments</code>: берут их их
+			<mark>LexicalEnvironment</mark>
+		</li>
+		<li>Нельзя использовать с оператором <code>new</code></li>
+	</ul>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Новые коллекции</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Новые коллекции</span></h2>
+</section>
 
-	<section class="slide">
-		<h2><code>Map</code> &mdash; хэш-таблица</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2><code>Map</code> &mdash; хэш-таблица</h2>
+	<pre class="hljs js">
 			<code>const map = new <mark>Map</mark>();</code>
 			<code>map.set(key, value);   <span class="comment rus">// добавить значение</span></code>
 			<code>map.get(key);          <span class="comment rus">// получить значение</span></code>
@@ -553,11 +577,11 @@
 			<code>map.values();      map.keys();   map.entries();</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2><code>Set</code> &mdash; набор значений<br/>без повторения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2><code>Set</code> &mdash; набор значений<br/>без повторения</h2>
+	<pre class="hljs js">
 			<code>const set = new <mark>Set</mark>();</code>
 			<code>set.add(value);          <span class="comment rus">// добавить значение</span></code>
 			<code>set.has(value);          <span class="comment rus">// проверить наличие значения</span></code>
@@ -568,21 +592,22 @@
 			<code>set.values();      set.keys();   set.entries();</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Reflect</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Reflect</span></h2>
+</section>
 
-	<section class="slide">
-		<h2><code>Reflect</code></h2>
-		<p class="small-content">Встроенный JavaScript объект, предоставляющий методы для перехвата взаимодействий с объектами и работы с рефлексией в JavaScript</p>
-	</section>
+<section class="slide">
+	<h2><code>Reflect</code></h2>
+	<p class="small-content">Встроенный JavaScript объект, предоставляющий методы для перехвата взаимодействий с
+		объектами и работы с рефлексией в JavaScript</p>
+</section>
 
-	<section class="slide">
-		<h2>Методы <code>Reflect</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Методы <code>Reflect</code></h2>
+	<pre class="hljs js">
 			<code>Reflect.apply(target, thisArgument, argumentsList)</code>
 			<code>Reflect.construct(target, argumentsList)</code>
 			<code> </code>
@@ -593,11 +618,11 @@
 			<code>Reflect.setPrototypeOf(target, prototype)</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Работа с дескрипторами</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Работа с дескрипторами</h2>
+	<pre class="hljs js">
 			<code>// Reflect.<mark>defineProperty</mark>(target, propertyKey, attributes)</code>
 			<code>const object = {};</code>
 			<code>Reflect.defineProperty(object, 'foo', {</code>
@@ -610,63 +635,57 @@
 			<code>}</code>
 			<code></code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Дополнительные нововведения</span></h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Дополнительные нововведения</span></h2>
+</section>
 
-	<section class="slide">
-		<h2>Оператор возведения в степень</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор возведения в степень</h2>
+	<pre class="hljs js">
 			<code><span class="comment">// hello python from es7</span></code>
 			<code>console.log(3 <mark>**</mark> 4);     // 81</code>
 			<code>console.log(49 <mark>**</mark> 0.5);  // 7</code>
 			<code> </code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<!--оно самое-->
 
-	<!--оно самое-->
-
-	<!--<section class="slide">-->
-		<!--<h2>Variable hoisting</h2>-->
-		<!--<pre class="hljs js">-->
-			<!--<code><span class="comment rus">// before</span></code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code> </code>-->
-			<!--<code><span class="comment">// ReferenceError</span></code>-->
-			<!--<code> </code>-->
-		<!--</pre>-->
-	<!--</section>-->
-
+<!--<section class="slide">-->
+<!--<h2>Variable hoisting</h2>-->
+<!--<pre class="hljs js">-->
+<!--<code><span class="comment rus">// before</span></code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code> </code>-->
+<!--<code><span class="comment">// ReferenceError</span></code>-->
+<!--<code> </code>-->
+<!--</pre>-->
+<!--</section>-->
 
 
+<section class="slide">
+	<h2 class="shout">Высший пилотаж</h2>
+</section>
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 90%">Деструктуризация</span></h2>
+</section>
 
-
-
-	<section class="slide">
-		<h2 class="shout">Высший пилотаж</h2>
-	</section>
-
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 90%">Деструктуризация</span></h2>
-	</section>
-
-	<section class="slide">
-		<h2>Деструктуризация массивов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Деструктуризация массивов</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// деструктуризация</span></code>
 			<code>const [name, family] = 'Jon Snow'.split(' ');</code>
 			<code>console.log(name);    // Jon</code>
@@ -677,11 +696,11 @@
 			<code>const [num1, , num3] = [1, 2, 3, 4];</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Деструктуризация массивов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Деструктуризация массивов</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// значения по умолчанию</span></code>
 			<code>const [name, <mark>family = 'Black'</mark>] = ['Jon'];</code>
 			<code>console.log(name);    // Jon</code>
@@ -693,11 +712,11 @@
 			<code>                                         // title2 === 'Book 1'</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Деструктуризация объектов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Деструктуризация объектов</h2>
+	<pre class="hljs js">
 			<code>const person = {login: 'Jon Snow', age: 42, alive: true};</code>
 			<code><span class="comment rus">// деструктуризация</span></code>
 			<code>const {login, age} = person;</code>
@@ -709,11 +728,11 @@
 			<code>const {<mark>login: username = 'Anonimous'</mark>, age} = person;</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Деструктуризация объектов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Деструктуризация объектов</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// вложенная деструктуризация</span></code>
 			<code>const element = {tagName: 'DIV', size: {width: 300, height: 200}};</code>
 			<code>const {</code>
@@ -725,11 +744,11 @@
 			<code>console.log({tag, w, h, color, first, second, last});</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Деструктуризация параметров<br/>функций</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Деструктуризация параметров<br/>функций</h2>
+	<pre class="hljs js">
 			<code>function sruare({width: w, height: h = 100}) {</code>
 			<code>    return w * h;</code>
 			<code>}</code>
@@ -738,11 +757,11 @@
 			<code>square({width: 42});                             // 4200</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Деструктуризация</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Деструктуризация</h2>
+	<pre class="hljs js">
 			<code>const [posts, messages, user] = [</code>
 			<code>    fetch('/posts'),</code>
 			<code>    fetch('/messages'),</code>
@@ -754,11 +773,11 @@
 			<code>        .map(size => fetch(`/profile/${size}-logo.png`));</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Деструктуризация</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Деструктуризация</h2>
+	<pre class="hljs js">
 			<code>function volume({width: w, height: h, length: l}) {</code>
 			<code>    return w * h * l;</code>
 			<code>}</code>
@@ -769,33 +788,31 @@
 			<code>volume({ width, length, height });   // 15000</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Оператор расширения</span></h2>
+</section>
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 300%">...</span></h2>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Оператор расширения</span></h2>
-	</section>
-
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 300%">...</span></h2>
-	</section>
-
-	<section class="slide">
-		<h2>Оператор расширения <em>aka</em><br/>spread-оператор</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения <em>aka</em><br/>spread-оператор</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// расширение массивов</span></code>
 			<code>const arr = ['a', 'b', 'c', 'd'];</code>
 			<code>const arr2 = [1, 2, <mark>...arr</mark>, 3];</code>
 			<code>console.dir(arr2); // [1, 2, 'a', 'b', 'c', 'd', 3];</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Оператор расширения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// используется при деструктуризации</span></code>
 			<code>const places = ['Jane', 'Jon', 'Alex', 'Max'];</code>
 			<code>const [first, second, <mark>...loosers</mark>] = places;</code>
@@ -805,11 +822,11 @@
 			<code>// loosers === ['Alex', 'Max']</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Оператор расширения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// пока что так нельзя</span></code>
 			<code>const {login, password, <mark>...profile</mark>} = {</code>
 			<code>     login: 'Jon',</code>
@@ -820,11 +837,11 @@
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Оператор расширения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// может проитерироваться по элементам коллекции</span></code>
 			<code><span class="comment rus">// и вернуть массив, состоящий из её элементов</span></code>
 			<code>const letters = [<mark>...'abcde'</mark>];</code>
@@ -834,11 +851,11 @@
 			<code>const panes = [<mark>...document.querySelectorAll('.pane')</mark>];</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Оператор расширения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// передача параметров в функцию</span></code>
 			<code>const numbers = [1, 2, 42, 532, -3.14, -Infinity];</code>
 			<code>const maximum = ... ?</code>
@@ -848,22 +865,22 @@
 			<code>const minimum = Math.min.apply(null, numbers);   // -Infinity</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Оператор расширения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// передача параметров в функцию</span></code>
 			<code>const numbers = [1, 2, 42, 532, -3.14, -Infinity];</code>
 			<code>const maximum = Math.max(<mark>...numbers</mark>);   // 532</code>
 			<code>const minimum = Math.min(<mark>...numbers</mark>);   // -Infinity</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Оператор расширения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// сбор праметров функции</span></code>
 			<code>function summ(<mark>...nums</mark>) {</code>
 			<code>    <span class="comment rus">// можно работать не с <mark>arguments</mark>, а с настоящим массивом <mark>nums</mark></span></code>
@@ -873,11 +890,11 @@
 			<code>console.log(summ(1, 2, 3, 4, 5));    // 15</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Оператор расширения</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// сбор праметров функции</span></code>
 			<code>function split(coeff, <mark>...nums</mark>) {</code>
 			<code>    return nums.filter(num => num < coeff);</code>
@@ -886,40 +903,40 @@
 			<code>console.log(split(3.14, 1, 2, 3, 4, 5));    // [1, 2, 3]</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Symbol</span></h2>
+</section>
 
+<section class="slide">
+	<h2>Типы данных в JavaScript</h2>
+	<ol lang="ru">
+		<li>Number</li>
+		<li>Boolean</li>
+		<li>String</li>
+		<li>Object</li>
+		<li>null</li>
+		<li>undefined</li>
+		<li>
+			<mark>Symbol</mark>
+		</li>
+	</ol>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Symbol</span></h2>
-	</section>
+<section class="slide">
+	<h2>Типы данных в JavaScript</h2>
+	<p class="medium-content" style="text-indent: 0; column-count: 3;">
+		Number<br/>Boolean<br/>String<br/>Object<br/>null<br/>
+		undefined<br/>Symbol<br/>Reference<br/>List<br/>Completion<br/>
+		Property Descriptor<br/>Lexical Environment<br/>Environment Record<br/>Data Block<br/>...
+	</p>
+</section>
 
-	<section class="slide">
-		<h2>Типы данных в JavaScript</h2>
-		<ol lang="ru">
-			<li>Number</li>
-			<li>Boolean</li>
-			<li>String</li>
-			<li>Object</li>
-			<li>null</li>
-			<li>undefined</li>
-			<li><mark>Symbol</mark></li>
-		</ol>
-	</section>
-
-	<section class="slide">
-		<h2>Типы данных в JavaScript</h2>
-		<p class="medium-content" style="text-indent: 0; column-count: 3;">
-			Number<br/>Boolean<br/>String<br/>Object<br/>null<br/>
-			undefined<br/>Symbol<br/>Reference<br/>List<br/>Completion<br/>
-			Property Descriptor<br/>Lexical Environment<br/>Environment Record<br/>Data Block<br/>...
-		</p>
-	</section>
-
-	<section class="slide">
-		<h2>Создание символов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Создание символов</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// без <mark>new</mark></span></code>
 			<code>const symbol1 = <mark>Symbol()</mark>;</code>
 			<code>const symbol2 = <mark>Symbol('label')</mark>;</code>
@@ -930,11 +947,11 @@
 			<code>console.log(symbol2 === symbol3);  // false</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Глобальные символы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Глобальные символы</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// берутся из реестра глобальных символов</span></code>
 			<code><span class="comment rus">// если символа нет в реестре - создаётся новый символ</span></code>
 			<code>const symbol1 = <mark>Symbol.for</mark>('label');</code>
@@ -946,11 +963,11 @@
 			<code>console.dir(Symbol.keyFor(symbol3));   // undefined</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Символы в качестве<br/>имён новых свойств</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Символы в качестве<br/>имён новых свойств</h2>
+	<pre class="hljs js">
 			<code>const User = {</code>
 			<code>    name: 'Jon Snow',</code>
 			<code>    <mark>[Symbol.for('hello')]</mark>() {</code>
@@ -961,11 +978,11 @@
 			<code>User[Symbol.for('hello')]();   // 'Hello, Jon Snow!'</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Well-known symbols</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Well-known symbols</h2>
+	<pre class="hljs js">
 			<code>Symbol.hasInstance</code>
 			<code>Symbol.iterator</code>
 			<code>Symbol.replace</code>
@@ -975,45 +992,48 @@
 			<code>...</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Итераторы</span></h2>
+</section>
 
+<section class="slide">
+	<h2>Итераторы</h2>
+	<blockquote>
+		<p class="medium-content"><b>Итераторы</b> &mdash; расширяющая понятие «массив» концепция, которая пронизывает
+			современный стандарт JavaScript сверху донизу. Итерируемые или, иными словами,
+			<mark>«перебираемые»</mark>
+			объекты &mdash; это те, содержимое которых можно перебрать в цикле
+		</p>
+	</blockquote>
+</section>
 
+<section class="slide">
+	<h2>Итерируемые объекты</h2>
+	<ul lang="ru">
+		<li>Массивы</li>
+		<li>Псевдомассив arguments</li>
+		<li>Строки</li>
+		<li>Коллекции DOM-нод в браузере</li>
+		<li>Генераторы</li>
+		<li>Map, Set...</li>
+		<li>Пользовательские итерируемые объекты</li>
+	</ul>
+</section>
 
+<section class="slide">
+	<h2>Итераторы</h2>
+	<p class="medium-content">В общем смысле,
+		<mark>итератор</mark> &mdash; это объект, предоставляющий метод <code>next()</code>, который возвращает
+		следующий элемент определённой последовательности. Для перебора итераторов существует специальный цикл <code>for
+			... of</code></p>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Итераторы</span></h2>
-	</section>
-
-	<section class="slide">
-		<h2>Итераторы</h2>
-		<blockquote>
-			<p class="medium-content"><b>Итераторы</b> &mdash; расширяющая понятие «массив» концепция, которая пронизывает современный стандарт JavaScript сверху донизу. Итерируемые или, иными словами, <mark>«перебираемые»</mark> объекты &mdash; это те, содержимое которых можно перебрать в цикле</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Итерируемые объекты</h2>
-		<ul lang="ru">
-			<li>Массивы</li>
-			<li>Псевдомассив arguments</li>
-			<li>Строки</li>
-			<li>Коллекции DOM-нод в браузере</li>
-			<li>Генераторы</li>
-			<li>Map, Set...</li>
-			<li>Пользовательские итерируемые объекты</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Итераторы</h2>
-		<p class="medium-content">В общем смысле, <mark>итератор</mark> &mdash; это объект, предоставляющий метод <code>next()</code>, который возвращает следующий элемент определённой последовательности. Для перебора итераторов существует специальный цикл <code>for ... of</code></p>
-	</section>
-
-	<section class="slide">
-		<h2>Перебор итераторов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Перебор итераторов</h2>
+	<pre class="hljs js">
 			<code>const numbers = [2, 3, 5, 7, 11, 13];</code>
 			<code> </code>
 			<code>for (<mark>const prime of numbers</mark>) {</code>
@@ -1021,11 +1041,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Связь со спредами</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Связь со спредами</h2>
+	<pre class="hljs js">
 			<code><span class="comment rus">// оператор расширения <mark>итерируется</mark> по итератору</span></code>
 			<code><span class="comment rus">// и возвращает массив из элементов итератора</span></code>
 			<code> </code>
@@ -1036,11 +1056,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2><code>Symbol.iterator</code></h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2><code>Symbol.iterator</code></h2>
+	<pre class="hljs js">
 			<code>const iterable = [1, 2, 3, 4];</code>
 			<code>const iterator = iterable[Symbol.iterator]();</code>
 			<code> </code>
@@ -1052,11 +1072,11 @@
 			<code>console.log(iterator.next());    { value: undefined, done: true }</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Кастомные итераторы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Кастомные итераторы</h2>
+	<pre class="hljs js">
 			<code>const iterable = {</code>
 			<code>    current: 0,</code>
 			<code>    [Symbol.iterator]() { return this; },</code>
@@ -1069,11 +1089,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Кастомные итераторы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Кастомные итераторы</h2>
+	<pre class="hljs js">
 			<code>iterable.current = 7;</code>
 			<code>const elements = [...iterable]; // [ 7, 6, 5, 4, 3, 2, 1 ]</code>
 			<code> </code>
@@ -1085,22 +1105,16 @@
 			<code>console.log(summ);    // 15</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Генераторы</span></h2>
+</section>
 
-
-
-
-
-
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Генераторы</span></h2>
-	</section>
-
-	<section class="slide">
-		<h2>Объявление функции-генератора</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Объявление функции-генератора</h2>
+	<pre class="hljs js">
 			<code><mark>function *</mark> generator() {</code>
 			<code>    <mark>yield</mark> 1;</code>
 			<code>    <mark>yield</mark> 2;</code>
@@ -1112,11 +1126,11 @@
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Объявление функции-генератора</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Объявление функции-генератора</h2>
+	<pre class="hljs js">
 			<code>const gen = generator();</code>
 			<code> </code>
 			<code>console.log(gen.next());   // { value: 1, done: false }</code>
@@ -1128,11 +1142,11 @@
 			<code>const gen2 = generator();  // console.log([...gen2])</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>"Бесконечные" генераторы</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>"Бесконечные" генераторы</h2>
+	<pre class="hljs js">
 			<code>function * fibonacci() {</code>
 			<code>    let prev = 1, curr = 0;</code>
 			<code>    while (true) {</code>
@@ -1143,11 +1157,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Взаимодействие с генераторами</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Взаимодействие с генераторами</h2>
+	<pre class="hljs js">
 			<code>function * rand(length) {</code>
 			<code>    while (length--) {</code>
 			<code>        yield Math.random();</code>
@@ -1158,11 +1172,11 @@
 			<code>console.log([...rand(5)]);   // [ 0.782, 0.806, 0.294, 0.228, 0.755 ]</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Взаимодействие с генераторами</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Взаимодействие с генераторами</h2>
+	<pre class="hljs js">
 			<code>function * simple() {</code>
 			<code>    let num = yield 'line 2';</code>
 			<code>    return num;</code>
@@ -1173,11 +1187,11 @@
 			<code>console.log(gen.next());     // { value: undefined, done: true }</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Взаимодействие с генераторами</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Взаимодействие с генераторами</h2>
+	<pre class="hljs js">
 			<code>function * wow() {</code>
 			<code>    let num = 0, sum = 0;</code>
 			<code>    while (num = yield sum) {</code>
@@ -1187,11 +1201,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Взаимодействие с генераторами</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Взаимодействие с генераторами</h2>
+	<pre class="hljs js">
 			<code>const gen = wow();</code>
 			<code>gen.next();      // { value: 0, done: false }</code>
 			<code>gen.next(1);     // { value: 1, done: false }</code>
@@ -1203,11 +1217,11 @@
 			<code>gen.next(0);     // { value: 15, done: true }</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Взаимодействие с генераторами</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Взаимодействие с генераторами</h2>
+	<pre class="hljs js">
 			<code>const gen = wow();</code>
 			<code>gen.next();      // { value: 0, done: false }</code>
 			<code>gen.next(1);     // { value: 1, done: false }</code>
@@ -1216,11 +1230,11 @@
 			<code>gen.next(0);     <span class="comment rus">// до этого места выполнение не дойдёт</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Композиция генераторов</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Композиция генераторов</h2>
+	<pre class="hljs js">
 			<code>function * twicer(element) {</code>
 			<code>    yield element; yield element;</code>
 			<code>}</code>
@@ -1232,27 +1246,30 @@
 			<code>console.log([...test()]);    // [ 42, 42, 'test', 'test' ]</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span
+			style="font-size: 85%">Асинхронные функции (<code>async/await</code>)</span></h2>
+</section>
 
+<section class="slide">
+	<h2><code>async/await</code></h2>
+	<blockquote>
+		<p class="medium-content">Ключевое слово <b><code>async</code></b> позволяет объявлять асинхронные функции,
+			которые возвращают промис. Внутри таких функций возможна
+			<mark>"синхронная"</mark>
+			работа с промисами с помощью ключевого слова <code>await</code></p>
+	</blockquote>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 85%">Асинхронные функции (<code>async/await</code>)</span></h2>
-	</section>
+	<p class="note">Код, использующий <code>async/await</code>-функции очень похож на код, написанный на генераторах с
+		использованием <a href="https://github.com/tj/co" target="_blank">библиотеки <em>co</em></a></p>
+</section>
 
-	<section class="slide">
-		<h2><code>async/await</code></h2>
-		<blockquote>
-			<p class="medium-content">Ключевое слово <b><code>async</code></b> позволяет объявлять асинхронные функции, которые возвращают промис. Внутри таких функций возможна <mark>"синхронная"</mark> работа с промисами с помощью ключевого слова <code>await</code></p>
-		</blockquote>
-
-		<p class="note">Код, использующий <code>async/await</code>-функции очень похож на код, написанный на генераторах с использованием <a href="https://github.com/tj/co" target="_blank">библиотеки <em>co</em></a></p>
-	</section>
-
-	<section class="slide">
-		<h2>Объявление функций</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Объявление функций</h2>
+	<pre class="hljs js">
 			<code><mark>async</mark> function good() {</code>
 			<code>    return 42;</code>
 			<code>}</code>
@@ -1261,11 +1278,11 @@
 			<code>    .then(res => console.log('Good: ', res);</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Объявление функций</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Объявление функций</h2>
+	<pre class="hljs js">
 			<code><mark>async</mark> function bad() {</code>
 			<code>    throw new Error('kek');</code>
 			<code>}</code>
@@ -1275,11 +1292,11 @@
 			<code>    .catch(err => console.error(err));</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Объявление функций</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Объявление функций</h2>
+	<pre class="hljs js">
 			<code>async function luck(num) {</code>
 			<code>    if (Math.random() < 0.5) {</code>
 			<code>        return num * 2;</code>
@@ -1291,11 +1308,11 @@
 			<code>    .catch(err => console.error(err));          // or may be an Error</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Использование</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Использование</h2>
+	<pre class="hljs js">
 			<code>async function loadJSON(url) {</code>
 			<code>    const response = <mark>await</mark> fetch(url, {method: 'GET'});</code>
 			<code>    if (response.statusCode !== 200) {</code>
@@ -1306,11 +1323,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Использование</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Использование</h2>
+	<pre class="hljs js">
 			<code>async function loadBook(pages) {</code>
 			<code>    const responses = <mark>await</mark> pages</code>
 			<code>        .map(page => {</code>
@@ -1320,36 +1337,39 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide">
+	<h2 class="shout">Что с поддержкой?</h2>
+</section>
 
+<section class="slide nopage">
+	<h2>Поддержка версий ECMAScript<br/><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/</a>
+	</h2>
+	<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="kangax.png"
+																  style="transform-origin: center;transform: translate(-50%,-50%) scale(1.17);">
+	</div>
+</section>
 
+<section class="slide nopage">
+	<h2>Возможности браузера<br/><a href="http://caniuse.com/" target="_blank">http://caniuse.com/</a></h2>
+	<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="caniuse.png"
+																  style="transform-origin: center;transform: translate(-50%,-50%) scale(0.76);">
+	</div>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">Что с поддержкой?</h2>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Что делать?</span></h2>
+</section>
 
-	<section class="slide nopage">
-		<h2>Поддержка версий ECMAScript<br/><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/</a></h2>
-		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="kangax.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.17);"></div>
-	</section>
-
-	<section class="slide nopage">
-		<h2>Возможности браузера<br/><a href="http://caniuse.com/" target="_blank">http://caniuse.com/</a></h2>
-		<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="caniuse.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.76);"></div>
-	</section>
-
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Что делать?</span></h2>
-	</section>
-
-	<section class="slide">
-		<h2>Полифиллы</h2>
-		<blockquote>
-			<p><b>Полифилл</b> &mdash; это библиотека, которая добавляет в старые браузеры поддержку возможностей, которые в современных браузерах являются встроенными</p>
-		</blockquote>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Полифиллы</h2>
+	<blockquote>
+		<p><b>Полифилл</b> &mdash; это библиотека, которая добавляет в старые браузеры поддержку возможностей, которые в
+			современных браузерах являются встроенными</p>
+	</blockquote>
+	<pre class="hljs js">
 			<code>if (!Object.is) {</code>
 			<code>    Object.is = function(x, y) {</code>
 			<code>        if (x === y) { return x !== 0 || 1 / x === 1 / y; }</code>
@@ -1358,14 +1378,15 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Транспайлинг</h2>
-		<blockquote>
-			<p><b>Транспайлинг</b> &mdash; это конвертация кода программы, написанной на одном языке программирования в другой язык программирования</p>
-		</blockquote>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Транспайлинг</h2>
+	<blockquote>
+		<p><b>Транспайлинг</b> &mdash; это конвертация кода программы, написанной на одном языке программирования в
+			другой язык программирования</p>
+	</blockquote>
+	<pre class="hljs js">
 			<code><span class="comment">// before</span></code>
 			<code>const f = num => `${num} в квадрате это ${num ** 2}`;</code>
 			<code> </code>
@@ -1375,19 +1396,20 @@
 			<code>};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Babel (<a href="http://babeljs.io/" target="_blank">babeljs.io</a>)</h2>
-		<blockquote>
-			<p class="small-content"><b>Babel</b> &mdash; многофункциональный транспайлер, позволяет транспиллировать ES5, ES6, ES2016, ES2017, ES.Next , JSX и Flow</p>
-		</blockquote>
-		<p class="note"><a href="http://babeljs.io/repl/" target="_blank">Babel REPL</a> &mdash; бабель-онлайн</p>
-	</section>
+<section class="slide">
+	<h2>Babel (<a href="http://babeljs.io/" target="_blank">babeljs.io</a>)</h2>
+	<blockquote>
+		<p class="small-content"><b>Babel</b> &mdash; многофункциональный транспайлер, позволяет транспиллировать ES5,
+			ES6, ES2016, ES2017, ES.Next , JSX и Flow</p>
+	</blockquote>
+	<p class="note"><a href="http://babeljs.io/repl/" target="_blank">Babel REPL</a> &mdash; бабель-онлайн</p>
+</section>
 
-	<section class="slide">
-		<h2>Babel &mdash; использование</h2>
-		<pre class="hljs bash">
+<section class="slide">
+	<h2>Babel &mdash; использование</h2>
+	<pre class="hljs bash">
 			<code><span class="comment rus"># устанавливаем модуль</span></code>
 			<code>$ npm install -g babel-cli babel-preset-latest</code>
 			<code> </code>
@@ -1401,100 +1423,140 @@
 			<code>$ babel modern.js --watch --out-file compatible.js</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Как работает Babel?</h2>
-		<ul lang="en">
-			<li>Парсит исходный код и <mark>строит AST</mark></li>
-			<li>Последовательно вызывает набор функций, которые каким-то образом <mark>трансформируют AST</mark> программы</li>
-			<li>В процессе трансформации части AST, относящиеся к современному синтексису, <mark>заменяются на эквивалентные</mark>,
-				но более общеупотребительные фрагменты</li>
-			<li>Преобразует модифицированное AST в <mark>новый транспилированный</mark> код</li>
+<section class="slide">
+	<h2>Как работает Babel?</h2>
+	<ul lang="en">
+		<li>Парсит исходный код и
+			<mark>строит AST</mark>
+		</li>
+		<li>Последовательно вызывает набор функций, которые каким-то образом
+			<mark>трансформируют AST</mark>
+			программы
+		</li>
+		<li>В процессе трансформации части AST, относящиеся к современному синтексису,
+			<mark>заменяются на эквивалентные</mark>
+			,
+			но более общеупотребительные фрагменты
+		</li>
+		<li>Преобразует модифицированное AST в
+			<mark>новый транспилированный</mark>
+			код
+		</li>
+	</ul>
+
+	<p>Гибкий набор функций трансформаций: <code><a href="https://github.com/babel/babel-preset-env" target="_blank">babel-preset-env</a></code>
+	</p>
+</section>
+
+<section class="slide">
+	<h2>Текущие версии JavaScript’а</h2>
+	<ul lang="ru">
+		<li>Декабрь 1999 &mdash;
+			<mark>ECMAScript 3</mark>
+		</li>
+		<li>
+			<mark>ECMAScript 4</mark> &mdash; всё сложно
+		</li>
+		<li>Декабрь 2009 &mdash;
+			<mark>ECMAScript 5</mark>
+		</li>
+		<ul>
+			<li>Июнь 2011 &mdash;
+				<mark>ECMAScript 5.1</mark>
+				(ISO/IEC 16262:2011)
+			</li>
 		</ul>
+		<li>Июль 2015 &mdash;
+			<mark>ECMAScript 6</mark>
+			(ECMAScript 2015)
+		</li>
+		<li>Июль 2016 &mdash;
+			<mark>ECMAScript 7</mark>
+			(ECMAScript 2016)
+		</li>
+		<li><em>Лето 2017</em> &mdash;
+			<mark>ECMAScript 2017</mark>
+			(и так далее)
+		</li>
+		<li>ES.Next</li>
+	</ul>
+</section>
 
-		<p>Гибкий набор функций трансформаций: <code><a href="https://github.com/babel/babel-preset-env" target="_blank">babel-preset-env</a></code></p>
-	</section>
+<section class="slide">
+	<h2>ES.Next</h2>
+	<blockquote>
+		<p class="small-content"><b>ES.Next</b> &mdash; так временно называют совокупность новых возможностей языка,
+			которые могут войти в следующую версию спецификации. Фичи из ES.Next правильнее называть
+			<mark>“предложения” (proposals)</mark>
+			, потому что они всё ещё находятся на стадии обсуждения
+		</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2>Текущие версии JavaScript’а</h2>
-		<ul lang="ru">
-			<li>Декабрь 1999 &mdash; <mark>ECMAScript 3</mark></li>
-			<li><mark>ECMAScript 4</mark> &mdash; всё сложно</li>
-			<li>Декабрь 2009 &mdash; <mark>ECMAScript 5</mark></li>
-			<ul>
-				<li>Июнь 2011 &mdash; <mark>ECMAScript 5.1</mark> (ISO/IEC 16262:2011)</li>
-			</ul>
-			<li>Июль 2015 &mdash; <mark>ECMAScript 6</mark> (ECMAScript 2015)</li>
-			<li>Июль 2016 &mdash; <mark>ECMAScript 7</mark> (ECMAScript 2016)</li>
-			<li><em>Лето 2017</em> &mdash; <mark>ECMAScript 2017</mark> (и так далее)</li>
-			<li>ES.Next</li>
-		</ul>
-	</section>
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Процесс <strong>TC39</strong></span></h2>
+</section>
 
-	<section class="slide">
-		<h2>ES.Next</h2>
-		<blockquote>
-			<p class="small-content"><b>ES.Next</b> &mdash; так временно называют совокупность новых возможностей языка, которые могут войти в следующую версию спецификации. Фичи из ES.Next правильнее называть <mark>“предложения” (proposals)</mark>, потому что они всё ещё находятся на стадии обсуждения</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>TC39</h2>
+	<blockquote>
+		<p class="small-content"><b>TC39 (технический комитет 39)</b> &mdash; занимается развитием
+			<strong>JavaScript</strong>. Его членами являются компании (помимо прочих, все основные производители
+			браузеров). TC39 регулярно собирается, на встречах присутствуют участники, представляющие интересы компаний,
+			и приглашенные эксперты</p>
+	</blockquote>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Процесс <strong>TC39</strong></span></h2>
-	</section>
+<section class="slide">
+	<h2>Процесс TC39</h2>
+	<blockquote>
+		<p><b>Процесс TC39</b> &mdash; алгоритм внесения изменений в спецификацию ECMAScript. Каждое предложение по
+			добавлению новой возможности в ECMAScript в процессе созревания проходит
+			<mark>ряд этапов</mark>
+		</p>
+	</blockquote>
+	<ul lang="ru">
+		<li>0 этап: идея (strawman)</li>
+		<li>1 этап: предложение (proposal)</li>
+		<li>2 этап: черновик (draft)</li>
+		<li>3 этап: кандидат (candidate)</li>
+		<li>4 этап: финал (finished)</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>TC39</h2>
-		<blockquote>
-			<p class="small-content"><b>TC39 (технический комитет 39)</b> &mdash; занимается развитием <strong>JavaScript</strong>. Его членами являются компании (помимо прочих, все основные производители браузеров). TC39 регулярно собирается, на встречах присутствуют участники, представляющие интересы компаний, и приглашенные эксперты</p>
-		</blockquote>
-	</section>
-
-	<section class="slide">
-		<h2>Процесс TC39</h2>
-		<blockquote>
-			<p><b>Процесс TC39</b> &mdash; алгоритм внесения изменений в спецификацию ECMAScript. Каждое предложение по добавлению новой возможности в ECMAScript в процессе созревания проходит <mark>ряд этапов</mark></p>
-		</blockquote>
-		<ul lang="ru">
-			<li>0 этап: идея (strawman)</li>
-			<li>1 этап: предложение (proposal)</li>
-			<li>2 этап: черновик (draft)</li>
-			<li>3 этап: кандидат (candidate)</li>
-			<li>4 этап: финал (finished)</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Будущее JavaScript</h2>
-		<ul lang="en">
-			<li><a href="https://github.com/tc39/proposals/" target="_blank">Репозиторий со списком текущих предложений</a></li>
-			<li><a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md
+<section class="slide">
+	<h2>Будущее JavaScript</h2>
+	<ul lang="en">
+		<li><a href="https://github.com/tc39/proposals/" target="_blank">Репозиторий со списком текущих предложений</a>
+		</li>
+		<li><a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md
 " target="_blank">Предложения, перешедшие в stage-4</a></li>
+	</ul>
+	<ul lang="en">
+		<li>наиболее интересные <em>proposals:</em></li>
+		<ul>
+			<li>Object Rest/Spread Properties</li>
+			<li>Class and Property Decorators</li>
+			<li><code>Promise.prototype.finally</code></li>
 		</ul>
-		<ul lang="en">
-			<li>наиболее интересные <em>proposals:</em></li>
-			<ul>
-				<li>Object Rest/Spread Properties</li>
-				<li>Class and Property Decorators</li>
-				<li><code>Promise.prototype.finally</code></li>
-			</ul>
-		</ul>
-	</section>
+	</ul>
+</section>
 
 
+<section class="slide">
+	<h2 class="shout">Перерыв</h2>
+</section>
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%"><strong>Диалекты</strong> JavaScript</span>
+	</h2>
+</section>
 
-	<section class="slide">
-		<h2 class="shout">Перерыв</h2>
-	</section>
-
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%"><strong>Диалекты</strong> JavaScript</span></h2>
-	</section>
-
-	<section class="slide">
-		<h2>Транспилляция из ES.Next</h2>
-		<pre class="hljs js">
+<section class="slide">
+	<h2>Транспилляция из ES.Next</h2>
+	<pre class="hljs js">
 			<code>class ReleaseReducer extends BaseReducer {</code>
 			<code>    constructor(...args) {</code>
 			<code>        super(args.length);</code>
@@ -1507,11 +1569,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Dart programming language</h2>
-		<pre class="hljs dart">
+<section class="slide">
+	<h2>Dart programming language</h2>
+	<pre class="hljs dart">
 			<code>import 'dart:async';</code>
 			<code>import 'dart:math' show Random;</code>
 			<code> </code>
@@ -1525,11 +1587,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>CoffeeScript</h2>
-		<pre class="hljs coffeescript">
+<section class="slide">
+	<h2>CoffeeScript</h2>
+	<pre class="hljs coffeescript">
 			<code>class Human</code>
 			<code>    constructor : (@name) -></code>
 			<code> </code>
@@ -1542,11 +1604,11 @@
 			<code>matt.sayHi()</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Больше кофечки богу<br/>кофечки!</h2>
-		<pre class="hljs coffeescript">
+<section class="slide">
+	<h2>Больше кофечки богу<br/>кофечки!</h2>
+	<pre class="hljs coffeescript">
 			<code>if happy and knowsIt</code>
 			<code>    lyrics = while num -= 1</code>
 			<code>        "#{num} little monkeys, jumping on the bed"</code>
@@ -1559,11 +1621,11 @@
 			<code>            compile filename, contents.toString()</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>ClojureScript</h2>
-		<pre class="hljs clojure">
+<section class="slide">
+	<h2>ClojureScript</h2>
+	<pre class="hljs clojure">
 			<code>(ns hello-world.core</code>
 			<code>  (:require [cljs.nodejs :as nodejs]))</code>
 			<code> </code>
@@ -1575,11 +1637,11 @@
 			<code>(set! *main-cli-fn* -main)</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>TypeScript</h2>
-		<pre class="hljs typescript">
+<section class="slide">
+	<h2>TypeScript</h2>
+	<pre class="hljs typescript">
 			<code>interface Person {</code>
 			<code>    name: string;</code>
 			<code>    age: number;</code>
@@ -1591,39 +1653,45 @@
 			<code>console.log(meet(user));</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">TypeScript</span></h2>
+</section>
 
+<section class="slide">
+	<h2>TypeScript</h2>
+	<blockquote>
+		<p><b>TypeScript</b> &mdash; язык программирования, представленный Microsoft в 2012 году. TypeScript является
+			<mark>обратно совместимым с JavaScript и компилируется в последний</mark>
+			. TypeScript отличается от JavaScript возможностью
+			<mark>явного статического назначения типов</mark>
+			, а также поддержкой
+			<mark>подключения модулей</mark>
+		</p>
+	</blockquote>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">TypeScript</span></h2>
-	</section>
+	<p class="note"><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash;
+		крутая книга по TypeScript</p>
+</section>
 
-	<section class="slide">
-		<h2>TypeScript</h2>
-		<blockquote>
-			<p><b>TypeScript</b> &mdash; язык программирования, представленный Microsoft в 2012 году. TypeScript является <mark>обратно совместимым с JavaScript и компилируется в последний</mark>. TypeScript отличается от JavaScript возможностью <mark>явного статического назначения типов</mark>, а также поддержкой <mark>подключения модулей</mark></p>
-		</blockquote>
+<section class="slide">
+	<h2>Преимущества TypeScript</h2>
+	<ul lang="ru">
+		<li>Аннотации типов и проверка их согласования на этапе компиляции</li>
+		<li>Интерфейсы, кортежи, декораторы свойств и методов, расширенные возможности ООП</li>
+		<li>TypeScript &mdash; надмножество JavaScript, поэтому любой код на JavaScript будет выполнен и в TypeScript
+		</li>
+		<li>Широкая поддержка IDE и адекватный автокомплит</li>
+		<li>Поддержка ES6-модулей из коробки</li>
+		<li>Высокая скорость разработки</li>
+	</ul>
+</section>
 
-		<p class="note"><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash; крутая книга по TypeScript</p>
-	</section>
-
-	<section class="slide">
-		<h2>Преимущества TypeScript</h2>
-		<ul lang="ru">
-			<li>Аннотации типов и проверка их согласования на этапе компиляции</li>
-			<li>Интерфейсы, кортежи, декораторы свойств и методов, расширенные возможности ООП</li>
-			<li>TypeScript &mdash; надмножество JavaScript, поэтому любой код на JavaScript будет выполнен и в TypeScript</li>
-			<li>Широкая поддержка IDE и адекватный автокомплит</li>
-			<li>Поддержка ES6-модулей из коробки</li>
-			<li>Высокая скорость разработки</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Установка и использование</h2>
-		<pre class="hljs bash">
+<section class="slide">
+	<h2>Установка и использование</h2>
+	<pre class="hljs bash">
 			<code><span class="comment rus"># установка компилятора</span></code>
 			<code>$ npm install -g typescript</code>
 			<code> </code>
@@ -1635,11 +1703,11 @@
 			<code>$ ts-node script.ts</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Файл <code>tsconfig.json</code></h2>
-		<pre class="hljs json">
+<section class="slide">
+	<h2>Файл <code>tsconfig.json</code></h2>
+	<pre class="hljs json">
 			<code>{</code>
 			<code>    "compilerOptions": {</code>
 			<code>        "outDir": "cache/",</code>
@@ -1652,12 +1720,12 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide">
-		<h2>Аннотации типов</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Аннотации типов</h2>
+	<pre class="hljs ts">
 			<code>const valid: boolean = true;</code>
 			<code>const count: number = 42;</code>
 			<code>const name: string = 'Jon Snow';</code>
@@ -1669,11 +1737,11 @@
 			<code>const c: Color = Color.Green;</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Аннотации типов</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Аннотации типов</h2>
+	<pre class="hljs ts">
 			<code>let some: any = true; some = 42;</code>
 			<code>some = 'maybe a string instead'; <span class="comment rus">// типы не проверяются</span></code>
 			<code><span class="comment rus">// приведение типов (“trust me, I know what I’m doing”)</span></code>
@@ -1685,12 +1753,12 @@
 			<code>let n: null = null;</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide">
-		<h2>Функции в TypeScript</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Функции в TypeScript</h2>
+	<pre class="hljs ts">
 			<code>function sum(x: number, y: number): number {</code>
 			<code>    return x + y;</code>
 			<code>}</code>
@@ -1702,11 +1770,11 @@
 			<code>console.log(gcd(48, 30)); <span class="comment">// 6</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функции в TypeScript</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Функции в TypeScript</h2>
+	<pre class="hljs ts">
 			<code>function sum(x: number, <mark>y?: number</mark>): number {</code>
 			<code>    if (y) {</code>
 			<code>        return x + y;</code>
@@ -1719,11 +1787,11 @@
 			<code>console.log(sum(42));     <span class="comment">// OK! - 42</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функции в TypeScript</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Функции в TypeScript</h2>
+	<pre class="hljs ts">
 			<code>function sum(x: number, <mark>y: number = 42</mark>): number {</code>
 			<code>    return x + y;</code>
 			<code>}</code>
@@ -1732,11 +1800,11 @@
 			<code>console.log(sum(42));     <span class="comment">// OK! - 84</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функции в TypeScript</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Функции в TypeScript</h2>
+	<pre class="hljs ts">
 			<code>function sum(...numbers: number[]): number {</code>
 			<code>    return numbers.reduce((sum: number, current: number): number => {</code>
 			<code>        sum += current; return sum;</code>
@@ -1747,11 +1815,11 @@
 			<code>console.log(sum(42, 0, -10, 5, 5));  <span class="comment">// 42</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Функции в TypeScript</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Функции в TypeScript</h2>
+	<pre class="hljs ts">
 			<code>function square(num: number): number;</code>
 			<code>function square(num: string): number;</code>
 			<code>function square(num: any): number {</code>
@@ -1763,12 +1831,12 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide">
-		<h2>Интерфейсы</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Интерфейсы</h2>
+	<pre class="hljs ts">
 			<code>interface Figure {</code>
 			<code>    width: number;</code>
 			<code>    readonly height: number;</code>
@@ -1779,11 +1847,11 @@
 			<code>square.height = 15;   <span class="comment">// Cannot assign to read-only property</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Интерфейсы</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Интерфейсы</h2>
+	<pre class="hljs ts">
 			<code>interface Figure {</code>
 			<code>    width: number;</code>
 			<code>    height: number;</code>
@@ -1796,14 +1864,15 @@
 			<code>sq.square();    <span class="comment">// 300</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide">
-		<h2>Классы в TypeScript</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Классы в TypeScript</h2>
+	<pre class="hljs ts">
 			<code><mark>abstract</mark> class Class1 {</code>
-			<code>    abstract func1(): void;  <span class="comment rus">// необходимо определить в наследниках</span></code>
+			<code>    abstract func1(): void;  <span
+					class="comment rus">// необходимо определить в наследниках</span></code>
 			<code>}</code>
 			<code>class Class2 extends Class1 {</code>
 			<code>    static <mark>readonly</mark> field3: string = 'hello';</code>
@@ -1814,11 +1883,11 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Классы в TypeScript</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Классы в TypeScript</h2>
+	<pre class="hljs ts">
 			<code>class Point {</code>
 			<code>    x: number;</code>
 			<code>    y: number;</code>
@@ -1830,13 +1899,12 @@
 			<code>let point3d: Point3d = {x: 1, y: 2, z: 3};</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-
-	<section class="slide">
-		<h2>Generics</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Generics</h2>
+	<pre class="hljs ts">
 			<code>class Queue&lt;T> {</code>
 			<code>    private data = [];</code>
 			<code>    push = (item: T) => this.data.push(item);</code>
@@ -1848,11 +1916,11 @@
 			<code>queue.push('1');  <span class="comment rus">// Error: cannot push a string</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Generics</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Generics</h2>
+	<pre class="hljs ts">
 			<code>function makeKeyValue&lt;K, V>(key: K, value: V): { key: K; value: V } {</code>
 			<code>    return {key, value};</code>
 			<code>}</code>
@@ -1862,13 +1930,12 @@
 			<code>pair.value.push(42);   <span class="comment rus">// Error: cannot push a number</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-
-	<section class="slide">
-		<h2>Декораторы свойств и методов</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Декораторы свойств и методов</h2>
+	<pre class="hljs ts">
 			<code>class Utils {</code>
 			<code>    <mark>@memoize</mark></code>
 			<code>    static fibonacci (n: number): number {</code>
@@ -1880,11 +1947,11 @@
 			<code>console.timeEnd('count');     <span class="comment rus">// оооочень долго</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide">
-		<h2>Декораторы свойств и методов</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2>Декораторы свойств и методов</h2>
+	<pre class="hljs ts">
 			<code>function memoize (target, key, descriptor) {</code>
 			<code>    const originalMethod = descriptor.value;</code>
 			<code>    const cash = {};</code>
@@ -1892,23 +1959,25 @@
 			<code>        return cash[n] ? cash[n] : cash[n] = originalMethod(n);</code>
 			<code>    }</code>
 			<code>}</code>
-			<code>console.log(Utils.fibonacci(1000));   <span class="comment rus">// 7.0330367711422765e+208</span></code>
+			<code>console.log(Utils.fibonacci(1000));   <span
+					class="comment rus">// 7.0330367711422765e+208</span></code>
 			<code>console.timeEnd('count');             <span class="comment rus">// count: 5.668ms</span></code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
 
-	<section class="slide">
-		<h2>TypeScript Declaration Files</h2>
-		<blockquote>
-			<p class="small-content"><b>TypeScript Declaration Files (<code>.d.ts</code>)</b> &mdash; служат для описания интерфейсов, экспортируемых классов и методов для модулей, написанных на обычном JavaScript</p>
-		</blockquote>
-	</section>
+<section class="slide">
+	<h2>TypeScript Declaration Files</h2>
+	<blockquote>
+		<p class="small-content"><b>TypeScript Declaration Files (<code>.d.ts</code>)</b> &mdash; служат для описания
+			интерфейсов, экспортируемых классов и методов для модулей, написанных на обычном JavaScript</p>
+	</blockquote>
+</section>
 
-	<section class="slide">
-		<h2><code>.d.ts</code> файлы</h2>
-		<pre class="hljs ts">
+<section class="slide">
+	<h2><code>.d.ts</code> файлы</h2>
+	<pre class="hljs ts">
 			<code>interface JQueryStatic {</code>
 			<code>    ajax(settings: JQueryAjaxSettings): JQueryXHR;</code>
 			<code>    (element: Element): JQuery;</code>
@@ -1921,49 +1990,61 @@
 			<code>}</code>
 			<code> </code>
 		</pre>
-	</section>
+</section>
 
-	<section class="slide question">
-		<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Ваши вопросы?</span></h2>
-	</section>
-
-
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Ваши вопросы?</span></h2>
+</section>
 
 
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li><a href="https://tc39.github.io/ecma262/" target="_blank">ECMAScript 2017</a> Language Specification</li>
+		<li><a href="http://www.ecma-international.org/" target="_blank">Ecma International</a></li>
+		<li>Отличие между <a
+				href="http://stackoverflow.com/questions/15244453/practical-difference-between-ecma262-and-iso-iec-16262"
+				target="_blank">ECMA-262 и ISO/IEC 16262</a></li>
+		<li>Поддержка версий JavaScript на <a href="http://kangax.github.io/compat-table/es6/" target="_blank">kangax.github.io</a>
+			и возможности браузеров на <a href="http://caniuse.com/" target="_blank">caniuse.com</a></li>
+		<li>Про полифиллы подробно <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills"
+									  target="_blank">здесь</a>, <a href="https://polyfill.io/v2/docs/" target="_blank">сборничек
+			полифиллов</a></li>
+		<li><a href="http://babeljs.io/" target="_blank">Babel</a> и <a href="http://babeljs.io/repl/" target="_blank">Babel
+			REPL</a>, а также <a href="https://github.com/babel/babel-preset-env" target="_blank">babel-preset-env</a>
+		</li>
+	</ul>
+</section>
 
+<section class="slide">
+	<h2>Полезные ссылки</h2>
+	<ul lang="en">
+		<li><a href="http://exploringjs.com/" target="_blank">Подборка крутых книг</a> про JavaScript</li>
+		<li><a href="https://tc39.github.io/process-document/" target="_blank">Процесс TC39</a>, <a
+				href="https://github.com/tc39/proposals/" target="_blank">репозиторий</a> со списком всех текущих
+			предложений и <a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md" target="_blank">предложения</a>,
+			перешедшие в stage-4
+		</li>
+		<li><a href="https://www.typescriptlang.org/index.html" target="_blank">Источник</a> информации о TypeScript
+		</li>
+		<li><a href="https://github.com/TypeStrong/ts-node" target="_blank">Модуль ts-node</a>: TypeScript execution
+			environment and REPL for node.js
+		</li>
+		<li><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash; крутая
+			книга по TypeScript
+		</li>
+		<li><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Крутая серия книг</a> о JavaScript</li>
+	</ul>
+</section>
 
-	<section class="slide">
-		<h2>Полезные ссылки</h2>
-		<ul lang="en">
-			<li><a href="https://tc39.github.io/ecma262/" target="_blank">ECMAScript 2017</a> Language Specification</li>
-			<li><a href="http://www.ecma-international.org/" target="_blank">Ecma International</a></li>
-			<li>Отличие между <a href="http://stackoverflow.com/questions/15244453/practical-difference-between-ecma262-and-iso-iec-16262" target="_blank">ECMA-262 и ISO/IEC 16262</a></li>
-			<li>Поддержка версий JavaScript на <a href="http://kangax.github.io/compat-table/es6/" target="_blank">kangax.github.io</a> и возможности браузеров на <a href="http://caniuse.com/" target="_blank">caniuse.com</a></li>
-			<li>Про полифиллы подробно <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills" target="_blank">здесь</a>, <a href="https://polyfill.io/v2/docs/" target="_blank">сборничек полифиллов</a></li>
-			<li><a href="http://babeljs.io/" target="_blank">Babel</a> и <a href="http://babeljs.io/repl/" target="_blank">Babel REPL</a>, а также <a href="https://github.com/babel/babel-preset-env" target="_blank">babel-preset-env</a></li>
-		</ul>
-	</section>
+<section class="slide">
+	<h2 class="shout">Всем спасибо!</h2>
+</section>
 
-	<section class="slide">
-		<h2>Полезные ссылки</h2>
-		<ul lang="en">
-			<li><a href="http://exploringjs.com/" target="_blank">Подборка крутых книг</a> про JavaScript</li>
-			<li><a href="https://tc39.github.io/process-document/" target="_blank">Процесс TC39</a>, <a href="https://github.com/tc39/proposals/" target="_blank">репозиторий</a> со списком всех текущих предложений и <a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md" target="_blank">предложения</a>, перешедшие в stage-4</li>
-			<li><a href="https://www.typescriptlang.org/index.html" target="_blank">Источник</a> информации о TypeScript</li>
-			<li><a href="https://github.com/TypeStrong/ts-node" target="_blank">Модуль ts-node</a>: TypeScript execution environment and REPL for node.js</li>
-			<li><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash; крутая книга по TypeScript</li>
-			<li><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Крутая серия книг</a> о JavaScript</li>
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout">Всем спасибо!</h2>
-	</section>
-
-	<div class="progress"></div>
-	<script src="/lib/shower/shower.min.js"></script>
-	<script src="/lib/hljs/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+<div class="progress"></div>
+<script src="/lib/shower/shower.min.js"></script>
+<script src="/lib/hljs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>
