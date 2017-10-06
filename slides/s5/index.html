@@ -1043,16 +1043,10 @@
 	<h2 class="shout">Практика (если есть время...)</h2>
 </section>
 
-<!-- "Архитектура" CSS -->
-
-<!-- Каскадирование CSS, разные типы селекторов, импортант -->
-
-<!-- Два подхода к написанию стилей - использование композиции маленьких селекторов или использование модификаторов в названиях классов. Использование специальных имён классов для JS. Антипаттерны CSS (использование везде идентификаторов, использование везде большой вложенности стилей) -->
 
 <!-- Идея о разделении стилей на модули (выделение стилей компонентов в отдельные файлы стилей) -->
 
-<!-- CSS in JS, модульный CSS. ‎Темы с помощью CSS in JS -->
-
+<!-- "Архитектура" CSS -->
 <section class="slide">
 	<h2 class="shout">"Архитектура" CSS</h2>
 </section>
@@ -1061,20 +1055,142 @@
 	<h2><span style="font-size: 75%">С JS'ом разобрались, а с CSS что?</span></h2>
 </section>
 
-<section class="slide question">
-	<h2><span style="font-size: 75%">Какие могут возникнуть проблемы?</span></h2>
-</section>
-
+<!-- Каскадирование CSS, разные типы селекторов, импортант -->
 <section class="slide">
-	<h2>Глобальная область видимости селесторов</h2>
-	<p class="small-content">Из-за особенностей CSS все селекторы и на объявляются как-бы в "глобальной" области видимости</p>
-	<ul>
-		<li>Стили селекторов могут быть переопределены в совершенно непонятном месте, например в стилях какого-нибудь встраиваемого модуля, или в стилях блокировщика рекламы, или в стилях встраиваемых виджетов</li>
-		<li>Имена классов у элементов в достаточно крупном web-приложении могут</li>
-		<li></li>
-	</ul>
+	<h2>Писать стили - одно удовольствие</h2>
+	<pre class="hljs css">
+		<code>Селекторы!</code>
+		<code>*</code>
+		<code>div, span, a</code>
+		<code>#</code>
+		<code>.class</code>
+		<code>[type="text"]</code>
+		<code>>, + , ~</code>
+		<code>:first-child, :visited</code>
+		<code>::before, ::placeholder</code>
+	</pre>
+	<span class="small-content"></span>
+	<span class="small-content">Можно создавать правила любой степени вложенности - "каскад"</span>
+	<br>
+	<a href="https://habrahabr.ru/post/137588/" target="_blank">Взвешиваем селекторы CSS</a> &mdash; Хабр
 </section>
 
+<!-- Антипаттерны CSS -->
+<section class="slide">
+	<h2>Какие могут быть проблемы?</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs css">
+		<code>// Изменение компонентов в зависимости от родителя</code>
+		<code>.button {border:1px solid black;}</code>
+		<code>#sidebar .button {border-color: red;}</code>
+		<code> </code>
+		<code>// Глубокая степень вложенности </code>
+		<code>#main-nav ul li ul li div { }</code>
+		<code>#content article h1:first-child { }</code>
+		<code>#sidebar > div > h3 + p { }</code>
+	</pre>
+</section>
+
+<!-- Антипаттерны CSS -->
+<section class="slide">
+	<h2>Какие могут быть проблемы?</h2>
+	<pre class="hljs css">
+		<code>// Широко используемые имена классов </code>
+		<code>.article {}</code>
+		<code>.article .title { }</code>
+		<code>.article .content</code>
+		<code> </code>
+		<code>// Супер классы! </code>
+		<code>.super-class {</code>
+		<code>  margin: 10px;</code>
+		<code>  position: absolute;</code>
+		<code>  background: black;</code>
+		<code>  color: white;</code>
+		<code>  transition: color 0.2s;</code>
+		<code>  .....</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<!-- Чего мы хотим от стилей? -->
+<section class="slide">
+	<h2>Признаки хорошей архитектуры</h2>
+	<h2>(всё то же самое)</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Предсказуемость - изменение текущих стилей не ломает проект</li>
+		<li>Масштабируемость - добавление новых стилей не ломает проект</li>
+		<li>Поддержка - все в команде понимают, как писать стили</li>
+		<li>Повторное использование - DRY</li>
+	</ul>
+	<p class="medium-content"></p>
+	<span class="medium-content">Решение? Использовать зарекомендовавшие себя методологии!</span>
+	<br>
+	<br>
+	<a href="https://habrahabr.ru/post/256109/" target="_blank">Способы организации CSS кода</a> &mdash; Хабр
+</section>
+
+<!-- Два подхода к написанию стилей - использование композиции маленьких селекторов
+	или использование модификаторов в названиях классов. Использование специальных имён классов для JS -->
+
+<!-- OOCSS -->
+<section class="slide">
+	<h2>Объектно-ориентированный CSS</h2>
+	<h2>OOCSS</h2>
+	<b>Разделение структуры и оформления</b>
+
+	<div style="height: 290px;">
+		<pre class="hljs css" style="width: 50%; float: left;">
+			<code>.header {</code>
+			<code>  color: #000;</code>
+			<code>  background: #BADA55;</code>
+			<code>  width: 960px;</code>
+			<code>  margin: 0 auto;</code>
+			<code>}</code>
+		</pre>
+
+		<pre class="hljs css" style="width: 50%; float: right;">
+			<code>.footer {</code>
+			<code>  color: #000;</code>
+			<code>  background: #BADA55;</code>
+			<code>  text-align: center;</code>
+			<code>  padding-top: 20px;</code>
+			<code>}</code>
+		</pre>
+	</div>
+
+	<pre class="hljs css">
+		<code>.colors-skin {                  // Использование</code>
+		<code>  color: #000;                  .footer .colors-skin</code>
+		<code>  background: #BADA55;          .header .colors-skin</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<!-- OOCSS -->
+<section class="slide">
+	<h2>Объектно-ориентированный CSS</h2>
+	<h2>OOCSS</h2>
+
+	<b>Разделение контейнера и содержимого</b>
+	<br>
+	<span>Принцип: внешний вид элемента не зависит от того, где он расположен</span>
+	<br>
+
+	<span>Вместо <code>.my-element button {...}</code> создаем отдельный стиль <code>.control</code>для конкретного случая </span>
+	<br>
+	<br>
+	<span>Зачем?</span>
+
+	<ul>
+		<li>Все button будет выглядеть одинаково</li>
+		<li>К любому элементу можно добавить класс .control. Работает как mixin</li>
+		<li>.my-element button не нужно переопределять, если передумали</li>
+	</ul>
+	<a href="https://github.com/stubbornella/oocss/wiki" target="_blank">Страница проекта</a> &mdash; Github
+</section>
+
+<!-- БЭМ -->
 <section class="slide">
 	<h2>Методология БЭМ &mdash; Блок</h2>
 	<blockquote>
@@ -1087,6 +1203,9 @@
 		</li>
 		<li>В CSS по БЭМ также не рекомендуется использовать селекторы по тегам или id</li>
 	</ul>
+	<p class="medium-content"></p>
+	<p class="medium-content"></p>
+	<a href="https://ru.bem.info/methodology/" target="_blank">Страница проекта</a> - Придумано в Яндексе
 </section>
 
 <section class="slide">
@@ -1271,7 +1390,47 @@
 	</pre>
 </section>
 
+<section class="slide">
+	<h2>Быстрые выводы</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Разрываем связи между css и структурой html через селекторы-классы</li>
+		<li>Избавляемся от каскадирования! Почти везде!</li>
+		<li>Придумываем слои: компонент -> приложение -> глобальные стили</li>
+		<li>Держим стили внутри своего слоя: button.html + button.css + button.js</li>
+		<li>Изолируем компоненты при помощи строгой системы именования</li>
+		<li>Расширяем компоненты через глобальные mixin-классы: .animated, .themed, .hidden, .row</li>
+		<li>Специальные классы и атрибуты: .js-class, data-mnemo="id"</li>
+	</ul>
+	<span>Что почитать:</span>
+	<br>
+	<a href="https://web-standards.ru/articles/cargo-cult-css/" target="_blank">Культ карго CSS</a> +
+	<a href="https://web-standards.ru/articles/css-architecture/" target="_blank">Архитектура CSS</a> - Web Стандарты
 
+
+</section>
+
+<!-- CSS in JS, модульный CSS. ‎Темы с помощью CSS in JS -->
+<section class="slide">
+	<h2>CSS через JS</h2>
+	<b>Да, так можно!</b>
+	<br>
+	<span>Идея: представить стили через объект, записывать их в тег style, когда посчитаем нужным</span>
+	<br>
+	<b>Но зачем???</b>
+	<br>
+	<ul>
+		<li>CSS гибкий, JS ещё гибче - можем делать всё, что захотим</li>
+		<li>Темизация страницы в runtime</li>
+		<li>Уменьшение размера загружаемых стилей = ускорение первого рендера</li>
+		<li>Не кешируется :(</li>
+	</ul>
+
+	<a href="http://cssinjs.org/" target="_blank">CSS in JS</a> Реализация
+	<br>
+	<a href="https://habrahabr.ru/company/mailru/blog/329710/">CSS в JavaScript: будущее компонентных стилей</a> - Хабра
+
+</section>
 
 
 <section class="slide">
