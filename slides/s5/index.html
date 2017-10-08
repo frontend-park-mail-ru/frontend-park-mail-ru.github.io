@@ -1043,10 +1043,8 @@
 	<h2 class="shout">Практика (если есть время...)</h2>
 </section>
 
-
-<!-- Идея о разделении стилей на модули (выделение стилей компонентов в отдельные файлы стилей) -->
-
 <!-- "Архитектура" CSS -->
+
 <section class="slide">
 	<h2 class="shout">"Архитектура" CSS</h2>
 </section>
@@ -1057,50 +1055,67 @@
 
 <!-- Каскадирование CSS, разные типы селекторов, импортант -->
 <section class="slide">
-	<h2>Писать стили - одно удовольствие</h2>
+	<h2>Писать стили &mdash; одно удовольствие</h2>
 	<pre class="hljs css">
-		<code>Селекторы!</code>
-		<code>*</code>
-		<code>div, span, a</code>
-		<code>#</code>
-		<code>.class</code>
-		<code>[type="text"]</code>
-		<code>>, + , ~</code>
-		<code>:first-child, :visited</code>
-		<code>::before, ::placeholder</code>
+		<code>/* Селекторы! */</code>
+		<code>*                                  /* универсальный селектор */</code>
+		<code>div, span, a                       /* селекторы по имени тегов */</code>
+		<code>.class                             /* селекторы по имени классов */</code>
+		<code>#id                                /* селекторы по идентификаторам */</code>
+		<code>[type="text"], [src*="/img/"]      /* селекторы по атрибутам */</code>
+		<code>:first-child, :visited, :nth-of-type(An+B), :empty ... </code>
+		<code>::before, ::placeholder, ::selection, ::first-letter ... </code>
+		<code>a > a, a + a , a ~ a               /* вложенность и каскадирование */</code>
 	</pre>
-	<span class="small-content"></span>
-	<span class="small-content">Можно создавать правила любой степени вложенности - "каскад"</span>
-	<br>
-	<a href="https://habrahabr.ru/post/137588/" target="_blank">Взвешиваем селекторы CSS</a> &mdash; Хабр
+	<p class="note">Можно создавать правила любой степени вложенности &mdash; "каскад". <a href="https://habrahabr.ru/post/137588/" target="_blank">Взвешиваем селекторы CSS</a> &mdash; Хабр</p>
 </section>
 
 <!-- Антипаттерны CSS -->
+
 <section class="slide">
 	<h2>Какие могут быть проблемы?</h2>
-	<p class="medium-content"></p>
+	<p class="small-content"></p>
 	<pre class="hljs css">
-		<code>// Изменение компонентов в зависимости от родителя</code>
-		<code>.button {border:1px solid black;}</code>
-		<code>#sidebar .button {border-color: red;}</code>
+		<code>/* Изменение компонентов в зависимости от родителя */</code>
+		<code>.button { border: 1px solid black; }</code>
+		<code>#sidebar .button { border-color: red; }</code>
+		<code>#header .button { border-color: green; }</code>
+		<code>#menu .button { border-color: blue; }</code>
 		<code> </code>
-		<code>// Глубокая степень вложенности </code>
-		<code>#main-nav ul li ul li div { }</code>
-		<code>#content article h1:first-child { }</code>
-		<code>#sidebar > div > h3 + p { }</code>
 	</pre>
 </section>
 
-<!-- Антипаттерны CSS -->
 <section class="slide">
 	<h2>Какие могут быть проблемы?</h2>
+	<p class="small-content"></p>
 	<pre class="hljs css">
-		<code>// Широко используемые имена классов </code>
-		<code>.article {}</code>
-		<code>.article .title { }</code>
-		<code>.article .content</code>
+		<code>/* Глубокая степень вложенности */</code>
+		<code>#main-nav ul li ul li ol span div { ... }</code>
+		<code>#content .article h1:first-child [name=accent] { ... }</code>
+		<code>#sidebar > div > h3 + p a ~ strong { ... }</code>
 		<code> </code>
-		<code>// Супер классы! </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Какие могут быть проблемы?</h2>
+	<p class="small-content"></p>
+	<pre class="hljs css">
+		<code>/* Широко используемые имена классов */</code>
+		<code>.article { ... }</code>
+		<code>.article .header { ... }</code>
+		<code>.article .title { ... }</code>
+		<code>.article .content { ... }</code>
+		<code>.article .section { ... }</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Какие могут быть проблемы?</h2>
+	<p class="small-content"></p>
+	<pre class="hljs css">
+		<code>/* Супер классы! */</code>
 		<code>.super-class {</code>
 		<code>  margin: 10px;</code>
 		<code>  position: absolute;</code>
@@ -1109,36 +1124,33 @@
 		<code>  transition: color 0.2s;</code>
 		<code>  .....</code>
 		<code>}</code>
+		<code> </code>
 	</pre>
 </section>
 
 <!-- Чего мы хотим от стилей? -->
+
 <section class="slide">
-	<h2>Признаки хорошей архитектуры</h2>
-	<h2>(всё то же самое)</h2>
+	<h2>Признаки хорошей архитектуры <br>(всё то же самое)</h2>
 	<p class="medium-content"></p>
 	<ul>
-		<li>Предсказуемость - изменение текущих стилей не ломает проект</li>
-		<li>Масштабируемость - добавление новых стилей не ломает проект</li>
-		<li>Поддержка - все в команде понимают, как писать стили</li>
-		<li>Повторное использование - DRY</li>
+		<li><strong>Предсказуемость</strong> &mdash; изменение текущих стилей не ломает проект</li>
+		<li><strong>Масштабируемость</strong> &mdash; добавление новых стилей не ломает проект</li>
+		<li><strong>Поддержка</strong> &mdash; все в команде понимают, как писать стили</li>
+		<li><strong>Повторное использование</strong> &mdash; DRY</li>
 	</ul>
-	<p class="medium-content"></p>
-	<span class="medium-content">Решение? Использовать зарекомендовавшие себя методологии!</span>
-	<br>
-	<br>
-	<a href="https://habrahabr.ru/post/256109/" target="_blank">Способы организации CSS кода</a> &mdash; Хабр
+	<p class="note">Решение? Использовать зарекомендовавшие себя методологии! Подробнее про них в статье <a href="https://habrahabr.ru/post/256109/" target="_blank">"Способы организации CSS кода"</a></p>
 </section>
 
-<!-- Два подхода к написанию стилей - использование композиции маленьких селекторов
-	или использование модификаторов в названиях классов. Использование специальных имён классов для JS -->
-
 <!-- OOCSS -->
-<section class="slide">
-	<h2>Объектно-ориентированный CSS</h2>
-	<h2>OOCSS</h2>
-	<b>Разделение структуры и оформления</b>
 
+<section class="slide question">
+	<h2><span style="font-size: 75%">OOCSS &mdash; Объектно-ориентированный CSS</span></h2>
+</section>
+
+<section class="slide">
+	<h2>Объектно-ориентированный CSS <br> OOCSS</h2>
+	<b>Разделение структуры и оформления</b>
 	<div style="height: 290px;">
 		<pre class="hljs css" style="width: 50%; float: left;">
 			<code>.header {</code>
@@ -1160,52 +1172,45 @@
 	</div>
 
 	<pre class="hljs css">
-		<code>.colors-skin {                  // Использование</code>
+		<code>.colors-skin {                  /* Использование */</code>
 		<code>  color: #000;                  .footer .colors-skin</code>
 		<code>  background: #BADA55;          .header .colors-skin</code>
 		<code>}</code>
 	</pre>
 </section>
 
-<!-- OOCSS -->
 <section class="slide">
-	<h2>Объектно-ориентированный CSS</h2>
-	<h2>OOCSS</h2>
-
-	<b>Разделение контейнера и содержимого</b>
-	<br>
-	<span>Принцип: внешний вид элемента не зависит от того, где он расположен</span>
-	<br>
-
-	<span>Вместо <code>.my-element button {...}</code> создаем отдельный стиль <code>.control</code>для конкретного случая </span>
-	<br>
-	<br>
-	<span>Зачем?</span>
-
+	<h2>Объектно-ориентированный CSS <br> OOCSS</h2>
+	<strong>Разделение контейнера и содержимого.</strong>
+	<div> Принцип: внешний вид элемента не зависит от того, где он расположен. Вместо <code>.my-element button { ... }</code> создаем отдельный стиль <code>.control</code>для конкретного случая</div>
+	<strong>Зачем?</strong>
 	<ul>
-		<li>Все button будет выглядеть одинаково</li>
-		<li>К любому элементу можно добавить класс .control. Работает как mixin</li>
-		<li>.my-element button не нужно переопределять, если передумали</li>
+		<li>Все <code>button</code> будет выглядеть одинаково</li>
+		<li>К любому элементу можно добавить класс <code>.control</code>. Работает как <mark>mixin</mark></li>
+		<li><code>.my-element button</code> не нужно переопределять, если передумали</li>
 	</ul>
-	<a href="https://github.com/stubbornella/oocss/wiki" target="_blank">Страница проекта</a> &mdash; Github
+	<p class="note"><a href="https://github.com/stubbornella/oocss/wiki" target="_blank">Страница проекта</a> &mdash; Github</p>
 </section>
 
 <!-- БЭМ -->
+
+<section class="slide question">
+	<h2><span style="font-size: 75%">БЭМ &mdash; Блок, Элемент, Модификатор</span></h2>
+</section>
+
 <section class="slide">
 	<h2>Методология БЭМ &mdash; Блок</h2>
 	<blockquote>
 		<p><b>Блок в методологии БЭМ</b> &mdash; функционально независимый компонент страницы, который может быть
 			повторно использован. В HTML блоки представлены атрибутом <code>class</code></p>
 	</blockquote>
-	<ul style="font-size: 90%">
+	<ul>
 		<li>Название блока характеризует смысл («что это?» — «меню»: menu, «кнопка»: button), а не состояние («какой,
 			как выглядит?» — «красный»: red, «большой»: big)
 		</li>
 		<li>В CSS по БЭМ также не рекомендуется использовать селекторы по тегам или id</li>
 	</ul>
-	<p class="medium-content"></p>
-	<p class="medium-content"></p>
-	<a href="https://ru.bem.info/methodology/" target="_blank">Страница проекта</a> - Придумано в Яндексе
+	<p class="note"><a href="https://ru.bem.info/methodology/" target="_blank">Страница проекта</a> &mdash; Придумано в Яндексе</p>
 </section>
 
 <section class="slide">
@@ -1214,7 +1219,7 @@
 		<p><b>Элемент в методологии БЭМ</b> &mdash; составная часть блока, которая не может использоваться в отрыве от
 			него</p>
 	</blockquote>
-	<ul style="font-size: 90%">
+	<ul>
 		<li>Название элемента характеризует смысл («что это?» — «пункт»: item, «текст»: text), а не состояние («какой,
 			как выглядит?» — «красный»: red, «большой»: big)
 		</li>
@@ -1230,7 +1235,7 @@
 		<p><b>Модификатор в методологии БЭМ</b> &mdash; сущность, определяющая внешний вид, состояние или поведение
 			блока либо элемента.</p>
 	</blockquote>
-	<ul style="font-size: 90%">
+	<ul>
 		<li>Название модификатора характеризует внешний вид («размер»: size_s, «тема»: theme_islands), состояние
 			(«отключен»: disabled, «фокусированный»: focused) и поведение («направление»: directions_left-top)
 		</li>
@@ -1357,7 +1362,7 @@
 
 <section class="slide">
 	<h2>Форма по БЭМу</h2>
-	<pre class="hljs css" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+	<pre class="hljs css">
 		<code><span class="comment rus">/* блок */</span></code>
 		<code>.login-form { ... }</code>
 		<code><span class="comment rus">/* эмененты */</span></code>
@@ -1375,7 +1380,7 @@
 
 <section class="slide">
 	<h2>Форма по БЭМу</h2>
-	<pre class="hljs css" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+	<pre class="hljs css">
 		<code><span class="comment rus">/* блок */</span></code>
 		<code>.button { ... }</code>
 		<code><span class="comment rus">/* элементы */</span></code>
@@ -1392,43 +1397,36 @@
 
 <section class="slide">
 	<h2>Быстрые выводы</h2>
-	<p class="medium-content"></p>
 	<ul>
 		<li>Разрываем связи между css и структурой html через селекторы-классы</li>
 		<li>Избавляемся от каскадирования! Почти везде!</li>
 		<li>Придумываем слои: компонент -> приложение -> глобальные стили</li>
-		<li>Держим стили внутри своего слоя: button.html + button.css + button.js</li>
+		<li>Держим стили внутри своего слоя: <code>button.html</code> + <code>button.css</code> + <code>button.js</code></li>
 		<li>Изолируем компоненты при помощи строгой системы именования</li>
-		<li>Расширяем компоненты через глобальные mixin-классы: .animated, .themed, .hidden, .row</li>
-		<li>Специальные классы и атрибуты: .js-class, data-mnemo="id"</li>
+		<li>Расширяем компоненты через глобальные mixin-классы: <code>.animated, .themed, .hidden, .row</code></li>
+		<li>Специальные классы и атрибуты: <code>.js-class, data-mnemo="id"</code></li>
 	</ul>
-	<span>Что почитать:</span>
-	<br>
-	<a href="https://web-standards.ru/articles/cargo-cult-css/" target="_blank">Культ карго CSS</a> +
-	<a href="https://web-standards.ru/articles/css-architecture/" target="_blank">Архитектура CSS</a> - Web Стандарты
-
-
+	<p class="note">Что почитать: <a href="https://web-standards.ru/articles/cargo-cult-css/" target="_blank">Культ карго CSS</a> и <a href="https://web-standards.ru/articles/css-architecture/" target="_blank">Архитектура CSS</a> &mdash; Web Стандарты</p>
 </section>
 
 <!-- CSS in JS, модульный CSS. ‎Темы с помощью CSS in JS -->
+
+<section class="slide question">
+	<h2><span style="font-size: 100%">CSS-in-JS</span></h2>
+</section>
+
 <section class="slide">
 	<h2>CSS через JS</h2>
-	<b>Да, так можно!</b>
-	<br>
-	<span>Идея: представить стили через объект, записывать их в тег style, когда посчитаем нужным</span>
-	<br>
-	<b>Но зачем???</b>
-	<br>
+	<p>Идея: представить стили через объект, записывать их в тег style, когда посчитаем нужным</p>
+	<strong>Но зачем???</strong>
 	<ul>
-		<li>CSS гибкий, JS ещё гибче - можем делать всё, что захотим</li>
-		<li>Темизация страницы в runtime</li>
-		<li>Уменьшение размера загружаемых стилей = ускорение первого рендера</li>
+		<li>CSS гибкий, JS ещё гибче &mdash; можем делать всё, что захотим</li>
+		<li>Темизация страницы в <mark>runtime</mark></li>
+		<li>Уменьшение размера загружаемых стилей => ускорение первого рендера</li>
 		<li>Не кешируется :(</li>
 	</ul>
-
-	<a href="http://cssinjs.org/" target="_blank">CSS in JS</a> Реализация
-	<br>
-	<a href="https://habrahabr.ru/company/mailru/blog/329710/">CSS в JavaScript: будущее компонентных стилей</a> - Хабра
+	<p class="note">Реализация &mdash; <a href="http://cssinjs.org/" target="_blank">CSS in JS</a></p>
+	<p class="note"><a href="https://habrahabr.ru/company/mailru/blog/329710/">"CSS в JavaScript: будущее компонентных стилей"</a> &mdash; Хабр</p>
 
 </section>
 
@@ -1437,8 +1435,7 @@
 	<h2 class="shout">Практика</h2>
 </section>
 
-<!--полезные ссылки-->
-
+<!-- полезные ссылки -->
 
 <section class="slide">
 	<h2>Полезные ссылки</h2>
