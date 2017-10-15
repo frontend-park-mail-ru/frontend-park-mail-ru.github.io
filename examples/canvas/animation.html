@@ -29,6 +29,10 @@ canvas {
 var canvas = document.querySelector('canvas');
 var context = canvas.getContext('2d');
 var animateStep = 0;
+var steps = 20;
+
+var img = new Image();
+img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAD1BMVEX///8AAADODALzjB3///+k0yk4AAAAAXRSTlMAQObYZgAAAZ1JREFUeAHt2TGWgzAQREEGfP8zb65g5/UbCyuoH4NQV8r15Wp31/sBAAAAAAAAAAAAAAAAAAAAFXYvPf93r73uAwAAAAAAAAAAAAAAAAAAAAAAEO5rSwGa5iIAAAAAAAAAAAAAAAAAAAAAgOpKL/wMC48fgwAAAAAAAAAAAAAAAAAAAAD5//3N5V4AAAAAAAAAAAAAAAAAAAAAgGoXNwCxxz1senw1AQAAAAAAAAAAAAAAAAAAAAAATO937276vSoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgXvxjgDUAAAAAAAAAAAAAAAAAAAAAQA7wfLvNg+MAAAAAAAAAAAAAAAAAAAAAAABigDo7AAAAAAAAAAAAAAAAAAAAAEAOkPbpCl+o+Pk8AAAAAAAAAAAAAAAAAAAAYCldvB8gKx4MAAAAAAAAAAAAAAAAAAAAAOhFPmfXDc4DAAAAAAAAAAAAAAAAAAAAAAA4zKO6AAAAAAAAAAAAAAAAAAAAAADz6uyuNgAAAAAAAAAAAAAAAAAAAADAH3bH0TBYGYgAAAAAAElFTkSuQmCC';
 
 var animate = function(){
 
@@ -38,18 +42,15 @@ var animate = function(){
   context.beginPath();
 
   /* context.arc( x, y, radius, startAngle, endAngle [, anticlockwise] ); */
-  var padding = 200;
+  var padding = 40;
   var radius = 130;
-  var step = (canvas.width - padding * 2) / 100;
+  var step = (canvas.width - padding * 2 - img.width) / steps;
   var x = step * animateStep + padding;
-  var y = canvas.height / 2;
-  context.arc( x, y, radius, 0, 2*Math.PI, false ); // Окружность
-
-  context.stroke();
-  context.fillStyle = 'gold';
-  context.fill();
-
-  if (animateStep < 100) {
+  var y = (canvas.height - img.height) / 2;
+  
+  context.drawImage(img, x, y);
+  
+  if (animateStep < steps) {
     animateStep++;
     animate();
   } else {

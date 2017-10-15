@@ -354,6 +354,20 @@
 	</pre>
 </section>
 
+<section class="slide">
+	<h2>Рисование примитивов: Path2D</h2>
+	<pre class="hljs js">
+		<code>new Path2D('M10 10 h 80 v 80 h -80 Z');</code>
+		<code><span class="comment rus">// - создать из SVG</span></code>
+		
+		<code>Path2D.addPath(path [, transform])</code>
+		<code><span class="comment rus">// <b>path</b> - добавить путь</span></code>
+		<code> </code>
+		<code>const rectangle = new Path2D();</code>
+		<code>rectangle.rect(10, 10, 50, 50);</code>
+		<code>ctx.stroke(rectangle);</code>
+	</pre>
+</section>
 
 <section class="slide question">
 	<h2><span style="font-size: 65%">Стилизация</span></h2>
@@ -373,6 +387,40 @@
 	</pre>
 </section>
 
+
+<section class="slide">
+		<h2>Стилизация линий</h2>
+		<canvas id="styline" width="300" height="300"
+				style="position:fixed;right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
+		<script>
+			(function () {
+				const canvas = document.getElementById('styline');
+				const ctx = canvas.getContext('2d');
+	
+				ctx.beginPath();
+				[1, 5, 10, 20, 50].forEach((v, i) => {
+					ctx.beginPath();
+					ctx.lineWidth = v;
+					ctx.setLineDash([5, 5, 50, 5, 5, v]);
+					ctx.moveTo(20, 30 + 55 * i);
+					ctx.lineTo(280, 30 + 55 * i);
+					ctx.stroke();
+				});
+	
+			})();
+		</script>
+		<pre class="hljs js short">
+			<code>ctx.beginPath();</code>
+			<code>[1, 5, 10, 20, 50].forEach((v, i) => {</code>
+			<code>    ctx.beginPath();</code>
+			<code>    ctx.lineWidth = v; ctx.setLineDash([5, 5, 50, 5, 5, v]);</code>
+			<code>    ctx.moveTo(20, 30 + 55 * i); ctx.lineTo(280, 30 + 55 * i);</code>
+			<code>    ctx.stroke();</code>
+			<code>});</code>
+			<code> </code>
+		</pre>
+	</section>
+
 <section class="slide">
 	<h2>Стилизация линий</h2>
 	<pre class="hljs js">
@@ -385,39 +433,6 @@
 		<code>ctx.lineJoin = 'bevel';  <span class="comment rus">// срезанные углы</span></code>
 		<code>ctx.lineJoin = 'round';  <span class="comment rus">// скруглённые углы</span></code>
 		<code>ctx.lineJoin = 'miter';  <span class="comment rus">// острые углы</span></code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>Стилизация линий</h2>
-	<canvas id="styline" width="300" height="300"
-			style="position:fixed;right:30px;margin-top:10px;border:solid whitesmoke"></canvas>
-	<script>
-		(function () {
-			const canvas = document.getElementById('styline');
-			const ctx = canvas.getContext('2d');
-
-			ctx.beginPath();
-			[1, 5, 10, 20, 50].forEach((v, i) => {
-				ctx.beginPath();
-				ctx.lineWidth = v;
-				ctx.setLineDash([5, 5, 50, 5, 5, v]);
-				ctx.moveTo(20, 30 + 55 * i);
-				ctx.lineTo(280, 30 + 55 * i);
-				ctx.stroke();
-			});
-
-		})();
-	</script>
-	<pre class="hljs js short">
-		<code>ctx.beginPath();</code>
-		<code>[1, 5, 10, 20, 50].forEach((v, i) => {</code>
-		<code>    ctx.beginPath();</code>
-		<code>    ctx.lineWidth = v; ctx.setLineDash([5, 5, 50, 5, 5, v]);</code>
-		<code>    ctx.moveTo(20, 30 + 55 * i); ctx.lineTo(280, 30 + 55 * i);</code>
-		<code>    ctx.stroke();</code>
-		<code>});</code>
 		<code> </code>
 	</pre>
 </section>
@@ -639,7 +654,6 @@
 	</pre>
 </section>
 
-
 <section class="slide question">
 	<h2><span style="font-size: 65%">Трансформации</span></h2>
 </section>
@@ -688,11 +702,22 @@
 </section>
 
 <section class="slide">
+	<h2>Сохранение данных</h2>
+	<pre class="hljs js">
+		<code><span class="comment rus">// сохранить все настройки, в том числе трансформации!</span></code>
+		<code>ctx.save();</code>
+		<code></code>
+		<code><span class="comment rus">// вернуть предыдущие из стека</span></code>
+		<code>ctx.restore();</code>
+	</pre>
+</section>
+
+<section class="slide">
 	<h2>А так же</h2>
 	<ul>
-		<li>Работа с изображениями и видео</li>
+		<li>Работа с изображениями: ctx.drawImage для img, svg, video, canvas</li>	
 		<li>Режимы наложения и обрезка</li>
-		<li>Работа с пикселями</li>
+		<li>Работа с пикселями: ctx.getImageData</li>
 		<li>...</li>
 	</ul>
 </section>
@@ -740,20 +765,24 @@
 <section class="slide">
 	<h2>Как ждать?</h2>
 	<ul lang="ru">
+		<br>
 		<li><code>window.setInterval(function, delay)</code></li>
 		<li><code>window.setTimeout(function, delay)</code></li>
+		<br>
 		<li><code>window.requestAnimationFrame(callback)</code></li>
+		<li><code>window.cancelAnimationFrame(ref)</code></li>
 	</ul>
 </section>
 
 <section class="slide">
 	<h2><code>requestAnimationFrame</code></h2>
 	<pre class="hljs js">
-		<code>let current = perfomance.now();</code>
+		<code>let start = perfomance.now();</code>
+		<code>let current = start;</code>
 		<code>function animation(now) { <span class="comment rus">// передаётся текущее <mark>perfomance.now()</mark></span></code>
 		<code>    const <mark>delay</mark> = now - current;</code>
 		<code>    current = now;</code>
-		<code>    redraw(delay);        <span class="comment rus">// перерисовываем кадр</span></code>
+		<code>    redraw(start, delay); <span class="comment rus">// перерисовываем кадр</span></code>
 		<code>    <mark>requestAnimationFrame</mark>(animation);</code>
 		<code>}</code>
 		<code> </code>
@@ -770,6 +799,7 @@
 		<li>Рендеринг только разницы, а не нового состояния целиком</li>
 		<li>Группировка вызовов <code>canvas</code></li>
 		<li>Предварительный рендеринг во внеэкранный элемент <code>canvas</code></li>
+		<li>Используйте CSS для фонового изображения и трансформаций</li>
 		<li>Отказ от координат с плавающей запятой</li>
 		<li>Отказ от рендеринга текста с <code>canvas</code> и свойства <code>shadowBlur</code></li>
 		<li>...</li>
@@ -1040,6 +1070,21 @@
 		</li>
 		<li>Доклад <a href="https://youtu.be/Z4E2drxNjMk?t=1h12m55s" target="_blank">"Играем в браузере"</a> на WSD в
 			Москве и <a href="https://wsd.events/2017/01/28/pres/browser-games/" target="_blank">слайды</a> доклада
+		</li>
+		<li>
+			<a href="http://isaacsukin.com/news/2015/01/detailed-explanation-javascript-game-loops-and-timing" target="_blank">
+				A Detailed Explanation of JavaScript Game Loops and Timing
+			</a>
+		</li>
+		<li>
+			<a href="https://youtu.be/1_lX28QWCdg" target="_blank">
+				Web Workers, GPU computing and Web
+			</a>
+			и 
+			<a href="https://youtu.be/39MiUkGSEks" target="_blank">
+				WebVR
+			</a>
+			by Martin Splitt
 		</li>
 	</ul>
 </section>

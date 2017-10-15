@@ -20,15 +20,28 @@ canvas {
   top: 30px;
   font-size: 50px;
 }
+
+#time {
+  position: absolute;
+  right: 100px;
+  top: 30px;
+  font-size: 50px;
+}
 </style>
 </head>
 <body>
 <button id="startAnimate">Поехали!</button>
+<span id="time"></span>
 <canvas></canvas>
+
 <script type="text/javascript">
+var timeSpan = document.getElementById('time');
 var canvas = document.querySelector('canvas');
 var context = canvas.getContext('2d');
 var animateStep = 0;
+
+var img = new Image();
+img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAD1BMVEX///8AAADODALzjB3///+k0yk4AAAAAXRSTlMAQObYZgAAAZ1JREFUeAHt2TGWgzAQREEGfP8zb65g5/UbCyuoH4NQV8r15Wp31/sBAAAAAAAAAAAAAAAAAAAAFXYvPf93r73uAwAAAAAAAAAAAAAAAAAAAAAAEO5rSwGa5iIAAAAAAAAAAAAAAAAAAAAAgOpKL/wMC48fgwAAAAAAAAAAAAAAAAAAAAD5//3N5V4AAAAAAAAAAAAAAAAAAAAAgGoXNwCxxz1senw1AQAAAAAAAAAAAAAAAAAAAAAATO937276vSoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgXvxjgDUAAAAAAAAAAAAAAAAAAAAAQA7wfLvNg+MAAAAAAAAAAAAAAAAAAAAAAABigDo7AAAAAAAAAAAAAAAAAAAAAEAOkPbpCl+o+Pk8AAAAAAAAAAAAAAAAAAAAYCldvB8gKx4MAAAAAAAAAAAAAAAAAAAAAOhFPmfXDc4DAAAAAAAAAAAAAAAAAAAAAAA4zKO6AAAAAAAAAAAAAAAAAAAAAADz6uyuNgAAAAAAAAAAAAAAAAAAAADAH3bH0TBYGYgAAAAAAElFTkSuQmCC';
 
 /* Код из слайда */
 var startTime, animationTime, length;
@@ -37,28 +50,23 @@ var startTime, animationTime, length;
 var animate = function(){
 
   resize();
-  
+
+  var padding = 200;
+  var radius = 130;
+  var length = canvas.width - padding * 2 - img.width;
+  var y = (canvas.height - img.width) / 2;
+
   /* Трансформации */
   context.beginPath();
 
-  /* context.arc( x, y, radius, startAngle, endAngle [, anticlockwise] ); */
-  var padding = 200;
-  var radius = 130;
-  var length = canvas.width - padding * 2;
-  var y = canvas.height / 2;
-
   /* Код из слайда */
-  var time = new Date().getTime();
+  var time = performance.now();
   var shiftTime = time - startTime;
   var multiply = shiftTime / animationTime;
   var x = length * multiply + padding;
   /* Код из слайда */
 
-  context.arc( x, y, radius, 0, 2*Math.PI, false ); // Окружность
-
-  context.stroke();
-  context.fillStyle = 'gold';
-  context.fill();
+  context.drawImage(img, x, y);
 
   if (multiply < 1) {
     requestAnimationFrame(animate);
@@ -105,16 +113,17 @@ resize();
 
 var _startTime = 0;
 var start = function(){
-  _startTime = new Date();
+  _startTime = performance.now();
 };
+
 var end = function(){
-  alert(new Date() - _startTime);
+  timeSpan.innerText = 't: ' + (performance.now() - _startTime);
 };
 
 document.querySelector('#startAnimate').addEventListener('click', function(){
   animateStep = 0;
   animationTime = 2000;
-  startTime = new Date().getTime();
+  startTime = performance.now();
   start();
   animate();
 });
