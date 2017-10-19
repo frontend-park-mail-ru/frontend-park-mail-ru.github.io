@@ -93,7 +93,7 @@
 	<h2>Глобальные объекты</h2>
 	<p class="small-content">В глобальной области видимости <code>this</code> ссылается на глобальный объект</p>
 	<pre>
-		<code><span class="comment rus">// в браузере</span></code>
+		<code>// в браузере</code>
 		<code>console.log(<mark>this === window</mark>); // true</code>
 		<code> </code>
 	</pre>
@@ -103,7 +103,7 @@
 	<h2>Глобальные объекты</h2>
 	<p class="small-content">В Node.js не всё так просто (попробуйте разобраться почему)</p>
 	<pre>
-		<code><span class="comment">// script.js</span></code>
+		<code>// script.js</code>
 		<code>console.log(this === global);</code>
 		<code> </code>
 	</pre>
@@ -175,11 +175,11 @@
 	<p class="medium-content">DOM нужен для того, чтобы манипулировать страницей &mdash; читать информацию из HTML, создавать и изменять
 		элементы</p>
 	<pre>
-		<code>document <span class="comment rus">// хост-объект, который даёт доступ к DOM</span></code>
+		<code>document // хост-объект, который даёт доступ к DOM</code>
 		<code> </code>
-		<code>document.documentElement <span class="comment rus">// узел HTML</span></code>
-		<code>document.head <span class="comment rus">// узел HEAD</span></code>
-		<code>document.body <span class="comment rus">// узел BODY</span></code>
+		<code>document.documentElement // узел HTML</code>
+		<code>document.head // узел HEAD</code>
+		<code>document.body // узел BODY</code>
 		<code> </code>
 	</pre>
 </section>
@@ -188,14 +188,14 @@
 	<h2>Перебор узлов DOM</h2>
 	<p class="small-content"></p>
 	<pre>
-		<code>element.parentNode <span class="comment rus">// родительская нода</span></code>
+		<code>element.parentNode // родительская нода</code>
 		<code> </code>
-		<code>element.childNodes <span class="comment rus">// дочерние ноды</span></code>
-		<code>element.firstChild <span class="comment rus">// первый ребёнок</span></code>
-		<code>element.lastChild <span class="comment rus">// последний ребёнок</span></code>
+		<code>element.childNodes // дочерние ноды</code>
+		<code>element.firstChild // первый ребёнок</code>
+		<code>element.lastChild // последний ребёнок</code>
 		<code> </code>
-		<code>document.previousSibling <span class="comment rus">// предыдущий "сосед"</span></code>
-		<code>document.nextSibling <span class="comment rus">// следующий "сосед"</span></code>
+		<code>document.previousSibling // предыдущий "сосед"</code>
+		<code>document.nextSibling // следующий "сосед"</code>
 		<code> </code>
 	</pre>
 </section>
@@ -207,15 +207,15 @@
 	</h2>
 	<p class="small-content"></p>
 	<pre>
-		<code>element.parentElement <span class="comment rus">// родитель-элемент</span></code>
-		<code>element.children <span class="comment rus">// только дочерние узлы-элементы</span></code>
+		<code>element.parentElement // родитель-элемент</code>
+		<code>element.children // только дочерние узлы-элементы</code>
 		<code> </code>
 
-		<code><span class="comment rus">// первый и последний дети-элементы</span></code>
+		<code>// первый и последний дети-элементы</code>
 		<code>element.first<mark>Element</mark>Child и element.last<mark>Element</mark>Child</code>
 		<code> </code>
 
-		<code><span class="comment rus">// соседи-элементы</span></code>
+		<code>// соседи-элементы</code>
 		<code>document.previous<mark>Element</mark>Sibling и document.next<mark>Element</mark>Sibling</code>
 		<code> </code>
 	</pre>
@@ -225,9 +225,9 @@
 	<h2>Дополнительные возможности</h2>
 	<p class="small-content">У конкретных элементов DOM могут быть свои дополнительные ссылки для большего удобства навигации</p>
 	<pre>
-		<code>const elements = formElement.elements <span class="comment rus">// все поля формы</span></code>
-		<code>elements[1] <span class="comment rus">// выбор поля по порядку</span></code>
-		<code>elements['username'] <span class="comment rus">// выбор поля по имени</span></code>
+		<code>const elements = formElement.elements // все поля формы</code>
+		<code>elements[1] // выбор поля по порядку</code>
+		<code>elements['username'] // выбор поля по имени</code>
 		<code> </code>
 	</pre>
 </section>
@@ -236,12 +236,12 @@
 	<h2>Дополнительные возможности</h2>
 	<p class="medium-content">У конкретных элементов DOM могут быть свои дополнительные ссылки для большего удобства навигации</p>
 	<pre>
-		<code>tableElement.rows <span class="comment rus">// коллекция строк TR таблицы</span></code>
-		<code>tableElement.caption <span class="comment rus">// элемент CAPTION таблицы</span></code>
-		<code>tableElement.tBodies <span class="comment rus">// коллекция элементов таблицы TBODY</span></code>
+		<code>tableElement.rows // коллекция строк TR таблицы</code>
+		<code>tableElement.caption // элемент CAPTION таблицы</code>
+		<code>tableElement.tBodies // коллекция элементов таблицы TBODY</code>
 		<code> </code>
-		<code>tableRowElement.cells <span class="comment rus">// коллекция ячеек строки таблицы</span></code>
-		<code>tableRowElement.rowIndex <span class="comment rus">// номер строки в таблице</span></code>
+		<code>tableRowElement.cells // коллекция ячеек строки таблицы</code>
+		<code>tableRowElement.rowIndex // номер строки в таблице</code>
 		<code> </code>
 	</pre>
 </section>
@@ -252,10 +252,10 @@
 	</h2>
 	<p class="small-content"></p>
 	<pre>
-		<code><span class="comment rus">// вернёт элемент с ID 'my-header'</span></code>
+		<code>// вернёт элемент с ID 'my-header'</code>
 		<code>document.getElementById('my-header')</code>
 		<code> </code>
-		<code><span class="comment rus">// вернёт все элементы с атрибутом name="username"</span></code>
+		<code>// вернёт все элементы с атрибутом name="username"</code>
 		<code>document.getElementsByName('username')</code>
 		<code> </code>
 	</pre>
@@ -267,12 +267,12 @@
 	</h2>
 	<p class="small-content"></p>
 	<pre>
-		<code><span class="comment rus">// во всём документе</span></code>
+		<code>// во всём документе</code>
 		<code>document.getElementsByTagName('h1')</code>
 		<code> </code>
-		<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+		<code>// среди потомков какого-либо элемента</code>
 		<code>element.getElementsByTagName('h1')</code>
-		<code>element.getElementsByTagName('*') <span class="comment rus">// все элементы</span></code>
+		<code>element.getElementsByTagName('*') // все элементы</code>
 		<code> </code>
 	</pre>
 </section>
@@ -283,10 +283,10 @@
 	</h2>
 	<p class="small-content"></p>
 	<pre>
-		<code><span class="comment rus">// во всём документе</span></code>
+		<code>// во всём документе</code>
 		<code>document.getElementsByClassName('red-button')</code>
 		<code> </code>
-		<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+		<code>// среди потомков какого-либо элемента</code>
 		<code>element.getElementsByClassName('red-button')</code>
 		<code> </code>
 	</pre>
@@ -298,13 +298,13 @@
 	</h2>
 	<p class="medium-content"></p>
 	<pre>
-		<code><span class="comment rus">// во всём документе</span></code>
+		<code>// во всём документе</code>
 		<code>document.querySelector<mark>All</mark>('input[type=button].red-button')</code>
 		<code> </code>
-		<code><span class="comment rus">// среди потомков какого-либо элемента</span></code>
+		<code>// среди потомков какого-либо элемента</code>
 		<code>element.querySelector<mark>All</mark>('input[type=button].red-button')</code>
 		<code> </code>
-		<code><span class="comment rus">// ищет только <mark>первый</mark> элемент</span></code>
+		<code>// ищет только <mark>первый</mark> элемент</code>
 		<code>element.querySelector('input[type=button].red-button')</code>
 		<code> </code>
 	</pre>
@@ -329,12 +329,12 @@
 		<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
 	</pre>
 	<pre>
-		<code>element.tagName <span class="comment rus">// имя тега</span></code>
-		<code>h1.tagName <span class="comment rus">// "H1"</span></code>
+		<code>element.tagName // имя тега</code>
+		<code>h1.tagName // "H1"</code>
 		<code> </code>
 
-		<code>element.innerHTML <span class="comment rus">// Внутреннее содержимое узла-элемента в виде HTML</span></code>
-		<code>h1.innerHTML <span class="comment rus">// "Ссылка: &lt;a href="/">тут&lt;/a>"</span></code>
+		<code>element.innerHTML // Внутреннее содержимое узла-элемента в виде HTML</code>
+		<code>h1.innerHTML // "Ссылка: &lt;a href="/">тут&lt;/a>"</code>
 		<code> </code>
 	</pre>
 </section>
@@ -345,14 +345,14 @@
 		<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
 	</pre>
 	<pre>
-		<code>element.outerHTML <span class="comment rus">// Полный HTML узла-элемента</span></code>
+		<code>element.outerHTML // Полный HTML узла-элемента</code>
 		<code>h1.outerHTML <span
-				class="comment rus">// "&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1>"</span></code>
+				class="comment rus">// "&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1>"</code>
 		<code> </code>
 
-		<code>element.textContent <span class="comment rus">// Содержит только текст внутри элемента,</span></code>
-		<code>                    <span class="comment rus">// за вычетом всех тегов</span></code>
-		<code>h1.textContent <span class="comment rus">// "Ссылка: "</span></code>
+		<code>element.textContent // Содержит только текст внутри элемента,</code>
+		<code>                    // за вычетом всех тегов</code>
+		<code>h1.textContent // "Ссылка: "</code>
 		<code> </code>
 	</pre>
 </section>
@@ -363,12 +363,12 @@
 		<code style="font-family: Menlo, Monaco, 'Courier New', monospace">&lt;h1>Ссылка: &lt;a href="/">тут&lt;/a>&lt;/h1></code>
 	</pre>
 	<pre>
-		<code>element.hidden <span class="comment rus">// Атрибут, отвечающий за видимость элемента</span></code>
-		<code>h1.hidden = true <span class="comment rus">// скроет заголовок</span></code>
+		<code>element.hidden // Атрибут, отвечающий за видимость элемента</code>
+		<code>h1.hidden = true // скроет заголовок</code>
 		<code> </code>
 
-		<code>link.href <span class="comment rus">// Адрес ссылки</span></code>
-		<code>input.value <span class="comment rus">// Значение, введённое в текстовое поле</span></code>
+		<code>link.href // Адрес ссылки</code>
+		<code>input.value // Значение, введённое в текстовое поле</code>
 		<code> </code>
 	</pre>
 </section>
@@ -377,12 +377,12 @@
 	<h2>Атрибуты элементов</h2>
 	<p class="medium-content"></p>
 	<pre>
-		<code>element.hasAttribute(name) <span class="comment rus">// проверяет наличие атрибута</span></code>
-		<code>element.getAttribute(name) <span class="comment rus">// получает значение атрибута</span></code>
-		<code>element.setAttribute(name, value) <span class="comment rus">// устанавливает атрибут</span></code>
-		<code>element.removeAttribute(name) <span class="comment rus">// удаляет атрибут</span></code>
+		<code>element.hasAttribute(name) // проверяет наличие атрибута</code>
+		<code>element.getAttribute(name) // получает значение атрибута</code>
+		<code>element.setAttribute(name, value) // устанавливает атрибут</code>
+		<code>element.removeAttribute(name) // удаляет атрибут</code>
 		<code> </code>
-		<code>elem.attributes <span class="comment rus">// получить все атрибуты</span></code>
+		<code>elem.attributes // получить все атрибуты</code>
 		<code> </code>
 	</pre>
 </section>
@@ -391,14 +391,14 @@
 	<h2>Создание элементов</h2>
 	<p class="medium-content"></p>
 	<pre>
-		<code>document.createElement(tag) <span class="comment rus">// создаёт элемент с тегом tag</span></code>
-		<code>document.createTextNode(value) <span class="comment rus">// создает текстовый узел</span></code>
-		<code>element.cloneNode(deep) <span class="comment rus">// клонирует элемент</span></code>
+		<code>document.createElement(tag) // создаёт элемент с тегом tag</code>
+		<code>document.createTextNode(value) // создает текстовый узел</code>
+		<code>element.cloneNode(deep) // клонирует элемент</code>
 		<code> </code>
-		<code>parent.appendChild(el) <span class="comment rus">// вставляет узел в конец</span></code>
-		<code>parent.removeChild(el) <span class="comment rus">// удаляет узел</span></code>
-		<code>parent.replaceChild(newEl, oldEl) <span class="comment rus">// заменяет узел</span></code>
-		<code>parent.insertBefore(elem, nextSibling) <span class="comment rus">// вставляет узел</span></code>
+		<code>parent.appendChild(el) // вставляет узел в конец</code>
+		<code>parent.removeChild(el) // удаляет узел</code>
+		<code>parent.replaceChild(newEl, oldEl) // заменяет узел</code>
+		<code>parent.insertBefore(elem, nextSibling) // вставляет узел</code>
 		<code> </code>
 	</pre>
 </section>
@@ -489,11 +489,11 @@
 	<h2><code>addEventListener</code> и <code>removeEventListener</code></h2>
 	<p class="medium-content"></p>
 	<pre>
-		<code><span class="comment rus">// добавление обработчика</span></code>
+		<code>// добавление обработчика</code>
 		<code>element.addEventListener(event, handler);</code>
 		<code> </code>
-		<code><span class="comment rus">// удаление обработчика</span></code>
-		<code><span class="comment rus">// нужно передать те же аргументы, что были у addEventListener</span></code>
+		<code>// удаление обработчика</code>
+		<code>// нужно передать те же аргументы, что были у addEventListener</code>
 		<code>element.removeEventListener(event, handler);</code>
 		<code> </code>
 	</pre>
@@ -571,14 +571,14 @@
 	<h2>Перехват события на определённой<br>стадии</h2>
 	<p>Используем третий аргумент <code>addEventListener</code></p>
 	<pre>
-		<code><span class="comment rus">// добавление обработчика</span></code>
+		<code>// добавление обработчика</code>
 		<code>element.addEventListener(event, handler, phase);</code>
 		<code> </code>
-		<code><span class="comment rus">// phase === true - событие будет перехвачено по дороге вниз</span></code>
-		<code><span class="comment rus">// phase === false - событие будет поймано при всплытии</span></code>
+		<code>// phase === true - событие будет перехвачено по дороге вниз</code>
+		<code>// phase === false - событие будет поймано при всплытии</code>
 		<code> </code>
-		<code><span class="comment rus">// при удалении нужно передать те же аргументы,</span></code>
-		<code><span class="comment rus">// что были у addEventListener</span></code>
+		<code>// при удалении нужно передать те же аргументы,</code>
+		<code>// что были у addEventListener</code>
 		<code>element.removeEventListener(event, handler, phase);</code>
 		<code> </code>
 	</pre>
@@ -588,12 +588,12 @@
 	<h2>Предотвращение обработки<br>событий</h2>
 	<p class="medium-content"></p>
 	<pre>
-		<code>event.preventDefault(); <span class="comment rus">// предотвращает поведение по умолчанию</span></code>
-		<code>event.stopPropagation(); <span class="comment rus">// предотвращает <mark>всплывание</mark> события</span></code>
-		<code>                         <span class="comment rus">// (все обработчики на этом элементе выполнятся)</span></code>
+		<code>event.preventDefault(); // предотвращает поведение по умолчанию</code>
+		<code>event.stopPropagation(); // предотвращает <mark>всплывание</mark> события</code>
+		<code>                         // (все обработчики на этом элементе выполнятся)</code>
 		<code> </code>
-		<code><span class="comment rus">// <strong>останавливает</strong> обработку событий на текущем элементе</span></code>
-		<code><span class="comment rus">// (все остальные обработчики на этом элементе не выполнятся)</span></code>
+		<code>// <strong>останавливает</strong> обработку событий на текущем элементе</code>
+		<code>// (все остальные обработчики на этом элементе не выполнятся)</code>
 		<code>event.stopImmediatePropagation();</code>
 		<code> </code>
 	</pre>
@@ -640,13 +640,13 @@
 	<h2>HTTP запрос</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs http">
-		<code><span class="comment rus">// METHOD URI HTTP/VERSION <= стартовая строка</span></code>
+		<code>// METHOD URI HTTP/VERSION <= стартовая строка</code>
 		<code>GET /lib/slides.css HTTP/1.1</code>
 		<code>Host: frontend-park-mailru.firebaseapp.com</code>
 		<code>Content-Type: text/css; charset=utf-8</code>
-		<code><span class="comment rus">другие заголовки...</span></code>
+		<code>другие заголовки...</code>
 		<code> </code>
-		<code>        <span class="comment rus">тело запроса (опционально)</span></code>
+		<code>        тело запроса (опционально)</code>
 		<code> </code>
 	</pre>
 </section>
@@ -655,13 +655,13 @@
 	<h2>HTTP ответ</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs http">
-		<code><span class="comment rus">// HTTP/VERSION STATUS_CODE REASON_PHRASE <= стартовая строка</span></code>
+		<code>// HTTP/VERSION STATUS_CODE REASON_PHRASE <= стартовая строка</code>
 		<code>HTTP/1.0 200 OK</code>
 		<code>Host: frontend-park-mailru.firebaseapp.com</code>
 		<code>Content-Type: text/css; charset=utf-8</code>
-		<code><span class="comment rus">другие заголовки...</span></code>
+		<code>другие заголовки...</code>
 		<code> </code>
-		<code>        <span class="comment rus">тело ответа (опционально)</span></code>
+		<code>        тело ответа (опционально)</code>
 		<code> </code>
 	</pre>
 </section>
@@ -670,12 +670,12 @@
 	<h2>Работа с XMLHttpRequest</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs js">
-		<code><span class="comment rus">// 1. Создаём новый объект XMLHttpRequest</span></code>
+		<code>// 1. Создаём новый объект XMLHttpRequest</code>
 		<code>const xhr = new XMLHttpRequest();</code>
-		<code><span class="comment rus">// 2. Конфигурируем его: GET-запрос на URL '/lib/slides.css'</span></code>
+		<code>// 2. Конфигурируем его: GET-запрос на URL '/lib/slides.css'</code>
 		<code>xhr.open('GET', '/lib/slides.css', <mark>false</mark>);</code>
 		<code> </code>
-		<code><span class="comment rus">// 3. Отсылаем запрос</span></code>
+		<code>// 3. Отсылаем запрос</code>
 		<code>xhr.send();</code>
 		<code> </code>
 	</pre>
@@ -685,8 +685,8 @@
 	<h2>Работа с XMLHttpRequest</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs js">
-		<code><span class="comment rus">// 4. Если код ответа сервера не 200, то это ошибка</span></code>
-		<code><span class="comment rus">console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</span></code>
+		<code>// 4. Если код ответа сервера не 200, то это ошибка</code>
+		<code>console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</code>
 		<code>if (+xhr.status === 200) {</code>
 		<code>    console.log(xhr.responseText);</code>
 		<code>} else {</code>
@@ -703,10 +703,10 @@
 		<code>const xhr = new XMLHttpRequest();</code>
 		<code>xhr.open('POST', '/post', <mark>false</mark>);</code>
 		<code> </code>
-		<code><span class="comment rus">// Выставляем заголовок</span></code>
+		<code>// Выставляем заголовок</code>
 		<code>xhr.<mark>setRequestHeader</mark>('Content-Type', 'application/json; charset=utf-8');</code>
 		<code>xhr.send(JSON.stringify({name: 'Alex'}));</code>
-		<code><span class="comment rus">// ждём ответа</span></code>
+		<code>// ждём ответа</code>
 		<code> </code>
 	</pre>
 </section>
@@ -723,7 +723,7 @@
 		<code>    console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</code>
 		<code>    console.log(xhr.responseText);</code>
 		<code>}</code>
-		<code>xhr.timeout = 5000; <span class="comment rus">// 5 секунд (в миллисекундах)</span></code>
+		<code>xhr.timeout = 5000; // 5 секунд (в миллисекундах)</code>
 		<code>xhr.send();</code>
 		<code> </code>
 	</pre>
@@ -733,12 +733,12 @@
 	<h2>Событие <code>readystatechange</code></h2>
 	<p class="medium-content"></p>
 	<pre class="hljs c">
-		<code><span class="comment rus">// Значения <mark>readyState</mark></span></code>
-		<code>const unsigned short UNSENT = 0; <span class="comment rus">// начальное состояние</span></code>
-		<code>const unsigned short OPENED = 1; <span class="comment rus">// вызван open</span></code>
-		<code>const unsigned short HEADERS_RECEIVED = 2; <span class="comment rus">// получены заголовки</span></code>
-		<code>const unsigned short LOADING = 3; <span class="comment rus">// загружается тело</span></code>
-		<code>const unsigned short DONE = 4; <span class="comment rus">// запрос завершён</span></code>
+		<code>// Значения <mark>readyState</mark></code>
+		<code>const unsigned short UNSENT = 0; // начальное состояние</code>
+		<code>const unsigned short OPENED = 1; // вызван open</code>
+		<code>const unsigned short HEADERS_RECEIVED = 2; // получены заголовки</code>
+		<code>const unsigned short LOADING = 3; // загружается тело</code>
+		<code>const unsigned short DONE = 4; // запрос завершён</code>
 		<code> </code>
 	</pre>
 </section>
@@ -884,7 +884,7 @@
 		<code>const xhr = new XMLHttpRequest();</code>
 		<code>xhr.open('GET', '/auth', <mark>true</mark>);</code>
 		<code> </code>
-		<code>xhr.withCredentials = true; <span class="comment rus">// отправляем cookies</span></code>
+		<code>xhr.withCredentials = true; // отправляем cookies</code>
 		<code> </code>
 		<code>xhr.send();</code>
 		<code> </code>

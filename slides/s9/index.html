@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Работа со стилями. Разработка под мобильные устройства</title>
+	<title>Современные возможности CSS, разработка под мобильные устройства</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,17 +38,17 @@
 <body class="shower list">
 
 <header class="caption">
-	<h1>Работа со стилями. Разработка под мобильные устройства</h1>
-	<p>Технопарк, 2017 г.</p>
+	<h1>Современные возможности CSS, разработка под мобильные устройства</h1>
+	<p>Технопарк, осень, 2017 г.</p>
 </header>
 
-<section class="slide">
+<section class="slide first">
 	<h2 class="shout"><span style="font-size: 70%">Стили. Разработка под мобильные устройства</span><br/>
-		<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a>
+		<small>Слайды доступны по ссылке<br/>
+			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
 		</small>
 	</h2>
 </section>
-
 
 <section class="slide">
 	<h2 class="shout"><span style="font-size: 100%">Стили и <span style="color:darkred">CSS</span></span></h2>
@@ -635,11 +635,11 @@
 <section class="slide">
 	<h2>Использование в CSS</h2>
 	<pre class="hljs css">
-			<code>@media screen and (color) { <span class="comment rus">/* Для цветных экранов */</span></code>
+			<code>@media screen and (color) { /* Для цветных экранов */</code>
     		<code>    body { background: whitesmoke; }</code>
    		 	<code>}</code>
 			<code> </code>
-			<code><span class="comment rus">/* Для широкоформатных экранов */</span></code>
+			<code>/* Для широкоформатных экранов */</code>
 			<code>@media screen and (min-device-aspect-ratio: 16/10) {</code>
     		<code>    ...</code>
    		 	<code>}</code>
@@ -650,10 +650,10 @@
 <section class="slide">
 	<h2>Использование в CSS</h2>
 	<pre class="hljs css">
-			<code>@media projection { <span class="comment rus">/* проектор */</span> }</code>
-    		<code>@media handheld { <span class="comment rus">/* смартфоны и носимые устройства */</span> }</code>
-   		 	<code>@media tv { <span class="comment rus">/* телевизоры */</span> }</code>
-			<code>@media braille { <span class="comment rus">/* устройства для слабовидящих */</span> }</code>
+			<code>@media projection { /* проектор */</span> }</code>
+    		<code>@media handheld { /* смартфоны и носимые устройства */</span> }</code>
+   		 	<code>@media tv { /* телевизоры */</span> }</code>
+			<code>@media braille { /* устройства для слабовидящих */</span> }</code>
 			<code> </code>
 		</pre>
 </section>
@@ -680,7 +680,7 @@
     		<code>}</code>
     		<code> </code>
     		<code>@supports not (display: flex) {</code>
-			<code>    div { float: left; } <span class="comment rus">/* задан альтернативный стиль */</span></code>
+			<code>    div { float: left; } /* задан альтернативный стиль */</code>
     		<code>}</code>
     		<code> </code>
 		</pre>
@@ -693,7 +693,7 @@
     		<code>          (display: -moz-flex) or</code>
    		 	<code>          (display: flex) {</code>
    		 	<code> </code>
-   		 	<code>    <span class="comment rus">/* добавляем сюда ваших клёвых стилей */</span></code>
+   		 	<code>    /* добавляем сюда ваших клёвых стилей */</code>
    		 	<code>}</code>
    		 	<code> </code>
 		</pre>
@@ -1060,6 +1060,8 @@
 <script src="/lib/shower/shower.min.js"></script>
 <script src="/lib/hljs/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/reload/reload.js"></script>
 
 </body>
 </html>

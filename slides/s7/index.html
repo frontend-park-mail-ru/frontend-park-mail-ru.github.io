@@ -51,6 +51,14 @@
 </section>
 
 <section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 140%">170 слайдов</span></h2>
+</section>
+
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 140%">180 минут 🤔</span></h2>
+</section>
+
+<section class="slide question">
 	<h2 style="text-align: center; padding: 0"><span style="font-size: 80%">ISO/IEC 16262:2011(E)</span></h2>
 </section>
 
@@ -62,8 +70,19 @@
 	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ECMAScript</span></h2>
 </section>
 
+<section class="slide question" style="background-color: #f7df1e;">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="logo.svg" style="transform-origin: center; transform: translate(-40%,-45%) scale(0.9);">
+	</div>
+</section>
+
+<section class="slide question" style="background-color: #f7df1e;">
+	<div style="position: absolute; right: 5%; bottom: 5%; font-size: 320px; font-weight: 600; line-height: 1; letter-spacing: -20px; color: black;">ЖиЕс</div>
+</section>
+
 <section class="slide">
 	<h2>Что есть JavaScript?</h2>
+	<p class="medium-content"></p>
 	<ul lang="ru">
 		<li>ECMAScript &mdash; язык программирования</li>
 		<li>JavaScript &mdash; язык программирования (коммерческое название)</li>
@@ -78,6 +97,7 @@
 
 <section class="slide">
 	<h2>Как это было</h2>
+	<p class="medium-content"></p>
 	<ul lang="en">
 		<li><strong>Brendan Eich</strong> разработал прототип языка в мае 1995 за 10 дней, тогда он назывался <strong>Mocha</strong>
 		</li>
@@ -95,6 +115,7 @@
 
 <section class="slide">
 	<h2>Как это было</h2>
+	<p class="medium-content"></p>
 	<ul lang="en">
 		<li>2003 &mdash;
 			<mark>ECMAScript 4</mark>
@@ -115,8 +136,11 @@
 		<li>Июнь 2016 &mdash;
 			<mark>ECMAScript 2016</mark>
 		</li>
-		<li>Лето 2017 года &mdash;
+		<li>Июнь 2017 &mdash;
 			<mark>ECMAScript 2017</mark>
+		</li>
+		<li>Лето 2018 года &mdash;
+			<mark>ECMAScript 2018</mark>
 		</li>
 		<li>...</li>
 	</ul>
@@ -124,6 +148,7 @@
 
 <section class="slide">
 	<h2>Современное состояние JavaScript</h2>
+	<p class="medium-content"></p>
 	<ul lang="ru">
 		<li>ES6-модули <em>и</em> ES6-классы</li>
 		<li>Стрелочные функции</li>
@@ -131,6 +156,8 @@
 		<li>Спреды</li>
 		<li>Итераторы <em>и</em> генераторы</li>
 		<li>Aсинхронные функции</li>
+		<li>Proxy</li>
+		<li><code>SharedArrayBuffer</code> и <code>Atomics</code></li>
 		<li><em>and more...</em></li>
 	</ul>
 </section>
@@ -141,47 +168,50 @@
 
 <section class="slide">
 	<h2>Поднятие переменных</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>console.log(typeof foo);</code>
-			<code>console.log(typeof bar);</code>
-			<code> </code>
-			<code>var foo = 'bar';</code>
-			<code>if (false) {</code>
-			<code>    var bar = 42;</code>
-			<code>}</code>
-			<code> </code>
-			<code> </code>
-		</pre>
+		<code>console.log(typeof foo);</code>
+		<code>console.log(typeof bar);</code>
+		<code> </code>
+		<code>var foo = 'bar';</code>
+		<code>if (false) {</code>
+		<code>    var bar = 42;</code>
+		<code>}</code>
+		<code> </code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Поднятие переменных</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>console.log(typeof foo);  <span class="comment">// undefined</span></code>
-			<code>console.log(typeof bar);  <span class="comment">// undefined</span></code>
-			<code> </code>
-			<code>var foo = 'bar';</code>
-			<code>if (false) {</code>
-			<code>    var bar = 42;</code>
-			<code>}</code>
-			<code> </code>
-			<code> </code>
-		</pre>
+		<code>console.log(typeof foo);  // undefined</code>
+		<code>console.log(typeof bar);  // undefined</code>
+		<code> </code>
+		<code>var foo = 'bar';</code>
+		<code>if (false) {</code>
+		<code>    var bar = 42;</code>
+		<code>}</code>
+		<code> </code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2><code>let / const</code></h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>if (true) {</code>
-			<code>    <mark>let</mark> bar = 42;</code>
-			<code>}</code>
-			<code>console.log(typeof foo);  <span class="comment">// ReferenceError</span></code>
-			<code>console.log(typeof bar);  <span class="comment">// ReferenceError</span></code>
-			<code> </code>
-			<code><mark>const</mark> foo = 'bar';</code>
-			<code>foo = 'baz';  <span class="comment">// TypeError</span></code>
-			<code> </code>
-		</pre>
+		<code>if (true) {</code>
+		<code>    <mark>let</mark> bar = 42;</code>
+		<code>}</code>
+		<code>console.log(typeof foo);  // ReferenceError</code>
+		<code>console.log(typeof bar);  // ReferenceError</code>
+		<code> </code>
+		<code><mark>const</mark> foo = 'bar';</code>
+		<code>foo = 'baz';  // TypeError</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -191,53 +221,76 @@
 
 <section class="slide">
 	<h2>Шаблонные строки</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>const name = 'Jon Snow';</code>
-			<code>const answer = 40;</code>
-			<code> </code>
-			<code>const res = `Hello, ${name}! Answer is ${answer + 2}`</code>
-			<code>console.log(res);  <span class="comment">// Hello, Jon Snow! Answer is 42</span></code>
-			<code> </code>
-			<code>const multiline = `First line</code>
-			<code><span hidden>`</span>Second line</code>
-			<code><span hidden>`</span>Third line`;</code>
-			<code>multiline.split('\n').length === 3; <span class="comment">// true</span></code>
-			<code> </code>
-		</pre>
+		<code>const name = 'Jon Snow';</code>
+		<code>const answer = 40;</code>
+		<code> </code>
+		<code>const res = `Hello, ${name}! Answer is ${answer + 2}`</code>
+		<code>console.log(res);  // Hello, Jon Snow! Answer is 42</code>
+		<code> </code>
+		<code>const multiline = `First line</code>
+		<code><span hidden>`</span>Second line</code>
+		<code><span hidden>`</span>Third line`;</code>
+		<code>multiline.split('\n').length === 3; // true</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Поддержка Юникода</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>// unicode support</code>
+		<code>console.log('😀'.length); // 2</code>
+		<code>console.log('\u{1F600}'); // <span
+				style="font-style: normal">😀</span></code>
+		<code>console.log('\uD83D\uDE00'); // <span
+				style="font-style: normal">😀</span></code>
+		<code> </code>
+		<code>String.prototype.<mark>charAt</mark>(index);       '😀'.charAt(0) === �</code>
+		<code>String.prototype.<mark>charCodeAt</mark>(index);   '😀'.charCodeAt(0) === 55357</code>
+		<code>String.prototype.<mark>codePointAt</mark>(index);  '😀'.codePointAt(0) === 128512</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Поддержка Юникода</h2>
 	<pre class="hljs js">
-			<code><span class="comment">// unicode support</span></code>
-			<code>console.log('😀'.length); <span class="comment">// 2</span></code>
-			<code>console.log('\u{1F600}'); <span class="comment">// <span
-					style="font-style: normal">😀</span></span></code>
-			<code>console.log('\uD83D\uDE00'); <span class="comment">// <span
-					style="font-style: normal">😀</span></span></code>
-			<code> </code>
-			<code>String.prototype.<mark>charAt</mark>(index);       '😀'.charAt(0) === �</code>
-			<code>String.prototype.<mark>charCodeAt</mark>(index);   '😀'.charCodeAt(0) === 55357</code>
-			<code>String.prototype.<mark>codePointAt</mark>(index);  '😀'.codePointAt(0) === 128512</code>
-			<code> </code>
-		</pre>
+		<code>const переменная = 42;</code>
+		<code>const джонни = {</code>
+		<code>    имя: 'Jhon',</code>
+		<code>    фамилия: 'Snow',</code>
+		<code>    возраст: 20</code>
+		<code>};</code>
+		<code> </code>
+		<code>function распечатать (пользователь) {</code>
+		<code>    console.log(`${пользователь.имя} ${пользователь.фамилия}`);</code>
+		<code>    console.log(`Возраст ${пользователь.возраст} лет`);</code>
+		<code>}</code>
+		<code> </code>
+		<code>распечатать(джонни);</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Дополнительные методы строк</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment">// ECMAScript 2015 features</span></code>
-			<code>String.prototype.includes(searchString, position = 0)</code>
-			<code>String.prototype.endsWith(searchString, position = length)</code>
-			<code>String.prototype.startsWith(searchString, position = 0)</code>
-			<code>String.prototype.repeat(times)</code>
-			<code> </code>
-			<code><span class="comment">// ECMAScript 2017 features</span></code>
-			<code>String.prototype.padStart(maxLength, fillString=' ')</code>
-			<code>String.prototype.padEnd(maxLength, fillString=' ')</code>
-			<code> </code>
-			<code> </code>
-		</pre>
+		<code>// ECMAScript 2015 features</code>
+		<code>String.prototype.includes(searchString, position = 0)</code>
+		<code>String.prototype.endsWith(searchString, position = length)</code>
+		<code>String.prototype.startsWith(searchString, position = 0)</code>
+		<code>String.prototype.repeat(times)</code>
+		<code> </code>
+		<code>// ECMAScript 2017 features</code>
+		<code>String.prototype.padStart(maxLength, fillString=' ')</code>
+		<code>String.prototype.padEnd(maxLength, fillString=' ')</code>
+		<code> </code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -247,51 +300,54 @@
 
 <section class="slide">
 	<h2>Промисы</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>function getJSON(url) {</code>
-			<code>    return new <mark>Promise</mark>(function (resolve, reject) {</code>
-			<code>        const xhr = new XMLHttpRequest();</code>
-			<code>        xhr.open('GET', url, true);</code>
-			<code>        xhr.onreadystatechange = function () {</code>
-			<code>            if (xhr.readyState === 4) {</code>
-			<code>                <mark>resolve(JSON.parse(xhr.responseText));</mark></code>
-			<code>            }</code>
-			<code>        }</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>function getJSON(url) {</code>
+		<code>    return new <mark>Promise</mark>(function (resolve, reject) {</code>
+		<code>        const xhr = new XMLHttpRequest();</code>
+		<code>        xhr.open('GET', url, true);</code>
+		<code>        xhr.onreadystatechange = function () {</code>
+		<code>            if (xhr.readyState === 4) {</code>
+		<code>                <mark>resolve(JSON.parse(xhr.responseText));</mark></code>
+		<code>            }</code>
+		<code>        }</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Промисы</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>getJSON('/data/books.json')</code>
-			<code>    .<mark>then</mark>(function (books) {</code>
-			<code>        books.forEach(function (book) {</code>
-			<code>            console.log(book.title);</code>
-			<code>        });</code>
-			<code>    })</code>
-			<code>    .<mark>catch</mark>(function (error) {</code>
-			<code>         console.error(error);</code>
-			<code>    });</code>
-			<code> </code>
-		</pre>
+		<code>getJSON('/data/books.json')</code>
+		<code>    .<mark>then</mark>(function (books) {</code>
+		<code>        books.forEach(function (book) {</code>
+		<code>            console.log(book.title);</code>
+		<code>        });</code>
+		<code>    })</code>
+		<code>    .<mark>catch</mark>(function (error) {</code>
+		<code>         console.error(error);</code>
+		<code>    });</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Методы промисов</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment rus">// Вернёт промис в состоянии <mark>fulfilled</mark> («выполнено успешно»)</span></code>
-			<code>Promise.resolve( ... );</code>
-			<code><span class="comment rus">// Вернёт промис в состоянии <mark>rejected</mark> («выполнено с ошибкой»)</span></code>
-			<code>Promise.reject( ... );</code>
-			<code><span class="comment rus">// Выполнит все промисы "параллельно"</span></code>
-			<code>Promise.all( [ ... ] );</code>
-			<code><span class="comment rus">// Вернёт промис, выполнившийся раньше всех</span></code>
-			<code>Promise.race( [ ... ] );</code>
-			<code> </code>
-		</pre>
+		<code>// Вернёт промис в состоянии <mark>fulfilled</mark> («выполнено успешно»)</code>
+		<code>Promise.resolve( ... );</code>
+		<code>// Вернёт промис в состоянии <mark>rejected</mark> («выполнено с ошибкой»)</code>
+		<code>Promise.reject( ... );</code>
+		<code>// Выполнит все промисы "параллельно"</code>
+		<code>Promise.all( [ ... ] );</code>
+		<code>// Вернёт промис, выполнившийся раньше всех</code>
+		<code>Promise.race( [ ... ] );</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -301,109 +357,115 @@
 
 <section class="slide">
 	<h2>ES6-классы</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code><mark>class</mark> User {</code>
-			<code>    <mark>constructor</mark>(login, password) {</code>
-			<code>        this._login = login;</code>
-			<code>        this._password = password;</code>
-			<code>    }</code>
-			<code>    hello() {</code>
-			<code>        console.log('Hello, ' + this._login);</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code><mark>class</mark> User {</code>
+		<code>    <mark>constructor</mark>(login, password) {</code>
+		<code>        this._login = login;</code>
+		<code>        this._password = password;</code>
+		<code>    }</code>
+		<code>    hello() {</code>
+		<code>        console.log('Hello, ' + this._login);</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>ES6-классы: cтатические методы</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>class MathUtils {</code>
-			<code>    <mark>static</mark> sqr(number) {</code>
-			<code>        return number * number;</code>
-			<code>    }</code>
-			<code>    <mark>static</mark> abs(number) {</code>
-			<code>        return number < 0 ? -number : number;</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>class MathUtils {</code>
+		<code>    <mark>static</mark> sqr(number) {</code>
+		<code>        return number * number;</code>
+		<code>    }</code>
+		<code>    <mark>static</mark> abs(number) {</code>
+		<code>        return number < 0 ? -number : number;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>ES6-классы</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>const user1 = new User('Alex', 'qwerty123');</code>
-			<code>const user2 = new User('Jon', 'passw0rd');</code>
-			<code> </code>
-			<code>user1.hello();       // Hello, Alex</code>
-			<code>user2.hello();       // Hello, Jon</code>
-			<code> </code>
-			<code>MathUtils.sqr(6);    // 36</code>
-			<code>MathUtils.abs(-42);  // 42</code>
-			<code> </code>
-		</pre>
+		<code>const user1 = new User('Alex', 'qwerty123');</code>
+		<code>const user2 = new User('Jon', 'passw0rd');</code>
+		<code> </code>
+		<code>user1.hello();       // Hello, Alex</code>
+		<code>user2.hello();       // Hello, Jon</code>
+		<code> </code>
+		<code>MathUtils.sqr(6);    // 36</code>
+		<code>MathUtils.abs(-42);  // 42</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>ES6-классы: геттеры и сеттеры</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>class Shape {</code>
-			<code>    constructor(width, height) {</code>
-			<code>        this._width = width;</code>
-			<code>        this._height = height;</code>
-			<code>    }</code>
-			<code>    <mark>get</mark> Square() { return this._width * this._height; }</code>
-			<code>    <mark>set</mark> SideLength(value) {</code>
-			<code>        this._width = this._height = value;</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>class Shape {</code>
+		<code>    constructor(width, height) {</code>
+		<code>        this._width = width;</code>
+		<code>        this._height = height;</code>
+		<code>    }</code>
+		<code>    <mark>get</mark> Square() { return this._width * this._height; }</code>
+		<code>    <mark>set</mark> SideLength(value) {</code>
+		<code>        this._width = this._height = value;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>ES6-классы: геттеры и сеттеры</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>const shape = new Shape(6, 12);</code>
-			<code>console.log(shape.Square);   // 72</code>
-			<code> </code>
-			<code>shape.SideLength = 7;</code>
-			<code>console.log(shape.Square);   // 49</code>
-			<code> </code>
-		</pre>
+		<code>const shape = new Shape(6, 12);</code>
+		<code>console.log(shape.Square);   // 72</code>
+		<code> </code>
+		<code>shape.SideLength = 7;</code>
+		<code>console.log(shape.Square);   // 49</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>ES6-классы: наследование</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>class View {</code>
+		<code>    constructor(el) {</code>
+		<code>        this._el = el;</code>
+		<code>    }</code>
+		<code>    hide() {</code>
+		<code>        this._el.hidden = true;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>ES6-классы: наследование</h2>
 	<pre class="hljs js">
-			<code>class View {</code>
-			<code>    constructor(el) {</code>
-			<code>        this._el = el;</code>
-			<code>    }</code>
-			<code>    hide() {</code>
-			<code>        this._el.hidden = true;</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>ES6-классы: наследование</h2>
-	<pre class="hljs js">
-			<code>class LoginView <mark>extends View</mark> {</code>
-			<code>    constructor() {</code>
-			<code>        <mark>super</mark>(document.getElementById('login'));</code>
-			<code>        this._form = this._el.querySelector('.login__form');</code>
-			<code>    }</code>
-			<code>    hide() {</code>
-			<code>        <mark>super</mark>.hide();</code>
-			<code>        this._form.clear();</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>class LoginView <mark>extends View</mark> {</code>
+		<code>    constructor() {</code>
+		<code>        <mark>super</mark>(document.getElementById('login'));</code>
+		<code>        this._form = this._el.querySelector('.login__form');</code>
+		<code>    }</code>
+		<code>    hide() {</code>
+		<code>        <mark>super</mark>.hide();</code>
+		<code>        this._form.clear();</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -413,34 +475,37 @@
 
 <section class="slide">
 	<h2>ES6-модули</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment rus">// экспортируем значения</span></code>
-			<code><mark>export</mark> const PI = 4;</code>
-			<code>export function square(number) { return number * number; }</code>
-			<code>export <mark>default</mark> class User {</code>
-			<code>    constructor() { ... }</code>
-			<code>}</code>
-			<code> </code>
-			<code>const name = 'Jon Snow', years = 42;</code>
-			<code>export <mark>{ name, years as age }</mark>;</code>
-			<code> </code>
-		</pre>
+		<code>// экспортируем значения</code>
+		<code><mark>export</mark> const PI = 4;</code>
+		<code>export function square(number) { return number * number; }</code>
+		<code>export <mark>default</mark> class User {</code>
+		<code>    constructor() { ... }</code>
+		<code>}</code>
+		<code> </code>
+		<code>const name = 'Jon Snow', years = 42;</code>
+		<code>export <mark>{ name, years as age }</mark>;</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>ES6-модули</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment rus">// импортируем значения</span></code>
-			<code><mark>import</mark> { PI, square } from '../module.js';</code>
-			<code>import { name as login } from '../module.js';</code>
-			<code>import UserClass from '../module.js';</code>
-			<code>import <mark>* as Utils</mark> from '../module.js';</code>
-			<code>import '../module.js';</code>
-			<code><span class="comment rus">// ре-экспорт</span></code>
-			<code><mark>export</mark> { PI, login as username } <mark>from</mark> '../module.js';</code>
-			<code>export * from '../module.js';</code>
-			<code> </code>
-		</pre>
+		<code>// импортируем значения</code>
+		<code><mark>import</mark> { PI, square } from '../module.js';</code>
+		<code>import { name as login } from '../module.js';</code>
+		<code>import UserClass from '../module.js';</code>
+		<code>import <mark>* as Utils</mark> from '../module.js';</code>
+		<code>import '../module.js';</code>
+		<code> </code>
+		<code>// ре-экспорт</code>
+		<code><mark>export</mark> { PI, login as username } <mark>from</mark> '../module.js';</code>
+		<code>export * from '../module.js';</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -451,78 +516,99 @@
 <section class="slide">
 	<h2>Объявление литералов</h2>
 	<pre class="hljs js">
-			<code>const login = 'Jon Snow', age = 42;</code>
-			<code>const User = {login, age}; // {login: 'Jon Snow', age: 42}</code>
-			<code> </code>
-			<code>const Obj = {</code>
-			<code>    <mark>func()</mark> { ... },                   // inline methods</code>
-			<code>    array: [1, 2, 3, 4, 5,],          // trailing commas</code>
-			<code>    <mark>get Arr()</mark> { return this.array; }, // object getters & setters</code>
-			<code>    prop: value,                      // trailing commas</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>// es6 features</code>
+		<code>const login = 'Jon Snow', age = 42;</code>
+		<code>const User = {login, age}; // {login: 'Jon Snow', age: 42}</code>
+		<code> </code>
+		<code>const Obj = {</code>
+		<code>    <mark>func()</mark> { ... },                   // inline methods</code>
+		<code>    array: [1, 2, 3, 4, 5,],          // trailing commas</code>
+		<code>    <mark>get Arr()</mark> { return this.array; }, // object getters & setters</code>
+		<code>    prop: value,                      // trailing commas</code>
+		<code>    ['foo' + 'bar']: value,           // computed property names</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Объявление функций</h2>
+	<pre class="hljs js">
+		<code>// es8 features</code>
+		<code>function UseFull (</code>
+		<code>    param1 ,</code>
+		<code>    param2 ,</code>
+		<code>    param3 ,   // trailing commas</code>
+		<code>) { return param1 + param2 + param3; }</code>
+		<code> </code>
+		<code>UseFull (</code>
+		<code>    42 ,</code>
+		<code>    100500 ,</code>
+		<code>    -200600 ,   // trailing commas</code>
+		<code>); // -100058</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Дополнительные методы</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// проверка двух выражений на совпадение</span></code>
-			<code>Object.is(value1, value2);</code>
-			<code> </code>
-			<code>Object.is(1, 1);              // true</code>
-			<code>Object.is(1, '1');            // false</code>
-			<code>Object.is(false, false);      // true</code>
-			<code>Object.is({a: 42}, {a: 42});  // false</code>
-			<code> </code>
-			<code>Object.is(NaN, NaN);    // <mark>true</mark>   (NaN === NaN) === false</code>
-			<code>Object.is(0, -0);       // <mark>false</mark>  (-0 === 0) === true</code>
-			<code> </code>
-		</pre>
+		<code>// проверка двух выражений на совпадение</code>
+		<code>Object.is(value1, value2);</code>
+		<code> </code>
+		<code>Object.is(1, 1);              // true</code>
+		<code>Object.is(1, '1');            // false</code>
+		<code>Object.is(false, false);      // true</code>
+		<code>Object.is({a: 42}, {a: 42});  // false</code>
+		<code> </code>
+		<code>Object.is(NaN, NaN);    // <mark>true</mark>   (NaN === NaN) === false</code>
+		<code>Object.is(0, -0);       // <mark>false</mark>  (-0 === 0) === true</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Дополнительные методы</h2>
 	<pre class="hljs js">
-			<code> <span class="comment rus">// копирование свойств</span></code>
-			<code>Object.assign(target, ...sources);</code>
-			<code> </code>
-			<code>const s1 = {a: 'Jhon'}, s2 = {b: 42};</code>
-			<code>const result = Object.assign({}, s1, s2);</code>
-			<code>// result: {</code>
-			<code>//     a: 'Jhon',</code>
-			<code>//     b: 42</code>
-			<code>// }</code>
-			<code> </code>
-		</pre>
+		<code> // копирование свойств</code>
+		<code>Object.assign(target, ...sources);</code>
+		<code> </code>
+		<code>const s1 = {a: 'Jhon'}, s2 = {b: 42};</code>
+		<code>const result = Object.assign({}, s1, s2);</code>
+		<code>// result: {</code>
+		<code>//     a: 'Jhon',</code>
+		<code>//     b: 42</code>
+		<code>// }</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Дополнительные методы</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// Запаковывание объектов</span></code>
-			<code>Object.<mark>seal</mark>(target);    <span class="comment rus">// можно изменить значение имеющихся свойств,</span></code>
-			<code>                        <span class="comment rus">// но нельзя добавить или удалить их</span></code>
-			<code><span class="comment rus">// Заморозка объектов</span></code>
-			<code>Object.<mark>freeze</mark>(target);  <span class="comment rus">// нельзя изменять значения имеющихся свойств,</span></code>
-			<code>                        <span class="comment rus">// удалять их, добавлять новые</span></code>
-			<code> </code>
-			<code>Object.<mark>isFrozen</mark>(target);   Object.<mark>isSealed</mark>(target);</code>
-			<code> </code>
-		</pre>
+		<code>// Запаковывание объектов</code>
+		<code>Object.<mark>seal</mark>(target);    // можно изменить значение имеющихся свойств,</code>
+		<code>                        // но нельзя добавить или удалить их</code>
+		<code>// Заморозка объектов</code>
+		<code>Object.<mark>freeze</mark>(target);  // нельзя изменять значения имеющихся свойств,</code>
+		<code>                        // удалять их, добавлять новые</code>
+		<code> </code>
+		<code>Object.<mark>isFrozen</mark>(target);   Object.<mark>isSealed</mark>(target);</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Дополнительные методы</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// Перебор ключей, значений и свойств</span></code>
-			<code>const user = {login: 'Jon Snow', age: 42};</code>
-			<code> </code>
-			<code>Object.<mark>keys</mark>(user);     // ['login', 'age']</code>
-			<code>Object.<mark>values</mark>(user);   // ['Jon Snow', 42]</code>
-			<code>Object.<mark>entries</mark>(user);  // [['login', 'Jon Snow'], ['age', 42]]</code>
-			<code> </code>
-		</pre>
+		<code>// Перебор ключей, значений и свойств</code>
+		<code>const user = {login: 'Jon Snow', age: 42};</code>
+		<code> </code>
+		<code>Object.<mark>keys</mark>(user);     // ['login', 'age']</code>
+		<code>Object.<mark>values</mark>(user);   // ['Jon Snow', 42]</code>
+		<code>Object.<mark>entries</mark>(user);  // [['login', 'Jon Snow'], ['age', 42]]</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -533,22 +619,23 @@
 <section class="slide">
 	<h2>Стрелочные функции</h2>
 	<pre class="hljs js">
-			<code>const hello = () => console.log('Hello, World!');</code>
-			<code>const sqr = num => num * 2;</code>
-			<code>[1, 2, 3, 4].map(sqr); // [1, 4, 9, 16]</code>
-			<code> </code>
-			<code>const compare = (left, right) => {</code>
-			<code>    if (left.length === right.length) {</code>
-			<code>        return left.localeCompare(right);</code>
-			<code>    }</code>
-			<code>    return left.length - right.length;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>const hello = () => console.log('Hello, World!');</code>
+		<code>const sqr = num => num * 2;</code>
+		<code>[1, 2, 3, 4].map(sqr); // [1, 4, 9, 16]</code>
+		<code> </code>
+		<code>const compare = (left, right) => {</code>
+		<code>    if (left.length === right.length) {</code>
+		<code>        return left.localeCompare(right);</code>
+		<code>    }</code>
+		<code>    return left.length - right.length;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Стрелочные функции</h2>
+	<p class="small-content"></p>
 	<ul lang="ru">
 		<li>Короткий синтаксис</li>
 		<li>Не являются <em>"настоящими"</em> функциями, не имеют своего <code>this</code> и своего
@@ -566,33 +653,35 @@
 
 <section class="slide">
 	<h2><code>Map</code> &mdash; хэш-таблица</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>const map = new <mark>Map</mark>();</code>
-			<code>map.set(key, value);   <span class="comment rus">// добавить значение</span></code>
-			<code>map.get(key);          <span class="comment rus">// получить значение</span></code>
-			<code>map.has(key);          <span class="comment rus">// проверить наличие ключа</span></code>
-			<code>map.delete(key);   map.clear();</code>
-			<code> </code>
-			<code>map.size;              <span class="comment rus">// размер Map</span></code>
-			<code>map.forEach(callback); <span class="comment rus">// перебор ключей, свойств, значений</span></code>
-			<code>map.values();      map.keys();   map.entries();</code>
-			<code> </code>
-		</pre>
+		<code>const map = new <mark>Map</mark>();</code>
+		<code>map.set(key, value);   // добавить значение</code>
+		<code>map.get(key);          // получить значение</code>
+		<code>map.has(key);          // проверить наличие ключа</code>
+		<code>map.delete(key);   map.clear();</code>
+		<code> </code>
+		<code>map.size;              // размер Map</code>
+		<code>map.forEach(callback); // перебор ключей, свойств, значений</code>
+		<code>map.values();      map.keys();   map.entries();</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2><code>Set</code> &mdash; набор значений<br/>без повторения</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>const set = new <mark>Set</mark>();</code>
-			<code>set.add(value);          <span class="comment rus">// добавить значение</span></code>
-			<code>set.has(value);          <span class="comment rus">// проверить наличие значения</span></code>
-			<code>set.delete(value);   set.clear();</code>
-			<code> </code>
-			<code>set.size;              <span class="comment rus">// размер Set</span></code>
-			<code>set.forEach(callback); <span class="comment rus">// перебор ключей, свойств, значений</span></code>
-			<code>set.values();      set.keys();   set.entries();</code>
-			<code> </code>
-		</pre>
+		<code>const set = new <mark>Set</mark>();</code>
+		<code>set.add(value);          // добавить значение</code>
+		<code>set.has(value);          // проверить наличие значения</code>
+		<code>set.delete(value);   set.clear();</code>
+		<code> </code>
+		<code>set.size;              // размер Set</code>
+		<code>set.forEach(callback); // перебор ключей, свойств, значений</code>
+		<code>set.values();      set.keys();   set.entries();</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -602,40 +691,35 @@
 
 <section class="slide">
 	<h2><code>Reflect</code></h2>
-	<p class="small-content">Встроенный JavaScript объект, предоставляющий методы для перехвата взаимодействий с
-		объектами и работы с рефлексией в JavaScript</p>
-</section>
-
-<section class="slide">
-	<h2>Методы <code>Reflect</code></h2>
+	<p class="medium-content">Встроенный JavaScript объект, предоставляющий методы для перехвата взаимодействий с объектами и работы с рефлексией в JavaScript</p>
 	<pre class="hljs js">
-			<code>Reflect.apply(target, thisArgument, argumentsList)</code>
-			<code>Reflect.construct(target, argumentsList)</code>
-			<code> </code>
-			<code>Reflect.get(target, propertyKey)</code>
-			<code>Reflect.has()</code>
-			<code> </code>
-			<code>Reflect.getPrototypeOf(target)</code>
-			<code>Reflect.setPrototypeOf(target, prototype)</code>
-			<code> </code>
-		</pre>
+		<code>Reflect.apply(target, thisArgument, argumentsList)</code>
+		<code>Reflect.construct(target, argumentsList)</code>
+		<code> </code>
+		<code>Reflect.get(target, propertyKey)</code>
+		<code>Reflect.has()</code>
+		<code> </code>
+		<code>Reflect.getPrototypeOf(target)</code>
+		<code>Reflect.setPrototypeOf(target, prototype)</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Работа с дескрипторами</h2>
 	<pre class="hljs js">
-			<code>// Reflect.<mark>defineProperty</mark>(target, propertyKey, attributes)</code>
-			<code>const object = {};</code>
-			<code>Reflect.defineProperty(object, 'foo', {</code>
-			<code>    enumerable: false,    <span class="comment rus">// разрешает перечисление</span></code>
-			<code>    writable: false,      <span class="comment rus">// разрешает перезапись</span></code>
-			<code>    configurable: false,  <span class="comment rus">// разрешает изменение дескриптора</span></code>
-			<code>    value: undefined      <span class="comment rus">// значение свойства</span></code>
-			<code>    get: undefined        <span class="comment rus">// геттер</span></code>
-			<code>    set: undefined        <span class="comment rus">// сеттер</span></code>
-			<code>}</code>
-			<code></code>
-		</pre>
+		<code>// Reflect.<mark>defineProperty</mark>(target, propertyKey, attributes)</code>
+		<code>const object = {};</code>
+		<code>Reflect.defineProperty(object, 'foo', {</code>
+		<code>    enumerable: false,    // разрешает перечисление</code>
+		<code>    writable: false,      // разрешает перезапись</code>
+		<code>    configurable: false,  // разрешает изменение дескриптора</code>
+		<code>    value: undefined      // значение свойства</code>
+		<code>    get: undefined        // геттер</code>
+		<code>    set: undefined        // сеттер</code>
+		<code>}</code>
+		<code></code>
+	</pre>
 </section>
 
 
@@ -645,13 +729,59 @@
 
 <section class="slide">
 	<h2>Оператор возведения в степень</h2>
+	<p class="small-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment">// hello python from es7</span></code>
-			<code>console.log(3 <mark>**</mark> 4);     // 81</code>
-			<code>console.log(49 <mark>**</mark> 0.5);  // 7</code>
-			<code> </code>
-			<code> </code>
-		</pre>
+		<code>// hello python from es7</code>
+		<code>console.log(3 <mark>**</mark> 4);     // 81</code>
+		<code>console.log(49 <mark>**</mark> 0.5);  // 7</code>
+		<code> </code>
+		<code> </code>
+	</pre>
+</section>
+
+
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0">
+		<span style="font-size: 85%; line-height: 1.7; display: inline-block;"><code>SharedArrayBuffer</code> и <code>Atomics</code></span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Ликбез про <strong>Web Workers</strong></h2>
+	<pre class="hljs js">
+		<code>// main</code>
+		<code>const worker = new Worker(scriptUrl);           // создали воркер</code>
+		<code>// const sharedWorker = new SharedWorker(scriptUrl);</code>
+		<code> </code>
+		<code>worker.postMessage({hello: 'world'});           // отправили данные</code>
+		<code>worker.onmessage = function(e) { e.data ... };  // обработчик <mark>onmessage</mark></code>
+		<code> </code>
+	</pre>
+	<pre class="hljs js">
+		<code>// worker</code>
+		<code>self.onmessage = function(e) { e.data... };   // обработчик <mark>onmessage</mark></code>
+		<code>self.postMessage({hello: 'world'});           // отправили данные</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><code>SharedArrayBuffer</code> и <code>Atomics</code></h2>
+	<pre class="hljs js">
+		<code>const buffer = new ArrayBuffer(15 * 1024 * 1024);  // 15 MB RAM</code>
+		<code>worker.postMessage(buffer);                        // клонирует данные</code>
+		<code> </code>
+		<code>const shared = new <mark>SharedArrayBuffer</mark>(length);      // разделяемая память</code>
+		<code>worker.postMessage(shared);                        // клонирует данные</code>
+		<code> </code>
+		<code><mark>Atomics</mark>.add(typedArray, pos, val);     // потокобезопасное сложение</code>
+		<code><mark>Atomics</mark>.sub(typedArray, pos, val);     // потокобезопасное вычитание</code>
+		<code><mark>Atomics</mark>.store(typedArray, pos, val);   // потокобезопасная запись</code>
+		<code><mark>Atomics</mark>.load(typedArray, pos);         // потокобезопасное чтение</code>
+		<code><mark>Atomics.wait</mark>(typedArray, pos, val[, timeout]);  // like as <mark>Linux futexes</mark></code>
+		<code>...</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -660,7 +790,7 @@
 <!--<section class="slide">-->
 <!--<h2>Variable hoisting</h2>-->
 <!--<pre class="hljs js">-->
-<!--<code><span class="comment rus">// before</span></code>-->
+<!--<code>// before</code>-->
 <!--<code> </code>-->
 <!--<code> </code>-->
 <!--<code> </code>-->
@@ -670,7 +800,7 @@
 <!--<code> </code>-->
 <!--<code> </code>-->
 <!--<code> </code>-->
-<!--<code><span class="comment">// ReferenceError</span></code>-->
+<!--<code>// ReferenceError</code>-->
 <!--<code> </code>-->
 <!--</pre>-->
 <!--</section>-->
@@ -687,108 +817,111 @@
 <section class="slide">
 	<h2>Деструктуризация массивов</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// деструктуризация</span></code>
-			<code>const [name, family] = 'Jon Snow'.split(' ');</code>
-			<code>console.log(name);    // Jon</code>
-			<code>console.log(family);  // Snow</code>
-			<code> </code>
-			<code><span class="comment rus">// пропуск элементов</span></code>
-			<code>const [, , var3, var4] = [1, 2, 3, 4];</code>
-			<code>const [num1, , num3] = [1, 2, 3, 4];</code>
-			<code> </code>
-		</pre>
+		<code>// деструктуризация</code>
+		<code>const [name, family] = 'Jon Snow'.split(' ');</code>
+		<code>console.log(name);    // Jon</code>
+		<code>console.log(family);  // Snow</code>
+		<code> </code>
+		<code>// пропуск элементов</code>
+		<code>const [, , var3, var4] = [1, 2, 3, 4];</code>
+		<code>const [num1, , num3] = [1, 2, 3, 4];</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Деструктуризация массивов</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// значения по умолчанию</span></code>
-			<code>const [name, <mark>family = 'Black'</mark>] = ['Jon'];</code>
-			<code>console.log(name);    // Jon</code>
-			<code>console.log(family);  // Black</code>
-			<code> </code>
-			<code><span class="comment rus">// swap переменных</span></code>
-			<code>let title1 = 'Book 1', title2 = 'Book 2';</code>
-			<code>([title1, title2] = [title2, title1]);   // title1 === 'Book 2'</code>
-			<code>                                         // title2 === 'Book 1'</code>
-			<code> </code>
-		</pre>
+		<code>// значения по умолчанию</code>
+		<code>const [name, <mark>family = 'Black'</mark>] = ['Jon'];</code>
+		<code>console.log(name);    // Jon</code>
+		<code>console.log(family);  // Black</code>
+		<code> </code>
+		<code>// swap переменных</code>
+		<code>let title1 = 'Book 1', title2 = 'Book 2';</code>
+		<code>([title1, title2] = [title2, title1]);   // title1 === 'Book 2'</code>
+		<code>                                         // title2 === 'Book 1'</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Деструктуризация объектов</h2>
 	<pre class="hljs js">
-			<code>const person = {login: 'Jon Snow', age: 42, alive: true};</code>
-			<code><span class="comment rus">// деструктуризация</span></code>
-			<code>const {login, age} = person;</code>
-			<code><span class="comment rus">// значения по умолчанию</span></code>
-			<code>const {login, age, <mark>password = 'qwerty123'</mark>} = person;</code>
-			<code><span class="comment rus">// переименование свойств</span></code>
-			<code>const {<mark>login: username</mark>, age} = person;    // username === 'Jon Snow'</code>
-			<code><span class="comment rus">// комбинация</span></code>
-			<code>const {<mark>login: username = 'Anonimous'</mark>, age} = person;</code>
-			<code> </code>
-		</pre>
+		<code>const person = {login: 'Jon Snow', age: 42, alive: true};</code>
+		<code>// деструктуризация</code>
+		<code>const {login, age} = person;</code>
+		<code>// значения по умолчанию</code>
+		<code>const {login, age, <mark>password = 'qwerty123'</mark>} = person;</code>
+		<code>// переименование свойств</code>
+		<code>const {<mark>login: username</mark>, age} = person;    // username === 'Jon Snow'</code>
+		<code>// комбинация</code>
+		<code>const {<mark>login: username = 'Anonimous'</mark>, age} = person;</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Деструктуризация объектов</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// вложенная деструктуризация</span></code>
-			<code>const element = {tagName: 'DIV', size: {width: 300, height: 200}};</code>
-			<code>const {</code>
-			<code>    tagName: tag,</code>
-			<code>    size: {width: w = 250, height: h = 250} = {},</code>
-			<code>    color = 'red',</code>
-			<code>    childs: [first, second, , last] = []</code>
-			<code>} = element;</code>
-			<code>console.log({tag, w, h, color, first, second, last});</code>
-			<code> </code>
-		</pre>
+		<code>// вложенная деструктуризация</code>
+		<code>const element = {tagName: 'DIV', size: {width: 300, height: 200}};</code>
+		<code>const {</code>
+		<code>    tagName: tag,</code>
+		<code>    size: {width: w = 250, height: h = 250} = {},</code>
+		<code>    color = 'red',</code>
+		<code>    childs: [first, second, , last] = []</code>
+		<code>} = element;</code>
+		<code>console.log({tag, w, h, color, first, second, last});</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Деструктуризация параметров<br/>функций</h2>
+	<p class="small-content"></p>
 	<pre class="hljs js">
-			<code>function sruare({width: w, height: h = 100}) {</code>
-			<code>    return w * h;</code>
-			<code>}</code>
-			<code> </code>
-			<code>square({width: 20, height: 50, color: 'red'});   // 100</code>
-			<code>square({width: 42});                             // 4200</code>
-			<code> </code>
-		</pre>
+		<code>function sruare({width: w, height: h = 100}) {</code>
+		<code>    return w * h;</code>
+		<code>}</code>
+		<code> </code>
+		<code>square({width: 20, height: 50, color: 'red'});   // 100</code>
+		<code>square({width: 42});                             // 4200</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Деструктуризация</h2>
 	<pre class="hljs js">
-			<code>const [posts, messages, user] = [</code>
-			<code>    fetch('/posts'),</code>
-			<code>    fetch('/messages'),</code>
-			<code>    fetch('/me')</code>
-			<code>];</code>
-			<code> </code>
-			<code>const [xlarge, large, medium, small, xsmall] = </code>
-			<code>    ['xl', 'l', 'm', 's', 'xs']</code>
-			<code>        .map(size => fetch(`/profile/${size}-logo.png`));</code>
-			<code> </code>
-		</pre>
+		<code>const [posts, messages, user] = Promise.all([</code>
+		<code>    fetch('/posts'),</code>
+		<code>    fetch('/messages'),</code>
+		<code>    fetch('/me')</code>
+		<code>]);</code>
+		<code> </code>
+		<code>const [xlarge, large, medium, small, xsmall] =  Promise.all(</code>
+		<code>    ['xl', 'l', 'm', 's', 'xs']</code>
+		<code>        .map(size => fetch(`/profile/${size}-logo.png`));</code>
+		<code>);</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Деструктуризация</h2>
+	<p class="small-content"></p>
 	<pre class="hljs js">
-			<code>function volume({width: w, height: h, length: l}) {</code>
-			<code>    return w * h * l;</code>
-			<code>}</code>
-			<code>const width = 15, height = 25, length = 50;</code>
-			<code>volume({ width, height, length });   // 15000</code>
-			<code>volume({ height, width, length });   // 15000</code>
-			<code>volume({ length, height, width });   // 15000</code>
-			<code>volume({ width, length, height });   // 15000</code>
-			<code> </code>
-		</pre>
+		<code>function figure({width: w = 10, height: h = 10, length: l = 20}) {</code>
+		<code>    return w * h * l;</code>
+		<code>}</code>
+		<code>const width = 15, height = 25, length = 50;</code>
+		<code>volume({ width, height, length });   // 15000</code>
+		<code>volume({ height, width, length });   // 15000</code>
+		<code>volume({ height, width });           // 7500</code>
+		<code>volume({ });                         // 2000</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -802,108 +935,136 @@
 
 <section class="slide">
 	<h2>Оператор расширения <em>aka</em><br/>spread-оператор</h2>
+	<p class="small-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment rus">// расширение массивов</span></code>
-			<code>const arr = ['a', 'b', 'c', 'd'];</code>
-			<code>const arr2 = [1, 2, <mark>...arr</mark>, 3];</code>
-			<code>console.dir(arr2); // [1, 2, 'a', 'b', 'c', 'd', 3];</code>
-			<code> </code>
-		</pre>
+		<code>// расширение массивов</code>
+		<code>const arr = ['a', 'b', 'c', 'd'];</code>
+		<code>const arr2 = [1, 2, <mark>...arr</mark>, 3];</code>
+		<code>console.dir(arr2); // [1, 2, 'a', 'b', 'c', 'd', 3];</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// используется при деструктуризации</code>
+		<code>const scoreboard = ['Jane', 'Jon', 'Alex', 'Max'];</code>
+		<code>const [first, second, <mark>...loosers</mark>] = scoreboard;</code>
+		<code> </code>
+		<code>// first === 'Jane'</code>
+		<code>// second === 'Jon'</code>
+		<code>// loosers === ['Alex', 'Max']</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// может проитерироваться по элементам коллекции</code>
+		<code>// и вернуть массив, состоящий из её элементов</code>
+		<code>const letters = [<mark>...'abcde'</mark>];</code>
+		<code>console.dir(letters);   // ['a', 'b', 'c', 'd', 'e'];</code>
+		<code> </code>
+		<code>// <mark>panes</mark> будет настоящим массивом</code>
+		<code>const panes = [<mark>...document.querySelectorAll('.pane')</mark>];</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// передача параметров в функцию</code>
+		<code>const numbers = [1, 2, 42, 532, -3.14, -Infinity];</code>
+		<code>const maximum = ... ?</code>
+		<code>const minimum = ... ?</code>
+		<code> </code>
+		<code>const maximum = Math.max.apply(null, numbers);   // 532</code>
+		<code>const minimum = Math.min.apply(null, numbers);   // -Infinity</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// передача параметров в функцию</code>
+		<code>const numbers = [1, 2, 42, 532, -3.14, -Infinity];</code>
+		<code>const maximum = Math.max(<mark>...numbers</mark>);   // 532</code>
+		<code>const minimum = Math.min(<mark>...numbers</mark>);   // -Infinity</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// сбор праметров функции</code>
+		<code>function summ(<mark>...nums</mark>) {</code>
+		<code>    // можно работать не с <mark>arguments</mark>, а с настоящим массивом <mark>nums</mark></code>
+		<code>    return nums.reduce((sum, current) => sum + current, 0);</code>
+		<code>}</code>
+		<code> </code>
+		<code>console.log(summ(1, 2, 3, 4, 5));    // 15</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// сбор праметров функции</code>
+		<code>function split(coeff, <mark>...nums</mark>) {</code>
+		<code>    return nums.filter(num => num < coeff);</code>
+		<code>}</code>
+		<code> </code>
+		<code>console.log(split(3.14, 1, 2, 3, 4, 5));    // [1, 2, 3]</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Оператор расширения</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// пока что так нельзя</code>
+		<code>const {login, password, <mark>...profile</mark>} = {</code>
+		<code>     login: 'Jon',</code>
+		<code>     password: 'qwerty123',</code>
+		<code>     age: 42,</code>
+		<code>     city: 'Norilsk',</code>
+		<code>     birthdate: '30.03.2000'</code>
+		<code>};</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Оператор расширения</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// используется при деструктуризации</span></code>
-			<code>const places = ['Jane', 'Jon', 'Alex', 'Max'];</code>
-			<code>const [first, second, <mark>...loosers</mark>] = places;</code>
-			<code> </code>
-			<code>// first === 'Jane'</code>
-			<code>// second === 'Jon'</code>
-			<code>// loosers === ['Alex', 'Max']</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Оператор расширения</h2>
-	<pre class="hljs js">
-			<code><span class="comment rus">// пока что так нельзя</span></code>
-			<code>const {login, password, <mark>...profile</mark>} = {</code>
-			<code>     login: 'Jon',</code>
-			<code>     password: 'qwerty123',</code>
-			<code>     age: 42,</code>
-			<code>     city: 'Norilsk',</code>
-			<code>     birthdate: '30.03.2000'</code>
-			<code>};</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Оператор расширения</h2>
-	<pre class="hljs js">
-			<code><span class="comment rus">// может проитерироваться по элементам коллекции</span></code>
-			<code><span class="comment rus">// и вернуть массив, состоящий из её элементов</span></code>
-			<code>const letters = [<mark>...'abcde'</mark>];</code>
-			<code>console.dir(letters);   // ['a', 'b', 'c', 'd', 'e'];</code>
-			<code> </code>
-			<code><span class="comment rus">// <mark>panes</mark> будет настоящим массивом</span></code>
-			<code>const panes = [<mark>...document.querySelectorAll('.pane')</mark>];</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Оператор расширения</h2>
-	<pre class="hljs js">
-			<code><span class="comment rus">// передача параметров в функцию</span></code>
-			<code>const numbers = [1, 2, 42, 532, -3.14, -Infinity];</code>
-			<code>const maximum = ... ?</code>
-			<code>const minimum = ... ?</code>
-			<code> </code>
-			<code>const maximum = Math.max.apply(null, numbers);   // 532</code>
-			<code>const minimum = Math.min.apply(null, numbers);   // -Infinity</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Оператор расширения</h2>
-	<pre class="hljs js">
-			<code><span class="comment rus">// передача параметров в функцию</span></code>
-			<code>const numbers = [1, 2, 42, 532, -3.14, -Infinity];</code>
-			<code>const maximum = Math.max(<mark>...numbers</mark>);   // 532</code>
-			<code>const minimum = Math.min(<mark>...numbers</mark>);   // -Infinity</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Оператор расширения</h2>
-	<pre class="hljs js">
-			<code><span class="comment rus">// сбор праметров функции</span></code>
-			<code>function summ(<mark>...nums</mark>) {</code>
-			<code>    <span class="comment rus">// можно работать не с <mark>arguments</mark>, а с настоящим массивом <mark>nums</mark></span></code>
-			<code>    return nums.reduce((sum, current) => sum + current, 0);</code>
-			<code>}</code>
-			<code> </code>
-			<code>console.log(summ(1, 2, 3, 4, 5));    // 15</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Оператор расширения</h2>
-	<pre class="hljs js">
-			<code><span class="comment rus">// сбор праметров функции</span></code>
-			<code>function split(coeff, <mark>...nums</mark>) {</code>
-			<code>    return nums.filter(num => num < coeff);</code>
-			<code>}</code>
-			<code> </code>
-			<code>console.log(split(3.14, 1, 2, 3, 4, 5));    // [1, 2, 3]</code>
-			<code> </code>
-		</pre>
+		<code>// пока что так нельзя</code>
+		<code>const name = { first: 'Jhon', last: 'Snow' };</code>
+		<code>const address = {</code>
+		<code>    city: 'Norilsk',</code>
+		<code>    country: 'Russian Federation',</code>
+		<code>    street: 'Leninskiy Prospect',</code>
+		<code>};</code>
+		<code> </code>
+		<code>const profile = {</code>
+		<code>    age: 20,</code>
+		<code>    <mark>...name</mark>,</code>
+		<code>    <mark>...address</mark>,</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -913,6 +1074,7 @@
 
 <section class="slide">
 	<h2>Типы данных в JavaScript</h2>
+	<p class="medium-content"></p>
 	<ol lang="ru">
 		<li>Number</li>
 		<li>Boolean</li>
@@ -920,14 +1082,13 @@
 		<li>Object</li>
 		<li>null</li>
 		<li>undefined</li>
-		<li>
-			<mark>Symbol</mark>
-		</li>
+		<li><mark>Symbol</mark></li>
 	</ol>
 </section>
 
 <section class="slide">
 	<h2>Типы данных в JavaScript</h2>
+	<p class="medium-content"></p>
 	<p class="medium-content" style="text-indent: 0; column-count: 3;">
 		Number<br/>Boolean<br/>String<br/>Object<br/>null<br/>
 		undefined<br/>Symbol<br/>Reference<br/>List<br/>Completion<br/>
@@ -938,61 +1099,68 @@
 <section class="slide">
 	<h2>Создание символов</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// без <mark>new</mark></span></code>
-			<code>const symbol1 = <mark>Symbol()</mark>;</code>
-			<code>const symbol2 = <mark>Symbol('label')</mark>;</code>
-			<code>const symbol3 = Symbol('label');</code>
-			<code> </code>
-			<code>console.log(typeof symbol1);       // symbol</code>
-			<code>console.log(symbol2 == symbol3);   // false</code>
-			<code>console.log(symbol2 === symbol3);  // false</code>
-			<code> </code>
-		</pre>
+		<code>// без <mark>new</mark></code>
+		<code>const symbol1 = <mark>Symbol()</mark>;</code>
+		<code>const symbol2 = <mark>Symbol('label')</mark>;</code>
+		<code>const symbol3 = Symbol('label');</code>
+		<code> </code>
+		<code>console.log(typeof symbol1);       // symbol</code>
+		<code>console.log(symbol2 == symbol3);   // false</code>
+		<code>console.log(symbol2 === symbol3);  // false</code>
+		<code> </code>
+		<code>console.log(symbol1);              // 'Symbol()'</code>
+		<code>console.log(symbol2);              // 'Symbol(label)'</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Глобальные символы</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// берутся из реестра глобальных символов</span></code>
-			<code><span class="comment rus">// если символа нет в реестре - создаётся новый символ</span></code>
-			<code>const symbol1 = <mark>Symbol.for</mark>('label');</code>
-			<code>const symbol2 = Symbol.for('label');</code>
-			<code>console.dir(symbol1 == symbol2);       // true</code>
-			<code> </code>
-			<code>const symbol3 = Symbol('label');</code>
-			<code>console.dir(<mark>Symbol.keyFor</mark>(symbol1));   // 'label'</code>
-			<code>console.dir(Symbol.keyFor(symbol3));   // undefined</code>
-			<code> </code>
-		</pre>
+		<code>// берутся из реестра глобальных символов</code>
+		<code>// если символа нет в реестре - создаётся новый символ</code>
+		<code>const symbol1 = <mark>Symbol.for</mark>('label');</code>
+		<code>const symbol2 = Symbol.for('label');</code>
+		<code>console.dir(symbol1 == symbol2);       // true</code>
+		<code> </code>
+		<code>const symbol3 = Symbol('label');</code>
+		<code>console.dir(<mark>Symbol.keyFor</mark>(symbol1));   // 'label'</code>
+		<code>console.dir(Symbol.keyFor(symbol3));   // undefined</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Символы в качестве<br/>имён новых свойств</h2>
 	<pre class="hljs js">
-			<code>const User = {</code>
-			<code>    name: 'Jon Snow',</code>
-			<code>    <mark>[Symbol.for('hello')]</mark>() {</code>
-			<code>        console.log(`Hello, ${this.name}!`);</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-			<code>User[Symbol.for('hello')]();   // 'Hello, Jon Snow!'</code>
-			<code> </code>
-		</pre>
+		<code>const User = {</code>
+		<code>    name: 'Jon Snow',</code>
+		<code>    <mark>[Symbol.for('hello')]</mark>() {</code>
+		<code>        console.log(`Hello, ${this.name}!`);</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+		<code>User[Symbol.for('hello')]();   // 'Hello, Jon Snow!'</code>
+		<code> </code>
+		<code>const helloSymbol = Symbol.for('hello');</code>
+		<code>User[helloSymbol]();           // 'Hello, Jon Snow!'</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Well-known symbols</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>Symbol.hasInstance</code>
-			<code>Symbol.iterator</code>
-			<code>Symbol.replace</code>
-			<code>Symbol.search</code>
-			<code>Symbol.toPrimitive</code>
-			<code>Symbol.toStringTag</code>
-			<code>...</code>
-			<code> </code>
-		</pre>
+		<code>Symbol.hasInstance</code>
+		<code>Symbol.iterator</code>
+		<code>Symbol.replace</code>
+		<code>Symbol.search</code>
+		<code>Symbol.toPrimitive</code>
+		<code>Symbol.toStringTag</code>
+		<code>...</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -1013,6 +1181,7 @@
 
 <section class="slide">
 	<h2>Итерируемые объекты</h2>
+	<p class="medium-content"></p>
 	<ul lang="ru">
 		<li>Массивы</li>
 		<li>Псевдомассив arguments</li>
@@ -1034,78 +1203,80 @@
 
 <section class="slide">
 	<h2>Перебор итераторов</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code>const numbers = [2, 3, 5, 7, 11, 13];</code>
-			<code> </code>
-			<code>for (<mark>const prime of numbers</mark>) {</code>
-			<code>    console.log(`Prime number ${prime}!`);</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>const numbers = [2, 3, 5, 7, 11, 13];</code>
+		<code> </code>
+		<code>for (<mark>const prime of numbers</mark>) {</code>
+		<code>    console.log(`Prime number ${prime}!`);</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Связь со спредами</h2>
+	<p class="medium-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment rus">// оператор расширения <mark>итерируется</mark> по итератору</span></code>
-			<code><span class="comment rus">// и возвращает массив из элементов итератора</span></code>
-			<code> </code>
-			<code>function arrayUniq()</code>
-			<code>    const source = [...arguments];</code>
-			<code>    <span class="comment rus">// Set.prototype.values() возвращает <mark>итератор</mark> по элементам коллекции</span></code>
-			<code>    return [...new Set(source).values()];</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>// оператор расширения <mark>итерируется</mark> по итератору</code>
+		<code>// и возвращает массив из элементов итератора</code>
+		<code> </code>
+		<code>function arrayUniq()</code>
+		<code>    const source = [...arguments];</code>
+		<code>    // Set.prototype.values() возвращает <mark>итератор</mark> по элементам коллекции</code>
+		<code>    return [...new Set(source).values()];</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2><code>Symbol.iterator</code></h2>
 	<pre class="hljs js">
-			<code>const iterable = [1, 2, 3, 4];</code>
-			<code>const iterator = iterable[Symbol.iterator]();</code>
-			<code> </code>
-			<code>console.log(iterator.next());    { value: 1, done: false }</code>
-			<code>console.log(iterator.next());    { value: 2, done: false }</code>
-			<code>console.log(iterator.next());    { value: 3, done: false }</code>
-			<code>console.log(iterator.next());    { value: 4, done: false }</code>
-			<code>console.log(iterator.next());    { value: undefined, done: true }</code>
-			<code>console.log(iterator.next());    { value: undefined, done: true }</code>
-			<code> </code>
-		</pre>
+		<code>const iterable = [1, 2, 3, 4];</code>
+		<code>const iterator = iterable[Symbol.iterator]();</code>
+		<code> </code>
+		<code>console.log(iterator.next());    { value: 1, done: false }</code>
+		<code>console.log(iterator.next());    { value: 2, done: false }</code>
+		<code>console.log(iterator.next());    { value: 3, done: false }</code>
+		<code>console.log(iterator.next());    { value: 4, done: false }</code>
+		<code>console.log(iterator.next());    { value: undefined, done: true }</code>
+		<code>console.log(iterator.next());    { value: undefined, done: true }</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Кастомные итераторы</h2>
 	<pre class="hljs js">
-			<code>const iterable = {</code>
-			<code>    current: 0,</code>
-			<code>    [Symbol.iterator]() { return this; },</code>
-			<code>    next() {</code>
-			<code>        if (this.current) {</code>
-			<code>            return { value: this.current--, done: false };</code>
-			<code>        }</code>
-			<code>        return { value: undefined, done: true }</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>const iterable = {</code>
+		<code>    current: 0,</code>
+		<code>    [Symbol.iterator]() { return this; },</code>
+		<code>    next() {</code>
+		<code>        if (this.current) {</code>
+		<code>            return { value: this.current--, done: false };</code>
+		<code>        }</code>
+		<code>        return { value: undefined, done: true }</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Кастомные итераторы</h2>
 	<pre class="hljs js">
-			<code>iterable.current = 7;</code>
-			<code>const elements = [...iterable]; // [ 7, 6, 5, 4, 3, 2, 1 ]</code>
-			<code> </code>
-			<code>iterable.current = 5;</code>
-			<code>let summ = 0;</code>
-			<code>for (const n of iterable) {</code>
-			<code>    summ += n;</code>
-			<code>}</code>
-			<code>console.log(summ);    // 15</code>
-			<code> </code>
-		</pre>
+		<code>iterable.current = 7;</code>
+		<code>const elements = [...iterable]; // [ 7, 6, 5, 4, 3, 2, 1 ]</code>
+		<code> </code>
+		<code>iterable.current = 5;</code>
+		<code>let summ = 0;</code>
+		<code>for (const n of iterable) {</code>
+		<code>    summ += n;</code>
+		<code>}</code>
+		<code>console.log(summ);    // 15</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -1116,143 +1287,144 @@
 <section class="slide">
 	<h2>Объявление функции-генератора</h2>
 	<pre class="hljs js">
-			<code><mark>function *</mark> generator() {</code>
-			<code>    <mark>yield</mark> 1;</code>
-			<code>    <mark>yield</mark> 2;</code>
-			<code>    return 3;</code>
-			<code>}</code>
-			<code> </code>
-			<code>const generator = function * () {</code>
-			<code>    yield 1; yield 2; return 3;</code>
-			<code>};</code>
-			<code> </code>
-		</pre>
+		<code><mark>function *</mark> generator() {</code>
+		<code>    <mark>yield</mark> 1;</code>
+		<code>    <mark>yield</mark> 2;</code>
+		<code>    return 3;</code>
+		<code>}</code>
+		<code> </code>
+		<code>const generator = function * () {</code>
+		<code>    yield 1; yield 2; return 3;</code>
+		<code>};</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Объявление функции-генератора</h2>
 	<pre class="hljs js">
-			<code>const gen = generator();</code>
-			<code> </code>
-			<code>console.log(gen.next());   // { value: 1, done: false }</code>
-			<code>console.log(gen.next());   // { value: 2, done: false }</code>
-			<code>console.log(gen.next());   // { value: 3, done: true }</code>
-			<code>console.log(gen.next());   // { value: undefined, done: true }</code>
-			<code>console.log(gen.next());   // { value: undefined, done: true }</code>
-			<code> </code>
-			<code>const gen2 = generator();  // console.log([...gen2])</code>
-			<code> </code>
-		</pre>
+		<code>const gen = generator();</code>
+		<code> </code>
+		<code>console.log(gen.next());   // { value: 1, done: false }</code>
+		<code>console.log(gen.next());   // { value: 2, done: false }</code>
+		<code>console.log(gen.next());   // { value: 3, done: true }</code>
+		<code>console.log(gen.next());   // { value: undefined, done: true }</code>
+		<code>console.log(gen.next());   // { value: undefined, done: true }</code>
+		<code> </code>
+		<code>const gen2 = generator();  // console.log([...gen2])</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>"Бесконечные" генераторы</h2>
 	<pre class="hljs js">
-			<code>function * fibonacci() {</code>
-			<code>    let prev = 1, curr = 0;</code>
-			<code>    while (true) {</code>
-			<code>        let now = prev + curr;</code>
-			<code>        prev = curr; curr = now;</code>
-			<code>        yield now;</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>function * fibonacci() {</code>
+		<code>    let prev = 1, curr = 0;</code>
+		<code>    while (true) {</code>
+		<code>        let now = prev + curr;</code>
+		<code>        prev = curr; curr = now;</code>
+		<code>        yield now;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Взаимодействие с генераторами</h2>
 	<pre class="hljs js">
-			<code>function * rand(length) {</code>
-			<code>    while (length--) {</code>
-			<code>        yield Math.random();</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-			<code>console.log([...rand(3)]);   // [ 0.216, 0.39, 0.555 ]</code>
-			<code>console.log([...rand(5)]);   // [ 0.782, 0.806, 0.294, 0.228, 0.755 ]</code>
-			<code> </code>
-		</pre>
+		<code>function * rand(length) {</code>
+		<code>    while (length--) {</code>
+		<code>        yield Math.random();</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+		<code>console.log([...rand(3)]);   // [ 0.216, 0.39, 0.555 ]</code>
+		<code>console.log([...rand(5)]);   // [ 0.782, 0.806, 0.294, 0.228, 0.755 ]</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Взаимодействие с генераторами</h2>
 	<pre class="hljs js">
-			<code>function * simple() {</code>
-			<code>    let num = yield 'line 2';</code>
-			<code>    return num;</code>
-			<code>}</code>
-			<code>const gen = simple();</code>
-			<code>console.log(gen.next());     // { value: 'line 2', done: false }</code>
-			<code>console.log(<mark>gen.next(42)</mark>);   // { value: 42, done: true }</code>
-			<code>console.log(gen.next());     // { value: undefined, done: true }</code>
-			<code> </code>
-		</pre>
+		<code>function * simple() {</code>
+		<code>    let num = yield 'line 2';</code>
+		<code>    return num;</code>
+		<code>}</code>
+		<code>const gen = simple();</code>
+		<code>console.log(gen.next());     // { value: 'line 2', done: false }</code>
+		<code>console.log(<mark>gen.next(42)</mark>);   // { value: 42, done: true }</code>
+		<code>console.log(gen.next());     // { value: undefined, done: true }</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Взаимодействие с генераторами</h2>
 	<pre class="hljs js">
-			<code>function * wow() {</code>
-			<code>    let num = 0, sum = 0;</code>
-			<code>    while (num = yield sum) {</code>
-			<code>        sum += num;</code>
-			<code>    }</code>
-			<code>    return sum;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>function * wow() {</code>
+		<code>    let num = 0, sum = 0;</code>
+		<code>    while (num = yield sum) {</code>
+		<code>        sum += num;</code>
+		<code>    }</code>
+		<code>    return sum;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Взаимодействие с генераторами</h2>
 	<pre class="hljs js">
-			<code>const gen = wow();</code>
-			<code>gen.next();      // { value: 0, done: false }</code>
-			<code>gen.next(1);     // { value: 1, done: false }</code>
-			<code>gen.next(2);     // { value: 3, done: false }</code>
-			<code>gen.next(3);     // { value: 6, done: false }</code>
-			<code>gen.next(4);     // { value: 10, done: false }</code>
-			<code>gen.next(5);     // { value: 15, done: false }</code>
-			<code> </code>
-			<code>gen.next(0);     // { value: 15, done: true }</code>
-			<code> </code>
-		</pre>
+		<code>const gen = wow();</code>
+		<code>gen.next();      // { value: 0, done: false }</code>
+		<code>gen.next(1);     // { value: 1, done: false }</code>
+		<code>gen.next(2);     // { value: 3, done: false }</code>
+		<code>gen.next(3);     // { value: 6, done: false }</code>
+		<code>gen.next(4);     // { value: 10, done: false }</code>
+		<code>gen.next(5);     // { value: 15, done: false }</code>
+		<code> </code>
+		<code>gen.next(0);     // { value: 15, done: true }</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Взаимодействие с генераторами</h2>
 	<pre class="hljs js">
-			<code>const gen = wow();</code>
-			<code>gen.next();      // { value: 0, done: false }</code>
-			<code>gen.next(1);     // { value: 1, done: false }</code>
-			<code>gen.<mark>throw</mark>(new Error('kek'));  // Error: kek</code>
-			<code> </code>
-			<code>gen.next(0);     <span class="comment rus">// до этого места выполнение не дойдёт</span></code>
-			<code> </code>
-		</pre>
+		<code>const gen = wow();</code>
+		<code>gen.next();      // { value: 0, done: false }</code>
+		<code>gen.next(1);     // { value: 1, done: false }</code>
+		<code>gen.<mark>throw</mark>(new Error('kek'));  // Error: kek</code>
+		<code> </code>
+		<code>gen.next(0);     // до этого места выполнение не дойдёт</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Композиция генераторов</h2>
 	<pre class="hljs js">
-			<code>function * twicer(element) {</code>
-			<code>    yield element; yield element;</code>
-			<code>}</code>
-			<code>function * test() {</code>
-			<code>    <mark>yield *</mark> twicer(42);</code>
-			<code>    <mark>yield *</mark> twicer('test');</code>
-			<code>}</code>
-			<code> </code>
-			<code>console.log([...test()]);    // [ 42, 42, 'test', 'test' ]</code>
-			<code> </code>
-		</pre>
+		<code>function * twicer(element) {</code>
+		<code>    yield element; yield element;</code>
+		<code>}</code>
+		<code>function * test() {</code>
+		<code>    <mark>yield *</mark> twicer(42);</code>
+		<code>    <mark>yield *</mark> twicer('test');</code>
+		<code>}</code>
+		<code> </code>
+		<code>console.log([...test()]);    // [ 42, 42, 'test', 'test' ]</code>
+		<code> </code>
+	</pre>
 </section>
 
 
 <section class="slide question">
-	<h2 style="text-align: center; padding: 0"><span
-			style="font-size: 85%">Асинхронные функции (<code>async/await</code>)</span></h2>
+	<h2 style="text-align: center; padding: 0">
+		<span style="font-size: 85%; line-height: 1.7; display: inline-block;">Асинхронные функции (<code>async/await</code>)</span>
+	</h2>
 </section>
 
 <section class="slide">
@@ -1329,15 +1501,124 @@
 <section class="slide">
 	<h2>Использование</h2>
 	<pre class="hljs js">
-			<code>async function loadBook(pages) {</code>
-			<code>    const responses = <mark>await</mark> pages</code>
-			<code>        .map(page => {</code>
-			<code>            return fetch(`/book/page/${page}`, {method: 'GET'});</code>
-			<code>        });</code>
-			<code>    <mark>return</mark> Promise.all(responses.map(res => res.json()));</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>async function load(query) {</code>
+		<code>    const list = <mark>await</mark> fetchList(query);</code>
+		<code>    const result = <mark>await</mark> Promise.all(list.map(item => loadItem(item)));</code>
+		<code>    return result;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+	<pre class="hljs js">
+		<code>async function load(query) {</code>
+		<code>    const list = <mark>await</mark> fetchList(query);</code>
+		<code>    <mark>return</mark> Promise.all(list.map(item => loadItem(item)));</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Proxy</span></h2>
+</section>
+
+<section class="slide">
+	<h2><code>Proxy</code></h2>
+	<p class="medium-content"><strong>Объест Proxy (Прокси)</strong> &mdash; особый объект, смысл которого &mdash; перехватывать обращения к другому объекту и, при необходимости, модифицировать их</p>
+	<pre class="hljs js">
+		<code>// создание Proxy</code>
+		<code>const proxy = new Proxy(target, handler);</code>
+		<code> </code>
+		<code>// <mark>target</mark> - объект, обращения к которому надо перехватывать</code>
+		<code>// <mark>handler</mark> - объект с функциями-перехватчиками для операций к target</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Создание <code>Proxy</code></h2>
+	<pre class="hljs js">
+		<code>const user = {};</code>
+		<code>const proxy = new Proxy(user, {</code>
+		<code>    get (target, property, receiver) {</code>
+		<code>        console.log(`Чтение ${property}`);</code>
+		<code>        return target[property];</code>
+		<code>    },</code>
+		<code>    set (target, property, value, receiver) {</code>
+		<code>        console.log(`Запись ${property} = ${value}`);</code>
+		<code>        target[property] = value;</code>
+		<code>        return true;</code>
+		<code>    },</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование <code>Proxy</code></h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>proxy.name = 'Jhon Snow';               // Запись name = Jhon Snow</code>
+		<code>proxy.age = 22;                         // Запись age = 22</code>
+		<code>proxy['long property'] = 'qux';         // Запись long property = qux</code>
+		<code> </code>
+		<code>const name = proxy.name;                // Чтение name</code>
+		<code>const age = proxy.age;                  // Чтение age</code>
+		<code>const long = proxy['long property'];    // Чтение long property</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Конфигурация <code>Proxy</code></h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const handler = {</code>
+		<code>    get (target, name, receiver);       // получение свойств</code>
+		<code>    set (target, name, val, receiver);  // установка свойства</code>
+		<code>    apply (target, thisValue, args);    // вызовы функции</code>
+		<code>    construct (target, args);           // вызовы конструктора с <mark>new</mark></code>
+		<code>    has (target, name);                 // оператор <mark>in</mark></code>
+		<code>    defineProperty (target, property, descriptor);</code>
+		<code>                                        // метод <mark>Object.defineProperty()</mark></code>
+		<code>    deleteProperty (target, property);  // оператор <mark>delete</mark></code>
+		<code>    ...</code>
+		<code>};</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Применение <code>Proxy</code></h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const original = {};</code>
+		<code>const magic = wrapWithProxy(original);</code>
+		<code> </code>
+		<code>magic.data.elements[0].attributes.color = 'black';</code>
+		<code>magic.country.map.shops = [ ... ];</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Применение <code>Proxy</code>: <a href="https://github.com/pedsmoreira/jewell" target="_blank">jewell</a></h2>
+	<pre class="hljs js">
+		<code>import { jewellPrototype } from 'jewell';</code>
+		<code>jewellPrototype(Array);</code>
+		<code>const diamonds = [...];</code>
+		<code> </code>
+		<code>// Get price: [2k, 100k, 300k]</code>
+		<code>diamonds.map(diamond => diamond.price); // Traditional</code>
+		<code>diamonds.map.price; // 💎</code>
+		<code> </code>
+		<code>// Buy all pink diamonds</code>
+		<code>diamonds</code>
+		<code>    .filter(diamond => diamond.pink)</code>
+		<code>    .forEach(diamond => diamond.buy()); // Traditional</code>
+		<code>diamonds.filter.pink.forEach.buy(); // 💎</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -1346,17 +1627,16 @@
 </section>
 
 <section class="slide nopage">
-	<h2>Поддержка версий ECMAScript<br/><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/</a>
-	</h2>
-	<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="kangax.png"
-																  style="transform-origin: center;transform: translate(-50%,-50%) scale(1.17);">
+	<h2>Поддержка версий ECMAScript<br/><a href="https://kangax.github.io/compat-table/es6/" target="_blank">https://kangax.github.io/</a></h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="kangax.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.17);">
 	</div>
 </section>
 
 <section class="slide nopage">
-	<h2>Возможности браузера<br/><a href="http://caniuse.com/" target="_blank">http://caniuse.com/</a></h2>
-	<div style="position:relative;width: 100%; height: 75%;"><img class="place" src="caniuse.png"
-																  style="transform-origin: center;transform: translate(-50%,-50%) scale(0.76);">
+	<h2>Возможности браузера<br/><a href="https://caniuse.com/" target="_blank">http://caniuse.com/</a></h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="caniuse.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.76);">
 	</div>
 </section>
 
@@ -1388,10 +1668,10 @@
 			другой язык программирования</p>
 	</blockquote>
 	<pre class="hljs js">
-			<code><span class="comment">// before</span></code>
+			<code>// before</code>
 			<code>const f = num => `${num} в квадрате это ${num ** 2}`;</code>
 			<code> </code>
-			<code><span class="comment">// after</span></code>
+			<code>// after</code>
 			<code>var f = function (num) {</code>
 			<code>    return num + ' в квадрате это ' + Math.pow(num, 2);</code>
 			<code>};</code>
@@ -1411,16 +1691,16 @@
 <section class="slide">
 	<h2>Babel &mdash; использование</h2>
 	<pre class="hljs bash">
-			<code><span class="comment rus"># устанавливаем модуль</span></code>
+			<code># устанавливаем модуль</code>
 			<code>$ npm install -g babel-cli babel-preset-latest</code>
 			<code> </code>
-			<code><span class="comment rus"># файл с конфигурацией</span></code>
+			<code># файл с конфигурацией</code>
 			<code>$ nano .babelrc</code>
 			<code>{</code>
 			<code>    "presets": ["latest"]</code>
 			<code>}</code>
 			<code> </code>
-			<code><span class="comment rus"># устанавливаем модуль</span></code>
+			<code># устанавливаем модуль</code>
 			<code>$ babel modern.js --watch --out-file compatible.js</code>
 			<code> </code>
 		</pre>
@@ -1454,33 +1734,16 @@
 <section class="slide">
 	<h2>Текущие версии JavaScript’а</h2>
 	<ul lang="ru">
-		<li>Декабрь 1999 &mdash;
-			<mark>ECMAScript 3</mark>
-		</li>
-		<li>
-			<mark>ECMAScript 4</mark> &mdash; всё сложно
-		</li>
-		<li>Декабрь 2009 &mdash;
-			<mark>ECMAScript 5</mark>
-		</li>
+		<li>Декабрь 1999 &mdash;<mark>ECMAScript 3</mark></li>
+		<li><mark>ECMAScript 4</mark> &mdash; всё сложно</li>
+		<li>Декабрь 2009 &mdash;<mark>ECMAScript 5</mark></li>
 		<ul>
-			<li>Июнь 2011 &mdash;
-				<mark>ECMAScript 5.1</mark>
-				(ISO/IEC 16262:2011)
-			</li>
+			<li>Июнь 2011 &mdash;<mark>ECMAScript 5.1</mark>(ISO/IEC 16262:2011)</li>
 		</ul>
-		<li>Июль 2015 &mdash;
-			<mark>ECMAScript 6</mark>
-			(ECMAScript 2015)
-		</li>
-		<li>Июль 2016 &mdash;
-			<mark>ECMAScript 7</mark>
-			(ECMAScript 2016)
-		</li>
-		<li><em>Лето 2017</em> &mdash;
-			<mark>ECMAScript 2017</mark>
-			(и так далее)
-		</li>
+		<li>Июль 2015 &mdash;<mark>ECMAScript 6</mark>(ECMAScript 2015)</li>
+		<li>Июль 2016 &mdash;<mark>ECMAScript 2016</mark>(ECMAScript 7)</li>
+		<li>Июнь 2017 &mdash;<mark>ECMAScript 2017</mark></li>
+		<li><em>Лето 2018</em> &mdash;<mark>ECMAScript 2018</mark>(и так далее)</li>
 		<li>ES.Next</li>
 	</ul>
 </section>
@@ -1530,17 +1793,18 @@
 <section class="slide">
 	<h2>Будущее JavaScript</h2>
 	<ul lang="en">
-		<li><a href="https://github.com/tc39/proposals/" target="_blank">Репозиторий со списком текущих предложений</a>
-		</li>
-		<li><a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md
-" target="_blank">Предложения, перешедшие в stage-4</a></li>
+		<li><a href="https://github.com/tc39/proposals/" target="_blank">Репозиторий со списком текущих предложений</a></li>
+		<li><a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md" target="_blank">Предложения, перешедшие в stage-4</a></li>
 	</ul>
 	<ul lang="en">
-		<li>наиболее интересные <em>proposals:</em></li>
+		<li>Наиболее интересные <em>proposals:</em></li>
 		<ul>
-			<li>Object Rest/Spread Properties</li>
-			<li>Class and Property Decorators</li>
-			<li><code>Promise.prototype.finally</code></li>
+			<li>Object Rest/Spread Properties &mdash; <a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank">link</a></li>
+			<li>Asynchronous Iteration &mdash; <a href="https://github.com/tc39/proposal-async-iteration" target="_blank">link</a></li>
+			<li>Class and Property Decorators &mdash; <a href="https://github.com/tc39/proposal-decorators" target="_blank">link</a></li>
+			<li>Optional catch binding &mdash; <a href="https://github.com/tc39/proposal-optional-catch-binding" target="_blank">link</a></li>
+			<li>Nullish Coalescing &mdash; <a href="https://github.com/tc39-transfer/proposal-nullish-coalescing" target="_blank">link</a></li>
+			<li><code>Promise.prototype.finally</code> &mdash; <a href="https://github.com/tc39/proposal-promise-finally" target="_blank">link</a></li>
 		</ul>
 	</ul>
 </section>
@@ -1558,102 +1822,102 @@
 <section class="slide">
 	<h2>Транспилляция из ES.Next</h2>
 	<pre class="hljs js">
-			<code>class ReleaseReducer extends BaseReducer {</code>
-			<code>    constructor(...args) {</code>
-			<code>        super(args.length);</code>
-			<code>        this.initial = args;</code>
-			<code>    }</code>
-			<code>    set Fields (value = {}) {</code>
-			<code>        const {name, data:count = 0} = value;</code>
-			<code>        this.fields = Object.assign(this.fields, {name, count});</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>class ReleaseReducer extends BaseReducer {</code>
+		<code>    constructor(...args) {</code>
+		<code>        super(args.length);</code>
+		<code>        this.initial = args;</code>
+		<code>    }</code>
+		<code>    set Fields (value = {}) {</code>
+		<code>        const {name, data:count = 0} = value;</code>
+		<code>        this.fields = Object.assign(this.fields, {name, count});</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Dart programming language</h2>
 	<pre class="hljs dart">
-			<code>import 'dart:async';</code>
-			<code>import 'dart:math' show Random;</code>
-			<code> </code>
-			<code>Stream&lt;double> computePi({int batch: 1000000}) async* { ... }</code>
-			<code> </code>
-			<code>main() async {</code>
-			<code>    print('Compute π using the Monte Carlo method.');</code>
-			<code>    await for (var estimate in computePi()) {</code>
-			<code>        print('π ≅ $estimate');</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>import 'dart:async';</code>
+		<code>import 'dart:math' show Random;</code>
+		<code> </code>
+		<code>Stream&lt;double> computePi({int batch: 1000000}) async* { ... }</code>
+		<code> </code>
+		<code>main() async {</code>
+		<code>    print('Compute π using the Monte Carlo method.');</code>
+		<code>    await for (var estimate in computePi()) {</code>
+		<code>        print('π ≅ $estimate');</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>CoffeeScript</h2>
 	<pre class="hljs coffeescript">
-			<code>class Human</code>
-			<code>    constructor : (@name) -></code>
-			<code> </code>
-			<code>class Baby extends Human</code>
-			<code>    say    : (msg) -> alert "#{@name} говорит '#{msg}'"</code>
-			<code>    saymsg = (msg) -> alert msg</code>
-			<code>    @echo  = (msg) -> console.log msg</code>
-			<code> </code>
-			<code>matt = new Baby("Матвей")</code>
-			<code>matt.sayHi()</code>
-			<code> </code>
-		</pre>
+		<code>class Human</code>
+		<code>    constructor : (@name) -></code>
+		<code> </code>
+		<code>class Baby extends Human</code>
+		<code>    say    : (msg) -> alert "#{@name} говорит '#{msg}'"</code>
+		<code>    saymsg = (msg) -> alert msg</code>
+		<code>    @echo  = (msg) -> console.log msg</code>
+		<code> </code>
+		<code>matt = new Baby("Матвей")</code>
+		<code>matt.sayHi()</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Больше кофечки богу<br/>кофечки!</h2>
 	<pre class="hljs coffeescript">
-			<code>if happy and knowsIt</code>
-			<code>    lyrics = while num -= 1</code>
-			<code>        "#{num} little monkeys, jumping on the bed"</code>
-			<code>else</code>
-			<code>    date = if friday then sue else jill</code>
-			<code> </code>
-			<code>for filename in list</code>
-			<code>    do (filename) -></code>
-			<code>        fs.readFile filename, (err, contents) -></code>
-			<code>            compile filename, contents.toString()</code>
-			<code> </code>
-		</pre>
+		<code>if happy and knowsIt</code>
+		<code>    lyrics = while num -= 1</code>
+		<code>        "#{num} little monkeys, jumping on the bed"</code>
+		<code>else</code>
+		<code>    date = if friday then sue else jill</code>
+		<code> </code>
+		<code>for filename in list</code>
+		<code>    do (filename) -></code>
+		<code>        fs.readFile filename, (err, contents) -></code>
+		<code>            compile filename, contents.toString()</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>ClojureScript</h2>
 	<pre class="hljs clojure">
-			<code>(ns hello-world.core</code>
-			<code>  (:require [cljs.nodejs :as nodejs]))</code>
-			<code> </code>
-			<code>(nodejs/enable-util-print!)</code>
-			<code> </code>
-			<code>(defn -main [& args]</code>
-			<code>  (println "Hello world!"))</code>
-			<code> </code>
-			<code>(set! *main-cli-fn* -main)</code>
-			<code> </code>
-		</pre>
+		<code>(ns hello-world.core</code>
+		<code>  (:require [cljs.nodejs :as nodejs]))</code>
+		<code> </code>
+		<code>(nodejs/enable-util-print!)</code>
+		<code> </code>
+		<code>(defn -main [& args]</code>
+		<code>  (println "Hello world!"))</code>
+		<code> </code>
+		<code>(set! *main-cli-fn* -main)</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>TypeScript</h2>
 	<pre class="hljs typescript">
-			<code>interface Person {</code>
-			<code>    name: string;</code>
-			<code>    age: number;</code>
-			<code>}</code>
-			<code>function meet(person: Person) {</code>
-			<code>    return `Привет, я ${person.name}, мне ${parson.age}`;</code>
-			<code>}</code>
-			<code>const user = { name: "Jane", age: 21 };</code>
-			<code>console.log(meet(user));</code>
-			<code> </code>
-		</pre>
+		<code>interface Person {</code>
+		<code>    name: string;</code>
+		<code>    age: number;</code>
+		<code>}</code>
+		<code>function meet(person: Person) {</code>
+		<code>    return `Привет, я ${person.name}, мне ${parson.age}`;</code>
+		<code>}</code>
+		<code>const user = { name: "Jane", age: 21 };</code>
+		<code>console.log(meet(user));</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -1693,278 +1957,278 @@
 <section class="slide">
 	<h2>Установка и использование</h2>
 	<pre class="hljs bash">
-			<code><span class="comment rus"># установка компилятора</span></code>
-			<code>$ npm install -g typescript</code>
-			<code> </code>
-			<code><span class="comment rus"># компиляция файла</span></code>
-			<code>$ tsc helloworld.ts</code>
-			<code> </code>
-			<code><span class="comment rus"># утилита позволяет компилировать и сразу запускать .ts файлы</span></code>
-			<code>$ npm install -g ts-node</code>
-			<code>$ ts-node script.ts</code>
-			<code> </code>
-		</pre>
+		<code># установка компилятора</code>
+		<code>$ npm install -g typescript</code>
+		<code> </code>
+		<code># компиляция файла</code>
+		<code>$ tsc helloworld.ts</code>
+		<code> </code>
+		<code># утилита позволяет компилировать и сразу запускать .ts файлы</code>
+		<code>$ npm install -g ts-node</code>
+		<code>$ ts-node script.ts</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Файл <code>tsconfig.json</code></h2>
 	<pre class="hljs json">
-			<code>{</code>
-			<code>    "compilerOptions": {</code>
-			<code>        "outDir": "cache/",</code>
-			<code>        <mark>"target"</mark>: "es2016",</code>
-			<code>        "declaration": false,</code>
-			<code>        "module": "commonjs",</code>
-			<code>        "strictNullChecks": true,</code>
-			<code>        "sourceMap": true</code>
-			<code>        ... }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>{</code>
+		<code>    "compilerOptions": {</code>
+		<code>        "outDir": "cache/",</code>
+		<code>        <mark>"target"</mark>: "es2016",</code>
+		<code>        "declaration": false,</code>
+		<code>        "module": "commonjs",</code>
+		<code>        "strictNullChecks": true,</code>
+		<code>        "sourceMap": true</code>
+		<code>        ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 
 <section class="slide">
 	<h2>Аннотации типов</h2>
 	<pre class="hljs ts">
-			<code>const valid: boolean = true;</code>
-			<code>const count: number = 42;</code>
-			<code>const name: string = 'Jon Snow';</code>
-			<code> </code>
-			<code>const values: number[] = [1, 2, 3, 4, 5];</code>
-			<code>const tuple: [string, number] = ['Mean of life', 42];</code>
-			<code> </code>
-			<code>enum Color {Red, Green, Blue};</code>
-			<code>const c: Color = Color.Green;</code>
-			<code> </code>
-		</pre>
+		<code>const valid: boolean = true;</code>
+		<code>const count: number = 42;</code>
+		<code>const name: string = 'Jon Snow';</code>
+		<code> </code>
+		<code>const values: number[] = [1, 2, 3, 4, 5];</code>
+		<code>const tuple: [string, number] = ['Mean of life', 42];</code>
+		<code> </code>
+		<code>enum Color {Red, Green, Blue};</code>
+		<code>const c: Color = Color.Green;</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Аннотации типов</h2>
 	<pre class="hljs ts">
-			<code>let some: any = true; some = 42;</code>
-			<code>some = 'maybe a string instead'; <span class="comment rus">// типы не проверяются</span></code>
-			<code><span class="comment rus">// приведение типов (“trust me, I know what I’m doing”)</span></code>
-			<code>let length: number = (&lt;string>some).length;</code>
-			<code>length = (some as string).length;</code>
-			<code> </code>
-			<code>let unusable: void = undefined;</code>
-			<code>let u: undefined = undefined;</code>
-			<code>let n: null = null;</code>
-			<code> </code>
-		</pre>
+		<code>let some: any = true; some = 42;</code>
+		<code>some = 'maybe a string instead'; // типы не проверяются</code>
+		<code>// приведение типов (“trust me, I know what I’m doing”)</code>
+		<code>let length: number = (&lt;string>some).length;</code>
+		<code>length = (some as string).length;</code>
+		<code> </code>
+		<code>let unusable: void = undefined;</code>
+		<code>let u: undefined = undefined;</code>
+		<code>let n: null = null;</code>
+		<code> </code>
+	</pre>
 </section>
 
 
 <section class="slide">
 	<h2>Функции в TypeScript</h2>
 	<pre class="hljs ts">
-			<code>function sum(x: number, y: number): number {</code>
-			<code>    return x + y;</code>
-			<code>}</code>
-			<code> </code>
-			<code>const many: number = sum(40, 2);</code>
-			<code> </code>
-			<code>const gcd = (a: number, b: number): number =></code>
-			<code>    (b === 0) ? a : gcd(b, a % b);</code>
-			<code>console.log(gcd(48, 30)); <span class="comment">// 6</span></code>
-			<code> </code>
-		</pre>
+		<code>function sum(x: number, y: number): number {</code>
+		<code>    return x + y;</code>
+		<code>}</code>
+		<code> </code>
+		<code>const many: number = sum(40, 2);</code>
+		<code> </code>
+		<code>const gcd = (a: number, b: number): number =></code>
+		<code>    (b === 0) ? a : gcd(b, a % b);</code>
+		<code>console.log(gcd(48, 30)); // 6</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Функции в TypeScript</h2>
 	<pre class="hljs ts">
-			<code>function sum(x: number, <mark>y?: number</mark>): number {</code>
-			<code>    if (y) {</code>
-			<code>        return x + y;</code>
-			<code>    } else {</code>
-			<code>        return x;</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-			<code>console.log(sum(34, 8));  <span class="comment">// 42</span></code>
-			<code>console.log(sum(42));     <span class="comment">// OK! - 42</span></code>
-			<code> </code>
-		</pre>
+		<code>function sum(x: number, <mark>y?: number</mark>): number {</code>
+		<code>    if (y) {</code>
+		<code>        return x + y;</code>
+		<code>    } else {</code>
+		<code>        return x;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+		<code>console.log(sum(34, 8));  // 42</code>
+		<code>console.log(sum(42));     // OK! - 42</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Функции в TypeScript</h2>
 	<pre class="hljs ts">
-			<code>function sum(x: number, <mark>y: number = 42</mark>): number {</code>
-			<code>    return x + y;</code>
-			<code>}</code>
-			<code> </code>
-			<code>console.log(sum(34, 8));  <span class="comment">// 42</span></code>
-			<code>console.log(sum(42));     <span class="comment">// OK! - 84</span></code>
-			<code> </code>
-		</pre>
+		<code>function sum(x: number, <mark>y: number = 42</mark>): number {</code>
+		<code>    return x + y;</code>
+		<code>}</code>
+		<code> </code>
+		<code>console.log(sum(34, 8));  // 42</code>
+		<code>console.log(sum(42));     // OK! - 84</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Функции в TypeScript</h2>
 	<pre class="hljs ts">
-			<code>function sum(...numbers: number[]): number {</code>
-			<code>    return numbers.reduce((sum: number, current: number): number => {</code>
-			<code>        sum += current; return sum;</code>
-			<code>    }, 0);</code>
-			<code>}</code>
-			<code> </code>
-			<code>console.log(sum(1, 2, 3, 4, 5));     <span class="comment">// 15</span></code>
-			<code>console.log(sum(42, 0, -10, 5, 5));  <span class="comment">// 42</span></code>
-			<code> </code>
-		</pre>
+		<code>function sum(...numbers: number[]): number {</code>
+		<code>    return numbers.reduce((sum: number, current: number): number => {</code>
+		<code>        sum += current; return sum;</code>
+		<code>    }, 0);</code>
+		<code>}</code>
+		<code> </code>
+		<code>console.log(sum(1, 2, 3, 4, 5));     // 15</code>
+		<code>console.log(sum(42, 0, -10, 5, 5));  // 42</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Функции в TypeScript</h2>
 	<pre class="hljs ts">
-			<code>function square(num: number): number;</code>
-			<code>function square(num: string): number;</code>
-			<code>function square(num: any): number {</code>
-			<code>    if (typeof num === 'string') {</code>
-			<code>        return parseInt(num, 10) * parseInt(num, 10);</code>
-			<code>    } else {</code>
-			<code>        return num * num;</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>function square(num: number): number;</code>
+		<code>function square(num: string): number;</code>
+		<code>function square(num: any): number {</code>
+		<code>    if (typeof num === 'string') {</code>
+		<code>        return parseInt(num, 10) * parseInt(num, 10);</code>
+		<code>    } else {</code>
+		<code>        return num * num;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 
 <section class="slide">
 	<h2>Интерфейсы</h2>
 	<pre class="hljs ts">
-			<code>interface Figure {</code>
-			<code>    width: number;</code>
-			<code>    readonly height: number;</code>
-			<code>}</code>
-			<code> </code>
-			<code>const square: Figure = {width: 42, height: 42};</code>
-			<code>square.width = 15;    <span class="comment">// OK</span></code>
-			<code>square.height = 15;   <span class="comment">// Cannot assign to read-only property</span></code>
-			<code> </code>
-		</pre>
+		<code>interface Figure {</code>
+		<code>    width: number;</code>
+		<code>    readonly height: number;</code>
+		<code>}</code>
+		<code> </code>
+		<code>const square: Figure = {width: 42, height: 42};</code>
+		<code>square.width = 15;    // OK</code>
+		<code>square.height = 15;   // Cannot assign to read-only property</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Интерфейсы</h2>
 	<pre class="hljs ts">
-			<code>interface Figure {</code>
-			<code>    width: number;</code>
-			<code>    height: number;</code>
-			<code>}</code>
-			<code>interface Square extends Figure {</code>
-			<code>    square: () => number;</code>
-			<code>}</code>
-			<code>const sq = {width: 15, height: 20, </code>
-			<code>    square() { return this.width * this.height; } };</code>
-			<code>sq.square();    <span class="comment">// 300</span></code>
-			<code> </code>
-		</pre>
+		<code>interface Figure {</code>
+		<code>    width: number;</code>
+		<code>    height: number;</code>
+		<code>}</code>
+		<code>interface Square extends Figure {</code>
+		<code>    square: () => number;</code>
+		<code>}</code>
+		<code>const sq = {width: 15, height: 20, </code>
+		<code>    square() { return this.width * this.height; } };</code>
+		<code>sq.square();    // 300</code>
+		<code> </code>
+	</pre>
 </section>
 
 
 <section class="slide">
 	<h2>Классы в TypeScript</h2>
 	<pre class="hljs ts">
-			<code><mark>abstract</mark> class Class1 {</code>
-			<code>    abstract func1(): void;  <span
-					class="comment rus">// необходимо определить в наследниках</span></code>
-			<code>}</code>
-			<code>class Class2 extends Class1 {</code>
-			<code>    static <mark>readonly</mark> field3: string = 'hello';</code>
-			<code>    <mark>protected</mark> name: string;</code>
-			<code>    <mark>private</mark> field1: number;</code>
-			<code>    constructor() { super(); }</code>
-			<code>    public func1(): void { ... }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code><mark>abstract</mark> class Class1 {</code>
+		<code>    abstract func1(): void;  <span
+				class="comment rus">// необходимо определить в наследниках</code>
+		<code>}</code>
+		<code>class Class2 extends Class1 {</code>
+		<code>    static <mark>readonly</mark> field3: string = 'hello';</code>
+		<code>    <mark>protected</mark> name: string;</code>
+		<code>    <mark>private</mark> field1: number;</code>
+		<code>    constructor() { super(); }</code>
+		<code>    public func1(): void { ... }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Классы в TypeScript</h2>
 	<pre class="hljs ts">
-			<code>class Point {</code>
-			<code>    x: number;</code>
-			<code>    y: number;</code>
-			<code>}</code>
-			<code>interface Point3d extends Point {</code>
-			<code>    z: number;</code>
-			<code>}</code>
-			<code> </code>
-			<code>let point3d: Point3d = {x: 1, y: 2, z: 3};</code>
-			<code> </code>
-		</pre>
+		<code>class Point {</code>
+		<code>    x: number;</code>
+		<code>    y: number;</code>
+		<code>}</code>
+		<code>interface Point3d extends Point {</code>
+		<code>    z: number;</code>
+		<code>}</code>
+		<code> </code>
+		<code>let point3d: Point3d = {x: 1, y: 2, z: 3};</code>
+		<code> </code>
+	</pre>
 </section>
 
 
 <section class="slide">
 	<h2>Generics</h2>
 	<pre class="hljs ts">
-			<code>class Queue&lt;T> {</code>
-			<code>    private data = [];</code>
-			<code>    push = (item: T) => this.data.push(item);</code>
-			<code>    pop = (): T => this.data.shift();</code>
-			<code>}</code>
-			<code> </code>
-			<code>const queue = new Queue&lt;number>();</code>
-			<code>queue.push(0);    <span class="comment rus">// OK</span></code>
-			<code>queue.push('1');  <span class="comment rus">// Error: cannot push a string</span></code>
-			<code> </code>
-		</pre>
+		<code>class Queue&lt;T> {</code>
+		<code>    private data = [];</code>
+		<code>    push = (item: T) => this.data.push(item);</code>
+		<code>    pop = (): T => this.data.shift();</code>
+		<code>}</code>
+		<code> </code>
+		<code>const queue = new Queue&lt;number>();</code>
+		<code>queue.push(0);    // OK</code>
+		<code>queue.push('1');  // Error: cannot push a string</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Generics</h2>
 	<pre class="hljs ts">
-			<code>function makeKeyValue&lt;K, V>(key: K, value: V): { key: K; value: V } {</code>
-			<code>    return {key, value};</code>
-			<code>}</code>
-			<code> </code>
-			<code>const pair = makeKeyValue('days', ['ПН', 'ВТ']);</code>
-			<code>pair.value.push('СР', 'ЧТ', 'ПТ', 'СБ', 'ВС');  <span class="comment rus">// OK</span></code>
-			<code>pair.value.push(42);   <span class="comment rus">// Error: cannot push a number</span></code>
-			<code> </code>
-		</pre>
+		<code>function makeKeyValue&lt;K, V>(key: K, value: V): { key: K; value: V } {</code>
+		<code>    return {key, value};</code>
+		<code>}</code>
+		<code> </code>
+		<code>const pair = makeKeyValue('days', ['ПН', 'ВТ']);</code>
+		<code>pair.value.push('СР', 'ЧТ', 'ПТ', 'СБ', 'ВС');  // OK</code>
+		<code>pair.value.push(42);   // Error: cannot push a number</code>
+		<code> </code>
+	</pre>
 </section>
 
 
 <section class="slide">
 	<h2>Декораторы свойств и методов</h2>
 	<pre class="hljs ts">
-			<code>class Utils {</code>
-			<code>    <mark>@memoize</mark></code>
-			<code>    static fibonacci (n: number): number {</code>
-			<code>        return n < 2 ? 1 : Utils.fibonacci(n - 1) + Utils.fibonacci(n - 2)</code>
-			<code>    }</code>
-			<code>}</code>
-			<code>console.time('count');</code>
-			<code>console.log(Utils.fibonacci(50));</code>
-			<code>console.timeEnd('count');     <span class="comment rus">// оооочень долго</span></code>
-			<code> </code>
-		</pre>
+		<code>class Utils {</code>
+		<code>    <mark>@memoize</mark></code>
+		<code>    static fibonacci (n: number): number {</code>
+		<code>        return n < 2 ? 1 : Utils.fibonacci(n - 1) + Utils.fibonacci(n - 2)</code>
+		<code>    }</code>
+		<code>}</code>
+		<code>console.time('count');</code>
+		<code>console.log(Utils.fibonacci(50));</code>
+		<code>console.timeEnd('count');     // оооочень долго</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Декораторы свойств и методов</h2>
 	<pre class="hljs ts">
-			<code>function memoize (target, key, descriptor) {</code>
-			<code>    const originalMethod = descriptor.value;</code>
-			<code>    const cash = {};</code>
-			<code>    descriptor.value = function (n: number): number {</code>
-			<code>        return cash[n] ? cash[n] : cash[n] = originalMethod(n);</code>
-			<code>    }</code>
-			<code>}</code>
-			<code>console.log(Utils.fibonacci(1000));   <span
-					class="comment rus">// 7.0330367711422765e+208</span></code>
-			<code>console.timeEnd('count');             <span class="comment rus">// count: 5.668ms</span></code>
-			<code> </code>
-		</pre>
+		<code>function memoize (target, key, descriptor) {</code>
+		<code>    const originalMethod = descriptor.value;</code>
+		<code>    const cash = {};</code>
+		<code>    descriptor.value = function (n: number): number {</code>
+		<code>        return cash[n] ? cash[n] : cash[n] = originalMethod(n);</code>
+		<code>    }</code>
+		<code>}</code>
+		<code>console.log(Utils.fibonacci(1000));   <span
+				class="comment rus">// 7.0330367711422765e+208</code>
+		<code>console.timeEnd('count');             // count: 5.668ms</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -1979,18 +2243,18 @@
 <section class="slide">
 	<h2><code>.d.ts</code> файлы</h2>
 	<pre class="hljs ts">
-			<code>interface JQueryStatic {</code>
-			<code>    ajax(settings: JQueryAjaxSettings): JQueryXHR;</code>
-			<code>    (element: Element): JQuery;</code>
-			<code>    (html: string, ownerDocument?: Document): JQuery;</code>
-			<code>    (): JQuery;</code>
-			<code>}</code>
-			<code>declare var $: JQueryStatic;</code>
-			<code>declare module 'jquery' {</code>
-			<code>    export = $;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>interface JQueryStatic {</code>
+		<code>    ajax(settings: JQueryAjaxSettings): JQueryXHR;</code>
+		<code>    (element: Element): JQuery;</code>
+		<code>    (html: string, ownerDocument?: Document): JQuery;</code>
+		<code>    (): JQuery;</code>
+		<code>}</code>
+		<code>declare var $: JQueryStatic;</code>
+		<code>declare module 'jquery' {</code>
+		<code>    export = $;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide question">
@@ -2035,6 +2299,8 @@
 			книга по TypeScript
 		</li>
 		<li><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Крутая серия книг</a> о JavaScript</li>
+		<li><a href="https://developer.mozilla.org/ru/docs/DOM/Using_web_workers" target="_blank">Использование Web Workers</a> &mdash; MDN</li>
+		<li><a href="https://www.html5rocks.com/ru/tutorials/workers/basics/" target="_blank">Туториал Web Workers</a> &mdash; MDN</li>
 	</ul>
 </section>
 
@@ -2046,6 +2312,8 @@
 <script src="/lib/shower/shower.min.js"></script>
 <script src="/lib/hljs/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/reload/reload.js"></script>
 
 </body>
 </html>

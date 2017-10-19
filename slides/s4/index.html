@@ -264,7 +264,7 @@
 		)
 	</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// Находимся на https://evil.com/</span></code>
+		<code>// Находимся на https://evil.com/</code>
 		<code>const xhr = new XMLHttpRequest();</code>
 		<code>xhr.open('GET', <mark>'https://e.mail.ru/messages/inbox/'</mark>, false);</code>
 		<code>xhr.send();</code>
@@ -310,7 +310,7 @@
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: text/html; charset=UTF-8</code>
 			<code><mark>Access-Control-Allow-Origin:</mark> http://frontend.tech-mail.ru</code>
-			<code><span class="comment">// Access-Control-Allow-Origin: *</span></code>
+			<code>// Access-Control-Allow-Origin: *</code>
 			<code> </code>
 		</pre>
 </section>
@@ -340,7 +340,7 @@
     <pre class="hljs http">
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: text/html; charset=UTF-8</code>
-			<code>Access-Control-Allow-Origin: <mark>domain</mark> <span class="comment">// '*' запрещено</span></code>
+			<code>Access-Control-Allow-Origin: <mark>domain</mark> // '*' запрещено</code>
 			<code><mark>Access-Control-Allow-Credentials:</mark> true</code>
 			<code> </code>
 		</pre>
@@ -653,10 +653,10 @@
     <p class="medium-content"></p>
     <pre class="hljs js">
 		<code>try {</code>
-		<code>    <span class="comment rus">// Выбрасываем исключение вручную</span></code>
+		<code>    // Выбрасываем исключение вручную</code>
   		<code>    throw 'Ooops!';</code>
 		<code>} catch (err) {</code>
-		<code>    alert(err); <span class="comment rus">// Привет, я ошибка!</span></code>
+		<code>    alert(err); // Привет, я ошибка!</code>
 		<code>}</code>
 		<code> </code>
 	</pre>
@@ -673,7 +673,7 @@
 		<code>        console.log('User is', user);</code>
 		<code>    });</code>
 		<code>} catch (err) {</code>
-		<code>    alert(err); <span class="comment rus">// Не выполнится</span></code>
+		<code>    alert(err); // Не выполнится</code>
 		<code>}</code>
 		<code> </code>
 	</pre>
@@ -692,7 +692,7 @@
 		<code>try {</code>
 		<code>    http.get('/user', callback);</code>
 		<code>} catch (err) {</code>
-		<code>    alert(err); <span class="comment rus">// Не выполнится</span></code>
+		<code>    alert(err); // Не выполнится</code>
 		<code>}</code>
 		<code> </code>
 	</pre>
@@ -752,13 +752,13 @@
     <h2>Promise</h2>
     <pre class="hljs js">
 		<code>const promise = new Promise(function(resolve, reject) {</code>
-		<code>    <span class="comment rus">// Здесь можно выполнять любые действия</span></code>
+		<code>    // Здесь можно выполнять любые действия</code>
 		<code> </code>
-		<code>    <span class="comment rus">// вызов resolve(result) переведёт промис в состояние <mark>fulfilled</mark></span></code>
-		<code>    <span class="comment rus">// вызов reject(error) переведёт промис в состояние <mark>rejected</mark></span></code>
+		<code>    // вызов resolve(result) переведёт промис в состояние <mark>fulfilled</mark></code>
+		<code>    // вызов reject(error) переведёт промис в состояние <mark>rejected</mark></code>
 		<code>});</code>
 		<code> </code>
-		<code><span class="comment rus">// Можно создать сразу "готовый" промис</span></code>
+		<code>// Можно создать сразу "готовый" промис</code>
 		<code>const fulfilled = Promise.resolve(result);</code>
 		<code>// const fulfilled = new Promise((resolve, _) => resolve(result));</code>
 		<code>const rejected = Promise.reject(error);</code>
@@ -781,15 +781,15 @@
     <pre class="hljs js">
 		<code>const promise = new Promise( ... );</code>
 		<code> </code>
-		<code><span class="comment rus">// Можно навесить их одновременно</span></code>
+		<code>// Можно навесить их одновременно</code>
 		<code>promise.then(onFulfilled, onRejected);</code>
 		<code> </code>
-		<code><span class="comment rus">// Можно по отдельности</span></code>
-		<code><span class="comment rus">// Только обработчик onFulfilled</span></code>
+		<code>// Можно по отдельности</code>
+		<code>// Только обработчик onFulfilled</code>
 		<code>promise.then(onFulfilled);</code>
-		<code><span class="comment rus">// Только обработчик onRejected</span></code>
+		<code>// Только обработчик onRejected</code>
 		<code>promise.then(null, onRejected);</code>
-		<code>promise.catch(onRejected); <span class="comment rus">// Или так</span></code>
+		<code>promise.catch(onRejected); // Или так</code>
 		<code> </code>
 	</pre>
 </section>
@@ -937,12 +937,12 @@
 <section class="slide">
     <h2><code>Promise.all</code></h2>
     <pre class="hljs js">
-		<code><span class="comment rus">// Делаем что-нибудь асинхронное и важное параллельно</span></code>
+		<code>// Делаем что-нибудь асинхронное и важное параллельно</code>
 		<code>Promise.all([</code>
 		<code>	  PromiseGet('/user/1'),</code>
 		<code>	  PromiseGet('/user/2'),</code>
 		<code>]).then(function(users) {</code>
-		<code>	  <span class="comment rus">// Результатом станет массив из значений всех промисов</span></code>
+		<code>	  // Результатом станет массив из значений всех промисов</code>
 		<code>	  users.forEach(function(user, i) {</code>
 		<code>	  	  console.log(`User #${i}: ${value}`);</code>
 		<code>	  });</code>
@@ -954,12 +954,12 @@
 <section class="slide">
     <h2><code>Promise.race</code></h2>
     <pre class="hljs js">
-		<code><span class="comment rus">// Делаем что-нибудь асинхронное и важное наперегонки!</span></code>
+		<code>// Делаем что-нибудь асинхронное и важное наперегонки!</code>
 		<code>Promise.race([</code>
 		<code>	  promiseSomething(),</code>
 		<code>	  promiseSomethingElse()</code>
 		<code>]).then(function(result) {</code>
-		<code>	  <span class="comment rus">// Результатом станет значение самого "быстрого" промиса</span></code>
+		<code>	  // Результатом станет значение самого "быстрого" промиса</code>
 		<code>	  console.log(`Result: ${value}`);</code>
 		<code>});</code>
 		<code> </code>
@@ -977,7 +977,7 @@
         </p>
     </blockquote>
 	<pre class="hljs js">
-		<code><span class="comment rus">// Синтаксис метода fetch:</span></code>
+		<code>// Синтаксис метода fetch:</code>
 		<code>const fetchPromise = fetch(url[, options]);</code>
 	</pre>
 </section>

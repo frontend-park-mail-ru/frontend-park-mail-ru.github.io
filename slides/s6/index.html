@@ -84,9 +84,9 @@
 		<code>const canvas = document.createElement( 'canvas' );</code>
 		<code>document.appendChild(canvas);</code>
 		<code> </code>
-		<code><span class="comment rus">// Объект двумерного контекста</span></code>
+		<code>// Объект двумерного контекста</code>
 		<code>const context = canvas.<mark>getContext</mark>( '2d' );</code>
-		<code><span class="comment rus">// Объект WebGL (3D) контекста</span></code>
+		<code>// Объект WebGL (3D) контекста</code>
 		<code>const webgl = canvas.<mark>getContext</mark>( 'webgl' );</code>
 		<code> </code>
 	</pre>
@@ -100,11 +100,11 @@
 <section class="slide">
 	<h2>Рисование примитивов:<br/>прямоугольник</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// обводит прямоугольную область</span></code>
+		<code>// обводит прямоугольную область</code>
 		<code>ctx.strokeRect(x, y, width, height);</code>
-		<code><span class="comment rus">// заливает прямоугольную область</span></code>
+		<code>// заливает прямоугольную область</code>
 		<code>ctx.fillRect(x, y, width, height);</code>
-		<code><span class="comment rus">// очищает прямоугольную область</span></code>
+		<code>// очищает прямоугольную область</code>
 		<code>ctx.clearRect(x, y, width, height);</code>
 		<code> </code>
 	</pre>
@@ -129,11 +129,11 @@
 		})();
 	</script>
 	<pre class="hljs js short">
-		<code><span class="comment rus">// толстая рамка</span></code>
+		<code>// толстая рамка</code>
 		<code>ctx.fillRect(25, 25, 250, 250);</code>
 		<code>ctx.clearRect(100, 100, 100, 100);</code>
 		<code> </code>
-		<code><span class="comment rus">// квадраты в центре</span></code>
+		<code>// квадраты в центре</code>
 		<code>ctx.strokeRect(110, 110, 80, 80);</code>
 		<code>ctx.strokeRect(120, 120, 60, 60);</code>
 		<code>ctx.strokeRect(130, 130, 40, 40);</code>
@@ -146,15 +146,15 @@
 <section class="slide">
 	<h2>Рисование примитивов: линии</h2>
 	<pre class="hljs js">
-		<code>ctx.beginPath();     <span class="comment rus">// создаёт новую линию (новый путь)</span></code>
+		<code>ctx.beginPath();     // создаёт новую линию (новый путь)</code>
 		<code> </code>
-		<code>ctx.moveTo(x1, y1);  <span class="comment rus">// передвигает перо в нужную точку</span></code>
-		<code>ctx.lineTo(x2, y2);  <span class="comment rus">// проводит линию до другой точки</span></code>
-		<code>ctx.stroke();        <span class="comment rus">// обводит созданный путь</span></code>
-		<code>ctx.fill();          <span class="comment rus">// заливает область, обведённую путём</span></code>
-		<code>                     <span class="comment rus">// "nonzero" or "evenodd"</span></code>
+		<code>ctx.moveTo(x1, y1);  // передвигает перо в нужную точку</code>
+		<code>ctx.lineTo(x2, y2);  // проводит линию до другой точки</code>
+		<code>ctx.stroke();        // обводит созданный путь</code>
+		<code>ctx.fill();          // заливает область, обведённую путём</code>
+		<code>                     // "nonzero" or "evenodd"</code>
 		<code> </code>
-		<code>ctx.closePath();     <span class="comment rus">// завершает редактирование пути</span></code>
+		<code>ctx.closePath();     // завершает редактирование пути</code>
 		<code> </code>
 	</pre>
 </section>
@@ -187,14 +187,14 @@
 		})();
 	</script>
 	<pre class="hljs js short">
-		<code><span class="comment rus">// верхний треугольник</span></code>
+		<code>// верхний треугольник</code>
 		<code>ctx.beginPath();</code>
 		<code>ctx.moveTo(50, 50);</code>
 		<code>ctx.lineTo(50, 200); ctx.lineTo(200, 50); ctx.lineTo(50, 50);</code>
 		<code>ctx.closePath();</code>
 		<code>ctx.<mark>fill()</mark>;</code>
 		<code> </code>
-		<code><span class="comment rus">// нижний треугольник</span></code>
+		<code>// нижний треугольник</code>
 		<code>ctx.beginPath();</code>
 		<code>ctx.moveTo(250, 250);</code>
 		<code>ctx.lineTo(250, 100); ctx.lineTo(100, 250); ctx.lineTo(250, 250);</code>
@@ -208,13 +208,13 @@
 <section class="slide">
 	<h2>Рисование примитивов: дуги</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// создаёт путь-дугу</span></code>
+		<code>// создаёт путь-дугу</code>
 		<code>ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);</code>
-		<code><span class="comment rus">// <b>x, y</b> - центр дуги</span></code>
-		<code><span class="comment rus">// <b>radius</b> - радиус дуги (в радианах)</span></code>
-		<code><span class="comment rus">// <b>startAngle</b> - начальный угол</span></code>
-		<code><span class="comment rus">// <b>endAngle</b> - конечный угол</span></code>
-		<code><span class="comment rus">// <b>anticlockwise</b> - проводить против часовой стрелки</span></code>
+		<code>// <b>x, y</b> - центр дуги</code>
+		<code>// <b>radius</b> - радиус дуги (в радианах)</code>
+		<code>// <b>startAngle</b> - начальный угол</code>
+		<code>// <b>endAngle</b> - конечный угол</code>
+		<code>// <b>anticlockwise</b> - проводить против часовой стрелки</code>
 		<code> </code>
 	</pre>
 </section>
@@ -267,13 +267,13 @@
 <section class="slide">
 	<h2>Рисование примитивов:<br/>кривые-Безье</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// квадратичная кривая</span></code>
+		<code>// квадратичная кривая</code>
 		<code>ctx.quadraticCurveTo(cp1x, cp1y, x, y);</code>
-		<code><span class="comment rus">// кубическая кривая</span></code>
+		<code>// кубическая кривая</code>
 		<code>ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);</code>
 		<code> </code>
-		<code><span class="comment rus">// <b>cpx, cpy</b> - опорные точки</span></code>
-		<code><span class="comment rus">// <b>x, y</b> - куда вести</span></code>
+		<code>// <b>cpx, cpy</b> - опорные точки</code>
+		<code>// <b>x, y</b> - куда вести</code>
 		<code> </code>
 	</pre>
 </section>
@@ -334,9 +334,9 @@
 <section class="slide">
 	<h2>Рисование примитивов:<br/>прямоугольные пути</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// добавляет прямоугольный путь к текущему пути (не рисует)</span></code>
+		<code>// добавляет прямоугольный путь к текущему пути (не рисует)</code>
 		<code>ctx.rect(x, y, width, height);</code>
-		<code><span class="comment rus">// <b>x, y</b> - координаты левого верхнего угла</span></code>
+		<code>// <b>x, y</b> - координаты левого верхнего угла</code>
 		<code> </code>
 	</pre>
 </section>
@@ -347,9 +347,9 @@
 		<code>ctx.fillText(text, x, y, maxWidth);</code>
 		<code>ctx.strokeText(text, x, y, maxWidth);</code>
 		<code> </code>
-		<code><span class="comment rus">// <b>text</b> - текст</span></code>
-		<code><span class="comment rus">// <b>x, y</b> - координаты точки начала</span></code>
-		<code><span class="comment rus">// <b>maxWidth</b> - опциональное ограничение по ширине</span></code>
+		<code>// <b>text</b> - текст</code>
+		<code>// <b>x, y</b> - координаты точки начала</code>
+		<code>// <b>maxWidth</b> - опциональное ограничение по ширине</code>
 		<code> </code>
 	</pre>
 </section>
@@ -358,10 +358,10 @@
 	<h2>Рисование примитивов: Path2D</h2>
 	<pre class="hljs js">
 		<code>new Path2D('M10 10 h 80 v 80 h -80 Z');</code>
-		<code><span class="comment rus">// - создать из SVG</span></code>
-		
+		<code>// - создать из SVG</code>
+
 		<code>Path2D.addPath(path [, transform])</code>
-		<code><span class="comment rus">// <b>path</b> - добавить путь</span></code>
+		<code>// <b>path</b> - добавить путь</code>
 		<code> </code>
 		<code>const rectangle = new Path2D();</code>
 		<code>rectangle.rect(10, 10, 50, 50);</code>
@@ -376,13 +376,13 @@
 <section class="slide">
 	<h2>Стилизация линий</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// ширина линий</span></code>
+		<code>// ширина линий</code>
 		<code>ctx.lineWidth = value;</code>
 		<code> </code>
-		<code><span class="comment rus">// пунктир</span></code>
-		<code>ctx.setLineDash(segments);  <span class="comment rus">// шаблон (массив чисел)</span></code>
-		<code>ctx.getLineDash();          <span class="comment rus">// получить текущий шаблон</span></code>
-		<code>ctx.lineDashOffset = value; <span class="comment rus">// установить смещение (число)</span></code>
+		<code>// пунктир</code>
+		<code>ctx.setLineDash(segments);  // шаблон (массив чисел)</code>
+		<code>ctx.getLineDash();          // получить текущий шаблон</code>
+		<code>ctx.lineDashOffset = value; // установить смещение (число)</code>
 		<code> </code>
 	</pre>
 </section>
@@ -396,7 +396,7 @@
 			(function () {
 				const canvas = document.getElementById('styline');
 				const ctx = canvas.getContext('2d');
-	
+
 				ctx.beginPath();
 				[1, 5, 10, 20, 50].forEach((v, i) => {
 					ctx.beginPath();
@@ -406,7 +406,7 @@
 					ctx.lineTo(280, 30 + 55 * i);
 					ctx.stroke();
 				});
-	
+
 			})();
 		</script>
 		<pre class="hljs js short">
@@ -424,15 +424,15 @@
 <section class="slide">
 	<h2>Стилизация линий</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// окончание линий</span></code>
-		<code>ctx.lineCap = 'butt';    <span class="comment rus">// обрезанные концы</span></code>
-		<code>ctx.lineCap = 'round';   <span class="comment rus">// скруглённые концы</span></code>
-		<code>ctx.lineCap = 'square';  <span class="comment rus">// квадраты</span></code>
+		<code>// окончание линий</code>
+		<code>ctx.lineCap = 'butt';    // обрезанные концы</code>
+		<code>ctx.lineCap = 'round';   // скруглённые концы</code>
+		<code>ctx.lineCap = 'square';  // квадраты</code>
 		<code> </code>
-		<code><span class="comment rus">// оформление углов</span></code>
-		<code>ctx.lineJoin = 'bevel';  <span class="comment rus">// срезанные углы</span></code>
-		<code>ctx.lineJoin = 'round';  <span class="comment rus">// скруглённые углы</span></code>
-		<code>ctx.lineJoin = 'miter';  <span class="comment rus">// острые углы</span></code>
+		<code>// оформление углов</code>
+		<code>ctx.lineJoin = 'bevel';  // срезанные углы</code>
+		<code>ctx.lineJoin = 'round';  // скруглённые углы</code>
+		<code>ctx.lineJoin = 'miter';  // острые углы</code>
 		<code> </code>
 	</pre>
 </section>
@@ -505,7 +505,7 @@
 	<pre class="hljs js short">
 		<code>ctx.lineWidth = 20;</code>
 		<code>const lineCap = ['butt', 'round', 'square'];</code>
-		<code><span class="comment rus">// Рисуем линии</span></code>
+		<code>// Рисуем линии</code>
 		<code>lineCap.forEach((v, i) => {</code>
 		<code>    ctx.lineCap = v; ctx.beginPath();</code>
 		<code>    ctx.moveTo(50 + i * 100, 20);</code>
@@ -520,9 +520,9 @@
 <section class="slide">
 	<h2>Использование цветов</h2>
 	<pre class="hljs js">
-		<code>ctx.fillStyle = color;   <span class="comment rus">// задаёт стиль заливки</span></code>
-		<code>ctx.strokeStyle = color; <span class="comment rus">// задаёт стиль обводки</span></code>
-		<code>ctx.globalAlpha = value; <span class="comment rus">// задаёт уровень прозрачности (0.0 .. 1.0)</span></code>
+		<code>ctx.fillStyle = color;   // задаёт стиль заливки</code>
+		<code>ctx.strokeStyle = color; // задаёт стиль обводки</code>
+		<code>ctx.globalAlpha = value; // задаёт уровень прозрачности (0.0 .. 1.0)</code>
 		<code> </code>
 		<code>ctx.fillStyle = 'orange';</code>
 		<code>ctx.fillStyle = '#FFA500';</code>
@@ -582,11 +582,11 @@
 <section class="slide">
 	<h2>Использование градиентов</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// создание линейного градиента</span></code>
+		<code>// создание линейного градиента</code>
 		<code>let gradient = ctx.createLinearGradient(x1, y1, x2, y2);</code>
-		<code><span class="comment rus">// создание радиального градиента</span></code>
+		<code>// создание радиального градиента</code>
 		<code>gradient = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);</code>
-		<code><span class="comment rus">// добавление контрольной точки</span></code>
+		<code>// добавление контрольной точки</code>
 		<code>gradient.addColorStop(position, color);</code>
 		<code> </code>
 		<code>ctx.fillStyle = gradient;</code>
@@ -642,10 +642,10 @@
 <section class="slide">
 	<h2>Прочее</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// создание паттерна</span></code>
+		<code>// создание паттерна</code>
 		<code>let pattern = ctx.createPattern(image, type);</code>
 		<code> </code>
-		<code><span class="comment rus">// тени</span></code>
+		<code>// тени</code>
 		<code>ctx.shadowOffsetX = float;</code>
 		<code>ctx.shadowOffsetY = float;</code>
 		<code>ctx.shadowBlur = float;</code>
@@ -661,13 +661,13 @@
 <section class="slide">
 	<h2>Простые трансформации</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// перенос точки отсчёта</span></code>
+		<code>// перенос точки отсчёта</code>
 		<code>ctx.translate(x, y);</code>
 		<code> </code>
-		<code><span class="comment rus">// поворот осей</span></code>
+		<code>// поворот осей</code>
 		<code>ctx.rotate(angle);</code>
 		<code> </code>
-		<code><span class="comment rus">// масштабирование по осям</span></code>
+		<code>// масштабирование по осям</code>
 		<code>ctx.scale(x, y);</code>
 		<code> </code>
 		<code> </code>
@@ -677,14 +677,14 @@
 <section class="slide">
 	<h2>Комплексные трансформации</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// перенос точки отсчёта</span></code>
+		<code>// перенос точки отсчёта</code>
 		<code>ctx.transform(a, b, c, d, e, f);</code>
-		<code><span class="comment rus">// <b>a</b> - горизонтальный масштаб</span></code>
-		<code><span class="comment rus">// <b>b</b> - горизонтальный скос</span></code>
-		<code><span class="comment rus">// <b>c</b> - вертикальный скос</span></code>
-		<code><span class="comment rus">// <b>d</b> - вертикальный масштаб</span></code>
-		<code><span class="comment rus">// <b>e</b> - горизонтальное смещение</span></code>
-		<code><span class="comment rus">// <b>f</b> - вертикальное смещение</span></code>
+		<code>// <b>a</b> - горизонтальный масштаб</code>
+		<code>// <b>b</b> - горизонтальный скос</code>
+		<code>// <b>c</b> - вертикальный скос</code>
+		<code>// <b>d</b> - вертикальный масштаб</code>
+		<code>// <b>e</b> - горизонтальное смещение</code>
+		<code>// <b>f</b> - вертикальное смещение</code>
 		<code> </code>
 	</pre>
 </section>
@@ -692,10 +692,10 @@
 <section class="slide">
 	<h2>Комплексные трансформации</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// сброс текущей трансформации</span></code>
+		<code>// сброс текущей трансформации</code>
 		<code>ctx.resetTransform();</code>
 		<code> </code>
-		<code><span class="comment rus">// сброс текущей и установка новой трансформации</span></code>
+		<code>// сброс текущей и установка новой трансформации</code>
 		<code>ctx.setTransform(a, b, c, d, e, f);</code>
 		<code> </code>
 	</pre>
@@ -704,10 +704,10 @@
 <section class="slide">
 	<h2>Сохранение данных</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// сохранить все настройки, в том числе трансформации!</span></code>
+		<code>// сохранить все настройки, в том числе трансформации!</code>
 		<code>ctx.save();</code>
 		<code></code>
-		<code><span class="comment rus">// вернуть предыдущие из стека</span></code>
+		<code>// вернуть предыдущие из стека</code>
 		<code>ctx.restore();</code>
 	</pre>
 </section>
@@ -715,7 +715,7 @@
 <section class="slide">
 	<h2>А так же</h2>
 	<ul>
-		<li>Работа с изображениями: ctx.drawImage для img, svg, video, canvas</li>	
+		<li>Работа с изображениями: ctx.drawImage для img, svg, video, canvas</li>
 		<li>Режимы наложения и обрезка</li>
 		<li>Работа с пикселями: ctx.getImageData</li>
 		<li>...</li>
@@ -779,10 +779,10 @@
 	<pre class="hljs js">
 		<code>let start = perfomance.now();</code>
 		<code>let current = start;</code>
-		<code>function animation(now) { <span class="comment rus">// передаётся текущее <mark>perfomance.now()</mark></span></code>
+		<code>function animation(now) { // передаётся текущее <mark>perfomance.now()</mark></code>
 		<code>    const <mark>delay</mark> = now - current;</code>
 		<code>    current = now;</code>
-		<code>    redraw(start, delay); <span class="comment rus">// перерисовываем кадр</span></code>
+		<code>    redraw(start, delay); // перерисовываем кадр</code>
 		<code>    <mark>requestAnimationFrame</mark>(animation);</code>
 		<code>}</code>
 		<code> </code>
@@ -889,9 +889,9 @@
 <section class="slide">
 	<h2>Pointer Lock API</h2>
 	<pre class="hljs js">
-		<code><span class="comment rus">// обработчик события</span></code>
+		<code>// обработчик события</code>
 		<code>function update(event) {</code>
-		<code>    <span class="comment rus">// событие содержит смещение</span></code>
+		<code>    // событие содержит смещение</code>
 		<code>    const dx = event.movementX;</code>
 		<code>    const dy = event.movementY;</code>
 		<code>    animate(dx, dy);</code>
@@ -1080,7 +1080,7 @@
 			<a href="https://youtu.be/1_lX28QWCdg" target="_blank">
 				Web Workers, GPU computing and Web
 			</a>
-			и 
+			и
 			<a href="https://youtu.be/39MiUkGSEks" target="_blank">
 				WebVR
 			</a>
@@ -1097,6 +1097,8 @@
 <script src="/lib/shower/shower.min.js"></script>
 <script src="/lib/hljs/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/reload/reload.js"></script>
 
 </body>
 </html>

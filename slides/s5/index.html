@@ -945,7 +945,7 @@
 		<code>Router.register('/', MenuView);</code>
 		<code>Router.register('/signup', SignupView);</code>
 		<code>Router.register('/scores/pages/{page}', ScoreboardView);</code>
-		<code><span class="comment">...</span></code>
+		<code>...</code>
 		<code>Router.go('/scores/page/3'); // переход на 3 страницу (пагинация)</code>
 		<code> </code>
 	</pre>
@@ -983,14 +983,14 @@
 	<h2>History API</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs js">
-		<code><span class="comment rus">// Перемещение вперед и назад по истории</span></code>
-		<code>window.history.back(); <span class="comment rus">// работает как кнопка "Назад"</span></code>
-		<code>window.history.forward(); <span class="comment rus">// работает как кнопка "Вперёд"</span></code>
+		<code>// Перемещение вперед и назад по истории</code>
+		<code>window.history.back(); // работает как кнопка "Назад"</code>
+		<code>window.history.forward(); // работает как кнопка "Вперёд"</code>
 		<code> </code>
-		<code>window.history.go(-2); <span class="comment rus">// перемещение на несколько записей</span></code>
+		<code>window.history.go(-2); // перемещение на несколько записей</code>
 		<code>window.history.go( 2);</code>
 		<code> </code>
-		<code>const length = window.history.length; <span class="comment rus">// количество записей</span></code>
+		<code>const length = window.history.length; // количество записей</code>
 		<code> </code>
 	</pre>
 </section>
@@ -999,12 +999,12 @@
 	<h2>History API</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs js">
-		<code><span class="comment rus">// Изменение истории</span></code>
+		<code>// Изменение истории</code>
 		<code>const state = { foo: 'bar' };</code>
 		<code>window.history.pushState(</code>
-		<code>    state,         <span class="comment rus">// объект состояния</span></code>
-		<code>    'Page Title',  <span class="comment rus">// заголовок состояния</span></code>
-		<code>    '/pages/menu'  <span class="comment rus">// URL новой записи (same origin)</span></code>
+		<code>    state,         // объект состояния</code>
+		<code>    'Page Title',  // заголовок состояния</code>
+		<code>    '/pages/menu'  // URL новой записи (same origin)</code>
 		<code>);</code>
 		<code>window.history.replaceState(state2, 'Other Title', '/another/page');</code>
 		<code> </code>
@@ -1032,9 +1032,9 @@
 		<code>history.pushState({ page: 1 }, 'Title 1', '/menu?page=1');</code>
 		<code>history.pushState({ page: 2 }, 'Title 2', '/app?page=2');</code>
 		<code>history.pushState({ page: 3 }, 'Title 3', '/scores?page=3');</code>
-		<code>history.back();   <span class="comment">// /app?page=2</span></code>
-		<code>history.back();   <span class="comment">// /menu?page=1</span></code>
-		<code>history.go(2);    <span class="comment">// /scores?page=3</span></code>
+		<code>history.back();   // /app?page=2</code>
+		<code>history.back();   // /menu?page=1</code>
+		<code>history.go(2);    // /scores?page=3</code>
 		<code> </code>
 	</pre>
 </section>
@@ -1363,15 +1363,15 @@
 <section class="slide">
 	<h2>Форма по БЭМу</h2>
 	<pre class="hljs css">
-		<code><span class="comment rus">/* блок */</span></code>
+		<code>/* блок */</code>
 		<code>.login-form { ... }</code>
-		<code><span class="comment rus">/* эмененты */</span></code>
+		<code>/* эмененты */</code>
 		<code>.login-form__buttons { ... }</code>
 		<code>.login-form__submit { ... }</code>
 		<code>.login-form__reset { ... }</code>
 		<code>.login-form__username-input { ... }</code>
 		<code>.login-form__password-input { ... }</code>
-		<code><span class="comment rus">/* модификаторы */</span></code>
+		<code>/* модификаторы */</code>
 		<code>.login-form__submit_disabled { ... }</code>
 		<code>.login-form__reset_disabled { ... }</code>
 		<code> </code>
@@ -1381,12 +1381,12 @@
 <section class="slide">
 	<h2>Форма по БЭМу</h2>
 	<pre class="hljs css">
-		<code><span class="comment rus">/* блок */</span></code>
+		<code>/* блок */</code>
 		<code>.button { ... }</code>
-		<code><span class="comment rus">/* элементы */</span></code>
+		<code>/* элементы */</code>
 		<code>.button__capture { ... }</code>
 		<code>.button__icon { ... }</code>
-		<code><span class="comment rus">/* модификаторы */</span></code>
+		<code>/* модификаторы */</code>
 		<code>.button_big { ... }</code>
 		<code>.button_inverted { ... }</code>
 		<code>.button__capture_red { ... }</code>

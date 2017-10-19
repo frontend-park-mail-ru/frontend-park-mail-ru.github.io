@@ -67,7 +67,7 @@
 		<code>} </code>
 		<code> </code>
 		<code>sayHello('Лаврентий'); </code>
-		<code><span class="comment rus">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
+		<code>// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</code>
 		<code> </code>
 	</pre>
 </section>
@@ -75,7 +75,7 @@
 <section class="slide">
 	<h2>Внешние переменные</h2>
 	<pre class="hljs js">
-		<code>var otherName = 'Ivan'; <span class="comment">// window.otherName = Ivan</span></code>
+		<code>var otherName = 'Ivan'; // window.otherName = Ivan</code>
 		<code> </code>
 		<code>function sayHello(name) {</code>
 		<code>    let magicNumber = 42;</code>
@@ -83,8 +83,8 @@
 		<code>}</code>
 		<code> </code>
 		<code>sayHello('Лаврентий'); </code>
-		<code><span class="comment rus">// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</span></code>
-		<code><span class="comment">// sayHello.[[Scope]] = window</span></code>
+		<code>// LexicalEnvironment = {name: 'Лаврентий', magicNumber: 42}</code>
+		<code>// sayHello.[[Scope]] = window</code>
 		<code> </code>
 	</pre>
 </section>
@@ -106,7 +106,7 @@
 		<code>}</code>
 		<code> </code>
 		<code>let plus3 = sum(3);</code>
-		<code>plus3(6); <span class="comment">// 9</span></code>
+		<code>plus3(6); // 9</code>
 		<code> </code>
 	</pre>
 </section>
@@ -129,7 +129,7 @@
 		<code>}</code>
 		<code> </code>
 		<code>let plus3 = sum(3);</code>
-		<code>plus3(6); <span class="comment">// 10</span></code>
+		<code>plus3(6); // 10</code>
 		<code> </code>
 	</pre>
 </section>
@@ -140,11 +140,11 @@
 		<code>function f() {</code>
 		<code>    let privateVariable = 1;</code>
 		<code> </code>
-		<code>    <span class="comment">// some code</span></code>
+		<code>    // some code</code>
 		<code>};</code>
 		<code> </code>
 		<code>f();</code>
-		<code>console.log(window.privateVariable);  <span class="comment">// undefined</span></code>
+		<code>console.log(window.privateVariable);  // undefined</code>
 		<code> </code>
 	</pre>
 </section>
@@ -156,10 +156,10 @@
 		<code>(function () {</code>
 		<code>    let privateVariable = 1;</code>
 		<code> </code>
-		<code>    <span class="comment">// some code</span></code>
+		<code>    // some code</code>
 		<code>})();</code>
 		<code> </code>
-		<code>console.log(window.privateVariable);  <span class="comment">// undefined</span></code>
+		<code>console.log(window.privateVariable);  // undefined</code>
 		<code> </code>
 	</pre>
 </section>
@@ -190,12 +190,12 @@
 <section class="slide">
 	<h2>Модули &mdash; будущее</h2>
 	<pre class="hljs js">
-		<code><span class="comment">// main.js</span></code>
+		<code>// main.js</code>
 		<code>import AwesomeClass from './package.js'</code>
 		<code>let awesome = new AwesomeClass();</code>
 	</pre>
 	<pre class="hljs js">
-		<code><span class="comment">// package.js</span></code>
+		<code>// package.js</code>
 		<code>class AwesomeClass {</code>
 		<code>  //...</code>
 		<code>}</code>

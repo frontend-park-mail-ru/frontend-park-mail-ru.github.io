@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Заголовок</title>
+	<title>Работа с данными в браузере и производительность web-приложений, HTTP/2</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,13 +38,14 @@
 <body class="shower list">
 
 <header class="caption">
-	<h1>Работа с данными в браузере</h1>
-	<p>Технопарк, 2017 г.</p>
+	<h1>Работа с данными в браузере и производительность web-приложений, HTTP/2</h1>
+	<p>Технопарк, осень, 2017 г.</p>
 </header>
 
-<section class="slide">
+<section class="slide first">
 	<h2 class="shout">Работа с данными в браузере<br/>
-		<small style="font-size:32px;">Слайды доступны по ссылке <a href="http://frontend.tech-mail.ru/">frontend.tech-mail.ru</a>
+		<small>Слайды доступны по ссылке<br/>
+			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
 		</small>
 	</h2>
 </section>
@@ -77,7 +78,7 @@
 <section class="slide">
 	<h2>Кэширование</h2>
 	<pre class="hljs http">
-			<code><span class="comment rus">// Запрос обыкновенный</span></code>
+			<code>// Запрос обыкновенный</code>
 			<code>GET /script.js HTTP/1.1</code>
 			<code>Host: example.com</code>
 			<code>Accept: */*</code>
@@ -88,7 +89,7 @@
 <section class="slide">
 	<h2>Кэширование</h2>
 	<pre class="hljs http">
-			<code><span class="comment rus">// Ответ на запрос</span></code>
+			<code>// Ответ на запрос</code>
 			<code>HTTP/1.1 200 OK</code>
 			<code>Content-Type: application/javascript; charset=UTF-8</code>
 			<code>Cache-Control: public, max-age=86400</code>
@@ -113,7 +114,7 @@
 <section class="slide">
 	<h2>Проверка "свежести"</h2>
 	<pre class="hljs http">
-			<code><span class="comment rus">// Ответ на запрос</span></code>
+			<code>// Ответ на запрос</code>
 			<code>HTTP/1.1 200 OK</code>
 			<code>...</code>
 			<code>Last-Modified: Sat, 25 Mar 2017 12:00:00 GMT</code>
@@ -131,8 +132,8 @@
 			<code> </code>
 		</pre>
 	<pre class="hljs http">
-			<code>HTTP/1.1 304 Not Modified   <span class="comment rus">// Контент не изменился</span></code>
-			<code>HTTP/1.1 200 OK             <span class="comment rus">// Новый контент</span></code>
+			<code>HTTP/1.1 304 Not Modified   // Контент не изменился</code>
+			<code>HTTP/1.1 200 OK             // Новый контент</code>
 			<code> </code>
 		</pre>
 </section>
@@ -142,7 +143,7 @@
 		<mark><em>валидности</em></mark>
 	</h2>
 	<pre class="hljs http">
-			<code><span class="comment rus">// Ответ на запрос</span></code>
+			<code>// Ответ на запрос</code>
 			<code>HTTP/1.1 200 OK</code>
 			<code>...</code>
 			<code>ETag: W/"7349b-15b075b6d60"</code>
@@ -162,8 +163,8 @@
 			<code> </code>
 		</pre>
 	<pre class="hljs http">
-			<code>HTTP/1.1 304 Not Modified   <span class="comment rus">// Контент не изменился</span></code>
-			<code>HTTP/1.1 200 OK             <span class="comment rus">// Новый контент</span></code>
+			<code>HTTP/1.1 304 Not Modified   // Контент не изменился</code>
+			<code>HTTP/1.1 200 OK             // Новый контент</code>
 			<code> </code>
 		</pre>
 </section>
@@ -365,8 +366,8 @@
 	<h2><code>window.localStorage</code></h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
-			<code>localStorage[key];         <span class="comment rus">/* String */</span></code>
-			<code>localStorage[key] = value; <span class="comment rus">/* String */</span></code>
+			<code>localStorage[key];         /* String */</code>
+			<code>localStorage[key] = value; /* String */</code>
 			<code> </code>
 		</pre>
 </section>
@@ -375,8 +376,8 @@
 	<h2><code>window.localStorage</code></h2>
 	<pre class="hljs js">
 			<code>localStorage.length</code>
-			<code>localStorage.key(i)          <span class="comment rus">/* String */</span></code>
-			<code>localStorage.getItem(key)    <span class="comment rus">/* String */</span></code>
+			<code>localStorage.key(i)          /* String */</code>
+			<code>localStorage.getItem(key)    /* String */</code>
 			<code>localStorage.setItem(key, value)</code>
 			<code>localStorage.removeItem(key)</code>
 			<code>localStorage.clear()</code>
@@ -448,7 +449,7 @@
 	<pre class="hljs js">
 			<code>const ws = new WebSocket('ws://example.com/ws');</code>
 			<code> </code>
-			<code><span class="comment rus">// если страница загружена по https://</span></code>
+			<code>// если страница загружена по https://</code>
 			<code>const ws = new WebSocket('wss://example.com/ws');</code>
 			<code> </code>
 		</pre>
@@ -491,10 +492,10 @@
 	<h2>Событие <code>close</code></h2>
 	<pre class="hljs js">
 			<code>ws.onclose = function(event) {</code>
-			<code>      <span class="comment rus">// 1000 - штатное закрытие сокета</span></code>
-			<code>      <span class="comment rus">// 1001 - удалённая сторона исчезла</span></code>
-			<code>      <span class="comment rus">// 1002 - ошибка протокола</span></code>
-			<code>      <span class="comment rus">// 1003 - неверный запрос</span></code>
+			<code>      // 1000 - штатное закрытие сокета</code>
+			<code>      // 1001 - удалённая сторона исчезла</code>
+			<code>      // 1002 - ошибка протокола</code>
+			<code>      // 1003 - неверный запрос</code>
 			<code>      console.log('Код: ' + event.code);</code>
 			<code>      console.log('Причина: ' + event.reason);</code>
 			<code>};</code>
@@ -519,7 +520,7 @@
 	<h2>Отправка сообщений</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment rus">// Отправка текста</span></code>
+			<code>// Отправка текста</code>
 			<code>ws.send('Hello!');</code>
 			<code> </code>
 		</pre>
@@ -528,7 +529,7 @@
 <section class="slide">
 	<h2>Отправка сообщений</h2>
 	<pre class="hljs js">
-			<code><span class="comment rus">// Отправка JSON</span></code>
+			<code>// Отправка JSON</code>
 			<code>const message = JSON.stringify({</code>
 			<code>      text = 'Hello, world!';</code>
 			<code>});</code>
@@ -542,7 +543,7 @@
 	<h2>Отправка сообщений</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
-			<code><span class="comment rus">// Отправка файла</span></code>
+			<code>// Отправка файла</code>
 			<code>ws.send(form.elements[0].file);</code>
 			<code> </code>
 		</pre>
@@ -636,10 +637,10 @@
 			<code>this.addEventListener('install', function (event) {</code>
 			<code>    console.log('Service worker установлен')</code>
 			<code>    event.waitUntil(</code>
-			<code>        <span class="comment rus">// находим Cache-объект с нашим именем</span></code>
+			<code>        // находим Cache-объект с нашим именем</code>
 			<code>        caches.open('MY_CACHE')</code>
 			<code>            .then(function (cache) {</code>
-			<code>                <span class="comment rus">// загружаем в наш cache необходимые файлы</span></code>
+			<code>                // загружаем в наш cache необходимые файлы</code>
 			<code>                return cache.addAll(['/index.html']);</code>
 			<code>            });</code>
 			<code>    );</code>
@@ -1020,6 +1021,8 @@
 <script src="/lib/shower/shower.min.js"></script>
 <script src="/lib/hljs/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/reload/reload.js"></script>
 
 </body>
 </html>
