@@ -1905,6 +1905,25 @@
 </section>
 
 <section class="slide">
+	<h2>Elm</h2>
+	<pre class="hljs elm">
+			<code>import Html exposing (text)</code>
+			<code> </code>
+			<code>four =</code>
+			<code>  sqrt 16</code>
+			<code> </code>
+			<code>eleven =</code>
+			<code>  max 2 11</code>
+			<code> </code>
+			<code>twenty =</code>
+			<code>  max (sqrt 100) (4 * 5)</code>
+			<code> </code>
+			<code>main =</code>
+			<code>  text (toString [four, eleven, twenty])</code>
+		</pre>
+</section>
+
+<section class="slide">
 	<h2>TypeScript</h2>
 	<pre class="hljs typescript">
 		<code>interface Person {</code>
@@ -1937,6 +1956,10 @@
 		</p>
 	</blockquote>
 
+	<p>
+		Разработчиком языка TypeScript является <b>Андерс Хейлсберг</b> (англ. Anders Hejlsberg),
+		создавший ранее <mark>Turbo</mark>  <mark>Pascal</mark>,  <mark>Delphi</mark> и  <mark>C#</mark>.
+	</p>
 	<p class="note"><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash;
 		крутая книга по TypeScript</p>
 </section>
@@ -1951,6 +1974,16 @@
 		<li>Широкая поддержка IDE и адекватный автокомплит</li>
 		<li>Поддержка ES6-модулей из коробки</li>
 		<li>Высокая скорость разработки</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Переписываем проект на TS</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li>Переименовываем <code>*.js</code> в <code>*.ts</code></li>
+		<li>???????</li>
+		<li>PROFIT</li>
 	</ul>
 </section>
 
@@ -2254,6 +2287,37 @@
 		<code>    export = $;</code>
 		<code>}</code>
 		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Типизация с помощью <code>JSDoc</code></h2>
+	<pre class="hljs ts">
+		<code>// Пример типизирования функции с помощью JSDoc + TypeScript</code>
+		<code>/**</code>
+		<code> * @param p0 {string} - Строковый аргумент объявленный на манер TS</code>
+		<code> * @param {string}  p1 - Строковый аргумент</code>
+		<code> * @param {string=} p2 - Опциональный аргумент</code>
+		<code> * @param {string} [p3] - Другой опциональный аргумент</code>
+		<code> * @param {string} [p4="test"] - Аргумент со значением по-умолчанию</code>
+		<code> * @return {string} Возвращает строку</code>
+		<code> */</code>
+		<code>function fn3(p0, p1, p2, p3, p4){</code>
+		<code>  // TODO</code>
+		<code>}</code>
+		</pre>
+</section>
+
+<section class="slide">
+	<h2>Flow от Facebook</h2>
+	<pre class="hljs flow">
+        <code>// @flow</code>
+        <code>function concat(a: string, b: string) {</code>
+        <code>  return a + b;</code>
+        <code>}</code>
+        <code></code>
+        <code>concat("A", "B"); // Works!</code>
+        <code>concat(1, 2); // Error!</code>
 	</pre>
 </section>
 
