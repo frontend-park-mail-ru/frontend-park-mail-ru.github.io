@@ -260,7 +260,7 @@
 	<pre class="hljs js">
 		<code>const переменная = 42;</code>
 		<code>const джонни = {</code>
-		<code>    имя: 'Jhon',</code>
+		<code>    имя: 'Jon',</code>
 		<code>    фамилия: 'Snow',</code>
 		<code>    возраст: 20</code>
 		<code>};</code>
@@ -573,10 +573,10 @@
 		<code> // копирование свойств</code>
 		<code>Object.assign(target, ...sources);</code>
 		<code> </code>
-		<code>const s1 = {a: 'Jhon'}, s2 = {b: 42};</code>
+		<code>const s1 = {a: 'Jon'}, s2 = {b: 42};</code>
 		<code>const result = Object.assign({}, s1, s2);</code>
 		<code>// result: {</code>
-		<code>//     a: 'Jhon',</code>
+		<code>//     a: 'Jon',</code>
 		<code>//     b: 42</code>
 		<code>// }</code>
 		<code> </code>
@@ -1051,7 +1051,7 @@
 	<h2>Оператор расширения</h2>
 	<pre class="hljs js">
 		<code>// пока что так нельзя</code>
-		<code>const name = { first: 'Jhon', last: 'Snow' };</code>
+		<code>const name = { first: 'Jon', last: 'Snow' };</code>
 		<code>const address = {</code>
 		<code>    city: 'Norilsk',</code>
 		<code>    country: 'Russian Federation',</code>
@@ -1558,7 +1558,7 @@
 	<h2>Использование <code>Proxy</code></h2>
 	<p class="medium-content"></p>
 	<pre class="hljs js">
-		<code>proxy.name = 'Jhon Snow';               // Запись name = Jhon Snow</code>
+		<code>proxy.name = 'Jon Snow';               // Запись name = Jon Snow</code>
 		<code>proxy.age = 22;                         // Запись age = 22</code>
 		<code>proxy['long property'] = 'qux';         // Запись long property = qux</code>
 		<code> </code>
@@ -1822,17 +1822,20 @@
 <section class="slide">
 	<h2>Транспилляция из ES.Next</h2>
 	<pre class="hljs js">
-		<code>class ReleaseReducer extends BaseReducer {</code>
-		<code>    constructor(...args) {</code>
-		<code>        super(args.length);</code>
-		<code>        this.initial = args;</code>
-		<code>    }</code>
-		<code>    set Fields (value = {}) {</code>
-		<code>        const {name, data:count = 0} = value;</code>
-		<code>        this.fields = Object.assign(this.fields, {name, count});</code>
-		<code>    }</code>
+		<code>import { flying } from 'abilities';</code>
+		<code>class Creature {</code>
+		<code>	constructor({ name, ...rest}) {</code>
+		<code>		console.log(`Привет, ${name}, твои свойства:`, rest);</code>
+		<code>	}</code>
 		<code>}</code>
-		<code> </code>
+		<code>@flying</code>
+		<code>class Dragon extends Creature {</code>
+		<code>	static haveTail = true;</code>
+		<code>	legs = 4;</code>
+		<code>	async *eat(...staff) {</code>
+		<code>		// Eat something...</code>
+		<code>	}</code>
+		<code>}</code>
 	</pre>
 </section>
 
@@ -1907,19 +1910,19 @@
 <section class="slide">
 	<h2>Elm</h2>
 	<pre class="hljs elm">
-			<code>import Html exposing (text)</code>
-			<code> </code>
-			<code>four =</code>
-			<code>  sqrt 16</code>
-			<code> </code>
-			<code>eleven =</code>
-			<code>  max 2 11</code>
-			<code> </code>
-			<code>twenty =</code>
-			<code>  max (sqrt 100) (4 * 5)</code>
-			<code> </code>
-			<code>main =</code>
-			<code>  text (toString [four, eleven, twenty])</code>
+		<code>import Html exposing (text)</code>
+		<code> </code>
+		<code>main =</code>
+		<code>  text (toString (zip ["Tom", "Sue", "Bob"] [45, 31, 26]))</code>
+		<code> </code>
+		<code>zip : List a -> List b -> List (a,b)</code>
+		<code>zip xs ys =</code>
+		<code>  case (xs, ys) of</code>
+		<code>	( x :: xBack, y :: yBack ) -></code>
+		<code>		(x,y) :: zip xBack yBack</code>
+		<code> </code>
+		<code>	(_, _) -></code>
+		<code>		[]</code>
 		</pre>
 </section>
 
@@ -2026,7 +2029,51 @@
 	<pre class="hljs ts">
 		<code>const valid: boolean = true;</code>
 		<code>const count: number = 42;</code>
-		<code>const name: string = 'Jon Snow';</code>
+		<code>const man: string = 'Jon Snow';</code>
+		<code> </code>
+		<code>console.log(man * 2);</code>
+		<code>// Error: The left-hand side of an arithmetic</code>
+		<code>// operation must be of type 'any', 'number' or an enum type.</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Type Inference</h2>
+	<blockquote>
+		<p><b>Вывод типов</b> (англ. type inference) &mdash; в программировании возможность компилятора
+			самому логически вывести тип значения у выражения.
+		</p>
+	</blockquote>
+	<pre class="hljs ts">
+		<code>const valid = true;</code>
+		<code>const count = 42;</code>
+		<code>const man = 'Jon Snow';</code>
+		<code> </code>
+		<code>console.log(man * 2);</code>
+		<code>// Error: The left-hand side of an arithmetic</code>
+		<code>// operation must be of type 'any', 'number' or an enum type.</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Аннотации типов</h2>
+	<pre class="hljs ts">
+		<code>const valid = true;</code>
+		<code>const count = 42;</code>
+		<code>const man: any = 'Jon Snow';</code>
+		<code> </code>
+		<code>console.log(man * 2); //NaN</code>
+		<code>// Зато нет TS ошибок!</code>
+		<code>// Profit!</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Аннотации типов</h2>
+	<pre class="hljs ts">
+		<code>const valid = true;</code>
+		<code>const count = 42;</code>
+		<code>const name = 'Jon Snow';</code>
 		<code> </code>
 		<code>const values: number[] = [1, 2, 3, 4, 5];</code>
 		<code>const tuple: [string, number] = ['Mean of life', 42];</code>
@@ -2131,6 +2178,20 @@
 	</pre>
 </section>
 
+<section class="slide">
+	<h2>Функции в TypeScript</h2>
+	<pre class="hljs ts">
+		<code>function square(num: string | number): number {</code>
+		<code>    if (typeof num === 'string') {</code>
+		<code>        return parseInt(num, 10) * parseInt(num, 10);</code>
+		<code>    } else {</code>
+		<code>        return num * num;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
 
 <section class="slide">
 	<h2>Интерфейсы</h2>
@@ -2186,16 +2247,18 @@
 <section class="slide">
 	<h2>Классы в TypeScript</h2>
 	<pre class="hljs ts">
-		<code>class Point {</code>
-		<code>    x: number;</code>
-		<code>    y: number;</code>
-		<code>}</code>
-		<code>interface Point3d extends Point {</code>
-		<code>    z: number;</code>
+		<code>interface Squarable {</code>
+		<code>	calcSomething(): number;</code>
 		<code>}</code>
 		<code> </code>
-		<code>let point3d: Point3d = {x: 1, y: 2, z: 3};</code>
+		<code>class Square implements Squarable {</code>
+		<code>	width: number;</code>
+		<code>	height: number;</code>
 		<code> </code>
+		<code>	// Error: Class 'Square' incorrectly implements interface 'Squarable'.</code>
+		<code>	// Property 'calcSomething' is missing in type 'Square'.</code>
+		<code>}</code>
+
 	</pre>
 </section>
 
