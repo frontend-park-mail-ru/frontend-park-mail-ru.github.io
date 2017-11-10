@@ -730,10 +730,10 @@
 </section>
 
 <section class="slide">
-	<h2>All stats</h2>
+	<h2>All stats &mdash; <a href="http://gs.statcounter.com/platform-market-share/desktop-mobile/worldwide"
+							 target="_blank">statcounter.com</a></h2>
 	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="StatCounter-comparison-ww-monthly-200901-201704.png"
-			 style="transform-origin: center;transform: translate(-50%, -50%) scale(0.7);">
+		<img class="place" src="stats1.png" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.9);">
 	</div>
 </section>
 
@@ -796,95 +796,94 @@
 		<p class="small-content">A <code>media query</code> is a method of testing certain aspects of the user agent or
 			device that the document is being displayed in</p>
 	</blockquote>
+	<pre class="hljs css">
+		<code>@media screen and (max-width: 1900px) {</code>
+		<code>    .container {</code>
+		<code>        width: 70vw;</code>
+		<code>        max-width: 1200px;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Использование в CSS</h2>
 	<pre class="hljs css">
-			<code>@media screen and (max-width: 1900px) {</code>
-    		<code>    .container {</code>
-   		 	<code>        width: 70vw;</code>
-    		<code>        max-width: 1200px;</code>
-    		<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>@media screen and (color) { /* Для цветных экранов */</code>
+		<code>    body { background: whitesmoke; }</code>
+		<code>}</code>
+		<code> </code>
+		<code>/* Для широкоформатных экранов */</code>
+		<code>@media screen and (min-device-aspect-ratio: 16/10) {</code>
+		<code>    ...</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Использование в CSS</h2>
 	<pre class="hljs css">
-			<code>@media screen and (color) { /* Для цветных экранов */</code>
-    		<code>    body { background: whitesmoke; }</code>
-   		 	<code>}</code>
-			<code> </code>
-			<code>/* Для широкоформатных экранов */</code>
-			<code>@media screen and (min-device-aspect-ratio: 16/10) {</code>
-    		<code>    ...</code>
-   		 	<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Использование в CSS</h2>
-	<pre class="hljs css">
-			<code>@media projection { /* проектор */</span> }</code>
-    		<code>@media handheld { /* смартфоны и носимые устройства */</span> }</code>
-   		 	<code>@media tv { /* телевизоры */</span> }</code>
-			<code>@media braille { /* устройства для слабовидящих */</span> }</code>
-			<code> </code>
-		</pre>
+		<code>@media projection { /* проектор */</span> }</code>
+		<code>@media handheld { /* смартфоны и носимые устройства */</span> }</code>
+		<code>@media tv { /* телевизоры */</span> }</code>
+		<code>@media braille { /* устройства для слабовидящих */</span> }</code>
+		<code> </code>
+		<code>@media (hover) { /* если на устройстве работает <mark>hover</mark> */ }</code>
+		<code> </code>
+		<code>@media (pointer: coarse) { /* тачскрины, управляемые пальцами */ }</code>
+		<code>@media (pointer: fine) { /* мышь или стилус */ }</code>
+		<code>@media (pointer: none) { /* нет курсора о_О */ }</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Использование в HTML</h2>
 	<pre class="hljs html">
-			<code>&lt;link rel="stylesheet"</code>
-    		<code>   <span hidden>&lt;l</span> media="all and (orientation : portrait)"</code>
-   		 	<code>   <span hidden>&lt;l</span> href="portrait.css"></code>
-			<code> </code>
-			<code>&lt;link rel="stylesheet"</code>
-    		<code>   <span hidden>&lt;l</span> media="all and (orientation : landscape)"</code>
-   		 	<code>   <span hidden>&lt;l</span> href="landscape.css"></code>
-			<code> </code>
-		</pre>
+		<code>&lt;link rel="stylesheet"</code>
+		<code>   <span hidden>&lt;l</span> media="all and (orientation : portrait)"</code>
+		<code>   <span hidden>&lt;l</span> href="portrait.css"></code>
+		<code> </code>
+		<code>&lt;link rel="stylesheet"</code>
+		<code>   <span hidden>&lt;l</span> media="all and (orientation : landscape)"</code>
+		<code>   <span hidden>&lt;l</span> href="landscape.css"></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>CSS директивa @supports</h2>
 	<pre class="hljs css">
-			<code>@supports (display: flex) {</code>
-    		<code>    div { display: flex; }</code>
-    		<code>}</code>
-    		<code> </code>
-    		<code>@supports not (display: flex) {</code>
-			<code>    div { float: left; } /* задан альтернативный стиль */</code>
-    		<code>}</code>
-    		<code> </code>
-		</pre>
+		<code>@supports (display: flex) {</code>
+		<code>    div { display: flex; }</code>
+		<code>}</code>
+		<code> </code>
+		<code>@supports not (display: flex) {</code>
+		<code>    div { float: left; } /* задан альтернативный стиль */</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>CSS директивa @supports</h2>
 	<pre class="hljs css">
-			<code>@supports (display: -webkit-flex) or</code>
-    		<code>          (display: -moz-flex) or</code>
-   		 	<code>          (display: flex) {</code>
-   		 	<code> </code>
-   		 	<code>    /* добавляем сюда ваших клёвых стилей */</code>
-   		 	<code>}</code>
-   		 	<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>CSS @supports</h2>
+		<code>@supports (display: -webkit-flex) or</code>
+		<code>          (display: -moz-flex) or</code>
+		<code>          (display: flex) {</code>
+		<code> </code>
+		<code>    /* добавляем сюда ваших клёвых стилей */</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 	<pre class="hljs js">
-			<code>const supportsFlex1 = CSS.supports('display', 'flex');</code>
-    		<code>const supportsFlex2 = CSS.supports('(display: flex)');</code>
-   		 	<code> </code>
-		</pre>
+		<code>// использование в JS</code>
+		<code>const supportsFlex1 = CSS.supports('display', 'flex');</code>
+		<code>const supportsFlex2 = CSS.supports('(display: flex)');</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -930,14 +929,24 @@
 		<mark>@viewport</mark>
 	</h2>
 	<pre class="hljs css">
-			<code>@viewport {</code>
-			<code>     width: device-width;</code>
-			<code>     height: device-height;</code>
-			<code>     zoom: 2;</code>
-			<code>     user-zoom: fixed;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>@viewport {</code>
+		<code>     width: device-width;</code>
+		<code>     height: device-height;</code>
+		<code>     zoom: 2;</code>
+		<code>     user-zoom: fixed;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Типы пикселей &mdash; <a href="https://habrahabr.ru/post/252395/" target="_blank">подробнее</a></h2>
+	<p class="small-content"></p>
+	<ul>
+		<li><strong>Аппаратные пиксели</strong> &mdash; физический пиксель матрицы дисплея</li>
+		<li><strong>Аппаратно-независимые пиксели</strong> (Device-independent pixels, dip) &mdash; пиксели дисплея, приведённые к единому масштабу, чтобы соответствовать примерно одинаковому углу зрения на всех девайсах (с учётом расстояния, на котором мы их держим)</li>
+		<li><strong>Пиксель CSS</strong> &mdash; единица измерения вёрстки</li>
+	</ul>
 </section>
 
 <section class="slide">
@@ -948,21 +957,18 @@
 </section>
 
 <section class="slide">
-	<h2>Типы пикселей</h2>
-	<p class="small-content"></p>
-	<ul>
-		<li>Аппаратные пиксели</li>
-		<li>Аппаратно-независимые пиксели (Device-independent pixels, dip)</li>
-		<li>Пиксель CSS</li>
-	</ul>
-</section>
-
-<section class="slide">
 	<h2>Пиксели? Пиксели!</h2>
 	<div style="position:relative;width: 100%;height: 80%;">
 		<img class="place" src="css2.gif" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.8);">
 	</div>
 </section>
+
+<section class="slide question">
+	<h2>
+		<a style="color: royalblue" href="https://habrahabr.ru/post/150071/" target="_blank">Оптимизация графики для Retina-экранов</a>
+	</h2>
+</section>
+
 
 
 <!--viewports всё-->
@@ -1032,7 +1038,7 @@
 <section class="slide">
 	<h2>pointer-events</h2>
 	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="peciu.png"
+		<img class="place" src="pe-caniuse.png"
 			 style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.8);">
 	</div>
 </section>
@@ -1041,14 +1047,14 @@
 	<h2>300-ms задержка</h2>
 	<p>Между событием touchend и click проходит 300-350ms</p>
 	<pre class="hljs css">
-			<code>html {</code>
-    		<code>    touch-action: manipulation;</code>
-   		 	<code>    touch-action: auto;</code>
-   		 	<code>    touch-action: pan-x; /* pan-x */</code>
-   		 	<code>    touch-action: pinch-zoom;</code>
-   		 	<code>}</code>
-   		 	<code> </code>
-		</pre>
+		<code>html {</code>
+		<code>    touch-action: manipulation;</code>
+		<code>    touch-action: auto;</code>
+		<code>    touch-action: pan-x; /* pan-x */</code>
+		<code>    touch-action: pinch-zoom;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
@@ -1066,13 +1072,13 @@
 <section class="slide">
 	<h2>Решение</h2>
 	<pre class="hljs js">
-			<code>// HammerJS - http://hammerjs.github.io/</code>
-    		<code>const hammertime = new Hammer(element, options);</code>
-   		 	<code>hammertime.on('swipe', function(event) {</code>
-   		 	<code>    console.log(event);</code>
-   		 	<code>});</code>
-   		 	<code> </code>
-		</pre>
+		<code>// HammerJS - http://hammerjs.github.io/</code>
+		<code>const hammertime = new Hammer(element, options);</code>
+		<code>hammertime.on('swipe', function(event) {</code>
+		<code>    console.log(event);</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -1112,8 +1118,10 @@
 </section>
 
 <section class="slide question">
-	<h2><a style="color: royalblue; font-size: 85%" href="https://goo.gl/eDCsJK"
-		   target="_blank">https://goo.gl/eDCsJK</a></h2>
+	<h2>
+		<a style="color: royalblue; font-size: 75%" href="https://native-pwa.firebaseapp.com/"
+		   target="_blank">https://native-pwa.firebaseapp.com/</a>
+	</h2>
 </section>
 
 <section class="slide question">
@@ -1148,51 +1156,51 @@
 	<h2>Web App Manifest</h2>
 	<p><b>Progressive Web App</b></p>
 	<pre class="hljs html">
-			<code>&lt;link rel=manifest href="/manifest.json"></code>
-			<code> </code>
-		</pre>
+		<code>&lt;link rel=manifest href="/manifest.json"></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Web App Manifest</h2>
 	<pre class="hljs json">
-			<code>{</code>
-			<code>    "name": "Calculator",</code>
-			<code>    "short_name": "Calc",</code>
-			<code>    "lang": "ru-RU",</code>
-			<code>    "start_url": "/index.html",</code>
-			<code>    "display": "fullscreen", // standalone, minimal-ui, browser</code>
-			<code>    "orientation": "landscape", // portrait, any</code>
-			<code>    "background_color": "#0F0848",</code>
-			<code>    "theme_color": "#0F0848",</code>
-			<code>    "icons": [ ... ]</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>{</code>
+		<code>    "name": "Calculator",</code>
+		<code>    "short_name": "Calc",</code>
+		<code>    "lang": "ru-RU",</code>
+		<code>    "start_url": "/index.html",</code>
+		<code>    "display": "fullscreen", // standalone, minimal-ui, browser</code>
+		<code>    "orientation": "landscape", // portrait, any</code>
+		<code>    "background_color": "#0F0848",</code>
+		<code>    "theme_color": "#0F0848",</code>
+		<code>    "icons": [ ... ]</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Web App Manifest</h2>
 	<pre class="hljs json">
-			<code>{</code>
-			<code>    "icons": [ {</code>
-			<code>            "src": "/imgs/icon-16.png",</code>
-			<code>            "type": "image/png",</code>
-			<code>            "sizes": "16x16"</code>
-			<code>        }, {</code>
-			<code>            "src": "/imgs/icon-24.png",</code>
-			<code>            "type": "image/png",</code>
-			<code>            "sizes": "24x24"</code>
-			<code>        } ]</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>{</code>
+		<code>    "icons": [ {</code>
+		<code>            "src": "/imgs/icon-16.png",</code>
+		<code>            "type": "image/png",</code>
+		<code>            "sizes": "16x16"</code>
+		<code>        }, {</code>
+		<code>            "src": "/imgs/icon-24.png",</code>
+		<code>            "type": "image/png",</code>
+		<code>            "sizes": "24x24"</code>
+		<code>        } ]</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Web App Manifest</h2>
 	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="waciu.png"
+		<img class="place" src="wam-caniuse.png"
 			 style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.8);">
 	</div>
 </section>
@@ -1200,17 +1208,17 @@
 <section class="slide">
 	<h2>Apple meta-tags</h2>
 	<pre class="hljs html">
-			<code>&lt;link rel=apple-touch-icon href="/imgs/icon-152.png"></code>
-			<code>&lt;meta name=theme-color content=#0F0848></code>
-			<code> </code>
-			<code>&lt;meta name=application-name content="Calc"></code>
-			<code>&lt;meta name=apple-mobile-web-app-title content="Calc"></code>
-			<code> </code>
-			<code>&lt;meta name=mobile-web-app-capable content=yes></code>
-			<code>&lt;meta name=apple-mobile-web-app-capable content=yes></code>
-			<code>&lt;meta name=apple-mobile-web-app-status-bar-style content=#0F0848></code>
-			<code> </code>
-		</pre>
+		<code>&lt;link rel=apple-touch-icon href="/imgs/icon-152.png"></code>
+		<code>&lt;meta name=theme-color content=#0F0848></code>
+		<code> </code>
+		<code>&lt;meta name=application-name content="Calc"></code>
+		<code>&lt;meta name=apple-mobile-web-app-title content="Calc"></code>
+		<code> </code>
+		<code>&lt;meta name=mobile-web-app-capable content=yes></code>
+		<code>&lt;meta name=apple-mobile-web-app-capable content=yes></code>
+		<code>&lt;meta name=apple-mobile-web-app-status-bar-style content=#0F0848></code>
+		<code> </code>
+	</pre>
 </section>
 
 
