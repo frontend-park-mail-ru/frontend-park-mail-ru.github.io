@@ -51,7 +51,9 @@
 </section>
 
 <section class="slide">
-	<h2 class="shout"><span style="font-size: 100%">Стили и <span style="color:darkred">CSS</span></span></h2>
+	<h2 class="shout">
+		<span style="font-size: 100%">Стили и <span style="color: darkred;">CSS</span></span>
+	</h2>
 </section>
 
 <section class="slide">
@@ -88,30 +90,78 @@
 
 </section>
 
+<section class="slide question">
+	<h2>
+		Кто придумывает <strong>WEB</strong>?
+	</h2>
+</section>
+
 <section class="slide">
-	<h2>CSS</h2>
+	<h2>W3C &mdash; <a href="https://www.w3.org/" target="_blank">www.w3.org</a></h2>
+	<blockquote>
+		<p class="content">
+			<strong>W3C (World Wide Web Consortium &mdash; Консорциум Всемирной паутины)</strong> &mdash; организация, разрабатывающая и внедряющая технологические стандарты для Всемирной паутины. Консорциум возглавляет <strong>Тимоти Джон Бернерс-Ли</strong>
+		</p>
+	</blockquote>
+	<div>Любой стандарт W3C проходит <mark>5 стадий согласования</mark>:</div>
+	<ul lang="ru">
+		<li>Черновик спецификации (<em>Draft</em>)</li>
+		<li>Рабочий проект (<em>Working Draft</em>);</li>
+		<li>Последний созыв (<em>Last Call</em>);</li>
+		<li>Возможная рекомендация (<em>Candidate Recommendation</em>);</li>
+		<li>Предлагаемая рекомендация (<em>Proposed Recommendation</em>);</li>
+	</ul>
+	<div>и только после этого официально становится рекомендацией W3C</div>
+</section>
+
+<section class="slide">
+	<h2>WHATWG &mdash; <a href="https://whatwg.org/" target="_blank">whatwg.org</a></h2>
+	<blockquote>
+		<p class="content">
+			<strong>WHATWG (Web Hypertext Application Technology Working Group)</strong> &mdash; сообщество людей, заинтересованных в развитии Интернета. Было основано в 2004 году производителями браузеров: Apple, Mozilla Foundation и Opera Software. Основным направлением сообщества является <mark>развитие HTML и API, необходимого для веб-приложений</mark>.
+		</p>
+	</blockquote>
+	<p class="note">
+		По сути, является <strong><em>форком W3C</em></strong>. WHATWG была недовольна медленными темпами развития стандартов и уклоном W3C в сторону HTML, основанного на XML-синтаксисе
+	</p>
+	<div>Сейчас WHATWG активно разрабатывает спецификации: HTML, DOM Standard, Fetch Standard, Web workers, Storage Standard, Streams Standard...</div>
+</section>
+
+<section class="slide">
+	<h2>CSS &mdash; Cascading Style Sheets</h2>
 	<p class="small-content"></p>
+	<div>CSS одна из широкого спектра технологий, одобренных консорциумом W3C и получивших общее название «стандарты Web»</div>
+	<p class="note"><a href="https://wiki.csswg.org/" target="_blank">wiki.csswg.org</a> &mdash; рабочая группа CSS в рамках консорциума W3C</p>
 	<ul>
 		<li>CSS level 1 &mdash; декабрь 1996</li>
 		<li>CSS level 2 &mdash; май 1998</li>
-		<li>CSS level 3 &mdash; июнь 2012</li>
-		<li>CSS level 3+</li>
+		<li>CSS level 3 &mdash; c июня 2012 ... (по сути, ещё не принята)</li>
 	</ul>
+	<div>Все CSS-спецификации &mdash; <a href="https://www.w3.org/Style/CSS/specs.en.html" target="_blank">www.w3.org/Style/CSS/specs.en.html</a></div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="2000px-CSS3_taxonomy_and_status_by_Sergey_Mavrody.svg.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.5);">
+	</div>
 </section>
 
 <section class="slide">
 	<h2>Управление разметкой</h2>
-	<p class="medium-content"></p>
 	<pre class="hljs css">
-			<code>.container-flex {</code>
-			<code>    display: flex;</code>
-			<code>}</code>
-			<code> </code>
-			<code>.container-grid {</code>
-			<code>    display: grid;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>.container-flex {</code>
+		<code>    display: flex;</code>
+		<code>}</code>
+		<code> </code>
+		<code>.container-grid {</code>
+		<code>    display: grid;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+	<div><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A Complete Guide to Flexbox</a></div>
+	<div><a href="href=https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">A Complete Guide to Grid
+	</a></div>
 </section>
 
 <section class="slide">
@@ -291,31 +341,31 @@
 	<h2>CSS-анимации</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs css">
-			<code>@keyframes colors {</code>
-			<code>    from {</code>
-			<code>        background-color: green;</code>
-			<code>    }</code>
-			<code>    to {</code>
-			<code>        background-color: palevioletred;</code>
-			<code>        transform: scale(1.5);</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>@keyframes colors {</code>
+		<code>    from {</code>
+		<code>        background-color: green;</code>
+		<code>    }</code>
+		<code>    to {</code>
+		<code>        background-color: palevioletred;</code>
+		<code>        transform: scale(1.5);</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>CSS-анимации</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs css">
-			<code>.box {</code>
-			<code>    animation-name: colors;</code>
-			<code>    animation-duration: 2s;</code>
-			<code>    animation-direction: alternate;</code>
-			<code>    animation-iteration-count: infinite;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>.box {</code>
+		<code>    animation-name: colors;</code>
+		<code>    animation-duration: 2s;</code>
+		<code>    animation-direction: alternate;</code>
+		<code>    animation-iteration-count: infinite;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
@@ -353,19 +403,25 @@
 	</div>
 </section>
 
+<section class="slide question">
+	<h2>
+		<a style="color: royalblue" href="https://css-tricks.com/css-animations-vs-web-animations-api/" target="_blank">CSS Animations and Web Animations API</a>
+	</h2>
+</section>
+
 <section class="slide">
 	<h2>3D-трансформации</h2>
 	<p class="medium-content"></p>
 	<pre class="hljs css">
-			<code>.box {</code>
-			<code>    transform-style: preserve-3d;</code>
-			<code>    transform: perspective(900px);</code>
-			<code>    transform: rotate3d(x, y, z, deg);</code>
-			<code>    transform: translate3d(x, y, z);</code>
-			<code>    </code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>.box {</code>
+		<code>    transform-style: preserve-3d;</code>
+		<code>    transform: perspective(900px);</code>
+		<code>    transform: rotate3d(x, y, z, deg);</code>
+		<code>    transform: translate3d(x, y, z);</code>
+		<code>    </code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
@@ -454,86 +510,209 @@
 	</script>
 </section>
 
-<section class="slide">
-	<h2>Чего нам не хватает?</h2>
-	<p class="small-content"></p>
-	<ul>
-		<li>Переменные</li>
-		<li>Вложенность</li>
-		<li>Миксины</li>
-	</ul>
+<section class="slide question">
+	<h2>Окей, новый CSS &mdash; это 🔥</h2>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="internet_explorer_logo_6.png"
+			 style="transform-origin: center;transform: translate(-50%, -35%) scale(1.4);">
+	</div>
 </section>
 
 <section class="slide question">
 	<h2>Препроцессоры CSS</h2>
 </section>
 
+<section class="slide question" style="background-color: #4caf50;">
+	<h2 style="color: white; padding-bottom: 25%;">Тысячи их!</h2>
+	<div style="position: relative; width: 100%; height: 40%; margin-top: 20%;">
+		<img class="place" src="timeline_preprocessors.png"
+			 style="transform-origin: center;transform: translate(-50%, -40%) scale(0.6);">
+	</div>
+</section>
+
 <section class="slide">
 	<h2>Тысячи их!</h2>
 	<p class="small-content"></p>
 	<ul>
-		<li>SASS/SCSS &mdash; <a href="https://sass-scss.ru/guide/" target="_blank">sass-scss.ru</a></li>
+		<li>SASS/SCSS &mdash; Syntactically Awesome Stylesheets <a href="https://sass-scss.ru/guide/" target="_blank">sass-scss.ru</a></li>
 		<li>LESS &mdash; <a href="http://lesscss.org/" target="_blank">lesscss.org</a></li>
 		<li>Stylus &mdash; <a href="http://stylus-lang.com/" target="_blank">stylus-lang.com</a></li>
-		<li>PostCSS &mdash; <a href="http://postcss.org/" target="_blank">postcss.org</a></li>
-		<li>...</li>
 	</ul>
 </section>
 
 <section class="slide">
 	<h2>SCSS</h2>
 	<pre class="hljs scss">
-			<code>$font-stack:    Helvetica, sans-serif</code>
-			<code>$primary-color: #333</code>
-			<code> </code>
-			<code>.login-form {</code>
-			<code>    color: $primary-color;</code>
-			<code>    &__input {</code>
-			<code>        font: 18px $font-stack;</code>
-			<code>        &:active {</code>
-			<code>            background-color: white;</code>
-			<code>        }</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>$font-stack:    Helvetica, sans-serif</code>
+		<code>$primary-color: #333</code>
+		<code> </code>
+		<code>.login-form {</code>
+		<code>    color: $primary-color;</code>
+		<code>    &__input {</code>
+		<code>        font: 18px $font-stack;</code>
+		<code>        &:active {</code>
+		<code>            background-color: white;</code>
+		<code>        }</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>SCSS &mdash; миксины</h2>
 	<pre class="hljs scss">
-			<code>@mixin border-radius($radius) {</code>
-			<code>  -webkit-border-radius: $radius;</code>
-			<code>     -moz-border-radius: $radius;</code>
-			<code>      -ms-border-radius: $radius;</code>
-			<code>          border-radius: $radius;</code>
-			<code>}</code>
-			<code> </code>
-			<code>.button {</code>
-			<code>    @include border-radius(10px);</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>@mixin border-radius($radius) {</code>
+		<code>  -webkit-border-radius: $radius;</code>
+		<code>     -moz-border-radius: $radius;</code>
+		<code>      -ms-border-radius: $radius;</code>
+		<code>          border-radius: $radius;</code>
+		<code>}</code>
+		<code> </code>
+		<code>.button {</code>
+		<code>    @include border-radius(10px);</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide question">
-	<h2><a style="color: royalblue" href="https://github.com/postcss/postcss" target="_blank">PostCSS</a></h2>
+	<h2>
+		<a style="color: royalblue" href="https://github.com/postcss/postcss" target="_blank">PostCSS</a>
+	</h2>
 </section>
 
 <section class="slide">
-	<h2>Использование</h2>
+	<h2>Использование PostCSS</h2>
 	<pre class="hljs js">
-			<code>// postcss.config.js</code>
-			<code>module.exports = {</code>
-			<code>    plugins: [</code>
-			<code>        require('precss')({/* ...options */}),</code>
-			<code>        require('autoprefixer')({/* ...options */}),</code>
-			<code>    ]</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>// postcss.config.js</code>
+		<code>module.exports = {</code>
+		<code>    plugins: [</code>
+		<code>        require('precss')({/* ...options */}),</code>
+		<code>        require('autoprefixer')({/* ...options */}),</code>
+		<code>        ...</code>
+		<code>    ]</code>
+		<code>}</code>
+		<code> </code>
+		<code>// main.js</code>
+		<code>import 'styles.css';</code>
+		<code> </code>
+	</pre>
 </section>
 
+<section class="slide question">
+	<h2>
+		<a style="color: royalblue" href="https://github.com/css-modules/css-modules" target="_blank">CSS Modules</a>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Использование CSS Modules</h2>
+	<pre class="hljs css">
+		<code>/* button.css */</code>
+		<code>.button {</code>
+		<code>    width: 200px;</code>
+		<code>    height: 48px;</code>
+		<code>    border-radius: 12px;</code>
+		<code>}</code>
+		<code> </code>
+		<code>.primary {</code>
+		<code>    background-color: green;</code>
+		<code>    font-weight: 500;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование CSS Modules</h2>
+	<pre class="hljs js">
+		<code>// button.js</code>
+		<code>import styles from './button.css';</code>
+		<code> </code>
+		<code>export default function renderButton (title, primary) {</code>
+		<code>    return `</code>
+		<code class="hljs html">        &lt;button class="${styles.button} ${primary ? styles.primary : ''}"&gt;</code>
+		<code>            ${title}</code>
+		<code class="hljs html">        &lt;/button&gt;</code>
+		<code>    `;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование CSS Modules</h2>
+	<pre class="hljs js">
+		<code>// main.js</code>
+		<code>import renderButton from './button.js';</code>
+		<code> </code>
+		<code>document.body.innerHTML = `</code>
+		<code>    ${renderButton('Вжух!', true)}</code>
+		<code>    ${renderButton('Очистить')}</code>
+		<code>`;</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование CSS Modules</h2>
+	<pre class="hljs html">
+		<code>&lt;!-- результирующий HTML --&gt;</code>
+		<code> </code>
+		<code>&lt;button class="<mark>button-213ge1hw primary-jh4gd318</mark>"&gt;</code>
+		<code>    Вжух!</code>
+		<code>&lt;/button&gt;</code>
+		<code>&lt;button class="button-213ge1hw"&gt;</code>
+		<code>    Очистить</code>
+		<code>&lt;/button&gt;</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<a style="color: royalblue" href="https://github.com/cssinjs/jss" target="_blank">JSS</a>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Использование JSS</h2>
+	<pre class="hljs js">
+		<code>// main.js</code>
+		<code>import jss from 'jss';</code>
+		<code>import preset from 'jss-preset-default';</code>
+		<code>import color from 'color';</code>
+		<code> </code>
+		<code>// One time setup with default plugins and settings</code>
+		<code>jss.setup(preset());</code>
+		<code>const styles = {</code>
+		<code>    button: {</code>
+		<code>        width: 200,</code>
+		<code>        background: color('blue').darken(0.3).hex(),</code>
+		<code>    },</code>
+		<code>};</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование JSS</h2>
+	<pre class="hljs js">
+		<code>// ...</code>
+		<code>const { classes } = jss.createStyleSheet(styles).attach();</code>
+		<code> </code>
+		<code>document.body.innerHTML = `</code>
+		<code class="hljs html">    &lt;button class="${classes.button}"&gt;</code>
+		<code>        Button</code>
+		<code class="hljs html">    &lt;/button&gt;</code>
+		<code>`;</code>
+		<code> </code>
+	</pre>
+</section>
 
 <!--css всё-->
 
@@ -1049,6 +1228,7 @@
 		<li><a href="https://frontender.info/css-variables-why-should-you-care/" target="_blank">Использование
 			CSS-переменных</a></li>
 		<li><a href="https://youtu.be/CaDnbOjXjRg" target="_blank">Доклад Вадима Макеева про CSS</a></li>
+		<li><a href="https://m.alphasights.com/css-evolution-from-css-sass-bem-css-modules-to-styled-components-d4c1da3a659b" target="_blank">CSS Evolution</a></li>
 	</ul>
 </section>
 
