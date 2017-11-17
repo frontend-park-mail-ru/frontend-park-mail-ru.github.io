@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Веб-компоненты и Virtual DOM</title>
+	<title>Продвинутые подходы разработки SPA</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,19 +38,627 @@
 <body class="shower list">
 
 <header class="caption">
-	<h1>Веб-компоненты и Virtual DOM</h1>
+	<h1>Продвинутые подходы разработки SPA</h1>
 	<p>Технопарк, осень, 2017 г.</p>
 </header>
 
 <section class="slide first">
-	<h2 class="shout"><small style="font-size:80%">Веб-компоненты и Virtual DOM</small><br/>
+	<h2 class="shout">
+		<small style="font-size:75%">Продвинутые подходы разработки SPA</small>
+		<br/>
 		<small>Слайды доступны по ссылке<br/>
 			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
 		</small>
 	</h2>
 </section>
 
-<!--ВЕБ-КОМПОНЕНТЫ-->
+<!-- Рассказ об идее использования компонентного подхода -->
+
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 98%; line-height: 1">Немного истории</span>
+		<br>
+		<span style="font-size: 70%; line-height: 1; display: inline-block;">Как разрабатывали web <strong>раньше</strong>?</span>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div><code>jQuery</code>-style &mdash;</div>
+		<div style="font-size: 70%;">весь код приложения в одном файле</div>
+		<div style="font-size: 40%;">Zepto, KnokoutJS, etc...</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">Такой способ удобен для украшения <em>сайта</em>, но не для разработки крупных
+			<strong>web-приложений</strong></div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div>MVC &mdash;</div>
+		<div style="font-size: 70%;">разделение логики от представления</div>
+		<div style="font-size: 40%;">Backbone.js, Ember.js, etc...</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="mvc.png" style="transform-origin: center;transform: translate(-50%,-40%) scale(1.3);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">Каждый понимал его по-своему. Не было чёткого подхода к <strong
+				style="font-size: 120%;">декомпозиции</strong></div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 85%;">Как много вопросов, как мало ответов...</div>
+		<ul style="font-size: 40%; line-height: 1.2; margin-top: 24px;">
+			<li>Как поступать со сложными моделями?</li>
+			<li>Как разбивать большие view на части?</li>
+			<li>Кто должен отвечать за функциональность?</li>
+		</ul>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div>Компонентный подход &mdash;</div>
+		<div style="font-size: 50%;">смысл в разделении кода приложения на <strong>независимые, слабосвязанные и
+			переиспользуемые</strong> компоненты
+		</div>
+		<div style="font-size: 30%;">слабые связи и декомпозиция</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="simle1.jpg"
+			 style="transform-origin: center;transform: translate(-50%,-40%) scale(1.2);">
+	</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="component1.jpg"
+			 style="transform-origin: center;transform: translate(-50%,-40%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 60%;">
+			Компоненты могут быть <strong>достаточно сложны внутри</strong>, но они должны быть просты для использования
+			<strong>снаружи</strong>
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="simple2.jpg"
+			 style="transform-origin: center;transform: translate(-50%,-40%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 82%; overflow: hidden;">
+		<img class="place" src="components2.jpg"
+			 style="transform-origin: center;transform: translate(-50%,-50%) scale(0.9);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 65%;">
+			Компонентом может быть <strong>вообще всё что угодно</strong>, что выполняет какую-то функцию в вашем
+			приложении
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Компоненты делят на два типа</h2>
+	<blockquote>
+		<p class="content">
+			<strong>Dummy-компоненты</strong> &mdash; компоненты, которые либо вообще не содержат никакой логики (чисто
+			визуальные компоненты), либо содержат логику, которая глубоко инкапсулирована внутри компонента
+		</p>
+	</blockquote>
+	<p class="note">Например, компонент "Текст", компонент "Ссылка", компонент "Чекбокс"... Посложнее: компонент
+		"Выезжающее меню", Компонент "Роутер".</p>
+	<blockquote>
+		<p class="content">
+			<strong>Smart-компоненты</strong> &mdash; компоненты, которые управляют множеством других компонентов,
+			содержат в себе бизнес-логику и хранят какое-то состояние
+		</p>
+	</blockquote>
+	<p class="note">Компонент "Форма входа". Компонент "Всё приложение"</p>
+</section>
+
+<section class="slide">
+	<h2>Пример dummy-компонента</h2>
+	<pre class="hljs js">
+		<code>class TextComponent {</code>
+		<code>    constructor(el) { this.el = el || document.createElement('div') }</code>
+		<code>    setText(text) {</code>
+		<code>        this.text = text;</code>
+		<code>        this.el.innerHTML = this.tmpl();</code>
+		<code>    }</code>
+		<code>    tmpl() {</code>
+		<code>        return `</code>
+		<code class="hljs html">            &lt;span&gt;${this.text}&lt;/span&gt;</code>
+		<code>        `;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Пример smart-компонента</h2>
+	<pre class="hljs js">
+		<code>class CounterComponent {</code>
+		<code>    constructor(el) {</code>
+		<code>        this.el = el || document.createElement('div');</code>
+		<code>        this.count = 0; this.text = new TextComponent();</code>
+		<code>        setInterval(() => {</code>
+		<code>            this.count++;</code>
+		<code>            this.text.setText(this.count);</code>
+		<code>            this.el.innerHTML = this.tmpl();</code>
+		<code>        }, 1000);</code>
+		<code>    }</code>
+		<code>    ...</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Пример smart-компонента</h2>
+	<pre class="hljs js">
+		<code> </code>
+		<code>    ...</code>
+		<code>    tmpl() {</code>
+		<code>        return `</code>
+		<code class="hljs html">            &lt;h1&gt;Счётчик:&lt;/h1&gt;</code>
+		<code>            ${this.text.tmpl()}</code>
+		<code>        `;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Структура приложения</h2>
+	<pre class="hljs html">
+		<code><mark>App</mark> &mdash; smart</code>
+		<code>    <mark>Router</mark> &mdash; dummy</code>
+		<code>        <mark>Authorization</mark> &mdash; smart</code>
+		<code>            <mark>Form</mark> &mdash; dummy</code>
+		<code>                <mark>TextInput</mark> &mdash; dummy</code>
+		<code>                <mark>Button</mark> &mdash; dummy</code>
+		<code>        <mark>About</mark> &mdash; smart</code>
+		<code>            <mark>SimpleText</mark> &mdash; dummy</code>
+		<code>            <mark>Link</mark> &mdash; dummy</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Наивная реализация компонентов</h2>
+	<ul lang="en">
+		<li>Компонент &mdash; модуль, который содержит в себе стили этого компонента, файл-функцию с шаблоном и класс,
+			который всем этим управляет
+		</li>
+		<li>Экземпляр компонента инициализируется с некоторыми данными (состоянием &mdash;
+			<mark>state</mark>
+			), которые используются при функционировании компонента
+		</li>
+		<li>Во время рендера, вызывается функция-шаблонизатор, она создаёт строку с HTML-кодом компонента, которая через
+			<code>innerHTML</code> вставляется в DOM документа
+		</li>
+		<li>При изменении состояния компонента, выполняется его ререндер и он обновляет своё отображение</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Посмотрим, как это выглядит на практике
+		</div>
+	</h2>
+</section>
+
+<!-- Недостатки наивной реализации, дата-биндинг и реактивное программирование -->
+
+<section class="slide">
+	<h2>Недостатки наивной реализации</h2>
+	<p class="medium-content"></p>
+	<ul lang="en">
+		<li>Много шаблонного кода</li>
+		<li>При изменении одного единственного свойства происходит полная перерисовка компонентов</li>
+		<li>Много лишних операций с рендером DOM</li>
+		<li>
+			Как следствие, низкая производительность web-приложений (вспоминаем, что всё приложение &mdash; это
+			один большой компонент и учитываем два предыдущих пункта вместе)
+		</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Как можно этого избежать?
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Самая простая идея &mdash;
+			<div style="font-size: 80%;">при изменениях state перерисовывать <strong>только то, что действительно
+				необходимо</strong></div>
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Связывание данных (Data Binding)</h2>
+	<blockquote>
+		<p class="small-content">
+			<b>Связывание данных</b> &mdash; это процесс, который устанавливает соединение между UI приложения и
+			бизнес-логикой</p>
+	</blockquote>
+	<p class="note">Различают
+		<mark>одностороннее</mark>
+		и
+		<mark>двустороннее</mark>
+		связывание данных &mdash; <a href="/examples/data-binding/" target="_blank">пример</a></p>
+</section>
+
+<section class="slide">
+	<h2>Наивное связывание данных</h2>
+	<pre class="hljs js">
+		<code>class TextComponent {</code>
+		<code>    constructor(el) {</code>
+		<code>        this.el = el || document.createElement('div');</code>
+		<code>        this.el.innerHTML = this.tmpl();</code>
+		<code>        this.text = '';</code>
+		<code>        <mark>this._textEl = this.el.querySelector('.js-text')</mark>;</code>
+		<code>    }</code>
+		<code>    setText(text) {</code>
+		<code>        this.text = text;</code>
+		<code>        <mark>this._textEl.textContent = this.text</mark>;</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Наивное связывание данных</h2>
+	<pre class="hljs js">
+		<code>class TextInputComponent {</code>
+		<code>    constructor(el) {</code>
+		<code>        this.el = el || document.createElement('div');</code>
+		<code>        this.el.innerHTML = this.tmpl();</code>
+		<code>        this.value = '';</code>
+		<code>        <mark>this._inputEl = this.el.querySelector('input[type=text]')</mark>;</code>
+		<code>        <mark>this._inputEl.onchange</mark> = () => {</code>
+		<code>            this.value = this._inputEl.value.trim();</code>
+		<code>            this.emit('change', {value: this.value});</code>
+		<code>        };</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Не самый хороший подход:
+			<div style="font-size: 70%;">&mdash; много шаблонного кода, если необходимо связывать много элементов</div>
+			<div style="font-size: 70%;">&mdash; недекларативное описание связей</div>
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Другой подход к биндингу</h2>
+	<pre class="hljs html">
+		<code>&lt;div></code>
+		<code>    &lt;h1>Привет, &lt;span <mark>data-bind="textContent:name"</mark>>&lt;/span>&lt;/h1></code>
+		<code>    &lt;input</code>
+		<code>        <span hidden>&lt;input </span>type="text"</code>
+		<code>        <span hidden>&lt;input </span>placeholder="Сколько вам лет?"</code>
+		<code>        <span hidden>&lt;input </span><mark>data-bind="value:age"</mark></code>
+		<code>    <span hidden>&lt;input </span>/></code>
+		<code>&lt;/div></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Другой подход к биндингу</h2>
+	<pre class="hljs js">
+		<code>class AutoBind {</code>
+		<code>    constructor(root) {</code>
+		<code>        this.binded = [...root.querySelectorAll('[data-bind]')]</code>
+		<code>            .map(el => ({</code>
+		<code>                el,</code>
+		<code>                prop: el['data-dind'].split(':')[0],</code>
+		<code>                variable: el['data-dind'].split(':')[1],</code>
+		<code>            }));</code>
+		<code>    }</code>
+		<code>    </code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Другой подход к биндингу</h2>
+	<pre class="hljs js">
+		<code> </code>
+		<code>    getVariable(name) {</code>
+		<code>        const entry = this.binded.find(({variable}) => variable === name);</code>
+		<code>        return entry ? entry.el[entry.prop] : undefined;</code>
+		<code>    }</code>
+		<code>    setVariable(name, value) {</code>
+		<code>        this.binded.forEach((entry) => {</code>
+		<code>            if (entry.variable === name) {</code>
+		<code>                entry.el[entry.prop] = value;</code>
+		<code>            }</code>
+		<code>        });</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Реактивное программирование</h2>
+	<blockquote>
+		<p class="medium-content">
+			<b>Реактивное программирование</b> &mdash; парадигма программирования, ориентированная на потоки данных и распространение изменений.</p>
+	</blockquote>
+	<p>В обычном мире, чтобы посчитать значение функции, необходимо вызвать её с необходимыми аргументами</p>
+	<p>В <mark>модном и молодёжном реактивном программировании</mark> функция <strong>сама пересчитается</strong>, когда её аргументы изменятся (<em>как, например, в excel</em>)</p>
+</section>
+
+<section class="slide">
+	<h2>Добавим чуть-чуть реактивности</h2>
+	<pre class="hljs js">
+		<code>class AutoReactiveBind {</code>
+		<code>    constructor(root, store) {</code>
+		<code>        this.store = store;</code>
+		<code>        this.binded = ... ;</code>
+		<code>        this.binded.forEach(entry => {</code>
+		<code>            entry.el.addEventListener('change', () => {</code>
+		<code>                this.setVariable(entry.variable, entry.el[entry.prop]);</code>
+		<code>            });</code>
+		<code>        });</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Добавим чуть-чуть реактивности</h2>
+	<pre class="hljs js">
+		<code> </code>
+		<code>    getVariable(name) {</code>
+		<code>        return this.store[name];</code>
+		<code>    }</code>
+		<code>    setVariable(name, value) {</code>
+		<code>        this.store[name] = value;</code>
+		<code>        this.binded.forEach((entry) => {</code>
+		<code>            if (entry.variable === name) {</code>
+		<code>                entry.el[entry.prop] = value;</code>
+		<code>            }</code>
+		<code>        });</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			А ещё можно по-красивому биндить события
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Биндинг событий</h2>
+	<pre class="hljs html">
+		<code>&lt;form <mark>data-bind-event="submit:formSubmitted"</mark>></code>
+		<code>    &lt;input</code>
+		<code>        <span hidden>&lt;input </span>type="text"</code>
+		<code>        <span hidden>&lt;input </span>placeholder="Сколько вам лет?"</code>
+		<code>        <span hidden>&lt;input </span><mark>data-bind-event="input:updateAgeListener"</mark></code>
+		<code>    <span hidden>&lt;input </span>/></code>
+		<code>    &lt;input type="submit" /></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Посмотрим, как это выглядит на практике
+		</div>
+	</h2>
+</section>
+
+<!-- Идея виртуального DOM -->
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			А можно ещё круче!
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Virtual DOM</h2>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="dom-vs-virtual_dom.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.35);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<p class="medium-content">Главная проблема DOM &mdash; он никогда не был рассчитан для создания <mark>динамического пользовательского интерфейса</mark>.</p>
+	<blockquote>
+		<p>
+			<b>Virtual DOM</b> &mdash; это <mark>техника и набор библиотек / алгоритмов</mark>, которые
+			позволяют нам улучшить производительность на клиентской стороне, избегая прямой работы с DOM путем
+			создания и работы c <mark>абстракцией</mark>, имитирующей DOM-дерево
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="meme.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Вместо того, чтобы взаимодействовать с DOM напрямую, мы работаем с его <mark>легковесной копией</mark></li>
+		<li>Мы можем вносить изменения в копию, исходя из наших потребностей, а после этого применять изменения к реальному DOM</li>
+		<li>При этом происходит сравнение DOM-дерева с его виртуальной копией, <mark>определяется разница и запускается перерисовка того, что было изменено</mark></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="dom-vdom.png" style="transform-origin: center;transform: translate(-48.5%,-50%) scale(0.7);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="display: flex; justify-content: center; width: 100%" id="kek">
+		<style>
+			.slide #kek pre code {
+				line-height: 1.5;
+			}
+		</style>
+		<div style="width: 50%">
+			<pre class="hljs js">
+				<code>// before</code>
+				<code>{</code>
+				<code>    tagName: 'div',</code>
+				<code>    classes: ['header'],</code>
+				<code>    attributes: {</code>
+				<code>        hidden: false</code>
+				<code>    }</code>
+				<code>}</code>
+				<code> </code>
+			</pre>
+		</div>
+		<div style="width: 50%">
+			<pre class="hljs js">
+				<code>// after</code>
+				<code>{</code>
+				<code>    tagName: 'div',</code>
+				<code>    classes: ['header'],</code>
+				<code>    attributes: {</code>
+				<code>        <mark>hidden: true</mark></code>
+				<code>    }</code>
+				<code>}</code>
+				<code> </code>
+			</pre>
+		</div>
+	</div>
+	<pre class="hljs js">
+		<code>// Real DOM change</code>
+		<code>div.setAttribute('hidden', 'true')</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<p class="medium-content"></p>
+	<p>Такой подход работает быстрее, потому как не включает в себя все тяжеловесные части реального DOM. Но только если мы делаем это правильно. Есть две проблемы:</p>
+	<ul>
+		<li>когда именно делать повторную перерисовку DOM?</li>
+		<li>как это сделать эффективно?</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Когда?</h2>
+	<p class="medium-content"></p>
+	<p>Когда данные изменяются и нуждается в обновлении. Есть два варианта узнать, что данные изменились:</p>
+	<ul>
+		<li>Первый из них &mdash; «dirty checking» (грязная проверка) заключается в том, чтобы опрашивать данные <mark>через регулярные промежутки времени</mark> и <mark>рекурсивно проверять все значения</mark> в структуре данных</li>
+		<li>Второй вариант &mdash; «observable» (наблюдаемый) заключается в наблюдении за изменением состояния. Если ничего не изменилось, мы ничего не делаем. Если изменилось, <mark>мы точно знаем, что нужно обновить</mark></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Как?</h2>
+	<p class="medium-content"></p>
+	<p>Что делает этот подход действительно быстрым:</p>
+	<ul>
+		<li>Эффективные алгоритмы сравнения</li>
+		<li>Группировка операций чтения/записи при работе с DOM</li>
+		<li>Эффективное обновление под-деревьев</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="vdom.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h2><a style="color: royalblue" href="https://medium.com/@abraztsov/how-virtual-dom-work-567128ed77e9" target="_blank">Как работает Virtual DOM?</a></h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Посмотрим, как это выглядит на практике
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Перерыв</h2>
+</section>
+
+<!-- ВЕБ-КОМПОНЕНТЫ -->
 
 <section class="slide">
 	<h2 class="shout">Веб-компоненты</h2>
@@ -89,8 +697,7 @@
 
 <section class="slide question" style="background-color:#e6e6e6;">
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="shadow.jpg"
-			 style="transform-origin: center;transform: translate(-50%,-45%) scale(0.9);">
+		<img class="place" src="shadow.jpg" style="transform-origin: center;transform: translate(-50%,-45%) scale(0.9);">
 	</div>
 </section>
 
@@ -105,8 +712,7 @@
 <section class="slide">
 	<h2>Shadow DOM v1</h2>
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="shadow-dom-ciuse.png"
-			 style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+		<img class="place" src="shadow-dom-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
 	</div>
 </section>
 
@@ -114,98 +720,113 @@
 	<h2><code>&lt;input type="range"></code></h2>
 	<input type="range" style="transform: scale(3) translateX(-50%); margin-left: 50%;">
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="shadow-user-agent.png"
-			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
+		<img class="place" src="shadow-user-agent.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
 	</div>
 </section>
 
 <section class="slide">
 	<h2>Shadow DOM</h2>
 	<pre class="hljs js">
-			<code>// Shadow DOM v0</code>
-			<code>const root = element.createShadowRoot();</code>
-			<code> </code>
-			<code>// Shadow DOM v1</code>
-			<code>const root = element.attachShadow({ <mark>mode: 'open'</mark> });</code>
-			<code>// const root = element.attachShadow({ <mark>mode: 'close'</mark> });</code>
-			<code> </code>
-			<code>element.shadowRoot === root; // true</code>
-			<code> </code>
-			<code> </code>
-		</pre>
+		<code>// Shadow DOM v0</code>
+		<code>const root = element.createShadowRoot();</code>
+		<code> </code>
+		<code>// Shadow DOM v1</code>
+		<code>const root = element.attachShadow({ <mark>mode: 'open'</mark> });</code>
+		<code>// const root = element.attachShadow({ <mark>mode: 'close'</mark> });</code>
+		<code> </code>
+		<code>element.shadowRoot === root; // true</code>
+		<code> </code>
+		<code><mark>root.innerHTML</mark> = ' ... ';</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
-	<h2>HTML Templates</h2>
+	<h2>Shadow DOM (<a href="/examples/web-components/shadow.html" target="_blank">пример 1</a>)</h2>
 	<pre class="hljs html">
-			<code>&lt;!--html--></code>
-			<code>&lt;div id="element1"></code>
-			<code>    &lt;h1>Header h1&lt;/h1></code>
-			<code>    &lt;h3>Subheader h3&lt;/h3></code>
-			<code>&lt;/div></code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Shadow DOM</h2>
+		<code>&lt;!-- html --></code>
+		<code>&lt;div id="element1"></code>
+		<code>    &lt;h2>Subheader h2&lt;/h2>   &lt;p>lorem ipsum&lt;/p></code>
+		<code>    &lt;h2>Subheader h2&lt;/h2>   &lt;p>Lorem ipsum dolor sit.&lt;/p></code>
+		<code>&lt;/div></code>
+	</pre>
 	<pre class="hljs js">
-			<code>const root1 = element1.attachShadow({ <mark>mode: 'open'</mark> });</code>
-			<code>root1.innerHTML = `</code>
-			<code class="hljs html">    &lt;div></code>
-			<code class="hljs html">        <mark>&lt;slot>&lt;/slot></mark></code>
-			<code class="hljs html">    &lt;/div></code>
-			<code>`;</code>
-			<code> </code>
-		</pre>
-	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
+		<code>const root1 = element1.attachShadow({ <mark>mode: 'open'</mark> });</code>
+		<code>root1.innerHTML = `</code>
+		<code class="hljs html">    &lt;section></code>
+		<code class="hljs html">        &lt;h1>Main header&lt;/h1></code>
+		<code class="hljs html">        <mark>&lt;slot>&lt;/slot></mark></code>
+		<code class="hljs html">    &lt;/section></code>
+		<code>`;</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
-	<h2>HTML Templates</h2>
+	<h2>Shadow DOM (<a href="/examples/web-components/shadow.html" target="_blank">пример 1</a>)</h2>
 	<pre class="hljs html">
-			<code>&lt;!--html--></code>
-			<code>&lt;div id="element2"></code>
-			<code>    &lt;h1 slot="h1">Header h1&lt;/h1></code>
-			<code>    &lt;h3 slot="h3">Subheader h3&lt;/h3></code>
-			<code>&lt;/div></code>
-			<code> </code>
-		</pre>
+		<code>&lt;div id="element1"></code>
+		<code>    &lt;section></code>
+		<code>        &lt;h1>Main header&lt;/h1></code>
+		<code>        &lt;h2>Subheader h2&lt;/h2>   &lt;p>Lorem ipsum.&lt;/p></code>
+		<code>        &lt;h2>Subheader h2&lt;/h2>   &lt;p>Lorem ipsum dolor sit.&lt;/p></code>
+		<code>    &lt;/section></code>
+		<code>&lt;/div></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
-	<h2>Shadow DOM</h2>
+	<h2>Shadow DOM (<a href="/examples/web-components/shadow.html" target="_blank">пример 2</a>)</h2>
+	<pre class="hljs html">
+		<code>&lt;!--html--></code>
+		<code>&lt;div id="element2"></code>
+		<code>    &lt;span slot="header">Header&lt;/span></code>
+		<code>    &lt;span slot="content">Lorem ipsum dolor sit.&lt;/span></code>
+		<code>&lt;/div></code>
+	</pre>
 	<pre class="hljs js">
-			<code>const root2 = element2.attachShadow({ <mark>mode: 'open'</mark> });</code>
-			<code>root2.innerHTML = `</code>
-			<code class="hljs html">    &lt;div></code>
-			<code class="hljs html">        <mark>&lt;slot name="h1">&lt;/slot></mark></code>
-			<code class="hljs html">        &lt;p>Hello, world!&lt;/p></code>
-			<code class="hljs html">        <mark>&lt;slot name="h3">&lt;/slot></mark></code>
-			<code class="hljs html">    &lt;/div></code>
-			<code>`;</code>
-			<code> </code>
-		</pre>
-	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/shadow.html" target="_blank">пример</a></p>
+		<code>const root2 = element2.attachShadow({ <mark>mode: 'open'</mark> });</code>
+		<code>root2.innerHTML = `</code>
+		<code class="hljs html">    &lt;section></code>
+		<code class="hljs html">        &lt;h1> <mark>&lt;slot name="header">&lt;/slot></mark> &lt;/h1></code>
+		<code class="hljs html">        &lt;p> <mark>&lt;slot name="content">&lt;/slot></mark> &lt;/p></code>
+		<code class="hljs html">    &lt;/section></code>
+		<code>`;</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Shadow DOM (<a href="/examples/web-components/shadow.html" target="_blank">пример 2</a>)</h2>
+	<pre class="hljs html">
+		<code>&lt;div id="element2"></code>
+		<code>    &lt;section></code>
+		<code>        &lt;h1> &lt;span>Header&lt;/span> &lt;/h1></code>
+		<code>        &lt;p> &lt;span>Lorem ipsum dolor sit.&lt;/span> &lt;/p></code>
+		<code>    &lt;/section></code>
+		<code>&lt;/div></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Shadow DOM</h2>
 	<pre class="hljs html">
-			<code>#shadow-root</code>
-			<code>&lt;style></code>
-			<code>    :host {</code>
-			<code>        opacity: 0.4;</code>
-			<code>        will-change: opacity;</code>
-			<code>        transition: opacity 300ms ease-in-out;</code>
-			<code>    }</code>
-			<code>    :host(:hover) {</code>
-			<code>        opacity: 1;</code>
-			<code>    }</code>
-			<code>    ::slotted(&lt;selector>) { ... }</code>
-			<code>&lt;/style></code>
-			<code> </code>
-		</pre>
+		<code>#shadow-root</code>
+		<code>&lt;style></code>
+		<code>    :host {</code>
+		<code>        opacity: 0.4;</code>
+		<code>        will-change: opacity;</code>
+		<code>        transition: opacity 300ms ease-in-out;</code>
+		<code>    }</code>
+		<code>    :host(:hover) {</code>
+		<code>        opacity: 1;</code>
+		<code>    }</code>
+		<code>    ::slotted(&lt;selector>) { ... }</code>
+		<code>&lt;/style></code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -224,96 +845,95 @@
 <section class="slide">
 	<h2>HTML Templates</h2>
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="html-tmpl-ciuse.png"
-			 style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
+		<img class="place" src="html-tmpl-ciuse.png" style="transform-origin: center;transform: translate(-50.3%,-50%) scale(0.8);">
 	</div>
 </section>
 
 <section class="slide">
 	<h2>HTML Templates</h2>
 	<pre class="hljs html">
-			<code>&lt;!--html--></code>
-			<code>&lt;template id="tmpl"></code>
-			<code>    &lt;h3>Заголовок: &lt;slot name="title">&lt;/slot>&lt;/h3></code>
-			<code>    &lt;img src="image.png" alt="My Image"></code>
-			<code>    &lt;script></code>
-			<code>        alert(1);</code>
-			<code>    &lt;/script></code>
-			<code>&lt;/template></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!--html--></code>
+		<code>&lt;template id="tmpl"></code>
+		<code>    &lt;h3>Заголовок: &lt;slot name="title">&lt;/slot>&lt;/h3></code>
+		<code>    &lt;img src="image.png" alt="My Image"></code>
+		<code>    &lt;script></code>
+		<code>        alert(1);</code>
+		<code>    &lt;/script></code>
+		<code>&lt;/template></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>HTML Templates</h2>
 	<pre class="hljs html">
-			<code>&lt;!--html--></code>
-			<code>&lt;div id="source"></code>
-			<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
-			<code>&lt;/div></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!--html--></code>
+		<code>&lt;div id="source"></code>
+		<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
+		<code>&lt;/div></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>HTML Templates</h2>
 	<pre class="hljs js">
-			<code>const target = document.getElementById('source');</code>
-			<code>const tmpl = document.getElementById('tmpl');</code>
-			<code> </code>
-			<code>// two way</code>
-			<code>target.appendChild(tmpl.content.cloneNode(true));</code>
-			<code>/*  or  */</code>
-			<code>target.appendChild(document.importNode(tmpl.content, true));</code>
-			<code> </code>
-		</pre>
+		<code>const target = document.getElementById('source');</code>
+		<code>const tmpl = document.getElementById('tmpl');</code>
+		<code> </code>
+		<code>// two way</code>
+		<code>target.appendChild(tmpl.content.cloneNode(true));</code>
+		<code>/*  or  */</code>
+		<code>target.appendChild(document.importNode(tmpl.content, true));</code>
+		<code> </code>
+	</pre>
 	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
 </section>
 
 <section class="slide">
 	<h2>HTML Templates</h2>
 	<pre class="hljs html">
-			<code>&lt;!-- result --></code>
-			<code>&lt;div id="source"></code>
-			<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
-			<code> </code>
-			<code>    &lt;h3>Заголовок: &lt;slot name="title">&lt;/slot>&lt;/h3></code>
-			<code>    &lt;img src="image.png" alt="My Image"></code>
-			<code>    &lt;script></code>
-			<code>        alert(1);</code>
-			<code>    &lt;/script></code>
-			<code>&lt;/div></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!-- result --></code>
+		<code>&lt;div id="source"></code>
+		<code>    &lt;span slot="title">Hello, World!&lt;/span></code>
+		<code> </code>
+		<code>    &lt;h3>Заголовок: &lt;slot name="title">&lt;/slot>&lt;/h3></code>
+		<code>    &lt;img src="image.png" alt="My Image"></code>
+		<code>    &lt;script></code>
+		<code>        alert(1);</code>
+		<code>    &lt;/script></code>
+		<code>&lt;/div></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>HTML Templates</h2>
 	<pre class="hljs js">
-			<code>const target = document.getElementById('source');</code>
-			<code>const tmpl = document.getElementById('tmpl');</code>
-			<code> </code>
-			<code>/*  or  */</code>
-			<code>const root = target.<mark>attachShadow</mark>({mode:'open'});</code>
-			<code>root.appendChild(tmpl.content.cloneNode(true));</code>
-			<code> </code>
-		</pre>
+		<code>const target = document.getElementById('source');</code>
+		<code>const tmpl = document.getElementById('tmpl');</code>
+		<code> </code>
+		<code>/*  or  */</code>
+		<code>const root = target.<mark>attachShadow</mark>({mode:'open'});</code>
+		<code>root.appendChild(tmpl.content.cloneNode(true));</code>
+		<code> </code>
+	</pre>
 	<p class="note">Ссылка на &mdash; <a href="/examples/web-components/templates.html" target="_blank">пример</a></p>
 </section>
 
 <section class="slide">
 	<h2>HTML Templates</h2>
 	<pre class="hljs html">
-			<code>&lt;!-- result --></code>
-			<code>&lt;div id="source"></code>
-			<code>    &lt;h3>Заголовок: &lt;slot name="title">Hello, World!&lt;/slot>&lt;/h3></code>
-			<code>    &lt;img src="image.png" alt="My Image"></code>
-			<code>    &lt;script></code>
-			<code>        alert(1);</code>
-			<code>    &lt;/script></code>
-			<code>&lt;/div></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!-- result --></code>
+		<code>&lt;div id="source"></code>
+		<code>    &lt;h3>Заголовок: &lt;slot name="title">Hello, World!&lt;/slot>&lt;/h3></code>
+		<code>    &lt;img src="image.png" alt="My Image"></code>
+		<code>    &lt;script></code>
+		<code>        alert(1);</code>
+		<code>    &lt;/script></code>
+		<code>&lt;/div></code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -340,128 +960,128 @@
 <section class="slide">
 	<h2>Custom Elements</h2>
 	<pre class="hljs js">
-			<code>customElements.define(tagName, constructor, options);</code>
-			<code> </code>
-			<code>class MyHTMLElement extends HTMLElement {}</code>
-			<code>window.customElements.define('my-element', MyHTMLElement);</code>
-			<code> </code>
-		</pre>
+		<code>customElements.define(tagName, constructor, options);</code>
+		<code> </code>
+		<code>class MyHTMLElement extends HTMLElement {}</code>
+		<code>window.customElements.define('my-element', MyHTMLElement);</code>
+		<code> </code>
+	</pre>
 
 	<pre class="hljs html">
-			<code>&lt;!-- PROFIT --></code>
-			<code>&lt;my-element>&lt;/my-element></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!-- PROFIT --></code>
+		<code>&lt;my-element>&lt;/my-element></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Custom Elements</h2>
 	<pre class="hljs js">
-			<code>// "super" is not a valid custom element name</code>
-			<code>document.createElement('super')</code>
-			<code>                instanceof HTMLUnknownElement; // true</code>
-			<code> </code>
-			<code>// "x-super" is a valid custom element name</code>
-			<code>document.createElement('x-super')</code>
-			<code>                instanceof HTMLElement; // true</code>
-			<code> </code>
-		</pre>
+		<code>// "super" is not a valid custom element name</code>
+		<code>document.createElement('super')</code>
+		<code>                instanceof HTMLUnknownElement; // true</code>
+		<code> </code>
+		<code>// "x-super" is a valid custom element name</code>
+		<code>document.createElement('x-super')</code>
+		<code>                instanceof HTMLElement; // true</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Custom Elements styling</h2>
 	<pre class="hljs css">
-			<code>x-super:<mark>defined</mark> {</code>
-			<code>    display: block;</code>
-			<code>}</code>
-			<code>x-super:not(:defined) {</code>
-			<code>    display: none;</code>
-			<code>}</code>
-			<code>x-super {</code>
-			<code>    color: black;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>x-super:<mark>defined</mark> {</code>
+		<code>    display: block;</code>
+		<code>}</code>
+		<code>x-super:not(:defined) {</code>
+		<code>    display: none;</code>
+		<code>}</code>
+		<code>x-super {</code>
+		<code>    color: black;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Custom Elements</h2>
 	<pre class="hljs js">
-			<code>customElements.define('bigger-img', class extends Image {</code>
-			<code>    constructor(width=50, height=50) {</code>
-			<code>        super(width * 10, height * 10);</code>
-			<code>    }</code>
-			<code>}, {extends: 'img'});</code>
-			<code> </code>
-		</pre>
+		<code>customElements.define('bigger-img', class extends Image {</code>
+		<code>    constructor(width=50, height=50) {</code>
+		<code>        super(width * 10, height * 10);</code>
+		<code>    }</code>
+		<code>}, {extends: 'img'});</code>
+		<code> </code>
+	</pre>
 
 	<pre class="hljs html">
-			<code>&lt;!-- This &lt;img> is a bigger img. --></code>
-			<code>&lt;img is="bigger-img" width="15" height="20"></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!-- This &lt;img> is a bigger img. --></code>
+		<code>&lt;img is="bigger-img" width="15" height="20"></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Custom Elements</h2>
 	<pre class="hljs js">
-			<code>const BiggerImage = customElements.get('bigger-img');</code>
-			<code>const image = new BiggerImage(15, 20);</code>
-			<code>console.assert(image.width === 150);</code>
-			<code>console.assert(image.height === 200);</code>
-			<code> </code>
-			<code>customElements.whenDefined('bigger-img')</code>
-			<code>    .then(() => {</code>
-			<code>        console.log('`bigger-img` ready!');</code>
-			<code>    });</code>
-			<code> </code>
-		</pre>
+		<code>const BiggerImage = customElements.get('bigger-img');</code>
+		<code>const image = new BiggerImage(15, 20);</code>
+		<code>console.assert(image.width === 150);</code>
+		<code>console.assert(image.height === 200);</code>
+		<code> </code>
+		<code>customElements.whenDefined('bigger-img')</code>
+		<code>    .then(() => {</code>
+		<code>        console.log('`bigger-img` ready!');</code>
+		<code>    });</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Custom Elements</h2>
 	<pre class="hljs js">
-			<code>customElements.define('my-element', class extends HTMLElement {</code>
-			<code>    constructor() {</code>
-			<code>        super();</code>
-			<code>    }</code>
-			<code>    <mark>connectedCallback</mark>() { ... }</code>
-			<code>    <mark>disconnectedCallback</mark>() { ... }</code>
-			<code>    <mark>adoptedCallback</mark>() { ... }</code>
-			<code>    ...</code>
-			<code> </code>
-		</pre>
+		<code>customElements.define('my-element', class extends HTMLElement {</code>
+		<code>    constructor() {</code>
+		<code>        super();</code>
+		<code>    }</code>
+		<code>    <mark>connectedCallback</mark>() { ... }</code>
+		<code>    <mark>disconnectedCallback</mark>() { ... }</code>
+		<code>    <mark>adoptedCallback</mark>() { ... }</code>
+		<code>    ...</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Custom Elements</h2>
 	<pre class="hljs js">
-			<code>    ...</code>
-			<code>    get disabled() {</code>
-			<code>        return this.hasAttribute('disabled');</code>
-			<code>    }</code>
-			<code>    set disabled(value) {</code>
-			<code>        if (value) {</code>
-			<code>            return this.setAttribute('disabled', '');</code>
-			<code>        }</code>
-			<code>        this.removeAttribute('disabled');</code>
-			<code>    }</code>
-			<code>    ...</code>
-			<code> </code>
-		</pre>
+		<code>    ...</code>
+		<code>    get disabled() {</code>
+		<code>        return this.hasAttribute('disabled');</code>
+		<code>    }</code>
+		<code>    set disabled(value) {</code>
+		<code>        if (value) {</code>
+		<code>            return this.setAttribute('disabled', '');</code>
+		<code>        }</code>
+		<code>        this.removeAttribute('disabled');</code>
+		<code>    }</code>
+		<code>    ...</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Custom Elements</h2>
 	<pre class="hljs js">
-			<code>    ...</code>
-			<code>    <mark>attributeChangedCallback</mark>(attrName, oldVal, newVal) { ... }</code>
-			<code>    static get <mark>observedAttributes</mark>() {</code>
-			<code>        return ['open', 'disabled'];</code>
-			<code>    }</code>
-			<code>});</code>
-			<code> </code>
-		</pre>
+		<code>    ...</code>
+		<code>    <mark>attributeChangedCallback</mark>(attrName, oldVal, newVal) { ... }</code>
+		<code>    static get <mark>observedAttributes</mark>() {</code>
+		<code>        return ['open', 'disabled'];</code>
+		<code>    }</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
 </section>
 
 
@@ -486,308 +1106,56 @@
 <section class="slide">
 	<h2>HTML Imports</h2>
 	<pre class="hljs html">
-			<code>&lt;!-- imported.html --></code>
-			<code>&lt;div id="loader"></code>
-			<code>    &lt;span>Loading...&lt;/span></code>
-			<code>&lt;/div></code>
-			<code>&lt;script></code>
-			<code>    window.Module = class M { ... }</code>
-			<code>&lt;/script></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!-- imported.html --></code>
+		<code>&lt;div id="loader"></code>
+		<code>    &lt;span>Loading...&lt;/span></code>
+		<code>&lt;/div></code>
+		<code>&lt;script></code>
+		<code>    window.Module = class M { ... }</code>
+		<code>&lt;/script></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>HTML Imports</h2>
 	<pre class="hljs html">
-			<code>&lt;!-- index.html --></code>
-			<code>&lt;head></code>
-			<code>    &lt;link rel="<mark>import</mark>" href="<mark>imported.html</mark>"></code>
-			<code>&lt;/head></code>
-			<code> </code>
-		</pre>
+		<code>&lt;!-- index.html --></code>
+		<code>&lt;head></code>
+		<code>    &lt;link rel="<mark>import</mark>" href="<mark>imported.html</mark>"></code>
+		<code>&lt;/head></code>
+		<code> </code>
+	</pre>
 	<pre class="hljs js">
-			<code>const link = document.querySelector('link[rel=import]');</code>
-			<code>const content = link.<mark>import</mark>.querySelector('#loader');</code>
-			<code>document.body.appendChild(content.cloneNode(true));</code>
-			<code>const module = new Module();</code>
-			<code> </code>
-		</pre>
+		<code>const link = document.querySelector('link[rel=import]');</code>
+		<code>const content = link.<mark>import</mark>.querySelector('#loader');</code>
+		<code>document.body.appendChild(content.cloneNode(true));</code>
+		<code>const module = new Module();</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>HTML Imports</h2>
 	<pre class="hljs html">
-			<code>&lt;!-- imported.html --></code>
-			<code>&lt;style <mark>scoped</mark>></code>
-			<code>    div { font-weight: 900; }</code>
-			<code>&lt;/style></code>
-			<code>&lt;div id="loader"></code>
-			<code>    &lt;span>Loading...&lt;/span></code>
-			<code>&lt;/div></code>
-			<code> </code>
-		</pre>
-</section>
-
-
-<!--modern web-components-->
-
-<section class="slide">
-	<h2>Современные веб-компоненты</h2>
-	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="web-components.png"
-			 style="transform-origin: center;transform: translate(-50%,-50%) scale(0.9);">
-	</div>
+		<code>&lt;!-- imported.html --></code>
+		<code>&lt;style <mark>scoped</mark>></code>
+		<code>    div { font-weight: 900; }</code>
+		<code>&lt;/style></code>
+		<code>&lt;div id="loader"></code>
+		<code>    &lt;span>Loading...&lt;/span></code>
+		<code>&lt;/div></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide question">
 	<h2><a style="color: royalblue" href="/examples/web-components/fancy-progress/" target="_blank">Пример</a></h2>
 </section>
 
-
-<!--DATA-BINDING-->
-
-<section class="slide">
-	<h2 class="shout">Data Binding</h2>
-</section>
-
-<section class="slide">
-	<h2>Связывание данных (Data Binding)</h2>
-	<blockquote>
-		<p class="small-content"><b>Связывание данных</b> &mdash; это процесс, который устанавливает соединение между UI
-			приложения и бизнес-логикой</p>
-		<p class="note">Различают
-			<mark>одностороннее</mark>
-			и
-			<mark>двустороннее</mark>
-			связывание данных &mdash; <a href="/examples/data-binding/" target="_blank">пример</a></p>
-		<p class="note"><a href="http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/"
-						   target="_blank">Easy Two-Way Data Binding in JavaScript</a></p>
-	</blockquote>
-</section>
-
 <section class="slide question">
-	<h2>Proxy &mdash; <a style="color: royalblue"
-						 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy"
-						 target="_blank">описание</a></h2>
+	<h2><a style="color: royalblue" href="https://www.polymer-project.org/" target="_blank">Polymer</a></h2>
 </section>
-
-
-<!--VDOM-->
-
-
-<section class="slide">
-	<h2 class="shout">Virtual DOM</h2>
-</section>
-
-<section class="slide">
-	<h2>Virtual DOM</h2>
-	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="dom-vs-virtual_dom.jpg"
-			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.35);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Virtual DOM</h2>
-	<blockquote>
-		<p class="small-content"><b>Virtual DOM</b> &mdash; это
-			<mark>техника и набор библиотек / алгоритмов</mark>
-			, которые позволяют нам улучшить производительность на клиентской стороне, избегая прямой работы с DOM путем
-			создания и работы c
-			<mark>абстракцией</mark>
-			, имитирующей DOM-дерево
-		</p>
-	</blockquote>
-</section>
-
-<section class="slide">
-	<h2>Virtual DOM</h2>
-	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="meme.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Virtual DOM</h2>
-	<div style="display: flex; justify-content: center; width: 100%" id="kek">
-		<style>
-			.slide #kek pre code {
-				line-height: 1.5;
-			}
-		</style>
-		<div style="width: 50%">
-				<pre class="hljs js">
-					<code>// before</code>
-					<code>{</code>
-					<code>    tagName: 'div',</code>
-					<code>    classes: ['header'],</code>
-					<code>    attributes: {</code>
-					<code>        hidden: false</code>
-					<code>    }</code>
-					<code>}</code>
-					<code> </code>
-				</pre>
-		</div>
-		<div style="width: 50%">
-				<pre class="hljs js">
-					<code>// after</code>
-					<code>{</code>
-					<code>    tagName: 'div',</code>
-					<code>    classes: ['header'],</code>
-					<code>    attributes: {</code>
-					<code>        <mark>hidden: true</mark></code>
-					<code>    }</code>
-					<code>}</code>
-					<code> </code>
-				</pre>
-		</div>
-	</div>
-	<pre class="hljs js">
-			<code>// Real DOM change</code>
-			<code>div.setAttribute('hidden', 'true')</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Virtual DOM</h2>
-	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="vdom.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.5);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>el</code> и <code>setProps</code></h2>
-	<pre class="hljs js">
-			<code>function el(type, props, ...children) {</code>
-			<code>    return {type, props, children};</code>
-			<code>}</code>
-			<code> </code>
-			<code>function setProps($target, props) {</code>
-			<code>    Object.keys(props).forEach(name => {</code>
-			<code>        $target.setAttribute(name, props[name]);</code>
-			<code>    });</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>createElement</code></h2>
-	<pre class="hljs js">
-			<code>function createElement(node) {</code>
-			<code>    if (typeof node === 'string') {</code>
-			<code>        return document.createTextNode(node);</code>
-			<code>    }</code>
-			<code>    const $el = document.createElement(node.type);</code>
-			<code>    setProps($el, node.props);</code>
-			<code>    node.children</code>
-			<code>        .map(VDOM.createElement)</code>
-			<code>        .forEach($el.appendChild.bind($el));</code>
-			<code>    return $el;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>updateProp</code></h2>
-	<pre class="hljs js">
-			<code>function updateProp($target, name, newVal, oldVal) {</code>
-			<code>    if (typeof newVal === 'undefined') {</code>
-			<code>        $target.removeAttribute(name);</code>
-			<code>    } else if (!oldVal || newVal !== oldVal) {</code>
-			<code>        $target.setAttribute(name, value);</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>updateProps</code></h2>
-	<pre class="hljs js">
-			<code>function updateProps($target, newProps, oldProps = {}) {</code>
-			<code>    const props = Object.assign({}, newProps, oldProps);</code>
-			<code>    Object.keys(props).forEach(name => {</code>
-			<code>        updateProp($target, name, newProps[name]</code>
-			<code>                                , oldProps[name]);</code>
-			<code>    });</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>changed</code></h2>
-	<pre class="hljs js">
-			<code>function changed(node1, node2) {</code>
-			<code>    return typeof node1 !== typeof node2 ||</code>
-			<code>        typeof node1 === 'string' && node1 !== node2 ||</code>
-			<code>        node1.type !== node2.type</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>updateElement</code></h2>
-	<pre class="hljs js">
-			<code>function updateElement($parent, newNode, oldNode, index = 0) {</code>
-			<code>    if (!oldNode) {</code>
-			<code>        return $parent.appendChild(</code>
-			<code>            createElement(newNode)</code>
-			<code>        );</code>
-			<code>    }</code>
-			<code>    if (!newNode) {</code>
-			<code>        return $parent.removeChild(</code>
-			<code>            $parent.childNodes[index]</code>
-			<code>        );</code>
-			<code>    }</code>
-			<code>...</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>updateElement</code></h2>
-	<pre class="hljs js">
-			<code>...</code>
-			<code>    if (VDOM.changed(newNode, oldNode)) {</code>
-			<code>        return $parent.replaceChild(</code>
-			<code>            createElement(newNode),</code>
-			<code>            $parent.childNodes[index]</code>
-			<code>        );</code>
-			<code>    }</code>
-			<code> </code>
-			<code>...</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Функция <code>updateElement</code></h2>
-	<pre class="hljs js">
-			<code>...</code>
-			<code>    if (newNode.type) {</code>
-			<code>        updateProps($parent.childNodes[index],</code>
-			<code>            newNode.props, oldNode.props);</code>
-			<code>    const newLength = newNode.children.length;</code>
-			<code>    const oldLength = oldNode.children.length;</code>
-			<code>    for (let i = 0; i < newLength || i < oldLength; i++) {</code>
-			<code>        VDOM.updateElement($parent.childNodes[index],</code>
-			<code>            newNode.children[i], newNode.children[i], i);</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide question">
-	<h2><a style="color: royalblue" href="/examples/vdom/" target="_blank">Пример</a></h2>
-</section>
-
 
 <!--THE END-->
 
@@ -812,7 +1180,6 @@
 		<li><a href="https://github.com/Matt-Esch/virtual-dom" target="_blank">Описание принципа работы VDOM</a> и <a
 				href="https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060" target="_blank">статья
 			на медиуме</a></li>
-		<li><a href="" target="_blank">ССЫЛКА</a></li>
 	</ul>
 </section>
 
