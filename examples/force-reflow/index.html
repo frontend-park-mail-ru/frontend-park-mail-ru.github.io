@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Force reflow</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#app {
+			display: block;
+			border: solid 1px red;
+			white-space: pre-line;
+		}
+
+		.item {
+			display: inline-block;
+			height: 50px;
+		}
+
+		.item:nth-child(2n) {
+			background-color: whitesmoke;
+
+		}
+	</style>
+</head>
+<body>
+
+	<button id="vslow">VERY slow way</button>
+	<button id="slow">Slow way</button>
+	<button id="fast">Fast way</button>
+	<br>
+	<div id="app">
+
+	</div>
+
+	<script>
+		'use strict';
+
+		function fill() {
+			app.innerHTML = new Array(1000)
+				.fill('<div class="item"></div>')
+				.join('');
+		}
+
+		vslow.onclick = function () {
+			fill();
+
+			setTimeout(function () {
+				console.time('very slow');
+				for (let i = 0; i < document.querySelectorAll('.item').length; i++) {
+					document.querySelectorAll('.item')[i].style.width = (document.getElementById('app').clientWidth / 20) + 'px';
+				}
+				console.timeEnd('very slow');
+			}, 1000);
+		};
+
+		slow.onclick = function () {
+			fill();
+
+			setTimeout(function () {
+				const els = [...document.querySelectorAll('.item')];
+				const wrapper = document.getElementById('app');
+
+				console.time('slow');
+				for (let i = 0; i < els.length; i++) {
+					els[i].style.width = (wrapper.clientWidth / 20) + 'px';
+				}
+				console.timeEnd('slow');
+			}, 1000);
+		};
+
+		fast.onclick = function () {
+			fill();
+
+			setTimeout(function () {
+				const els = [...document.querySelectorAll('.item')];
+				const wrapper = document.getElementById('app');
+				const width = wrapper.clientWidth;
+
+				console.time('fast');
+				for (let i = 0; i < els.length; i++) {
+					els[i].style.width = (width / 20) + 'px';
+				}
+				console.timeEnd('fast');
+			}, 1000);
+		};
+	</script>
+
+</body>
+</html>
