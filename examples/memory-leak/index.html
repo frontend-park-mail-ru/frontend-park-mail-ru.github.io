@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Memory leak</title>
+</head>
+<body>
+
+	<button id="update">Update State!</button>
+	<button id="timer">Setup timer refresh</button>
+
+
+	<script>
+		'use strict';
+
+		let state = { gen: 0 };
+		const updateState = function () {
+			const oldState = state;
+			const unused = function () {
+				if (oldState) { console.log('hello here') }
+			};
+			state = {
+				data: new Array(1024 * 1024).join('*'), // 2 MB of data
+				gen: oldState.gen++,
+				log() { console.log(this.gen) },
+			};
+		};
+
+		update.onclick = updateState;
+		timer.onclick = () => setInterval(updateState, 500);
+
+	</script>
+
+</body>
+</html>
