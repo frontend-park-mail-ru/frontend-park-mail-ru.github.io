@@ -43,358 +43,94 @@
 </header>
 
 <section class="slide first">
-	<h2 class="shout"><small style="font-size:90%">Резюме <em>Frontend-разработчика</em> в 2017 году</small><br/>
+	<h2 class="shout">
+		<small style="font-size:90%">Резюме <strong><em>Frontend-разработчика</em></strong> в 2018 году</small>
+		<br/>
 		<small>Слайды доступны по ссылке<br/>
 			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
 		</small>
 	</h2>
 </section>
 
-<section class="slide question">
-	<h2>Как составить резюме</h2>
+<!--Развитие веба-->
+
+<section class="slide first">
+	<h2 class="shout">Развитие web-технологий</h2>
 </section>
 
 <section class="slide">
-	<h2>Как составить резюме</h2>
-	<ul style="margin-left: 150px; margin-top: 75px; font-size: 32px;">
-		<li>Название</li>
-		<li>Зарплата</li>
-		<li>Опыт</li>
-		<li>Навыки</li>
-	</ul>
-</section>
-
-<section class="slide question">
-	<h2>Название вакансии</h2>
-</section>
-
-<section class="slide">
-	<h2>Урок эволюции</h2>
-	<style>
-		.engineer-evolution {
-			margin-top: 50px;
-			background: url('evolution.png');
-			width: 800px;
-			height: 500px;
-		}
-
-		.engineer-evolution div {
-			float: left;
-			margin: 0px 10px;
-			display: block;
-			position: relative;
-			top: 470px;
-			list-style: none;
-			text-align: center;
-		}
-	</style>
-	<div class="engineer-evolution">
-		<div style="width: 240px;">Bug Designer</div>
-		<div style="width: 150px;">CSS/HTML Developer</div>
-		<div style="width: 170px;">Front-End Developer</div>
-		<div style="width: 160px;">Full Stack Web Developer</div>
-	</div>
-</section>
-
-<section class="slide question">
-	<h2>Зарплата</h2>
-</section>
-
-<section class="slide">
-	<h2>Зарплата</h2>
-	<img src="compensation.png" height="500"/>
-</section>
-
-<section class="slide question">
-	<h2>Навыки</h2>
-	<!--<ul style="margin-left: 150px; margin-top: 75px; font-size: 32px;">-->
-	<!--<li>Название</li>-->
-	<!--<li>Зарплата</li>-->
-	<!--<li>Опыт</li>-->
-	<!--<li>Навыки</li>-->
-	<!--</ul>-->
-</section>
-
-<!--Фреймворки-->
-
-<section class="slide question">
-	<h2>Современные JS фреймворки</h2>
-</section>
-
-<section class="slide">
-	<h2>Современные JS фреймворки</h2>
-	<blockquote>
-		<p class="medium-content"><b>Фреймворк</b> &mdash; программная платформа, определяющая структуру программной
-			системы; программное обеспечение, облегчающее разработку и объединение разных компонентов большого
-			программного проекта.</p>
-	</blockquote>
-	<blockquote>
-		<p class="medium-content"><b>Framework</b> &mdash; is an abstraction in which software providing generic
-			functionality can be selectively changed by additional user-written code, thus providing
-			application-specific software. A software framework provides a standard way to build and deploy
-			applications.</p>
-	</blockquote>
-	<p class="note">Путеводитель по вебу в 2k17 &mdash; <a
-			href="https://frontendmasters.com/books/front-end-handbook/2017/" target="_blank">Front-End Developer
-		Handbook 2017</a></p>
-</section>
-
-<section class="slide">
-	<h2>Фреймворк или библиотека?</h2>
-	<style>
-		.jquery-map {
-			height: 500px;
-			width: 800px;
-			margin-top: 50px;
-			background: url("india.png") center no-repeat;
-			background-size: contain;
-			position: relative;
-		}
-
-		.jquery-map img {
-			position: absolute;
-			width: 150px;
-			top: 170px;
-			left: 252px;
-		}
-	</style>
-	<div class="jquery-map">
-		<img src="jquery-logo.png"/>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Фреймворк или библиотека?</h2>
-	<br/>
-	<br/>
-	<br/>
-	<center>
-		<img src="framework-vs-library.png"/>
-	</center>
-</section>
-
-<!--Ember JS-->
-<section class="slide question">
-	<h2>Ember</h2>
-</section>
-
-<section class="slide">
-	<h2>Ember CLI</h2>
-	<blockquote>
-		<b>Интерфейс командной строки</b> (англ. Command line interface, CLI) &mdash; разновидность текстового
-		интерфейса (TUI) между человеком и компьютером, в котором инструкции компьютеру даются в основном путём ввода с
-		клавиатуры текстовых строк (команд)
-	</blockquote>
-	<br/>
-	<div>
-		<div>Должно быть:</div>
-		<ul style="margin-left: 50px">
-			<li>nodejs</li>
-			<li>npm</li>
-		</ul>
-		<div>Далее:</div>
-		<code>npm install -g ember-cli</code>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Создание ember app</h2>
-	<div>
-		<p style="margin-top: 30px;">После установки Ember CLI у нас появился доступ к команде
-			<code>ember</code> в нашем терминале. Команда <code>ember new</code> создаст нам папку с приложением внутри
-		</p>
-		<code>ember new ember-quickstart</code>
-		<p>В новой папке с названием<code>ember-quickstart</code> появляется полноценное Ember приложение, включая:</p>
-
-		<ul style="margin-left: 200px;">
-			<li>Сервер для разработки</li>
-			<li>Компилятор шаблонов</li>
-			<li>JavaScript и CSS минификатор.</li>
-			<li>ES2015+ прибамбасы с помощью Babel.</li>
-		</ul>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Запуск ember app</h2>
-	<div>
-		<p style="margin-top: 30px;">
-			Чтобы запустить приложение достоаточно выполнить
-			одну команду внутри нашей новой папки:
-		</p>
-
-		<div><code>cd ember-quickstart</code></div>
-		<div><code>ember server</code></div>
-		<br/>
-		<div>Спустя несколько секунд мы увидим вывод подобный этому:</div>
-		<pre class="hljs sh"><code>Livereload server on http://localhost:49152
-Serving on http://localhost:4200/</code></pre>
-		<div>Нажав <code>Ctrl-C</code> мы прекратим работу сервера</div>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Запуск ember app</h2>
-	<img src="ember-s.png"/>
-</section>
-
-<!--Angular 2-->
-<section class="slide question">
-	<h2>Angular</h2>
-</section>
-
-<section class="slide">
-	<h2>Настройка Angular окружения</h2>
-
-	<p class="small-content">Должно быть:</p>
-	<ul style="margin-left: 150px">
-		<li>nodejs</li>
-		<li>npm</li>
-	</ul>
-	<p>Далее:</p>
-	<code style="margin-left: 100px">npm install -g @angular/cli</code>
-
-</section>
-
-
-<section class="slide">
-
-	<h2>Создание и запуск angular проекта</h2>
-
-	<p style="margin-top: 30px;">После установки Angular CLI у нас появился доступ к команде
-		<code>ng</code> в нашем терминале. Чтобы создать проект используем команду <code>new</code></p>
-	<code>ng new my-app</code>
-
-	<p style="margin-top: 30px;">
-		Запускать сервер мы будем следующими командами:
-	</p>
-
-	<div><code>cd my-app</code></div>
-	<div><code>ng serve --open</code></div>
-</section>
-
-<section class="slide">
-	<h2>Запуск angular проекта</h2>
-	<p class="small-content">В результате по адресу http://localhost:4200/ будет нечто подобное:</p>
-	<img src="angular1.png" width="700"/>
-</section>
-
-<!--React-->
-<section class="slide question">
-	<h2>React</h2>
-</section>
-
-<section class="slide">
-	<h2>JSX</h2>
-	<div style="margin-top: 100px; margin-left: 100px;">
-			<pre class="hljs js jsx"><code class="javascript">ReactDOM.render(
-  &lt;h1&gt;Hello, world!&lt;/h1&gt;,
-  document.getElementById('root')
-);</code></pre>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>React компоненты</h2>
-	<div style="margin-top: 25px; margin-left: 100px;">
-			<pre class="hljs js jsx"><code>function Welcome(props) {
-  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
-}
-
-function App() {
-  return (
-    &lt;div&gt;
-      &lt;Welcome name=&quot;Sara&quot; /&gt;
-      &lt;Welcome name=&quot;Cahal&quot; /&gt;
-      &lt;Welcome name=&quot;Edite&quot; /&gt;
-    &lt;/div&gt;
-  );
-}</code></pre>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>React компоненты</h2>
-	<div style="margin-top: 100px; margin-left: 100px;">
-			<pre class="hljs js jsx"><code>
-ReactDOM.render(
-  &lt;App /&gt;,
-  document.getElementById('root')
-);</code></pre>
-	</div>
-</section>
-
-<section class="slide">
-	<h2>React друзья</h2>
-	<ul style="margin-left: 150px; margin-top: 100px; font-size: 48px;">
-		<li>Redux</li>
-		<li>React Router</li>
-	</ul>
-</section>
-
-<section class="slide question">
-	<h2>Почему React?</h2>
-</section>
-
-<section class="slide">
-	<h2>Почему React?</h2>
-	<img src="react-stars.png" width="900"/>
-</section>
-
-<!-- Заключение про фреймворки-->
-
-<section class="slide question">
-	<h2>Какой фреймворк изучать в 2017?</h2>
-</section>
-
-<section class="slide">
-	<h2>Какой фреймворк изучать в 2017?</h2>
-	<b>
-		<p class="medium-content">
-			Обязательно:
-		</p>
-		<ul style="margin-left: 150px">
-			<li class="next">Angular</li>
-			<li class="next">React</li>
-		</ul>
-	</b>
-	<div class="next">
-		<p class="medium-content">Желательно:</p>
-		<ul style="margin-left: 150px">
-			<li>Ember</li>
-			<li>Vue.js</li>
-		</ul>
-	</div>
-
-</section>
-
-<section class="slide question">
-	<h2>Functional reactive programming</h2>
-</section>
-
-<section class="slide">
-	<h2>Functional reactive programming</h2>
-	<blockquote>
-		<p class="medium-content"><b>Functional reactive programming (FRP)</b> is a programming paradigm for reactive
-			programming (asynchronous dataflow programming) using the building blocks of functional programming (e.g.
-			map, reduce, filter).</p>
-	</blockquote>
+	<h2>Новые WEB API, на которые стоит <br>обратить внимание</h2>
+	<p class="medium-content"></p>
 	<ul>
-		<li>RambdaJS</li>
-		<li>RxJS</li>
+		<li><strong>MediaRecorder API</strong> &mdash; MediaStream Recording</li>
+		<li><strong>Payment Request API</strong> &mdash; cross-browser standard for Payment transaction process</li>
+		<li><strong>Web Bluetooth API</strong> &mdash; communications over GATT with nearby user-selected Bluetooth
+			devices
+		</li>
+		<li><strong>WebRTC</strong> &mdash; Real-time Peer-to-peer Communications Between Browsers</li>
+		<li><strong>WebAssembly</strong> &mdash; new safe, portable, low-level code format for browsers</li>
 	</ul>
 </section>
 
-<!--THE END-->
+<section class="slide question">
+	<h2>MediaRecorder API</h2>
+</section>
 
+<section class="slide question">
+	<h2>Payment Request API</h2>
+</section>
+
+<section class="slide question">
+	<h2>Web Bluetooth API</h2>
+</section>
+
+<section class="slide question">
+	<h2>WebRTC</h2>
+</section>
+
+<section class="slide question">
+	<h2>WebAssembly</h2>
+</section>
+
+<!--Новые навыки и знания-->
+
+<section class="slide">
+	<h2 class="shout">
+		<small style="font-size: 90%; display: inline-block; line-height: 1;">Как стать профессионалом?</small>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>Теория</h2>
+</section>
+
+<section class="slide question">
+	<h2>Инструменты</h2>
+</section>
+
+<section class="slide question">
+	<h2>Библиотеки/фреймворки</h2>
+</section>
+
+<section class="slide question">
+	<h2>Новые подходы/концепции</h2>
+</section>
+
+<section class="slide question">
+	<h2>Как развиваться?</h2>
+</section>
+
+<!--Перерыв-->
 
 <section class="slide">
 	<h2 class="shout">Перерыв</h2>
 </section>
 
+<!--Frontend - это не только web-->
+
 <section class="slide">
 	<h2 class="shout">
-		<small style="font-size:85%">Фронтенд-разработка &mdash; это <strong>не только web</strong></small>
+		<small style="font-size: 85%; display: inline-block; line-height: 1;">Frontend-разработка &mdash; это <strong>не только web</strong></small>
 	</h2>
 </section>
 
@@ -486,61 +222,61 @@ ReactDOM.render(
 	<h2>Node.JS</h2>
 	<p class="medium-content">Структура проекта</p>
 	<pre class="hljs bash">
-			<code>app/</code>
-			<code>    package.json</code>
-			<code>    node_modules/</code>
-			<code>    index.js</code>
-			<code>    ...</code>
-			<code> </code>
+		<code>app/</code>
+		<code>    package.json</code>
+		<code>    node_modules/</code>
+		<code>    index.js</code>
+		<code>    ...</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Node.JS</h2>
+	<pre class="hljs js">
+		<code>// circle.js</code>
+		<code>'use strict';</code>
+		<code>const PI = 3.1415;</code>
+		<code> </code>
+		<code><mark>exports</mark>.PI = PI;    // module.exports.PI = ...</code>
+		<code> </code>
+		<code><mark>module.exports</mark> = function (radius) {</code>
+		<code>    return 2 * PI * radius;</code>
+		<code>};</code>
+		<code> </code>
 		</pre>
 </section>
 
 <section class="slide">
 	<h2>Node.JS</h2>
 	<pre class="hljs js">
-			<code>// circle.js</code>
-			<code>'use strict';</code>
-			<code>const PI = 3.1415;</code>
-			<code> </code>
-			<code><mark>exports</mark>.PI = PI;    // module.exports.PI = ...</code>
-			<code> </code>
-			<code><mark>module.exports</mark> = function (radius) {</code>
-			<code>    return 2 * PI * radius;</code>
-			<code>};</code>
-			<code> </code>
-		</pre>
+		<code>(function (exports, require, module, __filename, __dirname) {</code>
+		<code>    'use strict';</code>
+		<code>    const PI = 3.1415;</code>
+		<code>     </code>
+		<code>    <mark>exports</mark>.PI = PI;    // module.exports.PI = ...</code>
+		<code>     </code>
+		<code>    <mark>module.exports</mark> = function (radius) {</code>
+		<code>        return 2 * PI * radius;</code>
+		<code>    };</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Node.JS</h2>
 	<pre class="hljs js">
-			<code>(function (exports, require, module, __filename, __dirname) {</code>
-			<code>    'use strict';</code>
-			<code>    const PI = 3.1415;</code>
-			<code>     </code>
-			<code>    <mark>exports</mark>.PI = PI;    // module.exports.PI = ...</code>
-			<code>     </code>
-			<code>    <mark>module.exports</mark> = function (radius) {</code>
-			<code>        return 2 * PI * radius;</code>
-			<code>    };</code>
-			<code>});</code>
-			<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Node.JS</h2>
-	<pre class="hljs js">
-			<code>"use strict";</code>
-			<code>const circle = <mark>require</mark>('./circle.js');</code>
-			<code>const fs = <mark>require</mark>('fs');</code>
-			<code> </code>
-			<code>const PI = circle.PI;</code>
-			<code> </code>
-			<code>console.log('PI = ', PI);</code>
-			<code>console.log('square = ', circle(2));</code>
-			<code> </code>
-		</pre>
+		<code>"use strict";</code>
+		<code>const circle = <mark>require</mark>('./circle.js');</code>
+		<code>const fs = <mark>require</mark>('fs');</code>
+		<code> </code>
+		<code>const PI = circle.PI;</code>
+		<code> </code>
+		<code>console.log('PI = ', PI);</code>
+		<code>console.log('square = ', circle(2));</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
@@ -737,20 +473,20 @@ ReactDOM.render(
 <section class="slide">
 	<h2>Например:</h2>
 	<pre class="hljs jsx">
-			<code>import React, { Component } from 'react';</code>
-			<code>import { Text, View, ProgressBar } from 'react-native';</code>
-			<code>import { TheNativeComponent } from './your-native-code';</code>
-			<code>class SomeComponent extends Component {</code>
-			<code>    render() {</code>
-			<code>        return (&lt;View&gt;</code>
-			<code>            &lt;Text&gt;Loading&lt;/Text&gt;</code>
-			<code>            &lt;ProgressBar /&gt;</code>
-			<code>            &lt;TheNativeComponent /&gt;</code>
-			<code>        &lt;/View&gt;)</code>
-			<code>    }</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>import React, { Component } from 'react';</code>
+		<code>import { Text, View, ProgressBar } from 'react-native';</code>
+		<code>import { TheNativeComponent } from './your-native-code';</code>
+		<code>class SomeComponent extends Component {</code>
+		<code>    render() {</code>
+		<code>        return (&lt;View&gt;</code>
+		<code>            &lt;Text&gt;Loading&lt;/Text&gt;</code>
+		<code>            &lt;ProgressBar /&gt;</code>
+		<code>            &lt;TheNativeComponent /&gt;</code>
+		<code>        &lt;/View&gt;)</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide question">
@@ -789,33 +525,105 @@ ReactDOM.render(
 </section>
 
 <section class="slide question">
-	<h2>more...</h2>
+	<h2>Конец?</h2>
 </section>
 
+<section class="slide question">
+	<h2>Конец.</h2>
+</section>
+
+<!--Что нас ждёт дальше-->
 
 <section class="slide">
-	<h2 class="shout">
-		<small style="font-size:85%">Современные API</small>
-	</h2>
+	<h2 class="shout">Что нас ждёт дальше?</h2>
+</section>
+
+<section class="slide question">
+	<h2>РК4</h2>
 </section>
 
 <section class="slide">
-	<h2>Современность</h2>
+	<h2>РК4</h2>
+	<p class="medium-content"></p>
 	<ul>
-		<li>WebRTC API</li>
-		<li>Web Bluetooth API &mdash; <a href="https://youtu.be/4LscaaiO7Ps?t14m22s" target="_blank"
-										 style="color: darkblue;">link</a></li>
-		<li>Vibration API</li>
-		<li>Ambient Light Sensor API</li>
-		<li>Battery Status API</li>
-		<li>Mobile Messaging API</li>
-		<li>and more...</li>
+		<li>Проверка деплоя</li>
+		<li>Проверка выполнения всего проекта</li>
+		<li>Финальные советы, которые можно поправить до защиты</li>
+		<li>Возможность досдать предыдущие РК</li>
 	</ul>
 </section>
 
+<section class="slide question">
+	<h2>Защита проектов &mdash; <em>23 декабря</em></h2>
+</section>
 
 <section class="slide">
-	<h2 class="shout">Всем спасибо!</h2>
+	<h2>Защита проектов &mdash; <em>23 декабря</em></h2>
+	<p><strong>Регламент</strong></p>
+	<ul>
+		<li>Начало 23 декабря (суббота), офис Mail.Ru Group, в 10:00</li>
+		<li>Подготовка с 8:30 утра (я в это время буду уже на месте)</li>
+		<li><strong>Накануне вам необходимо будет получить допуск:</strong>
+			<ul lang="en">
+				<li><strong>по-максимуму</strong> поправить все критические баги в ваших проектах</li>
+				<li>задеплоить ваш проект</li>
+				<li>заполнить <mark>README</mark> в репозитории</li>
+				<li>подготовить хотя бы черновой вариант презентации и задеплоить её</li>
+				<li>заполнить небольшую табличку с командами</li>
+			</ul>
+		</li>
+		<li>На защите будут присутствовать гости и <mark>ваши потенциальные работодатели</mark></li>
+		<li>После защиты &mdash; пицца! 🎉 🎉 🎉</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Защита проектов &mdash; <em>23 декабря</em></h2>
+	<p><strong>Регламент</strong></p>
+	<ul>
+		<li>Все презентации будут сведены в одну общую, показ будет производиться с одного устройства</li>
+		<li>Порядок команд мы определим самостоятельно (рандомом 😉)</li>
+		<li><strong>О чём стоит рассказать во время выступления (примерный план, 5&ndash;7 минут):</strong>
+			<ul lang="en">
+				<li>О команде, о распределении ролей, о <strong>командном взаимодействии</strong></li>
+				<li>О том, что у вас за проект (демонстрация: один человек рассказывает, а другой <strong>параллельно</strong> показывает)</li>
+				<li>Наиболее интересные технические решения вашего проекта</li>
+				<li><strong>Обратная связь по итогам семестра, благодарности преподавателям</strong></li>
+				<li>Ответы на вопросы из зала (<em>2&ndash;3 минуты от всего выступления</em>)</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>Обратная связь</h2>
+</section>
+
+<section class="slide">
+	<h2>Обратная связь</h2>
+	<p class="medium-content">Для нас <strong>действительно очень важна</strong> ваша обратная связь по итогам семестра. Пожалуйста, если вас не затруднит, напишите отзыв в ЛС, либо на почту, либо в общем чатике, либо менторам, либо в форме обратной связи на Портале Технопарка. Мы все отзывы читаем и принимаем во внимание.</p>
+	<p>Негативная обратная связь, обычно, более полезна. <strong>Не стесняйтесь сообщать о недочётах!</strong></p>
+	<p>В конце семестра будут проводиться <strong>итоговые встречи в офисе по результатам 2 семестра Технопарка</strong>. Приходите на них обязательно.</p>
+</section>
+
+<section class="slide question">
+	<h2>Менторство</h2>
+</section>
+
+<section class="slide">
+	<h2>Менторство</h2>
+	<p class="small-content"><strong>Многих из вас мы будем рады увидеть в рядах наших менторов в следующем семестре!</strong></p>
+	<p>Пишите <a href="mailto:a.tyuldyukov@corp.mail.ru&subject=Менторство">Лёше Тюльдюкову</a>, если вы хотите стать одним из менторов и делиться своими знаниями и опытом со следующими поколениями студентов</p>
+</section>
+
+<section class="slide question">
+	<h2>Работа и стажировки</h2>
+</section>
+
+<!--Конец? Конец.-->
+
+<section class="slide">
+	<h2 class="shout" style="display: inline-block; line-height: 1;">Вы &mdash; лучшая аудитория <br><small>Спасибо вам за это!</small></h2>
 </section>
 
 <div class="progress"></div>
