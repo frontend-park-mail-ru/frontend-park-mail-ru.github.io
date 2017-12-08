@@ -62,34 +62,386 @@
 	<h2>Новые WEB API, на которые стоит <br>обратить внимание</h2>
 	<p class="medium-content"></p>
 	<ul>
-		<li><strong>MediaRecorder API</strong> &mdash; MediaStream Recording</li>
 		<li><strong>Payment Request API</strong> &mdash; cross-browser standard for Payment transaction process</li>
 		<li><strong>Web Bluetooth API</strong> &mdash; communications over GATT with nearby user-selected Bluetooth
 			devices
 		</li>
-		<li><strong>WebRTC</strong> &mdash; Real-time Peer-to-peer Communications Between Browsers</li>
 		<li><strong>WebAssembly</strong> &mdash; new safe, portable, low-level code format for browsers</li>
+		<li><strong>MediaRecorder API</strong> &mdash; MediaStream Recording</li>
+		<li><strong>WebRTC</strong> &mdash; Real-time Peer-to-peer Communications Between Browsers</li>
 	</ul>
-</section>
-
-<section class="slide question">
-	<h2>MediaRecorder API</h2>
 </section>
 
 <section class="slide question">
 	<h2>Payment Request API</h2>
 </section>
 
+<section class="slide">
+	<h2>Payment Request API &mdash; <a href="https://caniuse.com/#feat=payment-request" target="_blank">caniuse</a></h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="paymentrequest-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.49);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Payment Request API</h2>
+	<blockquote>
+		<p>
+			<strong>Payment Request API</strong> &mdash; позволяет организовать оплату на сайте, используя нативный UI устройства, с указанием деталей карты, вариантами доставки, адресами и контактными данными &mdash;
+			<a href="https://developers.google.com/web/fundamentals/payments/" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place z-depth-2" src="payment-demo.gif" style="transform-origin: center; transform: translate(-100%,-63%) scale(0.42);">
+		<img class="place" src="payment-screenehots.png" style="transform-origin: center;     transform: translate(-31%,-73%) scale(0.74);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Payment Request API</h2>
+	<pre class="hljs js">
+		<code>// Поддерживаемые способы оплаты</code>
+		<code>const methodData = [{</code>
+		<code>    supportedMethods: ['visa', 'mastercard'],</code>
+		<code>}];</code>
+		<code>// Детали платежа</code>
+		<code>const details = {</code>
+		<code>    total: {</code>
+		<code>        label: 'Покупка слона',</code>
+		<code>        amount: { currency: 'RUB', value: '99.99' },</code>
+		<code>    },</code>
+		<code>};</code>
+		<code>// Настройки</code>
+		<code>const options = { requestShipping: false, requestPayerEmail: true };</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Payment Request API</h2>
+	<pre class="hljs js">
+		<code>// Начинаем процесс</code>
+		<code>const paymentRequest = new PaymentRequest(methodData, details, options);</code>
+		<code>paymentRequest.show() // возвращает промис</code>
+		<code>    .then(function(paymentResponse) {</code>
+		<code>        console.log(paymentResponse);</code>
+		<code>        // { methodName: 'mastercard',</code>
+		<code>        //   payerEmail: 'a.ostapenko@mail.ru',</code>
+		<code>        //   details: {</code>
+		<code>        //      cardNumber: '1234567890000000',</code>
+		<code>        //      cardholderName: 'OSTAPENKO ANATOLIY',</code>
+		<code>        //      cardSecurityCode: '000'</code>
+		<code>        //   }}</code>
+		<code>    })</code>
+		<code> </code>
+	</pre>
+</section>
+
 <section class="slide question">
 	<h2>Web Bluetooth API</h2>
+</section>
+
+<section class="slide">
+	<h2>Web Bluetooth API &mdash; <a href="https://caniuse.com/#feat=web-bluetooth" target="_blank">caniuse</a></h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="webbluetooth-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.49);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Web Bluetooth API</h2>
+	<blockquote>
+		<p>
+			<strong>Web Bluetooth API</strong> &mdash; предоставляет методы взаимодействия браузера с удалёнными Bluetooth LE устройствами &mdash;
+			<a href="https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<video autoplay="autoplay" loop="loop" muted="muted" class="place" style="transform-origin: center; transform: translate(-89%,-80%) scale(0.85); max-width: 100%; z-index: 5;">
+			<source src="https://developers.google.com/web/updates/images/2015-07-22-interact-with-ble-devices-on-the-web/bluetooth-device-chooser.webm" type="video/webm; codecs=vp8">
+			<source src="https://developers.google.com/web/updates/images/2015-07-22-interact-with-ble-devices-on-the-web/bluetooth-device-chooser.mp4" type="video/mp4; codecs=h264">
+		</video>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/9mv-8gSyalU?rel=0&amp;start=1290" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen style="position: absolute; z-index: 10; transform-origin: center; left: 32%; top: 7%; transform: scale(1.2);"></iframe>
+	</div>
+</section>
+
+<section class="slide question">
+	<h2>WebAssembly</h2>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly &mdash; <a href="https://caniuse.com/#feat=wasm" target="_blank">caniuse</a></h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="wasm-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.49);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<p class="medium-content">Во время создания WebAssembly решалась следующая задача: <strong>быстро исполнять код в браузере</strong></p>
+	<blockquote>
+		<p>
+			<strong>WebAssembly (wasm)</strong> &mdash; эффективный низкоуровневый байт-код, предназначенный для исполнения в браузере. WebAssemblу представляет собой переносимое абстрактное синтаксическое дерево, обеспечивающее как более быстрый парсинг, так и более быстрое выполнение кода, чем JavaScript &mdash;
+			<a href="https://codelabs.developers.google.com/codelabs/web-assembly-intro/" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+	<p class="note"><strong>Применения:</strong> редактирование изображений/видео/музыки, криптография, математические вычисления, игры...</p>
+</section>
+
+<section class="slide">
+	<h2>Что же такое WebAssembly?</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Бинарный формат</li>
+		<li>НЕ язык программирования, а байт-код</li>
+		<li><strong>Загружается в браузер и исполняется в браузере</strong> &mdash; формально, WebAssembly исполняется JavaScript-движком, а не самим браузером, поэтому есть и другие варианты исполнения, например, под Node.js</li>
+		<li>Исполняется виртуальной машиной</li>
+		<li>НЕ имеет ничего общего с WEB, кроме того что общается с внешним миром через JavaScript</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<pre class="hljs c">
+		<code>// исходник на C</code>
+		<code>int fib(int n) {</code>
+		<code>    if (n == 0) { return 0; } else {</code>
+		<code>        if ((n == -1) || (n == 1)) { return 1; } else  {</code>
+		<code>            if (n > 0) { return fib(n - 1) + fib(n - 2); }</code>
+		<code>            else { return fib(n + 2) - fib(n + 1); }</code>
+		<code>        }</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<pre class="hljs c">
+		<code>// текстовое представление WAST</code>
+		<code>(module</code>
+		<code>    (table 0 anyfunc)</code>
+		<code>    (memory $0 1)</code>
+		<code>    (data (i32.const 12) "\01\00\00\00\00\00\00\00\01\00\00\00")</code>
+		<code>    (export "memory" (memory $0))</code>
+		<code>    (export "fib" (func $fib))</code>
+		<code>    (func $fib (param $0 i32) (result i32)</code>
+		<code>        (local $1 i32)</code>
+		<code>        (block $label$0</code>
+		<code>            (br_if $label$0</code>
+		<code>                (i32.ge_u</code>
+		<code>                // ...</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<pre class="hljs c">
+		<code>// скомпилированный байт-код wasm</code>
+		<code>const wasmCode = new Uint8Array(</code>
+		<code><mark>[0,97,115,109,1,0,0,0,1,134,128,128,128,0,1,96,1,127,1,127,3,130,128,128,</mark></code>
+		<code><mark>128,0,1,0,4,132,128,128,128,0,1,112,0,0,5,131,128,128,128,0,1,0,1,6,129,</mark></code>
+		<code><mark>128,128,128,0,0,7,144,128,128,128,0,2,6,109,101,109,111,114,121,2,0,3,102,</mark></code>
+		<code><mark>105,98,0,0,10,203,128,128,128,0,1,197,128,128,128,0,1,1,127,2,64,32,0,65,1,</mark></code>
+		<code><mark>106,34,1,65,3,79,13,0,32,1,65,2,116,65,12,106,40,2,0,15,11,2,64,32,0,65,1,</mark></code>
+		<code><mark>72,13,0,32,0,65,127,106,16,0,32,0,65,126,106,16,0,106,15,11,32,0,65,2,106,</mark></code>
+		<code><mark>16,0,32,1,16,0,107,11,11,146,128,128,128,0,1,0,65,12,11,12,1,0,0,0,0,0,0,0,</mark></code>
+		<code><mark>1,0,0,0]</mark></code>
+		<code>);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<pre class="hljs c">
+		<code>// запускаем wasm-модуль</code>
+		<code>const wasmCode = new Uint8Array([...]);</code>
+		<code>const wasmModule = new WebAssembly.Module(wasmCode);</code>
+		<code>const wasmInstance = new WebAssembly.Instance(wasmModule, []);</code>
+		<code> </code>
+		<code>console.log(wasmInstance.exports.fib(10));</code>
+		<code> </code>
+	</pre>
+	<p>Демо &mdash; <a href="http://webassembly.org/demo/" target="_blank">Танки</a></p>
+</section>
+
+<section class="slide question">
+	<h2>MediaRecorder API</h2>
+</section>
+
+<section class="slide">
+	<h2>MediaRecorder API &mdash; <a href="https://caniuse.com/#feat=mediarecorder" target="_blank">caniuse</a></h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="mediarecorder-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.49);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>MediaRecorder API</h2>
+	<blockquote>
+		<p>
+			<strong>MediaRecorder API</strong> &mdash; позволяет получать доступ к камере и микрофону компьютера через JavaScript API &mdash;
+			<a href="https://developers.google.com/web/updates/2016/01/mediarecorder" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+	<input type="button" id="startrecord" value="START">
+	<input type="button" id="stoprecord" value="STOP" disabled>
+	<input type="button" id="downloadrecord" value="DOWNLOAD" disabled>
+	<video autoplay muted id="selfvideo" width="900" height="400" style="background-color: black;"></video>
+	<script>
+
+		let STREAM = null;
+		let mediaRecorder = null;
+		let recordedBlobs = [];
+
+		startrecord.onclick = function () {
+			stoprecord.removeAttribute('disabled');
+			startrecord.setAttribute('disabled', 'disabled');
+			downloadrecord.setAttribute('disabled', 'disabled');
+			STREAM = null;
+			mediaRecorder = null;
+			recordedBlobs = [];
+
+
+			const constraints = {
+				audio: false,
+				video: {
+					width: { max: 900 },
+					height: { max: 400 },
+				},
+			};
+			navigator.mediaDevices
+				.getUserMedia(constraints)
+				.then(function (stream) {
+					STREAM = stream;
+					const tracks = stream.getTracks();
+					mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+
+					mediaRecorder.ondataavailable = function (event) {
+						if (event.data && event.data.size > 0) {
+							recordedBlobs.push(event.data);
+						}
+					}.bind(this);
+
+					mediaRecorder.start(1000); // collect by 1s-frames of data
+
+					selfvideo.srcObject = stream;
+				}.bind(this));
+		};
+
+		stoprecord.onclick = function () {
+			startrecord.removeAttribute('disabled');
+			downloadrecord.removeAttribute('disabled');
+			stoprecord.setAttribute('disabled', 'disabled');
+
+			if (mediaRecorder && mediaRecorder.state === 'recording') {
+				mediaRecorder.stop();
+			}
+
+			selfvideo.srcObject = null;
+			mediaRecorder = null;
+			STREAM.getTracks().forEach((track) => {
+				track.stop();
+			});
+			STREAM = null;
+		};
+
+		downloadrecord.onclick = function () {
+			const blob = new Blob(recordedBlobs, { type: 'video/webm' });
+			console.log('save', blob);
+
+			const a = document.createElement('a');
+			a.style = 'display: none';
+			document.body.appendChild(a);
+			const url = window.URL.createObjectURL(blob);
+			a.href = url;
+			a.download = 'видео.webm';
+			a.click();
+			window.URL.revokeObjectURL(url);
+		};
+
+	</script>
+</section>
+
+<section class="slide">
+	<h2>MediaRecorder API</h2>
+	<pre class="hljs js">
+		<code>navigator.mediaDevices.getUserMedia(constraints)</code>
+		<code>    .then(function (stream) {</code>
+		<code>        const recordedBlobs = [];</code>
+		<code>        const mediaRecorder = new MediaRecorder(stream, {</code>
+		<code>            mimeType: 'video/webm',</code>
+		<code>        });</code>
+		<code>        mediaRecorder.ondataavailable = function (event) {</code>
+		<code>            recordedBlobs.push(event.data);</code>
+		<code>        };</code>
+		<code>        mediaRecorder.start(1000);         // для сохранения видео</code>
+		<code>        videoElement.srcObject = stream;   // для вывода</code>
+		<code>        // ...</code>
+		<code>        mediaRecorder.stop();</code>
+		<code>    });</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide question">
 	<h2>WebRTC</h2>
 </section>
 
-<section class="slide question">
-	<h2>WebAssembly</h2>
+<section class="slide">
+	<h2>WebRTC &mdash; <a href="https://caniuse.com/#feat=rtcpeerconnection" target="_blank">caniuse</a></h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="webrtc-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.49);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>WebRTC</h2>
+	<p class="small-content"></p>
+	<blockquote>
+		<p>
+			<strong>WebRTC (RTCPeerConnection API)</strong> &mdash; API, предоставляемое браузером и позволяющее организовать P2P соединение и передачу данных <strong>напрямую</strong> между браузерами &mdash;
+			<a href="https://codelabs.developers.google.com/codelabs/webrtc-web/" target="_blank">codelabs.developers.google.com</a>
+		</p>
+	</blockquote>
+	<p class="note"><strong>Применения:</strong> медиа-стриминг, видео-общение, онлайн-игры, чаты, распределённые файловые системы, снижение нагрузки на сервера при передаче данных</p>
+</section>
+
+<section class="slide">
+	<h2>WebRTC</h2>
+	<p class="medium-content"></p>
+	<p>Для установления <em>peer-to-peer</em> оба клиента должны знать адрес и порт, по которому его оппонент слушает и может получить входящие данные. Для передачи этой информации необходим вспомогательный сервер &mdash; <strong>signalling-сервер</strong></p>
+	<p>Также кроме адресов и портов, клиенты должны договориться о <strong>параметрах устанавливаемой сессии</strong>. Например об использовании тех или иных кодеков и их параметров в случае аудио- и видеосвязи. Формат данных, описывающих всевозможные свойства соединения, называется SDP&nbsp;&mdash;&nbsp;Session Description Protocol</p>
+</section>
+
+<section class="slide">
+	<h2>WebRTC &mdash; определение адреса и <br>проверка доступности</h2>
+	<p>Для определения адреса клиента для WebRTC соединений используются дополнительные сервера <strong>STUN &mdash; Session Traversal Utilities for NAT</strong>. Задачу взаимодействия со STUN и задачу проверки доступности берет на себя <strong>ICE (Interactive Connectivity Establishment) фреймворк</strong>, встроенный в браузер</p>
+	<div style="position: relative; width: 100%; height: 50%;">
+		<img class="place" src="STUN.png" style="transform-origin: center; transform: translate(-50%,-60%) scale(0.85);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>WebRTC</h2>
+	<pre class="hljs js">
+		<code>const iceServers = [{ url: 'stun:stun.l.google.com:19302' }];</code>
+		<code>const peerConnection = new RTCPeerConnection({iceServers}, constraints);</code>
+		<code> </code>
+		<code>peerConnection.setConfiguration(configuration);</code>
+		<code>peerConnection.onicecandidate = function (event) {</code>
+		<code>    // функция, с помощью которой RTCPeerConnection отправляет на сервер</code>
+		<code>    // сообщения, которые сервер должен вернуть другому браузеру</code>
+		<code>};</code>
+		<code>peerConnection.onaddstream = function (event) {</code>
+		<code>    // вызывается, когда удалённая сторона присылает новый stream с данными</code>
+		<code>};</code>
+		<code>const rtpSender = RTCPeerConnection.addTrack(track, stream...);</code>
+		<code> </code>
+	</pre>
 </section>
 
 <!--Новые навыки и знания-->
@@ -104,20 +456,109 @@
 	<h2>Теория</h2>
 </section>
 
+<section class="slide">
+	<h2>Теория</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Знать про протоколы WEB'а: HTTP, HTTP/2, HTTPS, WebSocket</li>
+		<li>Знание JavaScript &mdash; причём, полезно знать как es6+, так и es5. TypeScript</li>
+		<li>Знание возможностей браузеров (HTML5, CSS), уметь в <em>кроссбраузерность</em>, понимать, как браузеры работают <em>внутри</em></li>
+		<li>Вопросы, связанные с безопасностью web-приложений (что такое XSS, как работают cookie, что такое CORS...)</li>
+		<li>Понимать вопросы, связанные с инфраструктурой, деплоем статики</li>
+		<li>Иметь представление о server-side</li>
+		<li>Всё, что связанно с программированием в целом</li>
+	</ul>
+</section>
+
 <section class="slide question">
 	<h2>Инструменты</h2>
+</section>
+
+<section class="slide">
+	<h2>Инструменты</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Инструменты разработки: Node.js</li>
+		<li>Инструменты сборки: Webpack, grunt, gulp</li>
+		<li>Инструменты работы с CSS: PostCSS</li>
+		<li>Модульные системы: ES6-модули, AMD, UMD</li>
+		<li>DevTools браузеров</li>
+	</ul>
 </section>
 
 <section class="slide question">
 	<h2>Библиотеки/фреймворки</h2>
 </section>
 
+<section class="slide">
+	<h2>Библиотеки/фреймворки</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Библиотеки для сборки
+			<ul lang="en">
+				<li>require.js</li>
+				<li>SystemJS</li>
+			</ul>
+		</li>
+		<li>Фреймворки
+			<ul lang="en">
+				<li>React<sup>*</sup></li>
+				<li>Angular</li>
+				<li>VueJS</li>
+				<li>Prototype</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
 <section class="slide question">
 	<h2>Новые подходы/концепции</h2>
 </section>
 
+<section class="slide">
+	<h2>Новые подходы/концепции</h2>
+	<p class="small-content"></p>
+	<ul>
+		<li>rx.js &mdash; реактивное программирование на js</li>
+		<li>rambda.js &mdash; функциональное программирование на js</li>
+	</ul>
+</section>
+
 <section class="slide question">
 	<h2>Как развиваться?</h2>
+</section>
+
+<section class="slide">
+	<h2>Как развиваться?</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Много практики &mdash; пробуйте новое, старайтесь развиваться всесторонне</li>
+		<li>Читайте статьи &mdash; например на Habrahabr, Medium, по тегам <code>JavaScript</code>, <code>Frontend</code></li>
+		<li>Посещайте и смотрите конференции:
+			<ul>
+				<li><a href="https://www.youtube.com/user/wstdays" target="_blank">Веб-стандарты</a></li>
+				<li>Фронтенд-субботники: <a href="https://www.youtube.com/channel/UCMtlICYxr6Dz_PG9_SVqRYQ" target="_blank">тут</a> и <a href="https://www.youtube.com/channel/UCNuItlOR3qXZBtMRwb4GoBg/" target="_blank">тут</a> от Яндекса</li>
+				<li><a href="https://www.youtube.com/channel/UC2Jwo4Q0s-ucjGseHP8XUSQ" target="_blank">HolyJS</a></li>
+				<li><a href="https://www.youtube.com/user/moscowjs" target="_blank">MoscowJS</a></li>
+				<li>Доклады <strong>Вадима Макеева</strong> и <strong>Алексея Охрименко</strong></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>Как писать резюме?</h2>
+</section>
+
+<section class="slide question">
+	<h2><mark>Не пишите</mark> резюме</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 115%; display: inline-block; line-height: 1;"><strong>Верстайте</strong> его!</div>
+		<div style="font-size: 50%; display: inline-block; line-height: 1;">Например &mdash; как <a style="color: darkblue;" href="https://ru.pinterest.com/explore/web-developer-cv/" target="_blank">тут</a>, <a style="color: darkblue;" href="https://sergeysova.com/" target="_blank">живой пример</a></div>
+	</h2>
 </section>
 
 <!--Перерыв-->
@@ -142,8 +583,7 @@
 	<h2>Node.JS</h2>
 	<blockquote>
 		<p class="medium-content"><b>Node или Node.js</b> &mdash; программная платформа, основанная на движке V8
-			(транслирующем JavaScript в машинный код), превращающая JavaScript из узкоспециализированного языка в язык
-			общего назначения</p>
+			(транслирующем JavaScript в машинный код), превращающая JavaScript из узкоспециализированного языка в язык общего назначения</p>
 	</blockquote>
 	<div style="position:relative;width: 100%; height: 75%;">
 		<img class="place" src="nodewtf.png" style="transform-origin: center;transform: translate(-50%,-80%) scale(1);">
