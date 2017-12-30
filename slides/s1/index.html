@@ -5,33 +5,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<script>
-		'use strict';
-
-		const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
-		const w = screen.width;
-		const h = screen.height;
-		const r = gcd(w, h);
-
-		console.log(`${w}x${h}`);
-		let aspect = `${w / r}x${h / r}`;
-		console.log(aspect);
-
-		const ratios = ['8x5', '4x3', '6x5', '5x3', '5x4', '16x9'];
-		if (!ratios.includes(aspect)) {
-			aspect = ratios[0];
-		}
-
-		if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
-			aspect = '4x3';
-		}
-		aspect = '4x3';
-
-		document.write(`<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-${aspect}.css">`);
-
-	</script>
-
+	<link rel="icon" type="image/png" href="/lib/favicon.png"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="/lib/shower/themes/technopark/styles/screen-4x3.css">
 	<link rel="stylesheet" href="/lib/slides.css">
 
 	<style>
