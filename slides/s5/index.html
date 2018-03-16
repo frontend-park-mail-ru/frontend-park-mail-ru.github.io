@@ -32,20 +32,21 @@
 
 <section class="slide">
 	<h2>Архитектура</h2>
-	<p class="note">Какие-то определения с википедии...</p>
+	<p class="note">Какие-то определения с Википедии...</p>
+	<small style="display: inline-block; font-size: 90%;">Если рассматривать приложение как <mark>систему</mark> &mdash; т.е. набор компонентов, объединенных для выполнения определенной функции:</small>
 	<blockquote>
 		<p><b>Архитектура</b> идентифицирует главные компоненты системы и способы их взаимодействия. Также это выбор таких решений, которые интерпретируются как основополагающие и не подлежащие изменению в будущем</p>
 	</blockquote>
 	<blockquote>
-		<p class="medium-content"><b>Архитектура</b> &mdash; это <mark>организация системы</mark>, воплощенная в её компонентах, их отношениях между собой и с окружением. <mark>Система</mark> &mdash; это набор компонентов, объединенных для выполнения определенной функции</p>
+		<p><b>Архитектура</b> &mdash; это <mark>организация системы</mark>, воплощенная в её компонентах, их отношениях между собой и с окружением. </p>
 	</blockquote>
 </section>
 
 <section class="slide">
 	<h2>Архитектурные решения</h2>
-	<p><strong>Как определить качество архитектурного решения?</strong> Задайте себе вопрос:</p>
+	<p><strong>Как определить, является ли какое-то решение архитектурным. Как определить <mark>качество архитектурного решения</mark>?</strong><br>Задайте себе вопрос:</p>
 	<blockquote>
-		<p class="medium-content">А что если я ошибся и мне придется изменить это решение в будущем? Какие будут последствия?</p>
+		<p>А что если я ошибся и мне придется изменить это решение в будущем? Какие будут последствия?</p>
 	</blockquote>
 	<p class="note">Если некоторое решение размазано ровным слоем по всему приложению, то стоимость его изменения будет огромной, а значит это решение является архитектурным</p>
 </section>
@@ -105,13 +106,13 @@
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 100%; color: #000055;"><a href="https://www.youtube.com/watch?v=wi3wPzReKZQ" target="_blank">S.O.L.I.D-ый JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
+		<span style="font-size: 100%; color: #000055;"><a href="https://youtu.be/wi3wPzReKZQ" target="_blank">S.O.L.I.D-ый JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
 	</h2>
 </section>
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 80%;">Как же создать <em>хорошую</em> архитектуру?</span>
+		<span style="font-size: 80%; display: inline-block;">Как же создать <em>хорошую</em> архитектуру?</span>
 	</h2>
 </section>
 
@@ -130,11 +131,23 @@
 	</div>
 </section>
 
+<section class="slide question">
+	<h2>
+		<span style="font-size: 70%; display: inline-block; line-height: 118%;">Хорошая декомпозиция должна быть <mark>иерархической</mark></span>
+	</h2>
+</section>
+
 <section class="slide">
 	<h2>Хорошая декомпозиция должна<br>быть иерархической</h2>
 	<div style="position: relative; width: 100%; height: 100%;">
 		<img class="place" src="decomposition.png" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.3);">
 	</div>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 70%; display: inline-block; line-height: 118%;">Хорошая декомпозиция должна быть <mark>функциональной</mark></span>
+	</h2>
 </section>
 
 <section class="slide">
@@ -224,27 +237,38 @@
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 80%; color: #000055;"><a href="https://www.youtube.com/watch?v=wi3wPzReKZQ" target="_blank">Антон Немцев &mdash; Паттерны JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
+		<span style="font-size: 80%; color: #000055;"><a href="https://youtu.be/Y6iOA6sfsPk" target="_blank">Антон Немцев &mdash; Паттерны JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
 	</h2>
 </section>
 
 <!-- О таких вещах, как коупелинг и кохежион. Как уменьшать связность приложения. -->
 
+<section class="slide question">
+	<h2>
+		<span style="font-size: 70%; display: inline-block; line-height: 118%;">Хорошая декомпозиция должна создавать <mark>слабосвязанную систему</mark></span>
+	</h2>
+</section>
+
 <section class="slide">
 	<h2>Парочка определений</h2>
 	<p class="medium-content"></p>
 	<blockquote>
-		<p><b>Internal Cohesion</b> &mdash; высокая сопряженность или «сплоченность» внутри модуля</p>
+		<p><b>Internal Cohesion</b> &mdash; сопряженность или «сплоченность» <mark><strong>внутри модуля</strong></mark> (составных частей модуля друг с другом)</p>
 	</blockquote>
 	<blockquote>
-		<p><b>External Coupling</b> &mdash; слабая связанность взаимодействующих друг с другом модулей. Модули, на которые разбивается система, должны быть, по возможности, независимы или слабо связанны друг с другом. Они должны иметь возможность взаимодействовать, но при этом как можно меньше знать друг о друге</p>
+		<p><b>External Coupling</b> &mdash; связанность <mark><strong>взаимодействующих друг с другом&nbsp;модулей</strong></mark>.</p>
 	</blockquote>
 </section>
 
 <section class="slide">
 	<h2>Хорошая декомпозиция должна<br>создавать <strong>слабосвязанную</strong> систему</h2>
 	<p class="medium-content">Модули, полученные в результате декомпозиции, должны быть максимально сопряженны внутри (<mark>high internal cohesion</mark>) и минимально связанны друг с другом (<mark>low external coupling</mark>)</p>
-	<p class="note">Ослаблять связанность нужно на всех уровнях иерархии</p>
+	<p class="medium-content">Модули, на которые разбивается система, должны быть, по возможности, независимы или слабо связанны друг с другом. Они должны иметь возможность взаимодействовать, но при этом как можно меньше знать друг о друге</p>
+</section>
+
+<section class="slide">
+	<h2>Ослаблять связанность нужно на<br>всех уровнях иерархии</h2>
+	<p class="medium-content"></p>
 	<ul lang="ru">
 		<li><em>Какую функцию выполняет каждый модуль?</em></li>
 		<li><em>Насколько модули легко тестировать?</em></li>
@@ -393,7 +417,7 @@
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 70%;">Итак, как это помогает уменьшить <em>связность</em> приложения?</span>
+		<span style="font-size: 70%; display: inline-block;">Итак, как это помогает уменьшить <em>связность</em> приложения?</span>
 	</h2>
 </section>
 
@@ -777,7 +801,7 @@
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 75%; color: #000055;"><a href="https://habrahabr.ru/post/276593/" target="_blank">Как проектировать хорошую архитектуру&nbsp;<i class="material-icons noitalic">open_in_new</i></a><em style="font-size: 70%; color: darkgrey">очень крутая статья</em></span>
+		<span style="font-size: 75%; color: #000055; display: inline-block;"><a href="https://habrahabr.ru/post/276593/" target="_blank">Как проектировать хорошую архитектуру&nbsp;<i class="material-icons noitalic">open_in_new</i></a><em style="font-size: 70%; color: darkgrey">очень крутая статья</em></span>
 	</h2>
 </section>
 
@@ -899,17 +923,8 @@
 			действий</p>
 	</blockquote>
 	<blockquote>
-		<p>На клиенте роутинг позволяет
-			<mark>установить соответствие</mark>
-			между адресом в адресной строке браузера и <code>View</code>, которая будет отображаться. Таким образом,
-			роутинг &mdash; это вариант реализации паттерна
-			<mark>"Медиатор"</mark>
-			для MV* архитектуры приложений
-		</p>
-		<p>Кроме этого, роутеры решают ещё одну очень важную задачу. Они позволяют эмулировать <strong>
-			<mark>историю переходов</mark>
-		</strong> в SPA-приложениях
-		</p>
+		<p>На клиенте роутинг позволяет <mark>установить соответствие</mark> между состоянием приложения и <code>View</code>, которая будет отображаться. Таким образом, роутинг &mdash; это вариант реализации паттерна <mark>"Медиатор"</mark> для MV* архитектуры приложений</p>
+		<p>Кроме этого, роутеры решают ещё одну очень важную задачу. Они позволяют эмулировать <strong><mark>историю переходов</mark></strong> в SPA-приложениях</p>
 	</blockquote>
 </section>
 
@@ -918,11 +933,12 @@
 	<p>Таким образом взаимодействие и переключение между <code>View</code> происходит посредством роутера, а сами <code>View</code>
 		друг о друге ничего не знают</p>
 	<pre class="hljs js">
-		<code>Router.register('/', MenuView);</code>
-		<code>Router.register('/signup', SignupView);</code>
-		<code>Router.register('/scores/pages/{page}', ScoreboardView);</code>
+		<code>Router.register({state: 'main'}, MenuView);</code>
+		<code>Router.register({state: 'signup'}, SignupView);</code>
+		<code>Router.register({state: 'scores'}, ScoreboardView);</code>
 		<code>...</code>
-		<code>Router.go('/scores/page/3'); // переход на 3 страницу (пагинация)</code>
+		<code>// переход на 3 страницу (пагинация)</code>
+		<code>Router.go({state: 'scores', params: {page: 3}});</code>
 		<code> </code>
 	</pre>
 </section>
@@ -1011,6 +1027,18 @@
 		<code>history.back();   // /app?page=2</code>
 		<code>history.back();   // /menu?page=1</code>
 		<code>history.go(2);    // /scores?page=3</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Что такое роутинг?</h2>
+	<pre class="hljs js">
+		<code>Router.register('/', MenuView);</code>
+		<code>Router.register('/signup', SignupView);</code>
+		<code>Router.register('/scores/pages/{page}', ScoreboardView);</code>
+		<code>...</code>
+		<code>Router.go('/scores/page/3'); // переход на 3 страницу (пагинация)</code>
 		<code> </code>
 	</pre>
 </section>
