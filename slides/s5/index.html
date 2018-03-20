@@ -91,6 +91,12 @@
 	<div style="position: relative; width: 100%; height: 100%;">
 		<img class="place" src="memes.jpg" style="transform-origin: center; transform: translate(-50%,-55%) scale(1.7);">
 	</div>
+	<div style="    background-color: white;
+    width: 480px;
+    height: 58px;
+    position: absolute;
+    top: 420px;
+    left: 420px; word-wrap: break-word; font-size: 28px; font-style: italic; font-weight: 500;">0LHRg9C00YMg0L/RgNC+0YHRgtC40YLRg9GC0LrQvtC5 <span style="color: #ddd;">(base64)</span></div>
 </section>
 
 <section class="slide">
@@ -1057,6 +1063,47 @@
 	<h2><span style="font-size: 75%">С JS'ом разобрались, а с CSS что?</span></h2>
 </section>
 
+<!-- Дизайн языка -->
+<section class="slide">
+	<h2>Дизайн языка</h2>
+	<p class="medium-content"></p>
+	<ul lang="en">
+		<li>Совместимость в обе стороны</li>
+		<li>Удобство в поддержке и изменении</li>
+		<li><code>Простота.</code> В написании, чтении, реализации идей</li>
+		<li>Разнообразие возможностей ради выразительности Интернета</li>
+		<li>CSS <code>слабо связан с HTML</code> и лишь дополняет его</li>
+		<li><code>Гибкость</code> => каскадирование и наследование</li>
+		<li>Возможность работать в связке с другими языками. Javascript :)</li>
+	</ul>
+
+	<span class="note">Подробнее о принципах в <a href="https://www.w3.org/TR/CSS2/intro.html#design-principles" target="_blank">документации W3C</a></span>
+</section>
+
+<!-- Как можно подключить стили на страницу и чем это закончится -->
+<section class="slide">
+	<h2>Как стили попадают на страницу</h2>
+	<p class="medium-content"></p>
+	<ul lang="en">
+		<li>Браузерные стили: default (user agent) style sheet</li>
+		<span class="note">
+			Браузерные стили можно переопределять самостоятельно или с помощью
+			<a href="https://github.com/necolas/normalize.css/" target="_blank">normalizecss</a>
+		</span>
+		<li>Пользовательские стили (!important)</li>
+		<span class="note">
+			Необходимо помнить, что они существуют в природе и не препятствовать их применению
+		</span>
+
+		<li>link rel="stylesheet" href=""</li>
+		<li>тег style</li>
+		<li>аттрибут style</li>
+		<span class="note">
+			Подходит для использования вместе с JS
+		</span>
+	</ul>
+</section>
+
 <!-- Каскадирование CSS, разные типы селекторов, импортант -->
 <section class="slide">
 	<h2>Писать стили &mdash; одно удовольствие</h2>
@@ -1072,15 +1119,44 @@
 		<code>::before, ::placeholder, ::selection, ::first-letter ... </code>
 		<code>a > a, a + a , a ~ a               /* вложенность и каскадирование */</code>
 	</pre>
-	<p class="note">Можно создавать правила любой степени вложенности &mdash; "каскад". <a href="https://habrahabr.ru/post/137588/" target="_blank">Взвешиваем селекторы CSS</a> &mdash; Хабр</p>
+<p class="note">Можно создавать правила любой степени вложенности &mdash; "каскад".</p>
 </section>
 
+<!-- Калькулятор специфичности -->
+<section class="slide">
+	<h2>Как понять,</h2>
+	<h2>какой селектор сработает?</h2>
+
+	<ul lang="en">
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank">How is specificity calculated?</a> &mdash; MDN</li>
+		<li><a href="https://habrahabr.ru/post/137588/" target="_blank">Взвешиваем селекторы CSS</a> &mdash; Хабр</li>
+		<li><a href=" https://specificity.keegan.st/" 	target="_blank">Калькулятор специфичности селектора</a></li>
+	</ul>
+
+</section>
 <!-- Антипаттерны CSS -->
 
 <section class="slide">
 	<h2>Какие могут быть проблемы?</h2>
 	<p class="small-content"></p>
-	<pre class="hljs css">
+	<span>Задача: один и тот же компонент должен выглядеть по-разному в зависимости от страницы</span>
+	<div>
+		<button style="height: 40px; width: 20%; border: 1px solid black;">
+			1
+		</button>
+		<button style="height: 40px; width: 20%; border: 1px solid black; border-color: red;">
+			2
+		</button>
+		<button style="height: 40px; width: 20%; border: 1px solid black; border-color: green;">
+			3
+		</button>
+		<button style="height: 40px; width: 20%; border: 1px solid black; border-color: blue;">
+			4
+		</button>
+	</div>
+
+	<p class="small-content"></p>
+	<pre class="hlj css">
 		<code>/* Изменение компонентов в зависимости от родителя */</code>
 		<code>.button { border: 1px solid black; }</code>
 		<code>#sidebar .button { border-color: red; }</code>
@@ -1088,10 +1164,15 @@
 		<code>#menu .button { border-color: blue; }</code>
 		<code> </code>
 	</pre>
+	<div>
+
+	</div>
 </section>
 
 <section class="slide">
 	<h2>Какие могут быть проблемы?</h2>
+	<p class="small-content"></p>
+	<span>Задача: найти элемент на странице "в слепую"</span>
 	<p class="small-content"></p>
 	<pre class="hljs css">
 		<code>/* Глубокая степень вложенности */</code>
@@ -1100,11 +1181,14 @@
 		<code>#sidebar > div > h3 + p a ~ strong { ... }</code>
 		<code> </code>
 	</pre>
+	<span>Проблема: сильная связанность со структурой документа</span>
 </section>
 
 <section class="slide">
 	<h2>Какие могут быть проблемы?</h2>
 	<p class="small-content"></p>
+	<span>Задача: сделать стили более понятными для всех</span>
+
 	<pre class="hljs css">
 		<code>/* Широко используемые имена классов */</code>
 		<code>.article { ... }</code>
@@ -1114,6 +1198,30 @@
 		<code>.article .section { ... }</code>
 		<code> </code>
 	</pre>
+
+	<span>Проблема не очевидна, но она есть!</span>
+</section>
+
+<section class="slide">
+	<h2>Какие могут быть проблемы?</h2>
+	<p class="small-content"></p>
+	<span>Задача: сделать стили более понятными для всех</span>
+
+	<div>
+		<pre class="hljs css">
+			<code>/* Широко используемые имена классов */</code>
+			<code>.article { ... }</code>
+			<code>.article .header { ... }</code>
+			<code>.article .title { ... }</code>
+			<code>.article .content { ... }</code>
+			<code>.article .section { ... }</code>
+			<code> </code>
+		</pre>
+		<img class="place" src="bootstrap.png" height="300" style="transform: translate(30%,-50%);">
+	</div>
+
+
+	<span>Проблема: пересечение имён с внешними библиотеками или даже внутри собственного проекта</span>
 </section>
 
 <section class="slide">
@@ -1131,6 +1239,8 @@
 		<code>}</code>
 		<code> </code>
 	</pre>
+	<img class="place" src="god.jpg" height="500" style="transform: translate(10%,-40%);">
+
 </section>
 
 <!-- Чего мы хотим от стилей? -->
@@ -1144,7 +1254,18 @@
 		<li><strong>Поддержка</strong> &mdash; все в команде понимают, как писать стили</li>
 		<li><strong>Повторное использование</strong> &mdash; DRY</li>
 	</ul>
-	<p class="note">Решение? Использовать зарекомендовавшие себя методологии! Подробнее про них в статье <a href="https://habrahabr.ru/post/256109/" target="_blank">"Способы организации CSS кода"</a></p>
+
+	<p class="small-content"></p>
+
+	<span class="note">Решение? Использовать зарекомендовавшие себя методологии!<br/> Подробнее про них в статье <a href="https://habrahabr.ru/post/256109/" target="_blank">"Способы организации CSS кода"</a></span>
+	<br/>
+	<span>
+		<a href="https://www.youtube.com/watch?v=1VM-vEItVeA" target="_blank">Доклад о методологиях (альтернативный)</a>
+	</span>
+	<br/>
+	<span>
+		<a href="https://gist.github.com/aiboy/bf30b13829041a08d7325c16b1744f49" target="_blank">Перечень всех методологий из доклада</a>
+	</span>
 </section>
 
 <!-- OOCSS -->
@@ -1159,8 +1280,8 @@
 	<div style="height: 290px;">
 		<pre class="hljs css" style="width: 50%; float: left;">
 			<code>.header {</code>
-			<code>  color: #000;</code>
-			<code>  background: #BADA55;</code>
+			<code><mark>  color: #000;</mark></code>
+			<code><mark>  background: #BADA55;</mark></code>
 			<code>  width: 960px;</code>
 			<code>  margin: 0 auto;</code>
 			<code>}</code>
@@ -1168,14 +1289,14 @@
 
 		<pre class="hljs css" style="width: 50%; float: right;">
 			<code>.footer {</code>
-			<code>  color: #000;</code>
-			<code>  background: #BADA55;</code>
+			<code><mark> color: #000;</mark></code>
+			<code><mark> background: #BADA55;</mark></code>
 			<code>  text-align: center;</code>
 			<code>  padding-top: 20px;</code>
 			<code>}</code>
 		</pre>
 	</div>
-
+	<span>Решение? Вынести повторяющуюся визуальную структуру в миксин</span>
 	<pre class="hljs css">
 		<code>.colors-skin {                  /* Использование */</code>
 		<code>  color: #000;                  .footer .colors-skin</code>
@@ -1190,11 +1311,23 @@
 	<div> Принцип: внешний вид элемента не зависит от того, где он расположен. Вместо <code>.my-element button { ... }</code> создаем отдельный стиль <code>.control</code>для конкретного случая</div>
 	<strong>Зачем?</strong>
 	<ul>
-		<li>Все <code>button</code> будет выглядеть одинаково</li>
+		<li>Все <code>button</code> будут выглядеть одинаково</li>
 		<li>К любому элементу можно добавить класс <code>.control</code>. Работает как <mark>mixin</mark></li>
 		<li><code>.my-element button</code> не нужно переопределять, если передумали</li>
 	</ul>
 	<p class="note"><a href="https://github.com/stubbornella/oocss/wiki" target="_blank">Страница проекта</a> &mdash; Github</p>
+</section>
+
+<!-- SMACSS -->
+<section class="slide">
+	<h2>SMACSS &mdash;<br/>Масштабируемая и модульная архитектура для CSS</h2>
+
+	<span>
+		SMACSS расшифровывается как «масштабируемая и модульная архитектура для CSS» (Scalable and Modular Architecture for CSS).
+	</span>
+	<span>Основная цель подхода — уменьшение количества кода и упрощение его поддержки</span>
+	<img src="smacss.png" width="100%"/>
+	<span><a href="https://smacss.com/" target="_blank">Документация</a></span>
 </section>
 
 <!-- БЭМ -->
@@ -1364,6 +1497,30 @@
 		<code> </code>
 	</pre>
 </section>
+
+<section class="slide">
+	<h2>Форма по БЭМу</h2>
+	<small style="font-size: 70%; margin: 0;">Javascript</small>
+
+	<pre class="hljs html" style="transform: scale(0.78) translateY(-25px); transform-origin: left top;">
+		<code>&lt;form class="login-form"></code>
+		<code>    &lt;input type="text" </code>
+		<code>          <span
+				hidden="hidden">&lt;input</span> class="text-input login-form__username-input"/></code>
+		<code>    &lt;div class="login-form__buttons"></code>
+		<code>        &lt;button class="login-form__submit button <mark>js-login-button</mark>"></code>
+
+		<code>             &lt;span class="button__capture button__capture_red">CLICK ME&lt;/span></code>
+
+		<code>        &lt;/button></code>
+		<code>        &lt;button class="login-form__reset login-form__reset_disabled button"></code>
+		<code>            RESET&lt;/button></code>
+		<code>    &lt;/div></code>
+		<code>&lt;/form></code>
+		<code> </code>
+	</pre>
+</section>
+
 
 <section class="slide">
 	<h2>Форма по БЭМу</h2>
