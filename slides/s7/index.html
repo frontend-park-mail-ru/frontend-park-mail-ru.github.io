@@ -922,12 +922,21 @@
 <section class="slide">
 	<h2>Распространённый, но <br/> <strong>неправильный подход</strong></h2>
 	<blockquote>
-		<p class="small-content">Сначала реализуем singleplayer, а потом доработаем и добавим туда многопользовательность...</p>
+		<p class="small-content">Сначала реализуем singleplayer на js, а потом доработаем и добавим туда многопользовательность...</p>
 	</blockquote>
 </section>
 
 <section class="slide question">
 	<h2><span style="font-size: 65%">SinglePlayer &mdash; это <mark><strong>специальная версия</strong></mark> MultiPlayer</span></h2>
+</section>
+
+<section class="slide">
+	<h2>Правильный подход</h2>
+	<ul>
+		<li>Обрабатываем пользовательский ввод</li>
+		<li>В зависимости от режима, либо отправляем сообщение о пользовательском действии на сервер, либо отправляем событие в клиентскую функцию</li>
+		<li>При изменении состояния игрового мира отправляем на клиент соответствующее событие и перерисовываем игровую сцену</li>
+	</ul>
 </section>
 
 <section class="slide">
