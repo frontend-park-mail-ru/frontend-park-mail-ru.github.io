@@ -30,8 +30,9 @@
 	<h2>Графика в браузере</h2>
 	<p class="medium-content"></p>
 	<ul>
-		<li>Картинки (.png/.jpg)</li>
-		<li>SVG-графика</li>
+		<li>Картинки (<code>&lt;img src="image.png"></code>)</li>
+		<li>Медиа объекты (<code>&lt;video src="video.mp4">&lt;/video></code>)</li>
+		<li>SVG-графика &mdash; можно встраивать как часть документа</li>
 		<li>HTML + CSS</li>
 		<li>canvas</li>
 	</ul>
@@ -40,18 +41,15 @@
 <section class="slide">
 	<h2>Элемент <code>&lt;canvas></code></h2>
 	<blockquote>
-		<p class="small-content">Элемент <code>&lt;canvas></code> (англ. canvas &mdash; «холст», рус. канва́с) &mdash;
+		<p class="small-content"><strong>Элемент <code>&lt;canvas></code></strong> (англ. canvas &mdash; «холст», рус. канва́с) &mdash;
 			это HTML5 элемент, предназначенный для создания <em>растрового двухмерного</em> изображения на web-страницах
 			с помощью программирования на JavaScript</p>
 	</blockquote>
-</section>
-
-<section class="slide">
-	<h2>Элемент <code>&lt;canvas></code></h2>
-	<p class="medium-content"></p>
+	<p class="note">Подробный туториал по canvas &mdash; <a
+			href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank">на MDN</a></p>
 	<code>&lt;canvas id="canvas" width="300" height="150">&lt;/canvas></code>
 	<br/>
-	<canvas id="canvas" width="300" height="150" style="border:solid"></canvas>
+	<canvas id="canvas" width="300" height="150" style="border: solid;"></canvas>
 </section>
 
 <section class="slide">
@@ -247,24 +245,15 @@
 		<code>ctx.quadraticCurveTo(cp1x, cp1y, x, y);</code>
 		<code>// кубическая кривая</code>
 		<code>ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);</code>
-		<code> </code>
 		<code>// <b>cpx, cpy</b> - опорные точки</code>
 		<code>// <b>x, y</b> - куда вести</code>
 		<code> </code>
 	</pre>
-</section>
-
-<section class="slide">
-	<h2><code>quadraticCurveTo</code></h2>
-	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
-		<img class="place" src="Bezier_2_big.gif" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.25);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2><code>bezierCurveTo</code></h2>
-	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
-		<img class="place" src="Bezier_3_big.gif" style="transform-origin: center;transform: translate(-50%,-70%) scale(1.25);">
+	<div style="position: relative; width: 100%; height: 35%; overflow: hidden;">
+		<img class="place" src="Bezier_2_big.gif"
+			 style="transform-origin: center; transform: translate(-110%,-70%) scale(1.25);">
+		<img class="place" src="Bezier_3_big.gif"
+			 style="transform-origin: center; transform: translate(+15%,-70%) scale(1.25);">
 	</div>
 </section>
 
@@ -690,12 +679,17 @@
 
 <section class="slide">
 	<h2>А так же</h2>
+	<p class="medium-content"></p>
 	<ul>
-		<li>Работа с изображениями: ctx.drawImage для img, svg, video, canvas</li>
+		<li>Работа с изображениями: <code>ctx.drawImage</code> для img, svg, video, canvas</li>
 		<li>Режимы наложения и обрезка</li>
-		<li>Работа с пикселями: ctx.getImageData</li>
+		<li>Работа с пикселями: <code>ctx.getImageData</code></li>
 		<li>...</li>
 	</ul>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 100%">Практика!</span></h2>
 </section>
 
 
@@ -740,26 +734,90 @@
 
 <section class="slide">
 	<h2>Как ждать?</h2>
+	<p class="medium-content"></p>
 	<ul lang="ru">
+		<li><s><code>window.sleep(...)</code></s> &mdash; нет никакого <mark>window.sleep</mark>, но есть другие крутые функции</li>
 		<br>
 		<li><code>window.setInterval(function, delay)</code></li>
 		<li><code>window.setTimeout(function, delay)</code></li>
 		<br>
 		<li><code>window.requestAnimationFrame(callback)</code></li>
-		<li><code>window.cancelAnimationFrame(ref)</code></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2><code>setInterval</code></h2>
+	<pre class="hljs js">
+		<code>function animation() {</code>
+		<code>    redraw(); // перерисовываем кадр</code>
+		<code>}</code>
+		<code> </code>
+		<code>const id = window.setInterval(animation, 1000 / 60); // 60 fps</code>
+		<code> </code>
+		<code>// хотим прервать анимацию</code>
+		<code>window.clearInterval(id);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><code>setTimeout</code></h2>
+	<pre class="hljs js">
+		<code>let id = null;</code>
+		<code> </code>
+		<code>function animation() {</code>
+		<code>    redraw(); // перерисовываем кадр</code>
+		<code>    id = window.setTimeout(animation, 1000 / 60); // 60 fps</code>
+		<code>}</code>
+		<code> </code>
+		<code>animation();</code>
+		<code> </code>
+		<code>// хотим прервать анимацию</code>
+		<code>window.clearTimeout(id);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><code>requestAnimationFrame</code></h2>
+	<pre class="hljs js">
+		<code>let animationFrameId = null;</code>
+		<code> </code>
+		<code>function animation() {</code>
+		<code>    redraw(); // перерисовываем кадр</code>
+		<code>    animationFrameId = <mark>window.requestAnimationFrame</mark>(animation);</code>
+		<code>}</code>
+		<code> </code>
+		<code>animation();</code>
+		<code> </code>
+		<code>// хотим прервать анимацию</code>
+		<code><mark>window.cancelAnimationFrame</mark>(animationFrameId)</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>PRO TIPs хорошей анимации</h2>
+	<p class="medium-content"></p>
+	<ul lang="ru">
+		<li>Не используйте <code>setInterval</code> и <code>setTimeout</code></li>
+		<li>Используйте <code>requestAnimationFrame</code></li>
+		<li>Замеряйте время, проходящее между двумя последовательными кадрами&nbsp;(<code>dt</code>)</li>
+		<li>Используйте полученное значение для рассчёта изменений между двумя кадрами&nbsp;(<code>dx = Vx * dt</code>)</li>
+		<li>...</li>
 	</ul>
 </section>
 
 <section class="slide">
 	<h2><code>requestAnimationFrame</code></h2>
 	<pre class="hljs js">
-		<code>let start = perfomance.now();</code>
-		<code>let current = start;</code>
+		<code>let last = perfomance.now(); // точное время в <strong>наносекундах</strong></code>
+		<code> </code>
 		<code>function animation(now) { // передаётся текущее <mark>perfomance.now()</mark></code>
-		<code>    const <mark>delay</mark> = now - current;</code>
-		<code>    current = now;</code>
-		<code>    redraw(start, delay); // перерисовываем кадр</code>
-		<code>    <mark>requestAnimationFrame</mark>(animation);</code>
+		<code>    const <mark>delay</mark> = now - last;</code>
+		<code>    redraw(delay); // перерисовываем кадр</code>
+		<code> </code>
+		<code>    window.requestAnimationFrame(animation);</code>
 		<code>}</code>
 		<code> </code>
 		<code>animation(perfomance.now());</code>
@@ -771,16 +829,34 @@
 	<h2>Оптимизации производительности</h2>
 	<ul lang="ru">
 		<li>Оптимизация анимации с помощью <code>requestAnimationFrame</code></li>
-		<li>Используйте многослойные элементы <code>canvas</code> для сложных сцен</li>
 		<li>Рендеринг только разницы, а не нового состояния целиком</li>
-		<li>Группировка вызовов <code>canvas</code></li>
 		<li>Предварительный рендеринг во внеэкранный элемент <code>canvas</code></li>
-		<li>Используйте CSS для фонового изображения и трансформаций</li>
+		<li>Группировка вызовов <code>canvas</code></li>
+		<li>Используйте многослойные элементы <code>canvas</code> для сложных сцен</li>
+		<li>Используйте CSS для фонового изображения и анимаций, HTML для элементов интерфейса</li>
 		<li>Отказ от координат с плавающей запятой</li>
-		<li>Отказ от рендеринга текста с <code>canvas</code> и свойства <code>shadowBlur</code></li>
+		<li>Отказ от рендеринга текста, больших изображений с <code>canvas</code></li>
+		<li>Отказ от использования "тяжёлых" свойств: например, <code>shadowBlur</code></li>
 		<li>...</li>
 	</ul>
 </section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;"><a href="https://www.youtube.com/watch?v=UH3tKb7B5xA&feature=youtu.be&t=1m30s" target="_blank">"Пишем физику на JavaScript"&nbsp;<i class="material-icons noitalic">open_in_new</i></a><br/><em style="font-size: 70%; color: darkgrey">доклад с конференции</em></span>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 100%">Практика!</span></h2>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Перерыв</h2>
+</section>
+
+
+
 
 
 <section class="slide">
@@ -788,38 +864,88 @@
 </section>
 
 <section class="slide question">
-	<h2><span style="font-size: 65%">SinglePlayer &mdash; это <mark>специальная версия</mark> MultiPlayer</span></h2>
+	<h2><span style="font-size: 60%; display: inline-block;">Секрет написания крутой, масштабируемой игры &mdash; <strong>правильное планирование архитектуры</strong></h2>
 </section>
 
 <section class="slide">
-	<h2>Основные определения</h2>
-	<ul lang="ru">
-		<li>Игровой цикл (gameloop)</li>
-		<li>Игровой мир</li>
-		<li>Состояние игрового мира</li>
-		<li>Сцена</li>
-		<li>Игровая стратегия</li>
-		<li>Контроллер контролов</li>
-		<li>Менеджер сессий</li>
-	</ul>
-</section>
-
-<section class="slide">
-	<h2>Типа архитектура ;)</h2>
-	<div style="position:relative;width: 100%; height: 100%;"><img class="place" src="arch.jpg"
-																   style="transform-origin: center;transform: translate(-50%,-50%) scale(0.16);">
+	<h2>Основные абстракции</h2>
+	<p class="medium-content"></p>
+	<div class="double">
+		<ul lang="en">
+			<li><strong>Подсистема бизнес-логики</strong>
+				<ul lang="ru">
+					<li>Игровой мир</li>
+					<li>Состояние игрового мира</li>
+					<li>Игровой цикл (<em>gameloop</em>)</li>
+					<li>Игровая стратегия</li>
+					<li>Менеджер сессий</li>
+				</ul>
+			</li>
+		</ul>
+		<ul lang="en">
+			<li><strong>Подсистема отображения и взаимодействия с пользователем</strong>
+				<ul lang="ru">
+					<li>Игровая сцена</li>
+					<li>Игровой цикл отображения (<em>"game animation loop"</em>)</li>
+					<li>"Контроллер контроллов"</li>
+				</ul>
+			</li>
+		</ul>
 	</div>
+	<br>
+	<ul lang="en">
+		<li><strong>Игровой транспорт</strong></li>
+	</ul>
 </section>
 
 <section class="slide">
-	<h2>Основные подходы</h2>
-	<ul lang="ru">
-		<li>Раздерение всего</li>
-		<li>Использование модели акторов (event-based программирование)</li>
-		<li>Перерисовка игрового мира отдельно от обновления состояния</li>
-		<li>Использование паттернов: стратегия, медиатор</li>
-		<li>Что-то ещё...</li>
+	<h2>"Категории" игровых механик</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Пошаговые игры</li>
+		<li>Игры реального времени</li>
 	</ul>
+</section>
+
+<section class="slide">
+	<h2>Игровые режимы</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li><mark><strong>Многопользовательский режим по сети</strong></mark> &mdash; бизнес-логика выполняется на сервере, несколько клиентов, общение по сети</li>
+		<li><strong>Однопользовательский режим по сети</strong> &mdash; бизнес-логика выполняется на сервере, но клиент всего один, общение по сети</li>
+		<li><mark><strong>Однопользовательский "оффлайн"-режим</strong></mark> &mdash; как бизнес-логика, так и логика отображения выполняется на клиенте, возможна работа <em>оффлайн</em>, т.е. без подключения по сети</li>
+		<li><strong>Многопользовательский "оффлайн"-режим</strong> &mdash; например, <em>пошаговая игра на одном устройстве, либо split-screen</em></li>
+	</ul>
+	<p class="note"><mark style="color: #aaa;">Режимы, обязательные к реализации</mark></p>
+</section>
+
+<section class="slide">
+	<h2>Распространённый, но <br/> <strong>неправильный подход</strong></h2>
+	<blockquote>
+		<p class="small-content">Сначала реализуем singleplayer, а потом доработаем и добавим туда многопользовательность...</p>
+	</blockquote>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 65%">SinglePlayer &mdash; это <mark><strong>специальная версия</strong></mark> MultiPlayer</span></h2>
+</section>
+
+<section class="slide">
+	<h2>Итак, делаем хорошо</h2>
+	<ul>
+		<li>Максимально изолируем друг от друга части игры, используем правильную декомпозицию</li>
+		<li>Минимизируем прямое взаимодействие модулей друг с другом. Например, заменяя прямое взаимодействие подпиской на события</li>
+		<li>Два игровых цикла в системе &mdash; бизнес-логика отдельно от логики отображения</li>
+		<li>Глобальный источник правды о системе &mdash; объект состояния игрового мира</li>
+		<li>Передача информации об изменениях в системе &mdash; только через игровой транспорт</li>
+		<li>Поддержку разных режимов игры реализуем через возможности ООП</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;"><a href="https://habrahabr.ru/post/302394/" target="_blank">Мультиплеер в быстрых играх&nbsp;<i class="material-icons noitalic">open_in_new</i></a><br/><em style="font-size: 60%; color: darkgrey; display: inline-block;">цикл статей об особенностях реализации многопользовательских online-игр</em></span>
+	</h2>
 </section>
 
 <section class="slide">
@@ -827,9 +953,17 @@
 </section>
 
 
+
+
 <section class="slide">
 	<h2 class="shout">Дополнительные возможности<br/>
-		<small style="font-size:32px;">WebGL, FullScreen API, PointerLock API</small>
+		<small style="font-size: 32px;">WebGL, FullScreen API, PointerLock API</small>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;"><a href="https://youtu.be/Z4E2drxNjMk?t=1h12m55s" target="_blank">"Играем в браузере"<i class="material-icons noitalic">open_in_new</i></a><br/><em style="font-size: 60%; color: darkgrey; display: inline-block;">доклад с конференции</em></span>
 	</h2>
 </section>
 
@@ -996,28 +1130,6 @@
 </section>
 
 <section class="slide">
-	<h2>Используйте библиотеки!</h2>
-	<ul lang="ru">
-		<li><a target="_blank" href="https://threejs.org">three.js</a></li>
-		<li><a target="_blank" href="http://www.babylonjs.com">babylonjs</a></li>
-		<li><a target="_blank" href="http://lo-th.github.io/Oimo.js/">Oimo.js</a> (Надстройка над three.js)</li>
-	</ul>
-</section>
-
-<section class="slide">
-	<h2>Средства 3D моделирования</h2>
-	<ul lang="ru">
-		<li><a target="_blank" href="https://www.blender.org">blender</a></li>
-		<li><a target="_blank" href="https://threejs.org/editor/">three.js editor</a></li>
-		<li><a target="_blank" href="https://www.maxon.net/ru/produkty/cinema-4d/obzor/">Cinema-4D</a> (Платный)</li>
-	</ul>
-	<p>Модельки</p>
-	<ul lang="ru">
-		<li><a target="_blank" href="https://clara.io">clara.io</a></li>
-	</ul>
-</section>
-
-<section class="slide">
 	<h2>Примеры 3D</h2>
 	<ul lang="ru">
 		<li><a target="_blank" href="http://gorescript.com">Shooter</a></li>
@@ -1028,18 +1140,12 @@
 	</ul>
 </section>
 
-<section class="slide question">
-	<h2><a style="color:blue" href="https://youtu.be/Z4E2drxNjMk?t=1h12m55s" target="_blank">"Играем в браузере"</a>
-	</h2>
-</section>
-
-
 <section class="slide">
 	<h2>Полезные ссылки</h2>
 	<ul lang="en">
 		<li>Про <a href="http://frontender.info/using-svg/" target="_blank">SVG-графику</a></li>
 		<li><a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies" target="_blank">Описание
-			и ДЕМО</a> различных web-технологий, которые могут быть полезны при разработке
+			и ДЕМО</a> различных web-технологий, которые могут быть полезны при разработке игры
 		</li>
 		<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank">Туториал
 			по</a> Canvas API
