@@ -690,8 +690,8 @@
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 100%;">Практика!</span> <br>
-		<small style="font-size: 40%; "><a href="https://github.com/frontend-park-mail-ru/sample/tree/lesson-7-canvas" target="_blank">Ветка <strong	>lesson-7-canvas</strong></a></small>
+		<span style="font-size: 100%; display: block;">Практика!</span>
+		<small style="font-size: 40%; display: block;"><a href="https://github.com/frontend-park-mail-ru/sample/tree/lesson-7-canvas" target="_blank">Ветка <strong	>lesson-7-canvas</strong></a></small>
 	</h2>
 </section>
 
@@ -852,8 +852,8 @@
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 100%">Практика!</span>
-		<small style="font-size: 40%; "><a href="https://github.com/frontend-park-mail-ru/sample/tree/lesson-7-canvas" target="_blank">Ветка <strong	>lesson-7-canvas</strong></a></small>
+		<span style="font-size: 100%; display: block;">Практика!</span>
+		<small style="font-size: 40%; display: block;"><a href="https://github.com/frontend-park-mail-ru/sample/tree/lesson-7-canvas" target="_blank">Ветка <strong	>lesson-7-canvas</strong></a></small>
 	</h2>
 </section>
 
@@ -963,18 +963,16 @@
 	</h2>
 </section>
 
-<section class="slide">
-	<h2 class="shout">Практика <br>
-		<small style="font-size: 40%; "><a href="https://github.com/frontend-park-mail-ru/sample/tree/lesson-7-game" target="_blank">Ветка <strong	>lesson-7-game</strong></a></small>
+<section class="slide question">
+	<h2>Практика <br>
+		<small style="font-size: 40%; display: block;"><a href="https://github.com/frontend-park-mail-ru/sample/tree/lesson-7-game" target="_blank">Ветка <strong	>lesson-7-game</strong></a></small>
 	</h2>
 </section>
 
 
-
-
 <section class="slide">
 	<h2 class="shout">Дополнительные возможности<br/>
-		<small style="font-size: 32px;">WebGL, FullScreen API, PointerLock API</small>
+		<small style="font-size: 32px; display: block;">WebGL, FullScreen API, PointerLock API, WebVR</small>
 	</h2>
 </section>
 
@@ -985,7 +983,7 @@
 </section>
 
 <section class="slide">
-	<h2>Pointer Lock API</h2>
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/API/Pointer_Lock_API" target="_blank">Pointer Lock API</a></h2>
 	<blockquote>
 		<p class="small-content"><b>Pointer Lock API</b> &mdash; это браузерный API, позволяющий создавать интерфейсы
 			для работы с мышкой на основе ее
@@ -998,7 +996,7 @@
 </section>
 
 <section class="slide">
-	<h2>Pointer Lock API</h2>
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/API/Pointer_Lock_API" target="_blank">Pointer Lock API</a></h2>
 	<pre class="hljs js">
 		<code>document.addEventListener('pointerlockchange', lockStatusChange);</code>
 		<code>canv.onclick = canv.<mark>requestPointerLock</mark>;</code>
@@ -1014,7 +1012,7 @@
 </section>
 
 <section class="slide">
-	<h2>Pointer Lock API</h2>
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/API/Pointer_Lock_API" target="_blank">Pointer Lock API</a></h2>
 	<pre class="hljs js">
 		<code>// обработчик события</code>
 		<code>function update(event) {</code>
@@ -1028,7 +1026,7 @@
 </section>
 
 <section class="slide">
-	<h2>Request Full Screen API</h2>
+	<h2><a href="https://developer.mozilla.org/ru/docs/DOM/Using_fullscreen_mode" target="_blank">Request Full Screen API</a></h2>
 	<blockquote>
 		<p><b>Request Full Screen API</b> &mdash; позволяет отображать элемент в полноэкранном режиме. Метод может
 			применяться к любому элементу, даже, например, к простому блоку</p>
@@ -1041,8 +1039,16 @@
 	<a target="_blank" href="/examples/Fullscreen/">Пример</a>
 </section>
 
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;">
+			<a href="http://media.tojicode.com/q3bsp/" target="_blank">Quake</a>
+		</span>
+	</h2>
+</section>
+
 <section class="slide">
-	<h2>WebGl</h2>
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/API/WebGL_API" target="_blank">WebGl</a></h2>
 	<blockquote>
 		<p class="small-content"><b>WebGL (Web Graphics Library)</b> &mdash; программная библиотека для языка JavaScript
 			предназначенная для визуализации интерактивной трехмерной графики и двухмерной графики в пределах
@@ -1149,13 +1155,119 @@
 <section class="slide">
 	<h2>Примеры 3D</h2>
 	<ul lang="ru">
-		<li><a target="_blank" href="http://gorescript.com">Shooter</a></li>
 		<li><a target="_blank" href="https://www.cubeslam.com/givvln">cubeslam</a></li>
-		<li><a target="_blank" href="http://media.tojicode.com/q3bsp/">Quake</a></li>
 		<li><a target="_blank" href="http://kiddisco.asmallgame.com">asmallgame</a></li>
 		<li><a target="_blank" href="http://www.babylonjs.com/Demos/TheCar/">TheCar</a></li>
 	</ul>
 </section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 60%; color: #000055; display: inline-block;">
+			<a href="https://experiments.withgoogle.com/chrome" target="_blank">experiments.withgoogle.com <i class="material-icons noitalic">open_in_new</i></a>
+		</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Device orientation</h2>
+	<p class="medium-content"></p>
+	<pre class="hljs js">
+		<code>if (window.innerHeight > window.innerWidth) {</code>
+		<code>  // do smth</code>
+		<code>}</code>
+		<code></code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><a href="https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation" target="_blank">Device orientation and motion</a></h2>
+	<blockquote>
+		<a href="https://mdn.mozillademos.org/en-US/docs/Web/API/Detecting_device_orientation$samples/Orientation_example?revision=1350174" target="_blank">Пример</a>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/API/WebVR_API" target="_blank">WebVR</a></h2>
+	<blockquote>
+		<p class="small-content">
+			<b>WebVR</b> обеспечивает поддержку для использования устройств виртуальной реальности — например, шлемы виртуальной реальности, таких как Oculus Rift или HTC Vive &mdash; для веб-приложений, позволяя разработчикам передавать информацию о местоположении и движения с дисплея в движение вокруг 3D-сцены.
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Примеры Web VR</h2>
+	<ul lang="ru">
+		<li><a target="_blank" href="https://experiments.withgoogle.com/webvr/">experiments.withgoogle.com/webvr</a></li>
+		<li><a target="_blank" href="https://tonite.dance/">tonite.dance</a></li>
+		<li><a target="_blank" href="https://experiments.withgoogle.com/webvr/inside-music/view/">inside-music</a></li>
+		<li><a target="_blank" href="https://accessmars.withgoogle.com/">accessmars</a></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2><a href="https://developers.google.com/ar/develop/web/quickstart" target="_blank">AR</a></h2>
+	<p class="medium-content"></p>
+	<blockquote>
+		<p class="small-content">
+			Stay tuned...
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Звук<br/>
+		<small style="font-size: 32px; display: block;">Web Audio & Web Speech</small>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/audio" target="_blank">HTML5 audio</a></h2>
+	<pre class="hljs js">
+		<code>&lt;audio</code>
+		<code>	src="/music.ogg"</code>
+		<code>	autoplay</code>
+		<code>></code>
+		<code>	Ваш браузер не поддерживает audio элемент.</code>
+		<code>&lt;/audio></code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/API/Web_Audio_API" target="_blank">Web Audio</a></h2>
+	<blockquote>
+		<p class="small-content">
+			<b>Web audio API</b> &mdash; мощный и многогранный инструмент для манипуляции звуковой составляющей на веб-странице, что дает возможность разработчикам выбрать источники, добавить к ним специальные звуковые эффекты (такие как panning), визуализировать их и многое другое.
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Примеры Web Audio API</h2>
+	<ul lang="ru">
+		<li><a target="_blank" href="http://webaudioapi.com/samples/oscillator/">oscillator</a></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2><a href="https://developer.mozilla.org/ru/docs/Web/API/Web_Speech_API" target="_blank">Web Speech</a></h2>
+	<blockquote>
+		<p class="small-content">
+			<b>Web Speech API</b> позволяет взаимодействовать с голосовыми интерфейсами в ваших веб приложениях.
+			<b>Web Speech API</b> состоит из двух частей: SpeechSynthesis (Текст-в-Речь), и SpeechRecognition (Асинхронное распознавание речи)
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>Примеры Speech API</h2>
+	<ul lang="ru">
+		<li><a target="_blank" href="https://www.google.com/intl/en/chrome/demos/speech.html">speech.html</a></li>
+		<li><a target="_blank" href="https://experiments.withgoogle.com/webvr/speak-to-go">speak-to-go</a></li>
+	</ul>
+</section>
+
 
 <section class="slide">
 	<h2>Полезные ссылки</h2>
