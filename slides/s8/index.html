@@ -27,7 +27,7 @@
 </section>
 
 <section class="slide question">
-	<h2 style="text-align: center; padding: 0"><span style="font-size: 140%">170 слайдов</span></h2>
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 140%">180 слайдов</span></h2>
 </section>
 
 <section class="slide question">
@@ -52,31 +52,29 @@
 	</div>
 </section>
 
-<section class="slide question" style="background-color: #f7df1e;">
-	<div style="position: absolute; right: 5%; bottom: 5%; font-size: 320px; font-weight: 600; line-height: 1; letter-spacing: -20px; color: black;">ЖиЕс</div>
-</section>
-
 <section class="slide">
 	<h2>Что есть JavaScript?</h2>
 	<p class="medium-content"></p>
 	<ul lang="ru">
-		<li>ECMAScript &mdash; язык программирования</li>
-		<li>JavaScript &mdash; язык программирования (коммерческое название)</li>
-		<li>ECMA-262 &mdash; спецификация ECMAScript (<a
-				href="https://www.ecma-international.org/ecma-262/7.0/index.html" target="_blank">последняя версия</a>:
-			7th издание в июле 2016 года, <a href="https://tc39.github.io/ecma262/" target="_blank">последний
-				черновик</a>: ECMAScript® 2017 Language Specification)
+		<li><strong>ECMAScript</strong> &mdash; <mark>спецификация</mark> скриптового языка программирования</li>
+		<li><strong>JavaScript</strong> &mdash; <mark>язык программирования</mark>, одна из реализаций спецификации&nbsp;ECMAScript (наряду с JScript и ActionScript), их ещё называют диалектами ECMAScript</li>
+		<li><strong>ECMA-262</strong> &mdash; <mark>стандарт компании Ecma International</mark>, по которому разрабатывается спецификация ECMAScript
+			<ul lang="en">
+				<li><a href="https://www.ecma-international.org/ecma-262/8.0/index.html" target="_blank">последняя версия</a>: 8-е издание в июне 2017 года</li>
+				<li><a href="https://tc39.github.io/ecma262/" target="_blank">последний черновик</a>: ECMAScript® 2019 Language Specification</li>
+			</ul>
 		</li>
-		<li>ISO/IEC 16262:2011(E) &mdash; international standard</li>
+		<li>ISO/IEC 16262:2011(E) &mdash; <em>другой стандарт</em>, разрабатываемый ISO (в настоящее время активно не развивается)</li>
 	</ul>
+
+	<p class="note"><a href="https://habrahabr.ru/company/nixsolutions/blog/342904/" target="_blank">Подробнее про термины</a></p>
 </section>
 
 <section class="slide">
 	<h2>Как это было</h2>
 	<p class="medium-content"></p>
 	<ul lang="en">
-		<li><strong>Brendan Eich</strong> разработал прототип языка в мае 1995 за 10 дней, тогда он назывался <strong>Mocha</strong>
-		</li>
+		<li><strong>Brendan Eich</strong> разработал прототип языка в мае 1995 за 10 дней под кодовым названием Mocha</li>
 		<li>В <strong>сентябре 1995</strong> в бета-версии браузера Netscape Navigator 2.0 он был выпущен под названием
 			LiveScript
 		</li>
@@ -87,38 +85,23 @@
 		<li>Июнь 1998 &mdash; спецификация <strong>ECMAScript 2</strong> и международный стандарт <strong>ISO/IEC
 			16262</strong></li>
 	</ul>
+
+	<p class="note"><a href="https://ponyfoo.com/articles/standard" target="_blank">Подробнее про историю развития</a></p>
 </section>
 
 <section class="slide">
 	<h2>Как это было</h2>
-	<p class="medium-content"></p>
-	<ul lang="en">
-		<li>2003 &mdash;
-			<mark>ECMAScript 4</mark>
-			(ActionScript)
-		</li>
-		<li>Декабрь 2009 &mdash;
-			<mark>ECMAScript 5</mark>
-		</li>
-		<li>Июнь 2011 &mdash;
-			<mark>ECMAScript 5.1</mark>
-			, ISO/IEC 16262:2011
-		</li>
-		<li>Июнь 2015 &mdash;
-			<mark>ECMAScript 2015</mark>
-			(ES6 Harmony) === ES6
-		</li>
-		<li>...</li>
-		<li>Июнь 2016 &mdash;
-			<mark>ECMAScript 2016</mark>
-		</li>
-		<li>Июнь 2017 &mdash;
-			<mark>ECMAScript 2017</mark>
-		</li>
-		<li>Лето 2018 года &mdash;
-			<mark>ECMAScript 2018</mark>
-		</li>
-		<li>...</li>
+	<ul lang="ru">
+		<li>Декабрь 1999 &mdash; <mark>ECMAScript 3</mark></li>
+		<li><mark>ECMAScript 4 (abandoned)</mark> &mdash; заброшенная версия</li>
+		<li>Декабрь 2009 &mdash; <mark>ECMAScript 5</mark></li>
+		<ul>
+			<li>Июнь 2011 &mdash; <mark>ECMAScript 5.1</mark> (ISO/IEC 16262:2011)</li>
+		</ul>
+		<li>Июль 2015 &mdash; <mark>ECMAScript 2015</mark> (ECMAScript 6th edition) &mdash; ES6 Harmony</li>
+		<li>Июль 2016 &mdash; <mark>ECMAScript 2016</mark> (ECMAScript 7th edition)</li>
+		<li>Июнь 2017 &mdash; <mark>ECMAScript 2017</mark> (ECMAScript 8th edition)</li>
+		<li><em>Лето 2018</em> &mdash; <mark>ECMAScript 2018</mark> (и так далее)</li>
 	</ul>
 </section>
 
@@ -132,8 +115,8 @@
 		<li>Спреды</li>
 		<li>Итераторы <em>и</em> генераторы</li>
 		<li>Aсинхронные функции</li>
-		<li>Proxy</li>
-		<li><code>SharedArrayBuffer</code> и <code>Atomics</code></li>
+		<li>Reflect <em>и</em> Proxy</li>
+		<li><code>SharedArrayBuffer</code> <em>и</em> <code>Atomics</code></li>
 		<li><em>and more...</em></li>
 	</ul>
 </section>
@@ -497,11 +480,12 @@
 		<code>const User = {login, age}; // {login: 'Jon Snow', age: 42}</code>
 		<code> </code>
 		<code>const Obj = {</code>
+		<code>    <s>func: function () { ... },        // old way</s></code>
 		<code>    <mark>func()</mark> { ... },                   // inline methods</code>
-		<code>    array: [1, 2, 3, 4, 5,],          // trailing commas</code>
 		<code>    <mark>get Arr()</mark> { return this.array; }, // object getters & setters</code>
-		<code>    prop: value,                      // trailing commas</code>
 		<code>    ['foo' + 'bar']: value,           // computed property names</code>
+		<code>    array: [1, 2, 3, 4, 5,],          // trailing commas</code>
+		<code>    prop: value,                      // trailing commas</code>
 		<code>}</code>
 		<code> </code>
 	</pre>
@@ -547,7 +531,7 @@
 	<h2>Дополнительные методы</h2>
 	<pre class="hljs js">
 		<code> // копирование свойств</code>
-		<code>Object.assign(target, ...sources);</code>
+		<code>Object.assign(target, source, source, source, ...);</code>
 		<code> </code>
 		<code>const s1 = {a: 'Jon'}, s2 = {b: 42};</code>
 		<code>const result = Object.assign({}, s1, s2);</code>
@@ -715,6 +699,23 @@
 	</pre>
 </section>
 
+<section class="slide">
+	<h2>Новые возможности регулярок</h2>
+	<p class="note">Приедет в ECMAScript 2018</p>
+	<pre class="hljs js">
+		<code>// новый флаг s (dotAll)</code>
+		<code>/foo.bar/.test('foo\nbar');      // false</code>
+		<code>/foo.bar/s.test('foo\nbar');     // true</code>
+		<code> </code>
+		<code>// именованные группы в RegExp</code>
+		<code>let re = /(?&lt;year>\d{4})-(?&lt;month>\d{2})-(?&lt;day>\d{2})/u;</code>
+		<code>let result = re.exec('2018-04-06');</code>
+		<code>// result.groups.year === '2018';</code>
+		<code>// result.groups.month === '04';</code>
+		<code>// result.groups.day === '06';</code>
+		<code> </code>
+	</pre>
+</section>
 
 <section class="slide question">
 	<h2 style="text-align: center; padding: 0">
@@ -761,29 +762,10 @@
 </section>
 
 
-<!--оно самое-->
-
-<!--<section class="slide">-->
-<!--<h2>Variable hoisting</h2>-->
-<!--<pre class="hljs js">-->
-<!--<code>// before</code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code> </code>-->
-<!--<code>// ReferenceError</code>-->
-<!--<code> </code>-->
-<!--</pre>-->
-<!--</section>-->
 
 
 <section class="slide">
-	<h2 class="shout">Высший пилотаж</h2>
+	<h2 class="shout"><span style="font-size: 95%;">Высший пилотаж</span></h2>
 </section>
 
 <section class="slide question">
@@ -861,7 +843,7 @@
 		<code>    return w * h;</code>
 		<code>}</code>
 		<code> </code>
-		<code>square({width: 20, height: 50, color: 'red'});   // 100</code>
+		<code>square({width: 20, height: 50, color: 'red'});   // 1000</code>
 		<code>square({width: 42});                             // 4200</code>
 		<code> </code>
 	</pre>
@@ -886,14 +868,85 @@
 
 <section class="slide">
 	<h2>Деструктуризация</h2>
-	<p class="small-content"></p>
+	<p class="meduim-content"></p>
 	<pre class="hljs js">
 		<code>function figure({width: w = 10, height: h = 10, length: l = 20}) {</code>
 		<code>    return w * h * l;</code>
 		<code>}</code>
+		<code> </code>
 		<code>const width = 15, height = 25, length = 50;</code>
-		<code>volume({ width, height, length });   // 15000</code>
-		<code>volume({ height, width, length });   // 15000</code>
+		<code>const args = {</code>
+		<code>    width: width,</code>
+		<code>    height: height,</code>
+		<code>    length: length,</code>
+		<code>};</code>
+		<code> </code>
+		<code>volume(args);   // 18750</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Деструктуризация</h2>
+	<p class="meduim-content"></p>
+	<pre class="hljs js">
+		<code>function figure({width: w = 10, height: h = 10, length: l = 20}) {</code>
+		<code>    return w * h * l;</code>
+		<code>}</code>
+		<code> </code>
+		<code>const width = 15, height = 25, length = 50;</code>
+		<code>const args = {</code>
+		<code>    width,</code>
+		<code>    height,</code>
+		<code>    length,</code>
+		<code>};</code>
+		<code> </code>
+		<code>volume(args);   // 18750</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Деструктуризация</h2>
+	<p class="meduim-content"></p>
+	<pre class="hljs js">
+		<code>function figure({width: w = 10, height: h = 10, length: l = 20}) {</code>
+		<code>    return w * h * l;</code>
+		<code>}</code>
+		<code> </code>
+		<code>const width = 15, height = 25, length = 50;</code>
+		<code>const args = <mark>{ width, height, length }</mark>;</code>
+		<code> </code>
+		<code>volume(args);   // 18750</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Деструктуризация</h2>
+	<p class="meduim-content"></p>
+	<pre class="hljs js">
+		<code>function figure({width: w = 10, height: h = 10, length: l = 20}) {</code>
+		<code>    return w * h * l;</code>
+		<code>}</code>
+		<code> </code>
+		<code>const width = 15, height = 25, length = 50;</code>
+		<code><mark>volume({ width, height, length });</mark>   // 18750</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Деструктуризация</h2>
+	<p class="meduim-content"></p>
+	<pre class="hljs js">
+		<code>function figure({width: w = 10, height: h = 10, length: l = 20}) {</code>
+		<code>    return w * h * l;</code>
+		<code>}</code>
+		<code> </code>
+		<code>const width = 15, height = 25, length = 50;</code>
+		<code>volume({ width, height, length });   // 18750</code>
+		<code>volume({ height, width, length });   // 18750</code>
 		<code>volume({ height, width });           // 7500</code>
 		<code>volume({ });                         // 2000</code>
 		<code> </code>
@@ -979,7 +1032,7 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор расширения</h2>
+	<h2><mark>rest</mark>-параметры</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
 		<code>// сбор праметров функции</code>
@@ -994,7 +1047,7 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор расширения</h2>
+	<h2><mark>rest</mark>-параметры</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
 		<code>// сбор праметров функции</code>
@@ -1008,25 +1061,9 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор расширения</h2>
-	<p class="small-content"></p>
+	<h2>Оператор spread для объектов</h2>
 	<pre class="hljs js">
-		<code>// пока что так нельзя</code>
-		<code>const {login, password, <mark>...profile</mark>} = {</code>
-		<code>     login: 'Jon',</code>
-		<code>     password: 'qwerty123',</code>
-		<code>     age: 42,</code>
-		<code>     city: 'Norilsk',</code>
-		<code>     birthdate: '30.03.2000'</code>
-		<code>};</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>Оператор расширения</h2>
-	<pre class="hljs js">
-		<code>// пока что так нельзя</code>
+		<code>// будет добавлено в ECMAScript 2018</code>
 		<code>const name = { first: 'Jon', last: 'Snow' };</code>
 		<code>const address = {</code>
 		<code>    city: 'Norilsk',</code>
@@ -1043,6 +1080,23 @@
 	</pre>
 </section>
 
+<section class="slide">
+	<h2>Оператор spread при <br>деструктуризации объектов</h2>
+	<pre class="hljs js">
+		<code>// будет добавлено в ECMAScript 2018</code>
+		<code>const {login, password, <mark>...profile</mark>} = {</code>
+		<code>     login: 'Jon',</code>
+		<code>     password: 'qwerty123',</code>
+		<code>     age: 42,</code>
+		<code>     city: 'Norilsk',</code>
+		<code>     birthdate: '30.03.2000'</code>
+		<code>};</code>
+		<code> </code>
+		<code>console.log(profile);</code>
+		<code>// { age: 42, city: 'Norilsk', birthdate: '30.03.2000' }</code>
+		<code> </code>
+	</pre>
+</section>
 
 <section class="slide question">
 	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Symbol</span></h2>
@@ -1710,17 +1764,17 @@
 <section class="slide">
 	<h2>Текущие версии JavaScript’а</h2>
 	<ul lang="ru">
-		<li>Декабрь 1999 &mdash;<mark>ECMAScript 3</mark></li>
-		<li><mark>ECMAScript 4</mark> &mdash; всё сложно</li>
-		<li>Декабрь 2009 &mdash;<mark>ECMAScript 5</mark></li>
+		<li>Декабрь 1999 &mdash; <em>ECMAScript 3</em></li>
+		<li><em>ECMAScript 4 (abandoned)</em> &mdash; заброшенная версия</li>
+		<li>Декабрь 2009 &mdash; <em>ECMAScript 5</em></li>
 		<ul>
-			<li>Июнь 2011 &mdash;<mark>ECMAScript 5.1</mark>(ISO/IEC 16262:2011)</li>
+			<li>Июнь 2011 &mdash; <em>ECMAScript 5.1</em> (ISO/IEC 16262:2011)</li>
 		</ul>
-		<li>Июль 2015 &mdash;<mark>ECMAScript 6</mark>(ECMAScript 2015)</li>
-		<li>Июль 2016 &mdash;<mark>ECMAScript 2016</mark>(ECMAScript 7)</li>
-		<li>Июнь 2017 &mdash;<mark>ECMAScript 2017</mark></li>
-		<li><em>Лето 2018</em> &mdash;<mark>ECMAScript 2018</mark>(и так далее)</li>
-		<li>ES.Next</li>
+		<li>Июль 2015 &mdash; <em>ECMAScript 2015</em> (ECMAScript 6th edition) &mdash; ES6 Harmony</li>
+		<li>Июль 2016 &mdash; <em>ECMAScript 2016</em> (ECMAScript 7th edition)</li>
+		<li>Июнь 2017 &mdash; <em>ECMAScript 2017</em> (ECMAScript 8th edition)</li>
+		<li><em>Лето 2018</em> &mdash; <em>ECMAScript 2018</em> (и так далее)</li>
+		<li><mark>ES.Next</mark></li>
 	</ul>
 </section>
 
@@ -1775,12 +1829,12 @@
 	<ul lang="en">
 		<li>Наиболее интересные <em>proposals:</em></li>
 		<ul>
-			<li>Object Rest/Spread Properties &mdash; <a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank">link</a></li>
 			<li>Asynchronous Iteration &mdash; <a href="https://github.com/tc39/proposal-async-iteration" target="_blank">link</a></li>
 			<li>Class and Property Decorators &mdash; <a href="https://github.com/tc39/proposal-decorators" target="_blank">link</a></li>
 			<li>Optional catch binding &mdash; <a href="https://github.com/tc39/proposal-optional-catch-binding" target="_blank">link</a></li>
 			<li>Nullish Coalescing &mdash; <a href="https://github.com/tc39-transfer/proposal-nullish-coalescing" target="_blank">link</a></li>
 			<li><code>Promise.prototype.finally</code> &mdash; <a href="https://github.com/tc39/proposal-promise-finally" target="_blank">link</a></li>
+			<li>Static public fields &mdash; <a href="https://github.com/tc39/proposal-static-class-features" target="_blank">link</a></li>
 		</ul>
 	</ul>
 </section>
@@ -1925,22 +1979,15 @@
 
 <section class="slide">
 	<h2>TypeScript</h2>
+	<p class="medium-content"></p>
 	<blockquote>
 		<p><b>TypeScript</b> &mdash; язык программирования, представленный Microsoft в 2012 году. TypeScript является
-			<mark>обратно совместимым с JavaScript и компилируется в последний</mark>
-			. TypeScript отличается от JavaScript возможностью
-			<mark>явного статического назначения типов</mark>
-			, а также поддержкой
-			<mark>подключения модулей</mark>
+			<mark><strong>обратно совместимым</strong> с JavaScript и компилируется в последний</mark>. TypeScript отличается от JavaScript возможностью
+			<mark>явного статического назначения типов</mark>, а также поддержкой <mark>подключения модулей</mark>
 		</p>
 	</blockquote>
-
-	<p>
-		Разработчиком языка TypeScript является <b>Андерс Хейлсберг</b> (англ. Anders Hejlsberg),
-		создавший ранее <mark>Turbo</mark>  <mark>Pascal</mark>,  <mark>Delphi</mark> и  <mark>C#</mark>.
-	</p>
-	<p class="note"><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash;
-		крутая книга по TypeScript</p>
+	<p>Разработчиком языка TypeScript является <b>Андерс Хейлсберг</b> (англ. Anders Hejlsberg), создавший ранее <mark>Turbo Pascal</mark>, <mark>Delphi</mark> и <mark>C#</mark>.</p>
+	<p class="note"><a href="https://basarat.gitbooks.io/typescript/" target="_blank">TypeScript Deep Dive</a> &mdash; крутая книга по TypeScript</p>
 </section>
 
 <section class="slide">
@@ -1948,22 +1995,20 @@
 	<ul lang="ru">
 		<li>Аннотации типов и проверка их согласования на этапе компиляции</li>
 		<li>Интерфейсы, кортежи, декораторы свойств и методов, расширенные возможности ООП</li>
-		<li>TypeScript &mdash; надмножество JavaScript, поэтому любой код на JavaScript будет выполнен и в TypeScript
-		</li>
+		<li>TypeScript &mdash; <strong>надмножество JavaScript</strong>, поэтому любой код на JavaScript будет выполнен и в TypeScript</li>
 		<li>Широкая поддержка IDE и адекватный автокомплит</li>
 		<li>Поддержка ES6-модулей из коробки</li>
-		<li>Высокая скорость разработки</li>
 	</ul>
 </section>
 
 <section class="slide">
 	<h2>Переписываем проект на TS</h2>
 	<p class="small-content"></p>
-	<ul lang="ru">
+	<ol lang="ru">
 		<li>Переименовываем <code>*.js</code> в <code>*.ts</code></li>
 		<li>???????</li>
 		<li>PROFIT</li>
-	</ul>
+	</ol>
 </section>
 
 <section class="slide">
@@ -1993,7 +2038,8 @@
 		<code>        "module": "commonjs",</code>
 		<code>        "strictNullChecks": true,</code>
 		<code>        "sourceMap": true</code>
-		<code>        ... }</code>
+		<code>        ...</code>
+		<code>     }</code>
 		<code>}</code>
 		<code> </code>
 	</pre>
@@ -2009,7 +2055,8 @@
 		<code> </code>
 		<code>console.log(man * 2);</code>
 		<code>// Error: The left-hand side of an arithmetic</code>
-		<code>// operation must be of type 'any', 'number' or an enum type.</code>
+		<code>// operation must be of type 'any', 'number' or an enum type</code>
+		<code> </code>
 	</pre>
 </section>
 
@@ -2027,7 +2074,8 @@
 		<code> </code>
 		<code>console.log(man * 2);</code>
 		<code>// Error: The left-hand side of an arithmetic</code>
-		<code>// operation must be of type 'any', 'number' or an enum type.</code>
+		<code>// operation must be of type 'any', 'number' or an enum type</code>
+		<code> </code>
 	</pre>
 </section>
 
@@ -2041,6 +2089,7 @@
 		<code>console.log(man * 2); //NaN</code>
 		<code>// Зато нет TS ошибок!</code>
 		<code>// Profit!</code>
+		<code> </code>
 	</pre>
 </section>
 
@@ -2088,6 +2137,7 @@
 		<code> </code>
 		<code>const gcd = (a: number, b: number): number =></code>
 		<code>    (b === 0) ? a : gcd(b, a % b);</code>
+		<code> </code>
 		<code>console.log(gcd(48, 30)); // 6</code>
 		<code> </code>
 	</pre>
@@ -2303,6 +2353,9 @@
 	</pre>
 </section>
 
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 70%">Как "типизировать" js-код?</span></h2>
+</section>
 
 <section class="slide">
 	<h2>TypeScript Declaration Files</h2>
@@ -2321,6 +2374,7 @@
 		<code>    (html: string, ownerDocument?: Document): JQuery;</code>
 		<code>    (): JQuery;</code>
 		<code>}</code>
+		<code> </code>
 		<code>declare var $: JQueryStatic;</code>
 		<code>declare module 'jquery' {</code>
 		<code>    export = $;</code>
@@ -2351,12 +2405,13 @@
 	<h2>Flow от Facebook</h2>
 	<pre class="hljs flow">
         <code>// @flow</code>
-        <code>function concat(a: string, b: string) {</code>
-        <code>  return a + b;</code>
+        <code>function concat(a /*: string */, b /*: string */) {</code>
+        <code>    return a + b;</code>
         <code>}</code>
-        <code></code>
-        <code>concat("A", "B"); // Works!</code>
+        <code> </code>
+        <code>concat('A', 'B'); // Works!</code>
         <code>concat(1, 2); // Error!</code>
+        <code> </code>
 	</pre>
 </section>
 
@@ -2368,7 +2423,7 @@
 <section class="slide">
 	<h2>Полезные ссылки</h2>
 	<ul lang="en">
-		<li><a href="https://tc39.github.io/ecma262/" target="_blank">ECMAScript 2017</a> Language Specification</li>
+		<li><a href="https://tc39.github.io/ecma262/" target="_blank">ECMAScript 2019</a> Language Specification</li>
 		<li><a href="http://www.ecma-international.org/" target="_blank">Ecma International</a></li>
 		<li>Отличие между <a
 				href="http://stackoverflow.com/questions/15244453/practical-difference-between-ecma262-and-iso-iec-16262"
