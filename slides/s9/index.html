@@ -103,6 +103,13 @@
 	<div>Сейчас WHATWG активно разрабатывает спецификации: HTML, DOM Standard, Fetch Standard, Web workers, Storage Standard, Streams Standard...</div>
 </section>
 
+<section class="slide question">
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="2000px-HTML5_APIs_and_related_technologies_taxonomy_and_status.svg.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.5);">
+	</div>
+</section>
+
 <section class="slide">
 	<h2>CSS &mdash; Cascading Style Sheets</h2>
 	<p class="small-content"></p>
@@ -706,14 +713,6 @@
 </section>
 
 <section class="slide">
-	<h2>All stats &mdash; <a href="http://gs.statcounter.com/platform-market-share/desktop-mobile/worldwide"
-							 target="_blank">statcounter.com</a></h2>
-	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="stats1.png" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.9);">
-	</div>
-</section>
-
-<section class="slide">
 	<h2>Native vs. Web</h2>
 	<div style="position:relative;width: 100%;height: 80%;">
 		<img class="place" src="mobapps1.png"
@@ -867,6 +866,63 @@
 
 
 <section class="slide question">
+	<h2>Единицы измерения длины CSS</h2>
+</section>
+
+<section class="slide">
+	<h2>Единицы измерения CSS <br> <a href="https://www.w3.org/TR/css3-values/#lengths" target="_blank">подробнее</a></h2>
+	<p class=""><strong>Относительные</strong></p>
+	<ul lang="en">
+		<li><code>em</code> &mdash; font size of the element</li>
+		<li><code>ex</code> &mdash; x-height of the element’s font</li>
+		<li><code>ch</code> &mdash; width of the "0" (ZERO, U+0030) glyph in the element’s font</li>
+		<li><code>rem</code> &mdash; font size of the root element</li>
+		<li><code>vw</code> &mdash; 1% of viewport’s width</li>
+		<li><code>vh</code> &mdash; 1% of viewport’s height</li>
+		<li><code>vmin</code> &mdash; 1% of viewport’s smaller dimension</li>
+		<li><code>vmax</code> &mdash; 1% of viewport’s larger dimension</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Единицы измерения CSS <br> <a href="https://www.w3.org/TR/css3-values/#lengths" target="_blank">подробнее</a></h2>
+	<p class=""><strong>Абсолютные</strong></p>
+	<ul lang="en">
+		<li><code>cm</code> &mdash; 1cm = 96px/2.54</li>
+		<li><code>mm</code> &mdash; 1mm = 1/10th of 1cm</li>
+		<li><code>Q</code> &mdash; 1q = 1/40th of 1cm</li>
+		<li><code>in</code> &mdash; 1in = 2.54cm = 96px</li>
+		<li><code>pc</code> &mdash; 1pc = 1/6th of 1in</li>
+		<li><code>pt</code> &mdash; 1pt = 1/72th of 1in</li>
+		<li><code>px</code> &mdash; 1px = 1/96th of 1in (<em>со звёздочкой</em>)</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Типы пикселей &mdash; <a href="https://habrahabr.ru/post/252395/" target="_blank">подробнее</a></h2>
+	<p class="small-content"></p>
+	<ul>
+		<li><strong>Аппаратные пиксели</strong> &mdash; физический пиксель матрицы дисплея</li>
+		<li><strong>Аппаратно-независимые пиксели</strong> (Device-independent pixels, dip) &mdash; пиксели дисплея, приведённые к единому масштабу, чтобы соответствовать примерно одинаковому углу зрения на всех девайсах (с учётом расстояния, на котором мы их держим)</li>
+		<li><strong>Пиксель CSS</strong> &mdash; единица измерения вёрстки</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Пиксели? Пиксели!</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="css1.png" style="transform-origin: center;transform: translate(-50%, -50%) scale(1.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Пиксели? Пиксели!</h2>
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="css2.gif" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.8);">
+	</div>
+</section>
+
+<section class="slide question">
 	<h2>Область просмотра
 		<mark>(viewport)</mark>
 	</h2>
@@ -915,36 +971,11 @@
 	</pre>
 </section>
 
-<section class="slide">
-	<h2>Типы пикселей &mdash; <a href="https://habrahabr.ru/post/252395/" target="_blank">подробнее</a></h2>
-	<p class="small-content"></p>
-	<ul>
-		<li><strong>Аппаратные пиксели</strong> &mdash; физический пиксель матрицы дисплея</li>
-		<li><strong>Аппаратно-независимые пиксели</strong> (Device-independent pixels, dip) &mdash; пиксели дисплея, приведённые к единому масштабу, чтобы соответствовать примерно одинаковому углу зрения на всех девайсах (с учётом расстояния, на котором мы их держим)</li>
-		<li><strong>Пиксель CSS</strong> &mdash; единица измерения вёрстки</li>
-	</ul>
-</section>
-
-<section class="slide">
-	<h2>Пиксели? Пиксели!</h2>
-	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="css1.png" style="transform-origin: center;transform: translate(-50%, -50%) scale(1.5);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Пиксели? Пиксели!</h2>
-	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="css2.gif" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.8);">
-	</div>
-</section>
-
 <section class="slide question">
 	<h2>
 		<a style="color: royalblue" href="https://habrahabr.ru/post/150071/" target="_blank">Оптимизация графики для Retina-экранов</a>
 	</h2>
 </section>
-
 
 
 <!--viewports всё-->
@@ -1015,7 +1046,7 @@
 	<h2>pointer-events</h2>
 	<div style="position:relative;width: 100%;height: 80%;">
 		<img class="place" src="pe-caniuse.png"
-			 style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.8);">
+			 style="transform-origin: center;transform: translate(-50.2%, -50%) scale(0.39);">
 	</div>
 </section>
 
@@ -1208,8 +1239,8 @@
 <section class="slide">
 	<h2>Web App Manifest</h2>
 	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="wam-caniuse.png"
-			 style="transform-origin: center;transform: translate(-50.3%, -50%) scale(0.8);">
+		<img class="place" src="web-app-manifest-caniuse.png"
+			 style="transform-origin: center;transform: translate(-50.2%, -50%) scale(0.38);">
 	</div>
 </section>
 
