@@ -15,7 +15,7 @@
 
 <header class="caption">
 	<h1>Современное состояние JavaScript</h1>
-	<p>Технопарк, весна, 2018 г.</p>
+	<p>Технопарк, осень, 2019 г.</p>
 </header>
 
 <section class="slide first">
@@ -31,7 +31,7 @@
 </section>
 
 <section class="slide question">
-	<h2 style="text-align: center; padding: 0"><span style="font-size: 140%">180 минут 🤔</span></h2>
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 140%">190 минут 🤔</span></h2>
 </section>
 
 <section class="slide question">
@@ -60,7 +60,7 @@
 		<li><strong>JavaScript</strong> &mdash; <mark>язык программирования</mark>, одна из реализаций спецификации&nbsp;ECMAScript (наряду с JScript и ActionScript), их ещё называют диалектами ECMAScript</li>
 		<li><strong>ECMA-262</strong> &mdash; <mark>стандарт компании Ecma International</mark>, по которому разрабатывается спецификация ECMAScript
 			<ul lang="en">
-				<li><a href="https://www.ecma-international.org/ecma-262/8.0/index.html" target="_blank">последняя версия</a>: 8-е издание в июне 2017 года</li>
+				<li><a href="https://www.ecma-international.org/ecma-262/9.0/index.html" target="_blank">последняя версия</a>: 9-е издание в июне 2018 года</li>
 				<li><a href="https://tc39.github.io/ecma262/" target="_blank">последний черновик</a>: ECMAScript® 2019 Language Specification</li>
 			</ul>
 		</li>
@@ -101,7 +101,8 @@
 		<li>Июль 2015 &mdash; <mark>ECMAScript 2015</mark> (ECMAScript 6th edition) &mdash; ES6 Harmony</li>
 		<li>Июль 2016 &mdash; <mark>ECMAScript 2016</mark> (ECMAScript 7th edition)</li>
 		<li>Июнь 2017 &mdash; <mark>ECMAScript 2017</mark> (ECMAScript 8th edition)</li>
-		<li><em>Лето 2018</em> &mdash; <mark>ECMAScript 2018</mark> (и так далее)</li>
+		<li>Июнь 2018 &mdash; <mark>ECMAScript 2018</mark> (ECMAScript 9th edition)</li>
+		<li><em>Лето 2019</em> &mdash; <mark>ECMAScript 2019</mark> (и так далее)</li>
 	</ul>
 </section>
 
@@ -109,16 +110,22 @@
 	<h2>Современное состояние JavaScript</h2>
 	<p class="medium-content"></p>
 	<ul lang="ru">
+		<li><code>let/const</code>, шаблонные строки, Promise, стрелочные функции</li>
 		<li>ES6-модули <em>и</em> ES6-классы</li>
-		<li>Стрелочные функции</li>
 		<li>Деструктуризация</li>
 		<li>Спреды</li>
 		<li>Итераторы <em>и</em> генераторы</li>
 		<li>Aсинхронные функции</li>
 		<li>Reflect <em>и</em> Proxy</li>
 		<li><code>SharedArrayBuffer</code> <em>и</em> <code>Atomics</code></li>
+		<li>WebAssembly</li>
 		<li><em>and more...</em></li>
 	</ul>
+</section>
+
+
+<section class="slide">
+	<h2 class="shout"><span style="font-size: 95%;">Скучненько</span></h2>
 </section>
 
 <section class="slide question">
@@ -289,6 +296,9 @@
 		<code>    .<mark>catch</mark>(function (error) {</code>
 		<code>         console.error(error);</code>
 		<code>    });</code>
+		<code>    .<mark>finally</mark>(function () {</code>
+		<code>         console.log('Promise ends');</code>
+		<code>    });</code>
 		<code> </code>
 	</pre>
 </section>
@@ -309,6 +319,40 @@
 	</pre>
 </section>
 
+
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Стрелочные функции</span></h2>
+</section>
+
+<section class="slide">
+	<h2>Стрелочные функции</h2>
+	<pre class="hljs js">
+		<code>const hello = () => console.log('Hello, World!');</code>
+		<code>const sqr = num => num * 2;</code>
+		<code>[1, 2, 3, 4].map(sqr); // [1, 4, 9, 16]</code>
+		<code> </code>
+		<code>const compare = (left, right) => {</code>
+		<code>    if (left.length === right.length) {</code>
+		<code>        return left.localeCompare(right);</code>
+		<code>    }</code>
+		<code>    return left.length - right.length;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Стрелочные функции</h2>
+	<p class="small-content"></p>
+	<ul lang="ru">
+		<li>Короткий синтаксис</li>
+		<li>Не являются <em>"настоящими"</em> функциями, не имеют своего <code>this</code> и своего
+			<code>arguments</code>: берут их их
+			<mark>LexicalEnvironment</mark>
+		</li>
+		<li>Нельзя использовать с оператором <code>new</code></li>
+	</ul>
+</section>
 
 <section class="slide question">
 	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">ES6-классы</span></h2>
@@ -573,41 +617,6 @@
 
 
 <section class="slide question">
-	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Стрелочные функции</span></h2>
-</section>
-
-<section class="slide">
-	<h2>Стрелочные функции</h2>
-	<pre class="hljs js">
-		<code>const hello = () => console.log('Hello, World!');</code>
-		<code>const sqr = num => num * 2;</code>
-		<code>[1, 2, 3, 4].map(sqr); // [1, 4, 9, 16]</code>
-		<code> </code>
-		<code>const compare = (left, right) => {</code>
-		<code>    if (left.length === right.length) {</code>
-		<code>        return left.localeCompare(right);</code>
-		<code>    }</code>
-		<code>    return left.length - right.length;</code>
-		<code>}</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>Стрелочные функции</h2>
-	<p class="small-content"></p>
-	<ul lang="ru">
-		<li>Короткий синтаксис</li>
-		<li>Не являются <em>"настоящими"</em> функциями, не имеют своего <code>this</code> и своего
-			<code>arguments</code>: берут их их
-			<mark>LexicalEnvironment</mark>
-		</li>
-		<li>Нельзя использовать с оператором <code>new</code></li>
-	</ul>
-</section>
-
-
-<section class="slide question">
 	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Новые коллекции</span></h2>
 </section>
 
@@ -701,7 +710,7 @@
 
 <section class="slide">
 	<h2>Новые возможности регулярок</h2>
-	<p class="note">Приедет в ECMAScript 2018</p>
+	<p class="note">Приехало в ECMAScript 2018</p>
 	<pre class="hljs js">
 		<code>// новый флаг s (dotAll)</code>
 		<code>/foo.bar/.test('foo\nbar');      // false</code>
@@ -765,7 +774,7 @@
 
 
 <section class="slide">
-	<h2 class="shout"><span style="font-size: 95%;">Высший пилотаж</span></h2>
+	<h2 class="shout"><span style="font-size: 95%;">Что-то поинтереснее</span></h2>
 </section>
 
 <section class="slide question">
@@ -955,7 +964,7 @@
 
 
 <section class="slide question">
-	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Оператор расширения</span></h2>
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Оператор расширения и остатка</span></h2>
 </section>
 
 <section class="slide question">
@@ -975,7 +984,7 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор расширения</h2>
+	<h2>Оператор остатка <em>aka</em><br/>rest-оператор</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
 		<code>// используется при деструктуризации</code>
@@ -990,7 +999,7 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор расширения</h2>
+	<h2>rest-/spread- оператор</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
 		<code>// может проитерироваться по элементам коллекции</code>
@@ -1005,7 +1014,7 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор расширения</h2>
+	<h2>rest-/spread- оператор</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
 		<code>// передача параметров в функцию</code>
@@ -1020,7 +1029,7 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор расширения</h2>
+	<h2>rest-/spread- оператор</h2>
 	<p class="small-content"></p>
 	<pre class="hljs js">
 		<code>// передача параметров в функцию</code>
@@ -1063,7 +1072,6 @@
 <section class="slide">
 	<h2>Оператор spread для объектов</h2>
 	<pre class="hljs js">
-		<code>// будет добавлено в ECMAScript 2018</code>
 		<code>const name = { first: 'Jon', last: 'Snow' };</code>
 		<code>const address = {</code>
 		<code>    city: 'Norilsk',</code>
@@ -1081,9 +1089,8 @@
 </section>
 
 <section class="slide">
-	<h2>Оператор spread при <br>деструктуризации объектов</h2>
+	<h2>Оператор rest при <br>деструктуризации объектов</h2>
 	<pre class="hljs js">
-		<code>// будет добавлено в ECMAScript 2018</code>
 		<code>const {login, password, <mark>...profile</mark>} = {</code>
 		<code>     login: 'Jon',</code>
 		<code>     password: 'qwerty123',</code>
@@ -1473,59 +1480,59 @@
 <section class="slide">
 	<h2>Объявление функций</h2>
 	<pre class="hljs js">
-			<code><mark>async</mark> function good() {</code>
-			<code>    return 42;</code>
-			<code>}</code>
-			<code> </code>
-			<code>good()</code>
-			<code>    .then(res => console.log('Good: ', res);</code>
-			<code> </code>
-		</pre>
+		<code><mark>async</mark> function good() {</code>
+		<code>    return 42;</code>
+		<code>}</code>
+		<code> </code>
+		<code>good()</code>
+		<code>    .then(res => console.log('Good: ', res);</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Объявление функций</h2>
 	<pre class="hljs js">
-			<code><mark>async</mark> function bad() {</code>
-			<code>    throw new Error('kek');</code>
-			<code>}</code>
-			<code> </code>
-			<code>good()</code>
-			<code>    .then(res => console.log('Good: ', res));</code>
-			<code>    .catch(err => console.error(err));</code>
-			<code> </code>
-		</pre>
+		<code><mark>async</mark> function bad() {</code>
+		<code>    throw new Error('kek');</code>
+		<code>}</code>
+		<code> </code>
+		<code>good()</code>
+		<code>    .then(res => console.log('Good: ', res));</code>
+		<code>    .catch(err => console.error(err));</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Объявление функций</h2>
 	<pre class="hljs js">
-			<code>async function luck(num) {</code>
-			<code>    if (Math.random() < 0.5) {</code>
-			<code>        return num * 2;</code>
-			<code>    }</code>
-			<code>    throw new Error('kek');</code>
-			<code>}</code>
-			<code>luck(21)</code>
-			<code>    .then(res => console.log('Good: ', res));   // may be 42</code>
-			<code>    .catch(err => console.error(err));          // or may be an Error</code>
-			<code> </code>
-		</pre>
+		<code>async function luck(num) {</code>
+		<code>    if (Math.random() < 0.5) {</code>
+		<code>        return num * 2;</code>
+		<code>    }</code>
+		<code>    throw new Error('kek');</code>
+		<code>}</code>
+		<code>luck(21)</code>
+		<code>    .then(res => console.log('Good: ', res));   // may be 42</code>
+		<code>    .catch(err => console.error(err));          // or may be an Error</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
 	<h2>Использование</h2>
 	<pre class="hljs js">
-			<code>async function loadJSON(url) {</code>
-			<code>    const response = <mark>await</mark> fetch(url, {method: 'GET'});</code>
-			<code>    if (response.statusCode !== 200) {</code>
-			<code>        throw new Error(`Can not load json ${url}`);</code>
-			<code>    }</code>
-			<code>    const json = <mark>await</mark> response.json();</code>
-			<code>    return json;</code>
-			<code>}</code>
-			<code> </code>
-		</pre>
+		<code>async function loadJSON(url) {</code>
+		<code>    const response = <mark>await</mark> fetch(url, {method: 'GET'});</code>
+		<code>    if (response.statusCode !== 200) {</code>
+		<code>        throw new Error(`Can not load json ${url}`);</code>
+		<code>    }</code>
+		<code>    const json = <mark>await</mark> response.json();</code>
+		<code>    return json;</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
 </section>
 
 <section class="slide">
@@ -1542,6 +1549,65 @@
 		<code>async function load(query) {</code>
 		<code>    const list = <mark>await</mark> fetchList(query);</code>
 		<code>    <mark>return</mark> Promise.all(list.map(item => loadItem(item)));</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Асинхронные итераторы</h2>
+	<pre class="hljs js">
+		<code>function readFiles(names) {</code>
+		<code>    return names.map(</code>
+		<code>        filename => promiseRead(filename)</code>
+		<code>    )</code>
+		<code>}</code>
+		<code> </code>
+		<code>for (const pRead of readFiles([...])) {</code>
+		<code>    const source = <mark>await pRead</mark>;</code>
+		<code>    // logic ...</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Новый цикл <code>for-await-of</code></h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>for <mark>await</mark> (const source of readFiles([...])) {</code>
+		<code>    console.log(source)</code>
+		<code>    // logic ...</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Асинхронные генераторы</h2>
+	<p>Незаменимо, когда заранее не известно количество итерируемых элементов</p>
+	<pre class="hljs js">
+		<code>async function* readLines(path) {</code>
+		<code>    let file = await fileOpen(path);</code>
+		<code>    try {</code>
+		<code>        while (!file.EOF) {</code>
+		<code>            yield await file.readLine();</code>
+		<code>        }</code>
+		<code>    } finally {</code>
+		<code>        await file.close();</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Асинхронные генераторы</h2>
+	<p class="small-content"></p>
+	<pre class="hljs js">
+		<code>for <mark>await</mark> (const line of readLines(filePath)) {</code>
+		<code>    console.log(line)</code>
+		<code>    // logic ...</code>
 		<code>}</code>
 		<code> </code>
 	</pre>
@@ -1653,11 +1719,6 @@
 
 
 
-
-
-
-
-
 <section class="slide">
 	<h2 class="shout">Перерыв</h2>
 </section>
@@ -1680,12 +1741,14 @@
 <section class="slide nopage">
 	<h2>Возможности браузера<br/><a href="https://caniuse.com/" target="_blank">http://caniuse.com/</a></h2>
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="caniuse.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.76);">
+		<img class="place" src="caniuse.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.38);">
 	</div>
 </section>
 
 <section class="slide question">
-	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Что делать?</span></h2>
+	<h2 style="text-align: center; padding: 0">
+		<span style="font-size: 100%">Что делать?</span>
+	</h2>
 </section>
 
 <section class="slide">
@@ -1727,7 +1790,7 @@
 	<h2>Babel (<a href="http://babeljs.io/" target="_blank">babeljs.io</a>)</h2>
 	<blockquote>
 		<p class="small-content"><b>Babel</b> &mdash; многофункциональный транспайлер, позволяет транспиллировать ES5,
-			ES6, ES2016, ES2017, ES.Next , JSX и Flow</p>
+			ES6, ES2016, ES2017, ES2018, ES.Next, JSX и Flow</p>
 	</blockquote>
 	<p class="note"><a href="http://babeljs.io/repl/" target="_blank">Babel REPL</a> &mdash; бабель-онлайн</p>
 </section>
@@ -1736,15 +1799,18 @@
 	<h2>Babel &mdash; использование</h2>
 	<pre class="hljs bash">
 			<code># устанавливаем модуль</code>
-			<code>$ npm install -g babel-cli babel-preset-latest</code>
+			<code>$ npm install -D @babel/core @babel/cli @babel/preset-env</code>
 			<code> </code>
 			<code># файл с конфигурацией</code>
 			<code>$ nano .babelrc</code>
 			<code>{</code>
-			<code>    "presets": ["latest"]</code>
+			<code>    "presets": [[</code>
+			<code>        "@babel/env",</code>
+			<code>        { targets: {edge: "15"}}</code>
+			<code>    ]]</code>
 			<code>}</code>
 			<code> </code>
-			<code># устанавливаем модуль</code>
+			<code># запускаем</code>
 			<code>$ babel modern.js --watch --out-file compatible.js</code>
 			<code> </code>
 		</pre>
@@ -1770,9 +1836,6 @@
 			код
 		</li>
 	</ul>
-
-	<p>Гибкий набор функций трансформаций: <code><a href="https://github.com/babel/babel-preset-env" target="_blank">babel-preset-env</a></code>
-	</p>
 </section>
 
 <section class="slide">
@@ -1787,7 +1850,8 @@
 		<li>Июль 2015 &mdash; <em>ECMAScript 2015</em> (ECMAScript 6th edition) &mdash; ES6 Harmony</li>
 		<li>Июль 2016 &mdash; <em>ECMAScript 2016</em> (ECMAScript 7th edition)</li>
 		<li>Июнь 2017 &mdash; <em>ECMAScript 2017</em> (ECMAScript 8th edition)</li>
-		<li><em>Лето 2018</em> &mdash; <em>ECMAScript 2018</em> (и так далее)</li>
+		<li>Июнь 2018 &mdash; <mark>ECMAScript 2018</mark> (ECMAScript 9th edition)</li>
+		<li><em>Лето 2019</em> &mdash; <mark>ECMAScript 2019</mark> (и так далее)</li>
 		<li><mark>ES.Next</mark></li>
 	</ul>
 </section>
@@ -1843,11 +1907,10 @@
 	<ul lang="en">
 		<li>Наиболее интересные <em>proposals:</em></li>
 		<ul>
-			<li>Asynchronous Iteration &mdash; <a href="https://github.com/tc39/proposal-async-iteration" target="_blank">link</a></li>
+			<li><strong>Optional catch binding (stage-4)</strong> &mdash; <a href="https://github.com/tc39/proposal-optional-catch-binding" target="_blank">link</a></li>
+			<li>BigInt &mdash; <a href="https://github.com/tc39/proposal-bigint" target="_blank">link</a></li>
 			<li>Class and Property Decorators &mdash; <a href="https://github.com/tc39/proposal-decorators" target="_blank">link</a></li>
-			<li>Optional catch binding &mdash; <a href="https://github.com/tc39/proposal-optional-catch-binding" target="_blank">link</a></li>
 			<li>Nullish Coalescing &mdash; <a href="https://github.com/tc39-transfer/proposal-nullish-coalescing" target="_blank">link</a></li>
-			<li><code>Promise.prototype.finally</code> &mdash; <a href="https://github.com/tc39/proposal-promise-finally" target="_blank">link</a></li>
 			<li>Static public fields &mdash; <a href="https://github.com/tc39/proposal-static-class-features" target="_blank">link</a></li>
 		</ul>
 	</ul>
@@ -2424,6 +2487,177 @@
 	</pre>
 </section>
 
+<section class="slide">
+	<h2 class="shout"><span style="font-size: 95%;">Высший пилотаж</span></h2>
+</section>
+
+<section class="slide question">
+	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">WebAssembly</span></h2>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<p class="medium-content">Во время создания WebAssembly решалась следующая задача: <strong>быстро исполнять код в браузере</strong></p>
+	<blockquote>
+		<p>
+			<strong>WebAssembly (wasm)</strong> &mdash; эффективный низкоуровневый байт-код, предназначенный для исполнения в браузере. WebAssemblу представляет собой переносимое абстрактное синтаксическое дерево, обеспечивающее как более быстрый парсинг, так и более быстрое выполнение кода, чем JavaScript &mdash;
+			<a href="https://codelabs.developers.google.com/codelabs/web-assembly-intro/" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<p class="medium-content"></p>
+	<blockquote>
+		<p>
+			<strong>WebAssembly</strong> &mdash; это не полная замена JS, а лишь технология, позволяющая писать критичные к ресурсам модули и компилировать их в переносимый байт-код с линейной моделью памяти и статической типизацией
+		</p>
+	</blockquote>
+	<p class="note"><strong>Применения:</strong> редактирование изображений/видео/музыки, криптография, математические вычисления, игры...</p>
+</section>
+
+<section class="slide">
+	<h2>Что же такое WebAssembly?</h2>
+	<p class="medium-content"></p>
+	<ul>
+		<li>Бинарный формат</li>
+		<li>НЕ язык программирования, а байт-код</li>
+		<li><strong>Загружается в браузер и исполняется в браузере</strong> &mdash; формально, WebAssembly исполняется JavaScript-движком, а не самим браузером, поэтому есть и другие варианты исполнения, например, под Node.js</li>
+		<li>Исполняется виртуальной машиной</li>
+		<li>НЕ имеет ничего общего с WEB, кроме того что общается с внешним миром через JavaScript</li>
+		<li>Компиляторы работают только со статически типизированным кодом</li>
+		<li>Можно закинуть в воркер и сделать приложение еще быстрее</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<h2>Необходим статически типизированный код</h2>
+	<pre class="hljs c">
+		<code>// исходник на C</code>
+		<code>int fib(int n) {</code>
+		<code>    if (n == 0) { return 0; } else {</code>
+		<code>        if ((n == -1) || (n == 1)) { return 1; } else  {</code>
+		<code>            if (n > 0) { return fib(n - 1) + fib(n - 2); }</code>
+		<code>            else { return fib(n + 2) - fib(n + 1); }</code>
+		<code>        }</code>
+		<code>    }</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<pre class="hljs c">
+		<code>// текстовое представление WAST</code>
+		<code>(module</code>
+		<code>    (table 0 anyfunc)</code>
+		<code>    (memory $0 1)</code>
+		<code>    (data (i32.const 12) "\01\00\00\00\00\00\00\00\01\00\00\00")</code>
+		<code>    (export "memory" (memory $0))</code>
+		<code>    (export "fib" (func $fib))</code>
+		<code>    (func $fib (param $0 i32) (result i32)</code>
+		<code>        (local $1 i32)</code>
+		<code>        (block $label$0</code>
+		<code>            (br_if $label$0</code>
+		<code>                (i32.ge_u</code>
+		<code>                // ...</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;">
+			<a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format" target="_blank">Как читать WAST</a>
+		</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<pre class="hljs c">
+		<code>// скомпилированный байт-код wasm</code>
+		<code>const wasmCode = new Uint8Array(</code>
+		<code><mark>[0,97,115,109,1,0,0,0,1,134,128,128,128,0,1,96,1,127,1,127,3,130,128,</mark></code>
+		<code><mark>128,128,0,1,0,4,132,128,128,128,0,1,112,0,0,5,131,128,128,128,0,1,0,</mark></code>
+		<code><mark>1,6,129,128,128,128,0,0,7,144,128,128,128,0,2,6,109,101,109,111,114,</mark></code>
+		<code><mark>121,2,0,3,102,105,98,0,0,10,203,128,128,128,0,1,197,128,128,128,0,1,</mark></code>
+		<code><mark>1,127,2,64,32,0,65,1,106,34,1,65,3,79,13,0,32,1,65,2,116,65,12,106,</mark></code>
+		<code><mark>40,2,0,15,11,2,64,32,0,65,1,72,13,0,32,0,65,127,106,16,0,32,0,65,</mark></code>
+		<code><mark>126,106,16,0,106,15,11,32,0,65,2,106,16,0,32,1,16,0,107,11,11,146,</mark></code>
+		<code><mark>128,128,128,0,1,0,65,12,11,12,1,0,0,0,0,0,0,0,1,0,0,0]</mark></code>
+		<code>);</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>WebAssembly</h2>
+	<pre class="hljs c">
+		<code>// запускаем wasm-модуль</code>
+		<code>// создаем типизированный массив</code>
+		<code>const wasmCode = new Uint8Array([...]);</code>
+		<code>// компилируем WASM</code>
+		<code>const wasmModule = new WebAssembly.Module(wasmCode);</code>
+		<code>// получаем инстанс готовый к работе</code>
+		<code>const wasmInstance = new WebAssembly.Instance(wasmModule, []);</code>
+		<code> </code>
+		<code>console.log(wasmInstance.exports.fib(10));</code>
+		<code> </code>
+	</pre>
+	<p>
+		Демо: &mdash; <a href="http://webassembly.org/demo/" target="_blank">Танки</a>, <a href="http://www.quakejs.com/" target="_blank">Quake</a>.
+	</p>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;">
+			<a href="https://habr.com/post/417563/" target="_blank">Благодаря WebAssembly можно писать Frontend на Go</a>
+		</span>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;">
+			<a href="https://habr.com/post/417563/" target="_blank" style="text-decoration: line-through">Благодаря WebAssembly можно писать Frontend на Go</a>
+		</span>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;">
+			<a href="https://github.com/AssemblyScript/assemblyscript" target="_blank">Благодаря WebAssembly можно писать Frontend на TypeScript!!!</a>
+		</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>AssemblyScript</h2>
+	<p class="medium-content"></p>
+	<blockquote>
+		<p>
+			<strong>AssemblyScript</strong> &mdash; компилятор TypesScript в WebAssembly. Т.к. TypesScript статически типезированный, то мы можем его скомпилить в WebAssembly. Можно использовать специальные <a href="https://github.com/AssemblyScript/assemblyscript/wiki/Types">типы</a>
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide question">
+	<h2>
+		<span style="font-size: 75%; color: #000055; display: inline-block;">
+			Го тусить на
+			<a href="http://localhost:3000" target="_blank">локалхост</a>
+		</span>
+	</h2>
+</section>
+
+
+
 <section class="slide question">
 	<h2 style="text-align: center; padding: 0"><span style="font-size: 100%">Ваши вопросы?</span></h2>
 </section>
@@ -2468,6 +2702,8 @@
 		<li><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Крутая серия книг</a> о JavaScript</li>
 		<li><a href="https://developer.mozilla.org/ru/docs/DOM/Using_web_workers" target="_blank">Использование Web Workers</a> &mdash; MDN</li>
 		<li><a href="https://www.html5rocks.com/ru/tutorials/workers/basics/" target="_blank">Туториал Web Workers</a> &mdash; MDN</li>
+		<li><a href="https://developer.mozilla.org/ru/docs/WebAssembly" target="_blank">WebAssembly</a> &mdash; MDN</li>
+		<li><a href="https://codepen.io/duketeam/pen/ALEByA/" target="_blank">Конвертация в оттенки серого</a> &mdash; codeopen.io</li>
 	</ul>
 </section>
 

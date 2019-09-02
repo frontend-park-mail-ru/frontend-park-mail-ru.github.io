@@ -15,7 +15,7 @@
 
 <header class="caption">
 	<h1>Современные возможности CSS, разработка под мобильные устройства</h1>
-	<p>Технопарк, весна, 2018 г.</p>
+	<p>Технопарк, осень, 2019 г.</p>
 </header>
 
 <section class="slide first">
@@ -66,91 +66,259 @@
 
 </section>
 
-<section class="slide question">
-	<h2>
-		Кто придумывает <strong>WEB</strong>?
+
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 100%">Сначала был... HTML</span>
 	</h2>
 </section>
 
 <section class="slide">
-	<h2>W3C &mdash; <a href="https://www.w3.org/" target="_blank">www.w3.org</a></h2>
-	<blockquote>
-		<p class="content">
-			<strong>W3C (World Wide Web Consortium &mdash; Консорциум Всемирной паутины)</strong> &mdash; организация, разрабатывающая и внедряющая технологические стандарты для Всемирной паутины. Консорциум возглавляет <strong>Тимоти Джон Бернерс-Ли</strong>
-		</p>
-	</blockquote>
-	<div>Любой стандарт W3C проходит <mark>5 стадий согласования</mark>:</div>
-	<ul lang="ru">
-		<li>Черновик спецификации (<em>Draft</em>)</li>
-		<li>Рабочий проект (<em>Working Draft</em>);</li>
-		<li>Последний созыв (<em>Last Call</em>);</li>
-		<li>Возможная рекомендация (<em>Candidate Recommendation</em>);</li>
-		<li>Предлагаемая рекомендация (<em>Proposed Recommendation</em>);</li>
-	</ul>
-	<div>и только после этого официально становится рекомендацией W3C</div>
-</section>
-
-<section class="slide">
-	<h2>WHATWG &mdash; <a href="https://whatwg.org/" target="_blank">whatwg.org</a></h2>
-	<blockquote>
-		<p class="content">
-			<strong>WHATWG (Web Hypertext Application Technology Working Group)</strong> &mdash; сообщество людей, заинтересованных в развитии Интернета. Было основано в 2004 году производителями браузеров: Apple, Mozilla Foundation и Opera Software. Основным направлением сообщества является <mark>развитие HTML и API, необходимого для веб-приложений</mark>.
-		</p>
-	</blockquote>
-	<p class="note">
-		По сути, является <strong><em>форком W3C</em></strong>. WHATWG была недовольна медленными темпами развития стандартов и уклоном W3C в сторону HTML, основанного на XML-синтаксисе
-	</p>
-	<div>Сейчас WHATWG активно разрабатывает спецификации: HTML, DOM Standard, Fetch Standard, Web workers, Storage Standard, Streams Standard...</div>
-</section>
-
-<section class="slide question">
-	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="2000px-HTML5_APIs_and_related_technologies_taxonomy_and_status.svg.png"
-			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.5);">
+	<h2>Сначала был... HTML</h2>
+	<div style="position:relative;width: 100%;height: 80%; margin-top: 50px">
+		<img src="html-layout.png" style="width: 45%;"/>
+		<div style="position: relative; width: 50%; height: 100%; float: right;border: 2px solid">
+			<iframe style="width: 100%; height: 100%; position: absolute;" src="/examples/layout-css/without-styles.html" frameborder="1"></iframe>
+		</div>
 	</div>
 </section>
 
 <section class="slide">
-	<h2>CSS &mdash; Cascading Style Sheets</h2>
-	<p class="small-content"></p>
-	<div>CSS одна из широкого спектра технологий, одобренных консорциумом W3C и получивших общее название «стандарты Web»</div>
-	<p class="note"><a href="https://wiki.csswg.org/" target="_blank">wiki.csswg.org</a> &mdash; рабочая группа CSS в рамках консорциума W3C</p>
-	<ul>
-		<li>CSS level 1 &mdash; декабрь 1996</li>
-		<li>CSS level 2 &mdash; май 1998</li>
-		<li>CSS level 3 &mdash; c июня 2012 ... (по сути, ещё не принята)</li>
-	</ul>
-	<div>Все CSS-спецификации &mdash; <a href="https://www.w3.org/Style/CSS/specs.en.html" target="_blank">www.w3.org/Style/CSS/specs.en.html</a></div>
-</section>
-
-<section class="slide question">
-	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="2000px-CSS3_taxonomy_and_status_by_Sergey_Mavrody.svg.png"
-			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.5);">
+	<h2>CSS в здании</h2>
+	<div style="position:relative;width: 100%;height: 80%; margin-top: 50px">
+		<div style="position: relative; width: 50%; height: 100%; float: right;border: 2px solid">
+			<iframe style="width: 100%; height: 100%; position: absolute;" src="/examples/layout-css/simple-css.html" frameborder="1"></iframe>
+		</div>
+		<pre class="hljs css" style="width: 45%; font-size: 0.59em">
+		<code>html {</code>
+		<code>	font-size: 62.5%;</code>
+		<code>	font-family: serif;</code>
+		<code>}</code>
+		<code>body {</code>
+		<code>	font-size: 1.8rem;</code>
+		<code>	line-height: 1.618;</code>
+		<code>	max-width: 38em;</code>
+		<code>	margin: auto;</code>
+		<code>	color: #4a4a4a;</code>
+		<code>	background-color: #f9f9f9;</code>
+		<code>	padding: 13px;</code>
+		<code>}</code>
+		<code>h1, h2, h3, h4, h5, h6 {</code>
+		<code>	line-height: 1.1;</code>
+		<code>	font-family: Verdana, Geneva, sans-serif;</code>
+		<code>	font-weight: 700;</code>
+		<code>	overflow-wrap: break-word;</code>
+		<code>	word-wrap: break-word;</code>
+		<code>	word-break: break-word;</code>
+		<code>	hyphens: auto;</code>
+		<code>}</code>
+		<code>...</code>
+	</pre>
 	</div>
 </section>
 
 <section class="slide">
-	<h2>Управление разметкой</h2>
-	<pre class="hljs css">
+	<h2 class="shout">
+		<span style="font-size: 100%">CSS для вёрстки</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Table Hell...</h2>
+	<pre class="hljs html" style="width: 45%; font-size: 1em">
+		<code>&lt;table cellpadding="0" cellspacing="0" border="0"></code>
+		<code>    &lt;tr></code>
+		<code>        &lt;td class="header" colspan="3" height="120px">....&lt;/td></code>
+		<code>    &lt;/tr></code>
+		<code>    &lt;tr></code>
+		<code>       &lt;td class="menu" valign="top">...&lt;/td></code>
+		<code>       &lt;td class="content" valign="top">...&lt;/td></code>
+		<code>       &lt;td class="aSide" valign="top">...&lt;/td></code>
+		<code>    &lt;/tr></code>
+		<code>    &lt;tr></code>
+		<code>        &lt;td class="footer" colspan="3">...&lt;/td></code>
+		<code>    &lt;/tr></code>
+		<code>&lt;/table></code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Мухи отдельно, котлеты отдельно...</h2>
+	<img src="html-css-separation.png" style="margin-top: 20%;width: 100%">
+</section>
+
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 100%">Float</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>"Обтекаемость" изображений <br/> в тексте</h2>
+	<img src="float-example.png" style="margin: 15% 20%">
+</section>
+
+<section class="slide">
+	<h2>Вёрстка макета страницы на <br>основе float</h2>
+	<div style="position:relative;width: 100%;height: 80%; margin-top: 50px">
+		<a style="float: right; margin: 20%;" href="/examples/layout-css/float.html" target="_blank">Пример</a>
+		<div style="overflow: auto">
+			<pre class="hljs css" style="width: 45%; font-size: 0.49em">
+				<code>body {</code>
+				<code>	padding-left: 200px;</code>
+				<code>	padding-right: 190px;</code>
+				<code>	min-width: 240px;</code>
+				<code>}</code>
+				<code>header, footer {</code>
+				<code>	margin-left: -200px;</code>
+				<code>	margin-right: -190px;</code>
+				<code>}</code>
+				<code>main, nav, aside {</code>
+				<code>	position: relative;</code>
+				<code>	float: left;</code>
+				<code>}</code>
+				<code>main {</code>
+				<code>	padding: 0 20px;</code>
+				<code>	width: 100%;</code>
+				<code>}</code>
+				<code>aside {</code>
+				<code>	width: 130px;</code>
+				<code>	padding: 0 10px;</code>
+				<code>	margin-right: -100%;</code>
+				<code>}</code>
+				<code>footer {</code>
+				<code>	clear: both;</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide">
+	<h2>No Escape</h2>
+	<img src="neo.jpg" style="margin: 15% 20%">
+</section>
+
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 100%">Flexbox layout</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Flexbox</h2>
+	<pre style="margin-top: 15%" class="hljs css">
 		<code>.container-flex {</code>
 		<code>    display: flex;</code>
+		<code>    flex-direction: column;</code>
+		<code>    justify-content: space-between;</code>
 		<code>}</code>
-		<code> </code>
-		<code>.container-grid {</code>
-		<code>    display: grid;</code>
-		<code>}</code>
-		<code> </code>
 	</pre>
 	<div><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A Complete Guide to Flexbox</a></div>
-	<div><a href="href=https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">A Complete Guide to Grid
-	</a></div>
+</section>
+
+<section class="slide">
+	<h2>Вёрстка макета страницы на <br>основе flex</h2>
+	<div style="position:relative;width: 100%;height: 80%; margin-top: 50px">
+		<div style="float: right; margin-top: 10%; margin-right: 45%">
+			<a href="/examples/layout-css/flex.html" target="_blank">Пример</a>
+			<img style="display: block; position: absolute; right: 5%; bottom: 5%" src="not-bad.jpg">
+		</div>
+
+		<div style="overflow: auto">
+			<pre class="hljs css" style="width: 45%; font-size: 0.52em">
+				<code>body {</code>
+				<code>	min-height: 100vh;</code>
+				<code>	display: flex;</code>
+				<code>	flex-direction: column;</code>
+				<code>}</code>
+				<code>.container {</code>
+				<code>	display: flex;</code>
+				<code>	flex: 1;</code>
+				<code>}</code>
+				<code>main {</code>
+				<code>	flex: 1;</code>
+				<code>	padding: 0 20px;</code>
+				<code>}</code>
+				<code>nav {</code>
+				<code>	flex: 0 0 180px;</code>
+				<code>	padding: 0 10px;</code>
+				<code>	order: -1;</code>
+				<code>}</code>
+				<code>aside {</code>
+				<code>	flex: 0 0 130px;</code>
+				<code>	padding: 0 10px;</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 100%">Grid layout</span>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Вёрстка макета страницы на <br>основе Grid Layout</h2>
+	<div style="position:relative;width: 100%;height: 80%; margin-top: 50px">
+		<div style="float: right; margin-top: 10%; margin-right: 15%">
+			<a href="/examples/layout-css/grid.html" target="_blank">Пример</a>
+			<img style="display: block; position: absolute; right: 5%; bottom: 5%; width: 40%" src="perfect.jpg">
+		</div>
+
+		<div style="overflow: auto">
+			<pre class="hljs css" style="width: 45%; font-size: 0.42em">
+				<code>body {</code>
+				<code>	display: grid;</code>
+				<code>	min-height: 100vh;</code>
+				<code>	grid-template-columns: 200px 1fr 150px;</code>
+				<code>	grid-template-rows: min-content 1fr min-content;</code>
+				<code>}</code>
+				<code>header {</code>
+				<code>	grid-row: 1;</code>
+				<code>	grid-column: 1 / 4;</code>
+				<code>}</code>
+				<code>nav {</code>
+				<code>	grid-row: 2;</code>
+				<code>	grid-column: 1 / 2;</code>
+				<code>	padding: 0 10px;</code>
+				<code>}</code>
+				<code>main {</code>
+				<code>	grid-row: 2;</code>
+				<code>	grid-column: 2 / 3;</code>
+				<code>	padding: 0 20px;</code>
+				<code>}</code>
+				<code>aside {</code>
+				<code>	grid-row: 2;</code>
+				<code>	grid-column: 3 / 4;</code>
+				<code>	padding: 0 10px;</code>
+				<code>}</code>
+				<code>footer {</code>
+				<code>	grid-row: 3;</code>
+				<code>	grid-column: 1 / 4;</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide">
+	<h2>grid-column</h2>
+	<img src="grid-columns.png" style="width: 100%; margin-top: 10%;">
+</section>
+
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 100%">Современный CSS</span>
+	</h2>
 </section>
 
 <section class="slide">
 	<h2>CSS-фильтры</h2>
 	<p class="medium-content"></p>
-	<div style="display: flex">
+	<div>
 		<div>
 				<pre class="hljs css">
 					<code>.image {</code>
@@ -171,7 +339,7 @@
 <section class="slide">
 	<h2>CSS-фильтры</h2>
 	<p class="medium-content"></p>
-	<div style="display: flex">
+	<div>
 		<div>
 				<pre class="hljs css">
 					<code>.image {</code>
@@ -192,7 +360,7 @@
 <section class="slide">
 	<h2>CSS-фильтры</h2>
 	<p class="medium-content"></p>
-	<div style="display: flex">
+	<div>
 		<div>
 				<pre class="hljs css">
 					<code>.image {</code>
@@ -213,7 +381,7 @@
 <section class="slide">
 	<h2>CSS-фильтры</h2>
 	<p class="medium-content"></p>
-	<div style="display: flex">
+	<div>
 		<div>
 				<pre class="hljs css">
 					<code>.image {</code>
@@ -234,7 +402,7 @@
 <section class="slide">
 	<h2>CSS-фильтры</h2>
 	<p class="medium-content"></p>
-	<div style="display: flex">
+	<div>
 		<div>
 				<pre class="hljs css">
 					<code>.image {</code>
@@ -255,7 +423,7 @@
 <section class="slide">
 	<h2>CSS-фильтры</h2>
 	<p class="medium-content"></p>
-	<div style="display: flex">
+	<div>
 		<div>
 				<pre class="hljs css">
 					<code>.image {</code>
@@ -493,6 +661,18 @@
 	</script>
 </section>
 
+<section class="slide">
+	<h2>CSS Houdini</h2>
+	<p class="medium-content"><a href="https://css-houdini.rocks/" target="_blank">Проект CSS Houdini</a></p>
+	<p class="medium-content"><a href="https://codepen.io/anon/pen/bQBpwN" target="_blank">CSS Paint API example</a></p>
+</section>
+
+<section class="slide question">
+	<h2>
+		<a style="color: royalblue" href="https://www.youtube.com/watch?v=YxW8fnY4zak" target="_blank">Even More CSS Secrets</a>
+	</h2>
+</section>
+
 <section class="slide question">
 	<h2>Окей, новый CSS &mdash; это 🔥</h2>
 </section>
@@ -525,6 +705,51 @@
 		<li>Stylus &mdash; <a href="http://stylus-lang.com/" target="_blank">stylus-lang.com</a></li>
 	</ul>
 </section>
+
+<section class="slide">
+	<h2>SASS</h2>
+	<pre class="hljs sass">
+		<code>$dark-color: #4a4a4a</code>
+		<code>$light-color: #f9f9f9</code>
+		<code>$side-color: #eee</code>
+		<code>body</code>
+		<code>  color: $dark-color</code>
+		<code>  </code>
+		<code>header, footer</code>
+		<code>  background-color: $dark-color</code>
+		<code>  color: $light-color</code>
+		<code>  </code>
+		<code>main</code>
+		<code>  background: $light-color</code>
+		<code>nav, aside</code>
+		<code>  background: $side-color</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>LESS</h2>
+	<pre class="hljs less" style="font-size: 0.8em">
+		<code>@dark-color: #4a4a4a;</code>
+		<code>@light-color: #f9f9f9;</code>
+		<code>@side-color: #eee;</code>
+		<code>body {</code>
+		<code>  color: @dark-color;</code>
+		<code>}</code>
+		<code></code>
+		<code>header, footer {</code>
+		<code>  background-color: @dark-color;</code>
+		<code>  color: @light-color;</code>
+		<code>}</code>
+		<code></code>
+		<code>main {</code>
+		<code>  background: @light-color;</code>
+		<code>}</code>
+		<code>nav, aside {</code>
+		<code>  background: @side-color;</code>
+		<code>}</code>
+	</pre>
+</section>
+
 
 <section class="slide">
 	<h2>SCSS</h2>
@@ -584,6 +809,51 @@
 		<code>import 'styles.css';</code>
 		<code> </code>
 	</pre>
+</section>
+
+<section class="slide">
+	<h2>CSS директивa @supports</h2>
+	<pre class="hljs css">
+		<code>@supports (display: flex) {</code>
+		<code>    div { display: flex; }</code>
+		<code>}</code>
+		<code> </code>
+		<code>@supports not (display: flex) {</code>
+		<code>    div { float: left; } /* задан альтернативный стиль */</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>CSS директивa @supports</h2>
+	<pre class="hljs css">
+		<code>@supports (display: -webkit-flex) or</code>
+		<code>          (display: -moz-flex) or</code>
+		<code>          (display: flex) {</code>
+		<code> </code>
+		<code>    /* добавляем сюда ваших клёвых стилей */</code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+	<pre class="hljs js">
+		<code>// использование в JS</code>
+		<code>const supportsFlex1 = CSS.supports('display', 'flex');</code>
+		<code>const supportsFlex2 = CSS.supports('(display: flex)');</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		Не забываем про методологии!
+	</h2>
+</section>
+
+<section class="slide">
+	<h2 class="shout">
+		<span style="font-size: 100%">Компонентный подход!</span>
+	</h2>
 </section>
 
 <section class="slide question">
@@ -697,41 +967,112 @@
 	</pre>
 </section>
 
+<section class="slide question">
+	<h2>
+		Кто придумывает <strong>WEB</strong>?
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>W3C &mdash; <a href="https://www.w3.org/" target="_blank">www.w3.org</a></h2>
+	<blockquote>
+		<p class="content">
+			<strong>W3C (World Wide Web Consortium &mdash; Консорциум Всемирной паутины)</strong> &mdash; организация, разрабатывающая и внедряющая технологические стандарты для Всемирной паутины. Консорциум возглавляет <strong>Тимоти Джон Бернерс-Ли</strong>
+		</p>
+	</blockquote>
+	<div>Любой стандарт W3C проходит <mark>5 стадий согласования</mark>:</div>
+	<ul lang="ru">
+		<li>Черновик спецификации (<em>Draft</em>)</li>
+		<li>Рабочий проект (<em>Working Draft</em>);</li>
+		<li>Последний созыв (<em>Last Call</em>);</li>
+		<li>Возможная рекомендация (<em>Candidate Recommendation</em>);</li>
+		<li>Предлагаемая рекомендация (<em>Proposed Recommendation</em>);</li>
+	</ul>
+	<div>и только после этого официально становится рекомендацией W3C</div>
+</section>
+
+<section class="slide">
+	<h2>WHATWG &mdash; <a href="https://whatwg.org/" target="_blank">whatwg.org</a></h2>
+	<blockquote>
+		<p class="content">
+			<strong>WHATWG (Web Hypertext Application Technology Working Group)</strong> &mdash; сообщество людей, заинтересованных в развитии Интернета. Было основано в 2004 году производителями браузеров: Apple, Mozilla Foundation и Opera Software. Основным направлением сообщества является <mark>развитие HTML и API, необходимого для веб-приложений</mark>.
+		</p>
+	</blockquote>
+	<p class="note">
+		По сути, является <strong><em>форком W3C</em></strong>. WHATWG была недовольна медленными темпами развития стандартов и уклоном W3C в сторону HTML, основанного на XML-синтаксисе
+	</p>
+	<div>Сейчас WHATWG активно разрабатывает спецификации: HTML, DOM Standard, Fetch Standard, Web workers, Storage Standard, Streams Standard...</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="2000px-HTML5_APIs_and_related_technologies_taxonomy_and_status.svg.png"
+		     style="transform-origin: center;transform: translate(-50%, -46%) scale(0.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>CSS &mdash; Cascading Style Sheets</h2>
+	<p class="small-content"></p>
+	<div>CSS одна из широкого спектра технологий, одобренных консорциумом W3C и получивших общее название «стандарты Web»</div>
+	<p class="note"><a href="https://wiki.csswg.org/" target="_blank">wiki.csswg.org</a> &mdash; рабочая группа CSS в рамках консорциума W3C</p>
+	<ul>
+		<li>CSS level 1 &mdash; декабрь 1996</li>
+		<li>CSS level 2 &mdash; май 1998</li>
+		<li>CSS level 3 &mdash; c июня 2012 ... (по сути, ещё не принята)</li>
+	</ul>
+	<div>Все CSS-спецификации &mdash; <a href="https://www.w3.org/Style/CSS/specs.en.html" target="_blank">www.w3.org/Style/CSS/specs.en.html</a></div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%;height: 80%;">
+		<img class="place" src="2000px-CSS3_taxonomy_and_status_by_Sergey_Mavrody.svg.png"
+		     style="transform-origin: center;transform: translate(-50%, -46%) scale(0.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>CSS is awesome</h2>
+	<div style="position:relative;width: 100%;height: 100%; display: flex; flex-direction: row; align-items: flex-start; flex-wrap: wrap; justify-content: center">
+		<div style="width: 250px; height: 250px; border: 2px solid; margin-right: 80px">
+			<span style="font-size: 2.7em">CSS is awesome</span>
+		</div>
+		<div style="width: 250px; height: 250px; border: 2px solid; margin-right: 80px; overflow: hidden">
+			<span style="font-size: 2.7em">CSS is awesome</span>
+		</div>
+		<div style="width: 250px; height: 250px; border: 2px solid; margin-right: 80px; overflow-x: auto; overflow-y: hidden">
+			<span style="font-size: 2.7em">CSS is awesome</span>
+		</div>
+		<div style="width: 250px; height: 250px; border: 2px solid; margin-right: 80px; overflow: hidden; text-overflow: ellipsis; font-size: 2.7em">
+			<span style="font-size: 1em">CSS is awesome</span>
+		</div>
+	</div>
+</section>
+
 <!--css всё-->
 
 
 <section class="slide">
-	<h2 class="shout"><span style="font-size: 100%">Разработка под мобильные устройства</span></h2>
+	<h2 class="shout"><span style="font-size: 80%">Кроссплатформенная разработка</span></h2>
 </section>
 
 <section class="slide">
-	<h2>StatCounter, Oct 2016</h2>
+	<h2>StatCounter, Oct 2018</h2>
 	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="stats.png"
-			 style="transform-origin: center;transform: translate(-50%, -50%) scale(0.8);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Native vs. Web</h2>
-	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="mobapps1.png"
-			 style="transform-origin: center;transform: translate(-50%, -50%) scale(1);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2>Native vs. Web</h2>
-	<div style="position:relative;width: 100%;height: 80%;">
-		<img class="place" src="mobapps2.png"
-			 style="transform-origin: center;transform: translate(-50%, -50%) scale(1.1);">
+		<img class="place" src="stats2018.png"
+			 style="transform-origin: center;transform: translate(-50%, -50%) scale(0.7);">
 	</div>
 </section>
 
 <section class="slide">
 	<h2>Подходы к разработке под<br/>мобильные устройства</h2>
 	<ul>
-		<li>Отдельная мобильная версия</li>
+		<li>Отдельная мобильная версия
+			<ul>
+				<li>отдельный домен</li>
+				<li>серверный рендеринг</li>
+			</ul>
+		</li>
 		<li>Резиновый (
 			<mark>liquid</mark>
 			) дизайн
@@ -828,39 +1169,6 @@
 	</pre>
 </section>
 
-<section class="slide">
-	<h2>CSS директивa @supports</h2>
-	<pre class="hljs css">
-		<code>@supports (display: flex) {</code>
-		<code>    div { display: flex; }</code>
-		<code>}</code>
-		<code> </code>
-		<code>@supports not (display: flex) {</code>
-		<code>    div { float: left; } /* задан альтернативный стиль */</code>
-		<code>}</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>CSS директивa @supports</h2>
-	<pre class="hljs css">
-		<code>@supports (display: -webkit-flex) or</code>
-		<code>          (display: -moz-flex) or</code>
-		<code>          (display: flex) {</code>
-		<code> </code>
-		<code>    /* добавляем сюда ваших клёвых стилей */</code>
-		<code>}</code>
-		<code> </code>
-	</pre>
-	<pre class="hljs js">
-		<code>// использование в JS</code>
-		<code>const supportsFlex1 = CSS.supports('display', 'flex');</code>
-		<code>const supportsFlex2 = CSS.supports('(display: flex)');</code>
-		<code> </code>
-	</pre>
-</section>
-
 
 <!--медиа-запросы всё-->
 
@@ -881,6 +1189,8 @@
 		<li><code>vh</code> &mdash; 1% of viewport’s height</li>
 		<li><code>vmin</code> &mdash; 1% of viewport’s smaller dimension</li>
 		<li><code>vmax</code> &mdash; 1% of viewport’s larger dimension</li>
+		<li><code>%</code> &mdash; size as relative to an element's parent object</li>
+		<li><code>fr</code> &mdash; represents a fraction of the leftover space in the grid container</li>
 	</ul>
 </section>
 
@@ -920,6 +1230,124 @@
 	<div style="position:relative;width: 100%;height: 80%;">
 		<img class="place" src="css2.gif" style="transform-origin: center;transform: translate(-50%, -50%) scale(0.8);">
 	</div>
+</section>
+
+<section class="slide">
+	<h2>CSS-тег
+		<mark>&lt;picture></mark>
+	</h2>
+	<pre class="hljs css">
+		<code>&lt;picture> </code>
+		<code>		&lt;source</code>
+		<code>			srcset="<список URL c дескрипторами>" </code>
+		<code>			[sizes="<ваши размеры в зависимости от раскладки>"]</code>
+		<code>			[media="<медиавыражение>"] </code>
+		<code>			[type="&lt;mime/type>"] </code>
+		<code>		> </code>
+		<code>		&lt;source ...></code>
+		<code>		&lt;img src="image.jpg" alt="My image" </code>
+		<code>&lt;/picture></code>
+		<code> </code>
+
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>CSS-тег
+		<mark>&lt;picture></mark>
+	</h2>
+	<pre class="hljs css">
+		<code>&lt;img </code>
+		<code>		src="images/400.jpg" </code>
+		<code>		srcset=" 400w, images/800.jpg 800w, images/1200.jpg 1200w" </code>
+		<code>		sizes="(min-width: 700px) 75vw, 100vw"</code>
+		<code>> </code>
+	</pre>
+
+	<b>Retina</b>
+	<pre class="hljs css">
+		<code>&lt;img </code>
+		<code>		src="images/400.jpg" </code>
+		<code>		srcset="images/800.jpg 2x, images/1200.jpg 3x" </code>
+		<code>		width="400" height="300"</code>
+		<code>> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>CSS-тег
+		<mark>&lt;picture></mark>
+	</h2>
+	<pre class="hljs css">
+		<code>&lt;picture> </code>
+		<code>		&lt;source</code>
+		<code>			media="(min-width: 900px)" </code>
+		<code>			srcset="images/original.jpg 1200w"</code>
+		<code>			sizes="100vw" </code>
+		<code>		> </code>
+		<code>		&lt;source</code>
+		<code>			media="(min-width: 700px) </code>
+		<code>			srcset="images/800crop.jpg 800w"</code>
+		<code>			sizes="100vw" </code>
+		<code>		> </code>
+		<code>		&lt;source ...></code>
+		<code>		&lt;img srcset="images/400crop.jpg 400w" sizes="100vw"> </code>
+		<code>&lt;/picture></code>
+		<code> </code>
+
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Адаптивность?
+	</h2>
+	<b>Увеличивается в зависимости от media query</b>
+	<pre class="hljs css">
+		<code>h1 { font-size: 14px; }</code>
+		<code>@media (min-width: 320px) {</code>
+		<code>	h1 { font-size: 20px } </code>
+		<code>}</code>
+		<code>@media (min-width: 960px) {</code>
+		<code>  h1 { font-size: 40px; } </code>
+		<code>}</code>
+		<code> </code>
+	</pre>
+	<b>Увеличивается в зависимости от размера экрана</b>
+
+	<pre class="hljs css">
+		<code>h1 { font-size: 14px + 5vw; }</code>
+		<code> </code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>CSS шлюзы
+	</h2>
+	<pre class="hljs css">
+		<code>h1 { font-size: 20px; }</code>
+		<code>@media (min-width: 320px) {</code>
+		<code>	h1 { font-size: calc( 3.125vw + 10px ); } </code>
+		<code>}</code>
+		<code>@media (min-width: 960px) {</code>
+		<code>  h1 { font-size: 40px; } </code>
+		<code>}</code>
+
+		<code> </code>
+
+	</pre>
+
+	<a style="color: royalblue" href="https://fvsch.com/css-locks/demo1" target="_blank">CSS шлюзы пример</a>
+	<br>
+	<a style="color: royalblue" href="https://fvsch.com/css-locks/demo2" target="_blank">CSS шлюзы еще пример</a>
+	<br>
+	<a style="color: royalblue" href="https://fvsch.com/css-locks/demo3" target="_blank">CSS шлюзы и еще пример</a>
+</section>
+
+<section class="slide question">
+	<h2>
+		<a style="color: royalblue" href="https://habr.com/company/mailru/blog/315196/" target="_blank">CSS шлюзы пример</a>
+	</h2>
+
 </section>
 
 <section class="slide question">
@@ -1088,6 +1516,8 @@
 	</pre>
 </section>
 
+
+
 <section class="slide question">
 	<h2>Accessibility &mdash; <a style="color: royalblue" href="https://habrahabr.ru/hub/accessibility/" target="_blank">тред на Habranabr</a></h2>
 </section>
@@ -1110,6 +1540,12 @@
 
 <section class="slide question">
 	<h2>
+		<a style="color: royalblue" href="https://youtu.be/hSyO6y4B4BE?t=15918" target="_blank">Семантика для циников, Вадим Макеев</a>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
 		<a style="color: royalblue" href="https://developers.google.com/web/fundamentals/design-and-ux/principles/" target="_blank">What Makes a Good Mobile Site?</a>
 	</h2>
 </section>
@@ -1119,6 +1555,7 @@
 		<a style="color: royalblue" href="https://web.archive.org/web/20151103001838/http://www.luster.io/blog/9-29-14-mobile-web-checklist.html" target="_blank">Mobile Web App Checklist</a>
 	</h2>
 </section>
+
 
 
 <!--нативные штуки всё-->
@@ -1212,6 +1649,8 @@
 		<code>    "orientation": "landscape", // portrait, any</code>
 		<code>    "background_color": "#0F0848",</code>
 		<code>    "theme_color": "#0F0848",</code>
+		<code>    "related_applications": [ ... ]</code>
+		<code>    "prefer_related_applications": false</code>
 		<code>    "icons": [ ... ]</code>
 		<code>}</code>
 		<code> </code>
@@ -1267,6 +1706,8 @@
 <section class="slide">
 	<h2>Полезные ссылки</h2>
 	<ul lang="en">
+
+		<li><a href="https://youtu.be/hSyO6y4B4BE?t=15918" target="_blank">Семантика для циников, Вадим Макеев</a></li>
 		<li><a href="https://frontender.info/a-guide-to-flexbox/" target="_blank">Полное руководство по Flexbox</a></li>
 		<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">Гриды</a> и <a
 				href="https://www.youtube.com/watch?v=JoRVUILXLxU" target="_blank">доклад</a> Вадима Макеева по гридам
@@ -1278,6 +1719,14 @@
 		<li><a href="https://m.alphasights.com/css-evolution-from-css-sass-bem-css-modules-to-styled-components-d4c1da3a659b" target="_blank">CSS Evolution</a></li>
 	</ul>
 </section>
+
+<!--<section class="slide question">-->
+<!--	<h2>-->
+<!--		Го тусить на-->
+<!--		<a style="color: royalblue; font-size: 75%" href="http://localhost:9000/"-->
+<!--		   target="_blank">http://localhost:9000/</a>-->
+<!--	</h2>-->
+<!--</section>-->
 
 <section class="slide">
 	<h2 class="shout">Всем спасибо!</h2>

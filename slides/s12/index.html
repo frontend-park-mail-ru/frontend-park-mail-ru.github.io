@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Резюме Frontend-разработчика в 2018 году</title>
+	<title>Резюме Frontend-разработчика в 2019 году</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,13 +14,13 @@
 <body class="shower list">
 
 <header class="caption">
-	<h1>Резюме Frontend-разработчика в 2018 году</h1>
-	<p>Технопарк, весна, 2018 г.</p>
+	<h1>Резюме Frontend-разработчика в 2019 году</h1>
+	<p>Технопарк, осень, 2019 г.</p>
 </header>
 
 <section class="slide first">
 	<h2 class="shout">
-		<small style="font-size:90%">Резюме <strong><em>Frontend-разработчика</em></strong> в 2018 году</small>
+		<small style="font-size:90%">Резюме <strong><em>Frontend-разработчика</em></strong> в 2019 году</small>
 		<br/>
 		<small>Слайды доступны по ссылке<br/>
 			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
@@ -36,15 +36,17 @@
 
 <section class="slide">
 	<h2>Новые WEB API, на которые стоит <br>обратить внимание</h2>
-	<p class="medium-content"></p>
 	<ul>
 		<li><strong>Payment Request API</strong> &mdash; cross-browser standard for Payment transaction process</li>
 		<li><strong>Web Bluetooth API</strong> &mdash; communications over GATT with nearby user-selected Bluetooth
 			devices
 		</li>
-		<li><strong>WebAssembly</strong> &mdash; new safe, portable, low-level code format for browsers</li>
 		<li><strong>MediaRecorder API</strong> &mdash; MediaStream Recording</li>
 		<li><strong>WebRTC</strong> &mdash; Real-time Peer-to-peer Communications Between Browsers</li>
+		<li><strong>Credential Management API</strong> &mdash; store and retrieve user, federated , and public key credentials</li>
+		<li><strong>Feature Policy</strong> &mdash; mechanism to allow and deny the use of browser features</li>
+		<li><strong>Trusted-types API🧪</strong> &mdash; allows applications to lock down DOM XSS injection sinks to only accept non-spoofable, typed values in place of strings</li>
+		<li><strong>Page Lifecycle API</strong> &mdash; supports browsers' ability to manage lifecycle of web pages</li>
 	</ul>
 </section>
 
@@ -139,109 +141,6 @@
 		</video>
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/9mv-8gSyalU?rel=0&amp;start=1290" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen style="position: absolute; z-index: 10; transform-origin: center; left: 32%; top: 7%; transform: scale(1.2);"></iframe>
 	</div>
-</section>
-
-<section class="slide question">
-	<h2>WebAssembly</h2>
-</section>
-
-<section class="slide">
-	<h2>WebAssembly &mdash; <a href="https://caniuse.com/#feat=wasm" target="_blank">caniuse</a></h2>
-	<div style="position: relative; width: 100%; height: 100%;">
-		<img class="place" src="wasm-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.49);">
-	</div>
-</section>
-
-<section class="slide">
-	<h2>WebAssembly</h2>
-	<p class="medium-content">Во время создания WebAssembly решалась следующая задача: <strong>быстро исполнять код в браузере</strong></p>
-	<blockquote>
-		<p>
-			<strong>WebAssembly (wasm)</strong> &mdash; эффективный низкоуровневый байт-код, предназначенный для исполнения в браузере. WebAssemblу представляет собой переносимое абстрактное синтаксическое дерево, обеспечивающее как более быстрый парсинг, так и более быстрое выполнение кода, чем JavaScript &mdash;
-			<a href="https://codelabs.developers.google.com/codelabs/web-assembly-intro/" target="_blank">developers.google.com</a>
-		</p>
-	</blockquote>
-	<p class="note"><strong>Применения:</strong> редактирование изображений/видео/музыки, криптография, математические вычисления, игры...</p>
-</section>
-
-<section class="slide">
-	<h2>Что же такое WebAssembly?</h2>
-	<p class="medium-content"></p>
-	<ul>
-		<li>Бинарный формат</li>
-		<li>НЕ язык программирования, а байт-код</li>
-		<li><strong>Загружается в браузер и исполняется в браузере</strong> &mdash; формально, WebAssembly исполняется JavaScript-движком, а не самим браузером, поэтому есть и другие варианты исполнения, например, под Node.js</li>
-		<li>Исполняется виртуальной машиной</li>
-		<li>НЕ имеет ничего общего с WEB, кроме того что общается с внешним миром через JavaScript</li>
-	</ul>
-</section>
-
-<section class="slide">
-	<h2>WebAssembly</h2>
-	<pre class="hljs c">
-		<code>// исходник на C</code>
-		<code>int fib(int n) {</code>
-		<code>    if (n == 0) { return 0; } else {</code>
-		<code>        if ((n == -1) || (n == 1)) { return 1; } else  {</code>
-		<code>            if (n > 0) { return fib(n - 1) + fib(n - 2); }</code>
-		<code>            else { return fib(n + 2) - fib(n + 1); }</code>
-		<code>        }</code>
-		<code>    }</code>
-		<code>}</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>WebAssembly</h2>
-	<pre class="hljs c">
-		<code>// текстовое представление WAST</code>
-		<code>(module</code>
-		<code>    (table 0 anyfunc)</code>
-		<code>    (memory $0 1)</code>
-		<code>    (data (i32.const 12) "\01\00\00\00\00\00\00\00\01\00\00\00")</code>
-		<code>    (export "memory" (memory $0))</code>
-		<code>    (export "fib" (func $fib))</code>
-		<code>    (func $fib (param $0 i32) (result i32)</code>
-		<code>        (local $1 i32)</code>
-		<code>        (block $label$0</code>
-		<code>            (br_if $label$0</code>
-		<code>                (i32.ge_u</code>
-		<code>                // ...</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>WebAssembly</h2>
-	<pre class="hljs c">
-		<code>// скомпилированный байт-код wasm</code>
-		<code>const wasmCode = new Uint8Array(</code>
-		<code><mark>[0,97,115,109,1,0,0,0,1,134,128,128,128,0,1,96,1,127,1,127,3,130,128,128,</mark></code>
-		<code><mark>128,0,1,0,4,132,128,128,128,0,1,112,0,0,5,131,128,128,128,0,1,0,1,6,129,</mark></code>
-		<code><mark>128,128,128,0,0,7,144,128,128,128,0,2,6,109,101,109,111,114,121,2,0,3,102,</mark></code>
-		<code><mark>105,98,0,0,10,203,128,128,128,0,1,197,128,128,128,0,1,1,127,2,64,32,0,65,1,</mark></code>
-		<code><mark>106,34,1,65,3,79,13,0,32,1,65,2,116,65,12,106,40,2,0,15,11,2,64,32,0,65,1,</mark></code>
-		<code><mark>72,13,0,32,0,65,127,106,16,0,32,0,65,126,106,16,0,106,15,11,32,0,65,2,106,</mark></code>
-		<code><mark>16,0,32,1,16,0,107,11,11,146,128,128,128,0,1,0,65,12,11,12,1,0,0,0,0,0,0,0,</mark></code>
-		<code><mark>1,0,0,0]</mark></code>
-		<code>);</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>WebAssembly</h2>
-	<pre class="hljs c">
-		<code>// запускаем wasm-модуль</code>
-		<code>const wasmCode = new Uint8Array([...]);</code>
-		<code>const wasmModule = new WebAssembly.Module(wasmCode);</code>
-		<code>const wasmInstance = new WebAssembly.Instance(wasmModule, []);</code>
-		<code> </code>
-		<code>console.log(wasmInstance.exports.fib(10));</code>
-		<code> </code>
-	</pre>
-	<p>Демо &mdash; <a href="http://webassembly.org/demo/" target="_blank">Танки</a></p>
 </section>
 
 <section class="slide question">
@@ -420,6 +319,228 @@
 	</pre>
 </section>
 
+<section class="slide question">
+	<h2>Credential Management API</h2>
+</section>
+
+<section class="slide">
+	<h2>Credential Management &mdash; <a href="https://caniuse.com/#feat=credential-management" target="_blank">caniuse</a></h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="credential-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.39);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Credential Management API</h2>
+	<blockquote>
+		<p>
+			<strong>Credential Management API</strong> &mdash; позволяет сохранять и получать данные для аутентификации &mdash;
+			<a href="https://developers.google.com/web/fundamentals/security/credential-management/" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+	<div style="text-align: center">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/O3mBdKYMsMY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Credential Management API</h2>
+	<pre class="hljs js">
+		<code>navigator.credentials.get({</code>
+		<code>  password: true</code>
+		<code>}).then(function(credential) {</code>
+		<code>  if (credential) {</code>
+		<code>    // данные для аутентификации</code>
+		<code>    console.log(`Username: ${credential.id}`);</code>
+		<code>    console.log(`Password: ${credential.password}`);</code>
+		<code>  }</code>
+		<code>});</code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 50%;">
+		<img class="place" src="credential-flow.png"
+				style="transform-origin: center;transform: translate(-50%,-30%) scale(1);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h2>Feature-Policy</h2>
+</section>
+
+<section class="slide">
+	<h2>Feature-Policy &mdash; <a href="https://caniuse.com/#feat=feature-policy" target="_blank">caniuse</a></h2>
+	<div style="position: relative; width: 100%; height: 100%;">
+		<img class="place" src="feature-policy-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.39);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Feature-Policy</h2>
+	<blockquote>
+		<p>
+			<strong>HTTP-заголовок Feature-Policy</strong> &mdash; позволяет разрешать или запрещать браузеру выполнение определенных функций и API для улучшения приватности&mdash;
+			<a href="https://developers.google.com/web/updates/2018/06/feature-policy" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+	<pre class="hljs http">
+		<code>Feature-Policy: &lt;feature&gt; &lt;allow list origin(s)&gt;</code>
+	</pre>
+	<div>
+		Standardized Features:
+		<p>
+			accelerometer, ambient-light-sensor, autoplay, camera, document-domain, fullscreen, gyroscope, magnetometer, microphone, midi, payment, picture-in-picture, sync-xhr, usb, wake-lock, xr2
+		</p>
+	</div>
+</section>
+
+
+<section class="slide">
+	<h2>Feature-Policy – Пример</h2>
+	<pre class="hljs http">
+		<code>Feature-Policy: geolocation 'none'</code>
+	</pre>
+	<div style="text-align: center;">
+			<img src="feature-policy-example.png">
+	</div>
+	<pre class="hljs js">
+		<code>document.featurePolicy.allowedFeatures(); // список разрешенных фич</code>
+		<code>// ["geolocation", "midi",  "camera", "usb", "autoplay",...]</code>
+		<code> </code>
+		<code>document.featurePolicy.allowsFeature('geolocation');</code>
+		<code>// true</code>
+		<code> </code>
+		<code>// список разрешенных фич, независимо от того, действуют ли они</code>
+		<code>document.featurePolicy.features();</code>
+		<code>// ["geolocation", "midi",  "camera", "usb", "autoplay",...]</code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>Trusted-types 🧪</h2>
+</section>
+
+<section class="slide">
+	<h2>Trusted-types – предпоссылки</h2>
+	<pre class="hljs js">
+		<code>const templateId = location.hash.match(/tplid=([^;&]*)/)[1];</code>
+		<code>// ...</code>
+		<code>document.head.innerHTML += </code>
+		<code>  `&lt;link rel=&quot;stylesheet&quot; href=&quot;./templates/${templateId}/style.css&quot;&gt;`</code>
+		<code> </code>
+		<code>// какие есть проблемы у этого кода?</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Trusted-types – предпосылки</h2>
+	<pre class="hljs js">
+		<code>https://example.com#tplid=&quot;&gt;&lt;img src=x onerror=alert(1)&gt;</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Trusted-types 🧪</h2>
+	<blockquote>
+		<p>
+			<strong>Trusted-types</strong> &mdash; экспериментальное API, которое запрещает присвоение "небезопасных" строк в методах, которые подвержены XSS &mdash;
+			<a href="https://developers.google.com/web/updates/2019/02/trusted-types" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+	<ul>
+		<li><strong>TrustedHTML</strong> (.innerHTML)</li>
+		<li><strong>TrustedURL</strong> (a.href)</li>
+		<li><strong>TrustedScriptURL</strong> (script.src)</li>
+		<li><strong>TrustedScriptURL</strong> (el.onlick)</li>
+
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Trusted-types – пример</h2>
+	<pre class="hljs http">
+		<code>Content-Security-Policy: trusted-types *</code>
+	</pre>
+	<pre class="hljs js">
+		<code>const templateId = location.hash.match(/tplid=([^;&amp;]*)/)[1];</code>
+		<code>// typeof templateId == &quot;string&quot;</code>
+		<code>document.head.innerHTML += templateId // Throws a TypeError.</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Trusted-types – пример</h2>
+	<pre class="hljs js">
+		<code>const templatePolicy = TrustedTypes.createPolicy(&apos;template&apos;, {</code>
+		<code>  createHTML: (templateId) =&gt; {</code>
+		<code>    const tpl = templateId;</code>
+		<code>    if (/^[0-9a-z-]$/.test(tpl)) { // magic!</code>
+		<code>      return &grave;&lt;link rel=&quot;stylesheet&quot;</code>
+		<code>        href=&quot;./templates/${tpl}/style.css&quot;&gt;&grave;;</code>
+		<code>    }</code>
+		<code>    throw new TypeError();</code>
+		<code>  }</code>
+		<code>});</code>
+		<code>const html = </code>
+		<code>  templatePolicy.createHTML(location.hash.match(/tplid=([^;&amp;]*)/)[1]);</code>
+		<code>// html instanceof TrustedHTML</code>
+		<code>document.head.innerHTML += html;</code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>Page Lifecycle API</h2>
+</section>
+
+<section class="slide">
+	<h2>Page Lifecycle API</h2>
+	<blockquote>
+		<p>
+			<strong>Page Lifecycle API</strong> &mdash; позволяет отслеживать жизненный цикл страницы и реагировать на его изменения&mdash;
+			<a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api" target="_blank">developers.google.com</a>
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide question">
+	<div style="position:relative;width: 100%; height: 50%;">
+		<img class="place" src="page-lifecycle-api.png"
+				style="transform-origin: center;transform: translate(-50%,-43%) scale(0.3);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Page Lifecycle API – пример</h2>
+	<pre class="hljs js">
+		<code>document.addEventListener(&apos;freeze&apos;, (event) =&gt; {</code>
+		<code>  // страница "заморожена"</code>
+		<code>});</code>
+		<code> </code>
+		<code>document.addEventListener(&apos;resume&apos;, (event) =&gt; {</code>
+		<code>  // страница "разморожена"</code>
+		<code>});</code>
+		<code> </code>
+		<code>// Типы событий:</code>
+		<code>// focus, blur, visibilitychange, freeze,</code>
+		<code>// resume, pageshow, pagehide, beforeunload, unload</code>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>Нужно еще больше API!</h2>
+</section>
+
+<section class="slide">
+	<h2>Как находить новые API</h2>
+	<ul>
+		<li><a href="https://developers.google.com/web/" target="_blank">https://developers.google.com/web/</a> - официальный сайт Google для web-разработчиков</li>
+		<li><a href="https://github.com/tc39" target="_blank">https://github.com/tc39</a> - комитет, принимающий изменения в Ecma-262</li>
+		<li><a href="https://wicg.io" target="_blank">https://wicg.io</a> - объединение, которое создает и публикует предложения по новым API</li>
+		<li><a href="https://t.me/juliarderity" target="_blank">https://t.me/juliarderity</a> - канал Сергея Рубанова и Романа Дворнова об ECMAScript, WebAssembly, Web APIs, specs</li>
+	</ul>
+</section>
+	
 <!--Новые навыки и знания-->
 
 <section class="slide">
@@ -436,7 +557,7 @@
 	<h2>Теория</h2>
 	<p class="medium-content"></p>
 	<ul>
-		<li>Знать про протоколы WEB'а: HTTP, HTTP/2, HTTPS, WebSocket</li>
+		<li>Знать про протоколы WEB'а: HTTP/1 (HTTP/1.1), HTTP/2, HTTP/3, HTTPS, WebSocket</li>
 		<li>Знание JavaScript &mdash; причём, полезно знать как es6+, так и es5. TypeScript</li>
 		<li>Знание возможностей браузеров (HTML5, CSS), уметь в <em>кроссбраузерность</em>, понимать, как браузеры работают <em>внутри</em></li>
 		<li>Вопросы, связанные с безопасностью web-приложений (что такое XSS, как работают cookie, что такое CORS...)</li>
@@ -458,7 +579,7 @@
 		<li>Инструменты разработки: Node.js</li>
 		<li>Инструменты сборки: Webpack, grunt, gulp</li>
 		<li>Инструменты работы с CSS: PostCSS</li>
-		<li>Модульные системы: ES6-модули, AMD, UMD</li>
+		<li>Модульные системы: ES6-модули, AMD, UMD, commonjs</li>
 		<li>DevTools браузеров</li>
 	</ul>
 </section>
@@ -483,6 +604,7 @@
 				<li>Angular</li>
 				<li>VueJS</li>
 				<li>Prototype</li>
+				<li>Svelte</li>
 			</ul>
 		</li>
 	</ul>
@@ -534,7 +656,7 @@
 <section class="slide question">
 	<h2>
 		<div style="font-size: 115%; display: inline-block; line-height: 1;"><strong>Верстайте</strong> его!</div>
-		<div style="font-size: 50%; display: inline-block; line-height: 1;">Например &mdash; как <a style="color: darkblue;" href="https://ru.pinterest.com/search/pins/?q=frontend%20developer%20cv" target="_blank">тут</a>, <a style="color: darkblue;" href="https://sergeysova.com/" target="_blank">живой пример</a></div>
+		<div style="font-size: 50%; display: inline-block; line-height: 1;">Например &mdash; как <a style="color: darkblue;" href="https://ru.pinterest.com/search/pins/?q=frontend%20developer%20cv" target="_blank">тут</a>, <a style="color: darkblue;" href="https://zabanaa.github.io" target="_blank">живой пример</a></div>
 	</h2>
 </section>
 
@@ -604,17 +726,6 @@
 	</ul>
 </section>
 
-<section class="slide">
-	<h2>Node.JS</h2>
-	<div style="position:absolute;width: 100%; height: 75%;">
-		<img class="place" src="spring.png"
-			 style="transform-origin: center;transform: translate(-52%,-70%) scale(0.44);">
-	</div>
-	<div style="position:absolute;width: 100%; height: 75%;">
-		<img class="place" src="socketio.png"
-			 style="transform-origin: center;transform: translate(-52%,-20%) scale(0.44);">
-	</div>
-</section>
 
 <section class="slide">
 	<h2><a href="https://habrahabr.ru/post/123154/" target="_blank">Производительность Node.js</a></h2>
@@ -635,66 +746,6 @@
 			scrolling="no"></iframe>
 </section>
 
-<section class="slide">
-	<h2>Node.JS</h2>
-	<p class="medium-content">Структура проекта</p>
-	<pre class="hljs bash">
-		<code>app/</code>
-		<code>    package.json</code>
-		<code>    node_modules/</code>
-		<code>    index.js</code>
-		<code>    ...</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>Node.JS</h2>
-	<pre class="hljs js">
-		<code>// circle.js</code>
-		<code>'use strict';</code>
-		<code>const PI = 3.1415;</code>
-		<code> </code>
-		<code><mark>exports</mark>.PI = PI;    // module.exports.PI = ...</code>
-		<code> </code>
-		<code><mark>module.exports</mark> = function (radius) {</code>
-		<code>    return 2 * PI * radius;</code>
-		<code>};</code>
-		<code> </code>
-		</pre>
-</section>
-
-<section class="slide">
-	<h2>Node.JS</h2>
-	<pre class="hljs js">
-		<code>(function (exports, require, module, __filename, __dirname) {</code>
-		<code>    'use strict';</code>
-		<code>    const PI = 3.1415;</code>
-		<code>     </code>
-		<code>    <mark>exports</mark>.PI = PI;    // module.exports.PI = ...</code>
-		<code>     </code>
-		<code>    <mark>module.exports</mark> = function (radius) {</code>
-		<code>        return 2 * PI * radius;</code>
-		<code>    };</code>
-		<code>});</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>Node.JS</h2>
-	<pre class="hljs js">
-		<code>"use strict";</code>
-		<code>const circle = <mark>require</mark>('./circle.js');</code>
-		<code>const fs = <mark>require</mark>('fs');</code>
-		<code> </code>
-		<code>const PI = circle.PI;</code>
-		<code> </code>
-		<code>console.log('PI = ', PI);</code>
-		<code>console.log('square = ', circle(2));</code>
-		<code> </code>
-	</pre>
-</section>
 
 <section class="slide">
 	<h2>Node.JS</h2>
@@ -814,6 +865,8 @@
 		<li>Visual Studio Code</li>
 		<li>GitHub Desktop</li>
 		<li>Hyper</li>
+		<li>Discord</li>
+		<li>Spotify</li>
 	</ul>
 </section>
 
@@ -822,10 +875,6 @@
 		<img class="place" src="electron-arch.jpg"
 			 style="transform-origin: center;transform: translate(-50%,-50%) scale(1.8);">
 	</div>
-</section>
-
-<section class="slide question">
-	<h2>Пример</h2>
 </section>
 
 <section class="slide question">
@@ -863,7 +912,7 @@
 		<p><b>React Native</b> &mdash; фреймворк для построения нативных мобильных приложений с использованием React</p>
 	</blockquote>
 	<blockquote>
-		<p><b>ReactXP</b> &mdash; новомодная поделка от Microsoft</p>
+		<p><b>ReactXP</b> &mdash; <s>новомодная</s> поделка от Microsoft</p>
 	</blockquote>
 	<blockquote>
 		<p><b>Native Script</b> &mdash; библиотека, позволяющая делать кросс-платформенные приложения, используя XML,
@@ -978,8 +1027,8 @@
 	<h2>Защита проектов &mdash; <em>2 июня</em></h2>
 	<p><strong>Регламент</strong></p>
 	<ul>
-		<li>Начало 2 июня (суббота), аудитория 433, в 10:00</li>
-		<li>Подготовка с 8:30 утра (я в это время буду уже на месте)</li>
+		<li>Начало 2 июня (воскресенье), офис Mail.Ru, в 14:00</li>
+		<li>Подготовка с 13:00 (я в это время буду уже на месте)</li>
 		<li><strong>Накануне вам необходимо будет получить допуск:</strong>
 			<ul lang="en">
 				<li><strong>по-максимуму</strong> поправить все критические баги в ваших проектах</li>
@@ -1030,7 +1079,7 @@
 <section class="slide">
 	<h2>Менторство</h2>
 	<p class="small-content"><strong>Многих из вас мы будем рады увидеть в рядах наших менторов в следующем семестре!</strong></p>
-	<p>Пишите <a href="mailto:a.tyuldyukov@corp.mail.ru&subject=Менторство">Лёше Тюльдюкову</a>, если вы хотите стать одним из менторов и делиться своими знаниями и опытом со следующими поколениями студентов</p>
+	<p>Пишите <a href="mailto:i.drujinin@corp.mail.ru&subject=Менторство">Игорю Дружинину</a>, если вы хотите стать одним из менторов и делиться своими знаниями и опытом со следующими поколениями студентов</p>
 </section>
 
 <!--Конец? Конец.-->

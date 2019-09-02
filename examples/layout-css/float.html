@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>float</title>
+	<style>
+		/* from https://github.com/oxalorg/sakura */
+		html {
+			font-size: 62.5%;
+			font-family: serif;
+		}
+		body {
+			font-size: 1.8rem;
+			line-height: 1.618;
+			max-width: 38em;
+			margin: auto;
+			color: #4a4a4a;
+			background-color: #f9f9f9;
+			padding: 13px;
+		}
+		@media (max-width: 684px) {
+			body {
+				font-size: 1.53rem;
+			}
+		}
+		@media (max-width: 382px) {
+			body {
+				font-size: 1.35rem;
+			}
+		}
+		h1, h2, h3, h4, h5, h6 {
+			line-height: 1.1;
+			font-family: Verdana, Geneva, sans-serif;
+			font-weight: 700;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+			word-break: break-word;
+			hyphens: auto;
+		}
+		h1 {
+			font-size: 2.35em;
+		}
+		h2 {
+			font-size: 2em;
+		}
+		h3 {
+			font-size: 1.75em;
+		}
+		h4 {
+			font-size: 1.5em;
+		}
+		h5 {
+			font-size: 1.25em;
+		}
+		h6 {
+			font-size: 1em;
+		}
+
+		/* some colors */
+		body {
+			margin: 0;
+			padding: 0;
+			max-width: inherit;
+			background: #fff;
+			color: #4a4a4a;
+		}
+		header, footer {
+			font-size: large;
+			text-align: center;
+			padding: 0.3em 0;
+			background-color: #4a4a4a;
+			color: #f9f9f9;
+		}
+		nav {
+			background: #eee;
+		}
+		main {
+			background: #f9f9f9;
+		}
+		aside {
+			background: #eee;
+		}
+
+		/* FLOAT */
+		body {
+			padding-left: 200px;
+			padding-right: 190px;
+			min-width: 240px;
+		}
+		header, footer {
+			margin-left: -200px;
+			margin-right: -190px;
+		}
+		main, nav, aside {
+			position: relative;
+			float: left;
+		}
+		main {
+			padding: 0 20px;
+			width: 100%;
+		}
+		nav {
+			width: 180px;
+			padding: 0 10px;
+			right: 240px;
+			margin-left: -100%;
+		}
+		aside {
+			width: 130px;
+			padding: 0 10px;
+			margin-right: -100%;
+		}
+		footer {
+			clear: both;
+		}
+		* html nav {
+			left: 150px;
+		}
+	</style>
+</head>
+<body>
+<header>Header</header>
+<div class="container">
+	<main>
+		<h1>css is awesome</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</main>
+	<nav>
+		<h4>navigation</h4>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost
+		</p>
+	</nav>
+	<aside>
+		<h4>aside</h4>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+	</aside>
+</div>
+<footer>Footer</footer>
+</body>
+</html>

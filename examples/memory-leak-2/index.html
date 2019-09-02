@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Memory leak 2</title>
+</head>
+<body>
+
+<button id="stop">Stop!</button>
+<script>
+	'use strict';
+
+	function getString () {
+		let huge = 'x'.repeat(15).repeat(1024).repeat(1024); // 15МБ строка
+		let small = huge.substr(0, 25); //Маленький кусочек
+		return small;
+	}
+
+	const arr = [];
+	const t = setInterval(function () {
+		let str = getString();
+		console.log('Добавляем памяти:', str.length + ' байт');
+		arr.push(str);
+		console.log('Текущая память страницы:', JSON.stringify(arr).length + ' байт');
+	}, 1000);
+
+	stop.onclick = function () {
+		clearInterval(t);
+	}
+
+</script>
+
+</body>
+</html>

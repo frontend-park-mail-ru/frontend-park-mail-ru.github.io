@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
 	<title>Модульность, разработка компонентов, шаблонизация</title>
 	<meta charset="utf-8">
@@ -14,20 +14,135 @@
 <body class="shower list">
 
 <header class="caption">
-	<h1>Модульность, разработка компонентов, шаблонизация</h1>
-	<p>Технопарк, весна, 2018 г.</p>
+	<h1>Функции, мультипарадигменный JS, модульность, разработка компонентов, шаблонизация</h1>
+	<p>Технопарк, осень, 2019 г.</p>
 </header>
 
 <section class="slide first">
-	<h2 class="shout">Модули JavaScript<br/>
+	<h2 class="shout">
+		<small style="font-size: 60px">Функции, мультипарадигменный&nbspJS, модульность, разработка&nbspкомпонентов,
+			шаблонизация
+		</small>
+		<br/>
 		<small>Слайды доступны по ссылке<br/>
 			<a href="https://frontend-park-mailru.firebaseapp.com/">frontend-park-mailru.firebaseapp.com</a>
 		</small>
 	</h2>
 </section>
 
+<section class="slide">
+	<h2 class="shout">Немного философии</h2>
+</section>
+
+<section class="slide">
+	<h2>Что такое функция?</h2>
+	<p class="medium-content">
+	<blockquote>Фу́нкция (лат. functio — «исполнение, совершение; служебная обязанность») — отношение между элементами,
+		при котором изменение в одном элементе влечёт изменение в другом
+	</blockquote>
+	</p>
+	<ul lang="ru">
+		<li><b>Математика</b> – <i>отображение или преобразование элементов одного множества в элементы другого
+			множества</i>
+		</li>
+		<li><b>Программирование</b> – <i>ссылка на блок операторов (не обязательно именованный), реализующий
+			последовательность
+			действий</i></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Чистые (pure) функции</h2>
+	<p class="medium-content">
+	<blockquote>
+		Чистыми (pure) называются функции, не производящие побочных эффектов
+	</blockquote>
+	</p>
+
+	<ul lang="ru"> Такая функция:
+		<li>Вычисляет результат
+			<mark>только</mark>
+			на основе аргументов
+		</li>
+		<li>Возвращает
+			<mark><i>гарантированно детерминированный</i></mark>
+			результат
+		</li>
+	</ul>
+
+	<ul lang="ru"> Плюсы:
+		<li>
+			Легче читать и понимать код
+		</li>
+		<li>
+			Легче тестировать (не надо создавать «условий»)
+		</li>
+		<li>
+			Надежнее, потому что не зависят от «погоды» и состояния окружения, только от аргументов
+		</li>
+		<li>Можно запускать параллельно, можно кешировать результат и т.д. и т.п.</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Чистые (pure) функции</h2>
+	<div style="position:relative; width: 100%; height: 80%; overflow: hidden;">
+		<img class="place" src="pure_functions.png" width="100%">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Функции чистые, а мир вокруг...</h2>
+	<p class="medium-content">
+	<blockquote>
+		"Не надо быть гением, чтобы понять, что у мира есть проблемы." ©&nbspфильм&nbspХранители
+	</blockquote>
+	</p>
+
+	<p class="medium-content">
+		Примеры побочных эффектов: печать, сетевой запрос, изменение состояния.
+		<br/>
+		<br/>
+		<code>Math.random</code>
+	</p>
+
+	<p class="medium-content">
+		Вывод – без фанатизма.
+	</p>
+</section>
+
+<section class="slide">
+	<h2 class="shout">Функции в JavaScript</h2>
+</section>
+
 <section class="slide question">
 	<h2>
+		<small style="font-size: 60%; display: inline-block;">Примеры по <a
+				href="https://github.com/frontend-park-mail-ru/3-lectrure-samples/tree/master/simple" target="_blank">ссылке</a>
+		</small>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Объекты первого класса</h2>
+	<p class="medium-content">
+	<blockquote>
+		Объектами первого класса (англ. first-class object, first-class entity, first-class citizen) в контексте
+		конкретного языка программирования называются элементы, которые могут быть переданы как параметр, возвращены из
+		функции, присвоены переменной.
+	</blockquote>
+	</p>
+
+	<p class="medium-content">
+		Функции в JavaScript – объекты первого класса.
+		<br/>
+		Это значит, что в JS можно создавать
+		<mark>функции высшего порядка</mark>
+	</p>
+</section>
+
+<section class="slide">
+	<h2 class="shout">
 		<strong>Замыкания!</strong> <br>
 		<small style="font-size: 60%; display: inline-block;">или как работает JavaScript</small>
 	</h2>
@@ -35,7 +150,10 @@
 
 <section class="slide">
 	<h2>Лексическое окружение</h2>
-	<p>Все переменные внутри функции &mdash; это свойства специального внутреннего объекта <mark>LexicalEnvironment</mark>, который создаётся при её запуске</p>
+	<p>Все переменные внутри функции &mdash; это свойства специального внутреннего объекта
+		<mark>LexicalEnvironment</mark>
+		, который создаётся при её запуске
+	</p>
 	<pre class="hljs js">
 		<code>function sayHello(name) {</code>
 		<code>    const magicNumber = 42;</code>
@@ -65,6 +183,14 @@
 	</pre>
 </section>
 
+<section class="slide question">
+	<h2>
+		<small style="font-size: 60%; display: inline-block;">Ссылка на <code><a
+				href="https://www.ecma-international.org/ecma-262/#sec-executable-code-and-execution-contexts"
+				target="_blank">стандарт</a></code></small>
+	</h2>
+</section>
+
 <section class="slide">
 	<h2>Демонстрация</h2>
 	<div style="position:relative; width: 100%; height: 80%; overflow: hidden;">
@@ -73,13 +199,15 @@
 </section>
 
 <section class="slide">
-	<h2>Внешние переменные</h2>
+	<h2>Замыкание</h2>
 	<pre class="hljs js">
 		<code>function sum(operand1) {</code>
 		<code>    return function(operand2) {</code>
 		<code>        console.log(operand1 + operand2);</code>
 		<code>    }</code>
 		<code>}</code>
+		<code> </code>
+		<code>// const sum = a => b => a + b</code>
 		<code> </code>
 		<code>let plus3 = sum(3);</code>
 		<code>plus3(6); // 9</code>
@@ -88,62 +216,65 @@
 </section>
 
 <section class="slide">
-	<h2>Внешние переменные</h2>
+	<h2>Замыкание</h2>
 	<div style="position:relative;width: 100%; height: 85%; overflow: hidden">
-		<img class="place" src="closure.png" style="transform-origin: center;transform: translate(-50%,-52%) scale(0.7);">
+		<img class="place" src="closure.png"
+		     style="transform-origin: center;transform: translate(-50%,-52%) scale(0.7);">
 	</div>
 </section>
 
+
 <section class="slide">
-	<h2>Приватные переменные</h2>
-	<pre class="hljs js">
-		<code>function sum(operand1) {</code>
-		<code>    let privateOperand = 1;</code>
-		<code>    return function(operand2) {</code>
-		<code>        console.log(operand1 + operand2 + privateOperand);</code>
-		<code>    }</code>
-		<code>}</code>
-		<code> </code>
-		<code>let plus3 = sum(3);</code>
-		<code>plus3(6); // 10</code>
-		<code> </code>
-	</pre>
+	<h2 class="shout">
+		<strong style="font-size: 60%;">Мультипарадигменный JavaScript</strong> <br>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<small style="font-size: 60%; display: inline-block;">Функциональный JS</small>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<small style="font-size: 60%; display: inline-block;">Примеры по <a
+				href="https://github.com/frontend-park-mail-ru/3-lectrure-samples/tree/master/funcs" target="_blank">ссылке</a>
+		</small>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<small style="font-size: 60%; display: inline-block;">ООП парадигма в JS</small>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<small style="font-size: 60%; display: inline-block;">Примеры по <a
+				href="https://github.com/frontend-park-mail-ru/3-lectrure-samples/tree/master/OOP" target="_blank">ссылке</a>
+		</small>
+	</h2>
 </section>
 
 <section class="slide">
-	<h2>Имеем функцию</h2>
-	<pre class="hljs js">
-		<code>function f() {</code>
-		<code>    let privateVariable = 1;</code>
-		<code> </code>
-		<code>    // some code</code>
-		<code>};</code>
-		<code> </code>
-		<code>f();</code>
-		<code>console.log(window.privateVariable);  // undefined</code>
-		<code> </code>
-	</pre>
-</section>
+	<h2>Что ещё?</h2>
 
-<section class="slide">
-	<h2>Самовызывающиеся функции</h2>
-	<p>Сделаем функцию <mark>анонимной</mark></p>
-	<pre class="hljs js">
-		<code>(function () {</code>
-		<code>    let privateVariable = 1;</code>
-		<code> </code>
-		<code>    // some code</code>
-		<code>})();</code>
-		<code> </code>
-		<code>console.log(window.privateVariable);  // undefined</code>
-		<code> </code>
-	</pre>
+	<p class="medium-content">
+		&nbsp
+	</p>
+
+	<p class="medium-content">
+		Реактивное, событийно-ориентированное, агентно-ориентированное программирование и т.д.
+	</p>
 </section>
 
 <section class="slide">
 	<h2>Модули</h2>
 	<blockquote>
-		<p class="small-content"><b>Модуль</b> &mdash; функционально законченный фрагмент программы, оформленный в виде отдельного файла с исходным кодом… предназначенный для использования в других программах</p>
+		<p class="small-content"><b>Модуль</b> &mdash; функционально законченный фрагмент программы, оформленный в виде
+			отдельного файла с исходным кодом… предназначенный для использования в других программах</p>
 	</blockquote>
 </section>
 
@@ -164,7 +295,7 @@
 </section>
 
 <section class="slide">
-	<h2>Модули &mdash; будущее</h2>
+	<h2>Модули &mdash; <s>будущее</s> настоящее</h2>
 	<pre class="hljs js">
 		<code>// main.js</code>
 		<code>import AwesomeClass from './package.js'</code>
@@ -182,11 +313,21 @@
 </section>
 
 <section class="slide">
-	<h2><a href="https://caniuse.com/#feates6-module" target="_blank">caniuse.com</a></h2>
+	<h2>caniuse.com a year ago</h2>
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="caniuse-modules.png" style="transform-origin: center; transform: translate(-50%,-50%) scale(0.85);">
+		<img class="place" src="caniuse-modules.png"
+		     style="transform-origin: center; transform: translate(-50%,-50%) scale(0.85);">
 	</div>
 </section>
+
+<section class="slide">
+	<h2><a href="https://caniuse.com/#feates6-module" target="_blank">caniuse.com now</a></h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="caniuse-modules-2.png"
+		     style="transform-origin: center; transform: translate(-50%,-50%) scale(0.40);">
+	</div>
+</section>
+
 
 <section class="slide">
 	<h2 class="shout">Модульный подход к разработке</h2>
@@ -195,21 +336,29 @@
 <section class="slide">
 	<h2>Компоненты</h2>
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="components.png" style="transform-origin: center;transform: translate(-50%,-49.7%) scale(0.3);">
+		<img class="place" src="empty.png"
+		     style="transform-origin: center;transform: translate(-50%,-49.7%) scale(0.3);">
 	</div>
 </section>
 
 <section class="slide">
 	<h2>Компоненты</h2>
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="components-1.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.3);">
+		<img class="place" src="one.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.3);">
 	</div>
 </section>
 
 <section class="slide">
 	<h2>Компоненты</h2>
 	<div style="position:relative;width: 100%; height: 75%;">
-		<img class="place" src="components-2.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.3);">
+		<img class="place" src="two.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.3);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Компоненты</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="three.png" style="transform-origin: center;transform: translate(-50%,-50%) scale(0.3);">
 	</div>
 </section>
 
