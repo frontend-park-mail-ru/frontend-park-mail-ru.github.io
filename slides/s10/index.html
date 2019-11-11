@@ -622,12 +622,691 @@
 	<h2><a style="color: royalblue" href="https://medium.com/@abraztsov/how-virtual-dom-work-567128ed77e9" target="_blank">Как работает Virtual DOM?</a></h2>
 </section>
 
+<section class="slide">
+	<h2>Пишем свой Virtual DOM</h2>
+	<div style="position:relative;width: 100%; height: 75%;">
+		<img class="place" src="vdom/ubermind.jpg" style="transform-origin: center;transform: translate(-50%,-50%) scale(1.125);">
+	</div>
+</section>
+
+<section class="slide question">
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<a style="font-size: 180%;" href="https://github.com/8coon/tp-vdom-example">https://github.com/8coon/tp-vdom-example</a>
+</section>
+
+<section class="slide">
+	<h2>Какие задачи должен решать<br/>Virtual DOM?</h2>
+	<br/>
+	<ul>
+		<li class="next">Создавать дерево элементов на странице по шаблону</li>
+		<li class="next">Изменять дерево элементов согласно обновлённому шаблону</li>
+	</ul>
+</section>
+
 <section class="slide question">
 	<h2>
 		<div style="font-size: 70%;">
-			Посмотрим, как это выглядит на практике
+			Создание ноды
 		</div>
 	</h2>
+</section>
+
+<section class="slide question">
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/dom-uml.png"
+			 style="transform-origin: center;transform: translate(-50%, -45%) scale(0.5);">
+	</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/dom-uml-h.png"
+			 style="transform-origin: center;transform: translate(-50%, -45%) scale(0.5);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Функция vdom.create()</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/vdom-create.png"
+			 style="transform-origin: center;transform: translate(-50%, -45%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Функция vdom.create()</h2>
+	<pre class="hljs js">
+		<code class="next">function create(vnode) {</code>
+		<div class="next">
+			<code>	// Если создаём текстовый узел</code>
+			<code>	if (typeof vnode === 'string') {</code>
+			<code class="next">		return document.createTextNode(vnode);</code>
+			<code>	}</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>	const node = document.createElement(vnode.tag);</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>	// Добавляем атрибуты</code>
+			<code>	if (vnode.attrs) {</code>
+			<div class="next">
+				<code>		for (const [name, value] of Object.entries(vnode.attrs)) {</code>
+				<code class="next">			node.setAttribute(name, value);</code>
+				<code>		}</code>
+			</div>
+			<code>	}</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Функция create() - продолжение</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>	// Создаём детей</code>
+			<code>	if (vnode.children) {</code>
+			<div class="next">
+				<code>		for (const child of vnode.children) {</code>
+				<code class="next">			node.appendChild(create(child));</code>
+				<code>		}</code>
+			</div>
+			<code>	}</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>	// Связываем виртуальный и реальный DOM</code>
+			<code>	node._vnode = vnode;</code>
+		</div>
+		<div class="next">
+			<code>	return node;</code>
+			<code>}</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Создание ноды - пример</h3>
+	<pre class="hljs js">
+		<code class="next">const node = vdom.create({</code>
+		<code class="next">	tag: 'DIV',</code>
+		<code class="next">	attrs: {</code>
+		<code class="next">		style: 'background-color: red;',</code>
+		<code class="next">		'tab-index': 0</code>
+		<div class="next">
+			<code>	}</code>
+			<code>});</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>document.body.appendChild(node);</code>
+		</div>
+		</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Успех!
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Обновление ноды
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Функция vdom.update()</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/vdom-update.png"
+			 style="transform-origin: center;transform: translate(-50%, -45%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Что могло поменяться?</h2>
+	<br/>
+	<ul>
+		<li class="next">Количество и значения атрибутов</li>
+		<li class="next">Любой из потомков</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Обновление атрибутов ноды
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Функция updateAttrs()</h2>
+	<pre class="hljs js">
+		<code class="next">function updateAttrs(node, prevAttrs, attrs) {</code>
+		<div class="next">
+			<code>	// Задаём новые значения атрибутов</code>
+			<code>	if (attrs) {</code>
+			<div class="next">
+				<code>		for (const [name, value] of Object.entries(attrs)) {</code>
+				<code class="next">			node.setAttribute(name, value);</code>
+				<code>		}</code>
+			</div>
+			<code>	}</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>	// Удаляем старые атрибуты, которых не встретилось в новых</code>
+			<code>	if (prevAttrs) {</code>
+			<div class="next">
+				<code>		for (const name of Object.keys(prevAttrs)) {</code>
+				<div class="next">
+					<code>			if (!attrs || !attrs.hasOwnProperty(name)) {</code>
+					<code class="next">				node.removeAttribute(name);</code>
+					<code>			}</code>
+				</div>
+				<code>		}</code>
+			</div>
+			<code>	}</code>
+		</div>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Что могло поменяться?</h2>
+	<br/>
+	<ul>
+		<li style="text-decoration: line-through; opacity: .5;">Количество и значения атрибутов</li>
+		<li>Любой из потомков</li>
+	</ul>
+	<ul class="next">Для обновления потомков будем использовать сравнение по ключам.</ul>
+	<blockquote class="next">
+		Ключ — специальный строковый атрибут, семантически идентифицирующий элемент среди соседних.
+	</blockquote>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Обновление дочерних нод
+		</div>
+		<div style="font-size: 30%;">
+			<br/>
+			(Возможная реализация)
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/tp-vdom-update-2-1.png"
+			 style="transform-origin: center;transform: translate(-50%, -53%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/tp-vdom-update-2-2.png"
+			 style="transform-origin: center;transform: translate(-50%, -53%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/tp-vdom-update-2-3.png"
+			 style="transform-origin: center;transform: translate(-50%, -53%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/tp-vdom-update-2-4.png"
+			 style="transform-origin: center;transform: translate(-50%, -53%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/tp-vdom-update-2-5.png"
+			 style="transform-origin: center;transform: translate(-50%, -53%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/tp-vdom-update-2-6.png"
+			 style="transform-origin: center;transform: translate(-50%, -53%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/tp-vdom-update-2-7.png"
+			 style="transform-origin: center;transform: translate(-50%, -53%) scale(0.4);">
+	</div>
+</section>
+
+<section class="slide question">
+	<h3 style="font-size: 42px">Обновление дочерних нод</h3>
+	<br/>
+	<ul>
+		<li>1 создание</li>
+		<li>1 удаление</li>
+		<li>2 обновления</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Функция updateChildren()</h2>
+	<pre class="hljs js">
+		<code class="next">function updateChildren(node, prevChildren, children) {</code>
+		<div class="next">
+			<code>	const childLength = children ? children.length : 0;</code>
+			<code>&nbsp;</code>
+		</div>
+		<code class="next">	for (let i = 0, j = 0; i < childLength; i++, j++) {</code>
+		<div class="next">
+			<code>		const prevVchild = prevChildren && prevChildren[j];</code>
+			<code>		const vchild = children[i];</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>		const fromString = typeof prevVchild === 'string';</code>
+			<code>		const toString = typeof vchild === 'string';</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>		if (fromString && toString) {</code>
+			<div class="next">
+				<code>			// Если старый и новый элемент -- строки</code>
+				<code>			// Внимание! .childNodes, не .children!</code>
+				<code>			node.childNodes[i].textContent = vchild;</code>
+			</div>
+			<code>		} // else if ( -- Прололжение на следующем слайде</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Функция updateChildren()<br/>(продолжение)</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>		} else if (</code>
+			<code>			!fromString && !toString && prevVchild && prevVchild.key === vchild.key</code>
+			<code>		) {</code>
+			<div class="next">
+				<code>			// Ключи совпадают -- можем обновить оптимально</code>
+				<code>			update(node.childNodes[i], vchild);</code>
+			</div>
+			<code>		} else {</code>
+			<div class="next">
+				<code>			// Если строка превращается в элемент или наоборот</code>
+				<code>			// Либо у элементов не совпали ключи</code>
+				<code>			// Вставляем новую ноду перед текущей, старая нода при этом "всптывает" в конец</code>
+				<code>			node.insertBefore(create(vchild), node.childNodes[i]);</code>
+				<div class="next">
+					<code>			// Сдвигаем индекс сравнения массива старых чайлдов</code>
+					<code>			j--;</code>
+				</div>
+			</div>
+			<code>		}</code>
+			<code>	}</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Функция updateChildren()<br/>(продолжение 2)</h2>
+	<pre class="hljs js">
+		<code class="next">	const curChildLength = node.childNodes.length;</code>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>	// Удаляем "лишние" узлы</code>
+			<code>	for (let i = childLength; i < curChildLength; i++) {</code>
+			<code class="next">		node.removeChild(node.childNodes[childLength]);</code>
+			<code>	}</code>
+			<code>}</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Обновление ноды - пример</h2>
+	<pre class="hljs js">
+		<code class="next">const node = vdom.create({</code>
+		<div class="next">
+			<code>	tag: 'DIV',</code>
+			<code>});</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>document.body.appendChild(node);</code>
+		</div>
+		<div class="next">
+			<code>&nbsp;</code>
+			<code>dom.update(node, {</code>
+			<code>	tag: 'DIV',</code>
+			<code>	attrs: {</code>
+		</div>
+		<div class="next">
+			<code>		style: 'background-color: black;',</code>
+			<code>		'tab-index': 2</code>
+		</div>
+		<div class="next">
+			<code>	}</code>
+			<code>});</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Всё отлично?
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="color: indianred;">
+			Нет!
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/vdom-component-1.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.32);">
+	</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/vdom-component-2.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.32);">
+	</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/vdom-component-3.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.32);">
+	</div>
+</section>
+
+<section class="slide question">
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/vdom-component-4.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.32);">
+	</div>
+</section>
+
+<section class="slide">
+	<h3 style="font-size: 42px">При компонентном подходе<br/>возникает ряд вопросов:</h3>
+	<br/>
+	<ul>
+		<li class="next">Как эффективно обновлять дочерние компоненты, находящиеся в шаблоне родителя?</li>
+		<li class="next">Как управлять дочерним компонентом из родителя?</li>
+		<li class="next">Как не сломать этим поведение дочернего компонента?</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Надо программировать
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>Создание ноды с компонентом</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>if (typeof vnode.tag === 'function') {</code>
+			<code class="next">	// Создаём инстанс компонента</code>
+			<code class="next">	vnode._instance = new vnode.tag(vnode.attrs, vnode.children);</code>
+			<code class="next">	// Выполняем его шаблон</code>
+			<code class="next">	const componentVnode = vnode._instance.render();</code>
+			<code class="next">	// Создаём DOM по шаблону</code>
+			<code class="next">	const node = create(componentVnode);</code>
+			<code class="next">	// Записываем ссылку на элемент в компонент</code>
+			<code class="next">	vnode._instance.el = node;</code>
+			<code class="next">	// Сохраняем шаблон компонента для эффективного обновления</code>
+			<code class="next">	node._originalVnode = node._vnode;</code>
+			<code class="next">	// Записываем vdom инстанса компонента</code>
+			<code class="next">	node._vnode = vnode;</code>
+			<code class="next">	return node;</code>
+			<code>}</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Создание компонента - пример</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>const node = vdom.create({</code>
+			<code class="next">	tag: MyComponentClass,</code>
+			<div class="next">
+				<code>	// Эти атрибуты попадут прямо в инстанс компонента</code>
+				<code>	attrs: {</code>
+				<code>		value: 1</code>
+				<code>	}</code>
+			</div>
+			<code>});</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Обновление ноды с компонентом</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>let resultVnode = vnode;</code>
+			<code>if (isComponent) {</code>
+			<code class="next">	// Выполняем шаблон компонента</code>
+			<code class="next">	vnode = prevVnode._instance.render();</code>
+			<code class="next">	// Переносим инстанс со старой ноды на новую</code>
+			<code class="next">	resultVnode._instance = prevVnode._instance;</code>
+			<code class="next">	// Дальше сравнивать будет именно со старым vdom шаблона, а не компонента</code>
+			<code class="next">	prevVnode = node._originalVnode;</code>
+			<code class="next">	// Обновляем шаблон компонента</code>
+			<code class="next">	node._originalVnode = vnode;</code>
+			<code>}</code>
+			<code>updateAttrs(node, prevVnode.attrs, vnode.attrs);</code>
+			<code>updateChildren(node, prevVnode.children, vnode.children);</code>
+			<code>// Обновлем связь с virtual DOM</code>
+			<code>node._vnode = resultVnode;</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Обновление ноды с компонентом<br/>(продолжение)</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>updateAttrs(node, prevVnode.attrs, vnode.attrs);</code>
+			<code>updateChildren(node, prevVnode.children, vnode.children);</code>
+			<code>&nbsp;</code>
+			<code>// Обновлем связь с virtual DOM</code>
+			<code>node._vnode = resultVnode;</code>
+			<div class="next">
+				<code>&nbsp;</code>
+				<code>// Вызываем метод жизненного цикла компонента</code>
+				<code>if (isComponent) {</code>
+				<code>	resultVnode._instance.didUpdate();</code>
+				<code>}</code>
+			</div>
+		</div>
+	</pre>
+</section>
+
+<section class="slide">
+	<h3 style="font-size: 42px">При компонентном подходе<br/>возникает ряд вопросов:</h3>
+	<br/>
+	<ul>
+		<li style="text-decoration: line-through;">Как эффективно обновлять дочерние компоненты, находящиеся в шаблоне родителя?</li>
+		<li style="text-decoration: line-through;">Как управлять дочерним компонентом из родителя?</li>
+		<li>Как не сломать этим поведение дочернего компонента?</li>
+	</ul>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%; margin-bottom: 20%">
+			Решение:<br/>Жизненный цикл компонента
+		</div>
+	</h2>
+	<div class="next" style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/mood.png"
+			 style="transform-origin: center;transform: translate(-50%, -5%) scale(0.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Жизненный цикл компонента</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>class Component {</code>
+			<div class="next">
+				<code>	constructor(attrs, children) {</code>
+				<code>		this.attrs = attrs;</code>
+				<code>		this.children = children;</code>
+				<code>	}</code>
+			</div>
+			<div class="next">
+				<code>	/** Вызывается после создания компонента */</code>
+				<code>	didCreate() {}</code>
+			</div>
+			<div class="next">
+				<code>	/** Вызывается перед обновлением компонента */</code>
+				<code>	willUpdate(attrs, children) { /* ... */ }</code>
+			</div>
+			<div class="next">
+				<code>	/** Вызывается после обновления компонента */</code>
+				<code>	didUpdate() {}</code>
+			</div>
+			<div class="next">
+				<code>	/** Вызывается перед уничтожением компонента */</code>
+				<code>	willDestroy() {}</code>
+			</div>
+			<code>}</code>
+		</div>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%; margin-bottom: 20%">
+			willDestroy() ?
+		</div>
+	</h2>
+	<div class="next" style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/wut.png"
+			 style="transform-origin: center;transform: translate(-50%, -5%) scale(0.5);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Прибираемся за компонентом</h2>
+	<pre class="hljs js">
+		<div class="next">
+			<code>function destroy(node) {</code>
+			<code class="next">	const vnode = node._vnode;</code>
+			<div class="next">
+				<code>&nbsp;</code>
+				<code>	if (vnode) {</code>
+				<div class="next">
+					<code>		const isComponent = typeof vnode.tag === 'function';</code>
+					<code>		// Если удаляем компонент, вызовем метод жизненного цикла</code>
+					<code>		if (isComponent) {</code>
+					<code class="next">			vnode._instance.willDestroy();</code>
+					<code>		}</code>
+				</div>
+				<div class="next">
+					<code>		// Удаляем детей</code>
+					<code>		for (const child of node.childNodes) {</code>
+					<code class="next">			destroy(child);</code>
+					<code>		}</code>
+				</div>
+				<code>	}</code>
+				<code>}</code>
+			</div>
+		</div>
+	</pre>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div style="font-size: 70%;">
+			Теперь всё отлично?
+		</div>
+	</h2>
+</section>
+
+<section class="slide question">
+	<h2>
+		<div>
+			Да.<br/>Но можно лучше!
+		</div>
+	</h2>
+</section>
+
+<section class="slide">
+	<h2>JSX</h2>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/babel-jsx.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.7);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Возможные улучшения</h2>
+	<br/>
+	<ul>
+		<li class="next">Настроить JSX, Поддержать функцию createElement. <a href="https://youtu.be/t-Bd2RKC3Oo?t=5286">https://youtu.be/t-Bd2RKC3Oo?t=5286</a></li>
+		<li class="next">Улучшить работу с DOM-атрибутами. Например, поддержать style или className.</li>
+		<li class="next">Автоматически генерировать ключи там, где можем.</li>
+		<li class="next">Сделать метод жизненного цикла didMount(), позволяющий перехватить момент, когда нода была вставлена на страницу.</li>
+		<li class="next"><strong>Поддержать события.</strong></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Поддержка событий.</h2>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/react-events.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(1.1);">
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Демо-приложение</h2>
+	<div style="position:relative; width: 100%; height: 75%;">
+		<img class="place" src="../s10/vdom/demo-app.png"
+			 style="transform-origin: center;transform: translate(-50%, -46%) scale(0.8);">
+	</div>
 </section>
 
 <section class="slide">
