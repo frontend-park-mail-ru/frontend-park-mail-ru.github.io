@@ -307,7 +307,17 @@
 </section>
 
 <section class="slide">
-	<h2>Модули</h2>
+	<h2>Модули &mdash; <s>будущее</s> настоящее</h2>
+	<ul lang="ru">
+		<li><b>IIFE</b> – <i>Immediately Invoked Function Expression. Фактически просто замыкание</i></li>
+		<li><b>AMD</b> – <i>Asynchronous Module Definition (RequireJS)</i></li>
+		<li><b>CommonJS</b> – <i>синхронный запрос модуля (Node.js)</i></li>
+		<li><b>UMD</b> – <i>Universal Module Definition (И туда и сюда)</i></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Модули IIEF</h2>
 	<pre class="hljs js">
 		<code>(function () {</code>
 		<code>    let importedModule = window.importedModule;</code>
@@ -323,7 +333,37 @@
 </section>
 
 <section class="slide">
-	<h2>Модули &mdash; <s>будущее</s> настоящее</h2>
+	<h2>Модули AMD</h2>
+	<pre class="hljs js">
+		<code>define(['a', 'b'], (a, b) => {</code>
+		<code>		...</code>
+		<code>		//Определение модуля с помощью возвращаемого значения</code>
+		<code>		return function () {};</code>
+		<code>})</code>
+	</pre>
+</section>
+
+
+<section class="slide">
+	<h2>Модули UMD</h2>
+	<pre class="hljs js">
+		<code>(function (root, factory) {</code>
+		<code>	if (typeof define === 'function' && define.amd) {</code>
+		<code>		//AMD</code>
+		<code>		define(['b'], factory);</code>
+		<code>	} else if (typeof module === 'object' && module.exports) {</code>
+		<code>		//CommonJS</code>
+		<code>		module.exports = factory(require('b'));</code>
+		<code>		//b – зависимость</code>
+		<code>})(this, function (b) {</code>
+		<code>		//Код модуля</code>
+		<code>		return {};</code>
+		<code>})</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Модули ES6 module</h2>
 	<pre class="hljs js">
 		<code>// main.js</code>
 		<code>import AwesomeClass from './package.js'</code>
@@ -497,9 +537,12 @@
 	<h2>Дополнительные материалы</h2>
 	<ul>
 		<li>Подробнее про <a href="https://learn.javascript.ru/closures" target="_blank">замыкания в JavaScript</a></li>
+		<li>Подробнее про <a href="https://tproger.ru/translations/js-modules-formats-loaders-builders/" target="_blank">Модули js</a></li>
 		<li>Подробнее про <a href="https://learn.javascript.ru/modules" target="_blank">ES6 модули</a></li>
-		<li>Строковый шаблонизатор <a href="https://github.com/mailru/fest" target="_blank">FEST</a> и <a
-				href="https://github.com/pugjs/pug" target="_blank">pug</a></li>
+		<li>Строковый шаблонизатор
+			<a href="https://handlebarsjs.com/" target="_blank">handlebars</a>,
+			<a href="https://github.com/mailru/fest" target="_blank">FEST</a>,
+			<a href="https://github.com/pugjs/pug" target="_blank">pug</a></li>
 		<li><a href="https://learn.javascript.ru/templates">Подробнее про шаблонизацию</a></li>
 		<li><a href="https://facebook.github.io/react/docs/tutorial.html">react JSX</a></li>
 		<li>Статический анализ JavaScript с использованием <a href="http://eslint.org/" target="_blank">ESLint</a> или
