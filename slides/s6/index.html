@@ -672,7 +672,7 @@
 		<h2>Поддержка браузерами &mdash; <a href="https://caniuse.com/#feat=websockets" target="_blank">caniuse</a></h2>
 		<div style="position: relative; width: 100%; height: 80%;">
 			<img class="place" src="ws-caniuse.png"
-				style="transform-origin: center; transform: translate(-50%,-65%) scale(0.75);">
+				style="transform-origin: center; transform: translate(-50%,-50%) scale(0.35);">
 		</div>
 	</section>
 
@@ -874,7 +874,7 @@
 		<h2>Service Workers используются</h2>
 		<p class="medium-content"></p>
 		<ul>
-			<li>Кэширование данных (50MB+)</li>
+			<li>Кэширование данных (<a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria" target="_blank">до 50% диска</a>) </li>
 			<li><strong>Оффлайн-работа приложения</strong> (прям вообще без Интернета чтобы было!)</li>
 			<li>Фоновая синхронизация данных</li>
 			<li>Ответ на запросы от других источников ("проксирование" запросов)</li>
@@ -971,21 +971,11 @@
 	</section>
 
 	<section class="slide">
+		<h2 class="shout">Больше протоколов!</h2>
+	</section>
+
+	<section class="slide">
 		<h2 class="shout">HTTP/2</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Original HTTP/0.9 implementation</h2>
-		<iframe src="https://www.w3.org/Protocols/HTTP/AsImplemented.html" frameborder="0" width="100%"
-			height="80%"></iframe>
-	</section>
-
-	<section class="slide">
-		<h2>Hypertext Transfer Protocol: HTTP/1.1</h2>
-		<div style="position: relative; width: 100%; height: 100%; overflow: hidden; margin: 0 auto;">
-			<iframe src="https://rfc2.ru/2068.rfc/original" frameborder="0" width="100%" height="80%"
-				style="transform-origin: center; transform: translate(10%, -10%) scale(1.2)"></iframe>
-		</div>
 	</section>
 
 	<section class="slide">
@@ -1192,6 +1182,94 @@
 		<h2>Итак... HTTP/2 очень хорош!</h2>
 	</section>
 
+	<section class="slide question">
+		<h2>Но...</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Больше протоколов!</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">HTTP/3</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Read</h2>
+		<div style="font-size:36px;margin-top:15%;">
+			<a href="https://blog.cloudflare.com/http3-the-past-present-and-future/" target="_blank">
+				https://blog.cloudflare.com/http3-the-past-present-and-future/
+			</a><br>
+			HTTP/3: the past, the present, and the future
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>head-of-line blocking problem</h2>
+		<div style="font-size:36px;margin-top:15%;">
+			<p><b>HTTP/2</b> — абстракция</p>
+			<p><b>TCP</b> — стрим из пакетов</p>
+			<p>packet loss — resend — delay</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Больше протоколов!</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Протокол QUIC</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Read</h2>
+		<div style="font-size:36px;margin-top:15%;">
+			<a href="https://blog.cloudflare.com/the-road-to-quic/" target="_blank">
+				https://blog.cloudflare.com/the-road-to-quic/
+			</a><br>
+			The Road to QUIC
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>QUIC</h2>
+		<div style="font-size:36px;margin-top:15%;">
+			<div style="position: relative; width: 100%; height: 75%; margin: 0 auto;">
+				<img class="place" src="quic1.png"
+					style="transform-origin: center; transform: translate(-50%,-30%) scale(0.8);">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>QUIC</h2>
+		<div style="font-size:36px;margin-top:15%;">
+			<div style="position: relative; width: 100%; height: 75%; margin: 0 auto;">
+				<img class="place" src="quic2.png"
+					style="transform-origin: center; transform: translate(-50%,-30%) scale(0.8);">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>HTTP/3 !== HTTP/2 + QUIC</h2>
+		<div style="font-size:20px;margin-top:15%;">
+			<p>
+				While it’s true that some of the HTTP/2 features can be mapped on top of QUIC very easily,
+				that’s not true for all of them.
+			</p>
+			<p>One in particular,
+				HTTP/2’s header compression scheme called HPACK,
+				heavily depends on the order in which different HTTP requests
+				and responses are delivered to the endpoints.
+			</p>
+			<p>
+				QUIC enforces delivery order of bytes within single streams,
+				but does not guarantee ordering among different streams.
+			</p>
+			<p>* QUIC -> QPACK</p>
+		</div>
+	</section>
 
 	<section class="slide">
 		<h2>Полезные ссылки</h2>
@@ -1220,6 +1298,9 @@
 					Performance... And Failed</a></li>
 			<li>High Performance Browser Networking (O'Reilly): <a href="https://youtu.be/whFhyHysYYg"
 					target="_blank">HTTP/2</a>
+			</li>
+			<li>
+				<a href="https://blog.cloudflare.com/http3-the-past-present-and-future/" target="_blank">HTTP/3: the past, the present, and the future</a>
 			</li>
 		</ul>
 	</section>
