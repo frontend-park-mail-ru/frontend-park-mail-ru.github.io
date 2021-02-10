@@ -155,13 +155,59 @@
 
 	</style>
 
+	<style>
+		.business-card {
+			display: flex;
+			border-radius: 8px;
+			border: 1px solid lightgray;
+			padding: 12px 20px;
+			line-height: 1.5;
+		}
+
+		.business-card__info {
+			flex-grow: 1;
+		}
+
+		.business-card__name {
+			font-weight: bold;
+			margin-right: 15px;
+		}
+
+		.business-card__role {
+			font-size: 20px;
+			margin-bottom: 5px;
+		}
+
+		.business-card__contacts {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.business-card__contacts-item {
+			display: flex;
+			align-content: center;
+			justify-content: center;
+			padding: 4px 16px;
+			border-radius: 8px;
+			background: #dbefdc !important;
+			color: #5ca05c;
+		}
+
+		.business-card__clarification {
+			font-size: 18px;
+			color: gray;
+		}
+	</style>
+
 </head>
 
 <body class="shower list">
 
 	<header class="caption">
 		<h1>Введение во Frontend</h1>
-		<p>Технопарк, осень, 2020 г.</p>
+		<p>Технопарк, весна, 2021 г.</p>
 	</header>
 
 	<section class="slide first">
@@ -188,7 +234,7 @@
 					<div class="email"><a href="mailto:a.tyuldyukov@corp.mail.ru?subject=Технопарк"
 							target="_blank">@a.tyuldyukov</a>
 					</div>
-					<div class="work">Смотри Mail.ru</div>
+					<div class="work">Юла</div>
 				</div>
 			</div>
 			<div class="user-4">
@@ -374,28 +420,45 @@
 	</section>
 
 	<section class="slide">
-		<h2>Наша Dream-team <em>Менторов</em></h2>
+		<h2>Наша Dream-team <em>Менторов</em> (ч. 1)</h2>
 		<p class="small-content"></p>
 		<ul lang="ru">
-			<li>Тулфоров Джахонгир &mdash; разработчик, Почта Mail.ru</li>
-			<li>Волынов Михаил &mdash; разработчик, Почта Mail.ru</li>
-			<li>Парпибаева Надежда &mdash; разработчик, Яндекс.Новости</li>
-			<li>Елагин Антон &mdash; разработчик, Почта Mail.ru</li>
-			<li>Шишова Анастасия &mdash; студент 4-го семестра Технопака</li>
-			<li>Меркулова Надежда &mdash; разработчик, KTS studio</li>
+			<li>Алексеева Екатерина — студент 3-го семестра Технопарка</li>
+			<li>Гавриленко Роман — разработчик, Почта Mail.ru</li>
+			<li>Добрянская Елизавета — разработчик, Сбер</li>
+			<li>Елагин Антон — разработчик, Почта Mail.ru</li>
+			<li>Казанцева Ксения — разработчик, Облако Mail.ru</li>
+			<li>Климова Наталия — разработчик, Почта Mail.ru</li>
+			<li>Меркулова Надежда — разработчик, KTS Studio</li>
 		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>Наша Dream-team <em>Менторов</em></h2>
+		<h2>Наша Dream-team <em>Менторов</em> (ч. 2)</h2>
 		<p class="small-content"></p>
 		<ul lang="ru">
-			<li>Казанцева Ксения &mdash; разработчик, Облако Mail.ru</li>
-			<li>Климова Налатия &mdash; разработчик, Почта Mail.ru</li>
-			<li>Петренко Сергей &mdash; разработчик, KTS studio</li>
-			<li>Биличенко Федор &mdash; разработчик, KTS studio</li>
-			<li>Гаджиев Кирилл &mdash; разработчик, Почта Mail.ru</li>
+			<li>Панёв Никита — разработчик, ОКБ</li>
+			<li>Петренко Сергей — разработчик, KTS Studio</li>
+			<li>Сарафанников Александр — студент 3-го семестра Технопарка</li>
+			<li>Толпаров Натан — студент 3-го семестра Технопарка</li>
+			<li>Шишова Анастасия — разработчик, Kekker</li>
+			<li>Юнусов Нозимжон — разработчик, Почта Mail.ru</li>
+			<li>Тулфоров Джахонгир — разработчик, Почта Mail.ru</li>
 		</ul>
+		<div class="business-card">
+			<div class="business-card__info">
+				<div class="business-card__name">Волынов Михаил</div>
+				<div class="business-card__role">Старший ментор</div>
+				<div class="business-card__clarification">
+					По любым вопросам по взаимодействию с менторами
+				</div>
+			</div>
+			<div class="business-card__contacts">
+				<a href="https://t.me/StealthTech" class="business-card__contacts-item" target="_blank" rel="noopener noreferrer">
+					https://t.me/StealthTech
+				</a>
+			</div>
+		</div>
 	</section>
 
 	<section class="slide">
@@ -608,7 +671,7 @@
 
 	<section class="slide question">
 		<h2>
-			<a href="https://docs.google.com/document/d/1r8Lb5plcV5dacfs3l542Yi4JgFtzX-HjdV7tpUUlsnQ/edit?usp=sharing"
+			<a href="https://docs.google.com/document/d/1TjRW-mz1YobtFBB-W-Y4aGp5omW3myIPY4FcublBBsA/edit?usp=sharing"
 				style="font-size: 80%; color: #4caf50;" target="_blank">Все требования на одной странице</a>
 		</h2>
 	</section>
@@ -1002,9 +1065,6 @@
 			</li>
 			<li><a href="https://habrahabr.ru/company/wrike/blog/302896/" target="_blank">Простая статья на хабре</a>, про
 				асинхронность в JS (для желающих)
-			</li>
-			<li>И напоследок, <a href="https://www.youtube.com/watch?v=ryJSRZzAvUs" target="_blank">смешное видео про JS</a>,
-				просто чтобы отвлечься и посмеяться
 			</li>
 		</ul>
 	</section>
