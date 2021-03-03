@@ -502,7 +502,7 @@
 	<h2>Samesite. Strict 💪</h2>
 	<p class="medium-content">
 		Cookies с `samesite=strict` <strong>никогда</strong> не отправятся, если пользователь пришёл не с этого же сайта.<br/>
-		Важно помнить, что cookies не будут пересылаться также при навигации высокого уровня (т.е. даже при переходе по ссылке)
+		Важно помнить, что cookies не будут пересылаться также при навигации высокого уровня (т.е. даже при переходе по ссылке)</br>
 		Пример: vk.com -> site.com -> cookies не передаются
 	</p>
 </section>
@@ -520,6 +520,99 @@
 
 <section class="slide question">
 	<h2><a href="https://www.youtube.com/watch?v=NgKaJGoRbA0&list=PLbinbKmdgqPQDvXBX9NVNslFtO4PbZIz1&index=30" style="font-size: 70%;" target="_blank">доклад 🔥</a></h2>
+</section>
+
+<section class="slide question">
+	<h2><span style="font-size: 80%; display: inline-block;">Content Security Policy</span></h2>
+</section>
+
+<section class="slide">
+	<h2>Content Security Policy</h2>
+	<blockquote>
+		<p class="medium-content"><b>Content-Security-Policy (CSP) <sub>aka Це SP</sub></b> &mdash; HTTP-заголовок<sup>*</sup>, регулирующий список доверенных источников и тип взаимодействия с ними</p>
+		<p class="note"><a href="https://developer.mozilla.org/ru/docs/Web/HTTP/CSP" target="_blank">Подробнее на MDN</a></p>
+	</blockquote>
+	<p class="small-content">Пример:
+		<pre>Content-Security-Policy: script-src 'self' https://mail.ru</pre>
+		<pre><sup><strong>*:</strong></sup> &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src 'self' https://mail.ru&quot; /&gt;</pre>
+	</p>
+</section>
+
+<section class="slide">
+	<h2>Content Security Policy</h2>
+	<p class="medium-content">
+		<ul>
+			<li><strong>connect-src</strong> &mdash; ограничивает origin-ы, к которым можно соединиться с помощью XHR, WebSocket-ов и тд.</li>
+			<li><strong>img-src</strong> &mdash; ограничивает origin-ы,  c которых можно загрузить картинки</li>
+			<li><strong>style-src</strong></li>
+			<li><strong>font-src</strong></li>
+			<li><strong>media-src</strong> &mdash; &lt;audio&gt;, &lt;video&gt; и &lt;track&gt;</li>
+			<li><strong>child-src</strong> (frame-src) &mdash; iframes</li>
+			<li><strong>form-action</strong></li>
+			<li><strong>base-uri</strong> &mdash; &lt;base&gt;</li>
+			<li><strong>default-src</strong> </li>
+		</ul>
+	</p>
+</section>
+
+<section class="slide">
+	<h2>Content Security Policy</h2>
+	<p class="medium-content">
+		Нет fallback на default-src для:
+		<ul>
+			<li>base-uri</li>
+			<li>form-action</li>
+			<li>frame-ancestors</li>
+			<li>plugin-types</li>
+			<li>report-uri</li>
+			<li>sandbox</li>
+		</ul>
+	</p>
+</section>
+
+<section class="slide">
+	<h2>Content Security Policy. Стандарты</h2>
+	<ul>
+		<li>CSP1 - 2015 год <strong>(устарело)</strong></li>
+		<li>CSP2 - 2016 год ⬅️ сломана обратная совместимость. Действующий стандарт</li>
+		<li>CSP3 - с 2018 года в статусе Working Draft</li>
+	</ul>
+	<p class="ciu_embed" style="text-indent: 0;" data-feature="contentsecuritypolicy2" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+	</p>
+</section>
+
+<section class="slide">
+	<h2>Content Security Policy</h2>
+	<ul>
+		<li>`none`</li>
+		<li>`self`</li>
+		<li>`unsafe-inline`</li>
+		<li>`unsafe-eval`</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Content Security Policy. Strict CSP</h2>
+	<p class="medium-content">
+		Какими свойствами должна обладать хорошая политика безопасности?
+		<ul>
+			<li>default-src: 'none'</li>
+			<li>Отсутствие unsafe-eval, unsafe-inline в директивах script-src & style-src</li>
+			<li>no 3rd party sources <sup>*</sup></li>
+		</ul>
+	</p>
+</section>
+
+<section class="slide">
+	<h2>Content Security Policy. IRL🌐</h2>
+	<p class="medium-content">Как запустить и не сломать production?<br>
+		Есть 2 режима работы:
+		<ul>
+			<li>Content-Security-Policy - полноценная работа согласно выставленным политикам</li>
+			<li>Content-Security-Policy-Report-Only - `silent`-режим, происходит только отправка логов по адресу, указанному в report-uri</li>
+		</ul>
+	</p>
+	
 </section>
 
 <section class="slide question">
