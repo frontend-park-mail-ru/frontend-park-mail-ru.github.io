@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Резюме Frontend-разработчика в 2020 году</title>
+	<title>Резюме Frontend-разработчика в 2021 году</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,13 +14,13 @@
 <body class="shower list">
 
 <header class="caption">
-	<h1>Резюме Frontend-разработчика в 2020 году</h1>
+	<h1>Резюме Frontend-разработчика в 2021 году</h1>
 	<p>Технопарк, весна, 2021 г.</p>
 </header>
 
 <section class="slide first">
 	<h2 class="shout">
-		<small style="font-size:90%">Резюме <strong><em>Frontend-разработчика</em></strong> в 2020 году</small>
+		<small style="font-size:90%">Резюме <strong><em>Frontend-разработчика</em></strong> в 2021 году</small>
 		<br/>
 		<small>Слайды доступны по ссылке<br/>
 			<a href="https://frontend.tech-mail.ru/">frontend.tech-mail.ru</a>
@@ -44,7 +44,7 @@
 		<li><strong>MediaRecorder API</strong> &mdash; MediaStream Recording</li>
 		<li><strong>WebRTC</strong> &mdash; Real-time Peer-to-peer Communications Between Browsers</li>
 		<li><strong>Credential Management API</strong> &mdash; store and retrieve user, federated , and public key credentials</li>
-		<li><strong>Feature Policy</strong> &mdash; mechanism to allow and deny the use of browser features</li>
+		<li><strong>Permissions-Policy</strong> &mdash; mechanism to allow and deny the use of browser features</li>
 		<li><strong>Trusted-types API🧪</strong> &mdash; allows applications to lock down DOM XSS injection sinks to only accept non-spoofable, typed values in place of strings</li>
 		<li><strong>Page Lifecycle API</strong> &mdash; supports browsers' ability to manage lifecycle of web pages</li>
 	</ul>
@@ -320,6 +320,20 @@
 </section>
 
 <section class="slide question">
+	<h2>WebTransport</h2>
+</section>
+
+<section class="slide">
+	<h2>WebTransport</h2>
+	<blockquote>
+		<p>
+			<strong>WebTransport</strong> &mdash; новое API для двунаправленного клиент-серверного взаимодействия с низкими задержками &mdash;
+			<a href="https://web.dev/webtransport/" target="_blank">web.dev</a>
+		</p>
+	</blockquote>
+</section>
+
+<section class="slide question">
 	<h2>Credential Management API</h2>
 </section>
 
@@ -366,26 +380,26 @@
 </section>
 
 <section class="slide question">
-	<h2>Feature-Policy</h2>
+	<h2>Permissions-Policy</h2>
 </section>
 
 <section class="slide">
-	<h2>Feature-Policy &mdash; <a href="https://caniuse.com/#feat=feature-policy" target="_blank">caniuse</a></h2>
+	<h2>Permissions-Policy &mdash; <a href="https://caniuse.com/#feat=feature-policy" target="_blank">caniuse</a></h2>
 	<div style="position: relative; width: 100%; height: 100%;">
 		<img class="place" src="feature-policy-caniuse.png" style="transform-origin: center; transform: translate(-50.15%,-60%) scale(0.39);">
 	</div>
 </section>
 
 <section class="slide">
-	<h2>Feature-Policy</h2>
+	<h2>Permissions-Policy</h2>
 	<blockquote>
 		<p>
-			<strong>HTTP-заголовок Feature-Policy</strong> &mdash; позволяет разрешать или запрещать браузеру выполнение определенных функций и API для улучшения приватности&mdash;
+			<strong>HTTP-заголовок Permissions-Policy</strong> &mdash; позволяет разрешать или запрещать браузеру выполнение определенных функций и API для улучшения приватности&mdash;
 			<a href="https://developers.google.com/web/updates/2018/06/feature-policy" target="_blank">developers.google.com</a>
 		</p>
 	</blockquote>
 	<pre class="hljs http">
-		<code>Feature-Policy: &lt;feature&gt; &lt;allow list origin(s)&gt;</code>
+		<code>Permissions-Policy: &lt;feature&gt; &lt;allow list origin(s)&gt;</code>
 	</pre>
 	<div>
 		Standardized Features:
@@ -397,9 +411,9 @@
 
 
 <section class="slide">
-	<h2>Feature-Policy – Пример</h2>
+	<h2>Permissions-Policy – Пример</h2>
 	<pre class="hljs http">
-		<code>Feature-Policy: geolocation 'none'</code>
+		<code>Permissions-Policy: geolocation=()</code>
 	</pre>
 	<div style="text-align: center;">
 			<img src="feature-policy-example.png">
