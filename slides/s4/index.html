@@ -120,7 +120,7 @@
 	<blockquote>
 		<p class="medium-content"><b>Cross-Site Scripting</b> &mdash; атака, заключающаяся во <mark>внедрении на страницу вредоносного кода</mark>, который будет выполнен в контексте источника конкретного сайта с целью обхода политик единого источника, и взаимодействии этого кода с веб-сервером злоумышленника</p>
 	</blockquote>
-	<p class="note">С помощью XSS злоумышленник может <strong>украсть из браузера пользователя sensitive-данные</strong> (например, cookies с ID сессии пользователя, приватные данные пользователя или данные из форм), может <strong>выполнить от имени пользователя различные действия</strong> или, например, <strong>провести DOS-атаку</strong></p>
+	<p class="note">С помощью XSS злоумышленник может <strong>украсть из браузера пользователя sensitive-данные</strong> (например, cookies с ID сессии пользователя, приватные данные пользователя или данные из форм), может <strong>выполнить от имени пользователя различные действия</strong> или, например, <strong>провести DDOS-атаку</strong></p>
 </section>
 
 <section class="slide">
@@ -545,6 +545,7 @@
 			<li><strong>connect-src</strong> &mdash; ограничивает origin-ы, к которым можно соединиться с помощью XHR, WebSocket-ов и тд.</li>
 			<li><strong>img-src</strong> &mdash; ограничивает origin-ы,  c которых можно загрузить картинки</li>
 			<li><strong>style-src</strong></li>
+			<li><strong>script-src</strong></li>
 			<li><strong>font-src</strong></li>
 			<li><strong>media-src</strong> &mdash; &lt;audio&gt;, &lt;video&gt; и &lt;track&gt;</li>
 			<li><strong>child-src</strong> (frame-src) &mdash; iframes</li>
@@ -887,6 +888,7 @@
 			<mark>отдельные представители</mark> &mdash; принадлежат к какой-то коллекции и имеют идентификатор, чтобы
 			отличать различных представителей коллекции друг от друга
 		</li>
+		<small>by Рой Филдинг / REspresentation State Transfer</small>
 	</ul>
 </section>
 
