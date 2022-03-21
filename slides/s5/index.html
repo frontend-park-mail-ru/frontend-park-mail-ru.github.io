@@ -103,7 +103,7 @@
 	<h2>Методологии и принципы <br> проектирования ПО</h2>
 	<p class="medium-content">Где про всё это почитать?</p>
 	<ul lang="en">
-		<li>Про различные принципы <a href="https://web-creator.ru/articles/subjects/%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5" target="_blank">здесь</a></li>
+		<li>Про различные принципы <a href="https://web-creator.ru/articles/subjects/development_methodologies" target="_blank">здесь</a></li>
 		<li>Про GRASP <a href="https://ru.wikipedia.org/wiki/GRASP" target="_blank">на вики</a></li>
 		<li>Про S.O.L.I.D. &mdash; <a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">тоже на вики</a></li>
 		<li><a href="https://en.wikipedia.org/wiki/Package_principles" target="_blank">Package principles</a> &mdash; вообще высший пилотаж (<s>но будучи трезвым читать не советую</s>)</li>
@@ -112,7 +112,7 @@
 
 <section class="slide question">
 	<h2>
-		<span style="font-size: 100%; color: #000055;"><a href="https://youtu.be/wi3wPzReKZQ" target="_blank">S.O.L.I.D-ый JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
+		<span style="font-size: 100%; color: #000055;"><a href="https://www.youtube.com/watch?v=79DGSJUTHZ8" target="_blank">S.O.L.I.D-ый JavaScript&nbsp;<i class="material-icons noitalic">open_in_new</i></a></span>
 	</h2>
 </section>
 
@@ -383,23 +383,6 @@
 		<code>        })</code>
 		<code>    }</code>
 		<code>}</code>
-		<code> </code>
-	</pre>
-</section>
-
-<section class="slide">
-	<h2>Реализация паттерна <mark>Observable</mark></h2>
-	<pre class="hljs js">
-		<code>const service = new SomeService();</code>
-		<code>// функция-обработчик события</code>
-		<code>const onload = function (data) { console.log(data); }</code>
-		<code> </code>
-		<code>// подписываемся на событие</code>
-		<code>service.on('loaded', onload);</code>
-		<code>service.emit('loaded', {data: 42});    // событие 1</code>
-		<code>service.emit('loaded', {foo: 'bar'});  // событие 2</code>
-		<code>// отписываемся от события</code>
-		<code>service.off('loaded', onload);</code>
 		<code> </code>
 	</pre>
 </section>
