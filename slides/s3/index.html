@@ -310,14 +310,15 @@
 	<h2>Модули &mdash; <s>будущее</s> настоящее</h2>
 	<ul lang="ru">
 		<li><b>IIFE</b> – <i>Immediately Invoked Function Expression. Фактически просто замыкание</i></li>
-		<li><b>AMD</b> – <i>Asynchronous Module Definition (RequireJS)</i></li>
+		<li><b>AMD</b> – <i>Asynchronous Module Definition (Require.js)</i></li>
 		<li><b>CommonJS</b> – <i>синхронный запрос модуля (Node.js)</i></li>
-		<li><b>UMD</b> – <i>Universal Module Definition (И туда и сюда)</i></li>
+		<li><b>UMD</b> – <i>Universal Module Definition (и туда, и сюда)</i></li>
+		<li><b>ESM</b> – <i>ECMAScript модули</i></li>
 	</ul>
 </section>
 
 <section class="slide">
-	<h2>Модули IIEF</h2>
+	<h2>Модули IIFE</h2>
 	<pre class="hljs js">
 		<code>(function () {</code>
 		<code>    let importedModule = window.importedModule;</code>
@@ -381,7 +382,7 @@
 </section>
 
 <section class="slide">
-	<h2>caniuse.com a year ago</h2>
+	<h2>caniuse.com a while ago</h2>
 	<div style="position:relative;width: 100%; height: 75%;">
 		<img class="place" src="caniuse-modules.png"
 		     style="transform-origin: center; transform: translate(-50%,-50%) scale(0.85);">
@@ -517,16 +518,30 @@
 </section>
 
 <section class="slide">
-	<h2>Шаблонизация компонент</h2>
+	<h2>Шаблонизация компонентов</h2>
 	<pre class="hljs html">
 		<code>&lt;div class=&quot;block&quot;&gt; </code>
 		<code>    &lt;div data-bind=&quot;text: text&quot; class=&quot;block__el block__el_mod&quot;&gt;</code>
-		<code>        &lt;-- some code --&gt;</code>
+		<code>        &lt;!-- some code --&gt;</code>
 		<code>    &lt;/div&gt;</code>
 		<code>&lt;/div&gt;</code>
 		<code>&lt;input data-bind=&quot;value: name, valueUpdate: 'input'&quot; /&gt;</code>
 		<code> </code>
 	</pre>
+</section>
+
+<section class="slide">
+	<h2>Сторонние решения</h2>
+	<ul>
+		<li><a href="https://handlebarsjs.com/">Handlebars</a></li>
+		<li><a href="https://pugjs.org/api/getting-started.html">pug</a></li>
+		<li><a href="https://mozilla.github.io/nunjucks/">Nunjucks</a></li>
+		<li><a href="https://underscorejs.org/">Underscore</a></li>
+		<li><a href="https://twitter.github.io/hogan.js/">Hogan</a></li>
+		<li><a href="https://olado.github.io/doT/">doT</a></li>
+		<li><a href="https://ejs.co/">EJS</a></li>
+		<li>Место для вашей библиотеки</li>
+	</ul>
 </section>
 
 <section class="slide question">
@@ -539,10 +554,6 @@
 		<li>Подробнее про <a href="https://learn.javascript.ru/closures" target="_blank">замыкания в JavaScript</a></li>
 		<li>Подробнее про <a href="https://tproger.ru/translations/js-modules-formats-loaders-builders/" target="_blank">Модули js</a></li>
 		<li>Подробнее про <a href="https://learn.javascript.ru/modules" target="_blank">ES6 модули</a></li>
-		<li>Строковый шаблонизатор
-			<a href="https://handlebarsjs.com/" target="_blank">handlebars</a>,
-			<a href="https://github.com/mailru/fest" target="_blank">FEST</a>,
-			<a href="https://github.com/pugjs/pug" target="_blank">pug</a></li>
 		<li><a href="https://learn.javascript.ru/templates">Подробнее про шаблонизацию</a></li>
 		<li><a href="https://facebook.github.io/react/docs/tutorial.html">react JSX</a></li>
 		<li>Статический анализ JavaScript с использованием <a href="http://eslint.org/" target="_blank">ESLint</a> или
