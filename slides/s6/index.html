@@ -55,8 +55,8 @@
 	<section class="slide hidelogo">
 		<h2>Vocabulary</h2>
 		<p class="small-content"></p>
-		<img style="position: absolute; opacity: 0.2; width: 100%; height: auto; top:0; left:0; filter: blur(4px);"
-			src="vocabluary.jpg" alt="">
+		<img style="position: absolute; opacity:1; width: 50%; height: auto; bottom:0; left:0;"
+			src="images/vocabulary.webp" alt="">
 		<b>
 			<ul>
 				<li>RTT - round trip time - время от начала отправки пакета до его возвращения</li>
@@ -260,8 +260,18 @@
 
 	<section class="slide">
 		<h2>Поддержка Brotli</h2>
-		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="brotli.png"
-				style="transform-origin: center;transform: translate(-50%,-47%) scale(0.39);">
+		<div style="position:relative;width: 100%;height: 75%;margin: 0 auto;"><img class="place" src="images/caniuse-brotli.png"
+				style="transform-origin: center;transform: translate(-50%,-47%) scale(0.43);">
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>zstd</h2>
+		<h3><a href="https://facebook.github.io/zstd/">https://facebook.github.io/zstd/</a></h3>
+		<div>Сжимает быстрее, чем brotli</div>
+
+		<div>
+		<img src="images/zstd-benchmark.png" style="transform-origin: center;transform: translate(0%,-25%) scale(0.5)"/>
 		</div>
 	</section>
 
@@ -293,7 +303,11 @@
 
 	<section class="slide">
 		<h2>Not so sad... in 2021</h2>
-		<div style="position:relative;width: 100%;height: 40%;margin: 0 auto;"><img class="place" src="webp.png"
+		<div style="position:relative;width: 100%;height: 38%;margin: 0 auto;"><img class="place" src="webp.png"
+				style="transform-origin: center;transform: translate(-50%,-50%) scale(0.24);">
+		</div>
+		<h2 style="margin-top: 28px">Must have in 2023</h2>
+		<div style="position:relative;width: 100%;height: 40%;margin: 0 auto;"><img class="place" src="images/webp-2023.png"
 				style="transform-origin: center;transform: translate(-50%,-50%) scale(0.24);">
 		</div>
 	</section>
@@ -303,6 +317,15 @@
 		<code>
 			&lt;img src="image.webp" onerror="this.onerror=null; this.src='image.png'"&gt;
 		</code>
+
+		<h2 style="margin-top: 36px">Менее 🩼 фоллбек на png</h2>
+		<pre class="hljs js">
+			<code>&lt;picture&gt;</code>
+				<code>&lt;source srcset="image.webp" type="image/webp"&gt;</code>
+				<code>&lt;source srcset="image.jpg" type="image/jpeg"&gt;</code>
+				<code>&lt;img src="image.jpg"&gt;</code>
+			<code>&lt;/picture&gt;</code>
+		</pre>
 	</section>
 
 	<section class="slide">
@@ -341,6 +364,10 @@
 		HTTP1.1 заголовок <b>Connection: keep-alive</b>
 		<br />позволит переиспользовать соединение после запроса
 		<br />При получении <b>Connection: close</b> браузер закроет соединение
+	</section>
+
+	<section class="slide">
+		<img src="images/internet.webp" style="width: 80%; display: block; margin: 0 auto" />
 	</section>
 
 	<section class="slide">
@@ -519,6 +546,7 @@
 			<li><code>window.localStorage</code> &mdash; сохраняет данные навсегда, пока пользователь вручную не очистит
 				хранилище данных в настройках браузера</li>
 		</ul>
+		<img src="images/localstorage.jpeg" />
 	</section>
 
 	<section class="slide">
@@ -577,7 +605,7 @@
 				caniuse</a>.</p>
 		<div style="position: relative; width: 100%; height: 75%; margin: 0 auto;">
 			<img class="place" src="websql-caniuse.png"
-				style="transform-origin: center; transform: translate(-50%,-71%) scale(0.8);">
+				style="transform-origin: center; transform: translate(-50%,-60%) scale(0.4);">
 		</div>
 	</section>
 
@@ -643,6 +671,10 @@
 			<img class="place" src="filesystem-caniuse.png"
 				style="transform-origin: center; transform: translate(-50%,-71%) scale(0.8);">
 		</div>
+	</section>
+
+	<section class="slide">
+		<img src="images/break.jpeg" style="display: block; margin: 0 auto;" />
 	</section>
 
 	<section class="slide">
